@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Lista de Planificaciones', 'url'=>array('index')),
 	array('label'=>'Añadir Planificacion', 'url'=>array('create')),
 	array('label'=>'Modificar Planificacion', 'url'=>array('planificacionclaseupdate/update', 'id'=>$model->CodPlanificacion)),
-	array('label'=>'Eliminar Planificacion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Eliminar Planificacion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'¡ADVERTENCIA! Esta acción borrará registros asociados a la planificación, tales como Bitácoras y Documentos de Word Adjuntos ¿Desea Continuar?')),
 	array('label'=>'Administrar Planificaciones', 'url'=>array('admin')),
     array('label'=>'Crear Bitacora', 'url'=>array('bitacorasesion/create','id'=>$model->CodPlanificacion)),
     array('label'=>'Lista de Bitacoras', 'url'=>array('bitacorasesion/index')),

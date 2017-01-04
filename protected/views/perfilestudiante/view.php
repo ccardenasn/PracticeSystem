@@ -30,7 +30,5 @@ $this->menu=array(
 			'type' => 'raw',
             'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenEstudiantes/'.$model->ImagenEstudiante)
             ),
-        array('name'=>'Sesiones Planificadas','value'=>$model->SesionesPlanificadas),
-        array('name'=>'Horas Planificadas','value'=>$model->HorasPlanificadas),
 	),
 )); ?>

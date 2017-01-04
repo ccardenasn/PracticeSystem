@@ -37,7 +37,7 @@ function loadgraph()
 				$nombrepractica=$data[$i]['ConfiguracionPractica_NombrePractica'];
 				$idcentro=$data[$i]['CentroPractica_RBD'];
 				
-				$insertquery = "insert into graph_data(numeroalumnos,nombrepractica,idcentro) values('".$numeroalumnos."','".$nombrepractica."','".$idcentro."');";
+				$insertquery = "insert into graph_data(numero,nombrepractica,idcentro) values('".$numeroalumnos."','".$nombrepractica."','".$idcentro."');";
 				
 				mysql_query($insertquery,$con);
 			}

@@ -1,5 +1,5 @@
 <?php
-require('graficoestudiantes/connect.php');
+require('connect.php');
 
 $service = $_GET['id'];
 
@@ -16,7 +16,7 @@ echo "<table border='1' style='position:absolute;top:40px;left:10px;'>
 while($row = mysql_fetch_array($exectable)) {
 
     echo "<tr>";
-    echo "<td>" . $row['numeroalumnos'] . "</td>";
+    echo "<td>" . $row['numero'] . "</td>";
     echo "<td>" . $row['nombrepractica'] . "</td>";
     echo "</tr>";
 }

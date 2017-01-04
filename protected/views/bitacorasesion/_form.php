@@ -79,6 +79,12 @@ include_once('centro.php');
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
+	
+	<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+    <?php endif; ?>
 
 <?php $this->endWidget(); ?>
 

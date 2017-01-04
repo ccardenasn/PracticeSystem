@@ -27,8 +27,16 @@ class ListaestudianteController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -120,11 +128,10 @@ class ListaestudianteController extends Controller
                         $celular = trim($objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
                         $profesor = trim($objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue());
                         $practica = trim($objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue());
-                        $imagen = trim($objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue());
-                        $sesion = trim($objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue());
-                        $horas = trim($objPHPExcel->getActiveSheet()->getCell('M'.$i)->getCalculatedValue());
+                        $centro = trim($objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue());
+						$imagen = trim($objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue());
                         
-                        $query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante,SesionesPlanificadas,HorasPlanificadas) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".utf8_encode($mencion)."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$practica."','".$imagen."','".$sesion."','".$horas."');";
+                        $query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".$mencion."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$practica."','".$centro."','".$imagen."');";
                         
                         Yii::app()->db->createCommand($query)->execute();
                     }
@@ -139,17 +146,50 @@ class ListaestudianteController extends Controller
             unlink($destino);
             
             Yii::app()->user->setFlash('success',"Datos Almacenados Correctamente!!!");	
+			$this->redirect(array('create'));
 		}
+		
+		
         
 		$this->render('create',array(
 			'model'=>$model,
+			
 		));
         
 	}
+	
+	public function actionView($id)
+	{
+		$this->render('/estudiante/view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
+	
+	public function actionAdmin()
+	{
+		$model=new Estudiante('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Estudiante']))
+			$model->attributes=$_GET['Estudiante'];
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
+	
+	public function actionDelete($id)
+	{
+		$this->loadModel($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+	
 
 	public function loadModel($id)
 	{
-		$model=Listaestudiante::model()->findByPk($id);
+		$model=Estudiante::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

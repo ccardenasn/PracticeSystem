@@ -21,8 +21,6 @@ include_once 'FunRut.php';
  * @property string $ConfiguracionPractica_NombrePractica
  * @property integer $CentroPractica_RBD
  * @property string $ImagenEstudiante
- * @property string $SesionesPlanificadas
- * @property string $HorasPlanificadas
  *
  * The followings are the available model relations:
  * @property Centropractica $centroPracticaRBD
@@ -51,11 +49,11 @@ class Estudiante extends CActiveRecord
 		return array(
 			array('RutEstudiante, Mencion_NombreMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SesionesPlanificadas, HorasPlanificadas', 'length', 'max'=>45),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante, SesionesPlanificadas, HorasPlanificadas', 'safe', 'on'=>'search'),
-            array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante', 'safe', 'on'=>'search'),
+			array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
             array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar 
             array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
             array('TelefonoEstudiante','valtelefono'),//permite el uso de metodo valtelefono
@@ -91,17 +89,15 @@ class Estudiante extends CActiveRecord
 			'RutEstudiante' => 'Rut',
 			'NombreEstudiante' => 'Nombre',
 			'ClaveEstudiante' => 'Clave',
-			'FechaIncorporacion' => 'Año Incorporacion',
+			'FechaIncorporacion' => 'Año de Incorporacion',
 			'Mencion_NombreMencion' => 'Mencion',
 			'MailEstudiante' => 'Mail',
 			'TelefonoEstudiante' => 'Telefono',
 			'CelularEstudiante' => 'Celular',
 			'ProfesorGuiaCP_RutProfGuiaCP' => 'Profesor Guia CP',
-			'ConfiguracionPractica_NombrePractica' => 'Nombre Practica',
+			'ConfiguracionPractica_NombrePractica' => 'Nombre de Practica',
 			'CentroPractica_RBD' => 'Centro de Practica',
-			'ImagenEstudiante' => 'Imagen Estudiante',
-			'SesionesPlanificadas' => 'Sesiones Planificadas',
-			'HorasPlanificadas' => 'Horas Planificadas',
+			'ImagenEstudiante' => 'Imagen',
 		);
 	}
 
@@ -135,8 +131,6 @@ class Estudiante extends CActiveRecord
 		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ImagenEstudiante',$this->ImagenEstudiante,true);
-		$criteria->compare('SesionesPlanificadas',$this->SesionesPlanificadas,true);
-		$criteria->compare('HorasPlanificadas',$this->HorasPlanificadas,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -153,8 +147,8 @@ class Estudiante extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-    
-    public function valnombre($attribute,$params)
+	
+	public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreEstudiante)==false)
 		$this->addError('NombreEstudiante','Nombre invalido');	

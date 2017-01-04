@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista de Estudiantes', 'url'=>array('index')),
-	array('label'=>'Administrar Estudiantes', 'url'=>array('admin')),
+	array('label'=>'Administrar Estudiante', 'url'=>array('admin')),
 );
 ?>
 

@@ -18,3 +18,11 @@ function consultaplanificacion($estudiantelogged)
     
     return $arrconsulta;
 }
+
+function consultabitacora($plan)
+{
+	$querycount = "select count(*) from bitacorasesion where PlanificacionClase_CodPlanificacion = '".$plan."';";
+	$bitexist=Yii::app()->db->createCommand($querycount)->queryScalar();
+	
+	return $bitexist;
+}

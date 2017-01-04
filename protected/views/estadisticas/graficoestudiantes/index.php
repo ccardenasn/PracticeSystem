@@ -1,9 +1,8 @@
 <html>
 <head>
-<?php Yii::app()->clientScript->registerCoreScript('jquery');?>
-<script src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js'></script>
-<script src='<?php echo Yii::app()->request->baseUrl; ?>/js/yii-highcharts/highcharts/assets/highcharts.js'></script>
-<script src='<?php echo Yii::app()->request->baseUrl; ?>/js/yii-highcharts/highcharts/assets/modules/exporting.js'></script>
+<script src="jquery.min.js"></script>
+<script src="yii-highcharts/highcharts/assets/highcharts.js"></script>
+<script src="yii-highcharts/highcharts/assets/modules/exporting.js"></script>
 	
 <script>
 $(function () {

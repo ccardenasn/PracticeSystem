@@ -71,16 +71,6 @@
 		<?php echo $form->textField($model,'ImagenEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'SesionesPlanificadas'); ?>
-		<?php echo $form->textField($model,'SesionesPlanificadas',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'HorasPlanificadas'); ?>
-		<?php echo $form->textField($model,'HorasPlanificadas',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

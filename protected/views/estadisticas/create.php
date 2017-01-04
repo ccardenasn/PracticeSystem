@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Estadisticas</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('graficoestudiantes/index', array('model'=>$model)); ?>

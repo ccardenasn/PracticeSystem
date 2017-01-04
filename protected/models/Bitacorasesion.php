@@ -43,7 +43,7 @@ class Bitacorasesion extends CActiveRecord
 		return array(
 			'clasebitacorasesion' => array(self::HAS_MANY, 'Clasebitacorasesion', 'bitacorasesion_id'),
 			'planificacionClaseCodPlanificacion' => array(self::BELONGS_TO, 'Planificacionclase', 'PlanificacionClase_CodPlanificacion'),
-			'documentobitacora' => array(self::HAS_MANY, 'Documentobitacora', 'bitacorasesion_id'),
+			//'documentobitacora' => array(self::HAS_MANY, 'Documentobitacora', 'bitacorasesion_id'),
 		);
 	}
 
@@ -53,8 +53,8 @@ class Bitacorasesion extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'fecha' => 'Fecha',
+			'id' => 'id',
+			'fecha' => 'fecha',
 			'PlanificacionClase_CodPlanificacion' => 'Cod Planificacion',
 			'actividades' => 'Actividades',
 			'aprendizaje' => 'Aprendizaje',
@@ -81,9 +81,9 @@ class Bitacorasesion extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('fecha',$this->fecha,true);
-		$criteria->compare('PlanificacionClase_CodPLanificacion',$this->Planificacionclase_CodPLanificacion,true);
+		$criteria->compare('PlanificacionClase_CodPlanificacion',$this->PlanificacionClase_CodPlanificacion,true);
 		$criteria->compare('actividades',$this->actividades,true);
 		$criteria->compare('aprendizaje',$this->aprendizaje,true);
 		$criteria->compare('sentir',$this->sentir,true);

@@ -46,15 +46,15 @@ $(function () {
 		getAjaxData(7701);
  
 		//on changing select option
-		$('#dynamic_data').change(function(){
-			var val = $('#dynamic_data').val();
+		$('#NombreCentroPractica').change(function(){
+			var val = $('#estadisticas-form').val();
 			getAjaxData(val);
 		});
  
 		function getAjaxData(id){
 
 		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('data.php', {id: id}, function(chartData) {
+		$.getJSON('estadisticas/graficar', {id: id}, function(chartData) {
 			$('#container').highcharts({
 				chart: {
 					type: 'pie'
@@ -101,7 +101,7 @@ $(function () {
 });
 
 	$(document).ready(function() {
-            $("#dynamic_data").change(function() {
+            $("#NombreCentroPractica").change(function() {
                 $.ajax({
                     type: "GET",
                     url: "getservice.php",
@@ -137,38 +137,8 @@ $(function () {
 </body>
 </html>
     
-    <div class="row">
-	    <?php
-        
-        
-        
-        //$maindataA=loadGraphB('7701');
-        
-        //print_r($model->NombreCentroPractica);
-        
-        //$graphdataA=listDataB($maindataA);
-        
-        //$mainoptionsA=graphOptionsB($graphdataA);
-        
-        //$this->widget('ext.yii-highcharts.highcharts.HighchartsWidget',array('options'=>$mainoptionsA,));
     
-        ?>
-    </div>
     
-    <div class="row">
-	    <?php
-        
-        $maindata=loadGraph();
-        
-        $graphdata=listData($maindata[0],$maindata[1],$maindata[2]);
-        
-        $mainoptions=graphOptions($graphdata);
-        
-        $this->Widget('ext.yii-highcharts.highcharts.HighchartsWidget',array('options'=>$mainoptions));
-    
-        ?>
-        
-    </div>
         
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

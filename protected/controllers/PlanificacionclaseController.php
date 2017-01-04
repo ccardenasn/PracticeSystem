@@ -1,4 +1,5 @@
 <?php
+include_once('consulta.php');
 
 class PlanificacionclaseController extends Controller
 {
@@ -37,7 +38,7 @@ class PlanificacionclaseController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -62,21 +63,28 @@ class PlanificacionclaseController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Planificacionclase;
+        $estudiantelogged=Yii::app()->user->name;
+        $comp=consultaplanificacion($estudiantelogged);
+        
+        $model=new Planificacionclase;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Planificacionclase']))
 		{
 			$model->attributes=$_POST['Planificacionclase'];
-			if($model->save())
+            
+            if($comp[0] < $comp[1]){
+                if($model->save())
 				$this->redirect(array('view','id'=>$model->CodPlanificacion));
+            }else{
+                Yii::app()->user->setFlash('success',"No se pueden crear mas sesiones!!!");
+            }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
-		));
+		));	
 	}
 
 	/**
@@ -108,9 +116,43 @@ class PlanificacionclaseController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	/*public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}*/
+	
+	public function actionDelete($id)
+	{
+		$queryplan="select id from bitacorasesion where PlanificacionClase_CodPlanificacion = '".$id."'; ";
+		$plan=Yii::app()->db->createCommand($queryplan)->queryScalar();
+			
+		$querydoc="select count(*) from documentobitacora where bitacorasesion_id = '".$plan."';";
+		$docexist=Yii::app()->db->createCommand($querydoc)->queryScalar();
+		
+		if($docexist != 0)
+		{
+			$deldoc="delete from documentobitacora where bitacorasesion_id ='".$plan."';";
+			Yii::app()->db->createCommand($deldoc)->execute();
+		}
+		
+		$queryclase="select count(*) from clasebitacorasesion where bitacorasesion_id = '".$plan."';";
+		$claseexist=Yii::app()->db->createCommand($queryclase)->queryScalar();
+		
+		if($claseexist != 0)
+		{
+			$delclase="delete from clasebitacorasesion where bitacorasesion_id ='".$plan."';";
+			Yii::app()->db->createCommand($delclase)->execute();
+			
+			$delbitacora="delete from bitacorasesion where id ='".$plan."';";
+			Yii::app()->db->createCommand($delbitacora)->execute();
+		}
+		
+		$delplan="delete from planificacionclase where CodPlanificacion ='".$id."';";
+		Yii::app()->db->createCommand($delplan)->execute();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

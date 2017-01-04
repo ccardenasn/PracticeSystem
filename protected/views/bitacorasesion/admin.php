@@ -3,7 +3,7 @@
 /* @var $model Customer */
 
 $this->breadcrumbs=array(
-	'Customers'=>array('index'),
+	'Bitacorasesion'=>array('index'),
 	'Manage',
 );
 
@@ -46,7 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'name',
+		'fecha',
 		array(
 			'class'=>'CButtonColumn',
 		),

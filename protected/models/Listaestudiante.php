@@ -63,6 +63,29 @@ class Listaestudiante extends CActiveRecord
 		);
 	}
 
+	public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('RutEstudiante',$this->RutEstudiante,true);
+		$criteria->compare('NombreEstudiante',$this->NombreEstudiante,true);
+		$criteria->compare('ClaveEstudiante',$this->ClaveEstudiante,true);
+		$criteria->compare('FechaIncorporacion',$this->FechaIncorporacion,true);
+		$criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion,true);
+		$criteria->compare('MailEstudiante',$this->MailEstudiante,true);
+		$criteria->compare('TelefonoEstudiante',$this->TelefonoEstudiante,true);
+		$criteria->compare('CelularEstudiante',$this->CelularEstudiante,true);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
+		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ImagenEstudiante',$this->ImagenEstudiante,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

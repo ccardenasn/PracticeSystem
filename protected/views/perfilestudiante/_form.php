@@ -85,18 +85,6 @@
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'SesionesPlanificadas'); ?>
-		<?php echo $form->textField($model,'SesionesPlanificadas',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'SesionesPlanificadas'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'HorasPlanificadas'); ?>
-		<?php echo $form->textField($model,'HorasPlanificadas',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'HorasPlanificadas'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

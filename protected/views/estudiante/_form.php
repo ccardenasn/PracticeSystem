@@ -18,9 +18,11 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
+	
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'RutEstudiante'); ?>
+		<?php //form de estudiante
+		echo $form->labelEx($model,'RutEstudiante'); ?>
 		<?php echo $form->textField($model,'RutEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'RutEstudiante'); ?>
 	</div>
@@ -78,8 +80,8 @@
 		<?php echo $form->dropDownList($model,'ConfiguracionPractica_NombrePractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
         <?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
 	</div>
-    
-    <div class="row">
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
 		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
         <?php echo $form->error($model,'CentroPractica_RBD'); ?>
@@ -89,18 +91,6 @@
 		<?php echo $form->labelEx($model,'ImagenEstudiante'); ?>
 		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'SesionesPlanificadas'); ?>
-		<?php echo $form->textField($model,'SesionesPlanificadas',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'SesionesPlanificadas'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'HorasPlanificadas'); ?>
-		<?php echo $form->textField($model,'HorasPlanificadas',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'HorasPlanificadas'); ?>
 	</div>
 
 	<div class="row buttons">

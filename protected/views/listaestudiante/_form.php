@@ -11,7 +11,7 @@
     'method'=>'post',
     'htmlOptions'=>array('enctype'=>'multipart/form-data'),
     'clientOptions'=>array('validateOnSubmit'=>true,),
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>

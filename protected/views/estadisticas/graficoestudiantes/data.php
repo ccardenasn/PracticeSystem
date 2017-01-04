@@ -1,5 +1,5 @@
 <?php
-include('graficoestudiantes/cargar.php');
+include('cargar.php');
 //connect to database
 $con = mysql_connect("localhost","root","");
 if (!$con) {
@@ -32,7 +32,7 @@ while($row = mysql_fetch_assoc($q)){
 	//}
 	//and the data for male and female is here
 	//$arr['name'][] = $row['nombrepractica'];
-	$arr['data'][] = array($row['nombrepractica'],$row['numeroalumnos']);
+	$arr['data'][] = array($row['nombrepractica'],$row['numero']);
 	//$arr1['data'][] = $row['female'];
 }
 

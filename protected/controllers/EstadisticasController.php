@@ -29,7 +29,7 @@ class EstadisticasController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','graficoestudiantes'),
+				'actions'=>array('index','view','graficar'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -61,7 +61,7 @@ class EstadisticasController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	/*public function actionCreate()
+	public function actionCreate()
 	{
 		$model=new Estadisticas;
 
@@ -78,9 +78,9 @@ class EstadisticasController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
-	}*/
+	}
     
-    public function actionCreate()
+    /*public function actionCreate()
 	{
 		$model=new Estadisticas;
 
@@ -106,7 +106,7 @@ class EstadisticasController extends Controller
 		}
 
 		$this->render('create',array('model'=>$model,'options'=>$mainoptionsA));
-	}
+	}*/
 
 	/**
 	 * Updates a particular model.
@@ -200,9 +200,38 @@ class EstadisticasController extends Controller
 		}
 	}
 	
-	public function actionGraficoestudiantes()
+	public function actionGraficar()
 	{
-		$this->render('/graficoestudiantes/index');	
+		include('cargar.php');
+		
+		$con = mysql_connect("localhost","root","");
+		
+		if (!$con){
+			die('Could not connect: ' . mysql_error());
+		}
+		
+		mysql_select_db("practicemanagementdatabase", $con);
+		
+		loadgraph();
+		
+		$id = $_GET['id'];
+		$arr = array();
+		$result = array();
+
+		$sql = "select * from graph_data where idcentro = $id";
+		$q	 = mysql_query($sql);
+		$j = 0;
+		
+		while($row = mysql_fetch_assoc($q))
+		{
+			$arr['data'][] = array($row['nombrepractica'],$row['numero']);
+		}
+		
+		array_push($result,$arr);
+		
+		print json_encode($result, JSON_NUMERIC_CHECK);
+		
+		mysql_close($con);
 	}
 	
 	
