@@ -214,7 +214,8 @@ class EstadisticasController extends Controller
 		
 		loadgraph();
 		
-		$id = $_GET['id'];
+		///$id = $_GET['id'];
+		$id = $_POST['RBD'];
 		$arr = array();
 		$result = array();
 
@@ -234,5 +235,17 @@ class EstadisticasController extends Controller
 		mysql_close($con);
 	}
 	
+	public function actionUpdateAjax()
+    {
+        $data = array();
+        $data["myValue"] = $_POST['RBD']['NombreCentroPractica'];
+ 
+        $this->renderPartial('create', $data, false, true);
+    }
+	
+	
+	
 	
 }
+
+

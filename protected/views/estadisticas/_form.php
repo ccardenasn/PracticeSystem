@@ -26,119 +26,50 @@ include_once('graficar.php');
 		<?php echo $form->textField($model,'RBD'); ?>
 		<?php echo $form->error($model,'RBD'); ?>
 	</div>
+	
+	<?php
+	
+	$listveh=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
+	?>
+	
     
     <div class="row">
 		<?php echo $form->labelEx($model,'NombreCentroPractica'); ?>
-		<?php echo $form->dropDownList($model,'NombreCentroPractica',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
+		<?php echo $form->dropDownList($model,'NombreCentroPractica',$listveh,
+								   array(
+        'empty'=> 'Select Vehicle',
+        'ajax' => array(
+                        'type' => 'POST', 
+                        'url' => CController::createUrl('estadisticas/UpdateAjax'),
+                        'data'=> array('RBD'=>'js: $(this).val()'),  
+                        'update'=>'#data',
+ 
+                       )
+  )
+									  
+									  
+									  );?>
         <?php echo $form->error($model,'NombreCentroPractica'); ?>
 	</div>
 	
-	<html>
-<head>
-<script src="graficoestudiantes/jquery.min.js"></script>
-<script src="graficoestudiantes/yii-highcharts/highcharts/assets/highcharts.js"></script>
-<script src="graficoestudiantes/yii-highcharts/highcharts/assets/modules/exporting.js"></script>
-	
-<script>
-$(function () {
+	<div id="data">
+   <?php $this->renderPartial('_ajaxContent', array('myValue'=>$myValue)); ?>
+</div>
  
-		//on page load  
-		getAjaxData(7701);
- 
-		//on changing select option
-		$('#NombreCentroPractica').change(function(){
-			var val = $('#estadisticas-form').val();
-			getAjaxData(val);
-		});
- 
-		function getAjaxData(id){
+<?php //echo CHtml::ajaxButton ("Update data",
+        //                      CController::createUrl('helloWorld/UpdateAjax'), 
+          //                    array('update' => '#data'));
+?>
 
-		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('estadisticas/graficar', {id: id}, function(chartData) {
-			$('#container').highcharts({
-				chart: {
-					type: 'pie'
-				},
-				title: {
-					text: 'Cantidad de Estudiantes en Practica Por Centro'
-				},
-				tooltip: { 
-					formatter: function() {
-        				return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
-     				}
-				},
-				credits: {
-					enabled: false
-				},
-				xAxis: {
-					categories: ['Uno','Do']
-				},
-				yAxis: {
-					min: 0,
-					title: {
-						text: 'Value'
-					}
-				},
-				plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    borderWidth: 1,
-                    borderColor: 'red',
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-				series: chartData
-			});
-		});
-	}
-});
 
-	$(document).ready(function() {
-            $("#NombreCentroPractica").change(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "getservice.php",
-                    data: "id=" + $(this).find(":selected").val(),
-                    cache: true,
-
-                    success: function(rslt){
-
-                        $('#tabla').html(rslt);
-                    }
-                });
-            });
-            $("#tabla").trigger('change');
-        });
+<?php
 	
+	$listVeh = array('corvette','lamborghini','ferrari');
 	
-</script>
+?>
 	
-</head>
-<body>
-<select id="dynamic_data">
-	<option value="0" selected>Select Data</option>
-	<?php 
-	include('/graficoestudiantes/connect.php');
-	while($rows = mysql_fetch_array($stmt))
-	{
-		echo'<option value="'.$rows['RBD'].'">'.$rows['NombreCentroPractica'].'</option>';
-	}
-	?>
-</select>
-<div id="container" style="width: 50%;min-width: 310px; height: 400px; margin: 0 auto"></div>
-	<div id="tabla" style="width: 50%;min-width: 310px; height: 400px; margin: 0 auto"></div>
-</body>
-</html>
-    
-    
-    
+
+
         
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

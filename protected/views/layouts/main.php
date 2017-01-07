@@ -32,6 +32,7 @@
             $this->widget('application.extensions.mbmenu.MbMenu',array(
             'items'=>array(
                 array('label'=>'Inicio', 'url'=>array('/site/index')),
+				
                 array('label'=>'Perfil', 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>!Yii::app()->user->isGuest),
                
                 array('label'=>'Administracion',
@@ -66,7 +67,7 @@
                         'items'=>array(
                           array('label'=>'Planificación de Clases/Bitacoras','url'=>array('/planificacionclase')),
                           array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador/Admin')),
-                          array('label'=>'Estadisticas','url'=>array('/estadisticas/create')),
+                          array('label'=>'Estadisticas','url'=>array('/estadisticas')),
 						  array('label'=>'Grafico','url'=>array('/estadisticas/graficoestudiantes/index')),
                     ),
                 ),
