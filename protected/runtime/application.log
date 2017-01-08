@@ -26053,3 +26053,749 @@ REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax&_=1483817336
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (38)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (38)
 in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/08 21:05:57 [error] [php] Undefined variable: myValue (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estadisticas\create.php:18)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): EstadisticasController->renderFile()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(782): EstadisticasController->renderPartial()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(80): EstadisticasController->render()
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionCreate()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): EstadisticasController->runAction()
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): EstadisticasController->filterAccessControl()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): EstadisticasController->runActionWithFilters()
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): EstadisticasController->run()
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/create
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estadisticas\create.php (18)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php (80)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/08 21:08:50 [error] [php] Undefined variable: myValue (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estadisticas\create.php:18)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): EstadisticasController->renderFile()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(782): EstadisticasController->renderPartial()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(80): EstadisticasController->render()
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionCreate()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): EstadisticasController->runAction()
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): EstadisticasController->filterAccessControl()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): EstadisticasController->runActionWithFilters()
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): EstadisticasController->run()
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/create
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estadisticas\create.php (18)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php (80)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/08 21:08:52 [error] [php] Undefined variable: myValue (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estadisticas\create.php:18)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): EstadisticasController->renderFile()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(782): EstadisticasController->renderPartial()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(80): EstadisticasController->render()
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionCreate()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): EstadisticasController->runAction()
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): EstadisticasController->filterAccessControl()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): EstadisticasController->runActionWithFilters()
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): EstadisticasController->run()
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/create
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estadisticas\create.php (18)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php (80)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/08 21:09:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:54:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:54:49 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:55:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:55:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:57:25 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax&id=7701
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:57:27 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:57:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:57:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax&id=7701
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:58:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:58:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:58:04 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:58:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:58:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 21:58:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:00:22 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax&id=7701
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:00:27 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:00:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:00:31 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateajax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateajax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:01:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax&id=7701
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:01:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:02:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:02:03 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:03:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax&id=7701
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:03:46 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:03:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:03:52 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:05:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax&id=7701
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:05:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:05:40 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:06:20 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:06:21 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:06:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:18:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:18:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:23:16 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:26:15 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:26:19 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:38:27 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/08 22:39:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('updateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---

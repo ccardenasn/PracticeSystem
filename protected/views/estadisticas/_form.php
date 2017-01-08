@@ -21,6 +21,111 @@ include_once('graficar.php');
 
 	<?php echo $form->errorSummary($model); ?>
 
+	<?php
+	
+	Yii::app()->clientScript->registerCoreScript('jquery');
+	$baseUrl = Yii::app()->baseUrl; 
+$cs = Yii::app()->getClientScript();
+	$cs->registerScriptFile($baseUrl.'/js/jquery.min.js');
+$cs->registerScriptFile($baseUrl.'/js/yii-highcharts/highcharts/assets/highcharts.js');
+	
+	$cs->registerScriptFile($baseUrl.'/js/yii-highcharts/highcharts/assets/modules/exporting.js');
+
+	Yii::app()->clientScript->registerScript("view-script","
+$(function () { 
+    $('#view_script').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Fruit Consumption'
+        },
+        xAxis: {
+            categories: ['Apples', 'Bananas', 'Oranges']
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4]
+        }, {
+            name: 'John',
+            data: [5, 7, 3]
+        }]
+    });
+});");
+	
+	?>
+	
+	<script>
+$(function () {
+ 
+		//on page load  
+		getAjaxData(7701);
+ 
+		//on changing select option
+		$('#dynamic_data').change(function(){
+			var val = $('#dynamic_data').val();
+			getAjaxData(val);
+		});
+ 
+		function getAjaxData(id){
+
+		//use getJSON to get the dynamic data via AJAX call
+		$.getJSON('<?php CController::createUrl('estadisticas/updateAjax') ?>', {id: id}, function(chartData) {
+			$('#container').highcharts({
+				chart: {
+					type: 'pie'
+				},
+				title: {
+					text: 'Cantidad de Estudiantes en Practica Por Centro'
+				},
+				tooltip: { 
+					formatter: function() {
+        				return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+     				}
+				},
+				credits: {
+					enabled: false
+				},
+				xAxis: {
+					categories: ['Uno','Do']
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: 'Value'
+					}
+				},
+				plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    borderWidth: 1,
+                    borderColor: 'red',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+				series: chartData
+			});
+		});
+	}
+});
+	
+	
+</script>
+
+	<div id="container" style="width: 50%;min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<div id="view-script" style="width: 50%;min-width: 310px; height: 400px; margin: 0 auto"></div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'RBD'); ?>
 		<?php echo $form->textField($model,'RBD'); ?>
@@ -40,9 +145,9 @@ include_once('graficar.php');
         'empty'=> 'Select Vehicle',
         'ajax' => array(
                         'type' => 'POST', 
-                        'url' => CController::createUrl('estadisticas/UpdateAjax'),
+                        'url' => CController::createUrl('estadisticas/updateAjax'),
                         'data'=> array('RBD'=>'js: $(this).val()'),  
-                        'update'=>'#data',
+                        'update'=>'#container',
  
                        )
   )
@@ -52,25 +157,18 @@ include_once('graficar.php');
         <?php echo $form->error($model,'NombreCentroPractica'); ?>
 	</div>
 	
-	<div id="data">
-   <?php $this->renderPartial('_ajaxContent', array('myValue'=>$myValue)); ?>
-</div>
- 
-<?php //echo CHtml::ajaxButton ("Update data",
-        //                      CController::createUrl('helloWorld/UpdateAjax'), 
-          //                    array('update' => '#data'));
-?>
-
-
-<?php
-	
-	$listVeh = array('corvette','lamborghini','ferrari');
-	
-?>
+	<select id="dynamic_data">
+	<option value="0" selected>Select Data</option>
+	<?php 
+	include('connect.php');
+	while($rows = mysql_fetch_array($stmt))
+	{
+		echo'<option value="'.$rows['RBD'].'">'.$rows['NombreCentroPractica'].'</option>';
+	}
+	?>
+</select>
 	
 
-
-        
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

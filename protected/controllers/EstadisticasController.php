@@ -202,19 +202,6 @@ class EstadisticasController extends Controller
 	
 	public function actionGraficar()
 	{
-		include('cargar.php');
-		
-		$con = mysql_connect("localhost","root","");
-		
-		if (!$con){
-			die('Could not connect: ' . mysql_error());
-		}
-		
-		mysql_select_db("practicemanagementdatabase", $con);
-		
-		loadgraph();
-		
-		///$id = $_GET['id'];
 		$id = $_POST['RBD'];
 		$arr = array();
 		$result = array();
@@ -237,15 +224,23 @@ class EstadisticasController extends Controller
 	
 	public function actionUpdateAjax()
     {
-        $data = array();
-        $data["myValue"] = $_POST['RBD']['NombreCentroPractica'];
- 
-        $this->renderPartial('create', $data, false, true);
+		$id = Yii::app()->request->getParam('RBD');
+		//$id = $_POST['Centropractica']['RBD'];
+		//echo $id;
+		$arr = array();
+		$result = array();	
+				
+		$sql = "select * from graph_data where idcentro = '".$id."';";
+		$query =Yii::app()->db->createCommand($sql)->queryAll();
+				
+		foreach($query as $row){
+			$arr['data'][] = array($row['nombrepractica'],$row['numero']);
+		}
+				
+		array_push($result,$arr);
+		//print_r(json_encode($result, JSON_NUMERIC_CHECK));
+		CJSON::encode($result);
     }
-	
-	
-	
-	
 }
 
 
