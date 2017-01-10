@@ -67,15 +67,15 @@ $(function () {
 		getAjaxData(7701);
  
 		//on changing select option
-		$('#dynamic_data').change(function(){
-			var val = $('#dynamic_data').val();
+		$('#NombreCentroPractica').change(function(){
+			var val = $('##NombreCentroPractica').val();
 			getAjaxData(val);
 		});
  
 		function getAjaxData(id){
 
 		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('<?php CController::createUrl('estadisticas/updateAjax') ?>', {id: id}, function(chartData) {
+		$.getJSON('<?php CController::createUrl('estadisticas/UpdateAjax') ?>', {id: id}, function(chartData) {
 			$('#container').highcharts({
 				chart: {
 					type: 'pie'
@@ -145,7 +145,7 @@ $(function () {
         'empty'=> 'Select Vehicle',
         'ajax' => array(
                         'type' => 'POST', 
-                        'url' => CController::createUrl('estadisticas/updateAjax'),
+                        'url' => CController::createUrl('estadisticas/UpdateAjax'),
                         'data'=> array('RBD'=>'js: $(this).val()'),  
                         'update'=>'#container',
  

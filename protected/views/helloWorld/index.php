@@ -1,5 +1,5 @@
 <div id="data">
-   <?php $this->renderPartial('_ajaxContent', array('myValue'=>$myValue)); ?>
+   <?php $this->renderPartial('widget', array('myValue'=>$myValue)); ?>
 </div>
  
 <?php echo CHtml::ajaxButton ("Update data",

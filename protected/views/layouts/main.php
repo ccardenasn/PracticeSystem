@@ -68,7 +68,7 @@
                           array('label'=>'Planificación de Clases/Bitacoras','url'=>array('/planificacionclase')),
                           array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador/Admin')),
                           array('label'=>'Estadisticas','url'=>array('/estadisticas')),
-						  array('label'=>'Grafico','url'=>array('/estadisticas/graficoestudiantes/index')),
+						  array('label'=>'Grafico','url'=>array('/estadisticas/graph')),
                     ),
                 ),
 				array('label'=>'Horario', 'url'=>array('/horario')),

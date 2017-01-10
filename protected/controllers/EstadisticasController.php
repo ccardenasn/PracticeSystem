@@ -29,7 +29,7 @@ class EstadisticasController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','graficar'),
+				'actions'=>array('index','view','graficar','graph'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -241,6 +241,11 @@ class EstadisticasController extends Controller
 		//print_r(json_encode($result, JSON_NUMERIC_CHECK));
 		CJSON::encode($result);
     }
+	
+	public function actionGraph(){
+		$baseUrl = Yii::app()->baseUrl; 
+		$this->render($baseUrl.'/chartsformchange/index');
+	}
 }
 
 

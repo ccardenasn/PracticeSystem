@@ -26799,3 +26799,662 @@ Stack trace:
 REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/updateAjax
 HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
 ---
+2017/01/10 20:06:58 [error] [php] Undefined variable: graphTitle (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\_ajaxContent.php:8)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): HelloWorldController->renderFile()
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\index.php(2): HelloWorldController->renderPartial()
+#2 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): HelloWorldController->renderInternal()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(869): HelloWorldController->renderFile()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(782): HelloWorldController->renderPartial()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(33): HelloWorldController->render()
+#7 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionIndex()
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\_ajaxContent.php (8)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\index.php (2)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (33)
+2017/01/10 20:07:29 [error] [exception.CException] exception 'CException' with message 'Alias "ext.highcharts.HighchartsWidget" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\Yii\framework\YiiBase.php:323
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CWidgetFactory.php(146): YiiBase::import('ext.highcharts....', true)
+#1 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(HelloWorldController), 'ext.highcharts....', Array)
+#2 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(180): CBaseController->createWidget('ext.highcharts....', Array)
+#3 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\_ajaxContent.php(19): CBaseController->widget('ext.highcharts....', Array)
+#4 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\index.php(2): CController->renderPartial('_ajaxContent', Array)
+#8 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#12 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(33): CController->render('index', Array)
+#13 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionIndex()
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('helloWorld')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld
+---
+2017/01/10 20:16:13 [error] [exception.CException] exception 'CException' with message 'Alias "ext.highcharts.HighchartsWidget" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\xampp\htdocs\Yii\framework\YiiBase.php:323
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CWidgetFactory.php(146): YiiBase::import('ext.highcharts....', true)
+#1 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(HelloWorldController), 'ext.highcharts....', Array)
+#2 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(180): CBaseController->createWidget('ext.highcharts....', Array)
+#3 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\_ajaxContent.php(19): CBaseController->widget('ext.highcharts....', Array)
+#4 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\index.php(2): CController->renderPartial('_ajaxContent', Array)
+#8 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#12 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(33): CController->render('index', Array)
+#13 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionIndex()
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('helloWorld')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld
+---
+2017/01/10 20:29:35 [error] [exception.CException] exception 'CException' with message 'HelloWorldController cannot find the requested view "_widget".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\index.php(2): CController->renderPartial('_widget', Array)
+#1 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#5 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(33): CController->render('index', Array)
+#6 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionIndex()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('helloWorld')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld
+---
+2017/01/10 20:31:36 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 20:32:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 20:32:32 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 21:23:12 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'practicemanagementdatabase.horario' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `horario`.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\index.php (20)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php (128)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 21:23:12 [error] [exception.CDbException] exception 'CDbException' with message 'The table "horario" for active record class "Horario" cannot be found in the database.' in C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php:2387
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Horario))
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1606): CActiveRecord->getTableSchema()
+#3 C:\xampp\htdocs\Yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\Yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 C:\xampp\htdocs\Yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 C:\xampp\htdocs\Yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#8 C:\xampp\htdocs\Yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#9 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(147): CListView->init()
+#10 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#16 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php(128): CController->render('index', Array)
+#17 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HorarioController->actionIndex()
+#18 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('')
+#27 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('horario')
+#28 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horario
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 21:23:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'practicemanagementdatabase.horario' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `horario`.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\index.php (20)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php (128)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 21:23:17 [error] [exception.CDbException] exception 'CDbException' with message 'The table "horario" for active record class "Horario" cannot be found in the database.' in C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php:2387
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Horario))
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1606): CActiveRecord->getTableSchema()
+#3 C:\xampp\htdocs\Yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\Yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 C:\xampp\htdocs\Yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 C:\xampp\htdocs\Yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#8 C:\xampp\htdocs\Yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#9 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(147): CListView->init()
+#10 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#16 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php(128): CController->render('index', Array)
+#17 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HorarioController->actionIndex()
+#18 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('')
+#27 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('horario')
+#28 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horario
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 21:23:18 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'practicemanagementdatabase.horario' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `horario`.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\index.php (20)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php (128)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 21:23:18 [error] [exception.CDbException] exception 'CDbException' with message 'The table "horario" for active record class "Horario" cannot be found in the database.' in C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php:2387
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Horario))
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(661): CActiveRecord->getMetaData()
+#2 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1606): CActiveRecord->getTableSchema()
+#3 C:\xampp\htdocs\Yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\Yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 C:\xampp\htdocs\Yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 C:\xampp\htdocs\Yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#8 C:\xampp\htdocs\Yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#9 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(147): CListView->init()
+#10 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#16 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php(128): CController->render('index', Array)
+#17 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HorarioController->actionIndex()
+#18 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('')
+#27 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('horario')
+#28 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horario
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 21:23:31 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/Up...')
+#9 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/UpdateAjax
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/create
+---
+2017/01/10 21:26:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "graficoestudiantes".' in C:\xampp\htdocs\Yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(270): CController->missingAction('graficoestudian...')
+#1 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graficoestudian...')
+#2 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#3 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graficoestudiantes/index
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas
+---
+2017/01/10 21:28:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "graficoestudiantes".' in C:\xampp\htdocs\Yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(270): CController->missingAction('graficoestudian...')
+#1 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graficoestudian...')
+#2 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#3 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graficoestudiantes/index
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas
+---
+2017/01/10 21:35:31 [error] [exception.CException] exception 'CException' with message 'EstadisticasController cannot find the requested view "//chartsformchange".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('//chartsformcha...', NULL, true)
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(246): CController->render('//chartsformcha...')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionGraph()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graph')
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+---
+2017/01/10 21:36:36 [error] [exception.CException] exception 'CException' with message 'EstadisticasController cannot find the requested view "///YiiOnePracticeSystem/chartsformchange".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('///YiiOnePracti...', NULL, true)
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(247): CController->render('///YiiOnePracti...')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionGraph()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graph')
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+---
+2017/01/10 21:36:38 [error] [exception.CException] exception 'CException' with message 'EstadisticasController cannot find the requested view "///YiiOnePracticeSystem/chartsformchange".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('///YiiOnePracti...', NULL, true)
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(247): CController->render('///YiiOnePracti...')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionGraph()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graph')
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+---
+2017/01/10 21:36:52 [error] [exception.CException] exception 'CException' with message 'EstadisticasController cannot find the requested view "//YiiOnePracticeSystem/chartsformchange".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('//YiiOnePractic...', NULL, true)
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(247): CController->render('//YiiOnePractic...')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionGraph()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graph')
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+---
+2017/01/10 21:37:09 [error] [exception.CException] exception 'CException' with message 'EstadisticasController cannot find the requested view "//YiiOnePracticeSystem/chartsformchange/index".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('//YiiOnePractic...', NULL, true)
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(247): CController->render('//YiiOnePractic...')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionGraph()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graph')
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+---
+2017/01/10 21:37:20 [error] [exception.CException] exception 'CException' with message 'EstadisticasController cannot find the requested view "/YiiOnePracticeSystem/chartsformchange/index".' in C:\xampp\htdocs\Yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(782): CController->renderPartial('/YiiOnePractice...', NULL, true)
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstadisticasController.php(247): CController->render('/YiiOnePractice...')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstadisticasController->actionGraph()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('graph')
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estadisticas/gr...')
+#13 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estadisticas/graph
+---
+2017/01/10 21:58:59 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:05 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:08 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:10 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:26 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:27 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax&_=1484082020091
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:27 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax&_=1484082020092
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:27 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax&_=1484082020093
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:00:29 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:01:24 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:01:26 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:02:00 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:63)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (63)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:04:58 [error] [php] mysql_fetch_assoc() expects parameter 1 to be resource, array given (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:61)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#4 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (61)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:40:42 [error] [php] Undefined variable: myValue (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php:2)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): HelloWorldController->renderFile()
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(81): HelloWorldController->renderPartial()
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionUpdateAjax()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#6 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php (2)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (81)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:40:44 [error] [php] Undefined variable: myValue (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php:2)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): HelloWorldController->renderFile()
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(81): HelloWorldController->renderPartial()
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionUpdateAjax()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#6 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php (2)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (81)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:42:18 [error] [php] Array to string conversion (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php:2)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): HelloWorldController->renderFile()
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(81): HelloWorldController->renderPartial()
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionUpdateAjax()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#6 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php (2)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (81)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:42:22 [error] [php] Array to string conversion (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php:2)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(869): HelloWorldController->renderFile()
+#1 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php(81): HelloWorldController->renderPartial()
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): HelloWorldController->actionUpdateAjax()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#6 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\helloWorld\widget.php (2)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (81)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/01/10 22:47:25 [error] [php] Undefined variable: array (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php:76)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(286): HelloWorldController->runAction()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(265): HelloWorldController->runActionWithFilters()
+#2 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): HelloWorldController->run()
+#3 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=helloWorld/UpdateAjax
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HelloWorldController.php (76)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
