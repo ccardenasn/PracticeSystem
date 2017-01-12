@@ -77,7 +77,7 @@ if (dado == true){
       $.ajax({
 
          type: 'POST',
-         url: 'include/process.php',
+         url: 'css/horario/include/process.php',
          data: sender,
          beforeSend: function(){
              $('#mynew').html('');
@@ -179,7 +179,7 @@ if (dado == true){
                     $.ajax({
 
                         type: 'POST',
-                        url: 'include/process.php',
+                        url: 'css/horario/include/process.php',
                         data: horariodata,
                         beforeSend: function(){
                             btnsave.prop('disabled', true);
@@ -189,7 +189,9 @@ if (dado == true){
                         success: function(){
                             $('#thetable').addClass('animated bounceOut');
                             btnsave.prop('disabled', false);
-                            setTimeout(function(){window.location='lista.php'});
+							
+							
+                            setTimeout(function(){window.location.href="http://localhost/YiiOnePracticeSystem/index.php?r=timeline"});
 
                         },
                         error: function(){

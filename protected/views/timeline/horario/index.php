@@ -111,10 +111,8 @@
       <div class="modal-body">
         
         <form id="taskfrm">
-           <label>Tarea</label>
-			<select class="form-control" type="text" id="nametask"><option value="0" selected>Select Data</option>
-				<input class="form-control" type="text" id="nametask" >
-			</select>
+           <label>Tarea</label>	
+			<input class="form-control" type="text" id="nametask" >
            <label>Color:</label>
            <select class="form-control" id="idcolortask">
               <option value="purple-label">Purpura</option>
