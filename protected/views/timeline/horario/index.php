@@ -30,7 +30,8 @@
     <!-- menu -->
     <div id="menu" class="col-md-12 text-right">
       <div class="container">
-          <?php echo CHtml::link('Link Text',array('timeline/lista')); ?>
+          <?php //echo CHtml::link('Link Text',array('timeline/lista')); ?>
+		  <a class="btn btn-primary" href="index.php?r=timeline/lista"><i class="fa fa-calendar" aria-hidden="true"></i> Lista de Horarios</a>
           <button class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar-check-o"></i> Nuevo Horario</button>
       </div>
     </div>

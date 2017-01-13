@@ -1,13 +1,13 @@
 <?php
 
-class TimelineController extends CController
+class GraficosController extends CController
 {
 	
 	public function accessRules()
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','updateajax','lista','image'),
+				'actions'=>array('index','view','updateajax','lista','data'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -36,12 +36,17 @@ class TimelineController extends CController
 	public function actionLista()
     {
         $this->render('horario/lista');
-    }
+	}
 	
-	public function actionImage()
+	public function actionData()
     {
-        $this->render('horario/images/bg');
-    }
+        $this->render('chartsformchange/data');
+	}
+	
+	public function actionService()
+    {
+        $this->render('chartsformchange/getservice');
+	}
  
     public function actionUpdateAjax()
     {
