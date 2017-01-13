@@ -191,7 +191,7 @@ if (dado == true){
                             btnsave.prop('disabled', false);
 							
 							
-                            setTimeout(function(){window.location.href="http://localhost/YiiOnePracticeSystem/index.php?r=timeline"});
+                            setTimeout(function(){window.location.href="index.php?r=timeline"});
 
                         },
                         error: function(){

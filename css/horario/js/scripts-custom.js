@@ -13,7 +13,7 @@ $('.verhorario').on('click', function(){
 
    $.ajax({
        type: 'POST',
-       url: 'include/process.php',
+       url: 'css/horario/include/process.php',
        data: processsend,
        beforeSend: function(){
          $('#appenddata').html(' ');
@@ -117,7 +117,7 @@ $('.verhorario').on('click', function(){
                     $.ajax({
 
                         type: 'POST',
-                        url: 'include/process.php',
+                        url: 'css/horario/include/process.php',
                         data: horariodata,
                         beforeSend: function(){
                             btnsave.prop('disabled', true);
@@ -157,7 +157,7 @@ $('.delhorario').on('click', function(){
    $.ajax({
 
        type: 'POST',
-       url: 'include/process.php',
+       url: 'css/horario/include/process.php',
        data: horariodata,
         beforeSend: function(){
            elemento.find('button').prop('disabled', true);
