@@ -2,7 +2,6 @@
 
 class HelloWorldController extends CController
 {
-	
 	public function accessRules()
 	{
 		return array(
@@ -32,15 +31,6 @@ class HelloWorldController extends CController
  
         $this->render('index', $data);
     }
- 
-    /*public function actionUpdateAjax()
-    {
-        $data = array();
-		 $cont2 = Yii::app()->request->getParam('vehId');
-        $data["myValue"] = $cont2;
- 
-        $this->renderPartial('_ajaxContent', $data, false, true);
-    }*/
 	
 	public function actionUpdateAjax()
     {

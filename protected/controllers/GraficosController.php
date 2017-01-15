@@ -7,7 +7,7 @@ class GraficosController extends CController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','updateajax','lista','data'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -32,21 +32,6 @@ class GraficosController extends CController
  
         $this->render('index', $data);
     }
-	
-	public function actionLista()
-    {
-        $this->render('horario/lista');
-	}
-	
-	public function actionData()
-    {
-        $this->render('chartsformchange/data');
-	}
-	
-	public function actionService()
-    {
-        $this->render('chartsformchange/getservice');
-	}
  
     public function actionUpdateAjax()
     {

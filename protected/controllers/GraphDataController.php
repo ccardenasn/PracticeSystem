@@ -28,15 +28,11 @@ class GraphDataController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','getgrid'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -57,142 +53,12 @@ class GraphDataController extends Controller
 	}
 
 	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new GraphData;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['GraphData']))
-		{
-			$model->attributes=$_POST['GraphData'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['GraphData']))
-		{
-			$model->attributes=$_POST['GraphData'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
 	 * Lists all models.
 	 */
-	/*public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('GraphData');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}*/
-	
 	public function actionIndex()
     {
-		$model=new GraphData('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['GraphData']))
-			$model->attributes=$_GET['GraphData'];
-
-        $this->render('index',array(
-			'model'=>$model,
-		));
+        $this->render('graph_a_main');
     }
-	
-	public function actionLista()
-    {
-        $this->render('horario/lista');
-	}
-	
-	public function actionGetgrid()
-	{
-		$id = Yii::app()->request->getParam('RBD');
-		$sql = "select * from graph_data";
-		$rawData = Yii::app()->db->createCommand($sql); //or use ->queryAll(); in CArrayDataProvider
-		$count = Yii::app()->db->createCommand($sql)->queryScalar(); //the count
- 
- 
-        $data = new CSqlDataProvider($rawData,array(
-                    'keyField' => 'idcentro', 
-                    'totalItemCount' => $count,
-                    'sort' => array(
-                        'attributes' => array(
-                            'id','numero','nombrepractica', 'idcentro'
-                        ),
-                        'defaultOrder' => array(
-                            'MAIN_ID' => CSort::SORT_ASC, //default sort value
-                        ),
-                    ),
-                    'pagination' => array(
-                        'pageSize' => 10,
-                    ),
-                ));
- 
-        $this->renderPartial('index', array(
-            'data' => $data,
-        ));
-	}
-	
-	public function actionData()
-    {
-        $this->render('chartsformchange/data');
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new GraphData('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['GraphData']))
-			$model->attributes=$_GET['GraphData'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
