@@ -9,6 +9,7 @@ $js->registerScriptFile($base.'/js/yii-highcharts/highcharts/assets/modules/expo
 	
 <script>
 $(function () {
+ 
 		//on page load  
 		getAjaxData(7701);
  
@@ -21,10 +22,10 @@ $(function () {
 		function getAjaxData(id){
 
 		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('graphProcess/grafico_a/data.php', {id: id}, function(chartData) {
+		$.getJSON('graphProcess/grafico_c/data.php', {id: id}, function(chartData) {
 			
-				$('.maintable').empty();
-				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+			$('.maintable').empty();
+				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Número de Estudiantes Atendidos</h3></th></tr>');
                 var tr = chartData.data
 				
                 for (var i = 0; i < chartData[0].data.length; i++) {
@@ -77,7 +78,7 @@ $(function () {
 			});
 		});
 	}
-});
+});	
 </script>
 
 <?php

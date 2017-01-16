@@ -29431,3 +29431,32 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/YiiOnePracticeSystem/index.php?r=graphdata
 ---
+2017/01/16 23:31:17 [error] [php] call_user_func() expects parameter 1 to be a valid callback, array must have exactly two members (C:\xampp\htdocs\Yii\framework\web\helpers\CHtml.php:2341)
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\graphData\graph_e\load.php(96): listData()
+#1 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): GraphDataController->renderInternal()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(869): GraphDataController->renderFile()
+#4 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\graphData\graph_e_main.php(7): GraphDataController->renderPartial()
+#5 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require()
+#6 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): GraphDataController->renderInternal()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(869): GraphDataController->renderFile()
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(782): GraphDataController->renderPartial()
+#9 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\GraphDataController.php(80): GraphDataController->render()
+#10 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): GraphDataController->actionGraph_e()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): GraphDataController->runAction()
+#13 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#15 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): GraphDataController->filterAccessControl()
+#16 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#17 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\Yii\framework\web\CController.php(265): GraphDataController->runActionWithFilters()
+#19 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): GraphDataController->run()
+#20 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=graphdata/graph_e
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\graphData\graph_e\load.php (96)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\graphData\graph_e_main.php (7)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\GraphDataController.php (80)

@@ -28,7 +28,7 @@ class GraphDataController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -57,7 +57,32 @@ class GraphDataController extends Controller
 	 */
 	public function actionIndex()
     {
+        $this->render('index');
+    }
+	
+	public function actionGraph_a()
+    {
         $this->render('graph_a_main');
+    }
+	
+	public function actionGraph_b()
+    {
+        $this->render('graph_b_main');
+    }
+	
+	public function actionGraph_c()
+    {
+        $this->render('graph_c_main');
+    }
+	
+	public function actionGraph_d()
+    {
+        $this->render('graph_d_main');
+    }
+	
+	public function actionGraph_e()
+    {
+        $this->render('graph_e_main');
     }
 
 	/**

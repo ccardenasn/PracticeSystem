@@ -6,9 +6,10 @@ $js->registerScriptFile($base.'/js/yii-highcharts/highcharts/assets/highcharts.j
 $js->registerScriptFile($base.'/js/yii-highcharts/highcharts/assets/modules/exporting.js');
 
 ?>
-	
+
 <script>
 $(function () {
+ 
 		//on page load  
 		getAjaxData(7701);
  
@@ -21,10 +22,10 @@ $(function () {
 		function getAjaxData(id){
 
 		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('graphProcess/grafico_a/data.php', {id: id}, function(chartData) {
+		$.getJSON('graphProcess/grafico_b/data.php', {id: id}, function(chartData) {
 			
-				$('.maintable').empty();
-				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+			$('.maintable').empty();
+				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Numero de Prácticas</h3></th></tr>');
                 var tr = chartData.data
 				
                 for (var i = 0; i < chartData[0].data.length; i++) {
@@ -79,7 +80,7 @@ $(function () {
 	}
 });
 </script>
-
+	
 <?php
 $data=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
 ?>

@@ -9,8 +9,9 @@ $js->registerScriptFile($base.'/js/yii-highcharts/highcharts/assets/modules/expo
 	
 <script>
 $(function () {
+ 
 		//on page load  
-		getAjaxData(7701);
+		getAjaxData(1);
  
 		//on changing select option
 		$('#dynamic_data').change(function(){
@@ -21,10 +22,19 @@ $(function () {
 		function getAjaxData(id){
 
 		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('graphProcess/grafico_a/data.php', {id: id}, function(chartData) {
+		$.getJSON('graphProcess/grafico_d/data.php', {id: id}, function(chartData) {
 			
-				$('.maintable').empty();
-				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+			$('.maintable').empty();
+				
+				
+				if($('.dynamic_data').val() === '1'){
+					$('.maintable').empty();
+					$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Centro</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+				}else{
+					$('.maintable').empty();
+					$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Dependencia</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+				}
+			
                 var tr = chartData.data
 				
                 for (var i = 0; i < chartData[0].data.length; i++) {
@@ -78,21 +88,22 @@ $(function () {
 		});
 	}
 });
+	
 </script>
 
 <?php
-$data=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
+$data=array('1'=>'Centros','2'=>'Dependencias');
+$select=key($data);
 ?>
 
 <div class="row">
-<?php echo CHtml::label('<b>Seleccione Un Centro</b>','centerLabel');?>
+<?php echo CHtml::label('<b>Seleccione Una Opción</b>','optionLabel');?>
 </div>
 
 <div class="row">
-<?php echo CHtml::dropDownList('dynamic_data','RBD',$data,array('id'=>'dynamic_data'));?>
+<?php echo CHtml::dropDownList('dynamic_data',$select,$data,array('id'=>'dynamic_data'));?>
 </div>
 
 <div id="graphcontainer" style="width: 90%; float:left;"></div>
-
 <table class="maintable" bgcolor="#F0F0F0">
 </table>

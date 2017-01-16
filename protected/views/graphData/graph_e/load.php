@@ -6,11 +6,12 @@ $js->registerScriptFile($base.'/js/yii-highcharts/highcharts/assets/highcharts.j
 $js->registerScriptFile($base.'/js/yii-highcharts/highcharts/assets/modules/exporting.js');
 
 ?>
-	
+
 <script>
 $(function () {
+ 
 		//on page load  
-		getAjaxData(7701);
+		getAjaxData(0);
  
 		//on changing select option
 		$('#dynamic_data').change(function(){
@@ -21,10 +22,10 @@ $(function () {
 		function getAjaxData(id){
 
 		//use getJSON to get the dynamic data via AJAX call
-		$.getJSON('graphProcess/grafico_a/data.php', {id: id}, function(chartData) {
+		$.getJSON('graphProcess/grafico_e/data.php', {id: id}, function(chartData) {
 			
-				$('.maintable').empty();
-				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+			$('.maintable').empty();
+				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Ejecutado</h2></th><th><h2>Número de Sesiones</h3></th></tr>');
                 var tr = chartData.data
 				
                 for (var i = 0; i < chartData[0].data.length; i++) {
@@ -77,20 +78,25 @@ $(function () {
 			});
 		});
 	}
-});
+});	
 </script>
+	
+<select id="dynamic_data">
+	<option value="0" selected>Select Data</option>
+	<?php 
+	include('connect.php');
+	$sqlb = "select NombrePractica from configuracionpractica;";
 
-<?php
-$data=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
-?>
-
-<div class="row">
-<?php echo CHtml::label('<b>Seleccione Un Centro</b>','centerLabel');?>
-</div>
-
-<div class="row">
-<?php echo CHtml::dropDownList('dynamic_data','RBD',$data,array('id'=>'dynamic_data'));?>
-</div>
+$st = mysql_query($sqlb,$con);
+	
+	$i=0;
+	while($rows = mysql_fetch_array($st))
+	{
+		echo'<option value="'.$i.'">'.$rows['NombrePractica'].'</option>';
+		$i++;
+	}
+	?>
+</select>
 
 <div id="graphcontainer" style="width: 90%; float:left;"></div>
 
