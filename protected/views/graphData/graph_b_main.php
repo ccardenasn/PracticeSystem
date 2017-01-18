@@ -14,5 +14,6 @@ $this->menu=array(
 	array('label'=>'Cantidad de Estudiantes Atendidos Segun Práctica Por Centro', 'url'=>array('graphdata/graph_c')),
 	array('label'=>'Cantidad de Estudiantes de Acuerdo a Centros o Dependencias', 'url'=>array('graphdata/graph_d')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
+	array('label'=>'Cantidad de Profesores Por Centro de Prácticas', 'url'=>array('graphdata/graph_f')),
 );
 ?>

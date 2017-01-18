@@ -13,6 +13,7 @@ $this->widget('ext.verticalmenu2levels.VerticalMenu2Levels',
 							array("url"=>array("route"=>"graphdata/graph_c"),"label"=>"Cantidad de Estudiantes Atendidos Segun Práctica Por Centro"),
 							array("url"=>array("route"=>"graphdata/graph_d"),"label"=>"Cantidad de Estudiantes de Acuerdo a Centros o Dependencias"),
 							array("url"=>array("route"=>"graphdata/graph_e"),"label"=>"Sesiones Ejecutadas"),
+							array("url"=>array("route"=>"graphdata/graph_f"),"label"=>"Cantidad de Profesores Por Centro de Prácticas"),
 						   ),
 					 
 				  ),
