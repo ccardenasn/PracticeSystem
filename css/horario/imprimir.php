@@ -34,9 +34,14 @@ if (is_numeric($_GET['horario']))
     <title>Horarios | JHCodes</title>
 
     <!-- Bootstrap -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
+    <?php
+	  
+	  $baseUrl = Yii::app()->baseUrl; 
+	  $cs = Yii::app()->getClientScript();
+	  $cs->registerCssFile($baseUrl.'/css/horario/css/custom.css');
+	  $cs->registerCssFile($baseUrl.'/css/horario/css/bootstrap.min.css');
+	  
+	  ?>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,11 +61,16 @@ if (is_numeric($_GET['horario']))
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Canvas -->
-    <script type="text/javascript" src="js/html2canvas.js"></script>
+       <?php
+	  
+	  $base = Yii::app()->baseUrl; 
+	  $js = Yii::app()->getClientScript();
+	  $js->registerScriptFile($base.'/css/horario/js/jquery.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/bootstrap.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/html2canvas.js');
+	  
+	  ?>
+	  
     <script type="text/javascript">
         html2canvas($(".original"), {
           onrendered: function(canvas) {

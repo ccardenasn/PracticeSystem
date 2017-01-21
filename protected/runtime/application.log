@@ -29460,3 +29460,69 @@ REQUEST_URI=/YiiOnePracticeSystem/index.php?r=graphdata/graph_e
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\graphData\graph_e\load.php (96)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\graphData\graph_e_main.php (7)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\GraphDataController.php (80)
+2017/01/19 19:49:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "timetable".' in C:\xampp\htdocs\Yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('timetable')
+#1 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=timetable
+---
+2017/01/19 19:49:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "horario".' in C:\xampp\htdocs\Yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('horario')
+#1 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horario
+---
+2017/01/19 20:40:54 [error] [php] require_once(css/horaro/include/functions.php): failed to open stream: No such file or directory (C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\timeline\horario\lista.php:3)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): TimelineController->renderInternal()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(869): TimelineController->renderFile()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(782): TimelineController->renderPartial()
+#3 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\TimelineController.php(38): TimelineController->render()
+#4 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): TimelineController->actionLista()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(286): TimelineController->runAction()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(265): TimelineController->runActionWithFilters()
+#8 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): TimelineController->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=timeline/lista
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\timeline\horario\lista.php (3)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\timeline\horario\lista.php (3)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\TimelineController.php (38)
+2017/01/19 21:10:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "lista?page=2".' in C:\xampp\htdocs\Yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(270): CController->missingAction('lista?page=2')
+#1 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('lista?page=2')
+#2 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('timeline/lista?...')
+#3 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=timeline/lista?page=2
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=timeline/lista
+---
+2017/01/19 21:16:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "lista?page=2".' in C:\xampp\htdocs\Yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(270): CController->missingAction('lista?page=2')
+#1 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('lista?page=2')
+#2 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('timeline/lista?...')
+#3 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=timeline/lista?page=2
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=timeline/lista
+---
+2017/01/19 22:03:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "horario".' in C:\xampp\htdocs\Yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CController.php(270): CController->missingAction('horario')
+#1 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('horario')
+#2 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('timeline/horari...')
+#3 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=timeline/horario/lista
+---

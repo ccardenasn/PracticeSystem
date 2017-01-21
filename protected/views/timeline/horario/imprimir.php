@@ -67,10 +67,9 @@ if (is_numeric($_GET['horario']))
 	  
 	  $base = Yii::app()->baseUrl; 
 	  $js = Yii::app()->getClientScript();
-	  $js->registerCssFile($baseUrl.'/css/horario/js/jquery.min.js');
-	  $js->registerCssFile($baseUrl.'/css/horario/js/bootstrap.min.js');
-	  $js->registerCssFile($baseUrl.'/css/horario/js/html2canvas.js');
-	  
+	  $js->registerScriptFile($base.'/css/horario/js/jquery.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/bootstrap.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/html2canvas.js');
 	  
 	  ?>
 	  

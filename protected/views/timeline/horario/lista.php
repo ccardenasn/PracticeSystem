@@ -1,5 +1,5 @@
 <?php
-include 'include/config.php';
+require_once 'include/config.php';
 require_once'include/functions.php';
 ?>
 <!DOCTYPE html>
@@ -21,6 +21,7 @@ require_once'include/functions.php';
 	  $cs->registerCssFile($baseUrl.'/css/horario/style.css');
 	  
 	  ?>
+	 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +35,7 @@ require_once'include/functions.php';
     <!-- menu -->
     <div id="menu" class="col-md-12 text-right">
       <div class="container">
-          <a class="btn btn-primary" href="lista.php"><i class="fa fa-calendar" aria-hidden="true"></i> Lista de Horarios</a>
+          <a class="btn btn-primary" href="index.php?r=timeline/lista"><i class="fa fa-calendar" aria-hidden="true"></i> Lista de Horarios</a>
           <a class="btn btn-warning" href="index.php"><i class="fa fa-calendar-check-o"></i> Nuevo Horario</a>
       </div>
     </div>
@@ -116,13 +117,14 @@ require_once'include/functions.php';
 	  <?php
 	  $base = Yii::app()->baseUrl; 
 	  $js = Yii::app()->getClientScript();
-	  $js->registerScriptFile($base.'/css/horario/js/jquery.min.js');
+	  
 	  $js->registerScriptFile($base.'/css/horario/js/bootstrap.min.js');
 	  $js->registerScriptFile($base.'/css/horario/js/moment-with-locales.js');
 	  $js->registerScriptFile($base.'/css/horario/js/bootstrap-datetimepicker.js');
 	  $js->registerScriptFile($base.'/css/horario/js/jquery.validate.min.js');
 	  $js->registerScriptFile($base.'/css/horario/js/additional-methods.min.js');
 	  $js->registerScriptFile($base.'/css/horario/js/scripts-custom.js');
+	  $js->registerScriptFile($base.'/css/horario/js/script.js');
 ?>
 
   </body>

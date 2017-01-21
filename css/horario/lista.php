@@ -12,8 +12,15 @@ require_once'include/functions.php';
     <title>Horarios | JHCodes</title>
 
     <!-- Bootstrap -->
-    <link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
-    <link href="style.css" rel="stylesheet">
+   <?php
+	  
+	  $baseUrl = Yii::app()->baseUrl; 
+	  $cs = Yii::app()->getClientScript();
+	  //$cs->registerScriptFile($baseUrl.'/js/yourscript.js');
+	  $cs->registerCssFile($baseUrl.'/css/horario/style.css');
+	  
+	  ?>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,17 +111,21 @@ require_once'include/functions.php';
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- datetimepicker -->
-    <script src="js/moment-with-locales.js"></script>
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    <!-- validate -->
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/additional-methods.min.js"></script>
-    <!-- script -->
-    <script src="js/scripts-custom.js"></script>
+ 
+	  
+	  
+	  <?php
+	  $base = Yii::app()->baseUrl; 
+	  $js = Yii::app()->getClientScript();
+	  $js->registerScriptFile($base.'/css/horario/js/jquery.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/bootstrap.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/moment-with-locales.js');
+	  $js->registerScriptFile($base.'/css/horario/js/bootstrap-datetimepicker.js');
+	  $js->registerScriptFile($base.'/css/horario/js/jquery.validate.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/additional-methods.min.js');
+	  $js->registerScriptFile($base.'/css/horario/js/scripts-custom.js');
+	  $js->registerScriptFile($base.'/css/horario/js/script.js');
+?>
 
   </body>
 </html>

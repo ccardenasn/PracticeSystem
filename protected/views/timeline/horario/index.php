@@ -148,7 +148,7 @@
 	 <?php
 	  $base = Yii::app()->baseUrl; 
 	  $js = Yii::app()->getClientScript();
-	  $js->registerScriptFile($base.'/css/horario/js/jquery.min.js');
+	  //$js->registerScriptFile($base.'/css/horario/js/jquery.min.js');
 	  $js->registerScriptFile($base.'/css/horario/js/bootstrap.min.js');
 	  $js->registerScriptFile($base.'/css/horario/js/moment-with-locales.js');
 	  $js->registerScriptFile($base.'/css/horario/js/bootstrap-datetimepicker.js');

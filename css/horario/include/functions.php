@@ -92,15 +92,15 @@ for ($i=1; $i <= $totalpaginas; $i++) {
      }elseif ($i == $totalpaginas) {
        echo '<a class="btn btn-warning" rel="nofollow" href="lista.php?page='.$i.'"><i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i> </a>';
      }elseif ($i >= $paginaActual && $i <= $paginaActual + 2) {
-       echo '<a class="btn btn-warning" rel="nofollow" href="lista.php?page='.$i.'">'.$i.'</a>';
+       echo '<a class="btn btn-warning" rel="nofollow" href="index.php?r=timeline/lista?page='.$i.'">'.$i.'</a>';
      }elseif ($i >= $paginaActual && $i <= $paginaActual + 3) {
-       echo '<a class="btn btn-warning" rel="nofollow" href="lista.php?page='.$i.'">'.$i.'</a>';
+       echo '<a class="btn btn-warning" rel="nofollow" href="index.php?r=timeline/lista?page='.$i.'">'.$i.'</a>';
      }elseif ($i >= $paginaActual && $i <= $paginaActual + 4) {
-       echo '<a class="btn btn-warning" rel="nofollow" href="lista.php?page='.$i.'">'.$i.'</a>';
+       echo '<a class="btn btn-warning" rel="nofollow" href="index.php?r=timeline/lista?page='.$i.'">'.$i.'</a>';
      }elseif ($i == $paginaActual - 1 ){
-       echo '<a class="btn btn-warning" rel="nofollow" href="lista.php?page='.$i.'"><i class="glyphicon glyphicon-chevron-left"></i></a>';
+       echo '<a class="btn btn-warning" rel="nofollow" href="index.php?r=timeline/lista?page='.$i.'"><i class="glyphicon glyphicon-chevron-left"></i></a>';
      }elseif ($i == $paginaActual + 5 ){
-       echo '<a class="btn btn-warning" rel="nofollow" href="lista.php?page='.$i.'"><i class="glyphicon glyphicon-chevron-right"></i></a>';
+       echo '<a class="btn btn-warning" rel="nofollow" href="index.php?r=timeline/lista?page='.$i.'"><i class="glyphicon glyphicon-chevron-right"></i></a>';
      }
 }
 
