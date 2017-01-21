@@ -1,0 +1,34 @@
+body {
+  padding : 2em;
+  margin  : 0;
+}
+
+form {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 13px;     
+	font-weight: normal;
+	width  : 300px;
+	height : 200px;
+	margin : 0 auto;
+	background : #e8edff;
+}
+
+h1 {
+	font-size: 15px;
+	text-align: center;
+	background : #b9c9fe;
+	color: #039;
+}
+
+select {
+	width:200px;
+}
+
+#divFields{
+	text-align: center;
+	color: #669;
+}
+
+#divButton{
+	text-align: right;
+}
