@@ -6,9 +6,19 @@
 <link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleTable.css">
 <link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleForm.css">
 
+<?php
+include_once("connect.php");
+
+$qr = "select horario from horarios where id = '24';";
+
+$aa =mysql_query($qr,$con);
+$bb = mysql_result($aa,0);
+mysql_close($con);
+?>
+
 <div id="table_div">
 	<?php
-	include('tableForm.php');
+	echo $bb;
 	?>
 </div>
 
@@ -21,5 +31,3 @@
 <div id=btnSave_div>
 	<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
 </div>
-
-

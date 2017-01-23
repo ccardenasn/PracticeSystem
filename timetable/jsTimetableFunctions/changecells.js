@@ -1,6 +1,7 @@
 function cambiar(){
 		if(condicion == "1"){
 			$("#lbl_a_row_a").text($("#txtSubject").val());
+			
 		}
 		if(condicion == "2"){
 			$("#lbl_b_row_a").text($("#txtSubject").val());
