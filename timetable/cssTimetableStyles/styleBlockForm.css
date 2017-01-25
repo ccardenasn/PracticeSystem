@@ -3,16 +3,6 @@ body {
   margin  : 0;
 }
 
-form{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 13px;     
-	font-weight: normal;
-	width  : 300px;
-	height : 200px;
-	margin : 0 auto;
-	background : #e8edff;
-}
-
 h1 {
 	font-size: 15px;
 	text-align: center;
@@ -22,11 +12,6 @@ h1 {
 
 select {
 	width:200px;
-}
-
-#divFields{
-	text-align: center;
-	color: #669;
 }
 
 #divBlockFields{
@@ -43,8 +28,8 @@ select {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 13px;     
 	font-weight: normal;
-	width  : 700px;
-	height : 100px;
+	width  : 320px;
+	height : 80px;
 	margin : 0 auto;
 	background : #e8edff;
 }

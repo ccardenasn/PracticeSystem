@@ -2,8 +2,7 @@
 include_once('connect.php');
 
 $data = $_POST['horario'];
-$ser=serialize($data);
-$query = "insert into horarios(nombre,descripcion,horario,fecha) values ('agg', 'mas agg','".$ser."','2017-01-22');";
+$query = "insert into horario(Estudiante_RutEstudiante,tablaHorario) values('10041351-5','".$data."');";
 
 mysql_query($query,$con);
 mysql_close($con);
