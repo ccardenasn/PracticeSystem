@@ -14,21 +14,17 @@ select {
 	width:200px;
 }
 
-#divBlockFields{
+#divBlockFieldsInit{
 	text-align: left;
 	color: #669;
-	width  : 700px;
-}
-
-#divButton{
-	text-align: right;
+	width  : 200px;
 }
 
 #formInit_div{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 13px;     
 	font-weight: normal;
-	width  : 320px;
+	width  : 400px;
 	height : 80px;
 	margin : 0 auto;
 	background : #e8edff;

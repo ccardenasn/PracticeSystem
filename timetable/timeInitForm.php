@@ -1,9 +1,9 @@
-<form id="form_hour">
+<form id="form_Init">
 	<h1>Asignar Horario</h1>
 	
-	<div id="divBlockFields">
+	<div id="divBlockFieldsInit">
 		<label id="lblInit" class="lblInit">Hora Inicio: </label>
-		<input type="text" name="txtInitHour">
-		<input type="button" name="btnHour" id="btnHour" onclick="javascript:cambiar(); cerrar();" value="Asignar">	
+		<input type="text" name="txtInitHour" id="txtInitHour">
+		<input type="button" name="btnHour" id="btnHour" onclick="javascript:cambiar();closeInit();enviar()" value="Asignar">
 	</div>
 </form>
