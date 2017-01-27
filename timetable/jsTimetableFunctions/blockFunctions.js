@@ -1,4 +1,4 @@
-var cellState="0";
+var cellState=0;
 
 function showInit() {
 	div = document.getElementById('formInit_div');
@@ -21,8 +21,16 @@ function closeEnd(){
 }
 
 function enviar(){
-	var initTime = $('#txtInitHour').val();
-	var info = 'initTime='+initTime+'&cellState='+cellState;
+	var time = "";
+	var remainder = cellState%2;
+	
+	if(remainder != 0){
+		time = $('#txtInitHour').val();
+	}else{
+		time = $('#txtEndHour').val();
+	}
+	
+	var info = 'time='+time+'&cellState='+cellState;
 	
 	$.ajax({
 		type: 'POST',
