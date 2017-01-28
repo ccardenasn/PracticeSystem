@@ -1,8 +1,8 @@
-body {
+#table_div body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-table {     
+#table_div table {     
 	table-layout: fixed;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;    
@@ -12,7 +12,7 @@ table {
 	border-collapse: collapse; 
 }
 
-th {     
+#table_div th {     
 	font-size: 13px;     
 	font-weight: normal;     
 	padding: 8px;     
@@ -22,7 +22,7 @@ th {
 	color: #039; 
 }
 
-td {    
+#table_div td {    
 	padding: 8px;     
 	background: #e8edff;     
 	border-bottom: 1px solid #fff;
@@ -30,7 +30,50 @@ td {
 	border-top: 1px solid transparent; 
 }
 
-tr:hover td { 
+#table_div tr:hover td { 
 	background: #d0dafd; 
 	color: #339; 
+}
+
+#block_div table {     
+	table-layout: fixed;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;    
+	margin: 45px;
+	height: 306px;
+	width: 850px; 
+	text-align: left;    
+	border-collapse: collapse; 
+}
+
+#block_div body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#block_div th {     
+	font-size: 13px;     
+	font-weight: normal;     
+	padding: 8px;     
+	background: #b9c9fe;
+    border-top: 4px solid #aabcfe;    
+	border-bottom: 1px solid #fff; 
+	color: #039;
+}
+
+#block_div td {    
+	padding: 8px;     
+	background: #e8edff;     
+	border-bottom: 1px solid #fff;
+    color: #669;    
+	border-top: 1px solid transparent;
+}
+
+#mainTable table {     
+	table-layout:fixed;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;    
+	margin: 1px;     
+	width: 700px; 
+	text-align: left;    
+	border-collapse: collapse; 
 }

@@ -9,18 +9,31 @@
 <?php
 include_once("connect.php");
 
-$qr = "select horario from horarios where id = '24';";
+$qr = "select tablaHorario from horario where CodHorario = '14';";
 
 $aa =mysql_query($qr,$con);
 $bb = mysql_result($aa,0);
 mysql_close($con);
 ?>
 
-<div id="table_div">
-	<?php
-	echo $bb;
-	?>
-</div>
+<table id="mainTable" border="2px">
+	<tr>
+		<th>
+			<div id="block_div">
+				<?php
+				include('blockTable.php');
+				?>
+			</div>
+		</th>
+		<th>
+			<div id="table_div">
+				<?php
+				echo $bb;
+				?>
+			</div>
+		</th>
+	</tr>
+</table>
 
 <div id="form_div" style="display:none;">
 	<?php
