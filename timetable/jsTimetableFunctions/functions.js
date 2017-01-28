@@ -16,7 +16,7 @@ function obtener(){
 	
 	$.ajax({
 		type: 'POST',
-		url: 'saveTable.php',
+		url: 'timetable/saveTable.php',
 		data: dataa,
 	});
 }
