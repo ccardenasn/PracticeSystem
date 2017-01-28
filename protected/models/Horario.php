@@ -5,10 +5,11 @@
  *
  * The followings are the available columns in table 'horario':
  * @property integer $CodHorario
- * @property string $Asignatura
- * @property string $Hora
- * @property string $Dia
- * @property string $Posicion
+ * @property string $Estudiante_RutEstudiante
+ * @property string $tablaHorario
+ *
+ * The followings are the available model relations:
+ * @property Estudiante $estudianteRutEstudiante
  */
 class Horario extends CActiveRecord
 {
@@ -28,10 +29,12 @@ class Horario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Asignatura, Hora, Dia, Posicion', 'length', 'max'=>45),
+			array('Estudiante_RutEstudiante', 'required'),
+			array('Estudiante_RutEstudiante', 'length', 'max'=>45),
+			array('tablaHorario', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodHorario, Asignatura, Hora, Dia, Posicion', 'safe', 'on'=>'search'),
+			array('CodHorario, Estudiante_RutEstudiante, tablaHorario', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +46,7 @@ class Horario extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'estudianteRutEstudiante' => array(self::BELONGS_TO, 'Estudiante', 'Estudiante_RutEstudiante'),
 		);
 	}
 
@@ -53,10 +57,8 @@ class Horario extends CActiveRecord
 	{
 		return array(
 			'CodHorario' => 'Cod Horario',
-			'Asignatura' => 'Asignatura',
-			'Hora' => 'Hora',
-			'Dia' => 'Dia',
-			'Posicion' => 'Posicion',
+			'Estudiante_RutEstudiante' => 'Estudiante Rut Estudiante',
+			'tablaHorario' => 'Tabla Horario',
 		);
 	}
 
@@ -79,10 +81,8 @@ class Horario extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('CodHorario',$this->CodHorario);
-		$criteria->compare('Asignatura',$this->Asignatura,true);
-		$criteria->compare('Hora',$this->Hora,true);
-		$criteria->compare('Dia',$this->Dia,true);
-		$criteria->compare('Posicion',$this->Posicion,true);
+		$criteria->compare('Estudiante_RutEstudiante',$this->Estudiante_RutEstudiante,true);
+		$criteria->compare('tablaHorario',$this->tablaHorario,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
