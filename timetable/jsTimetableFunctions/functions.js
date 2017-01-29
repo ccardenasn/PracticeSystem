@@ -11,8 +11,10 @@ function cerrar(){
 }
 
 function obtener(){
+	var rut = $('#lblRut').html();
 	var horario = $('#table_div').html();
-	var dataa = 'horario='+horario;
+	
+	var dataa = 'rut='+rut+'&horario='+horario;
 	
 	$.ajax({
 		type: 'POST',
