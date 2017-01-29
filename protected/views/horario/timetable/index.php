@@ -1,5 +1,3 @@
-<!--<script type='text/javascript' src="jsTimetableFunctions/jquery.min.js"></script>-->
-
 <?php
 
 $base = Yii::app()->baseUrl; 
@@ -12,6 +10,7 @@ $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleTable.css');
 $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleForm.css');
 ?>
 
+<label id="lblRut"><?php echo $rutStudent; ?></label><br>
 
 <table id="mainTable" border="2px">
 	<tr>
