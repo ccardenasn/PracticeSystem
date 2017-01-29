@@ -32,7 +32,7 @@ class HorarioController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','createHorario','updateHorario'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -132,6 +132,16 @@ class HorarioController extends Controller
     {
         $this->render('index');
     }
+	
+	public function actionCreateHorario()
+	{
+		$this->render('createHorario');
+	}
+	
+	public function actionUpdateHorario()
+	{
+		$this->render('updateHorario');
+	}
 
 	/**
 	 * Manages all models.

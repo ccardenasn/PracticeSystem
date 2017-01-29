@@ -1,14 +1,18 @@
+<h1>Horario</h1>
+
+<p><br/>
+<p><br/>
+	
 <?php
-include_once('consultaNombre.php');
-
-$rutStudent = Yii::app()->user->name;
-$nameStudent = nameQuery($rutStudent);
+$this->widget('ext.verticalmenu2levels.VerticalMenu2Levels',
+			  array(
+				  "menu"=>array(
+					  array("url"=>array(),"label"=>'Gráficos',
+							array("url"=>array("route"=>"horario/createHorario"),"label"=>"Crear Horario"),
+							array("url"=>array("route"=>"horario/updateHorario"),"label"=>"Modificar Horario"),
+						   ),
+					 
+				  ),
+			  )
+		);
 ?>
-
-<h1>Crear Horario</h1>
-<h2>Estudiante: <?php echo $nameStudent; ?></h2>
-<h2>Rut: <?php echo $rutStudent; ?></h2>
-
-<div id="data">
-   <?php $this->renderPartial('timetable/index',array('rutStudent' => $rutStudent)); ?>
-</div>

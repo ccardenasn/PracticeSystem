@@ -1,15 +1,21 @@
-<script type='text/javascript' src="jsTimetableFunctions/jquery.min.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/dependentdropdown.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/conditioncells.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/changecells.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/functions.js"></script>
-<link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleTable.css">
-<link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleForm.css">
+<?php
+
+$base = Yii::app()->baseUrl; 
+$js = Yii::app()->getClientScript();
+$js->registerScriptFile($base.'/timetable/jsTimetableFunctions/dependentdropdown.js');
+$js->registerScriptFile($base.'/timetable/jsTimetableFunctions/conditioncells.js');
+$js->registerScriptFile($base.'/timetable/jsTimetableFunctions/changecells.js');
+$js->registerScriptFile($base.'/timetable/jsTimetableFunctions/functions.js');
+$js->registerCssFile($base.'/timetable/cssTimetableStyles/styleTable.css');
+$js->registerCssFile($base.'/timetable/cssTimetableStyles/styleForm.css');
+?>
+
+<label id="lblRut"><?php echo $rutStudent; ?></label><br>
 
 <?php
 include_once("connect.php");
 
-$qr = "select tablaHorario from horario where CodHorario = '14';";
+$qr = "select tablaHorario from horario where Estudiante_RutEstudiante = '".$rutStudent."';";
 
 $aa =mysql_query($qr,$con);
 $bb = mysql_result($aa,0);
