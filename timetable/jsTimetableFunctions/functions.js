@@ -1,4 +1,5 @@
 var condicion="0";
+var mainAction = "";
 
 function mostrar() {
 	div = document.getElementById('form_div');
@@ -11,14 +12,20 @@ function cerrar(){
 }
 
 function obtener(){
-	var rut = $('#lblRut').html();
 	var horario = $('#table_div').html();
-	
-	var dataa = 'rut='+rut+'&horario='+horario;
+	var dataa = 'rut='+rut+'&horario='+horario+'&action='+mainAction;
 	
 	$.ajax({
 		type: 'POST',
 		url: 'timetable/saveTable.php',
 		data: dataa,
 	});
+}
+
+function loadUpdate(){
+	mainAction = "Update";
+}
+
+function loadCreate(){
+	mainAction = "Create";
 }

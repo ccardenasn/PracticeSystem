@@ -8,11 +8,15 @@ $js->registerScriptFile($base.'/timetable/jsTimetableFunctions/changecells.js');
 $js->registerScriptFile($base.'/timetable/jsTimetableFunctions/functions.js');
 $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleTable.css');
 $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleForm.css');
+
+echo '<script type="text/javascript">
+	var rut = "'.$rutStudent.'"; 
+</script>';
+
 ?>
 
-<label id="lblRut"><?php echo $rutStudent; ?></label><br>
-
-<table id="mainTable" border="2px">
+<body onload="javascript:loadCreate();">
+	<table id="mainTable" border="2px">
 	<tr>
 		<th>
 			<div id="block_div">
@@ -40,5 +44,9 @@ $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleForm.css');
 <div id=btnSave_div>
 	<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
 </div>
+
+</body>
+
+
 
 

@@ -29751,3 +29751,19 @@ REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horario/updateHorario
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\timetable\viewTable.php (15)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\horario\updateHorario.php (13)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\HorarioController.php (143)
+2017/01/30 21:57:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "horaro".' in C:\xampp\htdocs\Yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('horaro')
+#1 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horaro
+---
+2017/01/30 22:13:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "horaio".' in C:\xampp\htdocs\Yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('horaio')
+#1 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=horaio
+---

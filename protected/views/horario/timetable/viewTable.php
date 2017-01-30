@@ -8,9 +8,14 @@ $js->registerScriptFile($base.'/timetable/jsTimetableFunctions/changecells.js');
 $js->registerScriptFile($base.'/timetable/jsTimetableFunctions/functions.js');
 $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleTable.css');
 $js->registerCssFile($base.'/timetable/cssTimetableStyles/styleForm.css');
+
+echo '<script type="text/javascript">
+	var rut = "'.$rutStudent.'"; 
+</script>';
+
 ?>
 
-<label id="lblRut"><?php echo $rutStudent; ?></label><br>
+<body onload="javascript:loadUpdate();">
 
 <?php
 include_once("connect.php");
@@ -50,3 +55,4 @@ mysql_close($con);
 <div id=btnSave_div>
 	<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
 </div>
+</body>
