@@ -5,11 +5,11 @@ $rutStudent = Yii::app()->user->name;
 $exist = containsStudent($rutStudent);
 
 if($exist != 0){
-	$menuData = array("url"=>array(),"label"=>'Gráficos',
+	$menuData = array("url"=>array(),"label"=>'Opciones',
 							array("url"=>array("route"=>"horario/updateHorario"),"label"=>"Modificar Horario"),
 						   );
 }else{
-	$menuData = array("url"=>array(),"label"=>'Gráficos',
+	$menuData = array("url"=>array(),"label"=>'Opciones',
 							array("url"=>array("route"=>"horario/createHorario"),"label"=>"Crear Horario"),
 						   );
 }

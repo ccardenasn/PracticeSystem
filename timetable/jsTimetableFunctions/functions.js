@@ -19,6 +19,7 @@ function obtener(){
 		type: 'POST',
 		url: 'timetable/saveTable.php',
 		data: dataa,
+		success: timetableCreatedMessage(),
 	});
 }
 
@@ -28,4 +29,8 @@ function loadUpdate(){
 
 function loadCreate(){
 	mainAction = "Create";
+}
+
+function timetableCreatedMessage(){
+	alert("El Horario Ha Sido Almacenado Correctamente");
 }
