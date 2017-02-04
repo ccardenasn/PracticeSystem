@@ -91,7 +91,7 @@ class DynamicTabularForm extends CActiveForm {
             $('#" . $buttonId . "').click(function(e){addRow()});
             
             //for deleting rows
-            $('.delete-row-button').live('click',function(e){
+            $('body').on('click','.delete-row-button',function(e){
                 var key = $(this).attr('data-key');
                 var row_id = $(this).attr('data-delete');
                 var updateTypeField = $('#'+ '" . get_class($model) . '_upateType_' . "'+key);
