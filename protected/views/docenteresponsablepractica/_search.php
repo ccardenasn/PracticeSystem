@@ -41,13 +41,8 @@
 		<?php echo $form->textField($model,'CelularResponsable',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'ImagenResponsable'); ?>
-		<?php echo $form->textField($model,'ImagenResponsable',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+		<?php echo CHtml::submitButton('Buscar'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

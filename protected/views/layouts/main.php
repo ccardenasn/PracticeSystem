@@ -24,7 +24,9 @@
 
 	<div id="header">
 		
-        <div id="logo"><?php echo "<img src=\"images/Logo/sistemapracticas.png\">"; ?></div>
+        <div id="logo">
+			<img src="images/Logo/sistemapracticas.png">
+		</div>
 	</div><!-- header -->
 
 	<div id="mainMbMenu">
