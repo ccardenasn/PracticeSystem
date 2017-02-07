@@ -74,14 +74,14 @@ class DocenteresponsablepracticaController extends Controller
 			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
 			
 			if($model->save()){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-          			$this->refresh();
+				if($file != null){
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+						$this->refresh();
+					}	
 				}
 				$this->redirect(array('view','id'=>$model->RutResponsable));
 			}

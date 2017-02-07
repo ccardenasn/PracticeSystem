@@ -74,14 +74,14 @@ class EstudianteController extends Controller
 			$file=$model->ImagenEstudiante=CUploadedFile::getInstance($model,'ImagenEstudiante');
 			
 			if($model->save()){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenEstudiante->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-          			$this->refresh();
+				if($file != null){
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenEstudiante->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+						$this->refresh();
+					}
 				}
 				$this->redirect(array('view','id'=>$model->RutEstudiante));
 			}
@@ -112,19 +112,17 @@ class EstudianteController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenEstudiante->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-          			$this->refresh();
-				}}
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenEstudiante->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+						$this->refresh();
+					}
+				}
 				$this->redirect(array('view','id'=>$model->RutEstudiante));
 			}
 		}
-		
 		$this->render('update',array(
 			'model'=>$model,
 		));

@@ -93,7 +93,7 @@ class DocentesupervisorpracticaController extends Controller
 			$file=$model->ImagenSupervisor=CUploadedFile::getInstance($model,'ImagenSupervisor');
 			
 			if($model->save()){
-				if($model->ImagenSupervisor != null)
+				if($file != null)
 				{
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
 					{
@@ -118,25 +118,7 @@ class DocentesupervisorpracticaController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	/*public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Docentesupervisorpractica']))
-		{
-			$model->attributes=$_POST['Docentesupervisorpractica'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->RutSupervisor));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}*/
-    
+  
     public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -152,19 +134,17 @@ class DocentesupervisorpracticaController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenSupervisor->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSupervisor/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenSupervisor->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSupervisor/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}
 				$this->redirect(array('view','id'=>$model->RutSupervisor));
 			}
 		}
-		
 		$this->render('update',array(
 			'model'=>$model,
 		));

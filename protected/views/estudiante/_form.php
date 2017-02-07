@@ -5,13 +5,15 @@
 ?>
 
 <div class="form">
+	
+	
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'estudiante-form',
 	'method'=>'post',
 	'enableAjaxValidation'=>true,
 	'enableClientValidation'=>true,
-	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','autoComplete'=>'false'),
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
@@ -32,10 +34,10 @@
 		<?php echo $form->textField($model,'NombreEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreEstudiante'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ClaveEstudiante'); ?>
-		<?php echo $form->textField($model,'ClaveEstudiante',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->passwordField($model,'ClaveEstudiante',array('size'=>45,'maxlength'=>45, 'type'=>'search')); ?>
 		<?php echo $form->error($model,'ClaveEstudiante'); ?>
 	</div>
 

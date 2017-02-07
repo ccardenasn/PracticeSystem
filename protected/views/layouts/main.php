@@ -33,8 +33,7 @@
 		 <?php include_once('FunProfile.php');
             $this->widget('application.extensions.mbmenu.MbMenu',array(
             'items'=>array(
-                array('label'=>'Inicio', 'url'=>array('/site/index')),
-				
+                array('label'=>'Inicio', 'url'=>array('/site/index')),	
                 array('label'=>'Perfil', 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>!Yii::app()->user->isGuest),
                
                 array('label'=>'Administracion',

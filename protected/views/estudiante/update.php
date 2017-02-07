@@ -16,5 +16,6 @@ $this->menu=array(
 );
 ?>
 
+
 <h1>Modificar Estudiante: <?php echo $model->NombreEstudiante; ?></h1>
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,3 +1,4 @@
+<body onload="javascript:loadCreate();">
 <?php
 /* @var $this EstudianteController */
 /* @var $model Estudiante */
@@ -16,3 +17,4 @@ $this->menu=array(
 <h1>Añadir Estudiante</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+</body>

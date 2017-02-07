@@ -74,14 +74,14 @@ class DirectorcarreraController extends Controller
 			$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
 			
 			if($model->save()){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-          			$this->refresh();
+				if($file != null){
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+						$this->refresh();
+					}	
 				}
 				$this->redirect(array('view','id'=>$model->RutDirector));
 			}
