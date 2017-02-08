@@ -6,24 +6,11 @@
 <link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleTable.css">
 <link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleForm.css">
 
-<table id="mainTable" border="2px">
-	<tr>
-		<th>
-			<div id="block_div">
-				<?php
-				include('blockTable.php');
-				?>
-			</div>
-		</th>
-		<th>
-			<div id="table_div">
-				<?php
-				include('tableForm.php');
-				?>
-			</div>
-		</th>
-	</tr>
-</table>
+<div id="table_div">
+	<?php
+	include('tableForm.php');
+	?>
+</div>
 
 <div id="form_div" style="display:none;">
 	<?php

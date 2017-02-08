@@ -14,11 +14,9 @@ function cerrar(){
 }
 
 function obtener(){
-	var info = 'horario='+tableArr;
-	
 	$.ajax({
 		type: 'POST',
 		url: 'saveTable.php',
-		data: info,
+		data: {horario:tableArr},
 	});
 }

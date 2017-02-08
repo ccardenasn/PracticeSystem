@@ -3,15 +3,18 @@ include_once('connect.php');
 
 $horario = $_POST['horario'];
 
-$asignatura = $horario[0][0];
-$condicion = $horario[0][1];
-$dia = $horario[0][2];
-$bloque = $horario[0][3];
-
+for($i=0;$i<count($horario);$i++){
+	$asignatura = $horario[$i][0];
+	$dia = $horario[$i][2];
+	$bloque = $horario[$i][3];
 	
-$query = "insert into timetable(Asignatura,HoraInicio,HoraFin,Dia,Bloque) values('".$asignatura."','09:00','10:30','".$dia."','".$bloque."');";
+	if($asignatura != null){
+		$query = "insert into timetable(RutEstudiante,Asignatura,HoraInicio,HoraFin,Dia,Bloque) values('18016562-2','".$asignatura."','09:00','10:30','".$dia."','".$bloque."');";
+		
+		mysql_query($query,$con);
+	}
+}
 
-mysql_query($query,$con);
 mysql_close($con);
 
 ?>
