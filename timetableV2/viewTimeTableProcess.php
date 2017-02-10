@@ -15,141 +15,149 @@ function getTimeTableData(){
 	return $arr;
 }
 
-function setTimeTableOrder($arr,$i){
-	$result=0;
-	
-	if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 1'){
-		$result = 0;
-	}
-	
-	if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 1'){
-		$result = 1;
-	}
-	
-	if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 1'){
-		$result = 2;
-	}
-	
-	if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 1'){
-		$result = 3;
-	}
-	
-	if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 1'){
-		$result = 4;
-	}
-	
-	if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 2'){
-		$result = 5;
-	}
-	
-	if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 2'){
-		$result = 6;
-	}
-	
-	if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 2'){
-		$result = 7;
-	}
-	
-	if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 2'){
-		$result = 8;
-	}
-	
-	if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 2'){
-		$result = 9;
-	}
-	
-	if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 3'){
-		$result = 10;
-	}
-	
-	if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 3'){
-		$result = 11;
-	}
-	
-	if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 3'){
-		$result = 12;
-	}
-	
-	if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 3'){
-		$result = 13;
-	}
-	
-	if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 3'){
-		$result = 14;
-	}
-	
-	if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 4'){
-		$result = 15;
-	}
-	
-	if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 4'){
-		$result = 16;
-	}
-	
-	if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 4'){
-		$result = 17;
-	}
-	
-	if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 4'){
-		$result = 18;
-	}
-	
-	if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 4'){
-		$result = 19;
-	}
-	
-	if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 5'){
-		$result = 20;
-	}
-	
-	if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 5'){
-		$result = 21;
-	}
-	
-	if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 5'){
-		$result = 22;
-	}
-	
-	if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 5'){
-		$result = 23;
-	}
-	
-	if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 5'){
-		$result = 24;
-	}
-	
-	if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 6'){
-		$result = 25;
-	}
-	
-	if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 6'){
-		$result = 26;
-	}
-	
-	if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 6'){
-		$result = 27;
-	}
-	
-	if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 6'){
-		$result = 28;
-	}
-	
-	if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 6'){
-		$result = 29;
-	}
-	
-	return $result;
-}
-
 function orderTimeTableData(){
 	$arr = getTimeTableData();
-	$orderedData = array();
+	$orderedData = array(30);
+	
+	for($j=0;$j<30;$j++){
+		$orderedData[$j] = "Asignar";
+	}
 	
 	for($i=0;$i<count($arr);$i++){
-		$index = setTimeTableOrder($arr,$i);
-		$orderedData[$index] = $arr[$i];
+		
+		if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 1'){
+			$orderedData[0] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 1'){
+			$orderedData[1] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 1'){
+			$orderedData[2] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 1'){
+			$orderedData[3] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 1'){
+			$orderedData[4] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 2'){
+			$orderedData[5] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 2'){
+			$orderedData[6] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 2'){
+			$orderedData[7] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 2'){
+			$orderedData[8] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 2'){
+			$orderedData[9] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 3'){
+			$orderedData[10] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 3'){
+			$orderedData[11] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 3'){
+			$orderedData[12] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 3'){
+			$orderedData[13] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 3'){
+			$orderedData[14] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 4'){
+			$orderedData[15] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 4'){
+			$orderedData[16] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 4'){
+			$orderedData[17] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 4'){
+			$orderedData[18] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 4'){
+			$orderedData[19] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 5'){
+			$orderedData[20] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 5'){
+			$orderedData[21] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 5'){
+			$orderedData[22] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 5'){
+			$orderedData[23] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 5'){
+			$orderedData[24] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Lunes' && $arr[$i]['Bloque'] == 'Bloque 6'){
+			$orderedData[25] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Martes' && $arr[$i]['Bloque'] == 'Bloque 6'){
+			$orderedData[26] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Miercoles' && $arr[$i]['Bloque'] == 'Bloque 6'){
+			$orderedData[27] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Jueves' && $arr[$i]['Bloque'] == 'Bloque 6'){
+			$orderedData[28] = $arr[$i];
+		}
+		
+		if($arr[$i]['Dia'] == 'Viernes' && $arr[$i]['Bloque'] == 'Bloque 6'){
+			$orderedData[29] = $arr[$i];
+		}
 	}
 	
 	return $orderedData;
 }
+
+function getSubjectCellData($viewSubjects,$index){
+	$resultSubject = "";
+	if($viewSubjects[$index] != "Asignar"){
+		$resultSubject = $viewSubjects[$index]['Asignatura'];
+	}else{
+		$resultSubject = $viewSubjects[$index];
+	}
+	
+	return $resultSubject;
+}
+
 ?>
