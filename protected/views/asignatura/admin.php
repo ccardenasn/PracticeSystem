@@ -46,7 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'NombreAsignatura',
-		'Semestre_CodSemestre',
+		array('name'=>'Semestre_CodSemestre','value'=>'$data->semestreCodSemestre->NombreSemestre','filter'=>CHtml::listData(Semestre::model()->findAll(),'CodSemestre','NombreSemestre')),
 		array(
 			'class'=>'CButtonColumn',
 		),

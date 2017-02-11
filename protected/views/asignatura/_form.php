@@ -21,14 +21,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'NombreAsignatura'); ?>
-		<?php echo $form->textField($model,'NombreAsignatura',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'NombreAsignatura',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'NombreAsignatura'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'Semestre_CodSemestre'); ?>
-		<?php echo $form->dropDownList($model,'Semestre_CodSemestre',CHtml::listData(Semestre::model()->findAll(),'CodSemestre','NombreSemestre'));?>
-        <?php echo $form->error($model,'Semestre_CodSemestre'); ?>
+		<?php echo $form->textField($model,'Semestre_CodSemestre'); ?>
+		<?php echo $form->error($model,'Semestre_CodSemestre'); ?>
 	</div>
 
 	<div class="row buttons">

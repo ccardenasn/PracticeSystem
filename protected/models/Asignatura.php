@@ -9,6 +9,7 @@
  *
  * The followings are the available model relations:
  * @property Semestre $semestreCodSemestre
+ * @property Horario[] $horarios
  */
 class Asignatura extends CActiveRecord
 {
@@ -30,7 +31,7 @@ class Asignatura extends CActiveRecord
 		return array(
 			array('NombreAsignatura, Semestre_CodSemestre', 'required'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
-			array('NombreAsignatura', 'length', 'max'=>45),
+			array('NombreAsignatura', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('NombreAsignatura, Semestre_CodSemestre', 'safe', 'on'=>'search'),
@@ -46,6 +47,7 @@ class Asignatura extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'semestreCodSemestre' => array(self::BELONGS_TO, 'Semestre', 'Semestre_CodSemestre'),
+			'horarios' => array(self::HAS_MANY, 'Horario', 'Asignatura_NombreAsignatura'),
 		);
 	}
 
