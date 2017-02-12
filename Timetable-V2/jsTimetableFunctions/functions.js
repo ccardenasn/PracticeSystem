@@ -16,7 +16,7 @@ function cerrar(){
 function obtener(){
 	$.ajax({
 		type: 'POST',
-		url: 'saveTable.php',
+		url: 'Timetable-V2/saveTable.php',
 		data: {horario:tableArr},
 	});
 }

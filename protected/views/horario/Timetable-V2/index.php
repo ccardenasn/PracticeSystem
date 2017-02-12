@@ -1,10 +1,19 @@
-<script type='text/javascript' src="jsTimetableFunctions/jquery.min.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/dependentdropdown.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/conditioncells.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/changecells.js"></script>
-<script type='text/javascript' src="jsTimetableFunctions/functions.js"></script>
-<link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleTable.css">
-<link rel="stylesheet" type="text/css" href="cssTimetableStyles/styleForm.css">
+<?php
+
+$base = Yii::app()->baseUrl; 
+$js = Yii::app()->getClientScript();
+$js->registerScriptFile($base.'/Timetable-V2/jsTimetableFunctions/dependentdropdown.js');
+$js->registerScriptFile($base.'/Timetable-V2/jsTimetableFunctions/conditioncells.js');
+$js->registerScriptFile($base.'/Timetable-V2/jsTimetableFunctions/changecells.js');
+$js->registerScriptFile($base.'/Timetable-V2/jsTimetableFunctions/functions.js');
+$js->registerCssFile($base.'/Timetable-V2/cssTimetableStyles/styleTable.css');
+$js->registerCssFile($base.'/Timetable-V2/cssTimetableStyles/styleForm.css');
+
+echo '<script type="text/javascript">
+	var rut = "'.$rutStudent.'"; 
+</script>';
+
+?>
 
 <div id="table_div">
 	<?php

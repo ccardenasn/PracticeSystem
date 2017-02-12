@@ -153,6 +153,6 @@ function cambiar(){
 }
 
 function addArrItem(index,subject){
-	var valueArr = Array(subject,condicion,day,block);
+	var valueArr = Array(rut,subject,condicion,day,block);
 	tableArr[index] = valueArr;
 }
