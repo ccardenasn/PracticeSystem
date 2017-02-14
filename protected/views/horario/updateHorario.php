@@ -10,5 +10,5 @@ $nameStudent = nameQuery($rutStudent);
 <h2>Rut: <?php echo $rutStudent; ?></h2>
 
 <div id="data">
-   <?php $this->renderPartial('timetable/viewTable',array('rutStudent' => $rutStudent)); ?>
+   <?php $this->renderPartial('Timetable-V2/viewTable',array('rutStudent' => $rutStudent)); ?>
 </div>

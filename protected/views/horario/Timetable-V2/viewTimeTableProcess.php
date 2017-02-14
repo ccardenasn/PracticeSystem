@@ -1,10 +1,10 @@
 <?php
 
-function getTimeTableData(){
+function getTimeTableData($rutStudent){
 	include_once("connect.php");
 	$arr = array();
-	$qr = "select * from timetable where RutEstudiante = '18016562-2';";
-	$q =mysql_query($qr,$con);
+	$qr = "select * from horario where Estudiante_RutEstudiante = '".$rutStudent."';";
+	$q = mysql_query($qr,$con);
 	
 	while($row = mysql_fetch_assoc($q)){
 		$arr[] = $row;
@@ -15,8 +15,8 @@ function getTimeTableData(){
 	return $arr;
 }
 
-function orderTimeTableData(){
-	$arr = getTimeTableData();
+function orderTimeTableData($rutStudent){
+	$arr = getTimeTableData($rutStudent);
 	$orderedData = array(30);
 	
 	for($j=0;$j<30;$j++){
@@ -150,14 +150,16 @@ function orderTimeTableData(){
 }
 
 function getSubjectCellData($viewSubjects,$index){
+	
 	$resultSubject = "";
 	if($viewSubjects[$index] != "Asignar"){
-		$resultSubject = $viewSubjects[$index]['Asignatura'];
+		$resultSubject = $viewSubjects[$index]['Asignatura_NombreAsignatura'];
 	}else{
 		$resultSubject = $viewSubjects[$index];
 	}
 	
-	return $resultSubject;
+	$encodedResult = Encoding::toUTF8($resultSubject);
+	return $encodedResult;
 }
 
 ?>
