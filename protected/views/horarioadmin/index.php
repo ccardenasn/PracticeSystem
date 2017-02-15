@@ -1,20 +1,26 @@
 <?php
-/* @var $this HorarioadminController */
-/* @var $dataProvider CActiveDataProvider */
-
 $this->breadcrumbs=array(
-	'Horarioadmins',
-);
-
-$this->menu=array(
-	array('label'=>'Create Horarioadmin', 'url'=>array('create')),
-	array('label'=>'Manage Horarioadmin', 'url'=>array('admin')),
+	'Horarios',
 );
 ?>
 
-<h1>Horarioadmins</h1>
+<h1>Horarios</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<p><br/>
+<p><br/>
+	
+<?php
+$this->widget('ext.verticalmenu2levels.VerticalMenu2Levels',
+			  array(
+				  "menu"=>array(
+					  array("url"=>array(),"label"=>'Opciones de Horarios',
+							array("url"=>array("route"=>"horarioadmin/admin"),"label"=>"Administración de Horarios"),
+							array("url"=>array("route"=>"bloque/batchUpdate"),"label"=>"Configuración de Bloques"),
+							array("url"=>array("route"=>"semestre"),"label"=>"Semestres"),
+							array("url"=>array("route"=>"asignatura"),"label"=>"Asignaturas"),
+						   ),
+					 
+				  ),
+			  )
+		);
+?>

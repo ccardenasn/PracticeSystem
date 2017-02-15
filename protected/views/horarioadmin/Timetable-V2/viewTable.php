@@ -13,10 +13,10 @@ include('findBlocks.php');
 include('viewTimeTableProcess.php');
 include('ForceUTF/Encoding.php');
 echo '<script type="text/javascript">
-	var rut = "'.$rutStudent.'"; 
+	var rut = "'.$model->Estudiante_RutEstudiante.'"; 
 </script>';
 
-$viewSubjects = orderTimeTableData($rutStudent);
+$viewSubjects = orderTimeTableData($model->Estudiante_RutEstudiante);
 
 $hour = hourColumns();
 ?>
