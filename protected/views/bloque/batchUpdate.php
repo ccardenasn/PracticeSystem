@@ -3,15 +3,14 @@
 /* @var $model Bloque */
 
 $this->breadcrumbs=array(
-	'Bloques'=>array('index'),
+	'Horarios'=>array('horarioadmin/index'),
 	'Configuración de Bloques',
 );
 
 $this->menu=array(
-	array('label'=>'List Bloque', 'url'=>array('index')),
-	array('label'=>'Create Bloque', 'url'=>array('create')),
-	array('label'=>'View Bloque', 'url'=>array('view')),
-	array('label'=>'Manage Bloque', 'url'=>array('admin')),
+	array('label'=>'Horarios', 'url'=>array('horarioadmin/index')),
+	array('label'=>'Semestres', 'url'=>array('semestre/index')),
+	array('label'=>'Asignaturas', 'url'=>array('asignatura/index')),
 );
 ?>
 

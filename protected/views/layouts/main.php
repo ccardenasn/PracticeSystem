@@ -48,15 +48,8 @@
                           array('label'=>'Secretaria','url'=>array('/secretariacarrera')),
                           array('label'=>'Docente Responsable de Practica','url'=>array('/docenteresponsablepractica')),
                           array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica')),
-						  array('label'=>'Semestre','url'=>array('/semestre')),
-						  array('label'=>'Asignaturas','url'=>array('/asignatura')),
-						  array('label'=>'Horario',
-								'items'=>array(
-									array('label'=>'Administración de Horarios','url'=>array('/horarioAdmin/admin')),
-									array('label'=>'Bloques','url'=>array('/bloque/batchUpdate')),
-									),
-							   ),
-						  array('label'=>'Graficos', 'url'=>array('/graphData')),
+						  array('label'=>'Horario','url'=>array('/horarioadmin')),
+						  array('label'=>'Estadísticas', 'url'=>array('/graphData')),
                     ),
                 ),
                 array('label'=>'Gestion Organizativa',
@@ -88,11 +81,12 @@
                 
             ),
     )); ?>
+	
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
+	<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+	'links'=>$this->breadcrumbs,
+	'homeLink' => CHtml::link('Inicio', Yii::app()->homeUrl),)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
 	<?php echo $content; ?>
