@@ -1,3 +1,9 @@
+<?php
+$this->breadcrumbs=array(
+	'Estadisticas',
+);
+?>
+
 <h1>Estadísticas</h1>
 
 <p><br/>

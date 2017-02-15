@@ -8,6 +8,12 @@
 </div>
 
 <?php
+
+$this->breadcrumbs=array(
+	'Estadísticas'=>array('index'),
+	'Gráficos',
+);
+
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
 	array('label'=>'Cantidad de Estudiantes En Practica Por Centro', 'url'=>array('graphdata/graph_a')),

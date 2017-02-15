@@ -8,6 +8,12 @@
 </div>
 
 <?php
+
+$this->breadcrumbs=array(
+	'Estadísticas'=>array('index'),
+	'Gráficos',
+);
+
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
 	array('label'=>'Prácticas Realizadas Por Centro', 'url'=>array('graphdata/graph_b')),
