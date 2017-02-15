@@ -3,13 +3,15 @@
 /* @var $model Horarioadmin */
 
 $this->breadcrumbs=array(
-	'Horarioadmins'=>array('index'),
-	'Manage',
+	'Horarios'=>array('index'),
+	'Administración de Horarios',
 );
 
 $this->menu=array(
-	array('label'=>'List Horarioadmin', 'url'=>array('index')),
-	array('label'=>'Create Horarioadmin', 'url'=>array('create')),
+	array('label'=>'Horarios', 'url'=>array('index')),
+	array('label'=>'Bloques', 'url'=>array('bloque/batchUpdate')),
+	array('label'=>'Semestres', 'url'=>array('semestre/index')),
+	array('label'=>'Asignaturas', 'url'=>array('asignatura/index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,14 +28,26 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Horarioadmins</h1>
+<h1>Administración de Horarios</h1>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+<br>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<ul>
+	<h4>Opciones de Lista</h4>
+	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar y/o modificar información de un horario seleccionado en la lista.</li>
+	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de un horario seleccionado en la lista.</li>
+</ul>
+
+<ul>
+	<h4>Opciones de Búsqueda</h4>
+	<li>Para efectuar búsquedas de datos escriba en los campos de texto situados debajo de los títulos de cada columna correspondiente para filtrar información.</li>
+	<li>Haga click en "Búsqueda Avanzada" para mostrar u ocultar opciones para encontrar un horario específico.</li>
+	<li>Escriba sobre los campos de texto de acuerdo a los criterios de búsqueda del usuario.</li>
+	<li>Presione el botón "Buscar" para iniciar la búsqueda.</li>
+	<li>Los resultados se mostrarán en la tabla inferior.</li>
+</ul>
+
+<?php echo CHtml::link('Búsqueda Avanzada','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -42,13 +56,16 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'horarioadmin-grid',
+	'summaryText'=>'Viendo {start}-{end} de {count} resultados',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'CodHorario',
 		'Estudiante_RutEstudiante',
+		array('name'=>'Estudiante_RutEstudiante','value'=>'$data->estudianteRutEstudiante->NombreEstudiante'),
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{delete}',
 		),
 	),
 )); ?>
