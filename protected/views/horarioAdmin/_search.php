@@ -1,6 +1,6 @@
 <?php
-/* @var $this HorarioAdminController */
-/* @var $model HorarioAdmin */
+/* @var $this HorarioadminController */
+/* @var $model Horarioadmin */
 /* @var $form CActiveForm */
 ?>
 
@@ -19,11 +19,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'Estudiante_RutEstudiante'); ?>
 		<?php echo $form->textField($model,'Estudiante_RutEstudiante',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'tablaHorario'); ?>
-		<?php echo $form->textArea($model,'tablaHorario',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row buttons">

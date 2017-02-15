@@ -1,24 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "horario".
+ * This is the model class for table "horarioadmin".
  *
- * The followings are the available columns in table 'horario':
+ * The followings are the available columns in table 'horarioadmin':
  * @property integer $CodHorario
  * @property string $Estudiante_RutEstudiante
- * @property string $tablaHorario
  *
  * The followings are the available model relations:
+ * @property Horario[] $horarios
  * @property Estudiante $estudianteRutEstudiante
  */
-class HorarioAdmin extends CActiveRecord
+class Horarioadmin extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'horario';
+		return 'horarioadmin';
 	}
 
 	/**
@@ -31,10 +31,9 @@ class HorarioAdmin extends CActiveRecord
 		return array(
 			array('Estudiante_RutEstudiante', 'required'),
 			array('Estudiante_RutEstudiante', 'length', 'max'=>45),
-			array('tablaHorario', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodHorario, Estudiante_RutEstudiante, tablaHorario', 'safe', 'on'=>'search'),
+			array('CodHorario, Estudiante_RutEstudiante', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,6 +45,7 @@ class HorarioAdmin extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'horarios' => array(self::HAS_MANY, 'Horario', 'HorarioAdmin_CodHorario'),
 			'estudianteRutEstudiante' => array(self::BELONGS_TO, 'Estudiante', 'Estudiante_RutEstudiante'),
 		);
 	}
@@ -58,7 +58,6 @@ class HorarioAdmin extends CActiveRecord
 		return array(
 			'CodHorario' => 'Cod Horario',
 			'Estudiante_RutEstudiante' => 'Estudiante Rut Estudiante',
-			'tablaHorario' => 'Tabla Horario',
 		);
 	}
 
@@ -82,7 +81,6 @@ class HorarioAdmin extends CActiveRecord
 
 		$criteria->compare('CodHorario',$this->CodHorario);
 		$criteria->compare('Estudiante_RutEstudiante',$this->Estudiante_RutEstudiante,true);
-		$criteria->compare('tablaHorario',$this->tablaHorario,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -93,7 +91,7 @@ class HorarioAdmin extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return HorarioAdmin the static model class
+	 * @return Horarioadmin the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

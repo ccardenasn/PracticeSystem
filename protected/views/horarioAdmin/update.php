@@ -1,21 +1,21 @@
 <?php
-/* @var $this HorarioAdminController */
-/* @var $model HorarioAdmin */
+/* @var $this HorarioadminController */
+/* @var $model Horarioadmin */
 
 $this->breadcrumbs=array(
-	'Horario Admins'=>array('index'),
+	'Horarioadmins'=>array('index'),
 	$model->CodHorario=>array('view','id'=>$model->CodHorario),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List HorarioAdmin', 'url'=>array('index')),
-	array('label'=>'Create HorarioAdmin', 'url'=>array('create')),
-	array('label'=>'View HorarioAdmin', 'url'=>array('view', 'id'=>$model->CodHorario)),
-	array('label'=>'Manage HorarioAdmin', 'url'=>array('admin')),
+	array('label'=>'List Horarioadmin', 'url'=>array('index')),
+	array('label'=>'Create Horarioadmin', 'url'=>array('create')),
+	array('label'=>'View Horarioadmin', 'url'=>array('view', 'id'=>$model->CodHorario)),
+	array('label'=>'Manage Horarioadmin', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update HorarioAdmin <?php echo $model->CodHorario; ?></h1>
+<h1>Update Horarioadmin <?php echo $model->CodHorario; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

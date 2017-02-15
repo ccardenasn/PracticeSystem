@@ -1,6 +1,6 @@
 <?php
-/* @var $this HorarioAdminController */
-/* @var $data HorarioAdmin */
+/* @var $this HorarioadminController */
+/* @var $data Horarioadmin */
 ?>
 
 <div class="view">
@@ -11,10 +11,6 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Estudiante_RutEstudiante')); ?>:</b>
 	<?php echo CHtml::encode($data->Estudiante_RutEstudiante); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('tablaHorario')); ?>:</b>
-	<?php echo CHtml::encode($data->tablaHorario); ?>
 	<br />
 
 

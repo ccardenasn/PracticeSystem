@@ -1,13 +1,13 @@
 <?php
-/* @var $this HorarioAdminController */
-/* @var $model HorarioAdmin */
+/* @var $this HorarioadminController */
+/* @var $model Horarioadmin */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'horario-admin-form',
+	'id'=>'horarioadmin-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -23,12 +23,6 @@
 		<?php echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
 		<?php echo $form->textField($model,'Estudiante_RutEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Estudiante_RutEstudiante'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tablaHorario'); ?>
-		<?php echo $form->textArea($model,'tablaHorario',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'tablaHorario'); ?>
 	</div>
 
 	<div class="row buttons">

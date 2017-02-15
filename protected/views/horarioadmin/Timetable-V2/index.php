@@ -15,24 +15,20 @@ echo '<script type="text/javascript">
 
 ?>
 
-<body onload="javascript:loadCreate();">
-	<div id="table_div">
-		<?php
-		include('tableForm.php');
-		?>
-	</div>
-	
-	<div id="form_div" style="display:none;">
-		<?php
-		include('subjectForm.php');
-		?>
-	</div>
-	
-	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
-	</div>
-</body>
+<div id="table_div">
+	<?php
+	include('tableForm.php');
+	?>
+</div>
 
+<div id="form_div" style="display:none;">
+	<?php
+	include('subjectForm.php');
+	?>
+</div>
 
+<div id=btnSave_div>
+	<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
+</div>
 
 

@@ -1,6 +1,6 @@
 <?php
 
-class HorarioAdminController extends Controller
+class HorarioadminController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -51,7 +51,7 @@ class HorarioAdminController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('updateHorario',array(
+		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
 	}
@@ -62,14 +62,14 @@ class HorarioAdminController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new HorarioAdmin;
+		$model=new Horarioadmin;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['HorarioAdmin']))
+		if(isset($_POST['Horarioadmin']))
 		{
-			$model->attributes=$_POST['HorarioAdmin'];
+			$model->attributes=$_POST['Horarioadmin'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->CodHorario));
 		}
@@ -91,9 +91,9 @@ class HorarioAdminController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['HorarioAdmin']))
+		if(isset($_POST['Horarioadmin']))
 		{
-			$model->attributes=$_POST['HorarioAdmin'];
+			$model->attributes=$_POST['Horarioadmin'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->CodHorario));
 		}
@@ -118,14 +118,25 @@ class HorarioAdminController extends Controller
 	}
 
 	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
+	{
+		$dataProvider=new CActiveDataProvider('Horarioadmin');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+
+	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new HorarioAdmin('search');
+		$model=new Horarioadmin('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['HorarioAdmin']))
-			$model->attributes=$_GET['HorarioAdmin'];
+		if(isset($_GET['Horarioadmin']))
+			$model->attributes=$_GET['Horarioadmin'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -136,12 +147,12 @@ class HorarioAdminController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return HorarioAdmin the loaded model
+	 * @return Horarioadmin the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=HorarioAdmin::model()->findByPk($id);
+		$model=Horarioadmin::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -149,11 +160,11 @@ class HorarioAdminController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param HorarioAdmin $model the model to be validated
+	 * @param Horarioadmin $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='horario-admin-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='horarioadmin-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
