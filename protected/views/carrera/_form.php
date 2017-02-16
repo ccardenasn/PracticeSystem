@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Región'); ?>
+		<?php echo $form->labelEx($model,'Region_codRegion'); ?>
 		<?php echo $form->dropDownList($model,'Region_codRegion',CHtml::listData(Region::model()->findAll(),'codRegion','NombreRegion'),
 				array(
 					'ajax'=>array(
@@ -57,7 +57,7 @@
     
 	<?php //campo dropdownlist Provincia?>
 	<div class="row">
-		<?php echo $form->labelEx($model,'Provincia'); ?>
+		<?php echo $form->labelEx($model,'Provincia_codProvincia'); ?>
 		<?php 
 		$lista_dos=array();
 		if(isset($model->Provincia_codProvincia)){

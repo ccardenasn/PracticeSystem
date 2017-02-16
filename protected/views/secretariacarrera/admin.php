@@ -3,8 +3,8 @@
 /* @var $model Secretariacarrera */
 
 $this->breadcrumbs=array(
-	'Secretariacarreras'=>array('index'),
-	'Manage',
+	'Secretaria de Carrera'=>array('index'),
+	'Administración',
 );
 
 $this->menu=array(
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Secretaria de Carrera</h1><br>
+<h1>Administración de Secretaria de Carrera</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>

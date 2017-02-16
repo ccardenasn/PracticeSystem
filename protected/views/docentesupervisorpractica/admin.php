@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Docente Supervisor de Practicas'=>array('index'),
-	'Administrar',
+	'Administración',
 );
 
 $this->menu=array(
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Docentes Supervisores de Practicas</h1><br>
+<h1>Administración de Docentes Supervisores de Prácticas</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>

@@ -39,6 +39,6 @@
 		</tr>
 		<?php endforeach; ?>
 	</table>
-	<?php echo CHtml::submitButton('Save'); ?>
+	<?php echo CHtml::submitButton('Guardar Cambios'); ?>
 	<?php echo CHtml::endForm(); ?>
 </div><!-- form -->

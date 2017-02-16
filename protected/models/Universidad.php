@@ -68,9 +68,9 @@ class Universidad extends CActiveRecord
 			'Sede' => 'Sede',
 			'Campus' => 'Campus',
 			'Facultad' => 'Facultad',
-			'Region_codRegion' => 'Region Cod Region',
-			'Provincia_codProvincia' => 'Provincia Cod Provincia',
-			'Ciudad_codCiudad' => 'Ciudad Cod Ciudad',
+			'Region_codRegion' => 'Región',
+			'Provincia_codProvincia' => 'Provincia',
+			'Ciudad_codCiudad' => 'Ciudad',
 		);
 	}
 
