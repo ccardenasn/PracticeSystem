@@ -8,15 +8,29 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Menciones', 'url'=>array('index')),
-	array('label'=>'Añadir Mencion', 'url'=>array('create')),
-	array('label'=>'Modificar Mencion', 'url'=>array('update', 'id'=>$model->NombreMencion)),
-	array('label'=>'Eliminar Mencion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombreMencion),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar Menciones', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->NombreMencion)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombreMencion),'confirm'=>'¿Esta seguro de querer borrar este elemento?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Mencion: <?php echo $model->NombreMencion; ?></h1>
+<h1>Mención: <?php echo $model->NombreMencion; ?></h1><br>
+
+<ul>
+	<li>En esta sección se pueden visualizar todos los detalles de la mención seleccionada.</li>
+</ul>
+
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Haga click en "Añadir" para agregar una nueva mención a la lista.</li>
+	<li>Haga click en "Actualizar" para modificar información de la mención.</li>
+	<li>Haga click en "Eliminar" para borrar toda la información de la mención.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de las menciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para regresar al índice de menciones haga click en "Lista".</li>
+</ul>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

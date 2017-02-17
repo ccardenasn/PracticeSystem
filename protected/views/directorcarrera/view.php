@@ -8,13 +8,19 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Directores de Carrera', 'url'=>array('index')),
-	array('label'=>'Añadir Director de Carrera', 'url'=>array('create')),
-	array('label'=>'Modificar Director de Carrera', 'url'=>array('update', 'id'=>$model->RutDirector)),
-	array('label'=>'Eliminar Director de Carrera', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutDirector),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar Directores de Carrera', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutDirector)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutDirector),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
+
+<h1>Detalles </h1><br>
+
+<ul>
+	<li>En esta sección se puede visualizar toda la información de un director seleccionado.</li>
+</ul>
 
 <h1>Director de Carrera: <?php echo $model->NombreDirector; ?></h1>
 
@@ -34,3 +40,16 @@ $this->menu=array(
             ),
 	),
 )); ?>
+
+<br>
+<br>
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Haga click en "Añadir" para agregar un nuevo director a la lista.</li>
+	<li>Haga click en "Actualizar" para modificar información de director.</li>
+	<li>Haga click en "Eliminar" para borrar toda la información de director.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de directores existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para regresar al índice de menciones haga click en "Lista".</li>
+</ul><br>
+

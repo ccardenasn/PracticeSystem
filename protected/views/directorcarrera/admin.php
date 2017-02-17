@@ -4,12 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Director de Carrera'=>array('index'),
-	'Administrar',
+	'Administración',
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Directores de Carrera', 'url'=>array('index')),
-	array('label'=>'Añadir Director de Carrera', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

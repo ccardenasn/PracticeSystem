@@ -8,11 +8,17 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Menciones', 'url'=>array('index')),
-	array('label'=>'Administrar Menciones', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Añadir Mencion</h1>
+<h1>Añadir Mención</h1><br>
+
+<ul>
+	<h4>Instrucciones</h4>
+	<li>Para regresar al índice de menciones haga click en la opción "Lista" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de las menciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+</ul>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

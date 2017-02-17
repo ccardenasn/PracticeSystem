@@ -53,7 +53,7 @@ class Mencion extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'NombreMencion' => 'Nombre Mencion',
+			'NombreMencion' => 'Nombre Mención',
 		);
 	}
 

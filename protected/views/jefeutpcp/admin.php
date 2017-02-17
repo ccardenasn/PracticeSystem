@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Jefe UTP CP'=>array('index'),
-	'Administrar',
+	'Administración',
 );
 
 $this->menu=array(
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Jefe UTP CP</h1><br>
+<h1>Administración de Jefes UTP CP</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>

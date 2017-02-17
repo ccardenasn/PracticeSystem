@@ -3,8 +3,8 @@
 /* @var $model Configuracionpractica */
 
 $this->breadcrumbs=array(
-	'Configuracion de Practicas'=>array('index'),
-	'Administrar',
+	'Configuración de Practicas'=>array('index'),
+	'Administración',
 );
 
 $this->menu=array(
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Practicas</h1><br>
+<h1>Administración de Practicas</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>

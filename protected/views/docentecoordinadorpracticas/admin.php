@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Docentes Coordinadores de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Docente Coordinador de Practicas', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Docente Coordinador de Practicas</h1><br>
+<h1>Administración de Docente Coordinador de Practicas</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>

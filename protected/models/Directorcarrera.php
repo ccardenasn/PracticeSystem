@@ -70,7 +70,7 @@ class Directorcarrera extends CActiveRecord
 			'NombreDirector' => 'Nombre',
 			'ClaveDirector' => 'Clave',
 			'MailDirector' => 'Mail',
-			'TelefonoDirector' => 'Telefono',
+			'TelefonoDirector' => 'Teléfono',
 			'CelularDirector' => 'Celular',
 			'ImagenDirector' => 'Imagen',
 		);

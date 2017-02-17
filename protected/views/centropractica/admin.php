@@ -3,12 +3,12 @@
 /* @var $model Centropractica */
 
 $this->breadcrumbs=array(
-	'Centro de Practica'=>array('index'),
-	'Administrar',
+	'Centros de Práctica'=>array('index'),
+	'Administración',
 );
 
 $this->menu=array(
-	array('label'=>'List de Centros de Practica', 'url'=>array('index')),
+	array('label'=>'Lista de Centros de Practica', 'url'=>array('index')),
 	array('label'=>'Añadir Centro de Practica', 'url'=>array('create')),
 );
 
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Centros de Practica</h1><br>
+<h1>Administración de Centros de Practica</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>
