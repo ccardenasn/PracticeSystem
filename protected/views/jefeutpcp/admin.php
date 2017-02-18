@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Jefes UTP CP', 'url'=>array('index')),
-	array('label'=>'Añadir Jefe UTP CP', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

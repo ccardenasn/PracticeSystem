@@ -66,11 +66,11 @@ class Configuracionpractica extends CActiveRecord
 	{
 		return array(
 			'NombrePractica' => 'Nombre de Práctica',
-			'DescripcionPractica' => 'Descripcion',
-			'FechaPractica' => 'Fecha',
+			'DescripcionPractica' => 'Descripción',
+			'FechaPractica' => 'Año',
 			'SemestrePractica' => 'Semestre',
-			'NumeroSesionesPractica' => 'Numero Sesiones',
-			'NumeroHorasPractica' => 'Numero Horas',
+			'NumeroSesionesPractica' => 'Número de Sesiones',
+			'NumeroHorasPractica' => 'Número de Horas',
 			'DocenteCoordinadorPracticas_RutCoordinador' => 'Docente Coordinador de Prácticas',
 			'DocenteResponsablePractica_RutResponsable' => 'Docente Responsable de Prácticas',
 		);

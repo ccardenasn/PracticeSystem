@@ -82,7 +82,7 @@ class Profesorguiacp extends CActiveRecord
 			'CursoProfGuiaCP' => 'Curso',
 			'ProfesorJefeProfGuiaCP' => 'Profesor Jefe',
 			'MailProfGuiaCP' => 'Mail',
-			'TelefonoProfGuiaCP' => 'Telefono',
+			'TelefonoProfGuiaCP' => 'Teléfono',
 			'CelularProfGuiaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ImagenProfGuiaCP' => 'Imagen',

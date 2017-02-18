@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Profesores Coordinadores de Practicas CP', 'url'=>array('index')),
-	array('label'=>'Añadir Profesor Coordinador de Practicas CP', 'url'=>array('create')),
-	array('label'=>'Modificar Profesor Coordinador de Practicas CP', 'url'=>array('update', 'id'=>$model->RutProfCoordGuiaCp)),
-	array('label'=>'Eliminar Profesor Coordinador de Practicas CP', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutProfCoordGuiaCp),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar Profesor Coordinador de Practicas CP', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutProfCoordGuiaCp)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutProfCoordGuiaCp),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
@@ -34,3 +34,15 @@ $this->menu=array(
             ),
 	),
 )); ?>
+
+<br>
+<br>
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Haga click en "Añadir" para agregar un nuevo coordinador cp a la lista.</li>
+	<li>Haga click en "Actualizar" para modificar información de coordinador cp.</li>
+	<li>Haga click en "Eliminar" para borrar toda la información de coordinador cp.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de coordinador cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para regresar al índice de coordinadores cp haga click en "Lista".</li>
+</ul><br>

@@ -3,16 +3,16 @@
 /* @var $model Configuracionpractica */
 
 $this->breadcrumbs=array(
-	'Configuracion de Practicas'=>array('index'),
+	'Configuración de Prácticas'=>array('index'),
 	$model->NombrePractica,
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Practica', 'url'=>array('create')),
-	array('label'=>'Modificar Practica', 'url'=>array('update', 'id'=>$model->NombrePractica)),
-	array('label'=>'Eliminar Practica', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombrePractica),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar Practica', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->NombrePractica)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombrePractica),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
@@ -31,3 +31,15 @@ $this->menu=array(
 		array('name'=>'Docente Responsable de Practica','value'=>$model->DocenteResponsablePractica_RutResponsable),
 	),
 )); ?>
+
+<br>
+<br>
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Haga click en "Añadir" para agregar un nueva práctica a la lista.</li>
+	<li>Haga click en "Actualizar" para modificar información de práctica.</li>
+	<li>Haga click en "Eliminar" para borrar toda la información de práctica.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de prácticas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para regresar al índice de prácticas haga click en "Lista".</li>
+</ul><br>

@@ -74,7 +74,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 			'RutProfCoordGuiaCp' => 'Rut',
 			'NombreProfCoordGuiaCP' => 'Nombre',
 			'MailProfCoordGuiaCP' => 'Mail',
-			'TelefonoProfCoordGuiaCP' => 'Telefono',
+			'TelefonoProfCoordGuiaCP' => 'Teléfono',
 			'CelularProfCoordGuiaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ImagenProfCoordGuiaCP' => 'Imagen',

@@ -3,13 +3,13 @@
 /* @var $model Configuracionpractica */
 
 $this->breadcrumbs=array(
-	'Configuración de Practicas'=>array('index'),
+	'Configuración de Prácticas'=>array('index'),
 	'Administración',
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Practica', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administración de Practicas</h1><br>
+<h1>Administración de Prácticas</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>
