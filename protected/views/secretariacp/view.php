@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Secretarias CP', 'url'=>array('index')),
-	array('label'=>'Añadir Secretaria CP', 'url'=>array('create')),
-	array('label'=>'Modificar Secretaria CP', 'url'=>array('update', 'id'=>$model->RutSecretariaCP)),
-	array('label'=>'Eliminar Secretaria CP', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutSecretariaCP),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar Secretarias CP', 'url'=>array('admin')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutSecretariaCP)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutSecretariaCP),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
 );
 ?>
 
@@ -34,3 +34,15 @@ $this->menu=array(
             ),
 	),
 )); ?>
+
+<br>
+<br>
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Haga click en "Añadir" para agregar un nuevo funcionario a la lista.</li>
+	<li>Haga click en "Actualizar" para modificar información de funcionario.</li>
+	<li>Haga click en "Eliminar" para borrar toda la información de funcionario.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de funcionarios existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para regresar al índice de funcionarios haga click en "Lista".</li>
+</ul><br>

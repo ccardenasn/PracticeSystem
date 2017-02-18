@@ -74,7 +74,7 @@ class Secretariacp extends CActiveRecord
 			'RutSecretariaCP' => 'Rut',
 			'NombreSecretariaCP' => 'Nombre',
 			'MailSecretariaCP' => 'Mail',
-			'TelefonoSecretariaCP' => 'Telefono',
+			'TelefonoSecretariaCP' => 'Teléfono',
 			'CelularSecretariaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ImagenSecretariaCP' => 'Imagen',
