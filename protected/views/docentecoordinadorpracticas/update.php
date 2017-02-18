@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Docente Coordinador de Practicas <?php echo $model->RutCoordinador; ?></h1><br>
+<h1>Modificar Docente Coordinador de Prácticas: <?php echo $model->RutCoordinador; ?></h1><br>
 
 <ul>
 	<h4>Instrucciones de Opciones</h4>

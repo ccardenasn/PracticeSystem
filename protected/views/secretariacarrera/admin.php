@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Secretarias de Carrera', 'url'=>array('index')),
-	array('label'=>'Añadir Secretaria de Carrera', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

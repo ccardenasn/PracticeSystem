@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Supervisores', 'url'=>array('index')),
-	array('label'=>'Añadir Supervisor', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

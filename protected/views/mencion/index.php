@@ -18,7 +18,7 @@ $this->menu=array(
 	<h4>Instrucciones</h4>
 	<li>Para agregar una nueva mención haga click en la opción "Añadir" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
 	<li>Desde la sección "Administración" se puede observar una lista de las menciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-	<li>A continuación se puede obervar una lista de las menciones existentes además de algunos detalles, haga click en el nombre de mención de color azul para más información</li>
+	<li>A continuación se puede observar una lista de las menciones existentes además de algunos detalles, haga click en el nombre de mención de color azul para más información</li>
 </ul>
 
 <?php $this->widget('zii.widgets.CListView', array(

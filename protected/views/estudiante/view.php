@@ -18,11 +18,6 @@ $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 );
 ?>
-<h1>Detalles </h1><br>
-
-<ul>
-	<li>En esta sección se puede visualizar toda la información de un estudiante seleccionado.</li>
-</ul>
 
 <h1>Estudiante: <?php echo $model->NombreEstudiante; ?></h1>
 

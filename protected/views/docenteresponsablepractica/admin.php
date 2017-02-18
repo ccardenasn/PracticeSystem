@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List de Docentes Responsables de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Docente Responsable de Practica', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
