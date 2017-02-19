@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Carreras', 'url'=>array('index')),
-	array('label'=>'Añadir Carrera', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -55,6 +55,12 @@ $('.search-form form').submit(function(){
 	'id'=>'carrera-grid',
 	'summaryText'=>'Viendo {start}-{end} de {count} resultados',
 	'emptyText'=>'No hay resultados',
+	'pager'=>array(
+		'class'=>'CLinkPager',
+		'header'=>'Ir a página:',
+		'nextPageLabel'=>'Siguiente >',
+		'prevPageLabel'=>'< Anterior',
+        ),
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(

@@ -55,5 +55,5 @@ $this->menu=array(
 	<li>Haga click en "Añadir Planificación" para configurar las sesiones de clases que realizará el estudiante seleccionado.</li>
 	<li>Haga click en "Planificaciones de Esttudiante" para acceder a un listado de planificaciones del estudiante seleccionado.</li>
 	<li>Haga click en "Planificaciones" para acceder a información correspondiente a las planificaciones de clases de todos los estudiantes.</li>
-	<li>Para regresar al índice de menciones haga click en "Lista".</li>
+	<li>Para regresar al índice de estudiantes haga click en "Lista".</li>
 </ul><br>

@@ -29,5 +29,11 @@ $this->menu=array(
 	'dataProvider'=>$dataProvider,
 	'summaryText'=>'Viendo {start}-{end} de {count} resultados',
 	'emptyText'=>'No hay resultados',
+	'pager'=>array(
+		'class'=>'CLinkPager',
+		'header'=>'Ir a página:',
+		'nextPageLabel'=>'Siguiente >',
+		'prevPageLabel'=>'< Anterior',
+        ),
 	'itemView'=>'_view',
 )); ?>

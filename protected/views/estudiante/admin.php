@@ -55,6 +55,12 @@ $('.search-form form').submit(function(){
 	'id'=>'estudiante-grid',
 	'summaryText'=>'Viendo {start}-{end} de {count} resultados',
 	'emptyText'=>'No hay resultados',
+	'pager'=>array(
+		'class'=>'CLinkPager',
+		'header'=>'Ir a página:',
+		'nextPageLabel'=>'Siguiente',
+		'prevPageLabel'=>'Anterior',
+        ),
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(

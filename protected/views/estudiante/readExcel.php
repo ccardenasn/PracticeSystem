@@ -40,8 +40,8 @@ $this->menu=array(
 	'pager'=>array(
 		'class'=>'CLinkPager',
 		'header'=>'Ir a página:',
-		'nextPageLabel'=>'Siguiente',
-		'prevPageLabel'=>'Anterior',
+		'nextPageLabel'=>'Siguiente >',
+		'prevPageLabel'=>'< Anterior',
         ),
 	'columns'=>array(
 		'RutEstudiante',
