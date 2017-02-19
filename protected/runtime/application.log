@@ -32874,3 +32874,156 @@ Stack trace:
 REQUEST_URI=/YiiOnePracticeSystem/index.php?r=listaestudiante/view&id=10041351-5
 HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=listaestudiante/create
 ---
+2017/02/19 19:05:26 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Practica de Observacion' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `configuracionpractica` (`NombrePractica`, `DescripcionPractica`, `FechaPractica`, `SemestrePractica`, `NumeroSesionesPractica`, `NumeroHorasPractica`, `DocenteCoordinadorPracticas_RutCoordinador`, `DocenteResponsablePractica_RutResponsable`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ConfiguracionpracticaController.php (73)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/02/19 19:05:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Practica de Observacion' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `configuracionpractica` (`NombrePractica`, `DescripcionPractica`, `FechaPractica`, `SemestrePractica`, `NumeroSesionesPractica`, `NumeroHorasPractica`, `DocenteCoordinadorPracticas_RutCoordinador`, `DocenteResponsablePractica_RutResponsable`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ConfiguracionpracticaController.php(73): CActiveRecord->save()
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): ConfiguracionpracticaController->actionCreate()
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('configuracionpr...')
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=configuracionpractica/create
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=configuracionpractica/create
+---
+2017/02/19 19:32:31 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'SesionesPlanificadas' in 'field list'. The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante,SesionesPlanificadas,HorasPlanificadas) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y ComunicaciÃ³n','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701','Foto','');.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php (129)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/02/19 19:32:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'SesionesPlanificadas' in 'field list'. The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante,SesionesPlanificadas,HorasPlanificadas) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y ComunicaciÃ³n','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701','Foto','');' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php(129): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): ListaestudianteController->actionCreate()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('listaestudiante...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+---
+2017/02/19 19:35:31 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`practicemanagementdatabase`.`estudiante`, CONSTRAINT `fk_Estudiante_Mencion1` FOREIGN KEY (`Mencion_NombreMencion`) REFERENCES `mencion` (`NombreMencion`) ON DELETE NO ACTION ON UPDATE NO ACT). The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y ComunicaciÃ³n','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701');.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php (128)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/02/19 19:35:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`practicemanagementdatabase`.`estudiante`, CONSTRAINT `fk_Estudiante_Mencion1` FOREIGN KEY (`Mencion_NombreMencion`) REFERENCES `mencion` (`NombreMencion`) ON DELETE NO ACTION ON UPDATE NO ACT). The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y ComunicaciÃ³n','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701');' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php(128): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): ListaestudianteController->actionCreate()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('listaestudiante...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+---
+2017/02/19 19:37:57 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`practicemanagementdatabase`.`estudiante`, CONSTRAINT `fk_Estudiante_Mencion1` FOREIGN KEY (`Mencion_NombreMencion`) REFERENCES `mencion` (`NombreMencion`) ON DELETE NO ACTION ON UPDATE NO ACT). The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y ComunicaciÃ³n','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701');.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php (129)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/02/19 19:37:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`practicemanagementdatabase`.`estudiante`, CONSTRAINT `fk_Estudiante_Mencion1` FOREIGN KEY (`Mencion_NombreMencion`) REFERENCES `mencion` (`NombreMencion`) ON DELETE NO ACTION ON UPDATE NO ACT). The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y ComunicaciÃ³n','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701');' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php(129): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): ListaestudianteController->actionCreate()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('listaestudiante...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+---
+2017/02/19 19:39:44 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`practicemanagementdatabase`.`estudiante`, CONSTRAINT `fk_Estudiante_CentroPractica1` FOREIGN KEY (`CentroPractica_RBD`) REFERENCES `centropractica` (`RBD`) ON DELETE NO ACTION ON UPDATE NO AC). The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y Comunicación','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701');.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php (129)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/02/19 19:39:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`practicemanagementdatabase`.`estudiante`, CONSTRAINT `fk_Estudiante_CentroPractica1` FOREIGN KEY (`CentroPractica_RBD`) REFERENCES `centropractica` (`RBD`) ON DELETE NO ACTION ON UPDATE NO AC). The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y Comunicación','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701');' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ListaestudianteController.php(129): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): ListaestudianteController->actionCreate()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('listaestudiante...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=listaestudiante/create
+---
+2017/02/19 21:21:17 [error] [php] include(MyLinkPager.php): failed to open stream: No such file or directory (C:\xampp\htdocs\Yii\framework\YiiBase.php:432)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 C:\xampp\htdocs\Yii\framework\YiiBase.php(303): class_exists()
+#2 C:\xampp\htdocs\Yii\framework\web\CWidgetFactory.php(146): import()
+#3 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget()
+#4 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(180): CGridView->createWidget()
+#5 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(285): CGridView->widget()
+#6 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(181): CGridView->renderPager()
+#7 unknown(0): CGridView->renderSection()
+#8 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback()
+#9 C:\xampp\htdocs\Yii\framework\zii\widgets\CBaseListView.php(149): CGridView->renderContent()
+#10 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(181): CGridView->run()
+#11 C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estudiante\readExcel.php(58): EstudianteController->widget()
+#12 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(126): require()
+#13 C:\xampp\htdocs\Yii\framework\web\CBaseController.php(95): EstudianteController->renderInternal()
+#14 C:\xampp\htdocs\Yii\framework\web\CController.php(869): EstudianteController->renderFile()
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(782): EstudianteController->renderPartial()
+#16 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(278): EstudianteController->render()
+#17 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstudianteController->actionReadExcel()
+#18 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#19 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): EstudianteController->runAction()
+#20 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#22 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): EstudianteController->filterAccessControl()
+#23 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#24 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\Yii\framework\web\CController.php(265): EstudianteController->runActionWithFilters()
+#26 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): EstudianteController->run()
+#27 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#28 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\estudiante\readExcel.php (58)
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (278)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)

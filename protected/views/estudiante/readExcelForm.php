@@ -7,17 +7,17 @@
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'listaestudiante-form',
+	'id'=>'estudiante-form',
     'method'=>'post',
     'htmlOptions'=>array('enctype'=>'multipart/form-data'),
     'clientOptions'=>array('validateOnSubmit'=>true,),
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
     
     <div class="row">
-		<?php echo $form->labelEx($model,'ImagenEstudiante'); ?>
+		<?php echo $form->labelEx($model,'Archivo'); ?>
 		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>    
 	</div>

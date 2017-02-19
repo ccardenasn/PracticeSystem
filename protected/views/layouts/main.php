@@ -41,7 +41,6 @@
                           array('label'=>'Universidad','url'=>array('/universidad')),
                           array('label'=>'Carrera','url'=>array('/carrera')),
                           array('label'=>'Menciones','url'=>array('/mencion')),
-                          array('label'=>'Listar Estudiantes','url'=>array('/listaestudiante/create')),
                           array('label'=>'Estudiantes','url'=>array('/estudiante')),
                           array('label'=>'Director de Carrera','url'=>array('/directorcarrera')),
                           array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas')),
