@@ -28,7 +28,7 @@ class CentropracticamainController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','selectProvincia','selectCiudad'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -66,23 +66,30 @@ class CentropracticamainController extends Controller
 		$secretariaModel=new Secretariacp;
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($centroModel);
-		$this->performAjaxValidation($secretariaModel);
+		$this->performAjaxValidation(array($centroModel,$secretariaModel));
+		//$this->performAjaxValidation($secretariaModel);
 
 		if(isset($_POST['Centropractica'],$_POST['Secretariacp']) )
 		{
 			$centroModel->attributes=$_POST['Centropractica'];
 			$secretariaModel->attributes=$_POST['Secretariacp'];
 			
-			$valid=$centroModel->validate();
-			$valid=$secretariaModel->validate() && $valid;
+			$centroModel->save();
 			
-			if($valid)
-			{
-				$centroModel->save(false);
-				$secretariaModel->save(false);
-				$this->redirect(array('view','id'=>$centroModel->RBD));
-			}
+			$secretariaModel->CentroPractica_RBD = $centroModel->RBD;
+			
+			$secretariaModel->save();
+			$this->redirect(array('view','id'=>$centroModel->RBD));
+			
+			//$valid=$centroModel->validate();
+			//$valid=$secretariaModel->validate() && $valid;
+			
+			//if($valid)
+			//{
+			//	$centroModel->save(false);
+			//	$secretariaModel->save(false);
+			//	$this->redirect(array('view','id'=>$centroModel->RBD));
+			//}
 			
 		}
 
@@ -181,6 +188,33 @@ class CentropracticamainController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+	
+	public function actionSelectProvincia()
+	{
+		$id_uno = $_POST['Centropractica']['Region_codRegion'];
+		$lista = Provincia::model()->findAll('Region_codRegion = :id_uno',array(':id_uno'=>$id_uno));
+		$lista = CHtml::listData($lista,'codProvincia','NombreProvincia');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
+		}
+	}
+	
+	//metodo que se utiliza para dropdown anidados, permite autocompletar el campo siguiente respecto a lo seleccionado
+	public function actionSelectCiudad()
+	{
+		$id_dos = $_POST['Centropractica']['Provincia_codProvincia'];
+		$lista = Ciudad::model()->findAll('Provincia_codProvincia = :id_dos',array(':id_dos'=>$id_dos));
+		$lista = CHtml::listData($lista,'codCiudad','NombreCiudad');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
 	}
 }
