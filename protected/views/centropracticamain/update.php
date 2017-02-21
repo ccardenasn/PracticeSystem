@@ -4,18 +4,26 @@
 
 $this->breadcrumbs=array(
 	'Centropracticas'=>array('index'),
-	$model->RBD=>array('view','id'=>$model->RBD),
+	$centroModel->RBD=>array('view','id'=>$centroModel->RBD),
 	'Update',
 );
 
 $this->menu=array(
 	array('label'=>'List Centropractica', 'url'=>array('index')),
 	array('label'=>'Create Centropractica', 'url'=>array('create')),
-	array('label'=>'View Centropractica', 'url'=>array('view', 'id'=>$model->RBD)),
+	array('label'=>'View Centropractica', 'url'=>array('view', 'id'=>$centroModel->RBD)),
 	array('label'=>'Manage Centropractica', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Centropractica <?php echo $model->RBD; ?></h1>
+<h1>Update Centropractica <?php echo $centroModel->RBD; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form',
+						   array(
+							   'centroModel'=>$centroModel,
+							   'secretariaModel'=>$secretariaModel,
+							   'directorModel'=>$directorModel,
+							   'jefeutpModel'=>$jefeutpModel,
+							   'coordinadorModel'=>$coordinadorModel,
+							   'profesorModel'=>$profesorModel,
+						   )); ?>

@@ -190,20 +190,31 @@ class CentropracticamainController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$centroModel=$this->loadModel($id);
+		$secretariaModel=$centroModel->secretariacps;
+		$directorModel=$centroModel->directorcps;
+		$jefeutpModel=$centroModel->jefeutpcps;
+		$coordinadorModel=$centroModel->profesorcoordinadorpracticacps;
+		$profesorModel=$centroModel->profesorguiacps;
+		
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Centropractica']))
 		{
-			$model->attributes=$_POST['Centropractica'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->RBD));
+			$centroModel->attributes=$_POST['Centropractica'];
+			if($centroModel->save())
+				$this->redirect(array('view','id'=>$centroModel->RBD));
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'centroModel'=>$centroModel,
+			'secretariaModel'=>$secretariaModel,
+			'directorModel'=>$directorModel,
+			'jefeutpModel'=>$jefeutpModel,
+			'coordinadorModel'=>$coordinadorModel,
+			'profesorModel'=>$profesorModel,
 		));
 	}
 
