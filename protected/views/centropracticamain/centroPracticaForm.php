@@ -39,7 +39,7 @@
 
 <div class="row">
 	<?php echo $form->labelEx($centroModel,'AnexoProtocolo'); ?>
-	<?php echo $form->textField($centroModel,'AnexoProtocolo',array('size'=>60,'maxlength'=>255)); ?>
+	<?php echo CHtml::activeFileField($centroModel,'AnexoProtocolo');?>
 	<?php echo $form->error($centroModel,'AnexoProtocolo'); ?>
 </div>
 

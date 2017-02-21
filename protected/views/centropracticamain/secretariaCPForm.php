@@ -29,7 +29,7 @@
 			</div>
 			
 			<div class="row">
-				<?php echo $form->labelEx($secretariaModel,'ImagenSecretariaCP'); ?>
-				<?php echo $form->textField($secretariaModel,'ImagenSecretariaCP',array('size'=>45,'maxlength'=>45)); ?>
-				<?php echo $form->error($secretariaModel,'ImagenSecretariaCP'); ?>
-			</div>
+		<?php echo $form->labelEx($secretariaModel,'ImagenSecretariaCP'); ?>
+		<?php echo CHtml::activeFileField($secretariaModel,'ImagenSecretariaCP');?>
+		<?php echo $form->error($secretariaModel,'ImagenSecretariaCP'); ?>
+	</div>

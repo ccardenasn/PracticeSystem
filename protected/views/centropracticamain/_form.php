@@ -17,7 +17,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary(array($centroModel,$secretariaModel)); ?>
+	<?php echo $form->errorSummary(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel,$profesorModel)); ?>
 	
 	<div class="collapse">
 		<h3>Centro de Práctica</h3>
@@ -29,6 +29,27 @@
 		<ul>
 			<?php $this->renderPartial('secretariaCPForm', array('form'=>$form,'secretariaModel'=>$secretariaModel)); ?>
 		</ul>
+		
+		<h3>Director CP</h3>
+		<ul>
+			<?php $this->renderPartial('directorCPForm', array('form'=>$form,'directorModel'=>$directorModel)); ?>
+		</ul>
+		
+		<h3>Jefe UTP CP</h3>
+		<ul>
+			<?php $this->renderPartial('jefeutpCPForm', array('form'=>$form,'jefeutpModel'=>$jefeutpModel)); ?>
+		</ul>
+		
+		<h3>Profesor Coordinador de Prácticas CP</h3>
+		<ul>
+			<?php $this->renderPartial('coordinadorCPForm', array('form'=>$form,'coordinadorModel'=>$coordinadorModel)); ?>
+		</ul>
+		
+		<h3>Profesor Guía CP</h3>
+		<ul>
+			<?php $this->renderPartial('profesorCPForm', array('form'=>$form,'profesorModel'=>$profesorModel)); ?>
+		</ul>
+		
 	</div>
 	
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>

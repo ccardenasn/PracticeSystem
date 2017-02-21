@@ -15,4 +15,12 @@ $this->menu=array(
 
 <h1>Create Centropractica</h1>
 
-<?php $this->renderPartial('_form', array('centroModel'=>$centroModel,'secretariaModel'=>$secretariaModel)); ?>
+<?php $this->renderPartial('_form',
+				 array(
+					 'centroModel'=>$centroModel,
+					 'secretariaModel'=>$secretariaModel,
+					 'directorModel'=>$directorModel,
+					 'jefeutpModel'=>$jefeutpModel,
+					 'coordinadorModel'=>$coordinadorModel,
+					 'profesorModel'=>$profesorModel,
+				 )); ?>
