@@ -49,6 +49,7 @@
                           array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica')),
 						  array('label'=>'Horario','url'=>array('/horarioadmin')),
 						  array('label'=>'Estadísticas', 'url'=>array('/graphData')),
+						  array('label'=>'Documentos', 'url'=>array('/documentoscarrera')),
                     ),
                 ),
                 array('label'=>'Gestion Organizativa',

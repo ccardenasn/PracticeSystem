@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Horarios'=>array('horarioadmin/index'),
-	'Configuración de Bloques',
+	'Asignar Horas',
 );
 
 $this->menu=array(
@@ -14,7 +14,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Configuración de Bloques</h1><br>
+<h1>Asignar Horas</h1><br>
 
 <ul>
 	<h4>Instrucciones</h4>
