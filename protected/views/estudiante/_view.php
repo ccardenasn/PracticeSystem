@@ -54,6 +54,14 @@
 	<?php echo CHtml::encode($data->ImagenEstudiante); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('SituacionFinalEstudiante')); ?>:</b>
+	<?php echo CHtml::encode($data->SituacionFinalEstudiante); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ObservacionEstudiante')); ?>:</b>
+	<?php echo CHtml::encode($data->ObservacionEstudiante); ?>
+	<br />
+
 	*/ ?>
 
 </div>

@@ -9,13 +9,22 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Asignatura', 'url'=>array('index')),
-	array('label'=>'Create Asignatura', 'url'=>array('create')),
-	array('label'=>'View Asignatura', 'url'=>array('view', 'id'=>$model->NombreAsignatura)),
-	array('label'=>'Manage Asignatura', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->NombreAsignatura)),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Asignatura <?php echo $model->NombreAsignatura; ?></h1>
+<h1>Modificar Asignatura: <?php echo $model->NombreAsignatura; ?></h1><br>
+
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Para regresar al índice de asignaturas haga click en "Lista".</li>
+	<li>Haga click en "Añadir" para agregar una nueva asignatura a la lista.</li>
+	<li>Haga click en "Detalles" para visualizar información de asignatura.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de asignaturas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+</ul>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

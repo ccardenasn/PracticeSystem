@@ -5,8 +5,6 @@
 ?>
 
 <div class="form">
-	
-	
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'estudiante-form',
@@ -17,14 +15,12 @@
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
-	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-	
-	
+
 	<div class="row">
-		<?php //form de estudiante
-		echo $form->labelEx($model,'RutEstudiante'); ?>
+		<?php echo $form->labelEx($model,'RutEstudiante'); ?>
 		<?php echo $form->textField($model,'RutEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'RutEstudiante'); ?>
 	</div>
@@ -34,7 +30,7 @@
 		<?php echo $form->textField($model,'NombreEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreEstudiante'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'ClaveEstudiante'); ?>
 		<?php echo $form->textField($model,'ClaveEstudiante',array('size'=>45,'maxlength'=>45)); ?>
@@ -94,9 +90,26 @@
 		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>
 	</div>
+	
+	<div class="row">
+        <?php echo $form->labelEx($model,'SituacionFinalEstudiante');?>
+        <?php echo $form->dropDownList($model,'SituacionFinalEstudiante', 
+                                       array(
+                                           'Pendiente'=>'Pendiente',
+                                           'Aprobado'=>'Aprobado',
+                                           'Reprobado'=>'Reprobado',
+                                       ));?>
+        <?php echo $form->error($model,'SituacionFinalEstudiante'); ?>
+    </div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'ObservacionEstudiante'); ?>
+		<?php echo $form->textArea($model,'ObservacionEstudiante',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'ObservacionEstudiante'); ?>
+	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

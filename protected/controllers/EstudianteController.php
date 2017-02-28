@@ -32,7 +32,7 @@ class EstudianteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','readExcel'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -194,88 +194,5 @@ class EstudianteController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-	
-	public function actionReadExcel()
-	{
-		//include_once('forceutf/Encoding.php');
-        $model=new Estudiante;
-        // Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Estudiante']))
-		{
-			$model->attributes=$_POST['Estudiante'];
-            
-            $archivo = $model->ImagenEstudiante=CUploadedFile::getInstance($model,'ImagenEstudiante');;
-            $tipo = $archivo->getExtensionName();
-            $destino = Yii::getPathOfAlias("webroot")."/ExcelLoaded/".$archivo->getName();
-    
-            $model->ImagenEstudiante->saveAs($destino);
-            
-            if (file_exists($destino))
-            {
-                /** Clases necesarias */
-                Yii::import('application.extensions.classes.PHPExcel');
-                Yii::import('application.extensions.classes.PHPExcel.Reader.Excel2007');
-                spl_autoload_unregister(array('YiiBase', 'autoload')); 
-                $phpExcelPath = Yii::getPathOfAlias('application.extensions.classes'); 
-                include($phpExcelPath.DIRECTORY_SEPARATOR.'PHPExcel.php');
-                spl_autoload_register(array('YiiBase','autoload'));
-                
-                // Cargando la hoja de cálculo
-                $objReader = new PHPExcel_Reader_Excel2007();
-                $objPHPExcel = $objReader->load($destino);
-                $objFecha = new PHPExcel_Shared_Date();
-                
-                // Asignar hoja de excel activa
-                $objPHPExcel->setActiveSheetIndex(0);
-                
-                //celda inicial en la cual empezara a realizar el barrido de la grilla de excel
-                $i=1;
-                $run=true;
-                $contador=0;
-                
-                while($run==true){
-                    
-                    if($objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue()==NULL){
-                        $run=false;
-                    }else{
-                        $rut = trim($objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue());
-                        $nombre = trim($objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue());
-                        $clave = trim($objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
-                        $fecha = trim($objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue());
-                        $mencion = trim($objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue());
-                        $mail = trim($objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue());
-                        $telefono = trim($objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue());
-                        $celular = trim($objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
-                        $profesor = trim($objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue());
-                        $practica = trim($objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue());
-						$centro = trim($objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue());
-                        $imagen = trim($objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue());
-                        
-                        
-                        $query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".$mencion."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$practica."','".$centro."','".$imagen."');";
-                        
-                        Yii::app()->db->createCommand($query)->execute();
-                    }
-                    
-                    $i++;
-                    $contador=$contador+1;
-                }
-            }else{
-                echo "Necesitas primero importar el archivo";
-            }
-            //una vez terminado el proceso borramos el archivo que esta en el servidor el bak_
-            unlink($destino);
-            
-            Yii::app()->user->setFlash('success',"Datos Almacenados Correctamente!!!");
-			$this->redirect(array('readExcel'));
-		}
-        
-		$this->render('readExcel',array(
-			'model'=>$model,
-		));
-        
 	}
 }

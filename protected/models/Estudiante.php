@@ -21,12 +21,16 @@ include_once 'FunRut.php';
  * @property string $ConfiguracionPractica_NombrePractica
  * @property integer $CentroPractica_RBD
  * @property string $ImagenEstudiante
+ * @property string $SituacionFinalEstudiante
+ * @property string $ObservacionEstudiante
  *
  * The followings are the available model relations:
  * @property Centropractica $centroPracticaRBD
  * @property Configuracionpractica $configuracionPracticaNombrePractica
  * @property Mencion $mencionNombreMencion
  * @property Profesorguiacp $profesorGuiaCPRutProfGuiaCP
+ * @property Horario[] $horarios
+ * @property Horarioadmin[] $horarioadmins
  * @property Planificacionclase[] $planificacionclases
  */
 class Estudiante extends CActiveRecord
@@ -49,13 +53,14 @@ class Estudiante extends CActiveRecord
 		return array(
 			array('RutEstudiante, Mencion_NombreMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante', 'length', 'max'=>45),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
+			array('ObservacionEstudiante', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante', 'safe', 'on'=>'search'),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante, SituacionFinalEstudiante, ObservacionEstudiante', 'safe', 'on'=>'search'),
 			array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
-            array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar 
-            array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
+            array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar
+			array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
             array('TelefonoEstudiante','valtelefono'),//permite el uso de metodo valtelefono
             array('CelularEstudiante','valcelular'),
             array('MailEstudiante','valcorreo'),
@@ -76,6 +81,8 @@ class Estudiante extends CActiveRecord
 			'configuracionPracticaNombrePractica' => array(self::BELONGS_TO, 'Configuracionpractica', 'ConfiguracionPractica_NombrePractica'),
 			'mencionNombreMencion' => array(self::BELONGS_TO, 'Mencion', 'Mencion_NombreMencion'),
 			'profesorGuiaCPRutProfGuiaCP' => array(self::BELONGS_TO, 'Profesorguiacp', 'ProfesorGuiaCP_RutProfGuiaCP'),
+			'horarios' => array(self::HAS_MANY, 'Horario', 'Estudiante_RutEstudiante'),
+			'horarioadmins' => array(self::HAS_MANY, 'Horarioadmin', 'Estudiante_RutEstudiante'),
 			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'Estudiante_RutEstudiante'),
 		);
 	}
@@ -86,18 +93,20 @@ class Estudiante extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'RutEstudiante' => 'Rut',
-			'NombreEstudiante' => 'Nombre',
-			'ClaveEstudiante' => 'Clave',
-			'FechaIncorporacion' => 'Año de Incorporación',
-			'Mencion_NombreMencion' => 'Mención',
-			'MailEstudiante' => 'Mail',
-			'TelefonoEstudiante' => 'Teléfono',
-			'CelularEstudiante' => 'Celular',
-			'ProfesorGuiaCP_RutProfGuiaCP' => 'Profesor Guía CP',
-			'ConfiguracionPractica_NombrePractica' => 'Nombre de Práctica',
-			'CentroPractica_RBD' => 'Centro de Práctica',
-			'ImagenEstudiante' => 'Imagen',
+			'RutEstudiante' => 'Rut Estudiante',
+			'NombreEstudiante' => 'Nombre Estudiante',
+			'ClaveEstudiante' => 'Clave Estudiante',
+			'FechaIncorporacion' => 'Fecha Incorporacion',
+			'Mencion_NombreMencion' => 'Mencion Nombre Mencion',
+			'MailEstudiante' => 'Mail Estudiante',
+			'TelefonoEstudiante' => 'Telefono Estudiante',
+			'CelularEstudiante' => 'Celular Estudiante',
+			'ProfesorGuiaCP_RutProfGuiaCP' => 'Profesor Guia Cp Rut Prof Guia Cp',
+			'ConfiguracionPractica_NombrePractica' => 'Configuracion Practica Nombre Practica',
+			'CentroPractica_RBD' => 'Centro Practica Rbd',
+			'ImagenEstudiante' => 'Imagen Estudiante',
+			'SituacionFinalEstudiante' => 'Situacion Final Estudiante',
+			'ObservacionEstudiante' => 'Observacion Estudiante',
 		);
 	}
 
@@ -131,6 +140,8 @@ class Estudiante extends CActiveRecord
 		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ImagenEstudiante',$this->ImagenEstudiante,true);
+		$criteria->compare('SituacionFinalEstudiante',$this->SituacionFinalEstudiante,true);
+		$criteria->compare('ObservacionEstudiante',$this->ObservacionEstudiante,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

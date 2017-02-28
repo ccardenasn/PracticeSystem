@@ -71,8 +71,18 @@
 		<?php echo $form->textField($model,'ImagenEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'SituacionFinalEstudiante'); ?>
+		<?php echo $form->textField($model,'SituacionFinalEstudiante',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'ObservacionEstudiante'); ?>
+		<?php echo $form->textArea($model,'ObservacionEstudiante',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Buscar'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

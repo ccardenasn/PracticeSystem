@@ -57,8 +57,8 @@ class Asignatura extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'NombreAsignatura' => 'Nombre Asignatura',
-			'Semestre_CodSemestre' => 'Semestre Cod Semestre',
+			'NombreAsignatura' => 'Nombre de Asignatura',
+			'Semestre_CodSemestre' => 'Semestre',
 		);
 	}
 
