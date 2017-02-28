@@ -93,20 +93,20 @@ class Estudiante extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'RutEstudiante' => 'Rut Estudiante',
-			'NombreEstudiante' => 'Nombre Estudiante',
-			'ClaveEstudiante' => 'Clave Estudiante',
+			'RutEstudiante' => 'Rut',
+			'NombreEstudiante' => 'Nombre',
+			'ClaveEstudiante' => 'Clave',
 			'FechaIncorporacion' => 'Fecha Incorporacion',
-			'Mencion_NombreMencion' => 'Mencion Nombre Mencion',
-			'MailEstudiante' => 'Mail Estudiante',
-			'TelefonoEstudiante' => 'Telefono Estudiante',
-			'CelularEstudiante' => 'Celular Estudiante',
-			'ProfesorGuiaCP_RutProfGuiaCP' => 'Profesor Guia Cp Rut Prof Guia Cp',
-			'ConfiguracionPractica_NombrePractica' => 'Configuracion Practica Nombre Practica',
-			'CentroPractica_RBD' => 'Centro Practica Rbd',
-			'ImagenEstudiante' => 'Imagen Estudiante',
-			'SituacionFinalEstudiante' => 'Situacion Final Estudiante',
-			'ObservacionEstudiante' => 'Observacion Estudiante',
+			'Mencion_NombreMencion' => 'Mención',
+			'MailEstudiante' => 'Correo',
+			'TelefonoEstudiante' => 'Teléfono',
+			'CelularEstudiante' => 'Celular',
+			'ProfesorGuiaCP_RutProfGuiaCP' => 'Profesor Guía CP',
+			'ConfiguracionPractica_NombrePractica' => 'Nombre Práctica',
+			'CentroPractica_RBD' => 'Centro de Práctica',
+			'ImagenEstudiante' => 'Imagen',
+			'SituacionFinalEstudiante' => 'Situación Final',
+			'ObservacionEstudiante' => 'Observación',
 		);
 	}
 

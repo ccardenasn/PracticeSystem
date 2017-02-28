@@ -4,12 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Estudiantes'=>array('index'),
-	'Manage',
+	'Administración',
 );
 
 $this->menu=array(
-	array('label'=>'List Estudiante', 'url'=>array('index')),
-	array('label'=>'Create Estudiante', 'url'=>array('create')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,14 +26,25 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Estudiantes</h1>
+<h1>Administración de Estudiantes</h1><br>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+<ul>
+	<h4>Opciones de Lista</h4>
+	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de un estudiante seleccionado en la lista.</li>
+	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/update.png"> para modificar información de un estudiante seleccionado en la lista.</li>
+	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de un estudiante seleccionado en la lista.</li>
+</ul>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<ul>
+	<h4>Opciones de Búsqueda</h4>
+	<li>Para efectuar búsquedas de datos escriba en los campos de texto situados debajo de los títulos de cada columna correspondiente para filtrar información.</li>
+	<li>Haga click en "Búsqueda Avanzada" para mostrar u ocultar opciones para encontrar un estudiante específico.</li>
+	<li>Escriba sobre los campos de texto de acuerdo a los criterios de búsqueda del usuario.</li>
+	<li>Presione el botón "Buscar" para iniciar la búsqueda.</li>
+	<li>Los resultados se mostrarán en la tabla inferior.</li>
+</ul>
+
+<?php echo CHtml::link('Búsqueda Avanzada','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -42,25 +53,26 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'estudiante-grid',
+	'summaryText'=>'Viendo {start}-{end} de {count} resultados',
+	'emptyText'=>'No hay resultados',
+	'pager'=>array(
+		'class'=>'CLinkPager',
+		'header'=>'Ir a página:',
+		'nextPageLabel'=>'Siguiente >',
+		'prevPageLabel'=>'< Anterior',
+        ),
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'RutEstudiante',
 		'NombreEstudiante',
-		'ClaveEstudiante',
 		'FechaIncorporacion',
-		'Mencion_NombreMencion',
-		'MailEstudiante',
-		/*
-		'TelefonoEstudiante',
-		'CelularEstudiante',
-		'ProfesorGuiaCP_RutProfGuiaCP',
-		'ConfiguracionPractica_NombrePractica',
-		'CentroPractica_RBD',
-		'ImagenEstudiante',
-		'SituacionFinalEstudiante',
-		'ObservacionEstudiante',
-		*/
+		array('name'=>'Mencion_NombreMencion','value'=>'$data->mencionNombreMencion->NombreMencion','filter'=>CHtml::listData(Mencion::model()->findAll(),'NombreMencion','NombreMencion')),
+		array('name'=>'ProfesorGuiaCP_RutProfGuiaCP','value'=>'$data->profesorGuiaCPRutProfGuiaCP->NombreProfGuiaCP','filter'=>CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP')),
+		array('name'=>'ConfiguracionPractica_NombrePractica','value'=>'$data->configuracionPracticaNombrePractica->NombrePractica','filter'=>CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica')),
+		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica')),
+		array('name'=>'SituacionFinalEstudiante','value'=>'$data->SituacionFinalEstudiante','filter'=>array('Pendiente'=>'Pendiente','Aprobado'=>'Aprobado','Reprobado'=>'Reprobado')),
+
 		array(
 			'class'=>'CButtonColumn',
 		),
