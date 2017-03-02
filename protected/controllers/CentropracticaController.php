@@ -60,26 +60,7 @@ class CentropracticaController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	/*public function actionCreate()
-	{
-		$model=new Centropractica;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Centropractica']))
-		{
-			$model->attributes=$_POST['Centropractica'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->RBD));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}*/
-    
-    public function actionCreate()
+	public function actionCreate()
 	{
 		$model=new Centropractica;
 		// Uncomment the following line if AJAX validation is needed
@@ -91,17 +72,30 @@ class CentropracticaController extends Controller
 			
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$model->AnexoProtocolo=CUploadedFile::getInstance($model,'AnexoProtocolo');
+			$image=$model->ImagenCentroPractica=CUploadedFile::getInstance($model,'ImagenCentroPractica');
+			
 			
 			if($model->save()){
-				if($file->getExtensionName()=="pdf")
-				{
-					//se guarda la ruta de la imagen
-					$model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
+				if($file != null){
+					if($file->getExtensionName()=="pdf"){
+						//se guarda la ruta de la imagen
+						$model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}	
 				}
+				
+				if($image != null){
+					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
+						$this->refresh();
+					}	
+				}
+				
 				$this->redirect(array('view','id'=>$model->RBD));
 			}
 		}
@@ -116,26 +110,7 @@ class CentropracticaController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	/*public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Centropractica']))
-		{
-			$model->attributes=$_POST['Centropractica'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->RBD));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}*/
-    
-    public function actionUpdate($id)
+	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
@@ -147,18 +122,29 @@ class CentropracticaController extends Controller
 			
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$model->AnexoProtocolo=CUploadedFile::getInstance($model,'AnexoProtocolo');
+			$image=$model->ImagenCentroPractica=CUploadedFile::getInstance($model,'ImagenCentroPractica');
 			
 			if($model->save()){
 				if($file != null){
-				if($file->getExtensionName()=="pdf")
-				{
-					//se guarda la ruta de la imagen
-					$model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+					if($file->getExtensionName()=="pdf"){
+						//se guarda la ruta de la imagen
+						$model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}
+				
+				if($image != null){
+					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
+						$this->refresh();
+					}	
+				}
+				
 				$this->redirect(array('view','id'=>$model->RBD));
 			}
 		}
@@ -235,8 +221,8 @@ class CentropracticaController extends Controller
 			Yii::app()->end();
 		}
 	}
-    
-    public function actionSelectProvincia()
+	
+	public function actionSelectProvincia()
 	{
 		$id_uno = $_POST['Centropractica']['Region_codRegion'];
 		$lista = Provincia::model()->findAll('Region_codRegion = :id_uno',array(':id_uno'=>$id_uno));

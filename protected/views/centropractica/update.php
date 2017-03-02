@@ -3,7 +3,7 @@
 /* @var $model Centropractica */
 
 $this->breadcrumbs=array(
-	'Centro de Practica'=>array('index'),
+	'Centro de Prácticas'=>array('index'),
 	$model->RBD=>array('view','id'=>$model->RBD),
 	'Actualizar',
 );

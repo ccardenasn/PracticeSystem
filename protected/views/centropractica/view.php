@@ -3,7 +3,7 @@
 /* @var $model Centropractica */
 
 $this->breadcrumbs=array(
-	'Centros de Práctica'=>array('index'),
+	'Centro de Prácticas'=>array('index'),
 	$model->RBD,
 );
 
@@ -22,21 +22,26 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'RBD',
-        array('name'=>'Nombre','value'=>$model->NombreCentroPractica),
-		array('name'=>'VigenciaProtocolo','value'=>$model->VigenciaProtocolo),
-        array('name'=>'FechaProtocolo','value'=>$model->FechaProtocolo),
-        array(
+		'NombreCentroPractica',
+		'VigenciaProtocolo',
+		'FechaProtocolo',
+		array(
             'name'=>'Anexo Protocolo (click en el enlace)',
 			'type' => 'raw',
             'value'=>CHtml::link(CHtml::encode($model->AnexoProtocolo), Yii::app()->baseUrl .'/PDFFiles/'.$model->AnexoProtocolo,array('target'=>'_blank'))
             ),
 		'Dependencia',
-        array('name'=>'Nivel Educacional','value'=>$model->NivelEducacional),
+		'NivelEducacional',
 		'Area',
-        array('name'=>'Region','value'=>$model->regionCodRegion->NombreRegion),
-        array('name'=>'Provincia','value'=>$model->provinciaCodProvincia->NombreProvincia),
-        array('name'=>'Ciudad','value'=>$model->ciudadCodCiudad->NombreCiudad),
+		'Region_codRegion',
+		'Provincia_codProvincia',
+		'Ciudad_codCiudad',
 		'Calle',
+		array(
+            'name'=>'ImagenCentroPractica',
+			'type' => 'raw',
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCentroPracticas/'.$model->ImagenCentroPractica)
+            ),
 	),
 )); ?>
 

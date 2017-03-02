@@ -71,8 +71,13 @@
 		<?php echo $form->textField($model,'Calle',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'ImagenCentroPractica'); ?>
+		<?php echo $form->textField($model,'ImagenCentroPractica',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Buscar'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

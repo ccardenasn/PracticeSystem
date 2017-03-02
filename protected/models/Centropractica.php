@@ -1,5 +1,5 @@
 <?php
-include_once 'FunNumeros.php';
+
 /**
  * This is the model class for table "centropractica".
  *
@@ -16,13 +16,16 @@ include_once 'FunNumeros.php';
  * @property integer $Provincia_codProvincia
  * @property integer $Ciudad_codCiudad
  * @property string $Calle
+ * @property string $ImagenCentroPractica
  *
  * The followings are the available model relations:
  * @property Ciudad $ciudadCodCiudad
  * @property Provincia $provinciaCodProvincia
  * @property Region $regionCodRegion
  * @property Directorcp[] $directorcps
+ * @property Estudiante[] $estudiantes
  * @property Jefeutpcp[] $jefeutpcps
+ * @property Planificacionclase[] $planificacionclases
  * @property Profesorcoordinadorpracticacp[] $profesorcoordinadorpracticacps
  * @property Profesorguiacp[] $profesorguiacps
  * @property Secretariacp[] $secretariacps
@@ -47,14 +50,11 @@ class Centropractica extends CActiveRecord
 		return array(
 			array('RBD, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required'),
 			array('RBD, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true),
-			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Dependencia, NivelEducacional, Area, Calle', 'length', 'max'=>45),
+			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Dependencia, NivelEducacional, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
 			array('AnexoProtocolo', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia, NivelEducacional, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle', 'safe', 'on'=>'search'),
-            array('AnexoProtocolo','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
-			array('AnexoProtocolo','safe','on'=>'update'),
-            array('RBD','valnumeros'),
+			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia, NivelEducacional, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle, ImagenCentroPractica', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,7 +70,9 @@ class Centropractica extends CActiveRecord
 			'provinciaCodProvincia' => array(self::BELONGS_TO, 'Provincia', 'Provincia_codProvincia'),
 			'regionCodRegion' => array(self::BELONGS_TO, 'Region', 'Region_codRegion'),
 			'directorcps' => array(self::HAS_MANY, 'Directorcp', 'CentroPractica_RBD'),
+			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'CentroPractica_RBD'),
 			'jefeutpcps' => array(self::HAS_MANY, 'Jefeutpcp', 'CentroPractica_RBD'),
+			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'CentroPractica_RBD'),
 			'profesorcoordinadorpracticacps' => array(self::HAS_MANY, 'Profesorcoordinadorpracticacp', 'CentroPractica_RBD'),
 			'profesorguiacps' => array(self::HAS_MANY, 'Profesorguiacp', 'CentroPractica_RBD'),
 			'secretariacps' => array(self::HAS_MANY, 'Secretariacp', 'CentroPractica_RBD'),
@@ -91,10 +93,11 @@ class Centropractica extends CActiveRecord
 			'Dependencia' => 'Dependencia',
 			'NivelEducacional' => 'Nivel Educacional',
 			'Area' => 'Area',
-			'Region_codRegion' => 'Region',
+			'Region_codRegion' => 'Región',
 			'Provincia_codProvincia' => 'Provincia',
 			'Ciudad_codCiudad' => 'Ciudad',
 			'Calle' => 'Calle',
+			'ImagenCentroPractica' => 'Imagen',
 		);
 	}
 
@@ -128,6 +131,7 @@ class Centropractica extends CActiveRecord
 		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);
 		$criteria->compare('Ciudad_codCiudad',$this->Ciudad_codCiudad);
 		$criteria->compare('Calle',$this->Calle,true);
+		$criteria->compare('ImagenCentroPractica',$this->ImagenCentroPractica,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -143,11 +147,5 @@ class Centropractica extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-    
-     public function valnumeros($attribute,$params)
-	{
-		if(numerovalido($this->RBD)==false)
-		$this->addError('RBD','RBD invalido');
 	}
 }

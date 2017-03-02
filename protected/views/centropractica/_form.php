@@ -8,7 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'centropractica-form',
-    'method'=>'post',
+	'method'=>'post',
 	'enableAjaxValidation'=>true,
 	'enableClientValidation'=>true,
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
@@ -30,8 +30,8 @@
 		<?php echo $form->textField($model,'NombreCentroPractica',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreCentroPractica'); ?>
 	</div>
-    
-    <div class="row">
+
+	<div class="row">
         <?php echo $form->labelEx($model,'VigenciaProtocolo');?>
         <?php echo $form->dropDownList($model,'VigenciaProtocolo', 
                                        array(
@@ -40,10 +40,10 @@
                                        ));?>
         <?php echo $form->error($model,'VigenciaProtocolo'); ?>
     </div>
-    
-    <div class="row">
-		<?php echo $form->labelEx($model,'FechaProtocolo'); 
-		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'FechaProtocolo'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'model' => $model,
                     'language' => 'es',
                     'attribute' => 'FechaProtocolo',
@@ -55,14 +55,14 @@
             ));?>
 		<?php echo $form->error($model,'FechaProtocolo'); ?>
 	</div>
-    
-    <div class="row">
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'AnexoProtocolo'); ?>
 		<?php echo CHtml::activeFileField($model,'AnexoProtocolo');?>
 		<?php echo $form->error($model,'AnexoProtocolo'); ?>
 	</div>
-    
-    <div class="row">
+
+	<div class="row">
         <?php echo $form->labelEx($model,'Dependencia');?>
         <?php echo $form->dropDownList($model,'Dependencia', 
                                        array(
@@ -73,7 +73,17 @@
         <?php echo $form->error($model,'Dependencia'); ?>
     </div>
 
-    <div class="row">
+	<div class="row">
+        <?php echo $form->labelEx($model,'Area');?>
+        <?php echo $form->dropDownList($model,'Area', 
+                                       array(
+                                           'Rural'=>'Rural',
+                                           'Urbano'=>'Urbano',
+                                       ));?>
+        <?php echo $form->error($model,'Area'); ?>
+    </div>
+
+	<div class="row">
         <?php echo $form->labelEx($model,'NivelEducacional');?>
         <?php echo $form->dropDownList($model,'NivelEducacional', 
                                        array(
@@ -84,18 +94,8 @@
                                        ));?>
         <?php echo $form->error($model,'NivelEducacional'); ?>
     </div>
-    
-    <div class="row">
-        <?php echo $form->labelEx($model,'Area');?>
-        <?php echo $form->dropDownList($model,'Area', 
-                                       array(
-                                           'Rural'=>'Rural',
-                                           'Urbano'=>'Urbano',
-                                       ));?>
-        <?php echo $form->error($model,'Area'); ?>
-    </div>
-
-    <div class="row">
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'Region_codRegion'); ?>
 		<?php echo $form->dropDownList($model,'Region_codRegion',CHtml::listData(Region::model()->findAll(),'codRegion','NombreRegion'),
 				array(
@@ -156,6 +156,12 @@
 		<?php echo $form->labelEx($model,'Calle'); ?>
 		<?php echo $form->textField($model,'Calle',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Calle'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'ImagenCentroPractica'); ?>
+		<?php echo CHtml::activeFileField($model,'ImagenCentroPractica');?>
+		<?php echo $form->error($model,'ImagenCentroPractica'); ?>
 	</div>
 
 	<div class="row buttons">

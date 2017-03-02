@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administración de Centros de Practica</h1><br>
+<h1>Administración de Centros de Práctica</h1><br>
 
 <ul>
 	<h4>Opciones de Lista</h4>
@@ -66,18 +66,14 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'RBD',
 		'NombreCentroPractica',
-		'VigenciaProtocolo',
-		'FechaProtocolo',
-		'AnexoProtocolo',
-		'Dependencia',
-		/*
-		'NivelEducacional',
-		'Area',
-		'Region_codRegion',
-		'Provincia_codProvincia',
-		'Ciudad_codCiudad',
-		'Calle',
-		*/
+		array('name'=>'VigenciaProtocolo','value'=>'$data->VigenciaProtocolo','filter'=>array('Si'=>'Si','No'=>'No')),
+		array('name'=>'Dependencia','value'=>'$data->Dependencia','filter'=>array('Municipal'=>'Municipal','Particular Subvencionado'=>'Particular Subvencionado','Particular'=>'Particular')),
+		array('name'=>'NivelEducacional','value'=>'$data->NivelEducacional','filter'=>array('Educacion PreBasica'=>'Educacion PreBasica','Educacion Basica'=>'Educacion Basica','Educacion Media'=>'Educacion Media','Educacion Superior'=>'Educacion Superior')),
+		array('name'=>'Area','value'=>'$data->Area','filter'=>array('Rural'=>'Rural','Urbano'=>'Urbano')),
+		array('name'=>'Region_codRegion','value'=>'$data->regionCodRegion->NombreRegion','filter'=>CHtml::listData(Region::model()->findAll(),'codRegion','NombreRegion')),
+		array('name'=>'Provincia_codProvincia','value'=>'$data->provinciaCodProvincia->NombreProvincia','filter'=>CHtml::listData(Provincia::model()->findAll(),'codProvincia','NombreProvincia')),
+		array('name'=>'Ciudad_codCiudad','value'=>'$data->ciudadCodCiudad->NombreCiudad','filter'=>CHtml::listData(Ciudad::model()->findAll(),'codCiudad','NombreCiudad')),
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

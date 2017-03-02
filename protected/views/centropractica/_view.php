@@ -9,19 +9,19 @@
 	<?php echo CHtml::link(CHtml::encode($data->RBD), array('view', 'id'=>$data->RBD)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Nombre')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NombreCentroPractica')); ?>:</b>
 	<?php echo CHtml::encode($data->NombreCentroPractica); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Vigencia Protocolo')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('VigenciaProtocolo')); ?>:</b>
 	<?php echo CHtml::encode($data->VigenciaProtocolo); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Fecha Protocolo')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaProtocolo')); ?>:</b>
 	<?php echo CHtml::encode($data->FechaProtocolo); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Anexo Protocolo')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('AnexoProtocolo')); ?>:</b>
 	<?php echo CHtml::encode($data->AnexoProtocolo); ?>
 	<br />
 
@@ -52,6 +52,10 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Calle')); ?>:</b>
 	<?php echo CHtml::encode($data->Calle); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ImagenCentroPractica')); ?>:</b>
+	<?php echo CHtml::encode($data->ImagenCentroPractica); ?>
 	<br />
 
 	*/ ?>
