@@ -68,9 +68,11 @@ $('.search-form form').submit(function(){
 		'Sede',
 		'Campus',
 		'Facultad',
-		array('name'=>'Ciudad_codCiudad','value'=>'$data->ciudadCodCiudad->NombreCiudad'),
-		array('name'=>'Provincia_codProvincia','value'=>'$data->provinciaCodProvincia->NombreProvincia'),
-		array('name'=>'Region_codRegion','value'=>'$data->regionCodRegion->NombreRegion'),
+		'Region_codRegion',
+		'Provincia_codProvincia',
+		/*
+		'Ciudad_codCiudad',
+		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

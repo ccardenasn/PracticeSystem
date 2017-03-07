@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Institucion: <?php echo $model->NombreInstitucion; ?></h1>
+<h1>Institución: <?php echo $model->NombreInstitucion; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -30,15 +30,3 @@ $this->menu=array(
         array('name'=>'Ciudad','value'=>$model->ciudadCodCiudad->NombreCiudad),
 	),
 )); ?>
-
-<br>
-<br>
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Haga click en "Añadir" para agregar universidad a la lista.</li>
-	<li>Haga click en "Actualizar" para modificar información de universidad.</li>
-	<li>Haga click en "Eliminar" para borrar toda la información de universidad.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de universidades existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-	<li>Para regresar al índice de universidades haga click en "Lista".</li>
-</ul><br>

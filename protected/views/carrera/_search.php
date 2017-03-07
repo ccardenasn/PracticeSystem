@@ -17,28 +17,18 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Nombre de Carrera'); ?>
+		<?php echo $form->label($model,'NombreCarrera'); ?>
 		<?php echo $form->textField($model,'NombreCarrera',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Sede'); ?>
-		<?php echo $form->textField($model,'Sede',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'SemestresCarrera'); ?>
+		<?php echo $form->textField($model,'SemestresCarrera',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Region_codRegion'); ?>
-		<?php echo $form->textField($model,'Region_codRegion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'Provincia_codProvincia'); ?>
-		<?php echo $form->textField($model,'Provincia_codProvincia'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'Ciudad_codCiudad'); ?>
-		<?php echo $form->textField($model,'Ciudad_codCiudad'); ?>
+		<?php echo $form->label($model,'Universidad_NombreInstitucion'); ?>
+		<?php echo $form->textField($model,'Universidad_NombreInstitucion',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row buttons">

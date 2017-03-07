@@ -65,7 +65,7 @@ class UniversidadController extends Controller
 		$model=new Universidad;
 
 		// Uncomment the following line if AJAX validation is needed
-        $this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Universidad']))
 		{
@@ -89,7 +89,7 @@ class UniversidadController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Universidad']))
 		{
@@ -170,8 +170,8 @@ class UniversidadController extends Controller
 			Yii::app()->end();
 		}
 	}
-    
-    public function actionSelectProvincia()
+	
+	public function actionSelectProvincia()
 	{
 		$id_uno = $_POST['Universidad']['Region_codRegion'];
 		$lista = Provincia::model()->findAll('Region_codRegion = :id_uno',array(':id_uno'=>$id_uno));

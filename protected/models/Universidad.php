@@ -13,6 +13,7 @@
  * @property integer $Ciudad_codCiudad
  *
  * The followings are the available model relations:
+ * @property Carrera[] $carreras
  * @property Ciudad $ciudadCodCiudad
  * @property Provincia $provinciaCodProvincia
  * @property Region $regionCodRegion
@@ -52,6 +53,7 @@ class Universidad extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'carreras' => array(self::HAS_MANY, 'Carrera', 'Universidad_NombreInstitucion'),
 			'ciudadCodCiudad' => array(self::BELONGS_TO, 'Ciudad', 'Ciudad_codCiudad'),
 			'provinciaCodProvincia' => array(self::BELONGS_TO, 'Provincia', 'Provincia_codProvincia'),
 			'regionCodRegion' => array(self::BELONGS_TO, 'Region', 'Region_codRegion'),
@@ -64,7 +66,7 @@ class Universidad extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'NombreInstitucion' => 'Nombre Institucion',
+			'NombreInstitucion' => 'Nombre Institución',
 			'Sede' => 'Sede',
 			'Campus' => 'Campus',
 			'Facultad' => 'Facultad',

@@ -8,11 +8,11 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'universidad-form',
-    'method'=>'post',
-	'enableAjaxValidation'=>true,
-	'enableClientValidation'=>true,
-	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-	'clientOptions'=>array('validateOnSubmit'=>true,),
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
@@ -43,7 +43,7 @@
 		<?php echo $form->error($model,'Facultad'); ?>
 	</div>
 
-	 <div class="row">
+	<div class="row">
 		<?php echo $form->labelEx($model,'Region_codRegion'); ?>
 		<?php echo $form->dropDownList($model,'Region_codRegion',CHtml::listData(Region::model()->findAll(),'codRegion','NombreRegion'),
 				array(

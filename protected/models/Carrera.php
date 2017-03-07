@@ -6,15 +6,11 @@
  * The followings are the available columns in table 'carrera':
  * @property string $codCarrera
  * @property string $NombreCarrera
- * @property string $Sede
- * @property integer $Region_codRegion
- * @property integer $Provincia_codProvincia
- * @property integer $Ciudad_codCiudad
+ * @property string $SemestresCarrera
+ * @property string $Universidad_NombreInstitucion
  *
  * The followings are the available model relations:
- * @property Ciudad $ciudadCodCiudad
- * @property Provincia $provinciaCodProvincia
- * @property Region $regionCodRegion
+ * @property Universidad $universidadNombreInstitucion
  */
 class Carrera extends CActiveRecord
 {
@@ -34,12 +30,11 @@ class Carrera extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('codCarrera, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required'),
-			array('Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true),
-			array('codCarrera, NombreCarrera, Sede', 'length', 'max'=>45),
+			array('codCarrera, Universidad_NombreInstitucion', 'required'),
+			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('codCarrera, NombreCarrera, Sede, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'safe', 'on'=>'search'),
+			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,9 +46,7 @@ class Carrera extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ciudadCodCiudad' => array(self::BELONGS_TO, 'Ciudad', 'Ciudad_codCiudad'),
-			'provinciaCodProvincia' => array(self::BELONGS_TO, 'Provincia', 'Provincia_codProvincia'),
-			'regionCodRegion' => array(self::BELONGS_TO, 'Region', 'Region_codRegion'),
+			'universidadNombreInstitucion' => array(self::BELONGS_TO, 'Universidad', 'Universidad_NombreInstitucion'),
 		);
 	}
 
@@ -65,10 +58,8 @@ class Carrera extends CActiveRecord
 		return array(
 			'codCarrera' => 'Cod Carrera',
 			'NombreCarrera' => 'Nombre Carrera',
-			'Sede' => 'Sede',
-			'Region_codRegion' => 'Región',
-			'Provincia_codProvincia' => 'Provincia',
-			'Ciudad_codCiudad' => 'Ciudad',
+			'SemestresCarrera' => 'Semestres Carrera',
+			'Universidad_NombreInstitucion' => 'Universidad Nombre Institucion',
 		);
 	}
 
@@ -92,10 +83,8 @@ class Carrera extends CActiveRecord
 
 		$criteria->compare('codCarrera',$this->codCarrera,true);
 		$criteria->compare('NombreCarrera',$this->NombreCarrera,true);
-		$criteria->compare('Sede',$this->Sede,true);
-		$criteria->compare('Region_codRegion',$this->Region_codRegion);
-		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);
-		$criteria->compare('Ciudad_codCiudad',$this->Ciudad_codCiudad);
+		$criteria->compare('SemestresCarrera',$this->SemestresCarrera,true);
+		$criteria->compare('Universidad_NombreInstitucion',$this->Universidad_NombreInstitucion,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

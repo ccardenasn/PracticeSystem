@@ -1,4 +1,6 @@
 <?php
+include_once('semestres.php');
+
 
 class CarreraController extends Controller
 {
@@ -28,7 +30,7 @@ class CarreraController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','selectProvincia','selectCiudad'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -65,11 +67,14 @@ class CarreraController extends Controller
 		$model=new Carrera;
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Carrera']))
 		{
 			$model->attributes=$_POST['Carrera'];
+			
+			createSemesters($model->SemestresCarrera);
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->codCarrera));
 		}
@@ -89,7 +94,7 @@ class CarreraController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Carrera']))
 		{
@@ -168,33 +173,6 @@ class CarreraController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
-		}
-	}
-    
-    public function actionSelectProvincia()
-	{
-		$id_uno = $_POST['Carrera']['Region_codRegion'];
-		$lista = Provincia::model()->findAll('Region_codRegion = :id_uno',array(':id_uno'=>$id_uno));
-		$lista = CHtml::listData($lista,'codProvincia','NombreProvincia');
-		
-		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
-		
-		foreach($lista as $valor => $descripcion){
-			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
-		}
-	}
-	
-	//metodo que se utiliza para dropdown anidados, permite autocompletar el campo siguiente respecto a lo seleccionado
-	public function actionSelectCiudad()
-	{
-		$id_dos = $_POST['Carrera']['Provincia_codProvincia'];
-		$lista = Ciudad::model()->findAll('Provincia_codProvincia = :id_dos',array(':id_dos'=>$id_dos));
-		$lista = CHtml::listData($lista,'codCiudad','NombreCiudad');
-		
-		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
-		
-		foreach($lista as $valor => $descripcion){
-			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
 	}
 }

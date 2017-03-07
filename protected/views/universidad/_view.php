@@ -21,16 +21,16 @@
 	<?php echo CHtml::encode($data->Facultad); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Region')); ?>:</b>
-	<?php echo CHtml::encode($data->regionCodRegion->NombreRegion); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Region_codRegion')); ?>:</b>
+	<?php echo CHtml::encode($data->Region_codRegion); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Provincia')); ?>:</b>
-	<?php echo CHtml::encode($data->provinciaCodProvincia->NombreProvincia); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Provincia_codProvincia')); ?>:</b>
+	<?php echo CHtml::encode($data->Provincia_codProvincia); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Ciudad')); ?>:</b>
-	<?php echo CHtml::encode($data->ciudadCodCiudad->NombreCiudad); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Ciudad_codCiudad')); ?>:</b>
+	<?php echo CHtml::encode($data->Ciudad_codCiudad); ?>
 	<br />
 
 

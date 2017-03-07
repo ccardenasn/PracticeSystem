@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista Carreras', 'url'=>array('index')),
-	array('label'=>'Administrar Carreras', 'url'=>array('admin')),
+	array('label'=>'List Carrera', 'url'=>array('index')),
+	array('label'=>'Manage Carrera', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Añadir Carrera</h1>
+<h1>Create Carrera</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
