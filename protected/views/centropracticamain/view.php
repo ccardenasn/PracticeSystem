@@ -33,6 +33,7 @@ $this->menu=array(
 		'Provincia_codProvincia',
 		'Ciudad_codCiudad',
 		'Calle',
+		'ImagenCentroPractica',
 	),
 )); ?>
 
@@ -58,114 +59,6 @@ $this->menu=array(
 			<td><?php echo $secretaria->TelefonoSecretariaCP ?></td>
 			<td><?php echo $secretaria->CelularSecretariaCP ?></td>
 			<td><?php echo $secretaria->ImagenSecretariaCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Director CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->directorcps as $director) : ?>
-		<tr>
-			<td><?php echo $director->RutDirectorCP ?></td>
-			<td><?php echo $director->NombreDirectorCP ?></td>
-			<td><?php echo $director->MailDirectorCP ?></td>
-			<td><?php echo $director->TelefonoDirectorCP ?></td>
-			<td><?php echo $director->CelularDirectorCP ?></td>
-			<td><?php echo $director->ImagenDirectorCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Jefe UTP CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->jefeutpcps as $jefe) : ?>
-		<tr>
-			<td><?php echo $jefe->RutJefeUTPCP ?></td>
-			<td><?php echo $jefe->NombreJefeUTPCP ?></td>
-			<td><?php echo $jefe->MailJefeUTPCP ?></td>
-			<td><?php echo $jefe->TelefonoJefeUTPCP ?></td>
-			<td><?php echo $jefe->CelularJefeUTPCP ?></td>
-			<td><?php echo $jefe->ImagenJefeUTPCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Profesor Coordinador de Prácticas CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->profesorcoordinadorpracticacps as $profesor) : ?>
-		<tr>
-			<td><?php echo $profesor->RutProfCoordGuiaCp ?></td>
-			<td><?php echo $profesor->NombreProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->MailProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->TelefonoProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->CelularProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->ImagenProfCoordGuiaCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Profesor Guía CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->profesorguiacps as $profesor) : ?>
-		<tr>
-			<td><?php echo $profesor->RutProfGuiaCP ?></td>
-			<td><?php echo $profesor->NombreProfGuiaCP ?></td>
-			<td><?php echo $profesor->MailProfGuiaCP ?></td>
-			<td><?php echo $profesor->TelefonoProfGuiaCP ?></td>
-			<td><?php echo $profesor->CelularProfGuiaCP ?></td>
-			<td><?php echo $profesor->ImagenProfGuiaCP ?></td>
 		</tr>
 		<?php endforeach ?>
 	</tbody>

@@ -54,6 +54,10 @@
 	<?php echo CHtml::encode($data->Calle); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ImagenCentroPractica')); ?>:</b>
+	<?php echo CHtml::encode($data->ImagenCentroPractica); ?>
+	<br />
+
 	*/ ?>
 
 </div>

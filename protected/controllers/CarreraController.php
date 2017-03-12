@@ -99,6 +99,15 @@ class CarreraController extends Controller
 		if(isset($_POST['Carrera']))
 		{
 			$model->attributes=$_POST['Carrera'];
+			
+			$totalSemesters = countSemesters();
+			$mainSemesters = $model->SemestresCarrera;
+			
+			if($totalSemesters != $mainSemesters){
+				deleteSemesters();
+				createSemesters($model->SemestresCarrera);
+			}
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->codCarrera));
 		}

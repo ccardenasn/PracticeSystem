@@ -64,41 +64,41 @@ class CentropracticamainController extends Controller
 	{
 		$centroModel=new Centropractica;
 		$secretariaModel=new Secretariacp;
-		$directorModel=new Directorcp;
-		$jefeutpModel=new Jefeutpcp;
-		$coordinadorModel=new Profesorcoordinadorpracticacp;
-		$profesorModel=new Profesorguiacp;
-		
+		//$secretariaModel=new Secretariacp;
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel,$profesorModel));
+		$this->performAjaxValidation(array($centroModel,$secretariaModel));
 
-		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp'],$_POST['Profesorguiacp']))
+		if(isset($_POST['Centropractica'],$_POST['Secretariacp']))
 		{
 			$centroModel->attributes=$_POST['Centropractica'];
 			$secretariaModel->attributes=$_POST['Secretariacp'];
-			$directorModel->attributes=$_POST['Directorcp'];
-			$jefeutpModel->attributes=$_POST['Jefeutpcp'];
-			$coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
-			$profesorModel->attributes=$_POST['Profesorguiacp'];
 			
-			$centroFile=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
+			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
+			$file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
+			$image=$centroModel->ImagenCentroPractica=CUploadedFile::getInstance($centroModel,'ImagenCentroPractica');
 			
 			if($centroModel->save()){
-				if($centroFile != null){
-					if($centroFile->getExtensionName()=="pdf"){
-						$centroModel->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$centroFile->getName());
+				if($file != null){
+					if($file->getExtensionName()=="pdf"){
+						$centroModel->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
 					}else{
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}	
+				}
+				
+				if($image != null){
+					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$centroModel->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
 						$this->refresh();
 					}	
 				}
 			}
 			
 			$secretariaModel->CentroPractica_RBD = $centroModel->RBD;
-			$directorModel->CentroPractica_RBD = $centroModel->RBD;
-			$jefeutpModel->CentroPractica_RBD = $centroModel->RBD;
-			$coordinadorModel->CentroPractica_RBD = $centroModel->RBD;
-			$profesorModel->CentroPractica_RBD = $centroModel->RBD;
 			
 			$secretariaFile=$secretariaModel->ImagenSecretariaCP=CUploadedFile::getInstance($secretariaModel,'ImagenSecretariaCP');
 			
@@ -113,73 +113,12 @@ class CentropracticamainController extends Controller
 					}
 				}
 			}
-			
-			$directorFile=$directorModel->ImagenDirectorCP=CUploadedFile::getInstance($directorModel,'ImagenDirectorCP');
-			
-			if($directorModel->save()){
-				if($directorFile != null){
-					if($directorFile->getExtensionName()=="jpg" or $directorFile->getExtensionName()=="jpeg" or $directorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$directorModel->ImagenDirectorCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirectoresCP/".$directorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}
-				}
-			}
-			
-			$jefeutpFile=$jefeutpModel->ImagenJefeUTPCP=CUploadedFile::getInstance($jefeutpModel,'ImagenJefeUTPCP');
-			
-			if($jefeutpModel->save()){
-				if($jefeutpFile != null){
-					if($jefeutpFile->getExtensionName()=="jpg" or $jefeutpFile->getExtensionName()=="jpeg" or $jefeutpFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$jefeutpModel->ImagenJefeUTPCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$jefeutpFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}	
-				}
-			}
-			
-			$coordinadorFile=$coordinadorModel->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($coordinadorModel,'ImagenProfCoordGuiaCP');
-			
-			if($coordinadorModel->save()){
-				if($coordinadorFile != null){
-					if($coordinadorFile->getExtensionName()=="jpg" or $coordinadorFile->getExtensionName()=="jpeg" or $coordinadorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$coordinadorModel->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$coordinadorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-						$this->refresh();
-					}
-				}
-			}
-			
-			$profesorFile=$profesorModel->ImagenProfGuiaCP=CUploadedFile::getInstance($profesorModel,'ImagenProfGuiaCP');
-			
-			if($profesorModel->save()){
-				if($profesorFile != null){
-					if($profesorFile->getExtensionName()=="jpg" or $profesorFile->getExtensionName()=="jpeg" or $profesorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$profesorModel->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$profesorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}
-				}
-			}
-			
 			$this->redirect(array('view','id'=>$centroModel->RBD));
 		}
-
+		
 		$this->render('create',array(
 			'centroModel'=>$centroModel,
 			'secretariaModel'=>$secretariaModel,
-			'directorModel'=>$directorModel,
-			'jefeutpModel'=>$jefeutpModel,
-			'coordinadorModel'=>$coordinadorModel,
-			'profesorModel'=>$profesorModel,
 		));
 	}
 
@@ -192,29 +131,62 @@ class CentropracticamainController extends Controller
 	{
 		$centroModel=$this->loadModel($id);
 		$secretariaModel=$centroModel->secretariacps;
-		$directorModel=$centroModel->directorcps;
-		$jefeutpModel=$centroModel->jefeutpcps;
-		$coordinadorModel=$centroModel->profesorcoordinadorpracticacps;
-		$profesorModel=$centroModel->profesorguiacps;
-		
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation(array($centroModel,$secretariaModel));
 
-		if(isset($_POST['Centropractica']))
+		if(isset($_POST['Centropractica'],$_POST['Secretariacp']))
 		{
 			$centroModel->attributes=$_POST['Centropractica'];
-			if($centroModel->save())
-				$this->redirect(array('view','id'=>$centroModel->RBD));
+			$secretariaModel->attributes=$_POST['Secretariacp'];
+			
+			
+			$file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
+			$image=$centroModel->ImagenCentroPractica=CUploadedFile::getInstance($centroModel,'ImagenCentroPractica');
+			
+			if($centroModel->save()){
+				if($file != null){
+					if($file->getExtensionName()=="pdf"){
+						$centroModel->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}	
+				}
+				
+				if($image != null){
+					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$centroModel->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
+						$this->refresh();
+					}	
+				}
+			}
+			
+			$secretariaModel->CentroPractica_RBD = $centroModel->RBD;
+			
+			$secretariaFile=$secretariaModel->ImagenSecretariaCP=CUploadedFile::getInstance($secretariaModel,'ImagenSecretariaCP');
+			
+			if($secretariaModel->save()){
+				if($secretariaFile != null){
+					if($secretariaFile->getExtensionName()=="jpg" or $secretariaFile->getExtensionName()=="jpeg" or $secretariaFile->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$secretariaModel->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$secretariaFile->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}
+			}
+			$this->redirect(array('view','id'=>$centroModel->RBD));
+		
 		}
 
 		$this->render('update',array(
 			'centroModel'=>$centroModel,
 			'secretariaModel'=>$secretariaModel,
-			'directorModel'=>$directorModel,
-			'jefeutpModel'=>$jefeutpModel,
-			'coordinadorModel'=>$coordinadorModel,
-			'profesorModel'=>$profesorModel,
 		));
 	}
 

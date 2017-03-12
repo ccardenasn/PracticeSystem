@@ -8,5 +8,17 @@ function createSemesters($semestres){
 	}
 }
 
+function countSemesters(){
+	$query="select count(*) from semestre";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function deleteSemesters(){
+	$query="truncate table semestre";
+	Yii::app()->db->createCommand($query)->execute();	
+}
+
 
 ?>
