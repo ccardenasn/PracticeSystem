@@ -19,4 +19,8 @@ $this->menu=array(
 						   array(
 							   'centroModel'=>$centroModel,
 							   'secretariaModel'=>$secretariaModel,
+							   'directorModel'=>$directorModel,
+							   'jefeutpModel'=>$jefeutpModel,
+							   'coordinadorModel'=>$coordinadorModel,
+							   'profesorModel'=>$profesorModel,
 						   )); ?>
