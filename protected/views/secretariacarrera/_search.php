@@ -36,8 +36,18 @@
 		<?php echo $form->textField($model,'CelularSecretaria',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'ImagenSecretaria'); ?>
+		<?php echo $form->textField($model,'ImagenSecretaria',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'Carrera_codCarrera'); ?>
+		<?php echo $form->textField($model,'Carrera_codCarrera',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Buscar'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

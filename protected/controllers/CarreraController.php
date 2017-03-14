@@ -1,7 +1,6 @@
 <?php
 include_once('semestres.php');
 
-
 class CarreraController extends Controller
 {
 	/**

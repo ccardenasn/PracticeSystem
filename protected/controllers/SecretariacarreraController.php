@@ -65,7 +65,6 @@ class SecretariacarreraController extends Controller
 		$model=new Secretariacarrera;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Secretariacarrera']))
 		{
 			$model->attributes=$_POST['Secretariacarrera'];
@@ -102,7 +101,6 @@ class SecretariacarreraController extends Controller
 		$model=$this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Secretariacarrera']))
 		{
 			$model->attributes=$_POST['Secretariacarrera'];

@@ -21,16 +21,17 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-        array('name'=>'Rut','value'=>$model->RutSecretaria),
-        array('name'=>'Nombre','value'=>$model->NombreSecretaria),
-        array('name'=>'Mail','value'=>$model->MailSecretaria),
-        array('name'=>'Telefono','value'=>$model->TelefonoSecretaria),
-        array('name'=>'Celular','value'=>$model->CelularSecretaria),
+		'RutSecretaria',
+		'NombreSecretaria',
+		'MailSecretaria',
+		'TelefonoSecretaria',
+		'CelularSecretaria',
 		array(
             'name'=>'ImagenSecretaria',
 			'type' => 'raw',
             'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretaria/'.$model->ImagenSecretaria)
             ),
+		array('name'=>'Carrera_codCarrera','value'=>$model->carreraCodCarrera->NombreCarrera),
 	),
 )); ?>
 

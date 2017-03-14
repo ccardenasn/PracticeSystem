@@ -55,6 +55,12 @@
 		<?php echo $form->error($model,'ImagenSecretaria'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'Carrera_codCarrera'); ?>
+		<?php echo $form->dropDownList($model,'Carrera_codCarrera',CHtml::listData(Carrera::model()->findAll(),'codCarrera','NombreCarrera'));?>
+        <?php echo $form->error($model,'Carrera_codCarrera'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>

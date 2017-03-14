@@ -14,6 +14,10 @@ include_once 'FunCelular.php';
  * @property string $TelefonoSecretaria
  * @property string $CelularSecretaria
  * @property string $ImagenSecretaria
+ * @property string $Carrera_codCarrera
+ *
+ * The followings are the available model relations:
+ * @property Carrera $carreraCodCarrera
  */
 class Secretariacarrera extends CActiveRecord
 {
@@ -33,12 +37,12 @@ class Secretariacarrera extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutSecretaria', 'required'),
-			array('RutSecretaria, NombreSecretaria, MailSecretaria, TelefonoSecretaria, CelularSecretaria, ImagenSecretaria', 'length', 'max'=>45),
+			array('RutSecretaria, Carrera_codCarrera', 'required'),
+			array('RutSecretaria, NombreSecretaria, MailSecretaria, TelefonoSecretaria, CelularSecretaria, ImagenSecretaria, Carrera_codCarrera', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RutSecretaria, NombreSecretaria, MailSecretaria, TelefonoSecretaria, CelularSecretaria, ImagenSecretaria', 'safe', 'on'=>'search'),
-            array('ImagenSecretaria','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
+			array('RutSecretaria, NombreSecretaria, MailSecretaria, TelefonoSecretaria, CelularSecretaria, ImagenSecretaria, Carrera_codCarrera', 'safe', 'on'=>'search'),
+			 array('ImagenSecretaria','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenSecretaria','safe','on'=>'update'),
             array('RutSecretaria','valrut'),
             array('NombreSecretaria','valnombre'),
@@ -56,6 +60,7 @@ class Secretariacarrera extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'carreraCodCarrera' => array(self::BELONGS_TO, 'Carrera', 'Carrera_codCarrera'),
 		);
 	}
 
@@ -71,6 +76,7 @@ class Secretariacarrera extends CActiveRecord
 			'TelefonoSecretaria' => 'Telefono',
 			'CelularSecretaria' => 'Celular',
 			'ImagenSecretaria' => 'Imagen',
+			'Carrera_codCarrera' => 'Carrera',
 		);
 	}
 
@@ -98,6 +104,7 @@ class Secretariacarrera extends CActiveRecord
 		$criteria->compare('TelefonoSecretaria',$this->TelefonoSecretaria,true);
 		$criteria->compare('CelularSecretaria',$this->CelularSecretaria,true);
 		$criteria->compare('ImagenSecretaria',$this->ImagenSecretaria,true);
+		$criteria->compare('Carrera_codCarrera',$this->Carrera_codCarrera,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -114,8 +121,8 @@ class Secretariacarrera extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-    
-    public function valrut($attribute,$params)
+	
+	public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutSecretaria)==false)
 		$this->addError('RutSecretaria','Rut invalido');

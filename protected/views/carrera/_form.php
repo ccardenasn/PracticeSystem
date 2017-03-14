@@ -36,7 +36,7 @@
 		<?php echo $form->textField($model,'SemestresCarrera',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'SemestresCarrera'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'Universidad_NombreInstitucion'); ?>
 		<?php echo $form->dropDownList($model,'Universidad_NombreInstitucion',CHtml::listData(Universidad::model()->findAll(),'NombreInstitucion','NombreInstitucion'));?>
@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
