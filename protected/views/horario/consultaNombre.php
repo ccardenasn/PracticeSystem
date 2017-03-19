@@ -14,3 +14,17 @@ function containsStudent($student){
 	
 	return $containsData;
 }
+
+function containsSubjects(){
+	$query="select count(*) from asignatura;";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function containsBlocks(){
+	$query="select count(*) from bloque;";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}

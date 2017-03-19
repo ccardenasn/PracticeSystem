@@ -177,3 +177,11 @@ function change_e_row_f(){
 	day = "Viernes";
 	block = "Bloque 6";
 }
+
+function del_a_row_a(){
+	condicion = "1";
+	day = "Lunes";
+	block = "Bloque 1";
+	$("#lbl_a_row_a").text("Asignar");
+	addArrItem(0,"Asignar");
+}

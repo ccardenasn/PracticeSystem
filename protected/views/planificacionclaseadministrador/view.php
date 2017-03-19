@@ -15,6 +15,7 @@ $this->menu=array(
 	array('label'=>'Eliminar Planificacion', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administrar Planificaciones', 'url'=>array('admin')),
 	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodPlanificacion)),
+	//array('label'=>'Ver Bitácora', 'url'=>array('bitacorasesion/view','id'=>$model->CodPlanificacion)),
 );
 ?>
 

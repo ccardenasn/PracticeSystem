@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutEstudiante)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutEstudiante),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutEstudiante),'confirm'=>'¡Advertencia! Se eliminarán todas las bitácoras, planificaciones y documentos asociados al estudiante ¿Desea Continuar?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Añadir Planificación', 'url'=>array('planificacionclaseadministrador/create','id'=>$model->RutEstudiante)),
 	array('label'=>'Planificaciones de Estudiante','url'=>array('planificacionclaseadministrador/index','id'=>$model->RutEstudiante)),

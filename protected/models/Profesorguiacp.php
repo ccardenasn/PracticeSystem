@@ -1,9 +1,9 @@
 <?php
-include_once 'FunRut.php';
+/*include_once 'FunRut.php';
 include_once 'FunNombre.php';
 include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
-include_once 'FunCelular.php';
+include_once 'FunCelular.php';*/
 /**
  * This is the model class for table "profesorguiacp".
  *
@@ -27,6 +27,9 @@ class Profesorguiacp extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	
+	public $updateType;
+	
 	public function tableName()
 	{
 		return 'profesorguiacp';
@@ -50,11 +53,11 @@ class Profesorguiacp extends CActiveRecord
             array('ImagenProfGuiaCP','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenProfGuiaCP','safe','on'=>'create'),
             array('ImagenProfGuiaCP','safe','on'=>'update'),
-            array('RutProfGuiaCP','valrut'),
+            /*array('RutProfGuiaCP','valrut'),
             array('NombreProfGuiaCP','valnombre'),
             array('MailProfGuiaCP','valcorreo'),
             array('TelefonoProfGuiaCP','valtelefono'),
-            array('CelularProfGuiaCP','valcelular'),
+            array('CelularProfGuiaCP','valcelular'),*/
 		);
 	}
 
@@ -133,7 +136,7 @@ class Profesorguiacp extends CActiveRecord
 		return parent::model($className);
 	}
     
-    public function valrut($attribute,$params)
+    /*public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutProfGuiaCP)==false)
 		$this->addError('RutProfGuiaCP','Rut invalido');
@@ -161,5 +164,5 @@ class Profesorguiacp extends CActiveRecord
 	{
 		if(celularvalido($this->CelularProfGuiaCP)==false)
 		$this->addError('CelularProfGuiaCP','Celular invalido');
-	}
+	}*/
 }

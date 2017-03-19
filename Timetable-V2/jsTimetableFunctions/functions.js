@@ -30,6 +30,10 @@ function loadCreate(){
 	mainAction = "Create";
 }
 
+function loadTimeTableIndex(){
+	location.href=redirectPage;
+}
+
 function utf8_encode (unicodeString) {
 	 if (typeof unicodeString != 'string') throw new TypeError('parameter ‘unicodeString’ is not a string');
     const utf8String = unicodeString.replace(

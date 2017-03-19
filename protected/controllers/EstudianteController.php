@@ -1,4 +1,5 @@
 <?php
+include_once('borrado.php');
 
 class EstudianteController extends Controller
 {
@@ -135,6 +136,26 @@ class EstudianteController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		
+		$planStudents=getPlanStudents($id);
+		
+		for($i=0;$i<count($planStudents);$i++){
+			
+			$idBitacora=getIdBitacora($planStudents,$i);
+			
+			$docexist=containsDoc($idBitacora);
+			
+			if($docexist != 0)
+			{
+				deleteDocuments($idBitacora);
+			}
+			
+			deleteClase($idBitacora);
+			deleteBitacora($idBitacora);
+			deletePlanificacion($planStudents,$i);
+		}
+		
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
