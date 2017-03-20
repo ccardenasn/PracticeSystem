@@ -31,9 +31,10 @@ for($i=0;$i<count($horario);$i++){
 	if($asignatura != null){
 		
 		if($accion == "Create"){
-			$query = "insert into Horario(Estudiante_RutEstudiante,Asignatura_NombreAsignatura,HoraInicio,HoraFin,Dia,Bloque,HorarioAdmin_CodHorario) values('".$rut."','".$asignatura."','".$horaInicio."','".$horaFin."','".$dia."','".$bloque."','".$existGtResult."');";	
-			mysql_query($query,$con);
-			
+			if($asignatura != "Asignar"){
+				$query = "insert into Horario(Estudiante_RutEstudiante,Asignatura_NombreAsignatura,HoraInicio,HoraFin,Dia,Bloque,HorarioAdmin_CodHorario) values('".$rut."','".$asignatura."','".$horaInicio."','".$horaFin."','".$dia."','".$bloque."','".$existGtResult."');";
+				mysql_query($query,$con);
+			}
 		}else{
 			$queryCount = "select count(*) from horario where Estudiante_RutEstudiante = '".$rut."' and Dia = '".$dia."' and Bloque = '".$bloque."';";
 			

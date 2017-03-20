@@ -34,6 +34,10 @@ function loadTimeTableIndex(){
 	location.href=redirectPage;
 }
 
+function loadSuccessUpdatePage(){
+	location.href=successPage;
+}
+
 function utf8_encode (unicodeString) {
 	 if (typeof unicodeString != 'string') throw new TypeError('parameter ‘unicodeString’ is not a string');
     const utf8String = unicodeString.replace(

@@ -32,7 +32,7 @@ class HorarioController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createHorario','updateHorario','successTimeTable'),
+				'actions'=>array('create','update','createHorario','updateHorario','successTimeTable','successUpdateTimeTable'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -146,6 +146,11 @@ class HorarioController extends Controller
 	public function actionSuccessTimeTable()
 	{
 		$this->render('successTimeTable');
+	}
+	
+	public function actionSuccessUpdateTimeTable()
+	{
+		$this->render('successUpdateTimeTable');
 	}
 
 	/**
