@@ -30,6 +30,50 @@ function loadCreate(){
 	mainAction = "Create";
 }
 
+function loadState(){
+	changeState(0,"btn_a_row_a","btn_xa_row_a");
+	changeState(1,"btn_b_row_a","btn_xb_row_a");
+	changeState(2,"btn_c_row_a","btn_xc_row_a");
+	changeState(3,"btn_d_row_a","btn_xd_row_a");
+	changeState(4,"btn_e_row_a","btn_xe_row_a");
+	changeState(5,"btn_a_row_b","btn_xa_row_b");
+	changeState(6,"btn_b_row_b","btn_xb_row_b");
+	changeState(7,"btn_c_row_b","btn_xc_row_b");
+	changeState(8,"btn_d_row_b","btn_xd_row_b");
+	changeState(9,"btn_e_row_b","btn_xe_row_b");
+	changeState(10,"btn_a_row_c","btn_xa_row_c");
+	changeState(11,"btn_b_row_c","btn_xb_row_c");
+	changeState(12,"btn_c_row_c","btn_xc_row_c");
+	changeState(13,"btn_d_row_c","btn_xd_row_c");
+	changeState(14,"btn_e_row_c","btn_xe_row_c");
+	changeState(15,"btn_a_row_d","btn_xa_row_d");
+	changeState(16,"btn_b_row_d","btn_xb_row_d");
+	changeState(17,"btn_c_row_d","btn_xc_row_d");
+	changeState(18,"btn_d_row_d","btn_xd_row_d");
+	changeState(19,"btn_e_row_d","btn_xe_row_d");
+	changeState(20,"btn_a_row_e","btn_xa_row_e");
+	changeState(21,"btn_b_row_e","btn_xb_row_e");
+	changeState(22,"btn_c_row_e","btn_xc_row_e");
+	changeState(23,"btn_d_row_e","btn_xd_row_e");
+	changeState(24,"btn_e_row_e","btn_xe_row_e");
+	changeState(25,"btn_a_row_f","btn_xa_row_f");
+	changeState(26,"btn_b_row_f","btn_xb_row_f");
+	changeState(27,"btn_c_row_f","btn_xc_row_f");
+	changeState(28,"btn_d_row_f","btn_xd_row_f");
+	changeState(29,"btn_e_row_f","btn_xe_row_f");
+}
+
+function changeState(index,buttonAdd,buttonDel){
+	var blockSubject = mainTimeTableArr[index];
+	if(blockSubject == "Asignar"){
+		showButton(buttonAdd);
+		hiddenButton(buttonDel);
+	}else{
+		hiddenButton(buttonAdd);
+		showButton(buttonDel);
+	}
+}
+
 function loadTimeTableIndex(){
 	location.href=redirectPage;
 }
