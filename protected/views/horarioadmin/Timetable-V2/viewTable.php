@@ -19,9 +19,21 @@ echo '<script type="text/javascript">
 $viewSubjects = orderTimeTableData($model->Estudiante_RutEstudiante);
 
 $hour = hourColumns();
+
+$successUpdatePage = Yii::app()->createUrl('horarioAdmin/successUpdateTimeTable',array('model'=>$model->Estudiante_RutEstudiante));
+
+echo '<script type="text/javascript">
+	var successPage = "'.$successUpdatePage.'"; 
+</script>';
+
 ?>
 
-<body onload="javascript:loadUpdate();">
+<script type="text/javascript">
+	var mainTimeTableArr = <?php echo json_encode($viewSubjects); ?>; 
+</script>
+
+
+<body onload="javascript:loadUpdate();loadState();">
 	<div id="table_div">
 		<table border="2px">
 			<tr>
@@ -37,22 +49,27 @@ $hour = hourColumns();
 				<td>
 					<label id="lbl_a_row_a"><?php echo getSubjectCellData($viewSubjects,0);?></label>
 					<input type="button" id="btn_a_row_a" value="+"  onclick="javascript:mostrar(); change_a_row_a();"/>
+					<input type="button" id="btn_xa_row_a" value="x" onclick="javascript:del_a_row_a();"/>
 				</td>
 				<td>
 					<label id="lbl_b_row_a"><?php echo getSubjectCellData($viewSubjects,1);?></label>
 					<input type="button" id="btn_b_row_a" value="+"  onclick="javascript:mostrar(); change_b_row_a();"/>
+					<input type="button" id="btn_xb_row_a" value="x" onclick="javascript:del_b_row_a();"/>
 				</td>
 				<td>
 					<label id="lbl_c_row_a"><?php echo getSubjectCellData($viewSubjects,2);?></label>
 					<input type="button" id="btn_c_row_a" value="+"  onclick="javascript:mostrar(); change_c_row_a();"/>
+					<input type="button" id="btn_xc_row_a" value="x" onclick="javascript:del_c_row_a();"/>
 				</td>
 				<td>
 					<label id="lbl_d_row_a"><?php echo getSubjectCellData($viewSubjects,3); ?></label>
 					<input type="button" id="btn_d_row_a" value="+"  onclick="javascript:mostrar(); change_d_row_a();"/>
+					<input type="button" id="btn_xd_row_a" value="x" onclick="javascript:del_d_row_a();"/>
 				</td>
 				<td>
 					<label id="lbl_e_row_a"><?php echo getSubjectCellData($viewSubjects,4); ?></label>
 					<input type="button" id="btn_e_row_a" value="+"  onclick="javascript:mostrar(); change_e_row_a();"/>
+					<input type="button" id="btn_xe_row_a" value="x" onclick="javascript:del_e_row_a();"/>
 				</td>
 			</tr>
 			<tr>
@@ -60,22 +77,27 @@ $hour = hourColumns();
 				<td>
 					<label id="lbl_a_row_b"><?php echo getSubjectCellData($viewSubjects,5); ?></label>
 					<input type="button" id="btn_a_row_b" value="+"  onclick="javascript:mostrar(); change_a_row_b();"/>
+					<input type="button" id="btn_xa_row_b" value="x" onclick="javascript:del_a_row_b();"/>
 				</td>
 				<td>
 					<label id="lbl_b_row_b"><?php echo getSubjectCellData($viewSubjects,6); ?></label>
 					<input type="button" id="btn_b_row_b" value="+"  onclick="javascript:mostrar(); change_b_row_b();"/>
+					<input type="button" id="btn_xb_row_b" value="x" onclick="javascript:del_b_row_b();"/>
 				</td>
 				<td>
 					<label id="lbl_c_row_b"><?php echo getSubjectCellData($viewSubjects,7); ?></label>
 					<input type="button" id="btn_c_row_b" value="+"  onclick="javascript:mostrar(); change_c_row_b();"/>
+					<input type="button" id="btn_xc_row_b" value="x" onclick="javascript:del_c_row_b();"/>
 				</td>
 				<td>
 					<label id="lbl_d_row_b"><?php echo getSubjectCellData($viewSubjects,8); ?></label>
 					<input type="button" id="btn_d_row_b" value="+"  onclick="javascript:mostrar(); change_d_row_b();"/>
+					<input type="button" id="btn_xd_row_b" value="x" onclick="javascript:del_d_row_b();"/>
 				</td>
 				<td>
 					<label id="lbl_e_row_b"><?php echo getSubjectCellData($viewSubjects,9); ?></label>
 					<input type="button" id="btn_e_row_b" value="+"  onclick="javascript:mostrar(); change_e_row_b();"/>
+					<input type="button" id="btn_xe_row_b" value="x" onclick="javascript:del_e_row_b();"/>
 				</td>
 			</tr>
 			<tr>
@@ -83,22 +105,27 @@ $hour = hourColumns();
 				<td>
 					<label id="lbl_a_row_c"><?php echo getSubjectCellData($viewSubjects,10); ?></label>
 					<input type="button" id="btn_a_row_c" value="+"  onclick="javascript:mostrar(); change_a_row_c();"/>
+					<input type="button" id="btn_xa_row_c" value="x" onclick="javascript:del_a_row_c();"/>
 				</td>
 				<td>
 					<label id="lbl_b_row_c"><?php echo getSubjectCellData($viewSubjects,11); ?></label>
 					<input type="button" id="btn_b_row_c" value="+"  onclick="javascript:mostrar(); change_b_row_c();"/>
+					<input type="button" id="btn_xb_row_c" value="x" onclick="javascript:del_b_row_c();"/>
 				</td>
 				<td>
 					<label id="lbl_c_row_c"><?php echo getSubjectCellData($viewSubjects,12); ?></label>
 					<input type="button" id="btn_c_row_c" value="+"  onclick="javascript:mostrar(); change_c_row_c();"/>
+					<input type="button" id="btn_xc_row_c" value="x" onclick="javascript:del_c_row_c();"/>
 				</td>
 				<td>
 					<label id="lbl_d_row_c"><?php echo getSubjectCellData($viewSubjects,13); ?></label>
 					<input type="button" id="btn_d_row_c" value="+"  onclick="javascript:mostrar(); change_d_row_c();"/>
+					<input type="button" id="btn_xd_row_c" value="x" onclick="javascript:del_d_row_c();"/>
 				</td>
 				<td>
 					<label id="lbl_e_row_c"><?php echo getSubjectCellData($viewSubjects,14); ?>r</label>
 					<input type="button" id="btn_e_row_c" value="+"  onclick="javascript:mostrar(); change_e_row_c();"/>
+					<input type="button" id="btn_xe_row_c" value="x" onclick="javascript:del_e_row_c();"/>
 				</td>
 			</tr>
 			<tr>
@@ -109,22 +136,27 @@ $hour = hourColumns();
 				<td>
 					<label id="lbl_a_row_d"><?php echo getSubjectCellData($viewSubjects,15); ?></label>
 					<input type="button" id="btn_a_row_d" value="+"  onclick="javascript:mostrar(); change_a_row_d();"/>
+					<input type="button" id="btn_xa_row_d" value="x" onclick="javascript:del_a_row_d();"/>
 				</td>
 				<td>
 					<label id="lbl_b_row_d"><?php echo getSubjectCellData($viewSubjects,16); ?></label>
 					<input type="button" id="btn_b_row_d" value="+"  onclick="javascript:mostrar(); change_b_row_d();"/>
+					<input type="button" id="btn_xb_row_d" value="x" onclick="javascript:del_b_row_d();"/>
 				</td>
 				<td>
 					<label id="lbl_c_row_d"><?php echo getSubjectCellData($viewSubjects,17); ?></label>
 					<input type="button" id="btn_c_row_d" value="+"  onclick="javascript:mostrar(); change_c_row_d();"/>
+					<input type="button" id="btn_xc_row_d" value="x" onclick="javascript:del_c_row_d();"/>
 				</td>
 				<td>
 					<label id="lbl_d_row_d"><?php echo getSubjectCellData($viewSubjects,18); ?></label>
 					<input type="button" id="btn_d_row_d" value="+"  onclick="javascript:mostrar(); change_d_row_d();"/>
+					<input type="button" id="btn_xd_row_d" value="x" onclick="javascript:del_d_row_d();"/>
 				</td>
 				<td>
 					<label id="lbl_e_row_d"><?php echo getSubjectCellData($viewSubjects,19); ?></label>
 					<input type="button" id="btn_e_row_d" value="+"  onclick="javascript:mostrar(); change_e_row_d();"/>
+					<input type="button" id="btn_xe_row_d" value="x" onclick="javascript:del_e_row_d();"/>
 				</td>
 			</tr>
 			<tr>
@@ -132,22 +164,27 @@ $hour = hourColumns();
 				<td>
 					<label id="lbl_a_row_e"><?php echo getSubjectCellData($viewSubjects,20); ?></label>
 					<input type="button" id="btn_a_row_e" value="+"  onclick="javascript:mostrar(); change_a_row_e();"/>
+					<input type="button" id="btn_xa_row_e" value="x" onclick="javascript:del_a_row_e();"/>
 				</td>
 				<td>
 					<label id="lbl_b_row_e"><?php echo getSubjectCellData($viewSubjects,21); ?></label>
 					<input type="button" id="btn_b_row_e" value="+"  onclick="javascript:mostrar(); change_b_row_e();"/>
+					<input type="button" id="btn_xb_row_e" value="x" onclick="javascript:del_b_row_e();"/>
 				</td>
 				<td>
 					<label id="lbl_c_row_e"><?php echo getSubjectCellData($viewSubjects,22); ?></label>
 					<input type="button" id="btn_c_row_e" value="+"  onclick="javascript:mostrar(); change_c_row_e();"/>
+					<input type="button" id="btn_xc_row_e" value="x" onclick="javascript:del_c_row_e();"/>
 				</td>
 				<td>
 					<label id="lbl_d_row_e"><?php echo getSubjectCellData($viewSubjects,23); ?></label>
 					<input type="button" id="btn_d_row_e" value="+"  onclick="javascript:mostrar(); change_d_row_e();"/>
+					<input type="button" id="btn_xd_row_e" value="x" onclick="javascript:del_d_row_e();"/>
 				</td>
 				<td>
 					<label id="lbl_e_row_e"><?php echo getSubjectCellData($viewSubjects,24); ?></label>
 					<input type="button" id="btn_e_row_e" value="+"  onclick="javascript:mostrar(); change_e_row_e();"/>
+					<input type="button" id="btn_xe_row_e" value="x" onclick="javascript:del_e_row_e();"/>
 				</td>
 			</tr>
 			<tr>
@@ -155,22 +192,27 @@ $hour = hourColumns();
 				<td>
 					<label id="lbl_a_row_f"><?php echo getSubjectCellData($viewSubjects,25); ?></label>
 					<input type="button" id="btn_a_row_f" value="+"  onclick="javascript:mostrar(); change_a_row_f();"/>
+					<input type="button" id="btn_xa_row_f" value="x" onclick="javascript:del_a_row_f();"/>
 				</td>
 				<td>
 					<label id="lbl_b_row_f"><?php echo getSubjectCellData($viewSubjects,26); ?></label>
 					<input type="button" id="btn_b_row_f" value="+"  onclick="javascript:mostrar(); change_b_row_f();"/>
+					<input type="button" id="btn_xb_row_f" value="x" onclick="javascript:del_b_row_f();"/>
 				</td>
 				<td>
 					<label id="lbl_c_row_f"><?php echo getSubjectCellData($viewSubjects,27); ?></label>
 					<input type="button" id="btn_c_row_f" value="+"  onclick="javascript:mostrar(); change_c_row_f();"/>
+					<input type="button" id="btn_xc_row_f" value="x" onclick="javascript:del_c_row_f();"/>
 				</td>
 				<td>
 					<label id="lbl_d_row_f"><?php echo getSubjectCellData($viewSubjects,28); ?></label>
 					<input type="button" id="btn_d_row_f" value="+"  onclick="javascript:mostrar(); change_d_row_f();"/>
+					<input type="button" id="btn_xd_row_f" value="x" onclick="javascript:del_d_row_f();"/>
 				</td>
 				<td>
 					<label id="lbl_e_row_f"><?php echo getSubjectCellData($viewSubjects,29); ?></label>
 					<input type="button" id="btn_e_row_f" value="+"  onclick="javascript:mostrar(); change_e_row_f();"/>
+					<input type="button" id="btn_xe_row_f" value="x" onclick="javascript:del_e_row_f();"/>
 				</td>
 			</tr>
 		</table>
@@ -183,7 +225,7 @@ $hour = hourColumns();
 	</div>
 	
 	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
+		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();loadSuccessUpdatePage();"  action="saveTable.php">
 	</div>
 </body>
 

@@ -63,6 +63,7 @@ function loadState(){
 	changeState(29,"btn_e_row_f","btn_xe_row_f");
 }
 
+
 function changeState(index,buttonAdd,buttonDel){
 	var blockSubject = mainTimeTableArr[index];
 	if(blockSubject == "Asignar"){

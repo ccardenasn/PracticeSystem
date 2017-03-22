@@ -1,6 +1,15 @@
 <?php
 include_once('consultaNombre.php');
 
+$this->breadcrumbs=array(
+	'Horarios'=>array('index'),
+	'Modificar Horario',
+);
+
+$this->menu=array(
+	array('label'=>'Horarios', 'url'=>array('index')),
+);
+
 $rutStudent = Yii::app()->user->name;
 $nameStudent = nameQuery($rutStudent);
 ?>
