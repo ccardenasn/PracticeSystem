@@ -53,11 +53,11 @@ class Profesorguiacp extends CActiveRecord
             array('ImagenProfGuiaCP','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenProfGuiaCP','safe','on'=>'create'),
             array('ImagenProfGuiaCP','safe','on'=>'update'),
-            /*array('RutProfGuiaCP','valrut'),
+            array('RutProfGuiaCP','valrut'),
             array('NombreProfGuiaCP','valnombre'),
             array('MailProfGuiaCP','valcorreo'),
             array('TelefonoProfGuiaCP','valtelefono'),
-            array('CelularProfGuiaCP','valcelular'),*/
+            array('CelularProfGuiaCP','valcelular'),
 		);
 	}
 
@@ -136,7 +136,7 @@ class Profesorguiacp extends CActiveRecord
 		return parent::model($className);
 	}
     
-    /*public function valrut($attribute,$params)
+    public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutProfGuiaCP)==false)
 		$this->addError('RutProfGuiaCP','Rut invalido');
@@ -164,5 +164,5 @@ class Profesorguiacp extends CActiveRecord
 	{
 		if(celularvalido($this->CelularProfGuiaCP)==false)
 		$this->addError('CelularProfGuiaCP','Celular invalido');
-	}*/
+	}
 }

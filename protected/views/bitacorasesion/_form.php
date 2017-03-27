@@ -10,7 +10,11 @@ include_once('centro.php');
 <?php $form=$this->beginWidget('DynamicTabularForm', array(
 	'id'=>'bitacorasesion-form',
 	'defaultRowView'=>'_contact_form',
-	'enableAjaxValidation'=>false,
+	'method'=>'post',
+	//'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>

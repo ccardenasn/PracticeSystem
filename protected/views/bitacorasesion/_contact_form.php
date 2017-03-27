@@ -8,8 +8,11 @@
     <div class="row" style="width:110px;float: left;">
         <?php
 		echo $form->labelEx($model,"[$key]curso");
-        echo $form->textField($model, "[$key]curso",array('size'=>10));
+        //echo $form->textField($model, "[$key]curso",array('size'=>10));
+		echo CHtml::activeTextField($model,"[$key]curso",array('size'=>10));
         echo $form->error($model, "[$key]curso");
+		
+		
         ?>
     </div>
 	

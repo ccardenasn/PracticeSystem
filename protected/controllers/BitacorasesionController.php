@@ -78,7 +78,7 @@ class BitacorasesionController extends Controller
 		$contacts = array(new Clasebitacorasesion);
 		$exist=consultabitacora($id);
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		//$this->performAjaxValidation(array($model,$contacts));
 
 		if(isset($_POST['Bitacorasesion']))
 		{

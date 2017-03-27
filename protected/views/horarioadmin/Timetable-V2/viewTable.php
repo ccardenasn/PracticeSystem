@@ -20,7 +20,7 @@ $viewSubjects = orderTimeTableData($model->Estudiante_RutEstudiante);
 
 $hour = hourColumns();
 
-$successUpdatePage = Yii::app()->createUrl('horarioAdmin/successUpdateTimeTable',array('model'=>$model->Estudiante_RutEstudiante));
+$successUpdatePage = Yii::app()->createUrl('horarioAdmin/successUpdateTimeTable');
 
 echo '<script type="text/javascript">
 	var successPage = "'.$successUpdatePage.'"; 

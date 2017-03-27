@@ -7,7 +7,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Horarios', 'url'=>array('index')),
+	array('label'=>'Administración de Horarios', 'url'=>array('admin')),
+	array('label'=>'Asignar Horas', 'url'=>array('bloque/batchUpdate')),
+	array('label'=>'Semestres', 'url'=>array('semestre/index')),
+	array('label'=>'Asignatura', 'url'=>array('asignatura/index')),
 );
 
 $nameStudent = nameQuery($model->Estudiante_RutEstudiante);
