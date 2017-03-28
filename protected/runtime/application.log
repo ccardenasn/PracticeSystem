@@ -40127,3 +40127,26 @@ Stack trace:
 REQUEST_URI=/YiiOnePracticeSystem/index.php?r=profesorguiacpmain/create
 HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=profesorguiacpmain/create
 ---
+2017/03/28 08:15:35 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15284548-0' for key 'PRIMARY'. The SQL statement executed was: insert into profesorguiacp values('15284548-0','Alfredo Lopez','curso 4','si','alf@gmail.com','0652467834','89838927','7701','sdfsdf').
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ProfesorguiacpmainController.php (102)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/03/28 08:15:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '15284548-0' for key 'PRIMARY'. The SQL statement executed was: insert into profesorguiacp values('15284548-0','Alfredo Lopez','curso 4','si','alf@gmail.com','0652467834','89838927','7701','sdfsdf')' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\ProfesorguiacpmainController.php(102): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): ProfesorguiacpmainController->actionCreate()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('create')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('profesorguiacpm...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=profesorguiacpmain/create
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=profesorguiacpmain/create
+---
