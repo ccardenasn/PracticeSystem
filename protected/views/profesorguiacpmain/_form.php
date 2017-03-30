@@ -1,4 +1,5 @@
 <?php
+include_once('connect.php');
 /* @var $this ProfesorguiacpmainController */
 /* @var $model Profesorguiacp */
 /* @var $form CActiveForm */
@@ -7,16 +8,29 @@ $base = Yii::app()->baseUrl;
 $js = Yii::app()->getClientScript();
 $js->registerScriptFile($base.'/tabularInputControls/tabularInputFunctions.js');
 $js->registerScriptFile($base.'/tabularInputControls/validateTabularFunctions.js');
+
+$data="";
+
+while($rows = mysql_fetch_array($stmt)){
+$data=$data."<option value=".$rows['RBD'].">".$rows['NombreCentroPractica']."</option>";
+}
+
+echo '<script type="text/javascript">
+	var selectData = "'.$data.'"; 
+</script>';
+
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'profesorguiacp-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
+	'method'=>'post',
+	//'enableAjaxValidation'=>true,
+	//'enableClientValidation'=>true,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','autoComplete'=>'false'),
+	//'clientOptions'=>array('validateOnSubmit'=>true,),
+
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -25,6 +39,7 @@ $js->registerScriptFile($base.'/tabularInputControls/validateTabularFunctions.js
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	
 	<form method="post" action="<?php Yii::app()->createUrl('profesorguiacpmain/create') ?>">
 	<table id="employee_table" align=center>
 		<tr id="row1">
@@ -47,13 +62,21 @@ $js->registerScriptFile($base.'/tabularInputControls/validateTabularFunctions.js
 				<br><span class='error_text' id='Celular1_error'></span>
 			</td>
 			<td>
-				<input type="text" id="ProfesorJefe1" name="ProfesorJefeProfGuiaCP[]" size="14" placeholder="Profesor Jefe" onblur="check_fname('ProfesorJefe1');">
+				<select id="ProfesorJefe1" name="ProfesorJefeProfGuiaCP[]" style="width:130px">
+					<option value="Si" selected>Si</option>
+					<option value="No" selected>No</option>
+					<option value="No Aplica" selected>No Aplica</option>
+				</select>
 				<br><span class='error_text' id='ProfesorJefe1_error'></span>
-				<input type="text" id="Centro1" name="CentroPractica_RBD[]" size="14" placeholder="Centro de Práctica" onblur="check_fname('Centro1');">
+				<select id="Centro1" name="CentroPractica_RBD[]" style="width:130px">
+					<?php
+		  				echo $data;
+					?>
+				</select>
 				<br><span class='error_text' id='Centro1_error'></span>
 			</td>
 			<td>
-				<input type="text" id="Imagen1" name="ImagenProfGuiaCP[]" size="14" placeholder="Imagen" onblur="check_fname('Imagen1');">
+				<input type="file" id="Imagen1" name="ImagenProfGuiaCP[]"  size="14">
 				<br><span class='error_text' id='Imagen1_error'></span>
 			</td>
 		</tr>
@@ -62,6 +85,7 @@ $js->registerScriptFile($base.'/tabularInputControls/validateTabularFunctions.js
 	<input type="button" onclick="add_row();" value="+">
 	<input type="submit" name="submit_row" value="Enviar">
 	</form>
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

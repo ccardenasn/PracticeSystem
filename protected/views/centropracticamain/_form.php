@@ -2,6 +2,10 @@
 /* @var $this CentropracticamainController */
 /* @var $model Centropractica */
 /* @var $form CActiveForm */
+$base = Yii::app()->baseUrl; 
+$js = Yii::app()->getClientScript();
+$js->registerScriptFile($base.'/tabularInputCentro/tabularInputFunctions.js');
+$js->registerScriptFile($base.'/tabularInputCentro/validateTabularFunctions.js');
 ?>
 
 <div class="form">
@@ -11,13 +15,13 @@
 	'method'=>'post',
 	'enableAjaxValidation'=>true,
 	'enableClientValidation'=>true,
-	'htmlOptions'=>array('enctype'=>'multipart/form-data','autoComplete'=>'false'),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel,$profesorModel)); ?>
+	<?php echo $form->errorSummary(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel)); ?>
 
 	<div class="collapse">
 		<h3>Centro de Práctica</h3>
@@ -47,7 +51,41 @@
 		
 		<h3>Profesor Guía CP</h3>
 		<ul>
-			<?php $this->renderPartial('profesorCPForm', array('form'=>$form,'profesorModel'=>$profesorModel)); ?>
+			<table id="employee_table" align=center>
+		<tr id="row1">
+			<td>
+				<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" placeholder="Rut" onblur="validateRut('Rut1');">
+				<br><span class='error_text' id='Rut1_error'></span>
+				<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" placeholder="Mail" onblur="check_email('Mail1');">
+				<br><span class='error_text' id='Mail1_error'></span>
+			</td>
+			<td>
+				<input type="text" id="Nombre1" name="NombreProfGuiaCP[]" size="14" placeholder="Nombre" onblur="validateName('Nombre1');" >
+				<br><span class='error_text' id='Nombre1_error'></span>
+				<input type="text" id="Telefono1" name="TelefonoProfGuiaCP[]" size="14" placeholder="Telefono" onblur="validateTelefono('Telefono1');">
+				<br><span class='error_text' id='Telefono1_error'></span>
+			</td>
+			<td>
+				<input type="text" id="Curso1" name="CursoProfGuiaCP[]" size="14" placeholder="Curso">
+				<br><span class='error_text' id='Curso1_error'></span>
+				<input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" placeholder="Celular" onblur="validateCelular('Celular1');">
+				<br><span class='error_text' id='Celular1_error'></span>
+			</td>
+			<td>
+				<select id="ProfesorJefe1" name="ProfesorJefeProfGuiaCP[]" style="width:130px">
+					<option value="Si" selected>Si</option>
+					<option value="No" selected>No</option>
+					<option value="No Aplica" selected>No Aplica</option>
+				</select>
+				<br><span class='error_text' id='ProfesorJefe1_error'></span>
+				<input type="file" id="Imagen1" name="ImagenProfGuiaCP[]"  size="14">
+				<br><span class='error_text' id='Imagen1_error'></span>
+			</td>
+		</tr>
+	</table>
+	
+	<input type="button" onclick="add_row();" value="+">
+			
 		</ul>
 		
 	</div>
@@ -55,7 +93,7 @@
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

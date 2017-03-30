@@ -93,13 +93,19 @@ class ProfesorguiacpmainController extends Controller
 	$telefono=$_POST['TelefonoProfGuiaCP'];
 	$celular=$_POST['CelularProfGuiaCP'];
 	$centro=$_POST['CentroPractica_RBD'];
-	$imagen=$_POST['ImagenProfGuiaCP'];
-	
-	
+	//$imagen=$_FILES['ImagenProfGuiaCP'];
+			
+	$directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
+			
 	for($i=0;$i<count($rut);$i++){
-		if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!="" && $centro[$i]!="" && $imagen[$i]!=""){
-			$query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro[$i]','$imagen[$i]')";
+		if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!="" && $centro[$i]!="" ){
+			
+			$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
+			move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
+			
+			$query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro[$i]','$imagen')";
 			Yii::app()->db->createCommand($query)->execute();
+			
 				 
 		}
 		

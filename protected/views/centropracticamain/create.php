@@ -3,17 +3,25 @@
 /* @var $model Centropractica */
 
 $this->breadcrumbs=array(
-	'Centropracticas'=>array('index'),
-	'Create',
+	'Centros de Práctica'=>array('index'),
+	'Añadir',
 );
 
 $this->menu=array(
-	array('label'=>'List Centropractica', 'url'=>array('index')),
-	array('label'=>'Manage Centropractica', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Centropractica</h1>
+<h1>Añadir Centro de Práctica</h1><br>
+
+<ul>
+	<h4>Instrucciones</h4>
+	<li>Para regresar al índice de centros haga click en la opción "Lista" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de centros existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para acceder a cada formulario debe hacer click en el símbolo <img src="images/FormImages/small_arrow_right.png"> para desplegar.</li>
+	<li>Para ocultar un formulario debe hacer click en el símbolo <img src="images/FormImages/small_arrow_down.png">.</li>
+</ul>
 
 <?php $this->renderPartial('_form', 
 						   array(
@@ -22,5 +30,5 @@ $this->menu=array(
 							   'directorModel'=>$directorModel,
 							   'jefeutpModel'=>$jefeutpModel,
 							   'coordinadorModel'=>$coordinadorModel,
-							   'profesorModel'=>$profesorModel,
+							   //'profesorModel'=>$profesorModel,
 						   )); ?>

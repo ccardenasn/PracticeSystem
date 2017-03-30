@@ -37,7 +37,7 @@ class CentropracticamainController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -67,20 +67,20 @@ class CentropracticamainController extends Controller
 		$directorModel=new Directorcp;
 		$jefeutpModel=new Jefeutpcp;
 		$coordinadorModel=new Profesorcoordinadorpracticacp;
-		$profesorModel=new Profesorguiacp;
+		//$profesorModel=new Profesorguiacp;
 		
 		//$secretariaModel=new Secretariacp;
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel,$profesorModel));
+		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel));
 
-		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp'],$_POST['Profesorguiacp']))
+		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
 		{
 			$centroModel->attributes=$_POST['Centropractica'];
 			$secretariaModel->attributes=$_POST['Secretariacp'];
 			$directorModel->attributes=$_POST['Directorcp'];
 			$jefeutpModel->attributes=$_POST['Jefeutpcp'];
 			$coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
-			$profesorModel->attributes=$_POST['Profesorguiacp'];
+			//$profesorModel->attributes=$_POST['Profesorguiacp'];
 			
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
@@ -111,7 +111,7 @@ class CentropracticamainController extends Controller
 			$directorModel->CentroPractica_RBD = $centroModel->RBD;
 			$jefeutpModel->CentroPractica_RBD = $centroModel->RBD;
 			$coordinadorModel->CentroPractica_RBD = $centroModel->RBD;
-			$profesorModel->CentroPractica_RBD = $centroModel->RBD;
+			//$profesorModel->CentroPractica_RBD = $centroModel->RBD;
 			
 			$secretariaFile=$secretariaModel->ImagenSecretariaCP=CUploadedFile::getInstance($secretariaModel,'ImagenSecretariaCP');
 			
@@ -169,20 +169,27 @@ class CentropracticamainController extends Controller
 				}
 			}
 			
-			$profesorFile=$profesorModel->ImagenProfGuiaCP=CUploadedFile::getInstance($profesorModel,'ImagenProfGuiaCP');
+			$rut=$_POST['RutProfGuiaCP'];
+			$nombre=$_POST['NombreProfGuiaCP'];
+			$curso=$_POST['CursoProfGuiaCP'];
+			$profesorjefe=$_POST['ProfesorJefeProfGuiaCP'];
+			$correo=$_POST['MailProfGuiaCP'];
+			$telefono=$_POST['TelefonoProfGuiaCP'];
+			$celular=$_POST['CelularProfGuiaCP'];
+			$centro=$centroModel->RBD;
 			
-			if($profesorModel->save()){
-				if($profesorFile != null){
-					if($profesorFile->getExtensionName()=="jpg" or $profesorFile->getExtensionName()=="jpeg" or $profesorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$profesorModel->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$profesorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}
+			$directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
+			
+			for($i=0;$i<count($rut);$i++){
+				if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
+					$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
+					move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
+					
+					$query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro','$imagen')";
+					
+					Yii::app()->db->createCommand($query)->execute();
 				}
 			}
-			
 			$this->redirect(array('view','id'=>$centroModel->RBD));
 		}
 		
@@ -192,7 +199,7 @@ class CentropracticamainController extends Controller
 			'directorModel'=>$directorModel,
 			'jefeutpModel'=>$jefeutpModel,
 			'coordinadorModel'=>$coordinadorModel,
-			'profesorModel'=>$profesorModel,
+			//'profesorModel'=>$profesorModel,
 		));
 	}
 
