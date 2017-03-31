@@ -54,7 +54,7 @@
                 ),
                 array('label'=>'Gestion Organizativa',
                         'items'=>array(
-                          array('label'=>'Centro de Practicas','url'=>array('/centropractica')),
+                          array('label'=>'Centro de Practicas','url'=>array('/centropracticamain')),
                           array('label'=>'Secretaria CP','url'=>array('/secretariacp')),
                           array('label'=>'Director CP','url'=>array('/directorcp')),
                           array('label'=>'Jefe UTP CP','url'=>array('/jefeutpcp')),

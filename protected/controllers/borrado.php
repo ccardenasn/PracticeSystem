@@ -21,6 +21,23 @@ function containsDoc($idBitacora){
 	return $exist;
 }
 
+function containsTimeTableMain($rut){
+	$query="select count(*) from horario where Estudiante_RutEstudiante = '".$rut."';";
+	$exist=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $exist;
+}
+
+function deleteTimeTableMain($rut){
+	$query="delete from horario where Estudiante_RutEstudiante ='".$rut."';";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
+function deleteTimeTableAdmin($rut){
+	$query="delete from horarioadmin where Estudiante_RutEstudiante ='".$rut."';";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
 function deleteDocuments($idBitacora){
 	$query="delete from documentobitacora where bitacorasesion_id ='".$idBitacora."';";
 	Yii::app()->db->createCommand($query)->execute();

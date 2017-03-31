@@ -40776,3 +40776,242 @@ Stack trace:
 REQUEST_URI=/YiiOnePracticeSystem/index.php?r=centropracticamain/admin
 HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=centropracticamain/create
 ---
+2017/04/01 00:48:49 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (159)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 00:48:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('14567486-7')
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(159): CActiveRecord->delete()
+#3 [internal function]: EstudianteController->actionDelete('14567486-7')
+#4 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EstudianteController), Array)
+#5 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EstudianteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/dele...')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?ajax=estudiante-grid&id=14567486-7&r=estudiante%2Fdelete
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+---
+2017/04/01 00:49:27 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='12428757-k'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (159)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 00:49:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='12428757-k'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('12428757-k')
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(159): CActiveRecord->delete()
+#3 [internal function]: EstudianteController->actionDelete('12428757-k')
+#4 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EstudianteController), Array)
+#5 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EstudianteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/dele...')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/delete&id=12428757-k
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/view&id=12428757-k
+---
+2017/04/01 00:50:56 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (159)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 00:50:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('14567486-7')
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(159): CActiveRecord->delete()
+#3 [internal function]: EstudianteController->actionDelete('14567486-7')
+#4 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EstudianteController), Array)
+#5 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EstudianteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/dele...')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?ajax=estudiante-grid&id=14567486-7&r=estudiante%2Fdelete
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+---
+2017/04/01 01:05:29 [error] [php] Undefined variable: rut (C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php:143)
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): EstudianteController->runAction()
+#3 C:\xampp\htdocs\Yii\framework\web\CController.php(1116): CFilterChain->run()
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): EstudianteController->filterPostOnly()
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): EstudianteController->filterAccessControl()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): EstudianteController->runActionWithFilters()
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): EstudianteController->run()
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/delete&id=14567486-7
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (143)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 01:05:50 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (165)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 01:05:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('14567486-7')
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(165): CActiveRecord->delete()
+#3 [internal function]: EstudianteController->actionDelete('14567486-7')
+#4 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EstudianteController), Array)
+#5 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EstudianteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/dele...')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/delete&id=14567486-7
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/view&id=14567486-7
+---
+2017/04/01 01:07:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php:209
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(56): EstudianteController->loadModel('12428757-k')
+#1 [internal function]: EstudianteController->actionView('12428757-k')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EstudianteController), Array)
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EstudianteController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/view')
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/view&id=12428757-k
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/index
+---
+2017/04/01 01:07:26 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (165)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 01:07:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`practicemanagementdatabase`.`horarioadmin`, CONSTRAINT `fk_HorarioAdmin_Estudiante1` FOREIGN KEY (`Estudiante_RutEstudiante`) REFERENCES `estudiante` (`RutEstudiante`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `estudiante` WHERE `estudiante`.`RutEstudiante`='14567486-7'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('14567486-7')
+#2 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(165): CActiveRecord->delete()
+#3 [internal function]: EstudianteController->actionDelete('14567486-7')
+#4 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(EstudianteController), Array)
+#5 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EstudianteController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/dele...')
+#19 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/delete&id=14567486-7
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/view&id=14567486-7
+---
+2017/04/01 01:14:37 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1. The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y Comunicación','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701','Foto','Pendiente','nada');.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (288)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 01:14:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1. The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y Comunicación','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701','Foto','Pendiente','nada');' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(288): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstudianteController->actionReadExcel()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('readExcel')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/read...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+---
+2017/04/01 01:16:10 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1. The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y Comunicación','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701','Foto','Pendiente','nada');.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php (288)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/01 01:16:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1. The SQL statement executed was: INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante) VALUES('17856219-3','Pablo Andrade','134','2014','Lenguaje y Comunicación','cami@gmail.com','652345767','89382878','139287782-2','Práctica de Observación','7701','Foto','Pendiente','nada');' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\EstudianteController.php(288): CDbCommand->execute()
+#1 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(49): EstudianteController->actionReadExcel()
+#2 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('readExcel')
+#11 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('estudiante/read...')
+#12 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=estudiante/readExcel
+---
