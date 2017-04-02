@@ -1,4 +1,5 @@
 <?php
+include_once('centroPracticaFunctions.php');
 
 class CentropracticamainController extends Controller
 {
@@ -226,14 +227,14 @@ class CentropracticamainController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$coordinadorModel));
 
-		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp'],$_POST['Profesorguiacp']))
+		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
 		{
 			$centroModel->attributes=$_POST['Centropractica'];
 			$secretariaModel->attributes=$_POST['Secretariacp'];
 			$directorModel->attributes=$_POST['Directorcp'];
 			$jefeutpModel->attributes=$_POST['Jefeutpcp'];
 			$coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
-			$profesorModel->attributes=$_POST['Profesorguiacp'];
+			//$profesorModel->attributes=$_POST['Profesorguiacp'];
 			
 			$file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
 			$image=$centroModel->ImagenCentroPractica=CUploadedFile::getInstance($centroModel,'ImagenCentroPractica');
@@ -263,7 +264,7 @@ class CentropracticamainController extends Controller
 			$directorModel->CentroPractica_RBD = $centroModel->RBD;
 			$jefeutpModel->CentroPractica_RBD = $centroModel->RBD;
 			$coordinadorModel->CentroPractica_RBD = $centroModel->RBD;
-			$profesorModel->CentroPractica_RBD = $centroModel->RBD;
+			//$profesorModel->CentroPractica_RBD = $centroModel->RBD;
 			
 			$secretariaFile=$secretariaModel->ImagenSecretariaCP=CUploadedFile::getInstance($secretariaModel,'ImagenSecretariaCP');
 			
@@ -321,9 +322,9 @@ class CentropracticamainController extends Controller
 				}
 			}
 			
-			$profesorFile=$profesorModel->ImagenProfGuiaCP=CUploadedFile::getInstance($profesorModel,'ImagenProfGuiaCP');
+			//$profesorFile=$profesorModel->ImagenProfGuiaCP=CUploadedFile::getInstance($profesorModel,'ImagenProfGuiaCP');
 			
-			if($profesorModel->save()){
+			/*if($profesorModel->save()){
 				if($profesorFile != null){
 					if($profesorFile->getExtensionName()=="jpg" or $profesorFile->getExtensionName()=="jpeg" or $profesorFile->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
@@ -332,6 +333,38 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
 						$this->refresh();
 					}
+				}
+			}*/
+			
+			$rut=$_POST['RutProfGuiaCP'];
+			$nombre=$_POST['NombreProfGuiaCP'];
+			$curso=$_POST['CursoProfGuiaCP'];
+			$profesorjefe=$_POST['ProfesorJefeProfGuiaCP'];
+			$correo=$_POST['MailProfGuiaCP'];
+			$telefono=$_POST['TelefonoProfGuiaCP'];
+			$celular=$_POST['CelularProfGuiaCP'];
+			$centro=$centroModel->RBD;
+			
+			$directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
+			
+			for($i=0;$i<count($rut);$i++){
+				if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
+					
+					$query="";
+					$rutExist = containsProf($rut[$i]);
+					
+					if($rutExist != 0){
+						
+						$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
+						move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
+					
+						$query="update profesorguiacp set NombreProfGuiaCP='".$nombre[$i]."',CursoProfGuiaCP='".$curso[$i]."',ProfesorJefeProfGuiaCP='".$profesorjefe[$i]."',MailProfGuiaCP='".$correo[$i]."',TelefonoProfGuiaCP='".$telefono[$i]."',CelularProfGuiaCP='".$celular[$i]."',CentroPractica_RBD='".$centro."',ImagenProfGuiaCP='".$imagen."' where RutProfGuiaCP='".$rut[$i]."'";
+					
+					}else{
+						$query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro','$imagen')";
+					}
+					
+					Yii::app()->db->createCommand($query)->execute();
 				}
 			}
 			

@@ -41492,3 +41492,53 @@ REQUEST_URI=/YiiOnePracticeSystem/index.php?r=centropracticamain/update&id=1090
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\centropracticamain\_updateForm.php (20)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\views\centropracticamain\update.php (29)
 in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\CentropracticamainController.php (349)
+2017/04/03 01:03:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CorreoProfGuiaCP' in 'field list'. The SQL statement executed was: update profesorguiacp set NombreProfGuiaCP='Paulina Salinas',CursoProfGuiaCP='curso 1',ProfesorJefeProfGuiaCP='Si',CorreoProfGuiaCP='cc@gmail.com',TelefonoProfGuiaCP='0652672634',CelularProfGuiaCP='88727823',CentroProfGuiaCP='201',ImagenProfGuiaCP='' where RutProfGuiaCP='12569306-7'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\CentropracticamainController.php (366)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/03 01:03:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CorreoProfGuiaCP' in 'field list'. The SQL statement executed was: update profesorguiacp set NombreProfGuiaCP='Paulina Salinas',CursoProfGuiaCP='curso 1',ProfesorJefeProfGuiaCP='Si',CorreoProfGuiaCP='cc@gmail.com',TelefonoProfGuiaCP='0652672634',CelularProfGuiaCP='88727823',CentroProfGuiaCP='201',ImagenProfGuiaCP='' where RutProfGuiaCP='12569306-7'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\CentropracticamainController.php(366): CDbCommand->execute()
+#1 [internal function]: CentropracticamainController->actionUpdate('201')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(CentropracticamainController), Array)
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(CentropracticamainController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('centropracticam...')
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=centropracticamain/update&id=201
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=centropracticamain/update&id=201
+---
+2017/04/03 01:04:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CentroProfGuiaCP' in 'field list'. The SQL statement executed was: update profesorguiacp set NombreProfGuiaCP='Paulina Salinas',CursoProfGuiaCP='curso 1',ProfesorJefeProfGuiaCP='Si',MailProfGuiaCP='cc@gmail.com',TelefonoProfGuiaCP='0652672634',CelularProfGuiaCP='88727823',CentroProfGuiaCP='201',ImagenProfGuiaCP='' where RutProfGuiaCP='12569306-7'.
+in C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\CentropracticamainController.php (366)
+in C:\xampp\htdocs\YiiOnePracticeSystem\index.php (13)
+2017/04/03 01:04:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CentroProfGuiaCP' in 'field list'. The SQL statement executed was: update profesorguiacp set NombreProfGuiaCP='Paulina Salinas',CursoProfGuiaCP='curso 1',ProfesorJefeProfGuiaCP='Si',MailProfGuiaCP='cc@gmail.com',TelefonoProfGuiaCP='0652672634',CelularProfGuiaCP='88727823',CentroProfGuiaCP='201',ImagenProfGuiaCP='' where RutProfGuiaCP='12569306-7'' in C:\xampp\htdocs\Yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\YiiOnePracticeSystem\protected\controllers\CentropracticamainController.php(366): CDbCommand->execute()
+#1 [internal function]: CentropracticamainController->actionUpdate('201')
+#2 C:\xampp\htdocs\Yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(CentropracticamainController), Array)
+#3 C:\xampp\htdocs\Yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(CentropracticamainController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\Yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\Yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\Yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\Yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\Yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\Yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\Yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(282): CController->run('update')
+#13 C:\xampp\htdocs\Yii\framework\web\CWebApplication.php(141): CWebApplication->runController('centropracticam...')
+#14 C:\xampp\htdocs\Yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\YiiOnePracticeSystem\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/YiiOnePracticeSystem/index.php?r=centropracticamain/update&id=201
+HTTP_REFERER=http://localhost/YiiOnePracticeSystem/index.php?r=centropracticamain/update&id=201
+---
