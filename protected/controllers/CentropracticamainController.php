@@ -221,7 +221,7 @@ class CentropracticamainController extends Controller
 		$directorModel=Directorcp::model()->find('CentroPractica_RBD=?',array($id));
 		$jefeutpModel=Jefeutpcp::model()->find('CentroPractica_RBD=?',array($id));
 		$coordinadorModel=Profesorcoordinadorpracticacp::model()->find('CentroPractica_RBD=?',array($id));
-		$profesorModel=Profesorguiacp::model()->find('CentroPractica_RBD=?',array($id));
+		$profesorModel=Profesorguiacp::model()->findAll('CentroPractica_RBD=?',array($id));
 		
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$coordinadorModel));

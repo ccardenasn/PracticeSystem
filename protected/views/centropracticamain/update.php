@@ -18,7 +18,7 @@ $this->menu=array(
 
 <h1>Update Centropractica <?php echo $centroModel->RBD; ?></h1>
 
-<?php $this->renderPartial('_form', 
+<?php $this->renderPartial('_updateForm', 
 						   array(
 							   'centroModel'=>$centroModel,
 							   'secretariaModel'=>$secretariaModel,

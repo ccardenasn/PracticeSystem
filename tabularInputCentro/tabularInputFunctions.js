@@ -7,3 +7,25 @@ function add_row(){
 function delete_row(rowno){
 	$('#'+rowno).remove();
 }
+
+function setUpdateRows(totalRows){
+	for(i=0;i<totalRows-1;i++){
+		add_row();
+	}
+	setRowsData(profesoresData);
+}
+
+function setRowsData(rowsData){
+	var l=1;
+	for(i=0;i<rowsData['RutProfGuiaCP'].length;i++){
+		$("#Rut"+l+"").val(""+rowsData['RutProfGuiaCP'][i]+"");
+		$("#Mail"+l+"").val(""+rowsData['MailProfGuiaCP'][i]+"");
+		$("#Nombre"+l+"").val(""+rowsData['NombreProfGuiaCP'][i]+"");
+		$("#Telefono"+l+"").val(""+rowsData['TelefonoProfGuiaCP'][i]+"");
+		$("#Curso"+l+"").val(""+rowsData['CursoProfGuiaCP'][i]+"");
+		$("#Celular"+l+"").val(""+rowsData['CelularProfGuiaCP'][i]+"");
+		$("#ProfesorJefe"+l+"").val(""+rowsData['ProfesorJefeProfGuiaCP'][i]+"");
+		//$("#Imagen1").val('lalalal');
+		l++;
+	}
+}
