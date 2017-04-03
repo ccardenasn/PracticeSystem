@@ -347,26 +347,51 @@ class CentropracticamainController extends Controller
 			
 			$directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
 			
+			$profData=getProfesorData($centro);
+			$start = true;
+			$l=0;
+			$founded=false;
+			
+		
+			
+			for($j=0;$j<count($profData['data']);$j++){
+				
+				$founded = containsProfArr($profData['data'][$j],$rut);
+				
+				
+				if($founded == false){
+					$query="delete from profesorguiacp where RutProfGuiaCP ='".$profData['data'][$j]."'";
+					$exist=Yii::app()->db->createCommand($query)->execute();
+				}
+				
+			}
+			
 			for($i=0;$i<count($rut);$i++){
 				if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
 					
 					$query="";
 					$rutExist = containsProf($rut[$i]);
 					
+					$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
+					move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
+					
 					if($rutExist != 0){
 						
-						$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
-						move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
+						
 					
 						$query="update profesorguiacp set NombreProfGuiaCP='".$nombre[$i]."',CursoProfGuiaCP='".$curso[$i]."',ProfesorJefeProfGuiaCP='".$profesorjefe[$i]."',MailProfGuiaCP='".$correo[$i]."',TelefonoProfGuiaCP='".$telefono[$i]."',CelularProfGuiaCP='".$celular[$i]."',CentroPractica_RBD='".$centro."',ImagenProfGuiaCP='".$imagen."' where RutProfGuiaCP='".$rut[$i]."'";
 					
 					}else{
+						
 						$query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro','$imagen')";
 					}
 					
 					Yii::app()->db->createCommand($query)->execute();
 				}
 			}
+			
+			
+			
 			
 			$this->redirect(array('view','id'=>$centroModel->RBD));
 		
