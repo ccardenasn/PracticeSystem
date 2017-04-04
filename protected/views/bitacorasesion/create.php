@@ -1,13 +1,13 @@
 <?php
 include_once('planificacion.php');
-/* @var $this CustomerController */
-/* @var $model Customer */
+/* @var $this BitacorasesionController */
+/* @var $model Bitacorasesion */
 
 $student=Yii::app()->user->name;
 $arrdata=datosplanificacion($student);
 
 $this->breadcrumbs=array(
-	'Bitacora'=>array('index'),
+	'Bitacoras'=>array('index'),
 	'Añadir',
 );
 
@@ -20,7 +20,4 @@ $this->menu=array(
 <h1>Añadir Bitacora</h1>
 <h2>Estudiante: <?php echo $arrdata[0] ?> </h2>
 
-<?php $this->renderPartial('_form', array(
-	'model'=>$model,
-	'contacts' => $contacts
-)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -3,20 +3,29 @@
 /* @var $model Centropractica */
 
 $this->breadcrumbs=array(
-	'Centropracticas'=>array('index'),
+	'Centros de Práctica'=>array('index'),
 	$centroModel->RBD=>array('view','id'=>$centroModel->RBD),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Centropractica', 'url'=>array('index')),
-	array('label'=>'Create Centropractica', 'url'=>array('create')),
-	array('label'=>'View Centropractica', 'url'=>array('view', 'id'=>$centroModel->RBD)),
-	array('label'=>'Manage Centropractica', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$centroModel->RBD)),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Centropractica <?php echo $centroModel->RBD; ?></h1>
+<h1>Modificar Centro de Practica: <?php echo $centroModel->RBD; ?></h1><br>
+
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Para regresar al índice de centros haga click en "Lista".</li>
+	<li>Haga click en "Añadir" para agregar un nuevo centro a la lista.</li>
+	<li>Haga click en "Detalles" para visualizar información de centro.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de centros existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+</ul>
 
 <?php $this->renderPartial('_updateForm', 
 						   array(

@@ -8,8 +8,29 @@ $js = Yii::app()->getClientScript();
 $js->registerScriptFile($base.'/tabularInputBitacora/tabularInputFunctions.js');
 $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js');
 
+$totalClaseModel= count($claseBitacoraModel);
+
+echo '<script type="text/javascript">
+	var totalClaseBitacora = "'.$totalClaseModel.'"; 
+</script>';
+
+for($i=0;$i<$totalClaseModel;$i++){
+	$claseBitacoraArray['id'][$i] = $claseBitacoraModel[$i]['id'];
+	$claseBitacoraArray['curso'][$i] = $claseBitacoraModel[$i]['curso'];
+	$claseBitacoraArray['hora'][$i] = $claseBitacoraModel[$i]['hora'];
+	$claseBitacoraArray['asignatura'][$i] = $claseBitacoraModel[$i]['asignatura'];
+	$claseBitacoraArray['profesorguia'][$i] = $claseBitacoraModel[$i]['profesorguia'];
+	$claseBitacoraArray['numeroalumnos'][$i] = $claseBitacoraModel[$i]['numeroalumnos'];
+}
+
 ?>
 
+<script type="text/javascript">
+	var clasesData = <?php echo json_encode($claseBitacoraArray); ?>; 
+	
+</script>
+
+<body onload="javascript:setUpdateRows(totalClaseBitacora)">
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -23,7 +44,7 @@ $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js
 
 	<?php echo $form->errorSummary($model); ?>
 	<?php $req=Yii::app()->request->getQuery('id'); ?>
-	<?php $plandata=getPlanData($req); ?>
+	<?php $plandata=getPlanDataById($req); ?>
 	
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
@@ -34,7 +55,7 @@ $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js
 		<ul>
 			<div class="row">
 				<?php echo $form->labelEx($model,'fecha'); ?>
-				<?php echo $form->textField($model,'fecha',array('value'=>$plandata[2],'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+				<?php echo $form->textField($model,'fecha',array('readOnly' => false,'size'=>45,'maxlength'=>45)); ?>
 				<?php echo $form->error($model,'fecha'); ?>
 			</div>
 			
@@ -61,6 +82,10 @@ $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js
 		<ul>
 			<table id="employee_table" align=center>
 				<tr id="row1">
+					<td>
+						<input type="text" id="id1" name="id[]" size="14" placeholder="ID">
+						<br><span class='error_text' id='id1_error'></span>
+					</td>
 					<td>
 						<input type="text" id="curso1" name="curso[]" size="14" placeholder="Curso">
 						<br><span class='error_text' id='curso1_error'></span>
@@ -124,3 +149,4 @@ $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+	</body>

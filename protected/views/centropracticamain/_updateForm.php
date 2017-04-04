@@ -14,8 +14,6 @@ echo '<script type="text/javascript">
 	var totalProfesoresCentro = "'.$totalProfesorModel.'"; 
 </script>';
 
-
-
 for($i=0;$i<$totalProfesorModel;$i++){
 	$profesorArray['RutProfGuiaCP'][$i] = $profesorModel[$i]['RutProfGuiaCP'];
 	$profesorArray['NombreProfGuiaCP'][$i] = $profesorModel[$i]['NombreProfGuiaCP'];
@@ -25,16 +23,12 @@ for($i=0;$i<$totalProfesorModel;$i++){
 	$profesorArray['CelularProfGuiaCP'][$i] = $profesorModel[$i]['CelularProfGuiaCP'];
 	$profesorArray['ProfesorJefeProfGuiaCP'][$i] = $profesorModel[$i]['ProfesorJefeProfGuiaCP'];
 }
-
-//print_r($profesorArray);
 ?>
 
 <script type="text/javascript">
 	var profesoresData = <?php echo json_encode($profesorArray); ?>; 
 	
 </script>
-
-
 
 <body onload="javascript:setUpdateRows(totalProfesoresCentro)">
 <div class="form">
@@ -47,7 +41,7 @@ for($i=0;$i<$totalProfesorModel;$i++){
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
-
+	
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel)); ?>
@@ -81,42 +75,41 @@ for($i=0;$i<$totalProfesorModel;$i++){
 		<h3>Profesor Guía CP</h3>
 		<ul>
 			<table id="employee_table" align=center>
-		<tr id="row1">
-			<td>
-				<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" placeholder="Rut" onblur="validateRut('Rut1');">
-				<br><span class='error_text' id='Rut1_error'></span>
-				<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" placeholder="Mail" onblur="check_email('Mail1');">
-				<br><span class='error_text' id='Mail1_error'></span>
-			</td>
-			<td>
-				<input type="text" id="Nombre1" name="NombreProfGuiaCP[]" size="14" placeholder="Nombre" onblur="validateName('Nombre1');" >
-				<br><span class='error_text' id='Nombre1_error'></span>
-				<input type="text" id="Telefono1" name="TelefonoProfGuiaCP[]" size="14" placeholder="Telefono" onblur="validateTelefono('Telefono1');">
-				<br><span class='error_text' id='Telefono1_error'></span>
-			</td>
-			<td>
-				<input type="text" id="Curso1" name="CursoProfGuiaCP[]" size="14" placeholder="Curso">
-				<br><span class='error_text' id='Curso1_error'></span>
-				<input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" placeholder="Celular" onblur="validateCelular('Celular1');">
-				<br><span class='error_text' id='Celular1_error'></span>
-			</td>
-			<td>
-				<select id="ProfesorJefe1" name="ProfesorJefeProfGuiaCP[]" style="width:130px">
-					<option value="Si" selected>Si</option>
-					<option value="No" selected>No</option>
-					<option value="No Aplica" selected>No Aplica</option>
-				</select>
-				<br><span class='error_text' id='ProfesorJefe1_error'></span>
-				<input type="file" id="Imagen1" name="ImagenProfGuiaCP[]"  size="14">
-				<br><span class='error_text' id='Imagen1_error'></span>
-			</td>
-		</tr>
-	</table>
-	
-	<input type="button" onclick="add_row();" value="+">
-			
+				<tr id="row1">
+					<td>
+						<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" placeholder="Rut" onblur="validateRut('Rut1');">
+						<br><span class='error_text' id='Rut1_error'></span>
+						<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" placeholder="Mail" onblur="check_email('Mail1');">
+						<br><span class='error_text' id='Mail1_error'></span>
+					</td>
+					<td>
+						<input type="text" id="Nombre1" name="NombreProfGuiaCP[]" size="14" placeholder="Nombre" onblur="validateName('Nombre1');">
+						<br><span class='error_text' id='Nombre1_error'></span>
+						<input type="text" id="Telefono1" name="TelefonoProfGuiaCP[]" size="14" placeholder="Telefono" onblur="validateTelefono('Telefono1');">
+						<br><span class='error_text' id='Telefono1_error'></span>
+					</td>
+					<td>
+						<input type="text" id="Curso1" name="CursoProfGuiaCP[]" size="14" placeholder="Curso">
+						<br><span class='error_text' id='Curso1_error'></span>
+						<input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" placeholder="Celular" onblur="validateCelular('Celular1');">
+						<br><span class='error_text' id='Celular1_error'></span>
+					</td>
+					<td>
+						<select id="ProfesorJefe1" name="ProfesorJefeProfGuiaCP[]" style="width:130px">
+							<option value="Si" selected>Si</option>
+							<option value="No" selected>No</option>
+							<option value="No Aplica" selected>No Aplica</option>
+						</select>
+						<br><span class='error_text' id='ProfesorJefe1_error'></span>
+						<input type="file" id="Imagen1" name="ImagenProfGuiaCP[]"  size="14"><br><span class='error_text' id='Imagen1_error'></span>
+					</td>
+					<td>
+						<input type='button' value='x' onclick="javascript:delete_row('row1');">
+					</td>
+				</tr>
+			</table>
+			<input type="button" onclick="add_row();" value="+">
 		</ul>
-		
 	</div>
 	
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
@@ -125,8 +118,7 @@ for($i=0;$i<$totalProfesorModel;$i++){
 		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
 	
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
-	</body>
+	<?php $this->endWidget(); ?>
+	
+	</div><!-- form -->
+</body>

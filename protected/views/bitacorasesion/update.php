@@ -1,21 +1,25 @@
 <?php
-/* @var $this CustomerController */
-/* @var $model Customer */
+/* @var $this BitacorasesionController */
+/* @var $model Bitacorasesion */
 
 $this->breadcrumbs=array(
-	'Customers'=>array('index'),
+	'Bitacorasesions'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Customer', 'url'=>array('index')),
-	array('label'=>'Create Customer', 'url'=>array('create')),
-	array('label'=>'View Customer', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Customer', 'url'=>array('admin')),
+	array('label'=>'List Bitacorasesion', 'url'=>array('index')),
+	array('label'=>'Create Bitacorasesion', 'url'=>array('create')),
+	array('label'=>'View Bitacorasesion', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Manage Bitacorasesion', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Customer <?php echo $model->id; ?></h1>
+<h1>Update Bitacorasesion <?php echo $model->id; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model, 'contacts' => $contacts)); ?>
+<?php $this->renderPartial('_updateForm',
+						   array(
+							   'model'=>$model,
+							   'claseBitacoraModel'=>$claseBitacoraModel,
+						   )); ?>

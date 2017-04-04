@@ -1,7 +1,7 @@
 <?php
 include_once('centro.php');
-/* @var $this CustomerController */
-/* @var $model Customer */
+/* @var $this BitacorasesionController */
+/* @var $model Bitacorasesion */
 
 $this->breadcrumbs=array(
 	'Bitacoras'=>array('index'),
@@ -58,13 +58,13 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach($model->clasebitacorasesion as $contact) : ?>
+		<?php foreach($model->clasebitacorasesions as $clase) : ?>
 		<tr>
-			<td><?php echo $contact->curso ?></td>
-			<td><?php echo $contact->hora ?></td>
-			<td><?php echo $contact->asignatura ?></td>
-			<td><?php echo $contact->profesorguia ?></td>
-			<td><?php echo $contact->numeroalumnos ?></td>
+			<td><?php echo $clase->curso ?></td>
+			<td><?php echo $clase->hora ?></td>
+			<td><?php echo $clase->asignatura ?></td>
+			<td><?php echo $clase->profesorguia ?></td>
+			<td><?php echo $clase->numeroalumnos ?></td>
 		</tr>
 		<?php endforeach ?>
 	</tbody>

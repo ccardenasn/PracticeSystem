@@ -24,3 +24,21 @@ function getPlanData($req){
     
     return $plandata;
 }
+
+function getPlanDataById($id){
+	$queryplan="select PlanificacionClase_CodPlanificacion from bitacorasesion where id ='".$id."';";
+    $iddata=Yii::app()->db->createCommand($queryplan)->queryScalar();
+	
+	$querysesion="select SesionInformada from planificacionclase where CodPlanificacion ='".$iddata."';";
+    $sesiondata=Yii::app()->db->createCommand($querysesion)->queryScalar();
+	
+	$querycentroid="select CentroPractica_RBD from planificacionclase where CodPlanificacion = '".$iddata."';";
+    $centroid=Yii::app()->db->createCommand($querycentroid)->queryScalar();
+	
+	$querycentro="select NombreCentroPractica from centropractica where RBD = '".$centroid."';";
+    $centro=Yii::app()->db->createCommand($querycentro)->queryScalar();
+	
+	$plandata = array($sesiondata,$centro);
+	
+	return $plandata;
+}

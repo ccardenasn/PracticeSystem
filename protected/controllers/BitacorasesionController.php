@@ -1,5 +1,4 @@
 <?php
-include_once('consulta.php');
 
 class BitacorasesionController extends Controller
 {
@@ -20,17 +19,6 @@ class BitacorasesionController extends Controller
 		);
 	}
 
-	public function actions() 
-	{
-		return array(
-			'getRowForm' => array(
-				'class' => 'ext.DynamicTabularForm.actions.GetRowForm',
-				'view' => '_contact_form',
-				'modelClass' => 'Clasebitacorasesion'
-			),
-		);
-	}
-
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -40,12 +28,12 @@ class BitacorasesionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'getRowForm','pdf'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('*'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -72,63 +60,41 @@ class BitacorasesionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate()
 	{
 		$model=new Bitacorasesion;
-		$contacts = array(new Clasebitacorasesion);
-		$exist=consultabitacora($id);
+
 		// Uncomment the following line if AJAX validation is needed
-		//$this->performAjaxValidation(array($model,$contacts));
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Bitacorasesion']))
 		{
 			$model->attributes=$_POST['Bitacorasesion'];
 			
-			if($exist == 0)
-			{
-				if (isset($_POST['Clasebitacorasesion'])) {
-				$contacts = array();
-				foreach ($_POST['Clasebitacorasesion'] as $key => $value) {
-					$contact = new Clasebitacorasesion('batchSave');
-					$contact->attributes = $value;
-					$contacts[] = $contact;
-				}
-			}
-
-			$valid = $model->validate();
-			foreach ($contacts as $contact) {
-				$valid = $contact->validate() & $valid;
-			}
-
-			if ($valid) {
-				$transaction = Yii::app()->db->beginTransaction();
-				try {
-					$model->save();
-					$model->refresh();
-
-					foreach ($contacts as $contact) {
-						$contact->bitacorasesion_id = $model->id;
-						$contact->save();
+			if($model->save()){
+				
+				$curso=$_POST['curso'];
+				$hora=$_POST['hora'];
+				$asignatura=$_POST['asignatura'];
+				$profesorguia=$_POST['profesorguia'];
+				$numeroalumnos=$_POST['numeroalumnos'];
+				$bitacorasesionid=$model->id;
+				
+				for($i=0;$i<count($curso);$i++){
+					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
+						
+						$query="insert into clasebitacorasesion(curso,hora,asignatura,profesorguia,numeroalumnos,bitacorasesion_id) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
+						
+						Yii::app()->db->createCommand($query)->execute();
 					}
-					$transaction->commit();
-				} 
-				catch (Exception $e) {
-					$transaction->rollback();
-				}
-				$this->redirect(array('view', 'id' => $model->id));
+				}	
+				$this->redirect(array('view','id'=>$model->id));
+				
 			}
-			}else
-			{
-				Yii::app()->user->setFlash('success',"No se pueden crear mas bitácoras para esta planificación");
-			}
-			
-
-			
 		}
 
 		$this->render('create',array(
-			'model' => $model,
-			'contacts' => $contacts
+			'model'=>$model,
 		));
 	}
 
@@ -140,60 +106,45 @@ class BitacorasesionController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$contacts = $model->clasebitacorasesion;
+		$claseBitacoraModel=new Clasebitacorasesion;
 
+		$claseBitacoraModel=Clasebitacorasesion::model()->findAll('bitacorasesion_id=?',array($id));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Bitacorasesion']))
 		{
 			$model->attributes=$_POST['Bitacorasesion'];
-
-			if (isset($_POST['Clasebitacorasesion'])) {
-				$contacts = array();
-				foreach ($_POST['Clasebitacorasesion'] as $key => $value) {
-					if ($value['updateType'] == DynamicTabularForm::UPDATE_TYPE_CREATE)
-						$contacts[$key] = new Clasebitacorasesion();
-					else if ($value['updateType'] == DynamicTabularForm::UPDATE_TYPE_UPDATE)
-						$contacts[$key] = Clasebitacorasesion::model()->findByPk($value['id']);
-					else if ($value['updateType'] == DynamicTabularForm::UPDATE_TYPE_DELETE) {
-						$delete = Clasebitacorasesion::model()->findByPk($value['id']);
-						if ($delete->delete()) {
-							unset($contacts[$key]);
-							continue;
+			
+			if($model->save()){
+				$id=$_POST['id'];
+				$curso=$_POST['curso'];
+				$hora=$_POST['hora'];
+				$asignatura=$_POST['asignatura'];
+				$profesorguia=$_POST['profesorguia'];
+				$numeroalumnos=$_POST['numeroalumnos'];
+				$bitacorasesionid=$model->id;
+				
+				for($i=0;$i<count($curso);$i++){
+					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
+						
+						if($id == ""){
+							$query="insert into clasebitacorasesion(curso,hora,asignatura,profesorguia,numeroalumnos,bitacorasesion_id) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
+						}else{
+							$query="update clasebitacorasesion set curso='".$curso[$i]."',hora='".$hora[$i]."',asignatura='".$asignatura[$i]."',profesorguia='".$profesorguia[$i]."',numeroalumnos='".$numeroalumnos[$i]."',bitacorasesion_id='".$bitacorasesionid."' where id='".$id[$i]."'";
 						}
+						
+						Yii::app()->db->createCommand($query)->execute();
 					}
-					$contacts[$key]->attributes = $value;
-				}
+				}	
+				$this->redirect(array('view','id'=>$model->id));
 			}
-
-			$valid = $model->validate();
-			foreach ($contacts as $contact) {
-				$valid = $contact->validate() & $valid;
-			}
-
-			if ($valid) {
-				$transaction = $model->getDbConnection()->beginTransaction();
-				try {
-					$model->save();
-					$model->refresh();
-
-					foreach ($contacts as $contact) {
-						$contact->bitacorasesion_id = $model->id;
-						$contact->save();
-					}
-					$transaction->commit();
-				} 
-				catch (Exception $e) {
-					$transaction->rollback();
-				}
-				$this->redirect(array('view', 'id' => $model->id));
-			}
+				
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
-			'contacts' => $contacts
+			'claseBitacoraModel'=>$claseBitacoraModel,
 		));
 	}
 
@@ -202,24 +153,9 @@ class BitacorasesionController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	
 	public function actionDelete($id)
 	{
-		$querydoc="select count(*) from documentobitacora where bitacorasesion_id = '".$id."';";
-		$exist=Yii::app()->db->createCommand($querydoc)->queryScalar();
-		
-		if($exist != 0)
-		{
-			$deldoc="delete from documentobitacora where bitacorasesion_id ='".$id."';";
-			Yii::app()->db->createCommand($deldoc)->execute();
-		}
-		
-		$delclase="delete from clasebitacorasesion where bitacorasesion_id ='".$id."';";
-		Yii::app()->db->createCommand($delclase)->execute();
-		
-		$delbitacora="delete from bitacorasesion where id ='".$id."';";
-		Yii::app()->db->createCommand($delbitacora)->execute();
-		
+		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -236,28 +172,6 @@ class BitacorasesionController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
-	
-	/*public function actionIndex()
-    {
-		$id = strtolower(Yii::app()->user->name);
-		$count=Yii::app()->db->createCommand("select count(*) from bitacorasesion inner join planificacionclase on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion where Estudiante_RutEstudiante = '".$id."';")->queryScalar();
-		
-		$sql="select bitacorasesion.id,bitacorasesion.fecha,bitacorasesion.actividades,bitacorasesion.aprendizaje,bitacorasesion.sentir,bitacorasesion.otro,bitacorasesion.PlanificacionClase_CodPlanificacion from bitacorasesion inner join planificacionclase on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion where Estudiante_RutEstudiante = '".$id."';";
-        
-        $dataProvider=new CSqlDataProvider($sql, array(
-			'totalItemCount'=>$count,
-			'sort'=>array(
-				'attributes'=>array(
-					'id','fecha','actividades','aprendizaje','sentir','otro','PlanificacionClase_CodPlanificacion',
-				),
-			),
-			'pagination'=>array(
-				'pageSize'=>10,
-			),
-		));
-            
-        $this->render('index',array('dataProvider'=>$dataProvider));
-    }*/
 
 	/**
 	 * Manages all models.
@@ -278,7 +192,7 @@ class BitacorasesionController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Customer the loaded model
+	 * @return Bitacorasesion the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
@@ -291,19 +205,14 @@ class BitacorasesionController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Customer $model the model to be validated
+	 * @param Bitacorasesion $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='customer-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='bitacorasesion-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-	
-	public function actionPdf($id)
-	{
-		$this->render('pdf',array('model'=>$this->loadModel($id),));	
 	}
 }

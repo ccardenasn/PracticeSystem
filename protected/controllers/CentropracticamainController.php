@@ -376,9 +376,6 @@ class CentropracticamainController extends Controller
 					move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
 					
 					if($rutExist != 0){
-						
-						
-					
 						$query="update profesorguiacp set NombreProfGuiaCP='".$nombre[$i]."',CursoProfGuiaCP='".$curso[$i]."',ProfesorJefeProfGuiaCP='".$profesorjefe[$i]."',MailProfGuiaCP='".$correo[$i]."',TelefonoProfGuiaCP='".$telefono[$i]."',CelularProfGuiaCP='".$celular[$i]."',CentroPractica_RBD='".$centro."',ImagenProfGuiaCP='".$imagen."' where RutProfGuiaCP='".$rut[$i]."'";
 					
 					}else{

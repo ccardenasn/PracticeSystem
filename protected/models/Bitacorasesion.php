@@ -1,11 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "customers".
+ * This is the model class for table "bitacorasesion".
  *
- * The followings are the available columns in table 'customers':
+ * The followings are the available columns in table 'bitacorasesion':
  * @property integer $id
- * @property string $name
+ * @property string $fecha
+ * @property string $actividades
+ * @property string $aprendizaje
+ * @property string $sentir
+ * @property string $otro
+ * @property integer $PlanificacionClase_CodPlanificacion
+ *
+ * The followings are the available model relations:
+ * @property Planificacionclase $planificacionClaseCodPlanificacion
+ * @property Clasebitacorasesion[] $clasebitacorasesions
+ * @property Documentobitacora[] $documentobitacoras
  */
 class Bitacorasesion extends CActiveRecord
 {
@@ -25,11 +35,13 @@ class Bitacorasesion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fecha, PlanificacionClase_CodPlanificacion, actividades, aprendizaje, sentir, otro', 'required'),
+			array('PlanificacionClase_CodPlanificacion', 'required'),
+			array('PlanificacionClase_CodPlanificacion', 'numerical', 'integerOnly'=>true),
 			array('fecha', 'length', 'max'=>45),
+			array('actividades, aprendizaje, sentir, otro', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fecha, PlanificacionClase_CodPlanificacion, actividades, aprendizaje, sentir, otro', 'safe', 'on'=>'search'),
+			array('id, fecha, actividades, aprendizaje, sentir, otro, PlanificacionClase_CodPlanificacion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -41,9 +53,9 @@ class Bitacorasesion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'clasebitacorasesion' => array(self::HAS_MANY, 'Clasebitacorasesion', 'bitacorasesion_id'),
 			'planificacionClaseCodPlanificacion' => array(self::BELONGS_TO, 'Planificacionclase', 'PlanificacionClase_CodPlanificacion'),
-			//'documentobitacora' => array(self::HAS_MANY, 'Documentobitacora', 'bitacorasesion_id'),
+			'clasebitacorasesions' => array(self::HAS_MANY, 'Clasebitacorasesion', 'bitacorasesion_id'),
+			'documentobitacoras' => array(self::HAS_MANY, 'Documentobitacora', 'bitacorasesion_id'),
 		);
 	}
 
@@ -53,13 +65,13 @@ class Bitacorasesion extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'id',
-			'fecha' => 'fecha',
-			'PlanificacionClase_CodPlanificacion' => 'Cod Planificacion',
+			'id' => 'ID',
+			'fecha' => 'Fecha',
 			'actividades' => 'Actividades',
 			'aprendizaje' => 'Aprendizaje',
 			'sentir' => 'Sentir',
-			'otro' => 'Otro Comentario',
+			'otro' => 'Otro',
+			'PlanificacionClase_CodPlanificacion' => 'Planificacion Clase Cod Planificacion',
 		);
 	}
 
@@ -81,13 +93,14 @@ class Bitacorasesion extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
+		$criteria->compare('id',$this->id);
 		$criteria->compare('fecha',$this->fecha,true);
-		$criteria->compare('PlanificacionClase_CodPlanificacion',$this->PlanificacionClase_CodPlanificacion,true);
 		$criteria->compare('actividades',$this->actividades,true);
 		$criteria->compare('aprendizaje',$this->aprendizaje,true);
 		$criteria->compare('sentir',$this->sentir,true);
 		$criteria->compare('otro',$this->otro,true);
+		$criteria->compare('PlanificacionClase_CodPlanificacion',$this->PlanificacionClase_CodPlanificacion);
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -97,7 +110,7 @@ class Bitacorasesion extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Customer the static model class
+	 * @return Bitacorasesion the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
