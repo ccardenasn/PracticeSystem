@@ -67,7 +67,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 			
 			<div class="row">
 				<?php //echo $form->labelEx($model,'PlanificacionClase_CodPlanificacion'); ?>
-				<?php echo $form->hiddenField($model,'PlanificacionClase_CodPlanificacion',array('type'=>"hidden",'value'=>$req,'readOnly' => true)); ?>
+				<?php echo $form->hiddenField($model,'PlanificacionClase_CodPlanificacion',array('type'=>"hidden",'readOnly' => true)); ?>
 				<?php echo $form->error($model,'PlanificacionClase_CodPlanificacion'); ?>
 			</div>
 			
@@ -83,7 +83,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
-						<input type="text" id="id1" name="id[]" size="14" placeholder="ID">
+						<input type="hidden" id="id1" name="id[]" size="14" placeholder="ID">
 						<br><span class='error_text' id='id1_error'></span>
 					</td>
 					<td>
@@ -105,6 +105,9 @@ for($i=0;$i<$totalClaseModel;$i++){
 					<td>
 						<input type="text" id="numeroalumnos1" name="numeroalumnos[]" size="14" placeholder="Numero de Alumnos">
 						<br><span class='error_text' id='numeroalumnos1_error'></span>
+					</td>
+					<td>
+						<input type='button' value='x' onclick="javascript:delete_row('row1');">
 					</td>
 				</tr>
 			</table>

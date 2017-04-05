@@ -9,11 +9,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Bitacoras', 'url'=>array('index')),
-	array('label'=>'Modificar Bitacora', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Eliminar Bitacora', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administrar Bitacora', 'url'=>array('admin')),
-	array('label'=>'Lista de Planificaciones', 'url'=>array('planificacionclase/index')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
+	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
 	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->id)),
 	array('label'=>'Subir Documento Word', 'url'=>array('documentobitacora/create','id'=>$model->id)),
 );
@@ -69,3 +69,17 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 		<?php endforeach ?>
 	</tbody>
 </table>
+
+<br>
+<br>
+<ul>
+	<h4>Instrucciones de Opciones</h4>
+	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+	<li>Para regresar al índice de bitácoras haga click en la opción "Lista".</li>
+	<li>Haga click en "Actualizar" para modificar información de bitácora.</li>
+	<li>Haga click en "Eliminar" para borrar toda la información de bitácora.</li>
+	<li>Desde la sección "Administración" se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Haga click en "Añadir Planificación" para configurar las sesiones de clases que realizará el estudiante seleccionado.</li>
+	<li>Haga click en "Planificaciones de Estudiante" para acceder a un listado de planificaciones del estudiante seleccionado.</li>
+	<li>Haga click en "Crear PDF" para generar un documento en formato pdf con información correspondiente a la bitácora.</li>
+</ul><br>

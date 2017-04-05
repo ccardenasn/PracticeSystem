@@ -1,4 +1,5 @@
 <?php
+include_once('bitacoraFunctions.php');
 
 class BitacorasesionController extends Controller
 {
@@ -125,10 +126,30 @@ class BitacorasesionController extends Controller
 				$numeroalumnos=$_POST['numeroalumnos'];
 				$bitacorasesionid=$model->id;
 				
+				$classData=getClasesData($bitacorasesionid);
+				$start = true;
+				$l=0;
+				$founded=false;
+			
+		
+			
+			for($j=0;$j<count($classData['data']);$j++){
+				
+				$founded = containsClassArr($classData['data'][$j],$id);
+				
+				
+				if($founded == false){
+					$query="delete from clasebitacorasesion where id ='".$classData['data'][$j]."'";
+					$exist=Yii::app()->db->createCommand($query)->execute();
+				}
+				
+			}
+				
+				
 				for($i=0;$i<count($curso);$i++){
 					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
 						
-						if($id == ""){
+						if($id[$i] == ""){
 							$query="insert into clasebitacorasesion(curso,hora,asignatura,profesorguia,numeroalumnos,bitacorasesion_id) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
 						}else{
 							$query="update clasebitacorasesion set curso='".$curso[$i]."',hora='".$hora[$i]."',asignatura='".$asignatura[$i]."',profesorguia='".$profesorguia[$i]."',numeroalumnos='".$numeroalumnos[$i]."',bitacorasesion_id='".$bitacorasesionid."' where id='".$id[$i]."'";
