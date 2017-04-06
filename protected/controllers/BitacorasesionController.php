@@ -67,31 +67,42 @@ class BitacorasesionController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['Bitacorasesion']))
 		{
 			$model->attributes=$_POST['Bitacorasesion'];
 			
+			$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
+			
 			if($model->save()){
+				if($file != null){
+					if($file->getExtensionName()=="doc" or $file->getExtensionName()=="docx"){
+						//se guarda la ruta de la imagen
+						$model->DocumentoBitacora->saveAs(Yii::getPathOfAlias("webroot")."/WordFiles/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo documentos en formato .doc o .docx');
+						$this->refresh();
+					}
+				}
 				
-				$curso=$_POST['curso'];
-				$hora=$_POST['hora'];
-				$asignatura=$_POST['asignatura'];
-				$profesorguia=$_POST['profesorguia'];
-				$numeroalumnos=$_POST['numeroalumnos'];
-				$bitacorasesionid=$model->id;
+				$curso=$_POST['CursoClase'];
+				$hora=$_POST['HoraClase'];
+				$asignatura=$_POST['AsignaturaClase'];
+				$profesorguia=$_POST['ProfesorGuiaClase'];
+				$numeroalumnos=$_POST['NumeroAlumnosClase'];
+				$bitacorasesionid=$model->CodBitacora;
 				
 				for($i=0;$i<count($curso);$i++){
 					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
 						
-						$query="insert into clasebitacorasesion(curso,hora,asignatura,profesorguia,numeroalumnos,bitacorasesion_id) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
+						$query="insert into clasebitacorasesion(CursoClase,HoraClase,AsignaturaClase,ProfesorGuiaClase,NumeroAlumnosClase,BitacoraSesion_CodBitacora) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
 						
 						Yii::app()->db->createCommand($query)->execute();
 					}
 				}	
-				$this->redirect(array('view','id'=>$model->id));
-				
+				$this->redirect(array('view','id'=>$model->CodBitacora));
 			}
+				
 		}
 
 		$this->render('create',array(
@@ -109,22 +120,35 @@ class BitacorasesionController extends Controller
 		$model=$this->loadModel($id);
 		$claseBitacoraModel=new Clasebitacorasesion;
 
-		$claseBitacoraModel=Clasebitacorasesion::model()->findAll('bitacorasesion_id=?',array($id));
+		$claseBitacoraModel=Clasebitacorasesion::model()->findAll('BitacoraSesion_CodBitacora=?',array($id));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['Bitacorasesion']))
 		{
 			$model->attributes=$_POST['Bitacorasesion'];
 			
+			$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
+			
 			if($model->save()){
-				$id=$_POST['id'];
-				$curso=$_POST['curso'];
-				$hora=$_POST['hora'];
-				$asignatura=$_POST['asignatura'];
-				$profesorguia=$_POST['profesorguia'];
-				$numeroalumnos=$_POST['numeroalumnos'];
-				$bitacorasesionid=$model->id;
+				if($file != null){
+					if($file->getExtensionName()=="doc" or $file->getExtensionName()=="docx"){
+						//se guarda la ruta de la imagen
+						$model->DocumentoBitacora->saveAs(Yii::getPathOfAlias("webroot")."/WordFiles/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo documentos en formato .doc o .docx');
+						$this->refresh();
+					}
+				}
+				
+				
+				$id=$_POST['CodClase'];
+				$curso=$_POST['CursoClase'];
+				$hora=$_POST['HoraClase'];
+				$asignatura=$_POST['AsignaturaClase'];
+				$profesorguia=$_POST['ProfesorGuiaClase'];
+				$numeroalumnos=$_POST['NumeroAlumnosClase'];
+				$bitacorasesionid=$model->CodBitacora;
 				
 				$classData=getClasesData($bitacorasesionid);
 				$start = true;
@@ -139,7 +163,7 @@ class BitacorasesionController extends Controller
 				
 				
 				if($founded == false){
-					$query="delete from clasebitacorasesion where id ='".$classData['data'][$j]."'";
+					$query="delete from clasebitacorasesion where CodClase ='".$classData['data'][$j]."'";
 					$exist=Yii::app()->db->createCommand($query)->execute();
 				}
 				
@@ -150,15 +174,15 @@ class BitacorasesionController extends Controller
 					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
 						
 						if($id[$i] == ""){
-							$query="insert into clasebitacorasesion(curso,hora,asignatura,profesorguia,numeroalumnos,bitacorasesion_id) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
+							$query="insert into clasebitacorasesion(CursoClase,HoraClase,AsignaturaClase,ProfesorGuiaClase,NumeroAlumnosClase,BitacoraSesion_CodBitacora) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
 						}else{
-							$query="update clasebitacorasesion set curso='".$curso[$i]."',hora='".$hora[$i]."',asignatura='".$asignatura[$i]."',profesorguia='".$profesorguia[$i]."',numeroalumnos='".$numeroalumnos[$i]."',bitacorasesion_id='".$bitacorasesionid."' where id='".$id[$i]."'";
+							$query="update clasebitacorasesion set CursoClase='".$curso[$i]."',HoraClase='".$hora[$i]."',AsignaturaClase='".$asignatura[$i]."',ProfesorGuiaClase='".$profesorguia[$i]."',NumeroAlumnosClase='".$numeroalumnos[$i]."',BitacoraSesion_CodBitacora='".$bitacorasesionid."' where CodClase='".$id[$i]."'";
 						}
 						
 						Yii::app()->db->createCommand($query)->execute();
 					}
-				}	
-				$this->redirect(array('view','id'=>$model->id));
+				}
+				$this->redirect(array('view','id'=>$model->CodBitacora));
 			}
 				
 		}

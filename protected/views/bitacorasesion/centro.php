@@ -26,7 +26,7 @@ function getPlanData($req){
 }
 
 function getPlanDataById($id){
-	$queryplan="select PlanificacionClase_CodPlanificacion from bitacorasesion where id ='".$id."';";
+	$queryplan="select PlanificacionClase_CodPlanificacion from BitacoraSesion where CodBitacora ='".$id."';";
     $iddata=Yii::app()->db->createCommand($queryplan)->queryScalar();
 	
 	$querysesion="select SesionInformada from planificacionclase where CodPlanificacion ='".$iddata."';";

@@ -1,5 +1,6 @@
 <?php
 include_once('planificacion.php');
+
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 

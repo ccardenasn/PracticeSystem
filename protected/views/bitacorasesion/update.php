@@ -8,14 +8,14 @@ $arrdata=datosplanificacion($student);
 
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	$model->CodBitacora=>array('view','id'=>$model->CodBitacora),
 	'Actualizar',
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->CodBitacora)),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
 );

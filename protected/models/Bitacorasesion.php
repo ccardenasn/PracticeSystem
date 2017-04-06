@@ -4,18 +4,18 @@
  * This is the model class for table "bitacorasesion".
  *
  * The followings are the available columns in table 'bitacorasesion':
- * @property integer $id
- * @property string $fecha
- * @property string $actividades
- * @property string $aprendizaje
- * @property string $sentir
- * @property string $otro
+ * @property integer $CodBitacora
+ * @property string $FechaBitacora
+ * @property string $ActividadesBitacora
+ * @property string $AprendizajeBitacora
+ * @property string $SentirBitacora
+ * @property string $OtroBitacora
+ * @property string $DocumentoBitacora
  * @property integer $PlanificacionClase_CodPlanificacion
  *
  * The followings are the available model relations:
  * @property Planificacionclase $planificacionClaseCodPlanificacion
  * @property Clasebitacorasesion[] $clasebitacorasesions
- * @property Documentobitacora[] $documentobitacoras
  */
 class Bitacorasesion extends CActiveRecord
 {
@@ -37,11 +37,11 @@ class Bitacorasesion extends CActiveRecord
 		return array(
 			array('PlanificacionClase_CodPlanificacion', 'required'),
 			array('PlanificacionClase_CodPlanificacion', 'numerical', 'integerOnly'=>true),
-			array('fecha', 'length', 'max'=>45),
-			array('actividades, aprendizaje, sentir, otro', 'safe'),
+			array('FechaBitacora, DocumentoBitacora', 'length', 'max'=>45),
+			array('ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fecha, actividades, aprendizaje, sentir, otro, PlanificacionClase_CodPlanificacion', 'safe', 'on'=>'search'),
+			array('CodBitacora, FechaBitacora, ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora, DocumentoBitacora, PlanificacionClase_CodPlanificacion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,8 +54,7 @@ class Bitacorasesion extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'planificacionClaseCodPlanificacion' => array(self::BELONGS_TO, 'Planificacionclase', 'PlanificacionClase_CodPlanificacion'),
-			'clasebitacorasesions' => array(self::HAS_MANY, 'Clasebitacorasesion', 'bitacorasesion_id'),
-			'documentobitacoras' => array(self::HAS_MANY, 'Documentobitacora', 'bitacorasesion_id'),
+			'clasebitacorasesions' => array(self::HAS_MANY, 'Clasebitacorasesion', 'BitacoraSesion_CodBitacora'),
 		);
 	}
 
@@ -65,12 +64,13 @@ class Bitacorasesion extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'fecha' => 'Fecha',
-			'actividades' => 'Actividades',
-			'aprendizaje' => 'Aprendizaje',
-			'sentir' => 'Sentir',
-			'otro' => 'Otro',
+			'CodBitacora' => 'Cod Bitacora',
+			'FechaBitacora' => 'Fecha Bitacora',
+			'ActividadesBitacora' => 'Actividades Bitacora',
+			'AprendizajeBitacora' => 'Aprendizaje Bitacora',
+			'SentirBitacora' => 'Sentir Bitacora',
+			'OtroBitacora' => 'Otro Bitacora',
+			'DocumentoBitacora' => 'Documento Bitacora',
 			'PlanificacionClase_CodPlanificacion' => 'Planificacion Clase Cod Planificacion',
 		);
 	}
@@ -93,12 +93,13 @@ class Bitacorasesion extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('fecha',$this->fecha,true);
-		$criteria->compare('actividades',$this->actividades,true);
-		$criteria->compare('aprendizaje',$this->aprendizaje,true);
-		$criteria->compare('sentir',$this->sentir,true);
-		$criteria->compare('otro',$this->otro,true);
+		$criteria->compare('CodBitacora',$this->CodBitacora);
+		$criteria->compare('FechaBitacora',$this->FechaBitacora,true);
+		$criteria->compare('ActividadesBitacora',$this->ActividadesBitacora,true);
+		$criteria->compare('AprendizajeBitacora',$this->AprendizajeBitacora,true);
+		$criteria->compare('SentirBitacora',$this->SentirBitacora,true);
+		$criteria->compare('OtroBitacora',$this->OtroBitacora,true);
+		$criteria->compare('DocumentoBitacora',$this->DocumentoBitacora,true);
 		$criteria->compare('PlanificacionClase_CodPlanificacion',$this->PlanificacionClase_CodPlanificacion);
 
 		return new CActiveDataProvider($this, array(

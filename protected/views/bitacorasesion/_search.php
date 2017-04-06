@@ -12,33 +12,38 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+		<?php echo $form->label($model,'CodBitacora'); ?>
+		<?php echo $form->textField($model,'CodBitacora'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'fecha'); ?>
-		<?php echo $form->textField($model,'fecha',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'FechaBitacora'); ?>
+		<?php echo $form->textField($model,'FechaBitacora',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'actividades'); ?>
-		<?php echo $form->textArea($model,'actividades',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'ActividadesBitacora'); ?>
+		<?php echo $form->textArea($model,'ActividadesBitacora',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'aprendizaje'); ?>
-		<?php echo $form->textArea($model,'aprendizaje',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'AprendizajeBitacora'); ?>
+		<?php echo $form->textArea($model,'AprendizajeBitacora',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'sentir'); ?>
-		<?php echo $form->textArea($model,'sentir',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'SentirBitacora'); ?>
+		<?php echo $form->textArea($model,'SentirBitacora',array('rows'=>6, 'cols'=>50)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'otro'); ?>
-		<?php echo $form->textArea($model,'otro',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->label($model,'OtroBitacora'); ?>
+		<?php echo $form->textArea($model,'OtroBitacora',array('rows'=>6, 'cols'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'DocumentoBitacora'); ?>
+		<?php echo $form->textField($model,'DocumentoBitacora',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row">

@@ -10,11 +10,11 @@ function containsProf($rut){
 function getClasesData($bitacorasesionid){
 	include('connect.php');
 	$arr = array();
-	$query = "select id from clasebitacorasesion where bitacorasesion_id = '".$bitacorasesionid."'";
+	$query = "select CodClase from clasebitacorasesion where BitacoraSesion_CodBitacora = '".$bitacorasesionid."'";
 	$execquery	= mysql_query($query);
 	
 	while($row = mysql_fetch_assoc($execquery)){
-		$arr['data'][] = $row['id'];
+		$arr['data'][] = $row['CodClase'];
 	}
 	
 	return $arr;

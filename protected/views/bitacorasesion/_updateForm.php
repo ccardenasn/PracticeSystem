@@ -15,12 +15,12 @@ echo '<script type="text/javascript">
 </script>';
 
 for($i=0;$i<$totalClaseModel;$i++){
-	$claseBitacoraArray['id'][$i] = $claseBitacoraModel[$i]['id'];
-	$claseBitacoraArray['curso'][$i] = $claseBitacoraModel[$i]['curso'];
-	$claseBitacoraArray['hora'][$i] = $claseBitacoraModel[$i]['hora'];
-	$claseBitacoraArray['asignatura'][$i] = $claseBitacoraModel[$i]['asignatura'];
-	$claseBitacoraArray['profesorguia'][$i] = $claseBitacoraModel[$i]['profesorguia'];
-	$claseBitacoraArray['numeroalumnos'][$i] = $claseBitacoraModel[$i]['numeroalumnos'];
+	$claseBitacoraArray['CodClase'][$i] = $claseBitacoraModel[$i]['CodClase'];
+	$claseBitacoraArray['CursoClase'][$i] = $claseBitacoraModel[$i]['CursoClase'];
+	$claseBitacoraArray['HoraClase'][$i] = $claseBitacoraModel[$i]['HoraClase'];
+	$claseBitacoraArray['AsignaturaClase'][$i] = $claseBitacoraModel[$i]['AsignaturaClase'];
+	$claseBitacoraArray['ProfesorGuiaClase'][$i] = $claseBitacoraModel[$i]['ProfesorGuiaClase'];
+	$claseBitacoraArray['NumeroAlumnosClase'][$i] = $claseBitacoraModel[$i]['NumeroAlumnosClase'];
 }
 
 ?>
@@ -35,6 +35,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'bitacorasesion-form',
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -54,9 +55,9 @@ for($i=0;$i<$totalClaseModel;$i++){
 		<h3>Planificación</h3>
 		<ul>
 			<div class="row">
-				<?php echo $form->labelEx($model,'fecha'); ?>
-				<?php echo $form->textField($model,'fecha',array('readOnly' => false,'size'=>45,'maxlength'=>45)); ?>
-				<?php echo $form->error($model,'fecha'); ?>
+				<?php echo $form->labelEx($model,'FechaBitacora'); ?>
+				<?php echo $form->textField($model,'FechaBitacora',array('readOnly' => false,'size'=>45,'maxlength'=>45)); ?>
+				<?php echo $form->error($model,'FechaBitacora'); ?>
 			</div>
 			
 			<div class="row">
@@ -83,28 +84,28 @@ for($i=0;$i<$totalClaseModel;$i++){
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
-						<input type="hidden" id="id1" name="id[]" size="14" placeholder="ID">
-						<br><span class='error_text' id='id1_error'></span>
+						<input type="hidden" id="CodClase1" name="CodClase[]" size="14" placeholder="ID">
+						<br><span class='error_text' id='CodClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="curso1" name="curso[]" size="14" placeholder="Curso">
-						<br><span class='error_text' id='curso1_error'></span>
+						<input type="text" id="CursoClase1" name="CursoClase[]" size="14" placeholder="Curso">
+						<br><span class='error_text' id='CursoClase_error'></span>
 					</td>
 					<td>
-						<input type="text" id="hora1" name="hora[]" size="14" placeholder="Hora">
-						<br><span class='error_text' id='hora1_error'></span>
+						<input type="text" id="HoraClase1" name="HoraClase[]" size="14" placeholder="Hora">
+						<br><span class='error_text' id='HoraClase_error'></span>
 					</td>
 					<td>
-						<input type="text" id="asignatura1" name="asignatura[]" size="14" placeholder="Asignatura">
-						<br><span class='error_text' id='asignatura1_error'></span>
+						<input type="text" id="AsignaturaClase1" name="AsignaturaClase[]" size="14" placeholder="Asignatura">
+						<br><span class='error_text' id='AsignaturaClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="profesorguia1" name="profesorguia[]" size="14" placeholder="Profesor Guia">
-						<br><span class='error_text' id='profesorguia1_error'></span>
+						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" placeholder="Profesor Guia">
+						<br><span class='error_text' id='ProfesorGuiaClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="numeroalumnos1" name="numeroalumnos[]" size="14" placeholder="Numero de Alumnos">
-						<br><span class='error_text' id='numeroalumnos1_error'></span>
+						<input type="text" id="NumeroAlumnosClase1" name="NumeroAlumnosClase[]" size="14" placeholder="Numero de Alumnos">
+						<br><span class='error_text' id='NumeroAlumnosClase1_error'></span>
 					</td>
 					<td>
 						<input type='button' value='x' onclick="javascript:delete_row('row1');">
@@ -112,33 +113,42 @@ for($i=0;$i<$totalClaseModel;$i++){
 				</tr>
 			</table>
 			
-			<input type="button" onclick="add_row();" value="+">
+			<input type="button" onclick="add_rowUpdate();" value="+">
 		</ul>
 		
 		<h3>Evaluación</h3>
 		<ul>
 			<div class="row">
-				<?php echo $form->labelEx($model,'actividades'); ?>
-				<?php echo $form->textArea($model,'actividades',array('rows'=>6, 'cols'=>50)); ?>
-				<?php echo $form->error($model,'actividades'); ?>
+				<?php echo $form->labelEx($model,'ActividadesBitacora'); ?>
+				<?php echo $form->textArea($model,'ActividadesBitacora',array('rows'=>6, 'cols'=>50)); ?>
+				<?php echo $form->error($model,'ActividadesBitacora'); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo $form->labelEx($model,'aprendizaje'); ?>
-				<?php echo $form->textArea($model,'aprendizaje',array('rows'=>6, 'cols'=>50)); ?>
-				<?php echo $form->error($model,'aprendizaje'); ?>
+				<?php echo $form->labelEx($model,'AprendizajeBitacora'); ?>
+				<?php echo $form->textArea($model,'AprendizajeBitacora',array('rows'=>6, 'cols'=>50)); ?>
+				<?php echo $form->error($model,'AprendizajeBitacora'); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo $form->labelEx($model,'sentir'); ?>
-				<?php echo $form->textArea($model,'sentir',array('rows'=>6, 'cols'=>50)); ?>
-				<?php echo $form->error($model,'sentir'); ?>
+				<?php echo $form->labelEx($model,'SentirBitacora'); ?>
+				<?php echo $form->textArea($model,'SentirBitacora',array('rows'=>6, 'cols'=>50)); ?>
+				<?php echo $form->error($model,'SentirBitacora'); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo $form->labelEx($model,'otro'); ?>
-				<?php echo $form->textArea($model,'otro',array('rows'=>6, 'cols'=>50)); ?>
-				<?php echo $form->error($model,'otro'); ?>
+				<?php echo $form->labelEx($model,'OtroBitacora'); ?>
+				<?php echo $form->textArea($model,'OtroBitacora',array('rows'=>6, 'cols'=>50)); ?>
+				<?php echo $form->error($model,'OtroBitacora'); ?>
+			</div>
+		</ul>
+		
+		<h3>Documentación</h3>
+		<ul>
+			<div class="row">
+				<?php echo $form->labelEx($model,'DocumentoBitacora'); ?>
+				<?php echo CHtml::activeFileField($model,'DocumentoBitacora');?>
+				<?php echo $form->error($model,'DocumentoBitacora'); ?>
 			</div>
 		</ul>
 	</div>

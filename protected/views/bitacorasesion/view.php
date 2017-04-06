@@ -5,17 +5,16 @@ include_once('centro.php');
 
 $this->breadcrumbs=array(
 	'Bitacoras'=>array('index'),
-	$model->id,
+	$model->CodBitacora,
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodBitacora),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
-	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->id)),
-	array('label'=>'Subir Documento Word', 'url'=>array('documentobitacora/create','id'=>$model->id)),
+	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodBitacora)),
 );
 ?>
 
@@ -33,14 +32,14 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'fecha',
+		'FechaBitacora',
 		array('name'=>'Numero de Sesion','value'=>$plandata[0]),
 		array('name'=>'Codigo de Planificacion','value'=>$model->PlanificacionClase_CodPlanificacion),
         array('name'=>'Centro de Practica','value'=>$plandata[1]),
-		'actividades',
-		'aprendizaje',
-		'sentir',
-		'otro',
+		'ActividadesBitacora',
+		'AprendizajeBitacora',
+		'SentirBitacora',
+		'OtroBitacora',
 	),
 )); ?>
 
@@ -60,11 +59,11 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 	<tbody>
 		<?php foreach($model->clasebitacorasesions as $clase) : ?>
 		<tr>
-			<td><?php echo $clase->curso ?></td>
-			<td><?php echo $clase->hora ?></td>
-			<td><?php echo $clase->asignatura ?></td>
-			<td><?php echo $clase->profesorguia ?></td>
-			<td><?php echo $clase->numeroalumnos ?></td>
+			<td><?php echo $clase->CursoClase ?></td>
+			<td><?php echo $clase->HoraClase ?></td>
+			<td><?php echo $clase->AsignaturaClase ?></td>
+			<td><?php echo $clase->ProfesorGuiaClase ?></td>
+			<td><?php echo $clase->NumeroAlumnosClase ?></td>
 		</tr>
 		<?php endforeach ?>
 	</tbody>

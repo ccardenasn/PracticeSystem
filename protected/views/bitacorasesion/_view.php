@@ -5,33 +5,39 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('CodBitacora')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->CodBitacora), array('view', 'id'=>$data->CodBitacora)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fecha')); ?>:</b>
-	<?php echo CHtml::encode($data->fecha); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaBitacora')); ?>:</b>
+	<?php echo CHtml::encode($data->FechaBitacora); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('actividades')); ?>:</b>
-	<?php echo CHtml::encode($data->actividades); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ActividadesBitacora')); ?>:</b>
+	<?php echo CHtml::encode($data->ActividadesBitacora); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('aprendizaje')); ?>:</b>
-	<?php echo CHtml::encode($data->aprendizaje); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('AprendizajeBitacora')); ?>:</b>
+	<?php echo CHtml::encode($data->AprendizajeBitacora); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('sentir')); ?>:</b>
-	<?php echo CHtml::encode($data->sentir); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('SentirBitacora')); ?>:</b>
+	<?php echo CHtml::encode($data->SentirBitacora); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('otro')); ?>:</b>
-	<?php echo CHtml::encode($data->otro); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('OtroBitacora')); ?>:</b>
+	<?php echo CHtml::encode($data->OtroBitacora); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('DocumentoBitacora')); ?>:</b>
+	<?php echo CHtml::encode($data->DocumentoBitacora); ?>
+	<br />
+
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('PlanificacionClase_CodPlanificacion')); ?>:</b>
 	<?php echo CHtml::encode($data->PlanificacionClase_CodPlanificacion); ?>
 	<br />
 
+	*/ ?>
 
 </div>
