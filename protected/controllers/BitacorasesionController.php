@@ -29,7 +29,7 @@ class BitacorasesionController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','viewPlanificacionBitacora'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -54,6 +54,14 @@ class BitacorasesionController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		));
+	}
+	
+	public function actionViewPlanificacionBitacora($id)
+	{
+		$bitacoraUser=Bitacorasesion::model()->find('PlanificacionClase_CodPlanificacion=?',array($id));
+		$this->render('viewPlanificacionBitacora',array(
+			'model'=>$this->loadModel($bitacoraUser->CodBitacora),
 		));
 	}
 

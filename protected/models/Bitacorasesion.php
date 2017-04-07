@@ -65,12 +65,12 @@ class Bitacorasesion extends CActiveRecord
 	{
 		return array(
 			'CodBitacora' => 'Cod Bitacora',
-			'FechaBitacora' => 'Fecha Bitacora',
-			'ActividadesBitacora' => 'Actividades Bitacora',
-			'AprendizajeBitacora' => 'Aprendizaje Bitacora',
-			'SentirBitacora' => 'Sentir Bitacora',
-			'OtroBitacora' => 'Otro Bitacora',
-			'DocumentoBitacora' => 'Documento Bitacora',
+			'FechaBitacora' => 'Fecha',
+			'ActividadesBitacora' => '¿Que Realicé?',
+			'AprendizajeBitacora' => '¿Que Aprendí?',
+			'SentirBitacora' => '¿Que Sentí?',
+			'OtroBitacora' => 'Otros Comentarios',
+			'DocumentoBitacora' => 'Documento',
 			'PlanificacionClase_CodPlanificacion' => 'Planificacion Clase Cod Planificacion',
 		);
 	}
@@ -101,9 +101,36 @@ class Bitacorasesion extends CActiveRecord
 		$criteria->compare('OtroBitacora',$this->OtroBitacora,true);
 		$criteria->compare('DocumentoBitacora',$this->DocumentoBitacora,true);
 		$criteria->compare('PlanificacionClase_CodPlanificacion',$this->PlanificacionClase_CodPlanificacion);
+		
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	
+	public function searchByRut($rut)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('CodBitacora',$this->CodBitacora);
+		$criteria->compare('FechaBitacora',$this->FechaBitacora,true);
+		$criteria->compare('ActividadesBitacora',$this->ActividadesBitacora,true);
+		$criteria->compare('AprendizajeBitacora',$this->AprendizajeBitacora,true);
+		$criteria->compare('SentirBitacora',$this->SentirBitacora,true);
+		$criteria->compare('OtroBitacora',$this->OtroBitacora,true);
+		$criteria->compare('DocumentoBitacora',$this->DocumentoBitacora,true);
+		$criteria->compare('PlanificacionClase_CodPlanificacion',$this->PlanificacionClase_CodPlanificacion);
+		//$criteria->compare('planificacionClaseCodPlanificacion.CodPlanificacion',$this->PlanificacionClase_CodPlanificacion);
+		
+		$criteria->with=array('planificacionClaseCodPlanificacion');
+		$criteria->addSearchCondition('planificacionClaseCodPlanificacion.Estudiante_RutEstudiante',$rut);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>'SesionInformada ASC',
+			),
 		));
 	}
 
