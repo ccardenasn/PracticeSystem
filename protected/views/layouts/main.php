@@ -65,7 +65,7 @@
                 ),
                 array('label'=>'Gestion Pedagógica',
                         'items'=>array(
-                          array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador/admin')),
+                          array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador')),
                     ),
                 ),
 				array('label'=>'Alumnos',

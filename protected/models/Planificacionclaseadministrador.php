@@ -104,21 +104,11 @@ class Planificacionclaseadministrador extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$sort= new CSort();
 
 		$criteria->compare('CodPlanificacion',$this->CodPlanificacion);
 		$criteria->compare('Estudiante_RutEstudiante',$this->Estudiante_RutEstudiante,true);
-		
-		$criteria->with =array('centroPracticaRBD','profesorGuiaCPRutProfGuiaCP');
-		$criteria->addSearchCondition('LOWER(centroPracticaRBD.NombreCentroPractica)',strtolower($this->CentroPractica_RBD));
-		$criteria->addSearchCondition('LOWER(profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP)',strtolower($this->ProfesorGuiaCP_RutProfGuiaCP));
-		
-		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
-		'criteria'=>$criteria,
-		'sort'=>$sort,
-		'pagination'=>false
-		));
-		
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
 		$criteria->compare('Curso',$this->Curso,true);
 		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
 		$criteria->compare('Fecha',$this->Fecha,true);
@@ -127,6 +117,14 @@ class Planificacionclaseadministrador extends CActiveRecord
 		$criteria->compare('Supervisado',$this->Supervisado,true);
 		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
 
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

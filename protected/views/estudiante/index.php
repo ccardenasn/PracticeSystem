@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Administración', 'url'=>array('admin')),
-	array('label'=>'Planificaciones', 'url'=>array('planificacionclaseadministrador/admin')),
+	array('label'=>'Planificaciones', 'url'=>array('planificacionclaseadministrador/index')),
 	array('label'=>'Importar Lista', 'url'=>array('readExcel')),
 );
 ?>

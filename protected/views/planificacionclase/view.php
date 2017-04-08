@@ -8,16 +8,26 @@ $this->breadcrumbs=array(
 	$model->CodPlanificacion,
 );
 
+$logBookExist = containsBitacora($model->CodPlanificacion);
+$label='';
+$url='';
+if($logBookExist != 0){
+	$label = 'Ver Bitácora';
+	$url = 'bitacorasesion/viewPlanificacionBitacora';
+}else{
+	$label = 'Crear Bitácora';
+	$url = 'bitacorasesion/create';
+}
+
 $this->menu=array(
 	array('label'=>'Planificación de Clases', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Actualizar', 'url'=>array('planificacionclaseupdate/update', 'id'=>$model->CodPlanificacion)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'¡ADVERTENCIA! Esta acción borrará registros asociados a la planificación, tales como Bitácoras y Documentos de Word Adjuntos ¿Desea Continuar?')),
 	array('label'=>'Administración de Planificaciones', 'url'=>array('admin','id'=>$model->Estudiante_RutEstudiante)),
-    array('label'=>'Crear Bitacora', 'url'=>array('bitacorasesion/create','id'=>$model->CodPlanificacion)),
-    //array('label'=>'Administración de Bitacoras', 'url'=>array('bitacorasesion/index')),
 	array('label'=>'Administración de Bitacoras', 'url'=>array('bitacorasesion/admin','id'=>$model->Estudiante_RutEstudiante)),
-	array('label'=>'Ver Bitacora', 'url'=>array('bitacorasesion/viewPlanificacionBitacora', 'id'=>$model->CodPlanificacion)),
+	array('label'=>$label, 'url'=>array($url, 'id'=>$model->CodPlanificacion)),
+	//array('label'=>'Crear Bitacora', 'url'=>array('bitacorasesion/create','id'=>$model->CodPlanificacion)),
 );
 ?>
 

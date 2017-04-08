@@ -14,7 +14,7 @@ $this->menu=array(
 	array('label'=>'Eliminar Docente Coordinador de Practicas', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutCoordinador),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administrar Docente Coordinador de Practicas', 'url'=>array('admin')),
     array('label'=>'Añadir Lista de Estudiantes', 'url'=>array('listaestudiante/create')),
-	array('label'=>'Planificación de Clases','url'=>array('/planificacionclaseadministrador/admin')),
+	array('label'=>'Planificación de Clases','url'=>array('/planificacionclaseadministrador/index')),
 );
 ?>
 

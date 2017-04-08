@@ -122,12 +122,12 @@ class PlanificacionclaseadministradorController extends Controller
 	 */
 	public function actionIndex()
     {
-        $uname = strtolower(Yii::app()->request->getQuery('id'));
+        //$uname = strtolower(Yii::app()->request->getQuery('id'));
         
-        $estudiante='Estudiante_RutEstudiante = :Estudiante_RutEstudiante';
-        $criteria=array('condition' => $estudiante,'params' => array(':Estudiante_RutEstudiante' => $uname),);
-        $option=array('criteria' => $criteria);
-        $dataprovider=new CActiveDataProvider('planificacionclase',$option);
+        //$estudiante='Estudiante_RutEstudiante = :Estudiante_RutEstudiante';
+        //$criteria=array('condition' => $estudiante,'params' => array(':Estudiante_RutEstudiante' => $uname),);
+        //$option=array('criteria' => $criteria);
+        $dataprovider=new CActiveDataProvider('Planificacionclaseadministrador');
             
         $this->render('index',array('dataProvider'=>$dataprovider));
     }

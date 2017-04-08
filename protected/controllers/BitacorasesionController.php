@@ -220,7 +220,16 @@ class BitacorasesionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Bitacorasesion');
+		$rut = strtolower(Yii::app()->user->name);
+		
+		$criteria = new CDbCriteria();
+        $criteria->alias = 'Bitacorasesion';
+        $criteria->select ='Bitcorasesion.CodBitacora,Bitacorasesion.FechaBitacora,Bitacorasesion.ActividadesBitacora,Bitcorasesion.AprendizajeBitacora,Bitcorasesion.SentirBitacora,Bitcorasesion.OtroBitacora,Bitcorasesion.DocumentoBitacora';
+		
+		$criteria->with=array('planificacionClaseCodPlanificacion');
+		$criteria->addSearchCondition('planificacionClaseCodPlanificacion.Estudiante_RutEstudiante',$rut);
+		
+		$dataProvider=new CActiveDataProvider('Bitacorasesion', array('criteria'=>$criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
