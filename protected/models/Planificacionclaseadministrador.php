@@ -129,6 +129,32 @@ class Planificacionclaseadministrador extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function searchByRut($rut)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('CodPlanificacion',$this->CodPlanificacion);
+		$criteria->compare('Estudiante_RutEstudiante',$rut,true);
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
+		$criteria->compare('Curso',$this->Curso,true);
+		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+		$criteria->compare('Fecha',$this->Fecha,true);
+		$criteria->compare('SesionInformada',$this->SesionInformada,true);
+		$criteria->compare('Ejecutado',$this->Ejecutado,true);
+		$criteria->compare('Supervisado',$this->Supervisado,true);
+		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort'=>array(
+				'defaultOrder'=>'SesionInformada ASC',
+			),
+		));
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

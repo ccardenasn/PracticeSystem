@@ -16,7 +16,7 @@ include_once('planificacion.php');
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 	
@@ -123,7 +123,7 @@ include_once('planificacion.php');
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
 	
 	<?php if(Yii::app()->user->hasFlash('success')):?>

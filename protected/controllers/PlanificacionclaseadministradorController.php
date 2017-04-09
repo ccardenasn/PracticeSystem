@@ -36,7 +36,7 @@ class PlanificacionclaseadministradorController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','adminPlanificacionEstudiante'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -143,6 +143,18 @@ class PlanificacionclaseadministradorController extends Controller
 			$model->attributes=$_GET['Planificacionclaseadministrador'];
 
 		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+	
+	public function actionAdminPlanificacionEstudiante()
+	{
+		$model=new Planificacionclaseadministrador('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Planificacionclaseadministrador']))
+			$model->attributes=$_GET['Planificacionclaseadministrador'];
+
+		$this->render('adminPlanificacionEstudiante',array(
 			'model'=>$model,
 		));
 	}

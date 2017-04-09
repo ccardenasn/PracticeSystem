@@ -2,12 +2,14 @@
 /* @var $this BitacorasesionController */
 /* @var $dataProvider CActiveDataProvider */
 
+$student=Yii::app()->user->name;
+
 $this->breadcrumbs=array(
 	'Bitácoras',
 );
 
 $this->menu=array(
-	array('label'=>'Administración', 'url'=>array('admin')),
+	array('label'=>'Administración', 'url'=>array('admin','id'=>$student)),
 );
 ?>
 

@@ -5,16 +5,15 @@ include_once('centro.php');
 
 $this->breadcrumbs=array(
 	'Bitacoras'=>array('index'),
-	$model->CodBitacora,
+	'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada,
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodBitacora),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Administración', 'url'=>array('admin')),
-	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
-	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodBitacora)),
+	array('label'=>'Administración', 'url'=>array('admin','id'=>$model->planificacionClaseCodPlanificacion->Estudiante_RutEstudiante)),
+	array('label'=>'Planificaciones', 'url'=>array('planificacionclase/index')),
 );
 ?>
 
@@ -24,18 +23,33 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 
 ?>
 
-<h1>Datos Bitacora: </h1>
-<h2>Estudiante: <?php echo $plandata[3]; ?> </h2>
+<h1>Datos Bitacora</h1>
+<h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2>
 
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Para regresar al índice de bitácoras haga click en la opción "Lista".</li>
+			<li>Haga click en "Actualizar" para modificar información de bitácora.</li>
+			<li>Haga click en "Eliminar" para borrar toda la información de bitácora.</li>
+			<li>Desde la sección "Administración" se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Haga click en "Añadir Planificación" para configurar las sesiones de clases que realizará el estudiante seleccionado.</li>
+			<li>Haga click en "Planificaciones" para acceder a la sección de planificaciones del estudiante seleccionado.</li>
+		</ul>
+	</ul>
+</div><br>
 
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'FechaBitacora',
-		array('name'=>'Numero de Sesion','value'=>$plandata[0]),
-		array('name'=>'Codigo de Planificacion','value'=>$model->PlanificacionClase_CodPlanificacion),
-        array('name'=>'Centro de Practica','value'=>$plandata[1]),
+		array('name'=>'Numero de Sesion','value'=>$model->planificacionClaseCodPlanificacion->SesionInformada),
+		array('name'=>'Centro de Practica','value'=>$model->planificacionClaseCodPlanificacion->centroPracticaRBD->NombreCentroPractica),
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',
@@ -68,17 +82,3 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 		<?php endforeach ?>
 	</tbody>
 </table>
-
-<br>
-<br>
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de bitácoras haga click en la opción "Lista".</li>
-	<li>Haga click en "Actualizar" para modificar información de bitácora.</li>
-	<li>Haga click en "Eliminar" para borrar toda la información de bitácora.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-	<li>Haga click en "Añadir Planificación" para configurar las sesiones de clases que realizará el estudiante seleccionado.</li>
-	<li>Haga click en "Planificaciones de Estudiante" para acceder a un listado de planificaciones del estudiante seleccionado.</li>
-	<li>Haga click en "Crear PDF" para generar un documento en formato pdf con información correspondiente a la bitácora.</li>
-</ul><br>
