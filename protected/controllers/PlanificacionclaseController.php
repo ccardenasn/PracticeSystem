@@ -1,5 +1,6 @@
 <?php
 include_once('consulta.php');
+include_once('bitacoraFunctions.php');
 
 class PlanificacionclaseController extends Controller
 {
@@ -127,36 +128,25 @@ class PlanificacionclaseController extends Controller
 	
 	public function actionDelete($id)
 	{
-		$queryplan="select id from bitacorasesion where PlanificacionClase_CodPlanificacion = '".$id."'; ";
-		$plan=Yii::app()->db->createCommand($queryplan)->queryScalar();
+		$planningRut = findPlanningRut($id);
+		$existLogBook = containsLogBook($id);
+
+		if($existLogBook != 0){
+			$idLogBook = getIdLogBook($id);
+			$existClaseLogBook = containsClaseLogBook($idLogBook);
 			
-		$querydoc="select count(*) from documentobitacora where bitacorasesion_id = '".$plan."';";
-		$docexist=Yii::app()->db->createCommand($querydoc)->queryScalar();
-		
-		if($docexist != 0)
-		{
-			$deldoc="delete from documentobitacora where bitacorasesion_id ='".$plan."';";
-			Yii::app()->db->createCommand($deldoc)->execute();
+			if($existClaseLogBook != 0){
+				deleteLogBookSesion($idLogBook);
+			}
+			
+			deleteLogBook($id);
 		}
 		
-		$queryclase="select count(*) from clasebitacorasesion where bitacorasesion_id = '".$plan."';";
-		$claseexist=Yii::app()->db->createCommand($queryclase)->queryScalar();
-		
-		if($claseexist != 0)
-		{
-			$delclase="delete from clasebitacorasesion where bitacorasesion_id ='".$plan."';";
-			Yii::app()->db->createCommand($delclase)->execute();
-			
-			$delbitacora="delete from bitacorasesion where id ='".$plan."';";
-			Yii::app()->db->createCommand($delbitacora)->execute();
-		}
-		
-		$delplan="delete from planificacionclase where CodPlanificacion ='".$id."';";
-		Yii::app()->db->createCommand($delplan)->execute();
+		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin','id'=>$planningRut));
 	}
 
 	/**

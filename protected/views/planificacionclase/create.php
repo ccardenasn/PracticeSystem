@@ -2,6 +2,8 @@
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
+ $id=Yii::app()->user->name;
+
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),
 	'Añadir',
@@ -9,7 +11,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Planificaciones', 'url'=>array('index')),
-	array('label'=>'Administración', 'url'=>array('admin')),
+	array('label'=>'Administración', 'url'=>array('admin','id'=>$id)),
 );
 ?>
 

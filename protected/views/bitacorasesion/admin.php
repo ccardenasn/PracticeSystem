@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Bitácoras', 'url'=>array('index')),
+	array('label'=>'Planificaciones', 'url'=>array('planificacionclase/index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

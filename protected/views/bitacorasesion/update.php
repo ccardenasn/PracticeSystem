@@ -22,7 +22,7 @@ $this->menu=array(
 ?>
 
 <h1>Modificar Bitácora</h1><br>
-<h2>Estudiante: <?php echo $arrdata[0] ?> </h2><br>
+<h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2><br>
 
 <ul>
 	<h4>Instrucciones de Opciones</h4>

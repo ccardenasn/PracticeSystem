@@ -52,4 +52,49 @@ function deleteProf($arr,$data){
 	}
 }
 
+function containsLogBook($id){
+	$query = "select count(*) from bitacorasesion where PlanificacionClase_CodPlanificacion = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function getIdLogBook($id){
+	$query = "select CodBitacora from bitacorasesion where PlanificacionClase_CodPlanificacion = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function containsClaseLogBook($id){
+	$query = "select count(*) from clasebitacorasesion where BitacoraSesion_CodBitacora = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function deleteLogBookSesion($id){
+	$query="delete from  clasebitacorasesion where BitacoraSesion_CodBitacora ='".$id."'";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
+function deleteLogBook($id){
+	$query="delete from bitacorasesion where PlanificacionClase_CodPlanificacion ='".$id."'";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
+function findPlanningRut($id){
+	$query = "select Estudiante_RutEstudiante from planificacionclase where CodPlanificacion = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function findLogBookPlanning($id){
+	$query = "select PlanificacionClase_CodPlanificacion from bitacorasesion where CodBitacora = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
 ?>

@@ -13,7 +13,7 @@ $this->menu=array(
 	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodBitacora),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
-	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
+	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclaseadministrador/index')),
 	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodBitacora)),
 );
 ?>

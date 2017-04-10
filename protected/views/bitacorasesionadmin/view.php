@@ -5,27 +5,20 @@ include_once('centro.php');
 
 $this->breadcrumbs=array(
 	'Bitacoras'=>array('index'),
-	$model->CodBitacora,
+	'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada,
 );
 
 $this->menu=array(
-	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodBitacora),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
-	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
+	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclaseadministrador/index')),
 	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodBitacora)),
 );
 ?>
 
-<?php
-
-$plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
-
-?>
-
-<h1>Datos Bitacora</h1>
-<h2>Estudiante: <?php echo $plandata[3]; ?> </h2>
+<h1>Datos Bitácora</h1>
+<h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2>
 
 <div class="collapse">
 	<h3>Ayuda</h3>
@@ -50,9 +43,8 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 	'data'=>$model,
 	'attributes'=>array(
 		'FechaBitacora',
-		array('name'=>'Numero de Sesion','value'=>$plandata[0]),
-		array('name'=>'Codigo de Planificacion','value'=>$model->PlanificacionClase_CodPlanificacion),
-        array('name'=>'Centro de Practica','value'=>$plandata[1]),
+		array('name'=>'Numero de Sesión','value'=>$model->planificacionClaseCodPlanificacion->SesionInformada),
+		array('name'=>'Centro de Práctica','value'=>$model->planificacionClaseCodPlanificacion->centroPracticaRBD->NombreCentroPractica),
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',
@@ -66,11 +58,11 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 <table>
 	<thead>
 		<tr>
-			<th>curso</th>
-			<th>hora</th>
-			<th>asignatura</th>
-			<th>profesorguia</th>
-			<th>numeroalumnos</th>
+			<th>Curso</th>
+			<th>Hora</th>
+			<th>Asignatura</th>
+			<th>Profesor Guía</th>
+			<th>Número de Alumnos</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -16,7 +16,7 @@ if($logBookExist != 0){
 	$url = 'bitacorasesionadmin/viewPlanificacionBitacora';
 }else{
 	$label = 'Crear Bitácora';
-	$url = 'bitacorasesion/create';
+	$url = 'bitacorasesionadmin/create';
 }
 
 $this->menu=array(

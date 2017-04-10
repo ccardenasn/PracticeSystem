@@ -17,39 +17,17 @@ $this->menu=array(
 );
 ?>
 
-<?php
-
-$plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
-
-?>
-
-<h1>Datos Bitacora</h1>
+<h1>Datos Bitácora</h1>
 <h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2>
 
-<div class="collapse">
-	<h3>Ayuda</h3>
-	<ul>
-		<ul>
-			<h4>Instrucciones de Opciones</h4>
-			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Para regresar al índice de bitácoras haga click en la opción "Lista".</li>
-			<li>Haga click en "Actualizar" para modificar información de bitácora.</li>
-			<li>Haga click en "Eliminar" para borrar toda la información de bitácora.</li>
-			<li>Desde la sección "Administración" se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-			<li>Haga click en "Añadir Planificación" para configurar las sesiones de clases que realizará el estudiante seleccionado.</li>
-			<li>Haga click en "Planificaciones" para acceder a la sección de planificaciones del estudiante seleccionado.</li>
-		</ul>
-	</ul>
-</div><br>
 
-<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'FechaBitacora',
-		array('name'=>'Numero de Sesion','value'=>$model->planificacionClaseCodPlanificacion->SesionInformada),
-		array('name'=>'Centro de Practica','value'=>$model->planificacionClaseCodPlanificacion->centroPracticaRBD->NombreCentroPractica),
+		array('name'=>'Numero de Sesión','value'=>$model->planificacionClaseCodPlanificacion->SesionInformada),
+		array('name'=>'Centro de Práctica','value'=>$model->planificacionClaseCodPlanificacion->centroPracticaRBD->NombreCentroPractica),
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',
@@ -63,11 +41,11 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 <table>
 	<thead>
 		<tr>
-			<th>curso</th>
-			<th>hora</th>
-			<th>asignatura</th>
-			<th>profesorguia</th>
-			<th>numeroalumnos</th>
+			<th>Curso</th>
+			<th>Hora</th>
+			<th>Asignatura</th>
+			<th>Profesor Guía</th>
+			<th>Número de Alumnos</th>
 		</tr>
 	</thead>
 	<tbody>

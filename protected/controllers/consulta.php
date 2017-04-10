@@ -11,8 +11,8 @@ function consultaplanificacion($estudiantelogged)
     $querytotalsesiones="select NumeroSesionesPractica from configuracionpractica where NombrePractica = '".$practicadata."';";
     $totalsesiones=Yii::app()->db->createCommand($querytotalsesiones)->queryScalar();
         
-    echo $na = intval($numerosesionesusuario);
-    echo $nb = intval($totalsesiones);
+    $na = intval($numerosesionesusuario);
+    $nb = intval($totalsesiones);
     
     $arrconsulta= array($na,$nb);
     

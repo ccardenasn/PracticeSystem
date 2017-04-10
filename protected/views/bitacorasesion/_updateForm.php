@@ -47,6 +47,12 @@ for($i=0;$i<$totalClaseModel;$i++){
 	<?php $req=Yii::app()->request->getQuery('id'); ?>
 	<?php $plandata=getPlanDataById($req); ?>
 	
+	<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+    <?php endif; ?>
+	
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>

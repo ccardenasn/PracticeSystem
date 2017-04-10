@@ -149,46 +149,45 @@ class BitacorasesionController extends Controller
 					}
 				}
 				
-				
-				$id=$_POST['CodClase'];
-				$curso=$_POST['CursoClase'];
-				$hora=$_POST['HoraClase'];
-				$asignatura=$_POST['AsignaturaClase'];
-				$profesorguia=$_POST['ProfesorGuiaClase'];
-				$numeroalumnos=$_POST['NumeroAlumnosClase'];
-				$bitacorasesionid=$model->CodBitacora;
-				
-				$classData=getClasesData($bitacorasesionid);
-				$start = true;
-				$l=0;
-				$founded=false;
-			
-		
-			
-			for($j=0;$j<count($classData['data']);$j++){
-				
-				$founded = containsClassArr($classData['data'][$j],$id);
-				
-				
-				if($founded == false){
-					$query="delete from clasebitacorasesion where CodClase ='".$classData['data'][$j]."'";
-					$exist=Yii::app()->db->createCommand($query)->execute();
-				}
-				
-			}
-				
-				
-				for($i=0;$i<count($curso);$i++){
-					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
+				if(isset($_POST['CodClase'])){
+					
+					$id=$_POST['CodClase'];
+					$curso=$_POST['CursoClase'];
+					$hora=$_POST['HoraClase'];
+					$asignatura=$_POST['AsignaturaClase'];
+					$profesorguia=$_POST['ProfesorGuiaClase'];
+					$numeroalumnos=$_POST['NumeroAlumnosClase'];
+					$bitacorasesionid=$model->CodBitacora;
+					$classData=getClasesData($bitacorasesionid);
+					
+					$start = true;
+					$l=0;
+					$founded=false;
+					
+					for($j=0;$j<count($classData['data']);$j++){
 						
-						if($id[$i] == ""){
-							$query="insert into clasebitacorasesion(CursoClase,HoraClase,AsignaturaClase,ProfesorGuiaClase,NumeroAlumnosClase,BitacoraSesion_CodBitacora) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
-						}else{
-							$query="update clasebitacorasesion set CursoClase='".$curso[$i]."',HoraClase='".$hora[$i]."',AsignaturaClase='".$asignatura[$i]."',ProfesorGuiaClase='".$profesorguia[$i]."',NumeroAlumnosClase='".$numeroalumnos[$i]."',BitacoraSesion_CodBitacora='".$bitacorasesionid."' where CodClase='".$id[$i]."'";
+						$founded = containsClassArr($classData['data'][$j],$id);
+						
+						if($founded == false){
+							$query="delete from clasebitacorasesion where CodClase ='".$classData['data'][$j]."'";
+							$exist=Yii::app()->db->createCommand($query)->execute();
 						}
-						
-						Yii::app()->db->createCommand($query)->execute();
 					}
+					
+					for($i=0;$i<count($curso);$i++){
+						if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
+							
+							if($id[$i] == ""){
+								$query="insert into clasebitacorasesion(CursoClase,HoraClase,AsignaturaClase,ProfesorGuiaClase,NumeroAlumnosClase,BitacoraSesion_CodBitacora) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
+							}else{
+								$query="update clasebitacorasesion set CursoClase='".$curso[$i]."',HoraClase='".$hora[$i]."',AsignaturaClase='".$asignatura[$i]."',ProfesorGuiaClase='".$profesorguia[$i]."',NumeroAlumnosClase='".$numeroalumnos[$i]."',BitacoraSesion_CodBitacora='".$bitacorasesionid."' where CodClase='".$id[$i]."'";
+							}
+							Yii::app()->db->createCommand($query)->execute();
+						}
+					}	
+				}else{
+					Yii::app()->user->setFlash('success','<h1>Debe añadir al menos una clase!!!</h1><br>');
+					$this->refresh();
 				}
 				$this->redirect(array('view','id'=>$model->CodBitacora));
 			}
@@ -208,11 +207,20 @@ class BitacorasesionController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$logBookPlanning = findLogBookPlanning($id);
+		$planningRut = findPlanningRut($logBookPlanning);
+		
+		$existClaseLogBook = containsClaseLogBook($id);
+		
+		if($existClaseLogBook != 0){
+			deleteLogBookSesion($id);
+		}
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin','id'=>$planningRut));
 	}
 
 	/**

@@ -1,14 +1,14 @@
 <?php
 include_once('planificacion.php');
-/* @var $this PlanificacionclaseadministradorController */
-/* @var $model Planificacionclaseadministrador */
+/* @var $this PlanificacionclaseController */
+/* @var $model Planificacionclase */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'planificacionclaseadministrador-form',
+	'id'=>'planificacionclase-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -19,27 +19,25 @@ include_once('planificacion.php');
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-	
-	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
-		<?php echo $form->textField($model,'Estudiante_RutEstudiante',array('readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'Estudiante_RutEstudiante',array('size'=>45,'maxlength'=>45,'readOnly' => true)); ?>
 		<?php echo $form->error($model,'Estudiante_RutEstudiante'); ?>
 	</div>
 	
 	<div class="row">
         <?php echo CHtml::label('Nombre Estudiante','NombreEstudiante'); ?>
-        <?php echo CHtml::textField('NombreEstudiante',$model->estudianteRutEstudiante->NombreEstudiante,array('readOnly' => true)); ?>
+        <?php echo CHtml::textField('NombreEstudiante',$model->estudianteRutEstudiante->NombreEstudiante,array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
 		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
         <?php echo $form->error($model,'CentroPractica_RBD'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 		<?php echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP'));?>
@@ -51,7 +49,7 @@ include_once('planificacion.php');
 		<?php echo $form->textField($model,'Curso',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Curso'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ConfiguracionPractica_NombrePractica'); ?>
 		<?php echo $form->dropDownList($model,'ConfiguracionPractica_NombrePractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
@@ -120,6 +118,12 @@ include_once('planificacion.php');
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
+	
+	<?php if(Yii::app()->user->hasFlash('success')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+    <?php endif; ?>
 
 <?php $this->endWidget(); ?>
 
