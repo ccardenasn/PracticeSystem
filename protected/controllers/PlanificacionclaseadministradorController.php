@@ -1,4 +1,5 @@
 <?php
+include_once('bitacoraFunctions.php');
 
 class PlanificacionclaseadministradorController extends Controller
 {
@@ -110,6 +111,20 @@ class PlanificacionclaseadministradorController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$planningRut = findPlanningRut($id);
+		$existLogBook = containsLogBook($id);
+
+		if($existLogBook != 0){
+			$idLogBook = getIdLogBook($id);
+			$existClaseLogBook = containsClaseLogBook($idLogBook);
+			
+			if($existClaseLogBook != 0){
+				deleteLogBookSesion($idLogBook);
+			}
+			
+			deleteLogBook($id);
+		}
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

@@ -1,5 +1,5 @@
 <?php
-include_once('borrado.php');
+include_once('bitacoraFunctions.php');
 
 class EstudianteController extends Controller
 {
@@ -135,32 +135,36 @@ class EstudianteController extends Controller
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
-	{
-		$timetableexist = containsTimeTableMain($id);
+	{	
+		$existPlanning = containsPlanning($id);
 		
-		if($timetableexist != 0){
-			deleteTimeTableMain($id);
+		if($existPlanning != 0){
+			$planningStudents = getPlanningStudents($id);
+			
+			for($i=0;$i<count($planningStudents);$i++){
+				$remainPlanning = $planningStudents[$i]['CodPlanificacion'];
+				$existLogBook = containsLogBook($remainPlanning);
+				
+				if($existLogBook != 0){
+					$idLogBook = getIdLogBook($remainPlanning);
+					$existClaseLogBook = containsClaseLogBook($idLogBook);
+					
+					if($existClaseLogBook != 0){
+						deleteLogBookSesion($idLogBook);
+					}
+					deleteLogBook($remainPlanning);
+				}
+			}
+			deletePlanning($id);
+		}
+		
+		
+		$existTimeTable = containsTimeTable($id);
+		
+		if($existTimeTable != 0){
+			deleteTimeTable($id);
 			deleteTimeTableAdmin($id);
 		}
-		
-		$planStudents=getPlanStudents($id);
-		
-		for($i=0;$i<count($planStudents);$i++){
-			
-			$idBitacora=getIdBitacora($planStudents,$i);
-			
-			$docexist=containsDoc($idBitacora);
-			
-			if($docexist != 0)
-			{
-				deleteDocuments($idBitacora);
-			}
-			
-			deleteClase($idBitacora);
-			deleteBitacora($idBitacora);
-			deletePlanificacion($planStudents,$i);
-		}
-		
 		
 		$this->loadModel($id)->delete();
 

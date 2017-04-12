@@ -97,4 +97,42 @@ function findLogBookPlanning($id){
 	return $result;
 }
 
+function getPlanningStudents($id){
+	$query="select * from planificacionclase where Estudiante_RutEstudiante = '".$id."';";
+	$planStudents=Yii::app()->db->createCommand($query)->queryAll();
+	
+	return $planStudents;
+}
+
+function containsPlanning($id){
+	$query = "select count(*) from planificacionclase where Estudiante_RutEstudiante = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function deletePlanning($id){
+	$query="delete from planificacionclase where Estudiante_RutEstudiante ='".$id."'";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
+function containsTimeTable($id){
+	$query = "select count(*) from horarioadmin where Estudiante_RutEstudiante = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function deleteTimeTable($id){
+	$query="delete from horario where Estudiante_RutEstudiante ='".$id."'";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
+function deleteTimeTableAdmin($id){
+	$query="delete from horarioadmin where Estudiante_RutEstudiante ='".$id."'";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
+
+
 ?>

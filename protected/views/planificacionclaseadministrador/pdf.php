@@ -2,8 +2,6 @@
 include_once('planificacion.php');
 include_once('forceutf/Encoding.php');
 
-$arrdata = datosplanificacion($model->Estudiante_RutEstudiante);
-
 //se referencia a la extensión de mPDF
 $pdf = Yii::createComponent('application.extensions.MPDF60.mpdf');
 $html='
@@ -37,7 +35,7 @@ $html='
 </tr>
 <tr class="even">
 <td> <b>Nombre Práctica</b> </td>
-<td> '.$arrdata[3].'</td>
+<td> '.$model->configuracionPracticaNombrePractica->NombrePractica.'</td>
 </tr>
 <tr class="even">
 <td> <b>Fecha</b> </td>
@@ -49,11 +47,11 @@ $html='
 </tr>
 <tr class="even">
 <td> <b>Total de Sesiones</b> </td>
-<td> '.$arrdata[5].'</td>
+<td> '.$model->configuracionPracticaNombrePractica->NumeroSesionesPractica.'</td>
 </tr>
 <tr class="even">
 <td> <b>Número de Horas</b> </td>
-<td> '.$arrdata[6].'</td>
+<td> '.$model->configuracionPracticaNombrePractica->NumeroHorasPractica.'</td>
 </tr>
 <tr class="even">
 <td> <b>Ejecutado </b> </td>

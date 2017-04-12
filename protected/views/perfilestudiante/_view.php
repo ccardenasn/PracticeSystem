@@ -1,35 +1,35 @@
 <?php
-/* @var $this EstudianteController */
-/* @var $data Estudiante */
+/* @var $this PerfilestudianteController */
+/* @var $data Perfilestudiante */
 ?>
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Rut')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('RutEstudiante')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->RutEstudiante), array('view', 'id'=>$data->RutEstudiante)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Nombre')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NombreEstudiante')); ?>:</b>
 	<?php echo CHtml::encode($data->NombreEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Clave')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ClaveEstudiante')); ?>:</b>
 	<?php echo CHtml::encode($data->ClaveEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Año Incorporacion')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaIncorporacion')); ?>:</b>
 	<?php echo CHtml::encode($data->FechaIncorporacion); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Mencion')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Mencion_NombreMencion')); ?>:</b>
 	<?php echo CHtml::encode($data->Mencion_NombreMencion); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Mail')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('MailEstudiante')); ?>:</b>
 	<?php echo CHtml::encode($data->MailEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Telefono')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('TelefonoEstudiante')); ?>:</b>
 	<?php echo CHtml::encode($data->TelefonoEstudiante); ?>
 	<br />
 
@@ -46,16 +46,20 @@
 	<?php echo CHtml::encode($data->ConfiguracionPractica_NombrePractica); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('CentroPractica_RBD')); ?>:</b>
+	<?php echo CHtml::encode($data->CentroPractica_RBD); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ImagenEstudiante')); ?>:</b>
 	<?php echo CHtml::encode($data->ImagenEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('SesionesPlanificadas')); ?>:</b>
-	<?php echo CHtml::encode($data->SesionesPlanificadas); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('SituacionFinalEstudiante')); ?>:</b>
+	<?php echo CHtml::encode($data->SituacionFinalEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('HorasPlanificadas')); ?>:</b>
-	<?php echo CHtml::encode($data->HorasPlanificadas); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ObservacionEstudiante')); ?>:</b>
+	<?php echo CHtml::encode($data->ObservacionEstudiante); ?>
 	<br />
 
 	*/ ?>

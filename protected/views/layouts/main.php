@@ -38,7 +38,7 @@
                
                 array('label'=>'Administracion',
                       'items'=>array(
-                          array('label'=>'Universidad','url'=>array('/universidad')),
+                          array('label'=>'Universidad','url'=>array('/universidadmain')),
                           array('label'=>'Carrera','url'=>array('/carrera')),
                           array('label'=>'Menciones','url'=>array('/mencion')),
                           array('label'=>'Estudiantes','url'=>array('/estudiante')),

@@ -1,6 +1,6 @@
 <?php
 
-function getPlanStudents($id){
+function getPlanningStudents($id){
 	$query="select * from planificacionclase where Estudiante_RutEstudiante = '".$id."';";
 	$planStudents=Yii::app()->db->createCommand($query)->queryAll();
 	

@@ -16,7 +16,24 @@ $this->menu=array(
 );
 ?>
 
-<h1>Docente Coordinador de Practicas: <?php echo $model->NombreCoordinador; ?></h1>
+<h1>Docente Coordinador de Practicas: <?php echo $model->NombreCoordinador; ?></h1><br>
+	
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Haga click en "Añadir" para agregar un nuevo coordinador a la lista.</li>
+			<li>Haga click en "Actualizar" para modificar información de coordinador.</li>
+			<li>Haga click en "Eliminar" para borrar toda la información de coordinador.</li>
+			<li>Desde la sección "Administración" se puede observar una lista de coordinador existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Para regresar al índice de coordinadores haga click en "Lista".</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -34,15 +51,3 @@ $this->menu=array(
             ),
 	),
 )); ?>
-
-<br>
-<br>
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Haga click en "Añadir" para agregar un nuevo coordinador a la lista.</li>
-	<li>Haga click en "Actualizar" para modificar información de coordinador.</li>
-	<li>Haga click en "Eliminar" para borrar toda la información de coordinador.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de coordinador existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-	<li>Para regresar al índice de coordinadores haga click en "Lista".</li>
-</ul><br>

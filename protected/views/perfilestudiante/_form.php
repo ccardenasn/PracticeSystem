@@ -1,13 +1,13 @@
 <?php
-/* @var $this EstudianteController */
-/* @var $model Estudiante */
+/* @var $this PerfilestudianteController */
+/* @var $model Perfilestudiante */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'estudiante-form',
+	'id'=>'perfilestudiante-form',
 	'method'=>'post',
 	'enableAjaxValidation'=>true,
 	'enableClientValidation'=>true,
@@ -15,19 +15,19 @@
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'RutEstudiante'); ?>
-		<?php echo $form->textField($model,'RutEstudiante',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'RutEstudiante',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'RutEstudiante'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'NombreEstudiante'); ?>
-		<?php echo $form->textField($model,'NombreEstudiante',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'NombreEstudiante',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreEstudiante'); ?>
 	</div>
 
@@ -39,14 +39,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'FechaIncorporacion'); ?>
-		<?php echo $form->textField($model,'FechaIncorporacion',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'FechaIncorporacion',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'FechaIncorporacion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Mencion_NombreMencion'); ?>
-		<?php echo $form->dropDownList($model,'Mencion_NombreMencion',CHtml::listData(Mencion::model()->findAll(),'NombreMencion','NombreMencion'));?>
-        <?php echo $form->error($model,'Mencion_NombreMencion'); ?>
+		<?php echo $form->textField($model,'Mencion_NombreMencion',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'Mencion_NombreMencion'); ?>
 	</div>
 
 	<div class="row">
@@ -69,24 +69,42 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
-		<?php echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP'));?>
-        <?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
+		<?php echo $form->textField($model,'ProfesorGuiaCP_RutProfGuiaCP',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ConfiguracionPractica_NombrePractica'); ?>
-		<?php echo $form->dropDownList($model,'ConfiguracionPractica_NombrePractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
-        <?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
+		<?php echo $form->textField($model,'ConfiguracionPractica_NombrePractica',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
+		<?php echo $form->textField($model,'CentroPractica_RBD',array('readOnly' => true)); ?>
+		<?php echo $form->error($model,'CentroPractica_RBD'); ?>
+	</div>
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ImagenEstudiante'); ?>
 		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'SituacionFinalEstudiante'); ?>
+		<?php echo $form->textField($model,'SituacionFinalEstudiante',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'SituacionFinalEstudiante'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'ObservacionEstudiante'); ?>
+		<?php echo $form->textArea($model,'ObservacionEstudiante',array('readOnly' => true,'rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'ObservacionEstudiante'); ?>
+	</div>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -9,22 +9,29 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Directores de Carrera', 'url'=>array('index')),
-	array('label'=>'Añadir Director de Carrera', 'url'=>array('create')),
-	array('label'=>'Ver Director de Carrera', 'url'=>array('view', 'id'=>$model->RutDirector)),
-	array('label'=>'Administrar Director de Carrera', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->RutDirector)),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Modificar Director de Carrera <?php echo $model->RutDirector; ?></h1><br>
+<h1>Modificar Director de Carrera: <?php echo $model->NombreDirector; ?></h1><br>
 
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de directores haga click en "Lista".</li>
-	<li>Haga click en "Añadir" para agregar un nuevo director a la lista.</li>
-	<li>Haga click en "Detalles" para visualizar información de director.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de directores existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-</ul>
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Para regresar al índice de directores haga click en "Lista".</li>
+			<li>Haga click en "Añadir" para agregar un nuevo director a la lista.</li>
+			<li>Haga click en "Detalles" para visualizar información de director.</li>
+			<li>Desde la sección "Administración" se puede observar una lista de directores existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

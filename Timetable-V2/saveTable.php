@@ -11,6 +11,8 @@ $queryExistStudent = "select count(*) from horarioadmin where Estudiante_RutEstu
 $execQueryStCount = mysql_query($queryExistStudent,$con);
 $existStResult = mysql_result($execQueryStCount,0);
 
+//echo $existStResult;
+
 if($existStResult == 0){
 	$querySt = "insert into horarioadmin(Estudiante_RutEstudiante) values('".$rutData."');";	
 	mysql_query($querySt,$con);
