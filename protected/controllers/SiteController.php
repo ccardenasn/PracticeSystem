@@ -153,6 +153,6 @@ class SiteController extends Controller
 	
 	public function actionPage() {
     
-        $this->render('pages/graficoestudiantes/index');
+        $this->render('pages/about');
 	}
 }

@@ -1,4 +1,7 @@
-<?php /* @var $this Controller */ ?>
+<?php /* @var $this Controller */ 
+$ask = new UserIdentity('','');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,42 +41,38 @@
                
                 array('label'=>'Administracion',
                       'items'=>array(
-                          array('label'=>'Universidad','url'=>array('/universidadmain')),
-                          array('label'=>'Carrera','url'=>array('/carrera')),
-                          array('label'=>'Menciones','url'=>array('/mencion')),
-                          array('label'=>'Estudiantes','url'=>array('/estudiante')),
-                          array('label'=>'Director de Carrera','url'=>array('/directorcarrera')),
-                          array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas')),
-                          array('label'=>'Secretaria','url'=>array('/secretariacarrera')),
-                          array('label'=>'Docente Responsable de Practica','url'=>array('/docenteresponsablepractica')),
-                          array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica')),
-						  array('label'=>'Horario','url'=>array('/horarioadmin')),
-						  array('label'=>'Estadísticas', 'url'=>array('/graphData')),
-						  array('label'=>'Documentos', 'url'=>array('/documentoscarrera')),
+                          array('label'=>'Universidad','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Carrera','url'=>array('/carrera'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Menciones','url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Estudiantes','url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Director de Carrera','url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Secretaria','url'=>array('/secretariacarrera'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Docente Responsable de Practica','url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Horario','url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Estadísticas', 'url'=>array('/graphData'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Documentos', 'url'=>array('/documentoscarrera'),'visible'=>$ask->isAdmins()),
                     ),
                 ),
                 array('label'=>'Gestion Organizativa',
                         'items'=>array(
-                          array('label'=>'Centro de Practicas','url'=>array('/centropracticamain')),
-                          array('label'=>'Secretaria CP','url'=>array('/secretariacp')),
-                          array('label'=>'Director CP','url'=>array('/directorcp')),
-                          array('label'=>'Jefe UTP CP','url'=>array('/jefeutpcp')),
-                          array('label'=>'Profesor Coordinador de Practicas CP','url'=>array('/profesorcoordinadorpracticacp')),
-                          array('label'=>'Profesor Guia CP','url'=>array('/profesorguiacp')),
-                          array('label'=>'Configuracion de Practicas','url'=>array('/configuracionpractica')),
+                          array('label'=>'Centro de Practicas','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Secretaria CP','url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Director CP','url'=>array('/directorcp'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Jefe UTP CP','url'=>array('/jefeutpcp'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Profesor Coordinador de Practicas CP','url'=>array('/profesorcoordinadorpracticacp'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Profesor Guia CP','url'=>array('/profesorguiacp'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Configuracion de Practicas','url'=>array('/configuracionpractica'),'visible'=>$ask->isAdmins()),
                     ),
                 ),
                 array('label'=>'Gestion Pedagógica',
                         'items'=>array(
-                          array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador')),
+                          array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
                     ),
                 ),
-				array('label'=>'Alumnos',
-                        'items'=>array(
-                          array('label'=>'Horario', 'url'=>array('/horario')),
-                          array('label'=>'Planificación de Clases/Bitacoras','url'=>array('/planificacionclase')),
-                    ),
-                ),
+				array('label'=>'Horario', 'url'=>array('/horario'),'visible'=>$ask->isStudent()),
+				array('label'=>'Planificación de Clases/Bitacoras','url'=>array('/planificacionclase'),'visible'=>$ask->isStudent()),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
                 array('label'=>'Iniciar Sesion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

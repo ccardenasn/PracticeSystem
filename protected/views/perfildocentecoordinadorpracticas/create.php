@@ -1,18 +1,18 @@
 <?php
-/* @var $this DocentecoordinadorpracticasController */
-/* @var $model Docentecoordinadorpracticas */
+/* @var $this PerfildocentecoordinadorpracticasController */
+/* @var $model Perfildocentecoordinadorpracticas */
 
 $this->breadcrumbs=array(
-	'Docente Coordinador de Practicas'=>array('index'),
-	'Añadir',
+	'Perfildocentecoordinadorpracticases'=>array('index'),
+	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Docentes Coordinadores de Practicas', 'url'=>array('index')),
-	array('label'=>'Administrar Docente Coordinador de Practicas', 'url'=>array('admin')),
+	array('label'=>'List Perfildocentecoordinadorpracticas', 'url'=>array('index')),
+	array('label'=>'Manage Perfildocentecoordinadorpracticas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Añadir Docente Coordinador de Practicas</h1>
+<h1>Create Perfildocentecoordinadorpracticas</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

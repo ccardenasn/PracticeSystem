@@ -158,4 +158,20 @@ class Planificacionclase extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function getStudents(){
+		
+		$queryStudent = "select RutEstudiante from estudiante";
+		
+		$commandStudent= Yii::app()->db->createCommand($queryStudent);
+
+		$rows = array();
+		$dataReaderStudent=$commandStudent->query();
+		
+		while(($row=$dataReaderStudent->read())!==false){
+			array_push($rows, $row['RutEstudiante']);
+		}
+		
+		return $rows;
+	}
 }

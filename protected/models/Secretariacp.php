@@ -152,4 +152,36 @@ class Secretariacp extends CActiveRecord
 		if(celularvalido($this->CelularSecretariaCP)==false)
 		$this->addError('CelularSecretariaCP','Celular invalido');
 	}
+	
+	public function getAdmins(){
+		
+		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas";
+		$queryDirector = "select RutDirector from directorcarrera";
+		$queryResponsable = "select RutResponsable from docenteresponsablepractica";
+		
+		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);
+		$commandDirector= Yii::app()->db->createCommand($queryDirector);
+		$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
+		
+		$rows = array();
+		$dataReaderCoordinador=$commandCoordinador->query();
+		
+		while(($row=$dataReaderCoordinador->read())!==false){
+			array_push($rows, $row['RutCoordinador']);
+		}
+		
+		$dataReaderDirector=$commandDirector->query();
+		
+		while(($row=$dataReaderDirector->read())!==false){
+			array_push($rows, $row['RutDirector']);
+		}
+		
+		$dataReaderResponsable=$commandResponsable->query();
+		
+		while(($row=$dataReaderResponsable->read())!==false){
+			array_push($rows, $row['RutResponsable']);
+		}
+		
+		return $rows;
+	}
 }

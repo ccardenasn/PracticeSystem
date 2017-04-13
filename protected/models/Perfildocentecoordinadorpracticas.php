@@ -1,9 +1,5 @@
 <?php
-include_once 'FunRut.php';
-include_once 'FunNombre.php';
-include_once 'FunCorreo.php';
-include_once 'FunTelefono.php';
-include_once 'FunCelular.php';
+
 /**
  * This is the model class for table "docentecoordinadorpracticas".
  *
@@ -42,13 +38,6 @@ class Perfildocentecoordinadorpracticas extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutCoordinador, NombreCoordinador, ClaveCoordinador, MailCoordinador, TelefonoCoordinador, CelularCoordinador, ImagenCoordinador', 'safe', 'on'=>'search'),
-            array('ImagenCoordinador','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
-			array('ImagenCoordinador','safe','on'=>'update'),
-            array('RutCoordinador','valrut'),
-            array('NombreCoordinador','valnombre'),
-            array('MailCoordinador','valcorreo'),
-            array('TelefonoCoordinador','valtelefono'),
-            array('CelularCoordinador','valcelular'),
 		);
 	}
 
@@ -73,8 +62,8 @@ class Perfildocentecoordinadorpracticas extends CActiveRecord
 			'RutCoordinador' => 'Rut',
 			'NombreCoordinador' => 'Nombre',
 			'ClaveCoordinador' => 'Clave',
-			'MailCoordinador' => 'Mail',
-			'TelefonoCoordinador' => 'Telefono',
+			'MailCoordinador' => 'Correo',
+			'TelefonoCoordinador' => 'Teléfono',
 			'CelularCoordinador' => 'Celular',
 			'ImagenCoordinador' => 'Imagen',
 		);
@@ -115,44 +104,10 @@ class Perfildocentecoordinadorpracticas extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Docentecoordinadorpracticas the static model class
+	 * @return Perfildocentecoordinadorpracticas the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-    
-    public function valrut($attribute,$params)
-	{
-		if(rutvalido($this->RutCoordinador)==false)
-		$this->addError('RutCoordinador','Rut invalido');
-	}
-    
-    public function valnombre($attribute,$params)
-	{
-		if(nombrevalido($this->NombreCoordinador)==false)
-		$this->addError('NombreCoordinador','Nombre invalido');
-	}
-    
-    public function valcorreo($attribute,$params)
-	{
-		if(correovalido($this->MailCoordinador)==false)
-		$this->addError('MailCoordinador','Correo invalido');
-	}
-    
-    public function valtelefono($attribute,$params)
-	{
-		if(telefonovalido($this->TelefonoCoordinador)==false)
-		$this->addError('TelefonoCoordinador','Telefono invalido');
-	}
-    
-    public function valcelular($attribute,$params)
-	{
-		if(celularvalido($this->CelularCoordinador)==false)
-		$this->addError('CelularCoordinador','Celular invalido');
-	}
-    
-    public function validatePassword($password){
-		return $password===$this->ClaveCoordinador;	
 	}
 }

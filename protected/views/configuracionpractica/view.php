@@ -16,7 +16,24 @@ $this->menu=array(
 );
 ?>
 
-<h1>Tipo: <?php echo $model->NombrePractica; ?></h1>
+<h1>Tipo: <?php echo $model->NombrePractica; ?></h1><br>
+	
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Haga click en "Añadir" para agregar un nueva práctica a la lista.</li>
+			<li>Haga click en "Actualizar" para modificar información de práctica.</li>
+			<li>Haga click en "Eliminar" para borrar toda la información de práctica.</li>
+			<li>Desde la sección "Administración" se puede observar una lista de prácticas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Para regresar al índice de prácticas haga click en "Lista".</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -31,15 +48,3 @@ $this->menu=array(
 		array('name'=>'Docente Responsable de Practica','value'=>$model->DocenteResponsablePractica_RutResponsable),
 	),
 )); ?>
-
-<br>
-<br>
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Haga click en "Añadir" para agregar un nueva práctica a la lista.</li>
-	<li>Haga click en "Actualizar" para modificar información de práctica.</li>
-	<li>Haga click en "Eliminar" para borrar toda la información de práctica.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de prácticas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-	<li>Para regresar al índice de prácticas haga click en "Lista".</li>
-</ul><br>

@@ -1,6 +1,6 @@
 <?php
-/* @var $this DocentecoordinadorpracticasController */
-/* @var $model Docentecoordinadorpracticas */
+/* @var $this PerfildocentecoordinadorpracticasController */
+/* @var $model Perfildocentecoordinadorpracticas */
 /* @var $form CActiveForm */
 ?>
 

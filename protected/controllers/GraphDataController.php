@@ -29,11 +29,13 @@ class GraphDataController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e','graph_f'),
-				'users'=>array('*'),
+				//'users'=>array('*'),
+				'users'=>GraphData::model()->getAdmins(),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin'),
-				'users'=>array('@'),
+				//'users'=>array('@'),
+				'users'=>GraphData::model()->getAdmins(),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

@@ -1,18 +1,18 @@
 <?php
-/* @var $this DocentecoordinadorpracticasController */
+/* @var $this PerfildocentecoordinadorpracticasController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Docente Coordinador de Practicas',
+	'Perfildocentecoordinadorpracticases',
 );
 
 $this->menu=array(
-	array('label'=>'Añadir Docente Coordinador de Practicas', 'url'=>array('create')),
-	array('label'=>'Administrar Docente Coordinador de Practicas', 'url'=>array('admin')),
+	array('label'=>'Create Perfildocentecoordinadorpracticas', 'url'=>array('create')),
+	array('label'=>'Manage Perfildocentecoordinadorpracticas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Docente Coordinador de Practicas</h1>
+<h1>Perfildocentecoordinadorpracticases</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

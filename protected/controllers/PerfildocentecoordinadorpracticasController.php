@@ -37,7 +37,7 @@ class PerfildocentecoordinadorpracticasController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('@'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -62,31 +62,18 @@ class PerfildocentecoordinadorpracticasController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Docentecoordinadorpracticas;
-		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		$model=new Perfildocentecoordinadorpracticas;
 
-		if(isset($_POST['Docentecoordinadorpracticas']))
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildocentecoordinadorpracticas']))
 		{
-			$model->attributes=$_POST['Docentecoordinadorpracticas'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenCoordinador=CUploadedFile::getInstance($model,'ImagenCoordinador');
-			
-			if($model->save()){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-          			$this->refresh();
-				}
+			$model->attributes=$_POST['Perfildocentecoordinadorpracticas'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->RutCoordinador));
-			}
 		}
-		
+
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -100,31 +87,17 @@ class PerfildocentecoordinadorpracticasController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Docentecoordinadorpracticas']))
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildocentecoordinadorpracticas']))
 		{
-			$model->attributes=$_POST['Docentecoordinadorpracticas'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenCoordinador=CUploadedFile::getInstance($model,'ImagenCoordinador');
-			
-			if($model->save()){
-				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+			$model->attributes=$_POST['Perfildocentecoordinadorpracticas'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->RutCoordinador));
-			}
 		}
-		
+
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -149,7 +122,7 @@ class PerfildocentecoordinadorpracticasController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Docentecoordinadorpracticas');
+		$dataProvider=new CActiveDataProvider('Perfildocentecoordinadorpracticas');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -160,10 +133,10 @@ class PerfildocentecoordinadorpracticasController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Docentecoordinadorpracticas('search');
+		$model=new Perfildocentecoordinadorpracticas('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Docentecoordinadorpracticas']))
-			$model->attributes=$_GET['Docentecoordinadorpracticas'];
+		if(isset($_GET['Perfildocentecoordinadorpracticas']))
+			$model->attributes=$_GET['Perfildocentecoordinadorpracticas'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -174,12 +147,12 @@ class PerfildocentecoordinadorpracticasController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Docentecoordinadorpracticas the loaded model
+	 * @return Perfildocentecoordinadorpracticas the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Docentecoordinadorpracticas::model()->findByPk($id);
+		$model=Perfildocentecoordinadorpracticas::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -187,11 +160,11 @@ class PerfildocentecoordinadorpracticasController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Docentecoordinadorpracticas $model the model to be validated
+	 * @param Perfildocentecoordinadorpracticas $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='docentecoordinadorpracticas-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='perfildocentecoordinadorpracticas-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

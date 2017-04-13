@@ -1,5 +1,5 @@
 <?php
-
+include_once('siteFunctions.php');
 /**
  * UserIdentity represents the data needed to identity a user.
  * It contains the authentication method that checks if the provided
@@ -87,7 +87,36 @@ class UserIdentity extends CUserIdentity
     public function getUser(){
         return $this->username;
     }
-    
-    
-    
+	
+	public function isStudent(){
+		$result = false;
+		
+		$user = Yii::app()->user->name;
+		
+		$existUser = containsStd($user);
+		
+		if($existUser != 0){
+			$result = true;
+		}
+		
+		return $result;
+	}
+	
+	public function isAdmins(){
+		$result = false;
+		
+		$user = Yii::app()->user->name;
+		
+		$existCoordinador = containsCoordinador($user);
+		$existDirector = containsDirector($user);
+		$existResponsable = containsResponsable($user);
+		
+		if($existCoordinador != 0 || $existDirector != 0 || $existResponsable != 0){
+			$result = true;
+		}
+		
+		return $result;
+	}
+	
+	
 }

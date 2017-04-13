@@ -1,18 +1,18 @@
 <?php
-/* @var $this DocentecoordinadorpracticasController */
-/* @var $model Docentecoordinadorpracticas */
+/* @var $this PerfildocentecoordinadorpracticasController */
+/* @var $model Perfildocentecoordinadorpracticas */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'docentecoordinadorpracticas-form',
-	'method'=>'post',
-	'enableAjaxValidation'=>true,
-	'enableClientValidation'=>true,
-	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-	'clientOptions'=>array('validateOnSubmit'=>true,),
+	'id'=>'perfildocentecoordinadorpracticas-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -57,7 +57,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ImagenCoordinador'); ?>
-		<?php echo CHtml::activeFileField($model,'ImagenCoordinador');?>
+		<?php echo $form->textField($model,'ImagenCoordinador',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ImagenCoordinador'); ?>
 	</div>
 

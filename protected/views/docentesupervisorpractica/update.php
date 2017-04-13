@@ -3,7 +3,7 @@
 /* @var $model Docentesupervisorpractica */
 
 $this->breadcrumbs=array(
-	'Docente Supervisor de Practicas'=>array('index'),
+	'Docente Supervisor de Prácticas'=>array('index'),
 	$model->RutSupervisor=>array('view','id'=>$model->RutSupervisor),
 	'Actualizar',
 );
@@ -16,15 +16,22 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Docente Supervisor de Practica: <?php echo $model->RutSupervisor; ?></h1><br>
+<h1>Modificar Docente Supervisor de Práctica: <?php echo $model->NombreSupervisor; ?></h1><br>
 
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de docentes haga click en "Lista".</li>
-	<li>Haga click en "Añadir" para agregar un nuevo docente a la lista.</li>
-	<li>Haga click en "Detalles" para visualizar información de funcionario.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de docentes existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-</ul>
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Para regresar al índice de docentes haga click en "Lista".</li>
+			<li>Haga click en "Añadir" para agregar un nuevo docente a la lista.</li>
+			<li>Haga click en "Detalles" para visualizar información de funcionario.</li>
+			<li>Desde la sección "Administración" se puede observar una lista de docentes existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

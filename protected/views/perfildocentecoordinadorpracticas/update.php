@@ -1,21 +1,21 @@
 <?php
-/* @var $this DocentecoordinadorpracticasController */
-/* @var $model Docentecoordinadorpracticas */
+/* @var $this PerfildocentecoordinadorpracticasController */
+/* @var $model Perfildocentecoordinadorpracticas */
 
 $this->breadcrumbs=array(
-	'Docente Coordinador de Practicas'=>array('index'),
+	'Perfildocentecoordinadorpracticases'=>array('index'),
 	$model->RutCoordinador=>array('view','id'=>$model->RutCoordinador),
-	'Modificar',
+	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Docentes Coordinadores de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Docente Coordinador de Practicas', 'url'=>array('create')),
-	array('label'=>'Ver Docente Coordinador de Practicas', 'url'=>array('view', 'id'=>$model->RutCoordinador)),
-	array('label'=>'Administrar Docente Coordinador de Practicas', 'url'=>array('admin')),
+	array('label'=>'List Perfildocentecoordinadorpracticas', 'url'=>array('index')),
+	array('label'=>'Create Perfildocentecoordinadorpracticas', 'url'=>array('create')),
+	array('label'=>'View Perfildocentecoordinadorpracticas', 'url'=>array('view', 'id'=>$model->RutCoordinador)),
+	array('label'=>'Manage Perfildocentecoordinadorpracticas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Modificar Docente Coordinador de Practicas<?php echo $model->RutCoordinador; ?></h1>
+<h1>Update Perfildocentecoordinadorpracticas <?php echo $model->RutCoordinador; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
