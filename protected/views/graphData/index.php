@@ -6,24 +6,22 @@ $this->breadcrumbs=array(
 
 <h1>Estadísticas</h1>
 
-<p><br/>
-<p><br/>
-	
+<br/>
+
+<p style="line-height: 2em;">
+
 <?php
-$this->widget('ext.verticalmenu2levels.VerticalMenu2Levels',
-			  array(
-				  "menu"=>array(
-					  array("url"=>array(),"label"=>'Gráficos',
-							array("url"=>array("route"=>"graphdata/graph_a"),"label"=>"Cantidad de Estudiantes En Practica Por Centro"),
-							array("url"=>array("route"=>"graphdata/graph_b"),"label"=>"Prácticas Realizadas Por Centro"),
-							array("url"=>array("route"=>"graphdata/graph_c"),"label"=>"Cantidad de Estudiantes Atendidos Segun Práctica Por Centro"),
-							array("url"=>array("route"=>"graphdata/graph_d"),"label"=>"Cantidad de Estudiantes de Acuerdo a Centros o Dependencias"),
-							array("url"=>array("route"=>"graphdata/graph_e"),"label"=>"Sesiones Ejecutadas"),
-							array("url"=>array("route"=>"graphdata/graph_f"),"label"=>"Cantidad de Profesores Por Centro de Prácticas"),
-						   ),
-					 
-				  ),
-			  )
-		);
+	echo CHtml::link("<font size=4>1. Cantidad de estudiantes en práctica por centro</font>",array('graphdata/graph_a'));
+	echo '<br>';
+	echo CHtml::link("<font size=4>2. Prácticas realizadas por centro</font>",array('graphdata/graph_b'));
+	echo '<br>';
+	echo CHtml::link("<font size=4>3. Cantidad de estudiantes atendidos según práctica por centro</font>",array('graphdata/graph_c'));
+	echo '<br>';
+	echo CHtml::link("<font size=4>4. Cantidad de estudiantes de acuerdo a centros o dependencias</font>",array('graphdata/graph_d'));
+	echo '<br>';
+	echo CHtml::link("<font size=4>5. Sesiones ejecutadas</font>",array('graphdata/graph_e'));
+	echo '<br>';
+	echo CHtml::link("<font size=4>6. Cantidad de profesores por centro de prácticas</font>",array('graphdata/graph_f'));
 ?>
 
+</p>

@@ -89,13 +89,26 @@ class PerfildocentecoordinadorpracticasController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Perfildocentecoordinadorpracticas']))
 		{
 			$model->attributes=$_POST['Perfildocentecoordinadorpracticas'];
-			if($model->save())
+			
+			$file=$model->ImagenCoordinador=CUploadedFile::getInstance($model,'ImagenCoordinador');
+			
+			if($model->save()){
+				if($file != null){
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}
 				$this->redirect(array('view','id'=>$model->RutCoordinador));
+			}
 		}
 
 		$this->render('update',array(

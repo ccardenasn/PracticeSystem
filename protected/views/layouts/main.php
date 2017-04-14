@@ -57,7 +57,7 @@ $ask = new UserIdentity('','');
                 ),
                 array('label'=>'Gestion Organizativa',
                         'items'=>array(
-                          array('label'=>'Centro de Practicas','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Centro de Prácticas','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Secretaria CP','url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Director CP','url'=>array('/directorcp'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Jefe UTP CP','url'=>array('/jefeutpcp'),'visible'=>$ask->isAdmins()),
@@ -68,7 +68,7 @@ $ask = new UserIdentity('','');
                 ),
                 array('label'=>'Gestion Pedagógica',
                         'items'=>array(
-                          array('label'=>'Planificación de Clases Admin','url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Planificación de Clases','url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
                     ),
                 ),
 				array('label'=>'Horario', 'url'=>array('/horario'),'visible'=>$ask->isStudent()),

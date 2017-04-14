@@ -28,12 +28,16 @@ class PerfildirectorcarreraController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -53,6 +57,29 @@ class PerfildirectorcarreraController extends Controller
 	}
 
 	/**
+	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionCreate()
+	{
+		$model=new Perfildirectorcarrera;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildirectorcarrera']))
+		{
+			$model->attributes=$_POST['Perfildirectorcarrera'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->RutDirector));
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
+
+	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
@@ -60,47 +87,72 @@ class PerfildirectorcarreraController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Directorcarrera']))
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildirectorcarrera']))
 		{
-			$model->attributes=$_POST['Directorcarrera'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
-			
-			if($model->save()){
-				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+			$model->attributes=$_POST['Perfildirectorcarrera'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->RutDirector));
-			}
 		}
-		
+
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
 
+	/**
+	 * Deletes a particular model.
+	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionDelete($id)
+	{
+		$this->loadModel($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
+	{
+		$dataProvider=new CActiveDataProvider('Perfildirectorcarrera');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+
+	/**
+	 * Manages all models.
+	 */
+	public function actionAdmin()
+	{
+		$model=new Perfildirectorcarrera('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Perfildirectorcarrera']))
+			$model->attributes=$_GET['Perfildirectorcarrera'];
+
+		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Directorcarrera the loaded model
+	 * @return Perfildirectorcarrera the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Directorcarrera::model()->findByPk($id);
+		$model=Perfildirectorcarrera::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -108,11 +160,11 @@ class PerfildirectorcarreraController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Directorcarrera $model the model to be validated
+	 * @param Perfildirectorcarrera $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='directorcarrera-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='perfildirectorcarrera-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

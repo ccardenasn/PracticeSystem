@@ -1,9 +1,5 @@
 <?php
-include_once 'FunRut.php';
-include_once 'FunNombre.php';
-include_once 'FunCorreo.php';
-include_once 'FunTelefono.php';
-include_once 'FunCelular.php';
+
 /**
  * This is the model class for table "docenteresponsablepractica".
  *
@@ -42,13 +38,6 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutResponsable, NombreResponsable, ClaveResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'safe', 'on'=>'search'),
-            array('ImagenResponsable','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
-			array('ImagenResponsable','safe','on'=>'update'),
-            array('RutResponsable','valrut'),
-            array('NombreResponsable','valnombre'),
-            array('MailResponsable','valcorreo'),
-            array('TelefonoResponsable','valtelefono'),
-            array('CelularResponsable','valcelular'),
 		);
 	}
 
@@ -73,8 +62,8 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 			'RutResponsable' => 'Rut',
 			'NombreResponsable' => 'Nombre',
 			'ClaveResponsable' => 'Clave',
-			'MailResponsable' => 'Mail',
-			'TelefonoResponsable' => 'Telefono',
+			'MailResponsable' => 'Correo',
+			'TelefonoResponsable' => 'Teléfono',
 			'CelularResponsable' => 'Celular',
 			'ImagenResponsable' => 'Imagen',
 		);
@@ -115,44 +104,10 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Docenteresponsablepractica the static model class
+	 * @return Perfildocenteresponsablepractica the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-    
-    public function valrut($attribute,$params)
-	{
-		if(rutvalido($this->RutResponsable)==false)
-		$this->addError('RutResponsable','Rut invalido');
-	}
-    
-    public function valnombre($attribute,$params)
-	{
-		if(nombrevalido($this->NombreResponsable)==false)
-		$this->addError('NombreResponsable','Nombre invalido');
-	}
-    
-    public function valcorreo($attribute,$params)
-	{
-		if(correovalido($this->MailResponsable)==false)
-		$this->addError('MailResponsable','Correo invalido');
-	}
-    
-    public function valtelefono($attribute,$params)
-	{
-		if(telefonovalido($this->TelefonoResponsable)==false)
-		$this->addError('TelefonoResponsable','Telefono invalido');
-	}
-    
-    public function valcelular($attribute,$params)
-	{
-		if(celularvalido($this->CelularResponsable)==false)
-		$this->addError('CelularResponsable','Celular invalido');
-	}
-    
-    public function validatePassword($password){
-		return $password===$this->ClaveResponsable;	
 	}
 }

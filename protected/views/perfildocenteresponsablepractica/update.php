@@ -1,21 +1,20 @@
 <?php
-/* @var $this DocenteresponsablepracticaController */
-/* @var $model Docenteresponsablepractica */
+/* @var $this PerfildocenteresponsablepracticaController */
+/* @var $model Perfildocenteresponsablepractica */
 
 $this->breadcrumbs=array(
-	'Docentes Responsables de Practicas'=>array('index'),
 	$model->RutResponsable=>array('view','id'=>$model->RutResponsable),
-	'Modificar',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Docentes Responsables de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Docente Responsable de Practicas', 'url'=>array('create')),
-	array('label'=>'Ver Docente Responsable de Practicas', 'url'=>array('view', 'id'=>$model->RutResponsable)),
-	array('label'=>'Administrar Docentes Responsables de Practicas', 'url'=>array('admin')),
+	array('label'=>'List Perfildocenteresponsablepractica', 'url'=>array('index')),
+	array('label'=>'Create Perfildocenteresponsablepractica', 'url'=>array('create')),
+	array('label'=>'View Perfildocenteresponsablepractica', 'url'=>array('view', 'id'=>$model->RutResponsable)),
+	array('label'=>'Manage Perfildocenteresponsablepractica', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Modificar Docentes Responsables de Practicas <?php echo $model->RutResponsable; ?></h1>
+<h1>Modificar Docente Responsable de Práctica: <?php echo $model->NombreResponsable; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,15 +1,15 @@
 <?php
-/* @var $this DocenteresponsablepracticaController */
-/* @var $model Docenteresponsablepractica */
+/* @var $this PerfildocenteresponsablepracticaController */
+/* @var $model Perfildocenteresponsablepractica */
 
 $this->breadcrumbs=array(
-	'Docentes Responsables de Practicas'=>array('index'),
-	'Administrar',
+	'Perfildocenteresponsablepracticas'=>array('index'),
+	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List de Docentes Responsables de Practicas', 'url'=>array('index')),
-	array('label'=>'Añadir Docente Responsable de Practica', 'url'=>array('create')),
+	array('label'=>'List Perfildocenteresponsablepractica', 'url'=>array('index')),
+	array('label'=>'Create Perfildocenteresponsablepractica', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#docenteresponsablepractica-grid').yiiGridView('update', {
+	$('#perfildocenteresponsablepractica-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Docentes Responsables de Practicas</h1>
+<h1>Manage Perfildocenteresponsablepracticas</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -41,7 +41,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'docenteresponsablepractica-grid',
+	'id'=>'perfildocenteresponsablepractica-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(

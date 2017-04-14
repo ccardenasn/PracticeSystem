@@ -1,18 +1,18 @@
 <?php
-/* @var $this DocenteresponsablepracticaController */
-/* @var $model Docenteresponsablepractica */
+/* @var $this PerfildocenteresponsablepracticaController */
+/* @var $model Perfildocenteresponsablepractica */
 
 $this->breadcrumbs=array(
-	'Docentes Responsables de Practicas'=>array('index'),
-	'Añadir',
+	'Perfildocenteresponsablepracticas'=>array('index'),
+	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'Lista de Docentes Responsables de Practicas', 'url'=>array('index')),
-	array('label'=>'Administrar Docentes Responsables de Practicas', 'url'=>array('admin')),
+	array('label'=>'List Perfildocenteresponsablepractica', 'url'=>array('index')),
+	array('label'=>'Manage Perfildocenteresponsablepractica', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Añadir Docente Responsable de Practicas</h1>
+<h1>Create Perfildocenteresponsablepractica</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

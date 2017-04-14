@@ -1,9 +1,5 @@
 <?php
-include_once 'FunRut.php';
-include_once 'FunNombre.php';
-include_once 'FunCorreo.php';
-include_once 'FunTelefono.php';
-include_once 'FunCelular.php';
+
 /**
  * This is the model class for table "directorcarrera".
  *
@@ -39,13 +35,6 @@ class Perfildirectorcarrera extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutDirector, NombreDirector, ClaveDirector, MailDirector, TelefonoDirector, CelularDirector, ImagenDirector', 'safe', 'on'=>'search'),
-            array('ImagenDirector','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
-			array('ImagenDirector','safe','on'=>'update'),
-            array('RutDirector','valrut'),
-            array('NombreDirector','valnombre'),
-            array('MailDirector','valcorreo'),
-            array('TelefonoDirector','valtelefono'),
-            array('CelularDirector','valcelular'),
 		);
 	}
 
@@ -69,8 +58,8 @@ class Perfildirectorcarrera extends CActiveRecord
 			'RutDirector' => 'Rut',
 			'NombreDirector' => 'Nombre',
 			'ClaveDirector' => 'Clave',
-			'MailDirector' => 'Mail',
-			'TelefonoDirector' => 'Telefono',
+			'MailDirector' => 'Correo',
+			'TelefonoDirector' => 'Teléfono',
 			'CelularDirector' => 'Celular',
 			'ImagenDirector' => 'Imagen',
 		);
@@ -111,44 +100,10 @@ class Perfildirectorcarrera extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Directorcarrera the static model class
+	 * @return Perfildirectorcarrera the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-    
-    public function valrut($attribute,$params)
-	{
-		if(rutvalido($this->RutDirector)==false)
-		$this->addError('RutDirector','Rut invalido');
-	}
-    
-    public function valnombre($attribute,$params)
-	{
-		if(nombrevalido($this->NombreDirector)==false)
-		$this->addError('NombreDirector','Nombre invalido');
-	}
-    
-    public function valcorreo($attribute,$params)
-	{
-		if(correovalido($this->MailDirector)==false)
-		$this->addError('MailDirector','Correo invalido');
-	}
-    
-    public function valtelefono($attribute,$params)
-	{
-		if(telefonovalido($this->TelefonoDirector)==false)
-		$this->addError('TelefonoDirector','Telefono invalido');
-	}
-    
-    public function valcelular($attribute,$params)
-	{
-		if(celularvalido($this->CelularDirector)==false)
-		$this->addError('CelularDirector','Celular invalido');
-	}
-    
-    public function validatePassword($password){
-		return $password===$this->ClaveDirector;	
 	}
 }

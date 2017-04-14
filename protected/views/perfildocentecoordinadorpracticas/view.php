@@ -25,6 +25,10 @@ $this->menu=array(
 		'MailCoordinador',
 		'TelefonoCoordinador',
 		'CelularCoordinador',
-		'ImagenCoordinador',
+		array(
+            'name'=>'ImagenCoordinador',
+			'type' => 'raw',
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCoordinador/'.$model->ImagenCoordinador)
+            ),
 	),
 )); ?>

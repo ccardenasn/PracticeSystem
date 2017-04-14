@@ -37,7 +37,7 @@ class PerfildocenteresponsablepracticaController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('@'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -51,8 +51,10 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$userRut=Yii::app()->user->name;
+		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($userRut),
 		));
 	}
 
@@ -62,31 +64,18 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Docenteresponsablepractica;
-		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		$model=new Perfildocenteresponsablepractica;
 
-		if(isset($_POST['Docenteresponsablepractica']))
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildocenteresponsablepractica']))
 		{
-			$model->attributes=$_POST['Docenteresponsablepractica'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
-			
-			if($model->save()){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-          			$this->refresh();
-				}
+			$model->attributes=$_POST['Perfildocenteresponsablepractica'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->RutResponsable));
-			}
 		}
-		
+
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -99,32 +88,33 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$userRut=Yii::app()->user->name;
+		
+		$model=$this->loadModel($userRut);
+
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Docenteresponsablepractica']))
+		if(isset($_POST['Perfildocenteresponsablepractica']))
 		{
-			$model->attributes=$_POST['Docenteresponsablepractica'];
+			$model->attributes=$_POST['Perfildocenteresponsablepractica'];
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
 			
 			if($model->save()){
 				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}
 				$this->redirect(array('view','id'=>$model->RutResponsable));
 			}
 		}
-		
+
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -149,7 +139,7 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Docenteresponsablepractica');
+		$dataProvider=new CActiveDataProvider('Perfildocenteresponsablepractica');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -160,10 +150,10 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Docenteresponsablepractica('search');
+		$model=new Perfildocenteresponsablepractica('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Docenteresponsablepractica']))
-			$model->attributes=$_GET['Docenteresponsablepractica'];
+		if(isset($_GET['Perfildocenteresponsablepractica']))
+			$model->attributes=$_GET['Perfildocenteresponsablepractica'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -174,12 +164,12 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Docenteresponsablepractica the loaded model
+	 * @return Perfildocenteresponsablepractica the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Docenteresponsablepractica::model()->findByPk($id);
+		$model=Perfildocenteresponsablepractica::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -187,11 +177,11 @@ class PerfildocenteresponsablepracticaController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Docenteresponsablepractica $model the model to be validated
+	 * @param Perfildocenteresponsablepractica $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='docenteresponsablepractica-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='perfildocenteresponsablepractica-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -36,7 +36,7 @@ class Configuracionpractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombrePractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required'),
+			array('NombrePractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('NombrePractica, FechaPractica, SemestrePractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
 			array('DescripcionPractica', 'safe'),
 			// The following rule is used by search().

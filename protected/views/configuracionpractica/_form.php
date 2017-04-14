@@ -13,6 +13,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>true,
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>

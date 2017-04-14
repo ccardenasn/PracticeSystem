@@ -37,7 +37,7 @@ class Directorcp extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutDirectorCP, CentroPractica_RBD', 'required'),
+			array('RutDirectorCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutDirectorCP, NombreDirectorCP, MailDirectorCP, TelefonoDirectorCP, CelularDirectorCP, ImagenDirectorCP', 'length', 'max'=>45),
 			// The following rule is used by search().

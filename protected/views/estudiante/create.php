@@ -1,4 +1,4 @@
-<body onload="javascript:loadCreate();">
+<!--<body onload="javascript:loadCreate();">-->
 <?php
 /* @var $this EstudianteController */
 /* @var $model Estudiante */
@@ -30,4 +30,4 @@ $this->menu=array(
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
-</body>
+<!--</body>-->

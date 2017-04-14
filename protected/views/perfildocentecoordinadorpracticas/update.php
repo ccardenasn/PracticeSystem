@@ -3,9 +3,8 @@
 /* @var $model Perfildocentecoordinadorpracticas */
 
 $this->breadcrumbs=array(
-	'Perfildocentecoordinadorpracticases'=>array('index'),
 	$model->RutCoordinador=>array('view','id'=>$model->RutCoordinador),
-	'Update',
+	'Modificar',
 );
 
 $this->menu=array(
@@ -16,6 +15,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Perfildocentecoordinadorpracticas <?php echo $model->RutCoordinador; ?></h1>
+<h1>Modificar Docente Coordinador de Prácticas: <?php echo $model->NombreCoordinador; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

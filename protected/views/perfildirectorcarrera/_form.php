@@ -1,18 +1,18 @@
 <?php
-/* @var $this DirectorcarreraController */
-/* @var $model Directorcarrera */
+/* @var $this PerfildirectorcarreraController */
+/* @var $model Perfildirectorcarrera */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'directorcarrera-form',
-	'method'=>'post',
-	'enableAjaxValidation'=>true,
-	'enableClientValidation'=>true,
-	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-	'clientOptions'=>array('validateOnSubmit'=>true,),
+	'id'=>'perfildirectorcarrera-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -57,7 +57,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ImagenDirector'); ?>
-		<?php echo CHtml::activeFileField($model,'ImagenDirector');?>
+		<?php echo $form->textField($model,'ImagenDirector',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ImagenDirector'); ?>
 	</div>
 

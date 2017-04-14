@@ -1,18 +1,18 @@
 <?php
-/* @var $this DocenteresponsablepracticaController */
+/* @var $this PerfildocenteresponsablepracticaController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Docentes Responsables de Practicas',
+	'Perfildocenteresponsablepracticas',
 );
 
 $this->menu=array(
-	array('label'=>'Añadir Docente Responsable de Practicas', 'url'=>array('create')),
-	array('label'=>'Administrar Docentes Responsables de Practicas', 'url'=>array('admin')),
+	array('label'=>'Create Perfildocenteresponsablepractica', 'url'=>array('create')),
+	array('label'=>'Manage Perfildocenteresponsablepractica', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Docentes Responsables de Practicas</h1>
+<h1>Perfildocenteresponsablepracticas</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
