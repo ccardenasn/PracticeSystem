@@ -73,7 +73,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 		return array(
 			'RutProfCoordGuiaCp' => 'Rut',
 			'NombreProfCoordGuiaCP' => 'Nombre',
-			'MailProfCoordGuiaCP' => 'Mail',
+			'MailProfCoordGuiaCP' => 'Correo',
 			'TelefonoProfCoordGuiaCP' => 'Teléfono',
 			'CelularProfCoordGuiaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',

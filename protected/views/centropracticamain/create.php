@@ -20,8 +20,8 @@ $this->menu=array(
 	<ul>
 		<ul>
 			<h4>Instrucciones</h4>
-			<li>Para regresar al índice de centros haga click en la opción "Lista" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
-			<li>Desde la sección "Administración" se puede observar una lista de centros existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Para regresar al índice de centros haga click en la opción <b>"Lista"</b> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+			<li>Desde la sección <b>"Administración"</b> se puede observar una lista de centros existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
 			<li>Para acceder a cada formulario debe hacer click en el símbolo <img src="images/FormImages/small_arrow_right.png"> para desplegar.</li>
 			<li>Para ocultar un formulario debe hacer click en el símbolo <img src="images/FormImages/small_arrow_down.png">.</li>
 		</ul>

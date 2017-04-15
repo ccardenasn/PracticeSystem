@@ -72,8 +72,8 @@ class Secretariacarrera extends CActiveRecord
 		return array(
 			'RutSecretaria' => 'Rut',
 			'NombreSecretaria' => 'Nombre',
-			'MailSecretaria' => 'Mail',
-			'TelefonoSecretaria' => 'Telefono',
+			'MailSecretaria' => 'Correo',
+			'TelefonoSecretaria' => 'Teléfono',
 			'CelularSecretaria' => 'Celular',
 			'ImagenSecretaria' => 'Imagen',
 			'Carrera_codCarrera' => 'Carrera',

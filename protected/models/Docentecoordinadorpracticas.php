@@ -73,8 +73,8 @@ class Docentecoordinadorpracticas extends CActiveRecord
 			'RutCoordinador' => 'Rut',
 			'NombreCoordinador' => 'Nombre',
 			'ClaveCoordinador' => 'Clave',
-			'MailCoordinador' => 'Mail',
-			'TelefonoCoordinador' => 'Telefono',
+			'MailCoordinador' => 'Correo',
+			'TelefonoCoordinador' => 'Teléfono',
 			'CelularCoordinador' => 'Celular',
 			'ImagenCoordinador' => 'Imagen',
 		);

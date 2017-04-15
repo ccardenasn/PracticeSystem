@@ -73,8 +73,8 @@ class Jefeutpcp extends CActiveRecord
 		return array(
 			'RutJefeUTPCP' => 'Rut',
 			'NombreJefeUTPCP' => 'Nombre',
-			'MailJefeUTPCP' => 'Mail',
-			'TelefonoJefeUTPCP' => 'Telefono',
+			'MailJefeUTPCP' => 'Correo',
+			'TelefonoJefeUTPCP' => 'Teléfono',
 			'CelularJefeUTPCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ImagenJefeUTPCP' => 'Imagen',

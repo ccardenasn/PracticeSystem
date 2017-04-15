@@ -3,17 +3,13 @@
 /* @var $model Estudiante */
 /* @var $form CActiveForm */
 ?>
-
 <script>
-	
-	function delPass(){
-		$("#Estudiante_ClaveEstudiante").val("sdfs");
-	}
+$(document).load(function(){
+   $('#Estudiante_NombreEstudiante').val('sd');
+   
+});
 
 </script>
-
-<body onload="javascript:delPass();">
-
 
 <div class="form">
 
@@ -41,12 +37,10 @@
 		<?php echo $form->textField($model,'NombreEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreEstudiante'); ?>
 	</div>
-
-	<!--<input type="password" name="ClaveEstudiante" id="ClaveEstudiante" readonly>-->
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ClaveEstudiante'); ?>
-		<?php echo $form->passwordField($model,'ClaveEstudiante',array('value'=>'jhg','size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->passwordField($model,'ClaveEstudiante',array('onfocus'=>"this.removeAttribute('readonly');",'readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ClaveEstudiante'); ?>
 	</div>
 
@@ -128,4 +122,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-	</body>
+	

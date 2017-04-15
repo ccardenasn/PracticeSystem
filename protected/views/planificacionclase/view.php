@@ -39,14 +39,14 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Haga click en "Planificación de Clases" para regresar al inicio de la sección de Planificaciones.</li>
-			<li>Haga click en "Añadir" para agregar una nueva planificación a la lista.</li>
-			<li>Haga click en "Actualizar" para modificar información de planificación.</li>
-			<li>Haga click en "Eliminar" para borrar toda la información de planificación.</li>
-			<li>Desde la sección "Administración de Planificaciones" se puede observar una lista de planificaciones de estudiante existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración de Planifciaciones" en el panel "Opciones" para acceder.</li>
-			<li>Haga click en "Crear Bitácora" para generar una bitácora asociada a la planificación.</li>
-			<li>Desde la sección "Administración de Bitácoras" se puede observar una lista de bitácoras de estudiante existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración de Bitácoras" en el panel "Opciones" para acceder.</li>
-			<li>Haga click en "Ver Bitácora" para visualizar informacion de bitácora asociada a la planificación.</li>
+			<li>Haga click en <b>"Planificación de Clases"</b> para regresar al inicio de la sección de Planificaciones.</li>
+			<li>Haga click en <b>"Añadir"</b> para agregar una nueva planificación a la lista.</li>
+			<li>Haga click en <b>"Actualizar"</b> para modificar información de planificación.</li>
+			<li>Haga click en <b>"Eliminar"</b> para borrar toda la información de planificación.</li>
+			<li>Desde la sección <b>"Administración de Planificaciones"</b> se puede observar una lista de planificaciones de estudiante existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración de Planifciaciones"</b> en el panel <b>"Opciones"</b> para acceder.</li>
+			<li>Haga click en <b>"Crear Bitácora"</b> para generar una bitácora asociada a la planificación.</li>
+			<li>Desde la sección <b>"Administración de Bitácoras"</b> se puede observar una lista de bitácoras de estudiante existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración de Bitácoras"</b> en el panel <b>"Opciones"</b> para acceder.</li>
+			<li>Haga click en <b>"Ver Bitácora"</b> para visualizar informacion de bitácora asociada a la planificación.</li>
 		</ul>
 	</ul>
 </div><br>

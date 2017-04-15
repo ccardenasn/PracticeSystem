@@ -73,8 +73,8 @@ class Directorcp extends CActiveRecord
 		return array(
 			'RutDirectorCP' => 'Rut',
 			'NombreDirectorCP' => 'Nombre',
-			'MailDirectorCP' => 'Mail',
-			'TelefonoDirectorCP' => 'Telefono',
+			'MailDirectorCP' => 'Correo',
+			'TelefonoDirectorCP' => 'Teléfono',
 			'CelularDirectorCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ImagenDirectorCP' => 'Imagen',

@@ -22,8 +22,8 @@ $this->menu=array(
 	<ul>
 		<ul>
 			<h4>Instrucciones</h4>
-			<li>Para regresar a la sección de planificaciones haga click en la opción "Planificaciones" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
-			<li>Desde la sección "Administración" se puede observar una lista de planificaciones existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Para regresar a la sección de planificaciones haga click en la opción <b>"Planificaciones"</b> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+			<li>Desde la sección <b>"Administración"</b> se puede observar una lista de planificaciones existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
 		</ul>
 	</ul>
 </div>

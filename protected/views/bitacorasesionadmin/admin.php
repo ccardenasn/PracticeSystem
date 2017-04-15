@@ -42,9 +42,9 @@ $('.search-form form').submit(function(){
 <ul>
 	<h4>Opciones de Búsqueda</h4>
 	<li>Para efectuar búsquedas de datos escriba en los campos de texto situados debajo de los títulos de cada columna correspondiente para filtrar información.</li>
-	<li>Haga click en "Búsqueda Avanzada" para mostrar u ocultar opciones para encontrar un estudiante específico.</li>
+	<li>Haga click en <b>"Búsqueda Avanzada"</b> para mostrar u ocultar opciones para encontrar un estudiante específico.</li>
 	<li>Escriba sobre los campos de texto de acuerdo a los criterios de búsqueda del usuario.</li>
-	<li>Presione el botón "Buscar" para iniciar la búsqueda.</li>
+	<li>Presione el botón <b>"Buscar"</b> para iniciar la búsqueda.</li>
 	<li>Los resultados se mostrarán en la tabla inferior.</li>
 </ul>
 

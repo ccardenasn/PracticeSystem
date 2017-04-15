@@ -18,7 +18,24 @@ $this->menu=array(
 ?>
 
 <h1>Datos Bitácora</h1>
-<h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2>
+<h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2><br>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Para regresar al índice de bitácoras haga click en <b>"Lista"</b>.</li>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Haga click en <b>"Actualizar"</b> para modificar información de bitácora.</li>
+			<li>Haga click en <b>"Eliminar"</b> para borrar toda la información de bitácora.</li>
+			<li>Desde la sección <b>"Administración"</b> se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
+			<li>Haga click en <b>"Planificaciones"</b> para acceder a información correspondiente a las planificaciones de clases de estudiante.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 
 

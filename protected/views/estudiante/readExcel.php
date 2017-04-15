@@ -22,10 +22,10 @@ $this->menu=array(
 
 <ul>
 	<h4>Lectura de Archivo</h4>
-	<li>La listas de estudiantes deben elaborarse en formato de documento de Microsoft Excel (.xlsx).</li>
-	<li>Para leer un archivo de excel debe hacer click en el botón "Seleccionar Archivo".</li>
-	<li>A continuación se desplegará la ventana del explorador de archivos, seleccione el archivo que necesita subir, luego haga click en "Abrir".</li>
-	<li>Presione el botón "Leer y Guardar Datos" para almacenar el contenido del archivo excel.</li>
+	<li>La listas de estudiantes deben elaborarse en formato de documento de <b>Microsoft Excel (.xlsx)</b>.</li>
+	<li>Para leer un archivo de excel debe hacer click en el botón <b>"Seleccionar Archivo"</b>.</li>
+	<li>A continuación se desplegará la ventana del explorador de archivos, seleccione el archivo que necesita subir, luego haga click en <b>"Abrir"</b>.</li>
+	<li>Presione el botón <b>"Leer y Guardar Datos"</b> para almacenar el contenido del archivo excel.</li>
 	<li>Los resultados se mostrarán en la tabla inferior.</li>
 </ul>
 

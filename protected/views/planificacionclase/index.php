@@ -22,7 +22,7 @@ $this->menu=array(
 
 <ul>
 	<h4>Instrucciones</h4>
-	<li>Para agregar una nueva planificación haga click en la opción "Añadir" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de planificaciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-	<li>Haga click en "Bitácoras" para acceder a la seccion de bitacoras del estudiante.</li>
+	<li>Para agregar una nueva planificación haga click en la opción <b>"Añadir"</b> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+	<li>Desde la sección <b>"Administración"</b> se puede observar una lista de planificaciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
+	<li>Haga click en <b>"Bitácoras"</b> para acceder a la seccion de bitacoras del estudiante.</li>
 </ul>

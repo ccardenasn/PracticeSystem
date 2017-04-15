@@ -60,8 +60,8 @@ class Docentesupervisorpractica extends CActiveRecord
 			'RutSupervisor' => 'Rut',
 			'NombreSupervisor' => 'Nombre',
 			'ClaveSupervisor' => 'Clave',
-			'MailSupervisor' => 'Mail',
-			'TelefonoSupervisor' => 'Telefono',
+			'MailSupervisor' => 'Correo',
+			'TelefonoSupervisor' => 'Teléfono',
 			'CelularSupervisor' => 'Celular',
 			'ImagenSupervisor' => 'Imagen',
 		);

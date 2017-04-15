@@ -27,10 +27,11 @@ $this->menu=array(
 <ul>
 	<h4>Instrucciones de Opciones</h4>
 	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de bitácoras haga click en "Lista".</li>
-	<li>Haga click en "Añadir" para agregar una bitácora.</li>
-	<li>Haga click en "Detalles" para visualizar información de bitácora.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li><li>Haga click en "Planificaciones de Estudiante" para acceder a un listado de planificaciones del estudiante seleccionado.</li>
+	<li>Para regresar al índice de bitácoras haga click en <b>"Lista"</b>.</li>
+	<li>Haga click en <b>"Añadir"</b> para agregar una bitácora.</li>
+	<li>Haga click en <b>"Detalles"</b> para visualizar información de bitácora.</li>
+	<li>Desde la sección <b>"Administración"</b> se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
+	<li>Haga click en <b>"Planificaciones de Estudiante"</b> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
 
 </ul>
 

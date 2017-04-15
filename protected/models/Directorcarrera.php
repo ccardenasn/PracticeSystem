@@ -69,7 +69,7 @@ class Directorcarrera extends CActiveRecord
 			'RutDirector' => 'Rut',
 			'NombreDirector' => 'Nombre',
 			'ClaveDirector' => 'Clave',
-			'MailDirector' => 'Mail',
+			'MailDirector' => 'Correo',
 			'TelefonoDirector' => 'Teléfono',
 			'CelularDirector' => 'Celular',
 			'ImagenDirector' => 'Imagen',

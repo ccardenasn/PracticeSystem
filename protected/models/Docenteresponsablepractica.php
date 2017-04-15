@@ -73,8 +73,8 @@ class Docenteresponsablepractica extends CActiveRecord
 			'RutResponsable' => 'Rut',
 			'NombreResponsable' => 'Nombre',
 			'ClaveResponsable' => 'Clave',
-			'MailResponsable' => 'Mail',
-			'TelefonoResponsable' => 'Telefono',
+			'MailResponsable' => 'Correo',
+			'TelefonoResponsable' => 'Teléfono',
 			'CelularResponsable' => 'Celular',
 			'ImagenResponsable' => 'Imagen',
 		);

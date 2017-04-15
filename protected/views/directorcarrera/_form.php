@@ -30,10 +30,10 @@
 		<?php echo $form->textField($model,'NombreDirector',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreDirector'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ClaveDirector'); ?>
-		<?php echo $form->textField($model,'ClaveDirector',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->passwordField($model,'ClaveDirector',array('onfocus'=>"this.removeAttribute('readonly');",'readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ClaveDirector'); ?>
 	</div>
 

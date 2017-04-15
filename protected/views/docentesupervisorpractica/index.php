@@ -16,8 +16,8 @@ $this->menu=array(
 
 <ul>
 	<h4>Instrucciones</h4>
-	<li>Para agregar un nuevo docente haga click en la opción "Añadir" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de docentes existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+	<li>Para agregar un nuevo docente haga click en la opción <b>"Añadir"</b> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+	<li>Desde la sección <b>"Administración"</b> se puede observar una lista de docentes existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
 	<li>A continuación se puede observar una lista de docentes existentes además de algunos detalles, haga click en el Rut de docente de color azul para más información</li>
 </ul>
 
