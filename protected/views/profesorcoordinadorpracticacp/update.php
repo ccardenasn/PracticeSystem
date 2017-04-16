@@ -16,15 +16,22 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Profesor Coordinador de Practicas CP<?php echo $model->RutProfCoordGuiaCp; ?></h1><br>
+<h1>Modificar Profesor Coordinador de Practicas CP: <?php echo $model->NombreProfCoordGuiaCP; ?></h1><br>
+	
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Para regresar al índice de coordinadores cp haga click en "Lista".</li>
+			<li>Haga click en "Añadir" para agregar un nuevo coordinador cp a la lista.</li>
+			<li>Haga click en "Detalles" para visualizar información de coordinador cp.</li>
+			<li>Desde la sección "Administración" se puede observar una lista de coordinadores cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+		</ul>
+	</ul>
+</div><br>
 
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de coordinadores cp haga click en "Lista".</li>
-	<li>Haga click en "Añadir" para agregar un nuevo coordinador cp a la lista.</li>
-	<li>Haga click en "Detalles" para visualizar información de coordinador cp.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de coordinadores cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-</ul>
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

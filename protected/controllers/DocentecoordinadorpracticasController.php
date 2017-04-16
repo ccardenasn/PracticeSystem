@@ -1,4 +1,5 @@
 <?php
+include_once('bitacoraFunctions.php');
 
 class DocentecoordinadorpracticasController extends Controller
 {
@@ -103,6 +104,13 @@ class DocentecoordinadorpracticasController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+		$imageAttrib = "ImagenCoordinador";
+		$table = "docentecoordinadorpracticas";
+		$codTable = "RutCoordinador";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
+		
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -115,15 +123,16 @@ class DocentecoordinadorpracticasController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
+				}
 				$this->redirect(array('view','id'=>$model->RutCoordinador));
 			}
 		}

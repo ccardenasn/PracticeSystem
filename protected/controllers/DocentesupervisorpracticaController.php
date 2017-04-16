@@ -1,4 +1,5 @@
 <?php
+include_once('bitacoraFunctions.php');
 
 class DocentesupervisorpracticaController extends Controller
 {
@@ -126,6 +127,12 @@ class DocentesupervisorpracticaController extends Controller
     public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+		$imageAttrib = "ImagenSupervisor";
+		$table = "docentesupervisorpractica";
+		$codTable = "RutSupervisor";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -145,6 +152,8 @@ class DocentesupervisorpracticaController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
 						$this->refresh();
 					}
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
 				}
 				$this->redirect(array('view','id'=>$model->RutSupervisor));
 			}

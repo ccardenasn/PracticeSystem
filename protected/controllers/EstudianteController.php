@@ -104,6 +104,12 @@ class EstudianteController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+		$imageAttrib = "ImagenEstudiante";
+		$table = "estudiante";
+		$codTable = "RutEstudiante";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -123,6 +129,8 @@ class EstudianteController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
 						$this->refresh();
 					}
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
 				}
 				$this->redirect(array('view','id'=>$model->RutEstudiante));
 			}
