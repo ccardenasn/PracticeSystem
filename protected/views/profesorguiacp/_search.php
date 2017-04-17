@@ -51,8 +51,13 @@
 		<?php echo $form->textField($model,'CentroPractica_RBD'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'ImagenProfGuiaCP'); ?>
+		<?php echo $form->textField($model,'ImagenProfGuiaCP',array('size'=>45,'maxlength'=>45)); ?>
+	</div>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Buscar'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

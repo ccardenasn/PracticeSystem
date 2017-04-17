@@ -50,9 +50,9 @@ $this->menu=array(
 		'Dependencia',
 		'NivelEducacional',
 		'Area',
-		'Region_codRegion',
-		'Provincia_codProvincia',
-		'Ciudad_codCiudad',
+		'regionCodRegion.NombreRegion',
+		'provinciaCodProvincia.NombreProvincia',
+		'ciudadCodCiudad.NombreCiudad',
 		'Calle',
 		array(
             'name'=>'ImagenCentroPractica',

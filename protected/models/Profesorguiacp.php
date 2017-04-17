@@ -1,9 +1,10 @@
 <?php
-/*include_once 'FunRut.php';
 include_once 'FunNombre.php';
-include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
-include_once 'FunCelular.php';*/
+include_once 'FunCelular.php';
+include_once 'FunCorreo.php';
+include_once 'FunNumeros.php';
+include_once 'FunRut.php';
 /**
  * This is the model class for table "profesorguiacp".
  *
@@ -20,6 +21,7 @@ include_once 'FunCelular.php';*/
  *
  * The followings are the available model relations:
  * @property Estudiante[] $estudiantes
+ * @property Planificacionclase[] $planificacionclases
  * @property Centropractica $centroPracticaRBD
  */
 class Profesorguiacp extends CActiveRecord
@@ -27,9 +29,6 @@ class Profesorguiacp extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	
-	public $updateType;
-	
 	public function tableName()
 	{
 		return 'profesorguiacp';
@@ -49,11 +48,7 @@ class Profesorguiacp extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, CentroPractica_RBD, ImagenProfGuiaCP', 'safe', 'on'=>'search'),
-            array('ImagenProfGuiaCP','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
-            array('ImagenProfGuiaCP','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar 
-			array('ImagenProfGuiaCP','safe','on'=>'create'),
-            array('ImagenProfGuiaCP','safe','on'=>'update'),
-            array('RutProfGuiaCP','valrut'),
+			array('RutProfGuiaCP','valrut'),
             array('NombreProfGuiaCP','valnombre'),
             array('MailProfGuiaCP','valcorreo'),
             array('TelefonoProfGuiaCP','valtelefono'),
@@ -70,6 +65,7 @@ class Profesorguiacp extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'ProfesorGuiaCP_RutProfGuiaCP'),
+			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'ProfesorGuiaCP_RutProfGuiaCP'),
 			'centroPracticaRBD' => array(self::BELONGS_TO, 'Centropractica', 'CentroPractica_RBD'),
 		);
 	}
@@ -135,8 +131,8 @@ class Profesorguiacp extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-    
-    public function valrut($attribute,$params)
+	
+	public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutProfGuiaCP)==false)
 		$this->addError('RutProfGuiaCP','Rut invalido');

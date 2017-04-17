@@ -52,4 +52,16 @@ function deleteProf($arr,$data){
 	}
 }
 
+function getImageModel($imageAttrib,$table,$codTable,$id){
+	$query = "select ".$imageAttrib." from ".$table." where ".$codTable." = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function saveImagePath($table,$imageAttrib,$image,$codTable,$id){
+	$query="update ".$table." set ".$imageAttrib." = '".$image."' where ".$codTable." = '".$id."';";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
 ?>

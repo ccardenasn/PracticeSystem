@@ -1,4 +1,5 @@
 <?php
+include_once('bitacoraFunctions.php');
 
 class ProfesorguiacpController extends Controller
 {
@@ -62,7 +63,7 @@ class ProfesorguiacpController extends Controller
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
+	 */	
 	public function actionCreate()
 	{
 		$model=new Profesorguiacp;
@@ -99,9 +100,34 @@ class ProfesorguiacpController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	/*public function actionUpdate($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Profesorguiacp']))
+		{
+			$model->attributes=$_POST['Profesorguiacp'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->RutProfGuiaCP));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	}*/
+	
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		
+		$imageAttrib = "ImagenProfGuiaCP";
+		$table = "profesorguiacp";
+		$codTable = "RutProfGuiaCP";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
@@ -114,15 +140,16 @@ class ProfesorguiacpController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-				if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png")
-				{
-					//se guarda la ruta de la imagen
-					$model->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$file->getName());
-				}else
-				{
-					Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-          			$this->refresh();
-				}}
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						$this->refresh();
+					}
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
+				}
 				$this->redirect(array('view','id'=>$model->RutProfGuiaCP));
 			}
 		}

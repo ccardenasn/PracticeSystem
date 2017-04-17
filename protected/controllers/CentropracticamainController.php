@@ -227,8 +227,39 @@ class CentropracticamainController extends Controller
 		$coordinadorModel=Profesorcoordinadorpracticacp::model()->find('CentroPractica_RBD=?',array($id));
 		$profesorModel=Profesorguiacp::model()->findAll('CentroPractica_RBD=?',array($id));
 		
+		$imageAttribCentro = "ImagenCentroPractica";
+		$tableCentro = "centropractica";
+		$codTableCentro = "RBD";
+		
+		$oldImageCentro = getImageModel($imageAttribCentro,$tableCentro,$codTableCentro,$id);
+		
+		$imageAttribSecretaria = "ImagenSecretariaCP";
+		$tableSecretaria = "secretariacp";
+		$codTableSecretaria = "RutSecretariaCP";
+		
+		$oldImageSecretaria = getImageModel($imageAttribSecretaria,$tableSecretaria,$codTableSecretaria,$secretariaModel->RutSecretariaCP);
+		
+		$imageAttribDirector = "ImagenDirectorCP";
+		$tableDirector = "directorcp";
+		$codTableDirector = "RutDirectorCP";
+		
+		$oldImageDirector = getImageModel($imageAttribDirector,$tableDirector,$codTableDirector,$directorModel->RutDirectorCP);
+		
+		$imageAttribJefeUTP = "ImagenJefeUTPCP";
+		$tableJefeUTP = "jefeutpcp";
+		$codTableJefeUTP = "RutJefeUTPCP";		
+		
+		$oldImageJefeUTP = getImageModel($imageAttribJefeUTP,$tableJefeUTP,$codTableJefeUTP,$jefeutpModel->RutJefeUTPCP);
+		
+		$imageAttribCoordinador = "ImagenProfCoordGuiaCP";
+		$tableCoordinador = "profesorcoordinadorpracticacp";
+		$codTableCoordinador = "RutProfCoordGuiaCp";
+		
+		$oldImageCoordinador = getImageModel($imageAttribCoordinador,$tableCoordinador,$codTableCoordinador,$coordinadorModel->RutProfCoordGuiaCp);
+
+		
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$coordinadorModel));
+		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel));
 
 		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
 		{
@@ -260,6 +291,8 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
 						$this->refresh();
 					}	
+				}else{
+					saveImagePath($tableCentro,$imageAttribCentro,$oldImageCentro,$codTableCentro,$id);
 				}
 			}
 			
@@ -280,6 +313,8 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
 						$this->refresh();
 					}
+				}else{
+					saveImagePath($tableSecretaria,$imageAttribSecretaria,$oldImageSecretaria,$codTableSecretaria,$secretariaModel->RutSecretariaCP);
 				}
 			}
 			
@@ -294,6 +329,8 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
 						$this->refresh();
 					}
+				}else{
+					saveImagePath($tableDirector,$imageAttribDirector,$oldImageDirector,$codTableDirector,$directorModel->RutDirectorCP);
 				}
 			}
 			
@@ -308,6 +345,8 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
 						$this->refresh();
 					}	
+				}else{
+					saveImagePath($tableJefeUTP,$imageAttribJefeUTP,$oldImageJefeUTP,$codTableJefeUTP,$jefeutpModel->RutJefeUTPCP);
 				}
 			}
 			
@@ -322,6 +361,7 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
 						$this->refresh();
 					}
+				}else{	saveImagePath($tableCoordinador,$imageAttribCoordinador,$oldImageCoordinador,$codTableCoordinador,$coordinadorModel->RutProfCoordGuiaCp);
 				}
 			}
 			

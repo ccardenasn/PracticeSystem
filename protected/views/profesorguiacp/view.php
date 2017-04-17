@@ -38,15 +38,15 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-        array('name'=>'Rut','value'=>$model->RutProfGuiaCP),
-		array('name'=>'Nombre','value'=>$model->NombreProfGuiaCP),
-        array('name'=>'Curso','value'=>$model->CursoProfGuiaCP),
-        array('name'=>'Profesor Jefe','value'=>$model->ProfesorJefeProfGuiaCP),
-        array('name'=>'Mail','value'=>$model->MailProfGuiaCP),
-        array('name'=>'Telefono','value'=>$model->TelefonoProfGuiaCP),
-        array('name'=>'Celular','value'=>$model->CelularProfGuiaCP),
-        array('name'=>'Centro Practica','value'=>$model->CentroPractica_RBD),
-        array(
+		'RutProfGuiaCP',
+		'NombreProfGuiaCP',
+		'CursoProfGuiaCP',
+		'ProfesorJefeProfGuiaCP',
+		'MailProfGuiaCP',
+		'TelefonoProfGuiaCP',
+		'CelularProfGuiaCP',
+		'CentroPractica_RBD',
+		array(
             'name'=>'ImagenProfGuiaCP',
 			'type' => 'raw',
             'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenProfesoresGuiaCP/'.$model->ImagenProfGuiaCP)

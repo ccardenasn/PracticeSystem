@@ -36,12 +36,17 @@
 		<?php echo $form->textField($model,'CursoProfGuiaCP',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'CursoProfGuiaCP'); ?>
 	</div>
-
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'ProfesorJefeProfGuiaCP'); ?>
-		<?php echo $form->textField($model,'ProfesorJefeProfGuiaCP',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ProfesorJefeProfGuiaCP'); ?>
-	</div>
+        <?php echo $form->labelEx($model,'ProfesorJefeProfGuiaCP');?>
+        <?php echo $form->dropDownList($model,'ProfesorJefeProfGuiaCP', 
+                                       array(
+                                           'Si'=>'Si',
+                                           'No'=>'No',
+                                           'No Aplica'=>'No Aplica',
+                                       ));?>
+        <?php echo $form->error($model,'ProfesorJefeProfGuiaCP'); ?>
+    </div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'MailProfGuiaCP'); ?>
@@ -66,8 +71,8 @@
 		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
         <?php echo $form->error($model,'CentroPractica_RBD'); ?>
 	</div>
-    
-    <div class="row">
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'ImagenProfGuiaCP'); ?>
 		<?php echo CHtml::activeFileField($model,'ImagenProfGuiaCP');?>
 		<?php echo $form->error($model,'ImagenProfGuiaCP'); ?>
