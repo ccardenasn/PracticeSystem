@@ -49,7 +49,7 @@ for($i=0;$i<$totalProfesorModel;$i++){
 	<div class="collapse">
 		<h3>Centro de Práctica</h3>
 		<ul>
-			<?php $this->renderPartial('centroPracticaForm', array('form'=>$form,'centroModel'=>$centroModel)); ?>
+			<?php $this->renderPartial('centroPracticaUpdateForm', array('form'=>$form,'centroModel'=>$centroModel)); ?>
 		</ul>
 		
 		<h3>Secretaria CP</h3>

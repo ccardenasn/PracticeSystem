@@ -227,6 +227,12 @@ class CentropracticamainController extends Controller
 		$coordinadorModel=Profesorcoordinadorpracticacp::model()->find('CentroPractica_RBD=?',array($id));
 		$profesorModel=Profesorguiacp::model()->findAll('CentroPractica_RBD=?',array($id));
 		
+		$fileAttribCentro = "AnexoProtocolo";
+		$tableCentro = "centropractica";
+		$codTableCentro = "RBD";
+		
+		$oldFileCentro = getImageModel($fileAttribCentro,$tableCentro,$codTableCentro,$id);
+		
 		$imageAttribCentro = "ImagenCentroPractica";
 		$tableCentro = "centropractica";
 		$codTableCentro = "RBD";
@@ -281,6 +287,8 @@ class CentropracticamainController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
 						$this->refresh();
 					}	
+				}else{
+					saveImagePath($tableCentro,$fileAttribCentro,$oldFileCentro,$codTableCentro,$id);
 				}
 				
 				if($image != null){
@@ -365,20 +373,6 @@ class CentropracticamainController extends Controller
 				}
 			}
 			
-			//$profesorFile=$profesorModel->ImagenProfGuiaCP=CUploadedFile::getInstance($profesorModel,'ImagenProfGuiaCP');
-			
-			/*if($profesorModel->save()){
-				if($profesorFile != null){
-					if($profesorFile->getExtensionName()=="jpg" or $profesorFile->getExtensionName()=="jpeg" or $profesorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$profesorModel->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$profesorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}
-				}
-			}*/
-			
 			$rut=$_POST['RutProfGuiaCP'];
 			$nombre=$_POST['NombreProfGuiaCP'];
 			$curso=$_POST['CursoProfGuiaCP'];
@@ -409,16 +403,27 @@ class CentropracticamainController extends Controller
 				
 			}
 			
+			$imageAttrib = "ImagenProfGuiaCP";
+					$table = "profesorguiacp";
+					$codTable = "RutProfGuiaCP";
+			
 			for($i=0;$i<count($rut);$i++){
 				if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
 					
 					$query="";
 					$rutExist = containsProf($rut[$i]);
 					
+					$oldImage = getImageModel($imageAttrib,$table,$codTable,$rut[$i]);
+					
+					
 					$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
 					move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
 					
 					if($rutExist != 0){
+						if($imagen == ""){
+							$imagen = $oldImage;
+						}
+						
 						$query="update profesorguiacp set NombreProfGuiaCP='".$nombre[$i]."',CursoProfGuiaCP='".$curso[$i]."',ProfesorJefeProfGuiaCP='".$profesorjefe[$i]."',MailProfGuiaCP='".$correo[$i]."',TelefonoProfGuiaCP='".$telefono[$i]."',CelularProfGuiaCP='".$celular[$i]."',CentroPractica_RBD='".$centro."',ImagenProfGuiaCP='".$imagen."' where RutProfGuiaCP='".$rut[$i]."'";
 					
 					}else{

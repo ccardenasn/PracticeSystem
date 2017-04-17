@@ -31,168 +31,178 @@ $this->menu=array(
 			<li>Para regresar al índice de menciones haga click en <b>"Lista"</b>.</li>
 		</ul>
 	</ul>
+	
+	<h3>Detalles</h3>
+	<ul>
+		<?php $this->widget('zii.widgets.CDetailView', array(
+		'data'=>$model,
+		'attributes'=>array(
+			'RBD',
+			'NombreCentroPractica',
+			'VigenciaProtocolo',
+			'FechaProtocolo',
+			array(
+				'name'=>'Anexo Protocolo (click en el enlace)',
+				'type' => 'raw',
+				'value'=>CHtml::link(CHtml::encode($model->AnexoProtocolo), Yii::app()->baseUrl .'/PDFFiles/'.$model->AnexoProtocolo,array('target'=>'_blank'))
+            ),
+			'Dependencia',
+			'NivelEducacional',
+			'Area',
+			'regionCodRegion.NombreRegion',
+			'provinciaCodProvincia.NombreProvincia',
+			'ciudadCodCiudad.NombreCiudad',
+			'Calle',
+			array(
+				'name'=>'ImagenCentroPractica',
+				'type' => 'raw',
+				'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCentroPracticas/'.$model->ImagenCentroPractica)
+            ),
+		),
+)); ?>
+	</ul>
+	
+	<h3>Secretaria CP</h3>
+	<ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Rut</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Teléfono</th>
+					<th>Celular</th>
+					<th>Imagen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($model->secretariacps as $secretaria) : ?>
+				<tr>
+					<td><?php echo $secretaria->RutSecretariaCP ?></td>
+					<td><?php echo $secretaria->NombreSecretariaCP ?></td>
+					<td><?php echo $secretaria->MailSecretariaCP ?></td>
+					<td><?php echo $secretaria->TelefonoSecretariaCP ?></td>
+					<td><?php echo $secretaria->CelularSecretariaCP ?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretariasCP/'.$secretaria->ImagenSecretariaCP,'Image',array('width'=>50,'height'=>50))?></td>
+				</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+	</ul>
+	
+	<h3>Director CP</h3>
+	<ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Rut</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Teléfono</th>
+					<th>Celular</th>
+					<th>Imagen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($model->directorcps as $director) : ?>
+				<tr>
+					<td><?php echo $director->RutDirectorCP ?></td>
+					<td><?php echo $director->NombreDirectorCP ?></td>
+					<td><?php echo $director->MailDirectorCP ?></td>
+					<td><?php echo $director->TelefonoDirectorCP ?></td>
+					<td><?php echo $director->CelularDirectorCP ?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenDirectoresCP/'.$director->ImagenDirectorCP,'Image',array('width'=>50,'height'=>50))?></td>
+				</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+	</ul>
+	
+	<h3>Jefe UTP CP</h3>
+	<ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Rut</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Teléfono</th>
+					<th>Celular</th>
+					<th>Imagen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($model->jefeutpcps as $jefe) : ?>
+				<tr>
+					<td><?php echo $jefe->RutJefeUTPCP ?></td>
+					<td><?php echo $jefe->NombreJefeUTPCP ?></td>
+					<td><?php echo $jefe->MailJefeUTPCP ?></td>
+					<td><?php echo $jefe->TelefonoJefeUTPCP ?></td>
+					<td><?php echo $jefe->CelularJefeUTPCP ?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenJefesUTPCP/'.$jefe->ImagenJefeUTPCP,'Image',array('width'=>50,'height'=>50))?></td>
+				</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+	</ul>
+	
+	<h3>Profesor Coordinador de Prácticas CP </h3>
+	<ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Rut</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Teléfono</th>
+					<th>Celular</th>
+					<th>Imagen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($model->profesorcoordinadorpracticacps as $profesor) : ?>
+				<tr>
+					<td><?php echo $profesor->RutProfCoordGuiaCp ?></td>
+					<td><?php echo $profesor->NombreProfCoordGuiaCP ?></td>
+					<td><?php echo $profesor->MailProfCoordGuiaCP ?></td>
+					<td><?php echo $profesor->TelefonoProfCoordGuiaCP ?></td>
+					<td><?php echo $profesor->CelularProfCoordGuiaCP ?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCoordinadoresPracticasCP/'.$profesor->ImagenProfCoordGuiaCP,'Image',array('width'=>50,'height'=>50))?></td>
+				</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+	</ul>
+	
+	<h3>Profesor Guía CP </h3>
+	<ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Rut</th>
+					<th>Nombre</th>
+					<th>Curso</th>
+					<th>Correo</th>
+					<th>Teléfono</th>
+					<th>Celular</th>
+					<th>Imagen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($model->profesorguiacps as $profesor) : ?>
+				<tr>
+					<td><?php echo $profesor->RutProfGuiaCP ?></td>
+					<td><?php echo $profesor->NombreProfGuiaCP ?></td>
+					<td><?php echo $profesor->CursoProfGuiaCP ?></td>
+					<td><?php echo $profesor->MailProfGuiaCP ?></td>
+					<td><?php echo $profesor->TelefonoProfGuiaCP ?></td>
+					<td><?php echo $profesor->CelularProfGuiaCP ?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenProfesoresGuiaCP/'.$profesor->ImagenProfGuiaCP,'Image',array('width'=>50,'height'=>50))?></td>
+				</tr>
+				<?php endforeach ?>
+			</tbody>
+		</table>
+	</ul>
 </div><br>
 
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'RBD',
-		'NombreCentroPractica',
-		'VigenciaProtocolo',
-		'FechaProtocolo',
-		array(
-            'name'=>'Anexo Protocolo (click en el enlace)',
-			'type' => 'raw',
-            'value'=>CHtml::link(CHtml::encode($model->AnexoProtocolo), Yii::app()->baseUrl .'/PDFFiles/'.$model->AnexoProtocolo,array('target'=>'_blank'))
-            ),
-		'Dependencia',
-		'NivelEducacional',
-		'Area',
-		'regionCodRegion.NombreRegion',
-		'provinciaCodProvincia.NombreProvincia',
-		'ciudadCodCiudad.NombreCiudad',
-		'Calle',
-		array(
-            'name'=>'ImagenCentroPractica',
-			'type' => 'raw',
-            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCentroPracticas/'.$model->ImagenCentroPractica)
-            ),
-	),
-)); ?>
-
-<br/>
-<h2>Secretaria CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->secretariacps as $secretaria) : ?>
-		<tr>
-			<td><?php echo $secretaria->RutSecretariaCP ?></td>
-			<td><?php echo $secretaria->NombreSecretariaCP ?></td>
-			<td><?php echo $secretaria->MailSecretariaCP ?></td>
-			<td><?php echo $secretaria->TelefonoSecretariaCP ?></td>
-			<td><?php echo $secretaria->CelularSecretariaCP ?></td>
-			<td><?php echo $secretaria->ImagenSecretariaCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Director CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->directorcps as $director) : ?>
-		<tr>
-			<td><?php echo $director->RutDirectorCP ?></td>
-			<td><?php echo $director->NombreDirectorCP ?></td>
-			<td><?php echo $director->MailDirectorCP ?></td>
-			<td><?php echo $director->TelefonoDirectorCP ?></td>
-			<td><?php echo $director->CelularDirectorCP ?></td>
-			<td><?php echo $director->ImagenDirectorCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Jefe UTP CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->jefeutpcps as $jefe) : ?>
-		<tr>
-			<td><?php echo $jefe->RutJefeUTPCP ?></td>
-			<td><?php echo $jefe->NombreJefeUTPCP ?></td>
-			<td><?php echo $jefe->MailJefeUTPCP ?></td>
-			<td><?php echo $jefe->TelefonoJefeUTPCP ?></td>
-			<td><?php echo $jefe->CelularJefeUTPCP ?></td>
-			<td><?php echo $jefe->ImagenJefeUTPCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Profesor Coordinador de Prácticas CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->profesorcoordinadorpracticacps as $profesor) : ?>
-		<tr>
-			<td><?php echo $profesor->RutProfCoordGuiaCp ?></td>
-			<td><?php echo $profesor->NombreProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->MailProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->TelefonoProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->CelularProfCoordGuiaCP ?></td>
-			<td><?php echo $profesor->ImagenProfCoordGuiaCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
-
-<br/>
-<h2>Profesor Guía CP </h2>
-<table>
-	<thead>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Mail</th>
-			<th>Teléfono</th>
-			<th>Celular</th>
-			<th>Imagen</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($model->profesorguiacps as $profesor) : ?>
-		<tr>
-			<td><?php echo $profesor->RutProfGuiaCP ?></td>
-			<td><?php echo $profesor->NombreProfGuiaCP ?></td>
-			<td><?php echo $profesor->MailProfGuiaCP ?></td>
-			<td><?php echo $profesor->TelefonoProfGuiaCP ?></td>
-			<td><?php echo $profesor->CelularProfGuiaCP ?></td>
-			<td><?php echo $profesor->ImagenProfGuiaCP ?></td>
-		</tr>
-		<?php endforeach ?>
-	</tbody>
-</table>
