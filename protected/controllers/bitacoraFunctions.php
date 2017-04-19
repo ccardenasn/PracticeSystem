@@ -145,5 +145,13 @@ function saveImagePath($table,$imageAttrib,$image,$codTable,$id){
 	Yii::app()->db->createCommand($query)->execute();
 }
 
+function containsStudentExcel($id){
+	$query = "select count(*) from estudiante where RutEstudiante = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+
 
 ?>

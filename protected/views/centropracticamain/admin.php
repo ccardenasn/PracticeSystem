@@ -79,13 +79,15 @@ $('.search-form form').submit(function(){
 		'Dependencia',
 		/*
 		'NivelEducacional',
-		'Area',
+		'Area',*/
 		'Region_codRegion',
 		'Provincia_codProvincia',
-		'Ciudad_codCiudad',
-		'Calle',
-		'ImagenCentroPractica',
-		*/
+		//'Ciudad_codCiudad',
+		
+		
+		//'Calle',
+		//'ImagenCentroPractica',
+	
 		array(
 			'class'=>'CButtonColumn',
 		),

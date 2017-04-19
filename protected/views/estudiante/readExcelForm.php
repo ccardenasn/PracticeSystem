@@ -16,6 +16,12 @@
 
 	<?php echo $form->errorSummary($model); ?>
     
+	<?php if(Yii::app()->user->hasFlash('message')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('message'); ?>
+    </div>
+    <?php endif; ?>
+	
     <div class="row">
 		<?php echo $form->labelEx($model,'Archivo'); ?>
 		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
@@ -25,12 +31,6 @@
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Leer y Guardar Datos' : 'Save'); ?>
 	</div>
-    
-    <?php if(Yii::app()->user->hasFlash('success')):?>
-    <div class="row buttons">
-        <?php echo Yii::app()->user->getFlash('success'); ?>
-    </div>
-    <?php endif; ?>
 
 <?php $this->endWidget(); ?>
 
