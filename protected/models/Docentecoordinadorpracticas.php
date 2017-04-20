@@ -37,7 +37,7 @@ class Docentecoordinadorpracticas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutCoordinador', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RutCoordinador, NombreCoordinador, ClaveCoordinador', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('RutCoordinador, NombreCoordinador, ClaveCoordinador, MailCoordinador, TelefonoCoordinador, CelularCoordinador, ImagenCoordinador', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

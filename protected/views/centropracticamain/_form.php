@@ -21,7 +21,7 @@ $js->registerScriptFile($base.'/tabularInputCentro/validateTabularFunctions.js')
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel)); ?>
+	<?php echo $form->errorSummary(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel),'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 
 	<div class="collapse">
 		<h3>Centro de Práctica</h3>

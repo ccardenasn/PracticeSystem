@@ -199,21 +199,56 @@ class BloqueController extends Controller
     // retrieve items to be updated in a batch mode
     // assuming each item is of model class 'Item'
     $items=$this->getItemsToUpdate();
+	$wrongTime = false;	
+		
     if(isset($_POST['Bloque']))
     {
         $valid=true;
         foreach($items as $i=>$item)
         {
-            if(isset($_POST['Bloque'][$i]))
-                $item->attributes=$_POST['Bloque'][$i];
-            $valid=$item->validate() && $valid;
+			if(isset($_POST['Bloque'][$i]))
+				$item->attributes=$_POST['Bloque'][$i];
+			$valid=$item->validate() && $valid;
         }
-        if($valid) {
-			foreach ($items as $item) {
-        $item->save();
-    }
-		} // all items are valid
-            // ...do something here
+		
+		//$l=0;
+		foreach($items as $item){
+			$init=$item->HoraInicio;
+			$end=$item->HoraFin;
+			
+			$initTime = substr($init,0);
+			$endTime = substr($end,0);
+			
+			if($initTime == '0'){
+				$initTime = substr($init,1);
+			}
+			
+			if($endTime == '0'){
+				$endTime = substr($end,1);
+			}
+			
+			$initTimeInt = (int)$initTime;
+			$endTimeInt = (int)$endTime;
+			
+			
+			if($endTimeInt < $initTimeInt){
+				$wrongTime = true;
+			}
+			//$l++;
+		}
+		
+		if($wrongTime == false){
+			if($valid){
+				foreach ($items as $item) {
+					$item->save();
+				}
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Datos almacenados correctamente.</li></ul></div>");
+					$this->refresh();
+			}
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Los datos no se han ingresado correctamente, intente de nuevo.</li></ul></div>");
+			$this->refresh();
+		} 
     }
     // displays the view to collect tabular input
     $this->render('batchUpdate',array('items'=>$items));

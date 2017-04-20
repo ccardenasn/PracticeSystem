@@ -37,7 +37,7 @@ class Secretariacp extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutSecretariaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RutSecretariaCP, NombreSecretariaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutSecretariaCP, NombreSecretariaCP, MailSecretariaCP, TelefonoSecretariaCP, CelularSecretariaCP, ImagenSecretariaCP', 'length', 'max'=>45),
 			// The following rule is used by search().

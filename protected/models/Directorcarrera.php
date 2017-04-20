@@ -34,7 +34,7 @@ class Directorcarrera extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutDirector', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RutDirector, NombreDirector, ClaveDirector', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('RutDirector, NombreDirector, ClaveDirector, MailDirector, TelefonoDirector, CelularDirector, ImagenDirector', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
