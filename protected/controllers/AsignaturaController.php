@@ -1,4 +1,5 @@
 <?php
+include_once('asignaturaFunctions.php');
 
 class AsignaturaController extends Controller
 {
@@ -113,6 +114,12 @@ class AsignaturaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$existTimeTableSubject = containsTimeTableSubject($id);
+		
+		if($existTimeTableSubject != 0){
+			deleteTimetableSubjects($id);
+		}
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

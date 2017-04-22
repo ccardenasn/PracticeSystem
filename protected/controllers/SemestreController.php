@@ -1,4 +1,5 @@
 <?php
+include_once('semestreFunctions.php');
 
 class SemestreController extends Controller
 {
@@ -113,7 +114,22 @@ class SemestreController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$existSubjects = containsSubjects($id);
 		
+		if($existSubjects != 0){
+			$semesterSubjects = getSemesterSubjects($id);
+			
+			for($i=0;$i<count($semesterSubjects);$i++){
+				$remainSubject = $semesterSubjects[$i]['NombreAsignatura'];
+				
+				$existTimeTableSubject = containsTimeTableSubject($remainSubject);
+				
+				if($existTimeTableSubject != 0){
+					deleteTimetableSubjects($remainSubject);
+				}
+			}
+			deleteSubjects($id);
+		}
 		
 		$this->loadModel($id)->delete();
 
