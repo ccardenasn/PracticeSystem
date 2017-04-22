@@ -22,11 +22,11 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password', 'required'),
+			array('username, password', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
 			// password needs to be authenticated
-			array('password', 'authenticate'),
+			array('password', 'authenticate','message'=>'Por favor ingrese un valor para {attribute}.'),
 		);
 	}
 
@@ -37,6 +37,8 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			'rememberMe'=>'Recordar la próxima vez',
+			'username'=>'Nombre de Usuario',
+			'password'=>'Contraseña',
 		);
 	}
 

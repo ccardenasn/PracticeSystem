@@ -1,6 +1,6 @@
 <?php
 include('connect.php');
-include('ForceUTF/Encoding.php');
+//include('ForceUTF/Encoding.php');
 
 $id_category = $_POST['id_category'];
 
@@ -13,7 +13,8 @@ $html="";
 while($rows = mysql_fetch_array($st))
 {
 	$valueSub=$rows['NombreAsignatura'];
-	$visibleSub=Encoding::toUTF8($rows['NombreAsignatura']);
+	//$visibleSub=Encoding::toUTF8($rows['NombreAsignatura']);
+	$visibleSub=$rows['NombreAsignatura'];
 	$html.='<option value="'.$valueSub.'">'.$visibleSub.'</option>';
 }
 

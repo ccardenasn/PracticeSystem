@@ -158,8 +158,28 @@ function getSubjectCellData($viewSubjects,$index){
 		$resultSubject = $viewSubjects[$index];
 	}
 	
-	$encodedResult = Encoding::toUTF8($resultSubject);
+	$encodedResult = utf8_encode($resultSubject);
 	return $encodedResult;
+}
+
+function quitar_tildes($cadena) {
+	$cadena = utf8_encode($cadena);
+$no_permitidas= array ("á","é","í","ó","ú","Á","É","Í","Ó","Ú","ñ","À","Ã","Ì","Ò","Ù","Ã™","Ã ","Ã¨","Ã¬","Ã²","Ã¹","ç","Ç","Ã¢","ê","Ã®","Ã´","Ã»","Ã‚","ÃŠ","ÃŽ","Ã”","Ã›","ü","Ã¶","Ã–","Ã¯","Ã¤","«","Ò","Ã","Ã„","Ã‹");
+$permitidas= array ("a","e","i","o","u","A","E","I","O","U","n","N","A","E","I","O","U","a","e","i","o","u","c","C","a","e","i","o","u","A","E","I","O","U","u","o","O","i","a","e","U","I","A","E");
+$texto = str_replace($no_permitidas, $permitidas ,$cadena);
+return $texto;
+}
+
+function copyPHPtoJavaScriptArr($copyArr){
+	for($i=0;$i<count($copyArr);$i++){
+		if($copyArr[$i] != "Asignar"){
+			$cad = $copyArr[$i]["Asignatura_NombreAsignatura"];
+			$cad = quitar_tildes($cad);
+			$copyArr[$i]["Asignatura_NombreAsignatura"] = $cad;
+		}
+	}
+	
+	return $copyArr;
 }
 
 ?>

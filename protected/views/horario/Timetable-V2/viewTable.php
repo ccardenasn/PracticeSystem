@@ -11,7 +11,7 @@ $js->registerCssFile($base.'/Timetable-V2/cssTimetableStyles/styleForm.css');
 
 include('findBlocks.php');
 include('viewTimeTableProcess.php');
-include('ForceUTF/Encoding.php');
+//include('ForceUTF/Encoding.php');
 
 echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
@@ -25,13 +25,17 @@ echo '<script type="text/javascript">
 
 
 $viewSubjects = orderTimeTableData($rutStudent);
+//print_r($viewSubjects);
 
+$copyArr = $viewSubjects;
+
+$copyArr = copyPHPtoJavaScriptArr($copyArr);
 
 $hour = hourColumns();
 ?>
 
 <script type="text/javascript">
-	var mainTimeTableArr = <?php echo json_encode($viewSubjects); ?>; 
+	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>; 
 </script>
 
 

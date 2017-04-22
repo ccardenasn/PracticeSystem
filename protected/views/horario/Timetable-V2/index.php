@@ -35,7 +35,7 @@ echo '<script type="text/javascript">
 	</div>
 	
 	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();">
+		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
 	</div>
 </body>
 

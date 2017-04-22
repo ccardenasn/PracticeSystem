@@ -1,4 +1,5 @@
 <?php
+include_once('horarioFunctions.php');
 
 class HorarioadminController extends Controller
 {
@@ -113,6 +114,12 @@ class HorarioadminController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$existSubject = containsTimetableSubject($id);
+		
+		if($existSubject != 0){
+			deleteTimetableSubjects($id);
+		}
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

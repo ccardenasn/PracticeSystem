@@ -18,6 +18,10 @@ echo '<script type="text/javascript">
 
 $viewSubjects = orderTimeTableData($model->Estudiante_RutEstudiante);
 
+$copyArr = $viewSubjects;
+
+$copyArr = copyPHPtoJavaScriptArr($copyArr);
+
 $hour = hourColumns();
 
 $successUpdatePage = Yii::app()->createUrl('horarioAdmin/successUpdateTimeTable');
@@ -29,7 +33,7 @@ echo '<script type="text/javascript">
 ?>
 
 <script type="text/javascript">
-	var mainTimeTableArr = <?php echo json_encode($viewSubjects); ?>; 
+	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>; 
 </script>
 
 
