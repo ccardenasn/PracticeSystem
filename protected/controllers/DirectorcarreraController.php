@@ -1,5 +1,6 @@
 <?php
 include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class DirectorcarreraController extends Controller
 {
@@ -70,6 +71,8 @@ class DirectorcarreraController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
+		$table = "directorcarrera";
+		
 		if(isset($_POST['Directorcarrera']))
 		{
 			$model->attributes=$_POST['Directorcarrera'];
@@ -77,7 +80,10 @@ class DirectorcarreraController extends Controller
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
 			
-			if($model->save()){
+			$empty = isEmpty($table);
+			
+			if($empty == true){
+				if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
@@ -88,6 +94,10 @@ class DirectorcarreraController extends Controller
 					}	
 				}
 				$this->redirect(array('view','id'=>$model->RutDirector));
+			}
+			}else{
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de un solo director de carrera.</li></ul></div>");
+			$this->refresh();
 			}
 		}
 		
