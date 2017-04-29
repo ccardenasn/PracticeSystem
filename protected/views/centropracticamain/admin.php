@@ -76,10 +76,9 @@ $('.search-form form').submit(function(){
 		'VigenciaProtocolo',
 		'FechaProtocolo',
 		'AnexoProtocolo',
-		'Dependencia',
-		/*
-		'NivelEducacional',
-		'Area',*/
+		array('name'=>'Dependencia_CodDependencia','value'=>'$data->dependenciaCodDependencia->NombreDependencia'),
+		array('name'=>'NivelEducacional_CodNivel','value'=>'$data->nivelEducacionalCodNivel->NombreNivel'),
+		'Area',
 		'Region_codRegion',
 		'Provincia_codProvincia',
 		//'Ciudad_codCiudad',

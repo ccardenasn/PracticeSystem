@@ -77,6 +77,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 			'TelefonoProfCoordGuiaCP' => 'Teléfono',
 			'CelularProfCoordGuiaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
+			'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 			'ImagenProfCoordGuiaCP' => 'Imagen',
 		);
 	}

@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->NombrePractica)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->NombrePractica)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombrePractica),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 );
@@ -24,11 +24,11 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Haga click en <b>"Añadir"</b> para agregar un nueva práctica a la lista.</li>
-			<li>Haga click en <b>"Actualizar"</b> para modificar información de práctica.</li>
-			<li>Haga click en <b>"Eliminar"</b> para borrar toda la información de práctica.</li>
-			<li>Desde la sección <b>"Administración"</b> se puede observar una lista de prácticas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
-			<li>Para regresar al índice de prácticas haga click en <b>"Lista"</b>.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nueva práctica a la lista.</li>
+			<li>Haga click en <strong>"Editar"</strong> para modificar información de práctica.</li>
+			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de práctica.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de prácticas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+			<li>Para regresar al índice de prácticas haga click en <strong>"Lista"</strong>.</li>
 		</ul>
 	</ul>
 </div><br>

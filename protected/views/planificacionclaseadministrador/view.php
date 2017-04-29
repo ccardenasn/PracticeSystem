@@ -21,7 +21,7 @@ if($logBookExist != 0){
 
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create','id'=>$model->Estudiante_RutEstudiante)),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->CodPlanificacion)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodPlanificacion)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclaseadministrador/adminPlanificacionEstudiante','id'=>$model->Estudiante_RutEstudiante)),
@@ -40,13 +40,13 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Haga click en <b>"Añadir"</b> para agregar una nueva planificación de estudiante  a la lista.</li>
-			<li>Haga click en <b>"Actualizar"</b> para modificar información de planificación.</li>
-			<li>Haga click en <b>"Eliminar"</b> para borrar toda la información de planificación.</li>
-			<li>Desde la sección <b>"Administración"</b> se puede observar una lista de planificaciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
-			<li>Haga click en <b>"Planificaciones de Estudiante"</b> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
-			<li>Haga click en <b>"Crear PDF"</b> para generar un documento en formato .pdf con información de la sesión y/o planificación.</li>
-			<li>Haga click en <b>"Ver Bitácora"</b> para visualizar informacion de bitácora asociada a la planificación.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar una nueva planificación de estudiante  a la lista.</li>
+			<li>Haga click en <strong>"Editar"</strong> para modificar información de planificación.</li>
+			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de planificación.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de planificaciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+			<li>Haga click en <strong>"Planificaciones de Estudiante"</strong> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
+			<li>Haga click en <strong>"Crear PDF"</strong> para generar un documento en formato .pdf con información de la sesión y/o planificación.</li>
+			<li>Haga click en <strong>"Ver Bitácora"</strong> para visualizar informacion de bitácora asociada a la planificación.</li>
 		</ul>
 	</ul>
 </div>
@@ -65,10 +65,10 @@ $arrdata=datosplanificacion($model->Estudiante_RutEstudiante);
 	'data'=>$model,
 	'attributes'=>array(
 		'Estudiante_RutEstudiante',
-		array('name'=>'Nombre Estudiante','value'=>$model->estudianteRutEstudiante->NombreEstudiante),
-		array('name'=>'Centro de Practica','value'=>$model->centroPracticaRBD->NombreCentroPractica),
+		'estudianteRutEstudiante.NombreEstudiante',
+		'centroPracticaRBD.NombreCentroPractica',
 		'ProfesorGuiaCP_RutProfGuiaCP',
-		array('name'=>'Profesor Guia','value'=>$model->profesorGuiaCPRutProfGuiaCP->NombreProfGuiaCP),
+		'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP',
 		'Curso',
 		'ConfiguracionPractica_NombrePractica',
 		'Fecha',

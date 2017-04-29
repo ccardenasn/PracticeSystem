@@ -44,27 +44,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($centroModel,'Dependencia');?>
-		<?php echo $form->dropDownList($centroModel,'Dependencia',
-								   array(
-									   'Municipal'=>'Municipal',
-									   'Particular Subvencionado'=>'Particular Subvencionado',
-									   'Particular'=>'Particular',
-									   'Particular Pagado'=>'Particular Pagado',
-								   ));?>
-		<?php echo $form->error($centroModel,'Dependencia'); ?>
+		<?php echo $form->labelEx($centroModel,'Dependencia_CodDependencia'); ?>
+		<?php echo $form->dropDownList($centroModel,'Dependencia_CodDependencia',CHtml::listData(Dependencia::model()->findAll(),'CodDependencia','NombreDependencia'));?>
+        <?php echo $form->error($centroModel,'Dependencia_CodDependencia'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($centroModel,'NivelEducacional');?>
-		<?php echo $form->dropDownList($centroModel,'NivelEducacional',
-								   array(
-									   'Educacion PreBasica'=>'Educacion PreBasica',
-									   'Educacion Basica'=>'Educacion Basica',
-									   'Educacion Media'=>'Educacion Media',
-									   'Educacion Superior'=>'Educacion Superior',
-								   ));?>
-		<?php echo $form->error($centroModel,'NivelEducacional'); ?>
+		<?php echo $form->labelEx($centroModel,'NivelEducacional_CodNivel'); ?>
+		<?php echo $form->dropDownList($centroModel,'NivelEducacional_CodNivel',CHtml::listData(Niveleducacional::model()->findAll(),'CodNivel','NombreNivel'));?>
+        <?php echo $form->error($centroModel,'NivelEducacional_CodNivel'); ?>
 	</div>
 
 	<div class="row">

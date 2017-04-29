@@ -37,13 +37,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Dependencia'); ?>
-		<?php echo $form->textField($model,'Dependencia',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'Dependencia_CodDependencia'); ?>
+		<?php echo $form->textField($model,'Dependencia_CodDependencia'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'NivelEducacional'); ?>
-		<?php echo $form->textField($model,'NivelEducacional',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'NivelEducacional_CodNivel'); ?>
+		<?php echo $form->textField($model,'NivelEducacional_CodNivel'); ?>
 	</div>
 
 	<div class="row">

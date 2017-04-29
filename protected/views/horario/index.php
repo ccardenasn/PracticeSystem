@@ -42,6 +42,7 @@ if($existSubject != 0 && $existBlock != 0){
 	}
 	
 }else{
+	$titleData="";
 	$menuData='';
 	echo "<h2>Actualmente no hay registros de asignaturas y/o bloques en el sistema, por favor contacte con su administrador.</h2>";
 }

@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Jefe UTP CP'=>array('index'),
 	$model->RutJefeUTPCP=>array('view','id'=>$model->RutJefeUTPCP),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(
@@ -24,10 +24,10 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Para regresar al índice de jefes utp cp haga click en "Lista".</li>
-			<li>Haga click en "Añadir" para agregar un nuevo jefe utp cp a la lista.</li>
-			<li>Haga click en "Detalles" para visualizar información de jefe utp cp.</li>
-			<li>Desde la sección "Administración" se puede observar una lista de jefes utp cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Para regresar al índice de jefes utp cp haga click en <strong>"Lista"</strong>.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nuevo jefe utp cp a la lista.</li>
+			<li>Haga click en <strong>"Detalles"</strong> para visualizar información de jefe utp cp.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de jefes utp cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
 		</ul>
 	</ul>
 </div><br>

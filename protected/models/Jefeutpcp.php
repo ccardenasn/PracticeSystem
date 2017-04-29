@@ -77,6 +77,7 @@ class Jefeutpcp extends CActiveRecord
 			'TelefonoJefeUTPCP' => 'Teléfono',
 			'CelularJefeUTPCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
+			'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 			'ImagenJefeUTPCP' => 'Imagen',
 		);
 	}

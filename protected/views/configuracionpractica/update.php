@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Configuración de Prácticas'=>array('index'),
 	$model->NombrePractica=>array('view','id'=>$model->NombrePractica),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(

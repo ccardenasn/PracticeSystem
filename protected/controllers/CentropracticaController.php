@@ -1,4 +1,5 @@
 <?php
+include_once('mainFunctions.php');
 
 class CentropracticaController extends Controller
 {
@@ -29,15 +30,18 @@ class CentropracticaController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','selectProvincia','selectCiudad'),
-				'users'=>array('*'),
+				//'users'=>array('*'),
+				'users'=>Centropractica::model()->getAdmins(),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				//'users'=>array('@'),
+				'users'=>Centropractica::model()->getAdmins(),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('@'),
+				//'users'=>array('admin'),
+				'users'=>Centropractica::model()->getAdmins(),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -116,6 +120,18 @@ class CentropracticaController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
+		$fileAttribCentro = "AnexoProtocolo";
+		$tableCentro = "centropractica";
+		$codTableCentro = "RBD";
+		
+		$oldFileCentro = getFileModel($fileAttribCentro,$tableCentro,$codTableCentro,$id);
+		
+		$imageAttribCentro = "ImagenCentroPractica";
+		$tableCentro = "centropractica";
+		$codTableCentro = "RBD";
+		
+		$oldImageCentro = getFileModel($imageAttribCentro,$tableCentro,$codTableCentro,$id);
+		
 		if(isset($_POST['Centropractica']))
 		{
 			$model->attributes=$_POST['Centropractica'];
@@ -133,6 +149,8 @@ class CentropracticaController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
 						$this->refresh();
 					}
+				}else{
+					saveFilePath($tableCentro,$fileAttribCentro,$oldFileCentro,$codTableCentro,$id);
 				}
 				
 				if($image != null){
@@ -143,6 +161,8 @@ class CentropracticaController extends Controller
 						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
 						$this->refresh();
 					}	
+				}else{
+					saveFilePath($tableCentro,$imageAttribCentro,$oldImageCentro,$codTableCentro,$id);
 				}
 				
 				$this->redirect(array('view','id'=>$model->RBD));

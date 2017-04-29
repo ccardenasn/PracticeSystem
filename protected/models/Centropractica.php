@@ -9,8 +9,8 @@
  * @property string $VigenciaProtocolo
  * @property string $FechaProtocolo
  * @property string $AnexoProtocolo
- * @property string $Dependencia
- * @property string $NivelEducacional
+ * @property integer $Dependencia_CodDependencia
+ * @property integer $NivelEducacional_CodNivel
  * @property string $Area
  * @property integer $Region_codRegion
  * @property integer $Provincia_codProvincia
@@ -20,6 +20,8 @@
  *
  * The followings are the available model relations:
  * @property Ciudad $ciudadCodCiudad
+ * @property Dependencia $dependenciaCodDependencia
+ * @property Niveleducacional $nivelEducacionalCodNivel
  * @property Provincia $provinciaCodProvincia
  * @property Region $regionCodRegion
  * @property Directorcp[] $directorcps
@@ -48,13 +50,13 @@ class Centropractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RBD, NombreCentroPractica, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-			array('RBD, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true),
-			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Dependencia, NivelEducacional, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
+			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true),
+			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
 			array('AnexoProtocolo', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia, NivelEducacional, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle, ImagenCentroPractica', 'safe', 'on'=>'search'),
+			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia_CodDependencia, NivelEducacional_CodNivel, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle, ImagenCentroPractica', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +69,8 @@ class Centropractica extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'ciudadCodCiudad' => array(self::BELONGS_TO, 'Ciudad', 'Ciudad_codCiudad'),
+			'dependenciaCodDependencia' => array(self::BELONGS_TO, 'Dependencia', 'Dependencia_CodDependencia'),
+			'nivelEducacionalCodNivel' => array(self::BELONGS_TO, 'Niveleducacional', 'NivelEducacional_CodNivel'),
 			'provinciaCodProvincia' => array(self::BELONGS_TO, 'Provincia', 'Provincia_codProvincia'),
 			'regionCodRegion' => array(self::BELONGS_TO, 'Region', 'Region_codRegion'),
 			'directorcps' => array(self::HAS_MANY, 'Directorcp', 'CentroPractica_RBD'),
@@ -86,13 +90,13 @@ class Centropractica extends CActiveRecord
 	{
 		return array(
 			'RBD' => 'RBD',
-			'NombreCentroPractica' => 'Nombre',
+			'NombreCentroPractica' => 'Nombre de Centro',
 			'VigenciaProtocolo' => 'Vigencia Protocolo',
 			'FechaProtocolo' => 'Fecha Protocolo',
 			'AnexoProtocolo' => 'Anexo Protocolo',
-			'Dependencia' => 'Dependencia',
-			'NivelEducacional' => 'Nivel Educacional',
-			'Area' => 'Area',
+			'Dependencia_CodDependencia' => 'Dependencia',
+			'NivelEducacional_CodNivel' => 'Nivel Educacional',
+			'Area' => 'Área',
 			'Region_codRegion' => 'Región',
 			'Provincia_codProvincia' => 'Provincia',
 			'Ciudad_codCiudad' => 'Ciudad',
@@ -124,8 +128,8 @@ class Centropractica extends CActiveRecord
 		$criteria->compare('VigenciaProtocolo',$this->VigenciaProtocolo,true);
 		$criteria->compare('FechaProtocolo',$this->FechaProtocolo,true);
 		$criteria->compare('AnexoProtocolo',$this->AnexoProtocolo,true);
-		$criteria->compare('Dependencia',$this->Dependencia,true);
-		$criteria->compare('NivelEducacional',$this->NivelEducacional,true);
+		$criteria->compare('Dependencia_CodDependencia',$this->Dependencia_CodDependencia);
+		$criteria->compare('NivelEducacional_CodNivel',$this->NivelEducacional_CodNivel);
 		$criteria->compare('Area',$this->Area,true);
 		$criteria->compare('Region_codRegion',$this->Region_codRegion);
 		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);

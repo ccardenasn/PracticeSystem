@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutDirectorCP)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RutDirectorCP)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutDirectorCP),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 );
@@ -24,11 +24,11 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Haga click en "Añadir" para agregar un nuevo director cp a la lista.</li>
-			<li>Haga click en "Actualizar" para modificar información de director cp.</li>
-			<li>Haga click en "Eliminar" para borrar toda la información de director cp.</li>
-			<li>Desde la sección "Administración" se puede observar una lista de directores cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-			<li>Para regresar al índice de directores cp haga click en "Lista".</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nuevo director cp a la lista.</li>
+			<li>Haga click en <strong>"Editar"</strong> para modificar información de director cp.</li>
+			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de director cp.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de directores cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+			<li>Para regresar al índice de directores cp haga click en <strong>"Lista"</strong>.</li>
 		</ul>
 	</ul>
 </div><br>
@@ -38,12 +38,12 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-        array('name'=>'Rut','value'=>$model->RutDirectorCP),
-        array('name'=>'Nombre','value'=>$model->NombreDirectorCP),
-        array('name'=>'Mail','value'=>$model->MailDirectorCP),
-        array('name'=>'Telefono','value'=>$model->TelefonoDirectorCP),
-        array('name'=>'Celular','value'=>$model->CelularDirectorCP),
-		array('name'=>'Centro de Practica','value'=>$model->CentroPractica_RBD),
+		'RutDirectorCP',
+		'NombreDirectorCP',
+		'MailDirectorCP',
+		'TelefonoDirectorCP',
+		'CelularDirectorCP',
+		'centroPracticaRBD.NombreCentroPractica',
 		array(
             'name'=>'ImagenDirectorCP',
 			'type' => 'raw',

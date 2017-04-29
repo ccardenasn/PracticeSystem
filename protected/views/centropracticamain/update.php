@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Centros de Práctica'=>array('index'),
 	$centroModel->RBD=>array('view','id'=>$centroModel->RBD),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(

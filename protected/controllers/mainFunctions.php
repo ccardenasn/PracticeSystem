@@ -14,6 +14,18 @@ function isEmpty($table){
 	return $empty;
 }
 
+function getFileModel($fileAttrib,$table,$codTable,$id){
+	$query = "select ".$fileAttrib." from ".$table." where ".$codTable." = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function saveFilePath($table,$fileAttrib,$file,$codTable,$id){
+	$query="update ".$table." set ".$fileAttrib." = '".$file."' where ".$codTable." = '".$id."';";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
 
 
 ?>

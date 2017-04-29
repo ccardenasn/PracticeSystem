@@ -25,12 +25,12 @@
 	<?php echo CHtml::encode($data->AnexoProtocolo); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Dependencia')); ?>:</b>
-	<?php echo CHtml::encode($data->Dependencia); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Dependencia_CodDependencia')); ?>:</b>
+	<?php echo CHtml::encode($data->Dependencia_CodDependencia); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NivelEducacional')); ?>:</b>
-	<?php echo CHtml::encode($data->NivelEducacional); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NivelEducacional_CodNivel')); ?>:</b>
+	<?php echo CHtml::encode($data->NivelEducacional_CodNivel); ?>
 	<br />
 
 	<?php /*

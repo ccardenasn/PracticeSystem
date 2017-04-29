@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Profesor Guia CP'=>array('index'),
 	$model->RutProfGuiaCP=>array('view','id'=>$model->RutProfGuiaCP),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(
@@ -23,10 +23,10 @@ $this->menu=array(
 	<ul>
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
-			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li><li>Para regresar al índice de profesor guía cp haga click en "Lista".</li>
-			<li>Haga click en "Añadir" para agregar un nuevo profesor guía cp a la lista.</li>
-			<li>Haga click en "Detalles" para visualizar información de profesor guía cp.</li>
-			<li>Desde la sección "Administración" se puede observar una lista de profesores guía cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li><li>Para regresar al índice de profesor guía cp haga click en <strong>"Lista"</strong>.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nuevo profesor guía cp a la lista.</li>
+			<li>Haga click en <strong>"Detalles"</strong> para visualizar información de profesor guía cp.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de profesores guía cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
 		</ul>
 	</ul>
 </div><br>

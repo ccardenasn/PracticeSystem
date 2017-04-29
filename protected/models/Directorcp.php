@@ -77,6 +77,7 @@ class Directorcp extends CActiveRecord
 			'TelefonoDirectorCP' => 'Teléfono',
 			'CelularDirectorCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
+			'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 			'ImagenDirectorCP' => 'Imagen',
 		);
 	}

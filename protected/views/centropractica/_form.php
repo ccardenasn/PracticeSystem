@@ -17,7 +17,7 @@
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
+	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'RBD'); ?>
@@ -30,7 +30,7 @@
 		<?php echo $form->textField($model,'NombreCentroPractica',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreCentroPractica'); ?>
 	</div>
-
+	
 	<div class="row">
         <?php echo $form->labelEx($model,'VigenciaProtocolo');?>
         <?php echo $form->dropDownList($model,'VigenciaProtocolo', 
@@ -40,7 +40,7 @@
                                        ));?>
         <?php echo $form->error($model,'VigenciaProtocolo'); ?>
     </div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'FechaProtocolo'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -52,6 +52,7 @@
                         'changeYear'=>'true',
                         'dateFormat' => 'dd-mm-yy',
                     ),
+	'htmlOptions'=>array('value'=>'Haga Click Aquí'),
             ));?>
 		<?php echo $form->error($model,'FechaProtocolo'); ?>
 	</div>
@@ -61,18 +62,13 @@
 		<?php echo CHtml::activeFileField($model,'AnexoProtocolo');?>
 		<?php echo $form->error($model,'AnexoProtocolo'); ?>
 	</div>
-
+	
 	<div class="row">
-        <?php echo $form->labelEx($model,'Dependencia');?>
-        <?php echo $form->dropDownList($model,'Dependencia', 
-                                       array(
-                                           'Municipal'=>'Municipal',
-                                           'Particular Subvencionado'=>'Particular Subvencionado',
-                                           'Particular'=>'Particular',
-                                       ));?>
-        <?php echo $form->error($model,'Dependencia'); ?>
-    </div>
-
+		<?php echo $form->labelEx($model,'Dependencia_CodDependencia'); ?>
+		<?php echo $form->dropDownList($model,'Dependencia_CodDependencia',CHtml::listData(Dependencia::model()->findAll(),'CodDependencia','NombreDependencia'));?>
+        <?php echo $form->error($model,'Dependencia_CodDependencia'); ?>
+	</div>
+	
 	<div class="row">
         <?php echo $form->labelEx($model,'Area');?>
         <?php echo $form->dropDownList($model,'Area', 
@@ -82,19 +78,13 @@
                                        ));?>
         <?php echo $form->error($model,'Area'); ?>
     </div>
-
-	<div class="row">
-        <?php echo $form->labelEx($model,'NivelEducacional');?>
-        <?php echo $form->dropDownList($model,'NivelEducacional', 
-                                       array(
-                                           'Educacion PreBasica'=>'Educacion PreBasica',
-                                           'Educacion Basica'=>'Educacion Basica',
-                                           'Educacion Media'=>'Educacion Media',
-                                           'Educacion Superior'=>'Educacion Superior',
-                                       ));?>
-        <?php echo $form->error($model,'NivelEducacional'); ?>
-    </div>
 	
+	<div class="row">
+		<?php echo $form->labelEx($model,'NivelEducacional_CodNivel'); ?>
+		<?php echo $form->dropDownList($model,'NivelEducacional_CodNivel',CHtml::listData(Niveleducacional::model()->findAll(),'CodNivel','NombreNivel'));?>
+        <?php echo $form->error($model,'NivelEducacional_CodNivel'); ?>
+	</div>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'Region_codRegion'); ?>
 		<?php echo $form->dropDownList($model,'Region_codRegion',CHtml::listData(Region::model()->findAll(),'codRegion','NombreRegion'),
@@ -112,7 +102,7 @@
 		);?>
 		<?php echo $form->error($model,'Region_codRegion'); ?>
 	</div>
-    
+
 	<?php //campo dropdownlist Provincia?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'Provincia_codProvincia'); ?>
@@ -136,7 +126,7 @@
 		);?>
 		<?php echo $form->error($model,'Provincia_codProvincia'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'Ciudad_codCiudad'); ?>
 		<?php 
@@ -157,7 +147,7 @@
 		<?php echo $form->textField($model,'Calle',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Calle'); ?>
 	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'ImagenCentroPractica'); ?>
 		<?php echo CHtml::activeFileField($model,'ImagenCentroPractica');?>

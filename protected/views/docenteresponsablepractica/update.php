@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Docentes Responsables de Prácticas'=>array('index'),
 	$model->RutResponsable=>array('view','id'=>$model->RutResponsable),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(
@@ -24,10 +24,10 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Para regresar al índice de docentes haga click en <b>"Lista"</b>.</li>
-			<li>Haga click en <b>"Añadir"</b> para agregar un nuevo docente a la lista.</li>
-			<li>Haga click en <b>"Detalles"</b> para visualizar información de funcionario.</li>
-			<li>Desde la sección <b>"Administración"</b> se puede observar una lista de docentes existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>
+			<li>Para regresar al índice de docentes haga click en <strong>"Lista"</strong>.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nuevo docente a la lista.</li>
+			<li>Haga click en <strong>"Detalles"</strong> para visualizar información de funcionario.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de docentes existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
 		</ul>
 	</ul>
 </div><br>
