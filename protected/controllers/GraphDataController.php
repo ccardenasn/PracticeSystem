@@ -28,7 +28,7 @@ class GraphDataController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e','graph_f'),
+				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e','graph_f','pdf'),
 				//'users'=>array('*'),
 				'users'=>GraphData::model()->getAdmins(),
 			),
@@ -118,5 +118,10 @@ class GraphDataController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	public function actionPdf()
+	{
+		$this->render('pdf');	
 	}
 }

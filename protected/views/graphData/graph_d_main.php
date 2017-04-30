@@ -1,7 +1,16 @@
-<h1>Cantidad de Estudiantes de Acuerdo a Centros o Dependencias</h1>
+<h1>Distribución alumnos por centro o dependencia</h1><br>
 
-<p><br/>
-<p><br/>
+<div class="collapse">
+	<h3>Descripción</h3>
+	<ul>
+		Visualiza la cantidad total de estudiantes que recibe cada centro de practica.
+	</ul>
+	<ul>
+		Otra opción es observar la distribución de los alumnos en práctica según la dependencia administrativa del establecimiento.
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 	
 <div id="data">
    <?php $this->renderPartial('graph_d/load'); ?>
@@ -16,10 +25,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
-	array('label'=>'Cantidad de Estudiantes En Practica Por Centro', 'url'=>array('graphdata/graph_a')),
-	array('label'=>'Prácticas Realizadas Por Centro', 'url'=>array('graphdata/graph_b')),
-	array('label'=>'Cantidad de Estudiantes Atendidos Segun Práctica Por Centro', 'url'=>array('graphdata/graph_c')),
+	array('label'=>'Estudiantes según tipo de práctica', 'url'=>array('graphdata/graph_a')),
+	array('label'=>'Niños', 'url'=>array('graphdata/graph_c')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
-	array('label'=>'Cantidad de Profesores Por Centro de Prácticas', 'url'=>array('graphdata/graph_f')),
+	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
 );
 ?>

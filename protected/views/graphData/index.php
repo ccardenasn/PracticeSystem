@@ -11,17 +11,15 @@ $this->breadcrumbs=array(
 <p style="line-height: 2em;">
 
 <?php
-	echo CHtml::link("<font size=4>1. Cantidad de estudiantes en práctica por centro</font>",array('graphdata/graph_a'));
+	echo CHtml::link("<font size=4>1. Estudiantes según tipo de práctica.</font>",array('graphdata/graph_a'),array('style'=> 'text-decoration:none'));
 	echo '<br>';
-	echo CHtml::link("<font size=4>2. Prácticas realizadas por centro</font>",array('graphdata/graph_b'));
+	echo CHtml::link("<font size=4>2. Niños.</font>",array('graphdata/graph_c'),array('style'=> 'text-decoration:none'));
 	echo '<br>';
-	echo CHtml::link("<font size=4>3. Cantidad de estudiantes atendidos según práctica por centro</font>",array('graphdata/graph_c'));
+	echo CHtml::link("<font size=4>3. Distribución alumnos por centro o dependencia.</font>",array('graphdata/graph_d'),array('style'=> 'text-decoration:none'));
 	echo '<br>';
-	echo CHtml::link("<font size=4>4. Cantidad de estudiantes de acuerdo a centros o dependencias</font>",array('graphdata/graph_d'));
+	echo CHtml::link("<font size=4>4. Sesiones ejecutadas.</font>",array('graphdata/graph_e'),array('style'=> 'text-decoration:none'));
 	echo '<br>';
-	echo CHtml::link("<font size=4>5. Sesiones ejecutadas</font>",array('graphdata/graph_e'));
-	echo '<br>';
-	echo CHtml::link("<font size=4>6. Cantidad de profesores por centro de prácticas</font>",array('graphdata/graph_f'));
+	echo CHtml::link("<font size=4>5. Profesores Guías por centro.</font>",array('graphdata/graph_f'),array('style'=> 'text-decoration:none'));
 ?>
 
 </p>

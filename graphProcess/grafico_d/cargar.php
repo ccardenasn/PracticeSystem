@@ -38,7 +38,9 @@ for($i=0;$i<$datalength;$i++)
 	mysql_query($insertquery,$con);
 }
 	
-$querydataB = "select count(*),Dependencia from centropractica group by Dependencia;";
+//$querydataB = "select count(*),Dependencia_CodDependencia from centropractica group by Dependencia_CodDependencia;";
+
+$querydataB = "select count(*),Dependencia_CodDependencia,NombreDependencia from centropractica inner join Dependencia on centropractica.Dependencia_CodDependencia = dependencia.CodDependencia group by NombreDependencia;";
 		
 $execqueryB = mysql_query($querydataB,$con);
 		
@@ -56,7 +58,7 @@ $datalengthB = count($dataB);
 for($l=0;$l<$datalengthB;$l++)
 {
 	$numeroB=$dataB[$l]['count(*)'];
-	$nombrepracticaB=$dataB[$l]['Dependencia'];
+	$nombrepracticaB=$dataB[$l]['NombreDependencia'];
 	$idcentroB= '2';
 	
 	$insertqueryB = "insert into graph_data(numero,nombrepractica,idcentro) values('".$numeroB."','".$nombrepracticaB."','".$idcentroB."');";

@@ -21,10 +21,16 @@ for($index=0;$index<$rbdlistlength;$index++)
 	{	
 		
 		
-		$querydata = "select sum(clasebitacorasesion.numeroalumnos),
+		/*$querydata = "select sum(clasebitacorasesion.NumeroAlumnosClase),
 planificacionclase.ConfiguracionPractica_NombrePractica,
 planificacionclase.CentroPractica_RBD
-from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.bitacorasesion_id = bitacorasesion.id where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
+from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.bitacorasesion_CodBitacora = bitacorasesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
+group by planificacionclase.ConfiguracionPractica_NombrePractica;";*/
+		
+		$querydata = "select sum(clasebitacorasesion.NumeroAlumnosClase),
+planificacionclase.ConfiguracionPractica_NombrePractica,
+planificacionclase.CentroPractica_RBD
+from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.BitacoraSesion_CodBitacora = BitacoraSesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
 group by planificacionclase.ConfiguracionPractica_NombrePractica;";
 		$execquery = mysql_query($querydata,$con);
 		
@@ -39,7 +45,7 @@ group by planificacionclase.ConfiguracionPractica_NombrePractica;";
 		
 		for($i=0;$i<$datalength;$i++)
 		{
-			$numeroalumnos=$data[$i]['sum(clasebitacorasesion.numeroalumnos)'];
+			$numeroalumnos=$data[$i]['sum(clasebitacorasesion.NumeroAlumnosClase)'];
 			$nombrepractica=$data[$i]['ConfiguracionPractica_NombrePractica'];
 			$idcentro=$data[$i]['CentroPractica_RBD'];
 			

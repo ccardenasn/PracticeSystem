@@ -1,7 +1,13 @@
-<h1>Sesiones Ejecutadas</h1>
+<h1>Sesiones Ejecutadas</h1><br>
 
-<p><br/>
-<p><br/>
+<div class="collapse">
+	<h3>Descripción</h3>
+	<ul>
+		Da a conocer el porcentaje de las sesiones planificadas que efectivamente han realizado los estudiantes según la fecha actual.
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 	
 <div id="data">
    <?php $this->renderPartial('graph_e/load'); ?>
@@ -16,10 +22,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
-	array('label'=>'Cantidad de Estudiantes En Practica Por Centro', 'url'=>array('graphdata/graph_a')),
-	array('label'=>'Prácticas Realizadas Por Centro', 'url'=>array('graphdata/graph_b')),
-	array('label'=>'Cantidad de Estudiantes Atendidos Segun Práctica Por Centro', 'url'=>array('graphdata/graph_c')),
-	array('label'=>'Cantidad de Estudiantes de Acuerdo a Centros o Dependencias', 'url'=>array('graphdata/graph_d')),
-	array('label'=>'Cantidad de Profesores Por Centro de Prácticas', 'url'=>array('graphdata/graph_f')),
+	array('label'=>'Estudiantes según tipo de práctica', 'url'=>array('graphdata/graph_a')),
+	array('label'=>'Niños', 'url'=>array('graphdata/graph_c')),
+	array('label'=>'Distribución alumnos por centro o dependencia', 'url'=>array('graphdata/graph_d')),
+	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
+	
 );
 ?>

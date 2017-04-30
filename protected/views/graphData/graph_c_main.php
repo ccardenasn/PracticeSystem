@@ -1,7 +1,13 @@
-<h1>Cantidad de Estudiantes Atendidos Segun Práctica Por Centro</h1>
+<h1>Niños</h1><br>
 
-<p><br/>
-<p><br/>
+<div class="collapse">
+	<h3>Descripción</h3>
+	<ul>
+		Corresponde a los alumnos de educación básica (niños y/o jovenes) que pertenecen a los centros de práctica con los cuales los estudiantes de pedagogía han trabajado.
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 	
 <div id="data">
    <?php $this->renderPartial('graph_c/load'); ?>
@@ -16,10 +22,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
-	array('label'=>'Cantidad de Estudiantes En Practica Por Centro', 'url'=>array('graphdata/graph_a')),
-	array('label'=>'Prácticas Realizadas Por Centro', 'url'=>array('graphdata/graph_b')),
-	array('label'=>'Cantidad de Estudiantes de Acuerdo a Centros o Dependencias', 'url'=>array('graphdata/graph_d')),
+	array('label'=>'Estudiantes según tipo de práctica', 'url'=>array('graphdata/graph_a')),
+	array('label'=>'Distribución alumnos por centro o dependencia', 'url'=>array('graphdata/graph_d')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
-	array('label'=>'Cantidad de Profesores Por Centro de Prácticas', 'url'=>array('graphdata/graph_f')),
+	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
 );
 ?>

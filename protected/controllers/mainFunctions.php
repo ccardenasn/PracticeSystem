@@ -26,6 +26,13 @@ function saveFilePath($table,$fileAttrib,$file,$codTable,$id){
 	Yii::app()->db->createCommand($query)->execute();
 }
 
+function contains($table,$codTable,$id){
+	$query = "select count(*) from estudiante where Mencion_NombreMencion = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
 
 
 ?>

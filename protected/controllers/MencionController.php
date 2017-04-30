@@ -1,4 +1,5 @@
 <?php
+include_once('mainFunctions.php');
 
 class MencionController extends Controller
 {
@@ -113,11 +114,26 @@ class MencionController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$table = "estudiante";
+		$codTable = "Mencion_NombreMencion";
+		
+		$exist = contains($table,$codTable,$id);
+		
+		if($exist == 0){
+			$this->loadModel($id)->delete();
+			
+			if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible eliminar!</strong></p><ul><li>Hay estudiantes registrados que aun cursan esta mención.</li></ul></div>");
+			//$this->refresh();
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array("view&id=".$id.""));
+			
+		}
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		
 	}
 
 	/**

@@ -1,7 +1,13 @@
-<h1>Cantidad de Estudiantes En Practica Por Centro</h1>
+<h1>Estudiantes según tipo de práctica</h1><br>
 
-<p><br/>
-<p><br/>
+<div class="collapse">
+	<h3>Descripción</h3>
+	<ul>
+		Indica la distribución de estudiantes según la práctica que realiza en cada centro.
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 	
 <div id="data">
    <?php $this->renderPartial('graph_a/load'); ?>
@@ -16,10 +22,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
-	array('label'=>'Prácticas Realizadas Por Centro', 'url'=>array('graphdata/graph_b')),
-	array('label'=>'Cantidad de Estudiantes Atendidos Segun Práctica Por Centro', 'url'=>array('graphdata/graph_c')),
-	array('label'=>'Cantidad de Estudiantes de Acuerdo a Centros o Dependencias', 'url'=>array('graphdata/graph_d')),
+	array('label'=>'Niños', 'url'=>array('graphdata/graph_c')),
+	array('label'=>'Distribución alumnos por centro o dependencia', 'url'=>array('graphdata/graph_d')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
-	array('label'=>'Cantidad de Profesores Por Centro de Prácticas', 'url'=>array('graphdata/graph_f')),
+	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
+	array('label'=>'Crear PDF', 'url'=>array('pdf')),
 );
 ?>
