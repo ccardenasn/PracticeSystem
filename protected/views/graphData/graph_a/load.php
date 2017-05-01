@@ -3,7 +3,11 @@ $base = Yii::app()->baseUrl;
 $js = Yii::app()->getClientScript();
 $js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/assets/highcharts.js');
 $js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/assets/modules/exporting.js');
+//$js->registerScriptFile($base.'/graphProcess/highcharts-export-clientside-master/highcharts-export-clientside.js');
+$js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/offline-exporting.js');
+//$js->registerScriptFile($base.'/graphProcess/yii-highcharts/offline-exporting.js');
 $js->registerScriptFile($base.'/graphProcess/grafico_a/loadGraph_a.js');
+
 ?>
 
 <?php

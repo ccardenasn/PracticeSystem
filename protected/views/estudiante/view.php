@@ -16,6 +16,7 @@ $this->menu=array(
 	array('label'=>'Planificaciones de Estudiante','url'=>array('planificacionclaseadministrador/adminPlanificacionEstudiante','id'=>$model->RutEstudiante)),
 	array('label'=>'Planificaciones', 'url'=>array('planificacionclaseadministrador/admin')),
 	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Crear Horario', 'url'=>array('horarioadmin/createHorario','id'=>$model->RutEstudiante)),
 );
 ?>
 

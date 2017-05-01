@@ -57,7 +57,8 @@ class Horarioadmin extends CActiveRecord
 	{
 		return array(
 			'CodHorario' => 'Cod Horario',
-			'Estudiante_RutEstudiante' => 'Estudiante Rut Estudiante',
+			'Estudiante_RutEstudiante' => 'Rut',
+			'estudianteRutEstudiante.NombreEstudiante' => 'Nombre',
 		);
 	}
 
