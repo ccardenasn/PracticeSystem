@@ -4,24 +4,41 @@
 
 $this->breadcrumbs=array(
 	'Semestres'=>array('index'),
-	$model->CodSemestre,
+	$model->NombreSemestre,
 );
 
 $this->menu=array(
-	array('label'=>'List Semestre', 'url'=>array('index')),
-	array('label'=>'Create Semestre', 'url'=>array('create')),
-	array('label'=>'Update Semestre', 'url'=>array('update', 'id'=>$model->CodSemestre)),
-	array('label'=>'Delete Semestre', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodSemestre),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Semestre', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodSemestre)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodSemestre),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Semestre #<?php echo $model->CodSemestre; ?></h1>
+<h1>Periodo: <?php echo $model->NombreSemestre; ?></h1><br>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nuevo semestre a la lista.</li>
+			<li>Haga click en <strong>"Editar"</strong> para modificar información de semestre.</li>
+			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de semestre.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de semestre existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+			<li>Para regresar al índice de semestres haga click en <strong>"Lista"</strong>.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'CodSemestre',
+		//'CodSemestre',
 		'NombreSemestre',
 	),
 )); ?>

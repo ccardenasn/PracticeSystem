@@ -1,5 +1,6 @@
 <?php
 include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class DocenteresponsablepracticaController extends Controller
 {
@@ -69,6 +70,9 @@ class DocenteresponsablepracticaController extends Controller
 		$model=new Docenteresponsablepractica;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
+		
+		$table = "docenteresponsablepractica";
+		$codTable = "RutResponsable";
 
 		if(isset($_POST['Docenteresponsablepractica']))
 		{
@@ -77,17 +81,24 @@ class DocenteresponsablepracticaController extends Controller
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
 			
-			if($model->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}	
+			$exist = contains($table,$codTable,$model->RutResponsable);
+			
+			if($exist == 0){
+				if($model->save()){
+					if($file != null){
+						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+							$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
+						}else{
+							deleteData($table,$codTable,$model->RutResponsable);
+							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+							$this->refresh();
+						}	
+					}
+					$this->redirect(array('view','id'=>$model->RutResponsable));
 				}
-				$this->redirect(array('view','id'=>$model->RutResponsable));
+			}else{
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutResponsable." ya está registrado.</li></ul></div>");
+				$this->refresh();
 			}
 		}
 		

@@ -4,18 +4,34 @@
 
 $this->breadcrumbs=array(
 	'Semestres'=>array('index'),
-	$model->CodSemestre=>array('view','id'=>$model->CodSemestre),
-	'Update',
+	$model->NombreSemestre=>array('view','id'=>$model->CodSemestre),
+	'Editar',
 );
 
 $this->menu=array(
-	array('label'=>'List Semestre', 'url'=>array('index')),
-	array('label'=>'Create Semestre', 'url'=>array('create')),
-	array('label'=>'View Semestre', 'url'=>array('view', 'id'=>$model->CodSemestre)),
-	array('label'=>'Manage Semestre', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->CodSemestre)),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Semestre <?php echo $model->CodSemestre; ?></h1>
+<h1>Modificar Periodo: <?php echo $model->NombreSemestre; ?></h1><br>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Para regresar al índice de semestres haga click en <strong>"Lista"</strong>.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar un nuevo semestre a la lista.</li>
+			<li>Haga click en <strong>"Detalles"</strong> para visualizar información de semestre.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de semestres existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

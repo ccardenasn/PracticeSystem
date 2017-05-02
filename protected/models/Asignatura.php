@@ -29,7 +29,7 @@ class Asignatura extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombreAsignatura, Semestre_CodSemestre', 'required'),
+			array('NombreAsignatura, Semestre_CodSemestre', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
 			array('NombreAsignatura', 'length', 'max'=>255),
 			// The following rule is used by search().
