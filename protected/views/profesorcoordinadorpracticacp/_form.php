@@ -19,6 +19,12 @@
 
 	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 
+	<?php if(Yii::app()->user->hasFlash('message')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('message'); ?>
+    </div>
+    <?php endif; ?>
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'RutProfCoordGuiaCp'); ?>
 		<?php echo $form->textField($model,'RutProfCoordGuiaCp',array('size'=>45,'maxlength'=>45)); ?>

@@ -72,6 +72,7 @@ class DirectorcarreraController extends Controller
 		$this->performAjaxValidation($model);
 
 		$table = "directorcarrera";
+		$codTable = "CodDirector";
 		
 		if(isset($_POST['Directorcarrera']))
 		{
@@ -84,20 +85,20 @@ class DirectorcarreraController extends Controller
 			
 			if($empty == true){
 				if($model->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+					if($file != null){
+						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+							$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
+						}else{
+							deleteData($table,$codTable,$model->RutDirector);
+							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();
-					}	
+						}
+					}
+					$this->redirect(array('view','id'=>$model->RutDirector));
 				}
-				$this->redirect(array('view','id'=>$model->RutDirector));
-			}
 			}else{
 				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de un solo director de carrera.</li></ul></div>");
-			$this->refresh();
+				$this->refresh();
 			}
 		}
 		
@@ -136,7 +137,7 @@ class DirectorcarreraController extends Controller
 						//se guarda la ruta de la imagen
 						$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
 					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();
 					}
 				}else{

@@ -75,8 +75,10 @@ class Configuracionpractica extends CActiveRecord
 			'SemestrePractica' => 'Semestre',
 			'NumeroSesionesPractica' => 'Número de Sesiones',
 			'NumeroHorasPractica' => 'Número de Horas',
-			'DocenteCoordinadorPracticas_RutCoordinador' => 'Docente Coordinador de Prácticas',
-			'DocenteResponsablePractica_RutResponsable' => 'Docente Responsable de Prácticas',
+			'DocenteCoordinadorPracticas_RutCoordinador' => 'Rut Coordinador de Prácticas',
+			'DocenteResponsablePractica_RutResponsable' => 'Rut Responsable de Prácticas',
+			'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador' => 'Nombre Coordinador de Prácticas',
+			'docenteResponsablePracticaRutResponsable.NombreResponsable' => 'Nombre Responsable de Prácticas',
 		);
 	}
 

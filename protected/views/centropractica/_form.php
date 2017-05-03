@@ -19,6 +19,12 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+	<?php if(Yii::app()->user->hasFlash('message')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('message'); ?>
+    </div>
+    <?php endif; ?>
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'RBD'); ?>
 		<?php echo $form->textField($model,'RBD'); ?>

@@ -38,13 +38,15 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-        array('name'=>'Nombre','value'=>$model->NombrePractica),
-        array('name'=>'Descripcion','value'=>$model->DescripcionPractica),
-        array('name'=>'Fecha','value'=>$model->FechaPractica),
-        array('name'=>'Semestre','value'=>$model->SemestrePractica),
-        array('name'=>'Numero de Sesiones','value'=>$model->NumeroSesionesPractica),
-		array('name'=>'Numero de Horas','value'=>$model->NumeroHorasPractica),
-        array('name'=>'Docente Coordinador de Practicas','value'=>$model->DocenteCoordinadorPracticas_RutCoordinador),
-		array('name'=>'Docente Responsable de Practica','value'=>$model->DocenteResponsablePractica_RutResponsable),
+		'NombrePractica',
+		'DescripcionPractica',
+		'FechaPractica',
+		'SemestrePractica',
+		'NumeroSesionesPractica',
+		'NumeroHorasPractica',
+		'DocenteCoordinadorPracticas_RutCoordinador',
+		'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador',
+		'DocenteResponsablePractica_RutResponsable',
+		'docenteResponsablePracticaRutResponsable.NombreResponsable',
 	),
 )); ?>

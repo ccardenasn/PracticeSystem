@@ -1,10 +1,18 @@
 <?php
+
 $base = Yii::app()->baseUrl; 
 $js = Yii::app()->getClientScript();
-$js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/assets/highcharts.js');
-$js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/assets/modules/exporting.js');
-//$js->registerScriptFile($base.'/graphProcess/highcharts-export-clientside-master/highcharts-export-clientside.js');
-$js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/offline-exporting.js');
+$js->registerScriptFile($base.'/graphProcess/Highcharts/code/highcharts.js');
+$js->registerScriptFile($base.'/graphProcess/Highcharts/code/modules/exporting.js');
+$js->registerScriptFile($base.'/graphProcess/Highcharts/code/lib/canvg.js');
+//$js->registerScriptFile($base.'/graphProcess/Highcharts/code/modules/canvas-tools.js');
+$js->registerScriptFile($base.'/graphProcess/Highcharts/code/modules/canvas-tools.src.js');
+//$js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/assets/modules/canvg.js');
+//$js->registerScriptFile($base.'/graphProcess/yii-highcharts/highcharts/assets/modules/canvas-tools.js');
+$js->registerScriptFile($base.'/graphProcess/export-csv-master/export-csv.js');
+//$js->registerScriptFile($base.'/graphProcess/Highcharts/code/lib/jsPDF-1.3.2/jspdf.js');
+$js->registerScriptFile($base.'/graphProcess/Highcharts/code/highcharts-export-clientside-master/highcharts-export-clientside.js');
+//$js->registerScriptFile($base.'/graphProcess/Highcharts/code/modules/offline-exporting.js');
 //$js->registerScriptFile($base.'/graphProcess/yii-highcharts/offline-exporting.js');
 $js->registerScriptFile($base.'/graphProcess/grafico_a/loadGraph_a.js');
 

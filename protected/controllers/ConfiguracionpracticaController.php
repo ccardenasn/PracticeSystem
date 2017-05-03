@@ -1,4 +1,5 @@
 <?php
+include_once('mainFunctions.php');
 
 class ConfiguracionpracticaController extends Controller
 {
@@ -70,11 +71,22 @@ class ConfiguracionpracticaController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
+		$table = "configuracionpractica";
+		$codTable = "NombrePractica";
+		
 		if(isset($_POST['Configuracionpractica']))
 		{
 			$model->attributes=$_POST['Configuracionpractica'];
-			if($model->save())
+			
+			$exist = contains($table,$codTable,$model->NombrePractica);
+			
+			if($exist == 0){
+				if($model->save())
 				$this->redirect(array('view','id'=>$model->NombrePractica));
+			}else{
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>La práctica: ".$model->NombrePractica." ya está registrada.</li></ul></div>");
+				$this->refresh();
+			}
 		}
 
 		$this->render('create',array(

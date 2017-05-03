@@ -71,11 +71,24 @@ class MencionController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+		$table = "mencion";
+		$codTable = "NombreMencion";
+		
 		if(isset($_POST['Mencion']))
 		{
 			$model->attributes=$_POST['Mencion'];
-			if($model->save())
+			
+			$exist = contains($table,$codTable,$model->NombreMencion);
+			
+			if($exist == 0){
+				if($model->save())
 				$this->redirect(array('view','id'=>$model->NombreMencion));
+			}else{
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>La mención con nombre: ".$model->NombreMencion." ya está registrada.</li></ul></div>");
+				$this->refresh();
+			}
+			
+			
 		}
 
 		$this->render('create',array(

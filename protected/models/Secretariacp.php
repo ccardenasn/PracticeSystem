@@ -77,6 +77,7 @@ class Secretariacp extends CActiveRecord
 			'TelefonoSecretariaCP' => 'Teléfono',
 			'CelularSecretariaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
+			'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 			'ImagenSecretariaCP' => 'Imagen',
 		);
 	}

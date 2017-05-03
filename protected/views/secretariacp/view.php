@@ -38,12 +38,12 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-        array('name'=>'Rut','value'=>$model->RutSecretariaCP),
-        array('name'=>'Nombre','value'=>$model->NombreSecretariaCP),
-        array('name'=>'Mail','value'=>$model->MailSecretariaCP),
-        array('name'=>'Telefono','value'=>$model->TelefonoSecretariaCP),
-        array('name'=>'Celular','value'=>$model->CelularSecretariaCP),
-		array('name'=>'Centro de Practica','value'=>$model->CentroPractica_RBD),
+		'RutSecretariaCP',
+		'NombreSecretariaCP',
+		'MailSecretariaCP',
+		'TelefonoSecretariaCP',
+		'CelularSecretariaCP',
+		'centroPracticaRBD.NombreCentroPractica',
 		array(
             'name'=>'ImagenSecretariaCP',
 			'type' => 'raw',

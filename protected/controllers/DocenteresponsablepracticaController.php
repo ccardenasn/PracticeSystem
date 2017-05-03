@@ -138,7 +138,7 @@ class DocenteresponsablepracticaController extends Controller
 						//se guarda la ruta de la imagen
 						$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
 					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();
 					}
 				}else{
