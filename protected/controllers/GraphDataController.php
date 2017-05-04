@@ -28,7 +28,7 @@ class GraphDataController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e','graph_f','pdf'),
+				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e','graph_f','pdf','exportImage'),
 				//'users'=>array('*'),
 				'users'=>GraphData::model()->getAdmins(),
 			),
@@ -118,6 +118,15 @@ class GraphDataController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	public function actionExportImage()
+	{
+		$directorio=Yii::getPathOfAlias("webroot")."/images/";
+		$data = $_REQUEST['base64data'];
+		$image = explode('base64,',$data);
+		file_put_contents($directorio."myImage.png", base64_decode($image[1]));
+		//$this->rendirect('pdf');
 	}
 	
 	public function actionPdf()
