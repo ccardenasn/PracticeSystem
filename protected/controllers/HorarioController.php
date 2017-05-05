@@ -1,5 +1,6 @@
 <?php
-
+include_once('mainFunctions.php');
+	
 class HorarioController extends Controller
 {
 	/**
@@ -138,8 +139,24 @@ class HorarioController extends Controller
 	
 	public function actionCreateHorario()
 	{
-		$this->render('createHorario');
+		$table = "horarioadmin";
+		$codTable = "Estudiante_RutEstudiante";
+		$cod = Yii::app()->user->name;
+		
+		$exist = contains($table,$codTable,$cod);
+		
+		if($exist == 0){
+			$this->render('createHorario');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>El horario ha sido creado previamente.</li><li>Para modificar el horario haga click en la opción <strong>'Editar Horario'</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
 	}
+	
+	/*public function actionCreateHorario()
+	{
+		$this->render('createHorario');
+	}*/
 	
 	public function actionUpdateHorario()
 	{

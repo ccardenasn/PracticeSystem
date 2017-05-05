@@ -9,6 +9,16 @@ function mostrar() {
 	div.style.display = '';
 }
 
+function showControl(control) {
+	div = document.getElementById(control);
+	div.style.display = '';
+}
+
+function hideControl(control) {
+	div = document.getElementById(control);
+	div.style.display = 'none';
+}
+
 function cerrar(){
 	div = document.getElementById('form_div');
 	div.style.display = 'none';
