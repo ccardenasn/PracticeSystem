@@ -13,7 +13,7 @@ echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
 </script>';
 
-$nextPage = Yii::app()->createUrl('horario/index');
+$nextPage = Yii::app()->createUrl('horario/successTimeTable');
 
 echo '<script type="text/javascript">
 	var redirectPage = "'.$nextPage.'"; 

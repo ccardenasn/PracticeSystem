@@ -27,6 +27,7 @@ $js->registerScriptFile($base.'/graphProcess/grafico_a/loadGraph_a.js');
 
 <script>
 var actionURL = '<?php echo Yii::app()->createUrl('GraphData/exportImage'); ?>';
+var actionPDF = '<?php echo Yii::app()->createUrl('GraphData/pdf'); ?>';
 
 </script>
 

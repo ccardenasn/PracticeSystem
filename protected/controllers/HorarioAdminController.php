@@ -1,5 +1,6 @@
 <?php
 include_once('horarioFunctions.php');
+include_once('mainFunctions.php');
 
 class HorarioadminController extends Controller
 {
@@ -29,7 +30,7 @@ class HorarioadminController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','successUpdateTimeTable','createHorario'),
+				'actions'=>array('index','view','successUpdateTimeTable','createHorario','successTimeTable'),
 				//'users'=>array('*'),
 				'users'=>Horarioadmin::model()->getAdmins(),
 			),
@@ -138,14 +139,31 @@ class HorarioadminController extends Controller
 		));
 	}
 	
+	public function actionSuccessTimeTable()
+	{
+		Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Para editar un horario debe hacer clic en <strong>'Administración de Horarios'</strong>.</li></ul></div>");
+		$this->render('index');
+	}
+	
 	public function actionSuccessUpdateTimeTable()
 	{
 		$this->render('successUpdateTimeTable');
 	}
 	
-	public function actionCreateHorario()
-	{
-		$this->render('createHorario');
+	public function actionCreateHorario($id)
+	{	
+		$table = "horarioadmin";
+		$codTable = "Estudiante_RutEstudiante";
+		
+		$exist = contains($table,$codTable,$id);
+		
+		if($exist == 0){
+			$this->render('createHorario');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>El horario ha sido creado previamente.</li><li>Para modificar el horario haga click en la opción <strong>'Editar Horario'</strong> de la sección <strong>'Administración de Horarios'</strong>.</li><li>Haga click <strong>".CHtml::link('aquí',array('horarioadmin/index'))."</strong> para acceder a la sección de horarios</li></ul></div>");
+			$this->redirect(array('estudiante/view','id'=>$id));
+		}
+		
 	}
 
 	/**

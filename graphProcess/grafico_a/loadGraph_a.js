@@ -28,6 +28,9 @@ $(function () {
 				chart: {
 					type: 'pie'
 				},
+				exporting: { 
+					enabled: false 
+				},
 				title: {
 					text: ''
 				},

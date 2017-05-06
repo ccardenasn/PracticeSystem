@@ -13,13 +13,19 @@ echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
 </script>';
 
-$nextPage = Yii::app()->createUrl('horario/successTimeTable');
+$nextPage = Yii::app()->createUrl('horarioadmin/successTimeTable',array('id'=>$rutStudent));
 
 echo '<script type="text/javascript">
 	var redirectPage = "'.$nextPage.'"; 
 </script>';
 
 ?>
+
+<?php if(Yii::app()->user->hasFlash('message')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('message'); ?>
+    </div>
+    <?php endif; ?>
 
 <body onload="javascript:loadCreate();">
 	<div id="table_div">
@@ -35,7 +41,7 @@ echo '<script type="text/javascript">
 	</div>
 	
 	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
+		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();loadTimeTableIndex();"  action="saveTable.php">
 	</div>
 </body>
 

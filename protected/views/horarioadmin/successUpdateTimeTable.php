@@ -4,8 +4,10 @@ $rutStudent=Yii::app()->getRequest()->getParam('model');
 ?>
 
 <ul>
-	<img src="images/messageImages/vaultboysuccess.png">
-	<h1>¡Horario actualizado con éxito!</h1>
-	<br><br>
-	<li><h2>Haga click <?php echo CHtml::link('Aquí',array('horarioAdmin/index')); ?> para ir al menú principal de horario.</h2></li>
+	<div id="errorMessage" class="flash-success" style="text-align:center" align="center">
+		<p><strong>¡Operación realizada!</strong></p>
+		<ul>
+			<li>Haga click <?php echo CHtml::link('Aquí',array('horarioAdmin/index')); ?> para ir al menú principal de horario.</li>
+		</ul>
+	</div>
 </ul><br>

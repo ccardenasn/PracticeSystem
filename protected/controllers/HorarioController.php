@@ -153,19 +153,28 @@ class HorarioController extends Controller
 		}
 	}
 	
-	/*public function actionCreateHorario()
-	{
-		$this->render('createHorario');
-	}*/
-	
 	public function actionUpdateHorario()
 	{
-		$this->render('updateHorario');
+		$table = "horarioadmin";
+		$codTable = "Estudiante_RutEstudiante";
+		$cod = Yii::app()->user->name;
+		
+		$exist = contains($table,$codTable,$cod);
+		
+		if($exist != 0){
+			$this->render('updateHorario');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Aún no se ha creado el horario.</li><li>Para crear el horario haga click en la opción <strong>'Crear Horario'</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
+		
+		
 	}
 	
 	public function actionSuccessTimeTable()
 	{
-		$this->render('successTimeTable');
+		Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Para editar un horario debe hacer clic en <strong>'Administración de Horarios'</strong>.</li></ul></div>");
+		$this->render('index');
 	}
 	
 	public function actionSuccessUpdateTimeTable()

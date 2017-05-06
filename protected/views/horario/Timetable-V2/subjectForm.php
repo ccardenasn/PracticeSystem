@@ -5,7 +5,7 @@
 		
 		<label id="lblSemester" class="tltSemester">Semestre: </label><br>
 		
-		<select id="txtSemester" name="txtSemester" onchange="showControl('txtSubject');showControl('lblSubject')">
+		<select id="txtSemester" name="txtSemester" onchange="showControl('txtSubject');showControl('lblSubject');showControl('btnChange')">
 			<option value="0">Seleccione</option>;
 
 			<?php
@@ -26,7 +26,7 @@
 		</select><br><br>
 		
 		<label id="lblSubject" style="display:none">Asignatura: </label><br>
-		<select name="txtSubject" id="txtSubject" style="display:none"  onchange="showControl('btnChange')"></select><br><br>
+		<select name="txtSubject" id="txtSubject" style="display:none"></select><br><br>
 	</div><br>
 	
 	<div id="divButton">

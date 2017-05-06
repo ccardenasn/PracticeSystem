@@ -14,6 +14,12 @@ $this->menu=array(
 
 <h1>Horarios</h1><br>
 
+<?php if(Yii::app()->user->hasFlash('message')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('message'); ?>
+    </div>
+    <?php endif; ?>
+
 <ul>
 	<h4>Bienvenido a la sección de Administración de Horarios.</h4>
 </ul>

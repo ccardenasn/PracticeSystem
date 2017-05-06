@@ -17,7 +17,7 @@ echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
 </script>';
 
-$successUpdatePage = Yii::app()->createUrl('horario/successUpdateTimeTable');
+$successUpdatePage = Yii::app()->createUrl('horario/successTimeTable');
 
 echo '<script type="text/javascript">
 	var successPage = "'.$successUpdatePage.'"; 

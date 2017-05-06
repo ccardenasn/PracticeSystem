@@ -1,8 +1,8 @@
-/*function saveChartHTML(){
+function saveChartHTML(){
 	html2canvas($('#graphcontainer'), {
 		onrendered: function(canvas) {
 			var img = canvas.toDataURL();
-			
+			var centerRBD = $("#dynamic_data").val();
 			//var url = 'graphProcess/exportImage.php';
 			var url = actionURL;
         $.ajax({ 
@@ -11,15 +11,16 @@
             dataType: 'text',
             data: {
                 base64data : img
-            }
+            },
+			success:location.href=actionPDF+"&id="+centerRBD,
         });  
 			
 			//window.open(img);
 		}
 	});
-}*/
+}
 
-function saveChartHTML(){
+/*function saveChartHTML(){
 	html2canvas($('#renderData'), {
 		onrendered: function(canvas) {
 			var img = canvas.toDataURL();
@@ -33,4 +34,4 @@ function saveChartHTML(){
 			//window.open(img);
 		}
 	});
-}
+}*/

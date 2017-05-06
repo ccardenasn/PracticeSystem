@@ -22,6 +22,20 @@ function containsSu(){
 	return $result;
 }
 
+function containsBlocks(){
+	$query="select count(*) from bloque;";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function containsTimeTable($rut){
+	$query="select count(*) from horario where Estudiante_RutEstudiante = '".$rut."';";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
 
 
 ?>

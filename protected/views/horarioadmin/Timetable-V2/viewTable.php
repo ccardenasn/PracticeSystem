@@ -24,7 +24,7 @@ $copyArr = copyPHPtoJavaScriptArr($copyArr);
 
 $hour = hourColumns();
 
-$successUpdatePage = Yii::app()->createUrl('horarioAdmin/successUpdateTimeTable');
+$successUpdatePage = Yii::app()->createUrl('horarioAdmin/successTimeTable');
 
 echo '<script type="text/javascript">
 	var successPage = "'.$successUpdatePage.'"; 
