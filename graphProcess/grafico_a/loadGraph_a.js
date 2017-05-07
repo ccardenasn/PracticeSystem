@@ -1,10 +1,12 @@
 $(function () {
 		//on page load  
-		getAjaxData(7701);
+		getAjaxData($('#dynamic_data').val());
  
 		//on changing select option
 		$('#dynamic_data').change(function(){
 			var val = $('#dynamic_data').val();
+			var at = $('#dynamic_data option:selected').text();
+			$("#titleLabel").text(at);
 			getAjaxData(val);
 		});
  
@@ -14,7 +16,7 @@ $(function () {
 		$.getJSON('graphProcess/grafico_a/data.php', {id: id}, function(chartData) {
 			
 				$('.maintable').empty();
-				$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Nombre de Práctica</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
+				$('.maintable').append('<tr bgcolor="#C9E0ED"><th id="column1"><h3>Nombre de Práctica</h2></th><th id="column2"><h2>Número de Estudiantes</h3></th></tr>');
                 var tr = chartData.data
 				
                 for (var i = 0; i < chartData[0].data.length; i++) {
@@ -26,7 +28,7 @@ $(function () {
 			
 			$('#graphcontainer').highcharts({
 				chart: {
-					type: 'pie'
+					type: 'pie',
 				},
 				exporting: { 
 					enabled: false 

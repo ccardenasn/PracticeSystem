@@ -1,8 +1,10 @@
-<h1>Estudiantes según tipo de práctica</h1><br>
+<body onload="javascript:setSelectOption();">
+<h1>Estudiantes según tipo de práctica: <label id="titleLabel">placeholder</label></h1><br>
+
 
 <div class="collapse">
 	<h3>Descripción</h3>
-	<ul>
+	<ul id="descGraph">
 		Indica la distribución de estudiantes según la práctica que realiza en cada centro.
 	</ul>
 </div><br>
@@ -26,6 +28,6 @@ $this->menu=array(
 	array('label'=>'Distribución alumnos por centro o dependencia', 'url'=>array('graphdata/graph_d')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
 	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
-	array('label'=>'Crear PDF', 'url'=>array('pdf')),
 );
 ?>
+</body>

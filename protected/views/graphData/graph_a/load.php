@@ -27,28 +27,38 @@ $js->registerScriptFile($base.'/graphProcess/grafico_a/loadGraph_a.js');
 
 <script>
 var actionURL = '<?php echo Yii::app()->createUrl('GraphData/exportImage'); ?>';
+var actionText = '<?php echo Yii::app()->createUrl('GraphData/exportText'); ?>';
 var actionPDF = '<?php echo Yii::app()->createUrl('GraphData/pdf'); ?>';
 
 </script>
 
 <?php
-$data=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
+//$data=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
+ 
+                           
+//$criteria->params=array(':productId'=>$productId);     
+//$data=CHtml::listData(Centropractica::model()->findAll($criteria),'RBD','NombreCentroPractica','RBD');
+//$sql = "select RBD,NombreCentroPractica from centropractica inner join estudiante on centropractica.RBD = estudiante.CentroPractica_RBD group by RBD;";
+
+$Criteria = new CDbCriteria;
+$Criteria->select = 'RBD,NombreCentroPractica';
+$Criteria->join = 'join estudiante on estudiante.CentroPractica_RBD = RBD';
+$Criteria->group = 'RBD';
+
+$data=CHtml::listData(Centropractica::model()->findAll($Criteria),'RBD','NombreCentroPractica','RBD');
+//$data = Yii::app()->db->createCommand($sql)->query();
 ?>
 
 <div class="row">
-<?php echo CHtml::label('<b>Seleccione Un Centro</b>','centerLabel');?>
+<?php echo CHtml::label('<b>Seleccionar</b>','centerLabel');?>
 </div>
 
 <div class="row">
 <?php echo CHtml::dropDownList('dynamic_data','RBD',$data,array('id'=>'dynamic_data'));?>
+	<input type="button" name="btnSaveChart" id="btnSaveChart" value="Crear PDF" onclick="javascript:saveChartHTML();" >
 </div>
 
-<div id=btnSaveChart>
-		<input type="button" name="btnSaveChart" id="btnSaveChart" value="Guardar imagen" onclick="javascript:saveChartHTML();" >
-	</div>
-<div id="renderData">
 <div id="graphcontainer" style="width: 90%; float:left;"></div>
 
 <table class="maintable" bgcolor="#F0F0F0">
 </table>
-</div>
