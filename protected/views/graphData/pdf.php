@@ -1,25 +1,35 @@
 <?php
 include_once('forceutf/Encoding.php');
-$directorio=Yii::getPathOfAlias("webroot")."/images/";
-//Carga en la variable $texto todo el contenido de archivo.txt
-//$texto = file_get_contents($directorio."descData.txt"); 
+$directorio=Yii::getPathOfAlias("webroot")."/graphProcess/graphInfo/";
 
-//Hace que el contenido de la variable $texto, convierta todos los 
-//saltos de linea a etiquetas '<br />', para que en tu página se vean 
-//efectivamente como saltos de linea
-//$texto = nl2br($texto);
+$fecha = getdate();
+$day = $fecha['mday'];
+$month = $fecha['mon'];
+$year = $fecha['year'];
+
+$date = $day."/".$month."/".$year;
 
 $fichero = "descData.txt";
 $filas = file($directorio.$fichero);
-$firstLine = $filas[count($filas)-3];
-$secondLine = $filas[count($filas)-2];
-$thirdLine = $filas[count($filas)-1]; 
+$title = $filas[0];
+$firstLine = $filas[1];
+$secondLine = $filas[2];
+$thirdLine = $filas[3]; 
 
 $centroRBD = Yii::app()->request->getQuery('id');
 
 $mainData=GraphData::model()->findAll('idcentro=?',array($centroRBD));
 
 $centerName=Centropractica::model()->find('RBD=?',array($centroRBD));
+
+$titleTheme = "";
+
+if($centerName != null){
+	$titleTheme = $centerName->NombreCentroPractica;
+}else{
+	$titleTheme = trim($firstLine).'s';
+}
+
 
 
 //se referencia a la extensión de mPDF
@@ -63,15 +73,15 @@ table thead td { background-color: #EEEEEE;
 }
 </style>";
 
-$html.="<h1 align='center'>Estudiantes según tipo de práctica</h1><br>";
+$html.="<h1 align='center'>".$title."</h1><br>";
 
 $html.="<h2>Descripción:</h2>";
 
 $html.="<p>".$thirdLine."</p><br><br>";
 
-$html.="<h2 align='center'>".$centerName->NombreCentroPractica."</h2>";
+$html.="<h2 align='center'>".$titleTheme."</h2>";
 
-$html.="<img src='images/myImage.png'>";
+$html.="<img src='graphProcess/graphInfo/myImage.png'>";
 
 $html.="<table style='width:100%' border=1 class='table-responsive'>
   <tr>
@@ -79,12 +89,22 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
     <th align='left'>".$secondLine."</th> 
   </tr>";
 
+$totalVal = 0;
+
 foreach($mainData as $item):
+
+$totalVal = $totalVal + ($item->numero);
+
 $html.="<tr>
 			<td>".$item->nombrepractica."</td>
 			<td>".$item->numero."</td>
   		</tr>";
 endforeach;
+
+$html.= "<tr>
+			<td>Total</td>
+			<td>".$totalVal."</td>
+  		</tr>";
 
 $html.="</table>";
 
@@ -92,7 +112,7 @@ $html.="</table>";
 $html = Encoding::toUTF8($html);
 $mpdf=new mPDF("");
 $mpdf->SetHTMLHeader($header);
-$mpdf->SetHeader("Sistema de Gestión de Prácticas - Universidad Austral de Chile");
+$mpdf->SetHeader("".$date."|Sistema de Gestión de Prácticas - Universidad Austral de Chile");
 $mpdf->SetFooter("Sistema de Gestión de Prácticas - Universidad Austral de Chile");
 $mpdf->WriteHTML($html);
 

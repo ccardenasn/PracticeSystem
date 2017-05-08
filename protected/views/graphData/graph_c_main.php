@@ -1,8 +1,10 @@
-<h1>Niños</h1><br>
-
+<body onload="javascript:setSelectOption();">
+<h1><label id="graphTitleLabel">Niños</label>: <label id="titleLabel">placeholder</label></h1><br>
+	
+	
 <div class="collapse">
 	<h3>Descripción</h3>
-	<ul>
+	<ul id="descGraph">
 		Corresponde a los alumnos de educación básica (niños y/o jovenes) que pertenecen a los centros de práctica con los cuales los estudiantes de pedagogía han trabajado.
 	</ul>
 </div><br>
@@ -28,3 +30,4 @@ $this->menu=array(
 	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
 );
 ?>
+</body>

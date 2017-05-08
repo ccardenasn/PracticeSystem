@@ -1,6 +1,5 @@
 <body onload="javascript:setSelectOption();">
-<h1>Estudiantes según tipo de práctica: <label id="titleLabel">placeholder</label></h1><br>
-
+<h1><label id="graphTitleLabel">Estudiantes según tipo de práctica</label>: <label id="titleLabel">placeholder</label></h1><br>
 
 <div class="collapse">
 	<h3>Descripción</h3>

@@ -1,8 +1,9 @@
-<h1>Sesiones Ejecutadas</h1><br>
+<body onload="javascript:setSelectOption();">
+<h1><label id="graphTitleLabel">Sesiones Ejecutadas</label>: <label id="titleLabel">placeholder</label></h1><br>
 
 <div class="collapse">
 	<h3>Descripción</h3>
-	<ul>
+	<ul id="descGraph">
 		Da a conocer el porcentaje de las sesiones planificadas que efectivamente han realizado los estudiantes según la fecha actual.
 	</ul>
 </div><br>
@@ -29,3 +30,4 @@ $this->menu=array(
 	
 );
 ?>
+</body>

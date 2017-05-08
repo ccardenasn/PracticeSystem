@@ -1,9 +1,10 @@
-<h1>Distribución alumnos por centro o dependencia</h1><br>
-
+<body onload="javascript:setSelectOption();">
+<h1><label id="graphTitleLabel">Distribución alumnos por centro o dependencia</label>: <label id="titleLabel">placeholder</label></h1><br>
+	
 <div class="collapse">
 	<h3>Descripción</h3>
-	<ul>
-		Visualiza la cantidad total de estudiantes que recibe cada centro de practica.
+	<ul id="descGraph">
+		Visualiza la cantidad total de estudiantes que recibe cada centro de práctica.
 	</ul>
 	<ul>
 		Otra opción es observar la distribución de los alumnos en práctica según la dependencia administrativa del establecimiento.
@@ -31,3 +32,4 @@ $this->menu=array(
 	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
 );
 ?>
+</body>

@@ -122,7 +122,7 @@ class GraphDataController extends Controller
 	
 	public function actionExportImage()
 	{
-		$directorio=Yii::getPathOfAlias("webroot")."/images/";
+		$directorio=Yii::getPathOfAlias("webroot")."/graphProcess/graphInfo/";
 		$data = $_REQUEST['base64data'];
 		$image = explode('base64,',$data);
 		file_put_contents($directorio."myImage.png", base64_decode($image[1]));
@@ -131,12 +131,13 @@ class GraphDataController extends Controller
 	
 	public function actionExportText()
 	{
-		$directorio=Yii::getPathOfAlias("webroot")."/images/";
+		$directorio=Yii::getPathOfAlias("webroot")."/graphProcess/graphInfo/";
+		$title = $_REQUEST['title']; 
 		$data = $_REQUEST['textDesc'];
 		$colA = $_REQUEST['col1'];
 		$colB = $_REQUEST['col2'];
 		//$image = explode('base64,',$data);
-		file_put_contents($directorio."descData.txt",$colA."\n".$colB."\n".trim($data));
+		file_put_contents($directorio."descData.txt",$title."\n".$colA."\n".$colB."\n".trim($data));
 		//$this->rendirect('pdf');
 	}
 	

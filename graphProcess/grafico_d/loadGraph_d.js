@@ -1,11 +1,12 @@
 $(function () {
- 
 		//on page load  
-		getAjaxData(1);
+		getAjaxData($('#dynamic_data').val());
  
 		//on changing select option
 		$('#dynamic_data').change(function(){
 			var val = $('#dynamic_data').val();
+			var at = $('#dynamic_data option:selected').text();
+			$("#titleLabel").text(at);
 			getAjaxData(val);
 		});
  
@@ -15,28 +16,36 @@ $(function () {
 		$.getJSON('graphProcess/grafico_d/data.php', {id: id}, function(chartData) {
 			
 			$('.maintable').empty();
-				
-				
-				if($('.dynamic_data').val() === '1'){
-					$('.maintable').empty();
-					$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Centro</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
-				}else{
-					$('.maintable').empty();
-					$('.maintable').append('<tr bgcolor="#C9E0ED"><th><h3>Dependencia</h2></th><th><h2>Número de Estudiantes</h3></th></tr>');
-				}
 			
-                var tr = chartData.data
+			if($('#dynamic_data').val() === '1'){
+				$('.maintable').empty();
+				$('.maintable').append('<tr bgcolor="#C9E0ED"><th id="column1"><h3>Centro</h2></th><th><h2 id="column2">Número de Estudiantes</h3></th></tr>');
+			}else{
+				$('.maintable').empty();
+				$('.maintable').append('<tr bgcolor="#C9E0ED"><th id="column1"><h3>Dependencia</h2></th><th id="column2"><h2>Número de Estudiantes</h3></th></tr>');
+			}
+			
+			var tr = chartData.data
+			var totalVal = 0;
+			
+			for (var i = 0; i < chartData[0].data.length; i++) {
+				tr = $('<tr/>');
+				tr.append("<td><h4>" + chartData[0].data[i][0] + "</h4></td>");
+				tr.append("<td><h4>" + chartData[0].data[i][1] + "</h4></td>");
+				totalVal = totalVal + chartData[0].data[i][1];
 				
-                for (var i = 0; i < chartData[0].data.length; i++) {
-                    tr = $('<tr/>');
-                    tr.append("<td><h4>" + chartData[0].data[i][0] + "</h4></td>");
-					tr.append("<td><h4>" + chartData[0].data[i][1] + "</h4></td>");
-                    $('.maintable').append(tr);
-                }
+				$('.maintable').append(tr);
+			}
+			
+			$('.maintable').append("<td><h4>Total</h4></td>");
+			$('.maintable').append("<td><h4>" + totalVal + "</h4></td>");
 			
 			$('#graphcontainer').highcharts({
 				chart: {
 					type: 'pie'
+				},
+				exporting: { 
+					enabled: false 
 				},
 				title: {
 					text: ''

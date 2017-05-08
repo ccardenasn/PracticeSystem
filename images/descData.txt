@@ -1,3 +1,4 @@
+Estudiantes según tipo de práctica
 Nombre de Práctica
 Número de Estudiantes
 Indica la distribución de estudiantes según la práctica que realiza en cada centro.

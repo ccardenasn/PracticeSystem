@@ -15,16 +15,23 @@ $(function () {
 		//use getJSON to get the dynamic data via AJAX call
 		$.getJSON('graphProcess/grafico_a/data.php', {id: id}, function(chartData) {
 			
-				$('.maintable').empty();
-				$('.maintable').append('<tr bgcolor="#C9E0ED"><th id="column1"><h3>Nombre de Práctica</h2></th><th id="column2"><h2>Número de Estudiantes</h3></th></tr>');
-                var tr = chartData.data
+			$('.maintable').empty();
+			$('.maintable').append('<tr bgcolor="#C9E0ED"><th id="column1"><h3>Nombre de Práctica</h2></th><th id="column2"><h2>Número de Estudiantes</h3></th></tr>');
+			
+			var tr = chartData.data
+			var totalVal = 0;
+			
+			for (var i = 0; i < chartData[0].data.length; i++) {
+				tr = $('<tr/>');
+				tr.append("<td><h4>" + chartData[0].data[i][0] + "</h4></td>");
+				tr.append("<td><h4>" + chartData[0].data[i][1] + "</h4></td>");
+				totalVal = totalVal + chartData[0].data[i][1];
 				
-                for (var i = 0; i < chartData[0].data.length; i++) {
-                    tr = $('<tr/>');
-                    tr.append("<td><h4>" + chartData[0].data[i][0] + "</h4></td>");
-					tr.append("<td><h4>" + chartData[0].data[i][1] + "</h4></td>");
-                    $('.maintable').append(tr);
-                }
+				$('.maintable').append(tr);
+			}
+			
+			$('.maintable').append("<td><h4>Total</h4></td>");
+			$('.maintable').append("<td><h4>" + totalVal + "</h4></td>");
 			
 			$('#graphcontainer').highcharts({
 				chart: {

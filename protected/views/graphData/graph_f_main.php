@@ -1,8 +1,9 @@
-<h1>Profesores Guías por centro</h1><br>
+<body onload="javascript:setSelectOption();">
+<h1><label id="graphTitleLabel">Profesores Guías por centro</label><label id="titleLabel" style="display:none">placeholder</label></h1><br>
 
 <div class="collapse">
 	<h3>Descripción</h3>
-	<ul>
+	<ul id="descGraph">
 		Permite visualizar la cantidad de profesores guias existentes en cada centro de práctica.
 	</ul>
 </div><br>
@@ -29,3 +30,4 @@ $this->menu=array(
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
 );
 ?>
+</body>
