@@ -4,6 +4,7 @@ include_once 'FunNombre.php';
 include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "directorcarrera".
  *
@@ -121,31 +122,31 @@ class Directorcarrera extends CActiveRecord
     public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutDirector)==false)
-		$this->addError('RutDirector','Rut invalido');
+		$this->addError('RutDirector','Rut no válido');
 	}
     
     public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreDirector)==false)
-		$this->addError('NombreDirector','Nombre invalido');
+		$this->addError('NombreDirector','Nombre no válido');
 	}
     
     public function valcorreo($attribute,$params)
 	{
 		if(correovalido($this->MailDirector)==false)
-		$this->addError('MailDirector','Correo invalido');
+		$this->addError('MailDirector','Correo no válido');
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoDirector)==false)
-		$this->addError('TelefonoDirector','Telefono invalido');
+		if(numerovalido($this->TelefonoDirector)==false)
+		$this->addError('TelefonoDirector','Teléfono no válido');
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularDirector)==false)
-		$this->addError('CelularDirector','Celular invalido');
+		if(numerovalido($this->CelularDirector)==false)
+		$this->addError('CelularDirector','Celular no válido');
 	}
     
     public function validatePassword($password){

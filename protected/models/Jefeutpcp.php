@@ -4,6 +4,7 @@ include_once 'FunNombre.php';
 include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "jefeutpcp".
  *
@@ -127,31 +128,31 @@ class Jefeutpcp extends CActiveRecord
     public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutJefeUTPCP)==false)
-		$this->addError('RutJefeUTPCP','Rut invalido');
+		$this->addError('RutJefeUTPCP','Rut no válido');
 	}
     
     public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreJefeUTPCP)==false)
-		$this->addError('NombreJefeUTPCP','Nombre invalido');
+		$this->addError('NombreJefeUTPCP','Nombre no válido');
 	}
     
     public function valcorreo($attribute,$params)
 	{
 		if(correovalido($this->MailJefeUTPCP)==false)
-		$this->addError('MailJefeUTPCP','Correo invalido');
+		$this->addError('MailJefeUTPCP','Correo no válido');
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoJefeUTPCP)==false)
-		$this->addError('TelefonoJefeUTPCP','Telefono invalido');
+		if(numerovalido($this->TelefonoJefeUTPCP)==false)
+		$this->addError('TelefonoJefeUTPCP','Telefono no válido');
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularJefeUTPCP)==false)
-		$this->addError('CelularJefeUTPCP','Celular invalido');
+		if(numerovalido($this->CelularJefeUTPCP)==false)
+		$this->addError('CelularJefeUTPCP','Celular no válido');
 	}
 	
 	public function getAdmins(){

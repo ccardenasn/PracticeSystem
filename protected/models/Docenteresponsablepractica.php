@@ -4,6 +4,7 @@ include_once 'FunNombre.php';
 include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "docenteresponsablepractica".
  *
@@ -125,31 +126,31 @@ class Docenteresponsablepractica extends CActiveRecord
     public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutResponsable)==false)
-		$this->addError('RutResponsable','Rut invalido');
+		$this->addError('RutResponsable','Rut no válido');
 	}
     
     public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreResponsable)==false)
-		$this->addError('NombreResponsable','Nombre invalido');
+		$this->addError('NombreResponsable','Nombre no válido');
 	}
     
     public function valcorreo($attribute,$params)
 	{
 		if(correovalido($this->MailResponsable)==false)
-		$this->addError('MailResponsable','Correo invalido');
+		$this->addError('MailResponsable','Correo no válido');
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoResponsable)==false)
-		$this->addError('TelefonoResponsable','Telefono invalido');
+		if(numerovalido($this->TelefonoResponsable)==false)
+		$this->addError('TelefonoResponsable','Telefono no válido');
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularResponsable)==false)
-		$this->addError('CelularResponsable','Celular invalido');
+		if(numerovalido($this->CelularResponsable)==false)
+		$this->addError('CelularResponsable','Celular no válido');
 	}
     
     public function validatePassword($password){

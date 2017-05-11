@@ -164,56 +164,42 @@ class Estudiante extends CActiveRecord
 	public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreEstudiante)==false)
-		$this->addError('NombreEstudiante','Nombre invalido');	
+		$this->addError('NombreEstudiante','Nombre no válido');	
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoEstudiante)==false)
-		$this->addError('TelefonoEstudiante','Telefono invalido');	
+		if(numerovalido($this->TelefonoEstudiante)==false)
+		$this->addError('TelefonoEstudiante','Teléfono no válido ');	
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularEstudiante)==false)
-		$this->addError('CelularEstudiante','Celular invalido');	
+		if(numerovalido($this->CelularEstudiante)==false)
+		$this->addError('CelularEstudiante','Celular no válido');	
 	}
     
     public function valcorreo($attribute,$params)
 	{
 		if(correovalido($this->MailEstudiante)==false)
-		$this->addError('MailEstudiante','Correo invalido');
+		$this->addError('MailEstudiante','Correo no válido');
 	}
     
     public function valnumeros($attribute,$params)
 	{
 		if(numerovalido($this->FechaIncorporacion)==false)
-		$this->addError('FechaIncorporacion','Año invalido');
+		$this->addError('FechaIncorporacion','Año no válido');
 	}
     
     public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutEstudiante)==false)
-		$this->addError('RutEstudiante','Rut invalido');
+		$this->addError('RutEstudiante','Rut no válido');
 	}
     
     public function validatePassword($password){
 		return $password===$this->ClaveEstudiante;	
 	}
-	
-	/*public function getAdmins(){
-		
-		$query = "select RutCoordinador from docentecoordinadorpracticas";
-		$command= Yii::app()->db->createCommand($query);
-		//$rows = $command->queryRow();
-		$rows = array();
-		$dataReader=$command->query();
-		
-		while(($row=$dataReader->read())!==false){
-			array_push($rows, $row['RutCoordinador']);
-		}
-		return $rows;
-	}*/
 	
 	public function getAdmins(){
 		

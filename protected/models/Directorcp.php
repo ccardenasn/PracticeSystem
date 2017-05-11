@@ -4,6 +4,7 @@ include_once 'FunNombre.php';
 include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "directorcp".
  *
@@ -127,31 +128,31 @@ class Directorcp extends CActiveRecord
     public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutDirectorCP)==false)
-		$this->addError('RutDirectorCP','Rut invalido');
+		$this->addError('RutDirectorCP','Rut no válido');
 	}
     
     public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreDirectorCP)==false)
-		$this->addError('NombreDirectorCP','Nombre invalido');
+		$this->addError('NombreDirectorCP','Nombre no válido');
 	}
     
     public function valcorreo($attribute,$params)
 	{
-		if(correovalido($this->MailDirectorCP)==false)
-		$this->addError('MailDirectorCP','Correo invalido');
+		if(numerovalido($this->MailDirectorCP)==false)
+		$this->addError('MailDirectorCP','Correo no válido');
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoDirectorCP)==false)
-		$this->addError('TelefonoDirectorCP','Telefono invalido');
+		if(numerovalido($this->TelefonoDirectorCP)==false)
+		$this->addError('TelefonoDirectorCP','Telefono no válido');
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularDirectorCP)==false)
-		$this->addError('CelularDirectorCP','Celular invalido');
+		if(numerovalido($this->CelularDirectorCP)==false)
+		$this->addError('CelularDirectorCP','Celular no válido');
 	}
 	
 	public function getAdmins(){

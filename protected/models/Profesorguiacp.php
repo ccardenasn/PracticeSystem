@@ -135,31 +135,31 @@ class Profesorguiacp extends CActiveRecord
 	public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutProfGuiaCP)==false)
-		$this->addError('RutProfGuiaCP','Rut invalido');
+		$this->addError('RutProfGuiaCP','Rut no válido');
 	}
     
     public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreProfGuiaCP)==false)
-		$this->addError('NombreProfGuiaCP','Nombre invalido');
+		$this->addError('NombreProfGuiaCP','Nombre no válido');
 	}
     
     public function valcorreo($attribute,$params)
 	{
 		if(correovalido($this->MailProfGuiaCP)==false)
-		$this->addError('MailProfGuiaCP','Correo invalido');
+		$this->addError('MailProfGuiaCP','Correo no válido');
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoProfGuiaCP)==false)
-		$this->addError('TelefonoProfGuiaCP','Telefono invalido');
+		if(numerovalido($this->TelefonoProfGuiaCP)==false)
+		$this->addError('TelefonoProfGuiaCP','Telefono no válido');
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularProfGuiaCP)==false)
-		$this->addError('CelularProfGuiaCP','Celular invalido');
+		if(numerovalido($this->CelularProfGuiaCP)==false)
+		$this->addError('CelularProfGuiaCP','Celular no válido');
 	}
 	
 	public function getAdmins(){

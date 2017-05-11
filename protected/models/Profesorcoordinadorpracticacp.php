@@ -4,6 +4,7 @@ include_once 'FunNombre.php';
 include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "profesorcoordinadorpracticacp".
  *
@@ -127,31 +128,31 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
     public function valrut($attribute,$params)
 	{
 		if(rutvalido($this->RutProfCoordGuiaCp)==false)
-		$this->addError('RutProfCoordGuiaCp','Rut invalido');
+		$this->addError('RutProfCoordGuiaCp','Rut no válido');
 	}
     
     public function valnombre($attribute,$params)
 	{
 		if(nombrevalido($this->NombreProfCoordGuiaCP)==false)
-		$this->addError('NombreProfCoordGuiaCP','Nombre invalido');
+		$this->addError('NombreProfCoordGuiaCP','Nombre no válido');
 	}
     
     public function valcorreo($attribute,$params)
 	{
 		if(correovalido($this->MailProfCoordGuiaCP)==false)
-		$this->addError('MailProfCoordGuiaCP','Correo invalido');
+		$this->addError('MailProfCoordGuiaCP','Correo no válido');
 	}
     
     public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoProfCoordGuiaCP)==false)
-		$this->addError('TelefonoProfCoordGuiaCP','Telefono invalido');
+		if(numerovalido($this->TelefonoProfCoordGuiaCP)==false)
+		$this->addError('TelefonoProfCoordGuiaCP','Telefono no válido');
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularProfCoordGuiaCP)==false)
-		$this->addError('CelularProfCoordGuiaCP','Celular invalido');
+		if(numerovalido($this->CelularProfCoordGuiaCP)==false)
+		$this->addError('CelularProfCoordGuiaCP','Celular no válido');
 	}
 	
 	public function getAdmins(){
