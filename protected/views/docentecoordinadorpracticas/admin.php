@@ -73,7 +73,6 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'RutCoordinador',
 		'NombreCoordinador',
-		'ClaveCoordinador',
 		'MailCoordinador',
 		'TelefonoCoordinador',
 		'CelularCoordinador',

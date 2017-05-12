@@ -73,7 +73,6 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'RutResponsable',
 		'NombreResponsable',
-		'ClaveResponsable',
 		'MailResponsable',
 		'TelefonoResponsable',
 		'CelularResponsable',

@@ -70,41 +70,40 @@ class DocentecoordinadorpracticasController extends Controller
 		$model=new Docentecoordinadorpracticas;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		$table = "docentecoordinadorpracticas";
+		$empty = isEmpty($table);
 		
-		if(isset($_POST['Docentecoordinadorpracticas']))
-		{
-			$model->attributes=$_POST['Docentecoordinadorpracticas'];
+		if($empty == true){
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenCoordinador=CUploadedFile::getInstance($model,'ImagenCoordinador');
-			
-			$empty = isEmpty($table);
-			
-			if($empty == true){
+			if(isset($_POST['Docentecoordinadorpracticas'])){
+				
+				$model->attributes=$_POST['Docentecoordinadorpracticas'];
+				$file=$model->ImagenCoordinador=CUploadedFile::getInstance($model,'ImagenCoordinador');
+				$empty = isEmpty($table);
+				
 				if($model->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
+					
+					if($file != null){
+						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+							
+							$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
+						}else{
+							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+							$this->refresh();
+						}
 					}
+					$this->redirect(array('view','id'=>$model->RutCoordinador));
 				}
-				$this->redirect(array('view','id'=>$model->RutCoordinador));
-			}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de un solo coordinador de carrera.</li></ul></div>");
-			$this->refresh();
 			}
 			
-		}
+			$this->render('create',array(
+				'model'=>$model,
+			));
 		
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de un solo coordinador de carrera.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
 	}
 
 	/**

@@ -25,10 +25,6 @@
 	<?php echo CHtml::encode($data->CelularSecretaria); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ImagenSecretaria')); ?>:</b>
-	<?php echo CHtml::encode($data->ImagenSecretaria); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Carrera_codCarrera')); ?>:</b>
 	<?php echo CHtml::encode($data->Carrera_codCarrera); ?>
 	<br />

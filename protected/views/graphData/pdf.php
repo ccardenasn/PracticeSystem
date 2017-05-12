@@ -2,6 +2,8 @@
 include_once('forceutf/Encoding.php');
 $directorio=Yii::getPathOfAlias("webroot")."/graphProcess/graphInfo/";
 
+date_default_timezone_set('America/Santiago');
+
 $fecha = getdate();
 $day = $fecha['mday'];
 $month = $fecha['mon'];

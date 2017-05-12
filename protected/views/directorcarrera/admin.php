@@ -72,7 +72,6 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'RutDirector',
 		'NombreDirector',
-		'ClaveDirector',
 		'MailDirector',
 		'TelefonoDirector',
 		'CelularDirector',

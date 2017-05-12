@@ -9,11 +9,7 @@ $this->breadcrumbs=array(
 
 <h3>Bienvenido a la sección de Horario.</h3><br>
 
-<?php if(Yii::app()->user->hasFlash('message')):?>
-<div class="row buttons">
-	<?php echo Yii::app()->user->getFlash('message'); ?>
-</div>
-<?php endif; ?>
+ 
 
 <ul>
 	<h4>Opciones Disponibles</h4>

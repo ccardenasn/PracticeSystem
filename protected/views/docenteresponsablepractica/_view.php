@@ -5,33 +5,24 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Rut')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('RutResponsable')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->RutResponsable), array('view', 'id'=>$data->RutResponsable)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Nombre')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NombreResponsable')); ?>:</b>
 	<?php echo CHtml::encode($data->NombreResponsable); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Clave')); ?>:</b>
-	<?php echo CHtml::encode($data->ClaveResponsable); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Mail')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('MailResponsable')); ?>:</b>
 	<?php echo CHtml::encode($data->MailResponsable); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Telefono')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('TelefonoResponsable')); ?>:</b>
 	<?php echo CHtml::encode($data->TelefonoResponsable); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Celular')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('CelularResponsable')); ?>:</b>
 	<?php echo CHtml::encode($data->CelularResponsable); ?>
 	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Imagen')); ?>:</b>
-	<?php echo CHtml::encode($data->ImagenResponsable); ?>
-	<br />
-
 
 </div>

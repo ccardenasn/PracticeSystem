@@ -70,20 +70,14 @@ class DirectorcarreraController extends Controller
 		$model=new Directorcarrera;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		$table = "directorcarrera";
-		$codTable = "CodDirector";
+		$empty = isEmpty($table);
 		
-		if(isset($_POST['Directorcarrera']))
-		{
-			$model->attributes=$_POST['Directorcarrera'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
-			
-			$empty = isEmpty($table);
-			
-			if($empty == true){
+		if($empty == true){
+			if(isset($_POST['Directorcarrera'])){
+				$model->attributes=$_POST['Directorcarrera'];
+				$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
+				
 				if($model->save()){
 					if($file != null){
 						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
@@ -96,15 +90,15 @@ class DirectorcarreraController extends Controller
 					}
 					$this->redirect(array('view','id'=>$model->RutDirector));
 				}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de un solo director de carrera.</li></ul></div>");
-				$this->refresh();
 			}
+			
+			$this->render('create',array(
+				'model'=>$model,
+			));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de un solo director de carrera.</li></ul></div>");
+			$this->redirect(array('index'));
 		}
-		
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

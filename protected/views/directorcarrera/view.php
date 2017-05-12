@@ -40,7 +40,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'RutDirector',
 		'NombreDirector',
-		'ClaveDirector',
 		'MailDirector',
 		'TelefonoDirector',
 		'CelularDirector',

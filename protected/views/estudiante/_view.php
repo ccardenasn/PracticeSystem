@@ -13,10 +13,6 @@
 	<?php echo CHtml::encode($data->NombreEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ClaveEstudiante')); ?>:</b>
-	<?php echo CHtml::encode($data->ClaveEstudiante); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaIncorporacion')); ?>:</b>
 	<?php echo CHtml::encode($data->FechaIncorporacion); ?>
 	<br />

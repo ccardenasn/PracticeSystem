@@ -23,10 +23,10 @@ $this->menu=array(
 <h1>Estudiante: <?php echo $model->NombreEstudiante; ?></h1><br>
 
 <?php if(Yii::app()->user->hasFlash('message')):?>
-    <div class="row buttons">
-        <?php echo Yii::app()->user->getFlash('message'); ?>
-    </div>
-    <?php endif; ?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <div class="collapse">
 	<h3>Ayuda</h3>
@@ -53,7 +53,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'RutEstudiante',
 		'NombreEstudiante',
-		'ClaveEstudiante',
 		'FechaIncorporacion',
 		'Mencion_NombreMencion',
 		'MailEstudiante',
