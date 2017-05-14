@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'SemestrePractica'); ?>
-		<?php echo $form->textField($model,'SemestrePractica',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'Semestre_CodSemestre'); ?>
+		<?php echo $form->textField($model,'Semestre_CodSemestre'); ?>
 	</div>
 
 	<div class="row">
@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Buscar'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

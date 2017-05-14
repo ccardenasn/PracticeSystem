@@ -41,7 +41,7 @@ $this->menu=array(
 		'NombrePractica',
 		'DescripcionPractica',
 		'FechaPractica',
-		'SemestrePractica',
+		'semestreCodSemestre.NombreSemestre',
 		'NumeroSesionesPractica',
 		'NumeroHorasPractica',
 		'DocenteCoordinadorPracticas_RutCoordinador',

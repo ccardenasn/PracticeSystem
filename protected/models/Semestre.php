@@ -45,6 +45,7 @@ class Semestre extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'asignaturas' => array(self::HAS_MANY, 'Asignatura', 'Semestre_CodSemestre'),
+			'configuracionpracticas' => array(self::HAS_MANY, 'Configuracionpractica', 'Semestre_CodSemestre'),
 		);
 	}
 

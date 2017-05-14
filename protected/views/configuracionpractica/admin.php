@@ -74,7 +74,7 @@ $('.search-form form').submit(function(){
 		'NombrePractica',
 		'DescripcionPractica',
 		'FechaPractica',
-		'SemestrePractica',
+		'semestreCodSemestre.NombreSemestre',
 		'NumeroSesionesPractica',
 		'NumeroHorasPractica',
 		/*

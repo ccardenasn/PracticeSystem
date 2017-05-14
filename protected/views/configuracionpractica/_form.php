@@ -45,18 +45,11 @@
 	</div>
 
 	<div class="row">
-        <?php echo $form->labelEx($model,'SemestrePractica');?>
-        <?php echo $form->dropDownList($model,'SemestrePractica', 
-                                       array(
-                                           '1'=>'Primer Semestre',
-                                           '2'=>'Segundo Semestre',
-                                           '3'=>'Tercer Semestre',
-                                           '4'=>'Cuarto Semestre',
-                                           '5'=>'Quinto Semestre',
-                                       ));?>
-        <?php echo $form->error($model,'SemestrePractica'); ?>
-    </div>
-
+		<?php echo $form->labelEx($model,'Semestre_CodSemestre'); ?>
+		<?php echo $form->dropDownList($model,'Semestre_CodSemestre',CHtml::listData(Semestre::model()->findAll(),'CodSemestre','NombreSemestre'));?>
+        <?php echo $form->error($model,'Semestre_CodSemestre'); ?>
+	</div>
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'NumeroSesionesPractica'); ?>
 		<?php echo $form->textField($model,'NumeroSesionesPractica',array('size'=>45,'maxlength'=>45)); ?>
@@ -70,14 +63,14 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'DocenteCoordinadorPracticas_RutCoordinador'); ?>
-		<?php echo $form->dropDownList($model,'DocenteCoordinadorPracticas_RutCoordinador',CHtml::listData(Docentecoordinadorpracticas::model()->findAll(),'RutCoordinador','NombreCoordinador'));?>
+		<?php echo $form->labelEx($model,'Docente Coordinador de Prácticas'); ?>
+		<?php echo $form->dropDownList($model,'DocenteCoordinadorPracticas_RutCoordinador',CHtml::listData(Docentecoordinadorpracticas::model()->findAll(),'RutCoordinador','NombreCoordinador','RutCoordinador'));?>
         <?php echo $form->error($model,'DocenteCoordinadorPracticas_RutCoordinador'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'DocenteResponsablePractica_RutResponsable'); ?>
-		<?php echo $form->dropDownList($model,'DocenteResponsablePractica_RutResponsable',CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable'));?>
+		<?php echo $form->labelEx($model,'Docente Responsable de Práctica'); ?>
+		<?php echo $form->dropDownList($model,'DocenteResponsablePractica_RutResponsable',CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable','RutResponsable'));?>
         <?php echo $form->error($model,'DocenteResponsablePractica_RutResponsable'); ?>
 	</div>
 

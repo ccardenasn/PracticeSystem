@@ -1,5 +1,4 @@
 <?php
-include_once 'FunNumeros.php';
 
 /**
  * This is the model class for table "configuracionpractica".
@@ -8,7 +7,7 @@ include_once 'FunNumeros.php';
  * @property string $NombrePractica
  * @property string $DescripcionPractica
  * @property string $FechaPractica
- * @property string $SemestrePractica
+ * @property integer $Semestre_CodSemestre
  * @property string $NumeroSesionesPractica
  * @property string $NumeroHorasPractica
  * @property string $DocenteCoordinadorPracticas_RutCoordinador
@@ -17,7 +16,9 @@ include_once 'FunNumeros.php';
  * The followings are the available model relations:
  * @property Docentecoordinadorpracticas $docenteCoordinadorPracticasRutCoordinador
  * @property Docenteresponsablepractica $docenteResponsablePracticaRutResponsable
+ * @property Semestre $semestreCodSemestre
  * @property Estudiante[] $estudiantes
+ * @property Planificacionclase[] $planificacionclases
  */
 class Configuracionpractica extends CActiveRecord
 {
@@ -37,15 +38,13 @@ class Configuracionpractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombrePractica, DescripcionPractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-			array('NombrePractica, FechaPractica, SemestrePractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
+			array('NombrePractica, Semestre_CodSemestre, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required'),
+			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
+			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
 			array('DescripcionPractica', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('NombrePractica, DescripcionPractica, FechaPractica, SemestrePractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
-			array('FechaPractica','valfecha'),
-			array('NumeroSesionesPractica','valsesion'),
-			array('NumeroHorasPractica','valhora'),
+			array('NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,7 +58,9 @@ class Configuracionpractica extends CActiveRecord
 		return array(
 			'docenteCoordinadorPracticasRutCoordinador' => array(self::BELONGS_TO, 'Docentecoordinadorpracticas', 'DocenteCoordinadorPracticas_RutCoordinador'),
 			'docenteResponsablePracticaRutResponsable' => array(self::BELONGS_TO, 'Docenteresponsablepractica', 'DocenteResponsablePractica_RutResponsable'),
+			'semestreCodSemestre' => array(self::BELONGS_TO, 'Semestre', 'Semestre_CodSemestre'),
 			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'ConfiguracionPractica_NombrePractica'),
+			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'ConfiguracionPractica_NombrePractica'),
 		);
 	}
 
@@ -69,16 +70,16 @@ class Configuracionpractica extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'NombrePractica' => 'Nombre de Práctica',
+			'NombrePractica' => 'Nombre Práctica',
 			'DescripcionPractica' => 'Descripción',
 			'FechaPractica' => 'Año',
-			'SemestrePractica' => 'Semestre',
+			'Semestre_CodSemestre' => 'Semestre',
 			'NumeroSesionesPractica' => 'Número de Sesiones',
 			'NumeroHorasPractica' => 'Número de Horas',
-			'DocenteCoordinadorPracticas_RutCoordinador' => 'Rut Coordinador de Prácticas',
-			'DocenteResponsablePractica_RutResponsable' => 'Rut Responsable de Prácticas',
-			'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador' => 'Nombre Coordinador de Prácticas',
-			'docenteResponsablePracticaRutResponsable.NombreResponsable' => 'Nombre Responsable de Prácticas',
+			'DocenteCoordinadorPracticas_RutCoordinador' => 'Rut Docente Coordinador Prácticas',
+			'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador' => 'Nombre Docente Coordinador Prácticas',
+			'DocenteResponsablePractica_RutResponsable' => 'Rut Docente Responsable Práctica',
+			'docenteResponsablePracticaRutResponsable.NombreResponsable' => 'Nombre Docente Responsable Práctica',
 		);
 	}
 
@@ -103,7 +104,7 @@ class Configuracionpractica extends CActiveRecord
 		$criteria->compare('NombrePractica',$this->NombrePractica,true);
 		$criteria->compare('DescripcionPractica',$this->DescripcionPractica,true);
 		$criteria->compare('FechaPractica',$this->FechaPractica,true);
-		$criteria->compare('SemestrePractica',$this->SemestrePractica,true);
+		$criteria->compare('Semestre_CodSemestre',$this->Semestre_CodSemestre);
 		$criteria->compare('NumeroSesionesPractica',$this->NumeroSesionesPractica,true);
 		$criteria->compare('NumeroHorasPractica',$this->NumeroHorasPractica,true);
 		$criteria->compare('DocenteCoordinadorPracticas_RutCoordinador',$this->DocenteCoordinadorPracticas_RutCoordinador,true);
@@ -123,24 +124,6 @@ class Configuracionpractica extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-	
-	public function valfecha($attribute,$params)
-	{
-		if(numerovalido($this->FechaPractica)==false)
-		$this->addError('FechaPractica','Valor no válido');
-	}
-	
-	public function valsesion($attribute,$params)
-	{
-		if(numerovalido($this->NumeroSesionesPractica)==false)
-		$this->addError('NumeroSesionesPractica','Valor no válido');
-	}
-	
-	public function valhora($attribute,$params)
-	{
-		if(numerovalido($this->NumeroHorasPractica)==false)
-		$this->addError('NumeroHorasPractica','Valor no válido');
 	}
 	
 	public function getAdmins(){

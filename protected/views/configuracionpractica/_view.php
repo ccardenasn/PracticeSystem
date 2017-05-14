@@ -5,31 +5,31 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Nombre')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NombrePractica')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->NombrePractica), array('view', 'id'=>$data->NombrePractica)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Descripcion')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('DescripcionPractica')); ?>:</b>
 	<?php echo CHtml::encode($data->DescripcionPractica); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Fecha')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaPractica')); ?>:</b>
 	<?php echo CHtml::encode($data->FechaPractica); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Semestre')); ?>:</b>
-	<?php echo CHtml::encode($data->SemestrePractica); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Semestre_CodSemestre')); ?>:</b>
+	<?php echo CHtml::encode($data->Semestre_CodSemestre); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Numero de Sesiones')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NumeroSesionesPractica')); ?>:</b>
 	<?php echo CHtml::encode($data->NumeroSesionesPractica); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Numero de Horas')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('NumeroHorasPractica')); ?>:</b>
 	<?php echo CHtml::encode($data->NumeroHorasPractica); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Docente Coordinador de Practicas')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('DocenteCoordinadorPracticas_RutCoordinador')); ?>:</b>
 	<?php echo CHtml::encode($data->DocenteCoordinadorPracticas_RutCoordinador); ?>
 	<br />
 

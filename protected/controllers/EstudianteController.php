@@ -30,7 +30,7 @@ class EstudianteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','selectProfesor'),
 				//'users'=>array('*'),
 				'users'=>Estudiante::model()->getAdmins(),
 			),
@@ -371,5 +371,18 @@ class EstudianteController extends Controller
 			'model'=>$model,
 		));
         
+	}
+	
+	public function actionSelectProfesor()
+	{
+		$id_uno = $_POST['Estudiante']['CentroPractica_RBD'];
+		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
+		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
+		}
 	}
 }

@@ -42,3 +42,21 @@ $this->menu=array(
 		'NombreSemestre',
 	),
 )); ?>
+
+<br/>
+<h2>Asignaturas </h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nombre de Asignaturas</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($model->asignaturas as $asignatura) : ?>
+		<tr>
+			<td><?php echo $asignatura->NombreAsignatura ?></td>
+		</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

@@ -52,6 +52,8 @@ $ask = new UserIdentity('','');
                           array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Horario','url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Estadísticas', 'url'=>array('/graphData'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Dependencias', 'url'=>array('/dependencia'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Nivel Educacional', 'url'=>array('/niveleducacional'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Documentos', 'url'=>array('/documentoscarrera'),'visible'=>$ask->isAdmins()),
                     ),
                 ),

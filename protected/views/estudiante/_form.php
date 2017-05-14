@@ -3,13 +3,6 @@
 /* @var $model Estudiante */
 /* @var $form CActiveForm */
 ?>
-<script>
-$(document).load(function(){
-   $('#Estudiante_NombreEstudiante').val('sd');
-   
-});
-
-</script>
 
 <div class="form">
 
@@ -79,23 +72,49 @@ $(document).load(function(){
 		<?php echo $form->textField($model,'CelularEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'CelularEstudiante'); ?>
 	</div>
-
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
-		<?php echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP'));?>
-        <?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
+		<?php //echo $form->labelEx($model,'CentroPractica_RBD'); ?>
+		<?php //echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
+        <?php //echo $form->error($model,'CentroPractica_RBD'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
+		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
+				array(
+					'ajax'=>array(
+						'type'=>'POST',
+						'url'=>CController::createUrl('Estudiante/selectProfesor'),
+						'update'=>'#'.CHtml::activeId($model,'ProfesorGuiaCP_RutProfGuiaCP'),
+						'beforeSend'=>'function(){
+						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
+						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
+						}',
+					),'prompt'=>'Seleccione'
+				)
+		);?>
+		<?php echo $form->error($model,'CentroPractica_RBD'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'Profesor Guia C P'); ?>
+		<?php 
+		$lista_dos=array();
+		if(isset($model->ProfesorGuiaCP_RutProfGuiaCP)){
+			$id_uno=intval($model->CentroPractica_RBD);
+			$lista_dos = CHtml::listData(Profesorguiacp::model()->findAll("CentroPractica_RBD = '$id_uno'"),'RutProfGuiaCP','NombreProfGuiaCP');
+		}
+		echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',$lista_dos,
+				array('prompt'=>'Seleccione')
+		);?>
+		<?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ConfiguracionPractica_NombrePractica'); ?>
 		<?php echo $form->dropDownList($model,'ConfiguracionPractica_NombrePractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
         <?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
-        <?php echo $form->error($model,'CentroPractica_RBD'); ?>
 	</div>
 
 	<div class="row">

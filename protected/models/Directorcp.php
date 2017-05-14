@@ -139,7 +139,7 @@ class Directorcp extends CActiveRecord
     
     public function valcorreo($attribute,$params)
 	{
-		if(numerovalido($this->MailDirectorCP)==false)
+		if(correovalido($this->MailDirectorCP)==false)
 		$this->addError('MailDirectorCP','Correo no válido');
 	}
     
