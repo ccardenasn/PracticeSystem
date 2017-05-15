@@ -1,5 +1,6 @@
 <?php
 include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class BitacorasesionController extends Controller
 {
@@ -62,63 +63,85 @@ class BitacorasesionController extends Controller
 	
 	public function actionViewPlanificacionBitacora($id)
 	{
-		$bitacoraUser=Bitacorasesion::model()->find('PlanificacionClase_CodPlanificacion=?',array($id));
-		$this->render('viewPlanificacionBitacora',array(
-			'model'=>$this->loadModel($bitacoraUser->CodBitacora),
-		));
+		$table = "bitacorasesion";
+		$codTable = "PlanificacionClase_CodPlanificacion";
+		$exist = contains($table,$codTable,$id);
+		
+		if($exist != 0){
+			$bitacoraUser=Bitacorasesion::model()->find('PlanificacionClase_CodPlanificacion=?',array($id));
+			
+			$this->render('viewPlanificacionBitacora',array(
+				'model'=>$this->loadModel($bitacoraUser->CodBitacora),
+			));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Aun no se ha creado una bitácora para esta planificación.</li><li>Para añadir una bitácora haga click en <strong>'Crear Bitácora'</strong>.</li></ul></div>");
+			$this->redirect(array('planificacionclase/view','id'=>$id));
+		}
 	}
 
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new Bitacorasesion;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		
-		if(isset($_POST['Bitacorasesion']))
-		{
-			$model->attributes=$_POST['Bitacorasesion'];
-			
-			$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
-			
-			if($model->save()){
-				if($file != null){
-					if($file->getExtensionName()=="doc" or $file->getExtensionName()=="docx"){
-						//se guarda la ruta de la imagen
-						$model->DocumentoBitacora->saveAs(Yii::getPathOfAlias("webroot")."/WordFiles/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo documentos en formato .doc o .docx');
-						$this->refresh();
+		$table = "bitacorasesion";
+		$codTable = "PlanificacionClase_CodPlanificacion";
+		$exist = contains($table,$codTable,$id);
+		
+		if($exist == 0){
+			if(isset($_POST['Bitacorasesion'])){
+				
+				$model->attributes=$_POST['Bitacorasesion'];
+				$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
+				
+				if($model->save()){
+					
+					if($file != null){
+						
+						if($file->getExtensionName()=="doc" or $file->getExtensionName()=="docx"){
+							$model->DocumentoBitacora->saveAs(Yii::getPathOfAlias("webroot")."/WordFiles/".$file->getName());
+						}else{
+							Yii::app()->user->setFlash('mensaje','Solo documentos en formato .doc o .docx');
+							$this->refresh();
+						}
 					}
+					
+					$curso=$_POST['CursoClase'];
+					$hora=$_POST['HoraClase'];
+					$asignatura=$_POST['AsignaturaClase'];
+					$profesorguia=$_POST['ProfesorGuiaClase'];
+					$numeroalumnos=$_POST['NumeroAlumnosClase'];
+					$bitacorasesionid=$model->CodBitacora;
+					
+					for($i=0;$i<count($curso);$i++){
+						if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
+							
+							$query="insert into clasebitacorasesion(CursoClase,HoraClase,AsignaturaClase,ProfesorGuiaClase,NumeroAlumnosClase,BitacoraSesion_CodBitacora) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
+							
+							Yii::app()->db->createCommand($query)->execute();
+						}
+					}
+					
+					$this->redirect(array('view','id'=>$model->CodBitacora));
 				}
-				
-				$curso=$_POST['CursoClase'];
-				$hora=$_POST['HoraClase'];
-				$asignatura=$_POST['AsignaturaClase'];
-				$profesorguia=$_POST['ProfesorGuiaClase'];
-				$numeroalumnos=$_POST['NumeroAlumnosClase'];
-				$bitacorasesionid=$model->CodBitacora;
-				
-				for($i=0;$i<count($curso);$i++){
-					if($curso[$i]!="" && $hora[$i]!="" && $asignatura[$i]!="" && $profesorguia[$i]!="" && $numeroalumnos[$i]!=""){
-						
-						$query="insert into clasebitacorasesion(CursoClase,HoraClase,AsignaturaClase,ProfesorGuiaClase,NumeroAlumnosClase,BitacoraSesion_CodBitacora) values('$curso[$i]','$hora[$i]','$asignatura[$i]','$profesorguia[$i]','$numeroalumnos[$i]','$bitacorasesionid')";
-						
-						Yii::app()->db->createCommand($query)->execute();
-					}
-				}	
-				$this->redirect(array('view','id'=>$model->CodBitacora));
 			}
-				
+			
+			$this->render('create',array(
+				'model'=>$model,
+			));
+		
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de una bitácora por planificación.</li><li>Para visualizar la bitácora correspondiente a esta planificación haga click en <strong>'Ver Bitácora'</strong>.</li></ul></div>");
+			$this->redirect(array('planificacionclase/view','id'=>$id));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		
+		
 	}
 
 	/**

@@ -29,7 +29,7 @@ class PlanificacionclaseadministradorController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','pdf','exportpdf'),
+				'actions'=>array('index','view','pdf','exportpdf','selectProfesor'),
 				//'users'=>array('*'),
 				'users'=>Planificacionclaseadministrador::model()->getAdmins(),
 			),
@@ -69,7 +69,7 @@ class PlanificacionclaseadministradorController extends Controller
 		$model=new Planificacionclaseadministrador;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Planificacionclaseadministrador']))
 		{
@@ -213,5 +213,18 @@ class PlanificacionclaseadministradorController extends Controller
 	public function actionExportPdf()
 	{
 		$this->render('exportpdf');
+	}
+	
+	public function actionSelectProfesor()
+	{
+		$id_uno = $_POST['Planificacionclaseadministrador']['CentroPractica_RBD'];
+		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
+		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
+		}
 	}
 }

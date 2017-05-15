@@ -11,7 +11,7 @@
 	'method'=>'post',
 	'enableAjaxValidation'=>true,
 	'enableClientValidation'=>true,
-	'htmlOptions'=>array('enctype'=>'multipart/form-data','autoComplete'=>'false'),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
@@ -71,12 +71,6 @@
 		<?php echo $form->labelEx($model,'CelularEstudiante'); ?>
 		<?php echo $form->textField($model,'CelularEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'CelularEstudiante'); ?>
-	</div>
-	
-	<div class="row">
-		<?php //echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php //echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
-        <?php //echo $form->error($model,'CentroPractica_RBD'); ?>
 	</div>
 	
 	<div class="row">

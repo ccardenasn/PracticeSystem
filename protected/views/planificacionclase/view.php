@@ -8,17 +8,6 @@ $this->breadcrumbs=array(
 	'Sesion Informada: '.$model->SesionInformada,
 );
 
-$logBookExist = containsBitacora($model->CodPlanificacion);
-$label='';
-$url='';
-if($logBookExist != 0){
-	$label = 'Ver Bitácora';
-	$url = 'bitacorasesion/viewPlanificacionBitacora';
-}else{
-	$label = 'Crear Bitácora';
-	$url = 'bitacorasesion/create';
-}
-
 $this->menu=array(
 	array('label'=>'Planificación de Clases', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
@@ -26,11 +15,19 @@ $this->menu=array(
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'¡ADVERTENCIA! Esta acción borrará registros asociados a la planificación, tales como Bitácoras y Documentos de Word Adjuntos ¿Desea Continuar?')),
 	array('label'=>'Administración de Planificaciones', 'url'=>array('admin','id'=>$model->Estudiante_RutEstudiante)),
 	array('label'=>'Administración de Bitacoras', 'url'=>array('bitacorasesion/admin','id'=>$model->Estudiante_RutEstudiante)),
-	array('label'=>$label, 'url'=>array($url, 'id'=>$model->CodPlanificacion)),
+	array('label'=>'Crear Bitácora', 'url'=>array('bitacorasesion/create', 'id'=>$model->CodPlanificacion)),
+	array('label'=>'Ver Bitácora', 'url'=>array('bitacorasesion/viewPlanificacionBitacora', 'id'=>$model->CodPlanificacion)),
 );
 ?>
 
 <h1>Sesion Informada: <?php echo $model->SesionInformada; ?></h1>
+
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
+
 <h2>Estudiante: <?php echo $model->estudianteRutEstudiante->NombreEstudiante ?> </h2>
 
 <div class="collapse">

@@ -8,17 +8,6 @@ $this->breadcrumbs=array(
 	'Sesion Informada: '.$model->SesionInformada, 
 );
 
-$logBookExist = containsBitacora($model->CodPlanificacion);
-$label='';
-$url='';
-if($logBookExist != 0){
-	$label = 'Ver Bitácora';
-	$url = 'bitacorasesionadmin/viewPlanificacionBitacora';
-}else{
-	$label = 'Crear Bitácora';
-	$url = 'bitacorasesionadmin/create';
-}
-
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create','id'=>$model->Estudiante_RutEstudiante)),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodPlanificacion)),
@@ -26,11 +15,18 @@ $this->menu=array(
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclaseadministrador/adminPlanificacionEstudiante','id'=>$model->Estudiante_RutEstudiante)),
 	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodPlanificacion)),
-    array('label'=>$label, 'url'=>array($url, 'id'=>$model->CodPlanificacion)),
+    array('label'=>'Crear Bitácora', 'url'=>array('bitacorasesionadmin/create', 'id'=>$model->CodPlanificacion)),
+	array('label'=>'Ver Bitácora', 'url'=>array('bitacorasesionadmin/viewPlanificacionBitacora', 'id'=>$model->CodPlanificacion)),
 );
 ?>
 
 <h1>Sesion Informada: <?php echo $model->SesionInformada; ?></h1>
+
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <h2>Estudiante: <?php echo $model->estudianteRutEstudiante->NombreEstudiante; ?></h2>
 
