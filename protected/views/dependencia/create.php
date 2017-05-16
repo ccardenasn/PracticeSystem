@@ -4,15 +4,28 @@
 
 $this->breadcrumbs=array(
 	'Dependencias'=>array('index'),
-	'Create',
+	'Añadir',
 );
 
 $this->menu=array(
-	array('label'=>'List Dependencia', 'url'=>array('index')),
-	array('label'=>'Manage Dependencia', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Dependencia</h1>
+<h1>Añadir Dependencia</h1><br>
+	
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones</h4>
+			<li>Para regresar al índice con dependencias haga click en la opción <strong>"Lista"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista correspondiente a depenendencias existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
