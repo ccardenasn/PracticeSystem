@@ -37,13 +37,13 @@ include_once('planificacion.php');
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
+		<?php echo $form->labelEx($studentModel,'CentroPractica_RBD'); ?>
+		<?php echo $form->dropDownList($studentModel,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
 				array(
 					'ajax'=>array(
 						'type'=>'POST',
 						'url'=>CController::createUrl('Planificacionclaseadministrador/selectProfesor'),
-						'update'=>'#'.CHtml::activeId($model,'ProfesorGuiaCP_RutProfGuiaCP'),
+						'update'=>'#'.CHtml::activeId($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'),
 						'beforeSend'=>'function(){
 						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
 						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
@@ -51,21 +51,21 @@ include_once('planificacion.php');
 					),'prompt'=>'Seleccione'
 				)
 		);?>
-		<?php echo $form->error($model,'CentroPractica_RBD'); ?>
+		<?php echo $form->error($studentModel,'CentroPractica_RBD'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'Profesor Guia C P'); ?>
+		<?php echo $form->labelEx($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 		<?php 
 		$lista_dos=array();
-		if(isset($model->ProfesorGuiaCP_RutProfGuiaCP)){
-			$id_uno=intval($model->CentroPractica_RBD);
+		if(isset($studentModel->ProfesorGuiaCP_RutProfGuiaCP)){
+			$id_uno=intval($studentModel->CentroPractica_RBD);
 			$lista_dos = CHtml::listData(Profesorguiacp::model()->findAll("CentroPractica_RBD = '$id_uno'"),'RutProfGuiaCP','NombreProfGuiaCP');
 		}
-		echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',$lista_dos,
+		echo $form->dropDownList($studentModel,'ProfesorGuiaCP_RutProfGuiaCP',$lista_dos,
 				array('prompt'=>'Seleccione')
 		);?>
-		<?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
+		<?php echo $form->error($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 	</div>
 
 	<div class="row">

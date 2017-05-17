@@ -9,11 +9,11 @@ include_once('planificacion.php');
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'planificacionclase-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'method'=>'post',
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
@@ -39,15 +39,35 @@ include_once('planificacion.php');
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),array('options' => array($arrdata[7]=>array('selected'=>true))));?>
-        <?php echo $form->error($model,'CentroPractica_RBD'); ?>
+		<?php echo $form->labelEx($studentModel,'CentroPractica_RBD'); ?>
+		<?php echo $form->dropDownList($studentModel,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
+				array(
+					'ajax'=>array(
+						'type'=>'POST',
+						'url'=>CController::createUrl('Planificacionclase/selectProfesor'),
+						'update'=>'#'.CHtml::activeId($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'),
+						'beforeSend'=>'function(){
+						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
+						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
+						}',
+					),'prompt'=>'Seleccione'
+				)
+		);?>
+		<?php echo $form->error($studentModel,'CentroPractica_RBD'); ?>
 	</div>
-
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
-		<?php echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP','RutProfGuiaCP'),array('options' => array($arrdata[1]=>array('selected'=>true))));?>
-        <?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
+		<?php echo $form->labelEx($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
+		<?php 
+		$lista_dos=array();
+		if(isset($studentModel->ProfesorGuiaCP_RutProfGuiaCP)){
+			$id_uno=intval($studentModel->CentroPractica_RBD);
+			$lista_dos = CHtml::listData(Profesorguiacp::model()->findAll("CentroPractica_RBD = '$id_uno'"),'RutProfGuiaCP','NombreProfGuiaCP');
+		}
+		echo $form->dropDownList($studentModel,'ProfesorGuiaCP_RutProfGuiaCP',$lista_dos,
+				array('prompt'=>'Seleccione')
+		);?>
+		<?php echo $form->error($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 	</div>
 
 	<div class="row">

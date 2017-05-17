@@ -1,5 +1,6 @@
 <?php
 include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class PlanificacionclaseadministradorController extends Controller
 {
@@ -64,23 +65,42 @@ class PlanificacionclaseadministradorController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id)
 	{
 		$model=new Planificacionclaseadministrador;
+		$studentModel=$this->loadStudentModel($id);
+		$practicaModel=$this->loadPracticaModel($studentModel->ConfiguracionPractica_NombrePractica);
 
+		$table = "planificacionclase";
+		$codTable = "Estudiante_RutEstudiante";
+		
+		$totalSesiones = $practicaModel->NumeroSesionesPractica;
+		$sesionesPlanificacion = contains($table,$codTable,$id);
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Planificacionclaseadministrador']))
-		{
-			$model->attributes=$_POST['Planificacionclaseadministrador'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->CodPlanificacion));
+		if($sesionesPlanificacion < $totalSesiones){
+			
+			if(isset($_POST['Planificacionclaseadministrador'])){
+				
+				$model->attributes=$_POST['Planificacionclaseadministrador'];
+				$studentModel->attributes=$_POST['Estudiante'];
+				
+				$model->CentroPractica_RBD = $studentModel->CentroPractica_RBD;
+				$model->ProfesorGuiaCP_RutProfGuiaCP = $studentModel->ProfesorGuiaCP_RutProfGuiaCP;
+				
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->CodPlanificacion));
+			}
+			
+			$this->render('create',array(
+				'model'=>$model,
+				'studentModel'=>$studentModel,
+			));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Se han definido todas las planificaciones de acuerdo al total de sesiones correspondiente a práctica.</li></ul></div>");
+			$this->redirect(array('estudiante/view','id'=>$id));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**
@@ -191,6 +211,22 @@ class PlanificacionclaseadministradorController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+	
+	public function loadStudentModel($id)
+	{
+		$model=Estudiante::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	public function loadPracticaModel($id)
+	{
+		$model=Configuracionpractica::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 
 	/**
 	 * Performs the AJAX validation.
@@ -217,7 +253,7 @@ class PlanificacionclaseadministradorController extends Controller
 	
 	public function actionSelectProfesor()
 	{
-		$id_uno = $_POST['Planificacionclaseadministrador']['CentroPractica_RBD'];
+		$id_uno = $_POST['Estudiante']['CentroPractica_RBD'];
 		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
 		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
 		

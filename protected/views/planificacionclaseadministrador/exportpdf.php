@@ -5,39 +5,91 @@ $pdf = Yii::createComponent('application.extensions.MPDF60.mpdf');
 $dataProvider = $_SESSION['datos_filtrados']->getData();
 $contador=count($dataProvider);
 //creamos las cabeceras
-$html.='
-<h1>Lista de Planificaciones</h1>
-<h2>Total Resultados: '.$contador.'</h2>
-<table align="center"><tr>
-</tr></table>
-<table class="detail-view2" repeat_header="1" width="100%" border="1" bordercolor="#0000FF" cellspacing="8" cellpadding="8">
-<tr class="principal">
-<td><b>Rut Estudiante</b></td>
-<td><b>Práctica</b></td>
-<td><b>Centro de Práctica</b></td>
-<td><b>Profesor Guía</b></td>
-<td><b>Curso</b></td>
-<td><b>Ejecutado</b></td>
-<td class="principal" width="45%"><b>Supervisado</b></td>
-</tr>';
+
+date_default_timezone_set('America/Santiago');
+
+$fecha = getdate();
+$day = $fecha['mday'];
+$month = $fecha['mon'];
+$year = $fecha['year'];
+
+$date = $day."/".$month."/".$year;
+
+$html.="<bookmark content='start'/><div>Pedagogía en Educación Básica</div><br>";
+
+$html.="<style>
+body {font-family: sans-serif;
+	font-size: 10pt;
+}
+p {	margin: 0pt; }
+table.items {
+	border: 0.1mm solid #000000;
+}
+td { vertical-align: top; }
+.items td {
+	border-left: 0.1mm solid #000000;
+	border-right: 0.1mm solid #000000;
+}
+table thead td { background-color: #EEEEEE;
+	text-align: center;
+	border: 0.1mm solid #000000;
+	font-variant: small-caps;
+	
+}
+.items td.blanktotal {
+	background-color: #EEEEEE;
+	border: 0.1mm solid #000000;
+	background-color: #FFFFFF;
+	border: 0mm none #000000;
+	border-top: 0.1mm solid #000000;
+	border-right: 0.1mm solid #000000;
+}
+.items td.totals {
+	text-align: right;
+	border: 0.1mm solid #000000;
+}
+.items td.cost {
+	text-align: "." center;
+}
+</style>";
+
+$html.="<h1 align='center'>Lista de Planificaciones</h1><br>";
+$html.="<h2>Total Resultados: ".$contador."</h2>";
+
+$html.="<table style='width:100%' border=1 class='table-responsive'>
+  <tr>
+    <th align='left'>Rut Estudiante</th>
+    <th align='left'>Práctica</th>
+	<th align='left'>Centro de Práctica</th>
+	<th align='left'>Profesor Guía CP</th>
+	<th align='left'>Curso</th>
+	<th align='left'>Ejecutado</th>
+	<th align='left'>Supervisado</th>
+  </tr>";
+
 $i=0;
 $val=count($dataProvider);
 //dentro del ciclo vamos insertando los datos obtenidos
 while($i<$val){
-$html.='
-<tr class="odd">
-<td class="odd" width="7%">&nbsp;'.$dataProvider[$i]["Estudiante_RutEstudiante"].'</td>
-<td class="odd" width="7%">&nbsp;'.$dataProvider[$i]["ConfiguracionPractica_NombrePractica"].'</td>
-<td class="odd" width="10%">&nbsp;'.$dataProvider[$i]["centroPracticaRBD"]["NombreCentroPractica"].'</td>
-<td class="odd" width="7%">&nbsp;'.$dataProvider[$i]["profesorGuiaCPRutProfGuiaCP"]["NombreProfGuiaCP"].'</td>
-<td class="odd" width="7%">&nbsp;'.$dataProvider[$i]["Curso"].'</td>
-<td class="odd" width="7%">&nbsp;'.$dataProvider[$i]["Ejecutado"].'</td>
-<td class="odd" width="7%">&nbsp;'.$dataProvider[$i]["Supervisado"].'</td>';
-$html.='</tr>'; $i++;
+	$html.="<tr>
+			<td>".$dataProvider[$i]["Estudiante_RutEstudiante"]."</td>
+			<td>".$dataProvider[$i]["ConfiguracionPractica_NombrePractica"]."</td>
+			<td>".$dataProvider[$i]["centroPracticaRBD"]["NombreCentroPractica"]."</td>
+			<td>".$dataProvider[$i]["profesorGuiaCPRutProfGuiaCP"]["NombreProfGuiaCP"]."</td>
+			<td>".$dataProvider[$i]["Curso"]."</td>
+			<td>".$dataProvider[$i]["Ejecutado"]."</td>
+			<td>".$dataProvider[$i]["Supervisado"]."</td>
+  		</tr>";
+	
+	$i++;
 }
+
 $html.='</table>';
 $html = Encoding::toUTF8($html);
 $mpdf=new mPDF("");
+$mpdf->SetHTMLHeader($header);
+$mpdf->SetHeader("".$date."|Sistema de Gestión de Prácticas - Universidad Austral de Chile");
+$mpdf->SetFooter("Sistema de Gestión de Prácticas - Universidad Austral de Chile");
 $mpdf->WriteHTML($html);
 $mpdf->Output("");
 exit; 

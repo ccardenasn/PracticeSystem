@@ -1,6 +1,7 @@
 <?php
 include_once('consulta.php');
 include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class PlanificacionclaseController extends Controller
 {
@@ -30,7 +31,7 @@ class PlanificacionclaseController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','selectProfesor'),
 				//'users'=>array('*'),
 				'users'=>Planificacionclase::model()->getStudents(),
 			),
@@ -68,27 +69,42 @@ class PlanificacionclaseController extends Controller
 	public function actionCreate()
 	{
         $estudiantelogged=Yii::app()->user->name;
-        $comp=consultaplanificacion($estudiantelogged);
         
         $model=new Planificacionclase;
+        
+        $studentModel=$this->loadStudentModel($estudiantelogged);
+		$practicaModel=$this->loadPracticaModel($studentModel->ConfiguracionPractica_NombrePractica);
+
+		$table = "planificacionclase";
+		$codTable = "Estudiante_RutEstudiante";
+		
+		$totalSesiones = $practicaModel->NumeroSesionesPractica;
+		$sesionesPlanificacion = contains($table,$codTable,$estudiantelogged);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-		if(isset($_POST['Planificacionclase']))
-		{
-			$model->attributes=$_POST['Planificacionclase'];
+		$this->performAjaxValidation($model);
+		
+        if($sesionesPlanificacion < $totalSesiones){
             
-            if($comp[0] < $comp[1]){
+            if(isset($_POST['Planificacionclase'])){
+                $model->attributes=$_POST['Planificacionclase'];
+                $studentModel->attributes=$_POST['Estudiante'];
+				
+				$model->CentroPractica_RBD = $studentModel->CentroPractica_RBD;
+				$model->ProfesorGuiaCP_RutProfGuiaCP = $studentModel->ProfesorGuiaCP_RutProfGuiaCP;
+                
                 if($model->save())
-				$this->redirect(array('view','id'=>$model->CodPlanificacion));
-            }else{
-                Yii::app()->user->setFlash('success',"No se pueden crear mas sesiones!!!");
+                    $this->redirect(array('view','id'=>$model->CodPlanificacion));
             }
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));	
+            
+            $this->render('create',array(
+                'model'=>$model,
+                'studentModel'=>$studentModel,
+            ));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Se han definido todas las planificaciones de acuerdo al total de sesiones correspondiente a práctica.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**
@@ -196,6 +212,22 @@ class PlanificacionclaseController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+    
+    public function loadStudentModel($id)
+	{
+		$model=Estudiante::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	public function loadPracticaModel($id)
+	{
+		$model=Configuracionpractica::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 
 	/**
 	 * Performs the AJAX validation.
@@ -207,6 +239,19 @@ class PlanificacionclaseController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+    
+    public function actionSelectProfesor()
+	{
+		$id_uno = $_POST['Estudiante']['CentroPractica_RBD'];
+		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
+		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
 	}
 }

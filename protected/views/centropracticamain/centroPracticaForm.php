@@ -71,7 +71,7 @@
 								   array(
 									   'ajax'=>array(
 										   'type'=>'POST',
-										   'url'=>CController::createUrl('Centropractica/selectProvincia'),
+										   'url'=>CController::createUrl('Centropracticamain/selectProvincia'),
 										   'update'=>'#'.CHtml::activeId($centroModel,'Provincia_codProvincia'),
 										   'beforeSend'=>'function(){ $("#Centropractica_Provincia_codProvincia").find("option").remove();$("#Centropractica_Ciudad_codCiudad").find("option").remove();}',
 									   ),
@@ -95,7 +95,7 @@
 							 array(
 								 'ajax'=>array(
 									 'type'=>'POST',
-									 'url'=>CController::createUrl('Centropractica/selectCiudad'),
+									 'url'=>CController::createUrl('Centropracticamain/selectCiudad'),
 									 'update'=>'#'.CHtml::activeId($centroModel,'Ciudad_codCiudad'),
 									 'beforeSend'=>'function(){
 									 $("#Centropractica_Ciudad_codCiudad").find("option").remove();}',
