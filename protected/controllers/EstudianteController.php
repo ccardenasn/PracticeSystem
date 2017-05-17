@@ -253,7 +253,6 @@ class EstudianteController extends Controller
 	{
         $model=new Estudiante('search');
 		$studentsList = "";
-		//$this->performAjaxValidation($model);
 		
 		if(isset($_POST['Estudiante']))
 		{
@@ -284,11 +283,13 @@ class EstudianteController extends Controller
 						$objPHPExcel->setActiveSheetIndex(0);
 						
 						//celda inicial en la cual empezara a realizar el barrido de la grilla de excel
-						$i=1;
+						$i=2;
 						$run=true;
-						$contador=0;
-						
-						while($run==true){
+                        
+                        $validExcel = checkExcelHeaderFormat($objPHPExcel); 
+                        
+                        if($validExcel == true){
+                            while($run==true){
 							if($objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue()==NULL){
 								$run=false;
 							}else{
@@ -310,63 +311,56 @@ class EstudianteController extends Controller
 								$existStudent = containsStudentExcel($rut);
 								
 								if($existStudent == 0){
-									$query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante,SituacionFinalEstudiante,ObservacionEstudiante) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".$mencion."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$practica."','".$centro."','".$imagen."','".$situacion."','".$observacion."');";
+                                    
+                                    $existData = checkData($mencion,$profesor,$practica,$centro);
+                                    
+                                    
+                                    if($existData == true){
+                                        $query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante,SituacionFinalEstudiante,ObservacionEstudiante) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".$mencion."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$practica."','".$centro."','".$imagen."','".$situacion."','".$observacion."');";
+                                        
+                                        Yii::app()->db->createCommand($query)->execute();
+                                    }else{
+                                        Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible agregar al estudiante de nombre: ".$nombre.", rut: ".$rut.".</li><li>Por favor verifique si los datos del estudiante correspondientes a Mención, Profesor Guía CP, Práctica y Centro de Práctica han sido ingresados previamente al sistema.</li></ul></div>");
+                                        $this->refresh();
+                                    }
+                                }else{
+                                    $studentsList = $studentsList."<br><li>".$nombre.", ".$rut."</li>";
+                                }
+                            }
+                            $i++;
+                        }
+                        }else{
+                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Formato de tabla incorrecto.</li></ul></div>");
+                                        $this->refresh();
+                        }
                         
-									Yii::app()->db->createCommand($query)->execute();
-								}else{
-									$studentsList = $studentsList."<br><li>".$nombre.", ".$rut."</li>";
-								}
-									
-								
-								
-								
-							}
-							$i++;
-							$contador=$contador+1;
-						}
-					}
-					unlink($destino);
-					
-					if($studentsList == ""){
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Datos almacenados correctamente.</li></ul></div>");
-					$this->refresh();
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'>
-	<p><strong>¡Operación realizada!</strong></p>
-	<ul>
-		<li>Datos almacenados correctamente.</li>
-		<li>Los siguientes alumnos ya se encuentran registrados, por lo tanto se han omitido durante el ingreso:
-			<ul>
-				".$studentsList."
-			</ul>
-		</li>
-	</ul>
-</div>");
 						
 						
-						
-						
-					$this->refresh();
-					}
-					
-					
-				
+                    }
+                    unlink($destino);
+                    
+                    if($studentsList == ""){
+                        Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Datos almacenados correctamente.</li></ul></div>");
+                        $this->refresh();
+                    }else{
+                        Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Datos almacenados correctamente.</li><li>Los siguientes alumnos ya se encuentran registrados, por lo tanto se han omitido durante el ingreso:<ul>".$studentsList."</ul></li></ul></div>");
+                        $this->refresh();
+                    }
 				}else{
 					Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permiten archivos con extension .xls o .xlsx.</li></ul></div>");
-					
 					$this->refresh();
-				}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Por favor seleccione un archivo primero.</li></ul></div>");
+                }
+            }else{
+                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Por favor seleccione un archivo primero.</li></ul></div>");
 				$this->refresh();
 			}
 		}
-		//$model=new Estudiante('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Estudiante']))
-			$model->attributes=$_GET['Estudiante'];
-		
         
+        $model->unsetAttributes();
+        
+        if(isset($_GET['Estudiante']))
+            $model->attributes=$_GET['Estudiante'];
+		
 		$this->render('readExcel',array(
 			'model'=>$model,
 		));

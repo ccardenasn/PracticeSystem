@@ -38,6 +38,57 @@ function deleteData($table,$codTable,$id){
 	Yii::app()->db->createCommand($query)->execute();
 }
 
+function checkData($mencion,$profesor,$practica,$centro)
+{
+    $existData = false;
+    
+    $tableMencion = "mencion";
+    $codTableMencion = "NombreMencion";
+    $existMencion = contains($tableMencion,$codTableMencion,$mencion);
+    
+    $tableProfesor = "profesorguiacp";
+    $codTableProfesor = "RutProfGuiaCP";
+    $existProfesor = contains($tableProfesor,$codTableProfesor,$profesor);
+    
+    $tablePractica = "configuracionpractica";
+    $codTablePractica = "NombrePractica";
+    $existPractica = contains($tablePractica,$codTablePractica,$practica);
+    
+    $tableCentro = "centropractica";
+    $codTableCentro = "RBD";
+    $existCentro = contains($tableCentro,$codTableCentro,$centro);
+    
+    if($existMencion != 0 && $existProfesor != 0 && $existPractica != 0 && $existCentro){
+        $existData = true;
+    }
+    
+    return $existData;
+}
+
+function checkExcelHeaderFormat($objPHPExcel){
+    $validFormat = false;
+    $i=1;
+    $rut = trim($objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue());
+    $nombre = trim($objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue());
+    $clave = trim($objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
+    $fecha = trim($objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue());
+    $mencion = trim($objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue());
+    $mail = trim($objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue());
+    $telefono = trim($objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue());
+    $celular = trim($objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
+    $profesor = trim($objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue());
+    $practica = trim($objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue());
+    $centro = trim($objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue());
+    $imagen = trim($objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue());
+    $situacion = trim($objPHPExcel->getActiveSheet()->getCell('M'.$i)->getCalculatedValue());
+    $observacion = trim($objPHPExcel->getActiveSheet()->getCell('N'.$i)->getCalculatedValue());
+    
+    if($rut == "Rut" && $nombre == "Nombre" && $clave == "Clave" && $fecha == "Año" && $mencion == "Mención" && $mail == "Correo" && $telefono == "Teléfono" && $celular == "Celular" && $profesor == "Profesor Guía CP" && $practica == "Práctica" && $centro = "Centro de Práctica" && $imagen == "Imagen" && $situacion == "Situación" && $observacion == "Comentario"){
+        $validFormat = true;
+    }
+    
+    return $validFormat;
+}
 
 
 ?>
