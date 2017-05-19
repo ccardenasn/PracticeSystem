@@ -14,6 +14,12 @@ $this->menu=array(
 
 <h1>Profesor Coordinador de Practicas CP</h1><br>
 
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
+
 <ul>
 	<h4>Instrucciones</h4>
 	<li>Para agregar un nuevo coordinador cp haga click en la opción "Añadir" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>

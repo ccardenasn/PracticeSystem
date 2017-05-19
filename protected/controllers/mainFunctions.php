@@ -90,5 +90,63 @@ function checkExcelHeaderFormat($objPHPExcel){
     return $validFormat;
 }
 
+function isEnabled(){
+    
+    $enabled = false;
+    
+    $tableCenter = "centropractica";
+    $emptyCenter = isEmpty($tableCenter);
+    
+    $tableProfesor = "profesorguiacp";
+    $emptyProfesor = isEmpty($tableProfesor);
+    
+    $tableMencion = "mencion";
+    $emptyMencion = isEmpty($tableMencion);
+    
+    $tablePractica = "configuracionpractica";
+    $emptyPractica = isEmpty($tablePractica);
+    
+    if($emptyCenter == false && $emptyProfesor == false && $emptyMencion == false && $emptyPractica == false){
+        $enabled = true;
+    }
+    
+    return $enabled;
+}
+
+
+function isPracticaEnabled(){
+    $enabled = false;
+    
+    $tableSemestre = "semestre";
+    $emptySemestre = isEmpty($tableSemestre);
+    
+    $tableCoordinador = "docentecoordinadorpracticas";
+    $emptyCoordinador = isEmpty($tableCoordinador);
+    
+    $tableResponsable = "docenteresponsablepractica";
+    $emptyResponsable = isEmpty($tableResponsable);
+    
+    if($emptySemestre == false && $emptyCoordinador == false && $emptyResponsable == false){
+        $enabled = true;
+    }
+    
+    return $enabled;
+}
+
+function isCentroEnabled(){
+    $enabled = false;
+    
+    $tableDependencia = "dependencia";
+    $emptyDependencia = isEmpty($tableDependencia);
+    
+    $tableNivelEducacional = "niveleducacional";
+    $emptyNivelEducacional = isEmpty($tableNivelEducacional);
+    
+    if($emptyDependencia == false && $emptyNivelEducacional == false){
+        $enabled = true;
+    }
+    
+    return $enabled;
+}
 
 ?>

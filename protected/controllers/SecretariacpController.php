@@ -74,39 +74,45 @@ class SecretariacpController extends Controller
 
 		$table = "secretariacp";
 		$codTable = "RutSecretariaCP";
+        
+		$empty = isEmpty("centropractica");
 		
-		if(isset($_POST['Secretariacp']))
-		{
-			$model->attributes=$_POST['Secretariacp'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenSecretariaCP=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
-			
-			$exist = contains($table,$codTable,$model->RutSecretariaCP);
-			
-			if($exist == 0){
-				if($model->save()){
-					if($file != null){
-						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$model->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$file->getName());
-						}else{
-							deleteData($table,$codTable,$model->RutSecretariaCP);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}
-					}
-					$this->redirect(array('view','id'=>$model->RutSecretariaCP));
-				}	
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutSecretariaCP." ya está registrado.</li></ul></div>");
-				$this->refresh();
-			}
-			
-			
-		}
-		$this->render('create',array(
-			'model'=>$model,
-		));
+        if($empty == false){
+            
+            if(isset($_POST['Secretariacp'])){
+                
+                $model->attributes=$_POST['Secretariacp'];
+                $file=$model->ImagenSecretariaCP=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
+                
+                $exist = contains($table,$codTable,$model->RutSecretariaCP);
+                
+                if($exist == 0){
+                    
+                    if($model->save()){
+                        if($file != null){
+                            if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                                $model->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$file->getName());
+                            }else{
+                                deleteData($table,$codTable,$model->RutSecretariaCP);
+                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                                $this->refresh();
+                            }
+                        }
+                        $this->redirect(array('view','id'=>$model->RutSecretariaCP));
+                    }	
+                }else{
+                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutSecretariaCP." ya está registrado.</li></ul></div>");
+                    $this->refresh();
+                }
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir Secretaria CP en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Centros de Práctica</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

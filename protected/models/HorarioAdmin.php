@@ -127,6 +127,10 @@ class Horarioadmin extends CActiveRecord
 		while(($row=$dataReaderResponsable->read())!==false){
 			array_push($rows, $row['RutResponsable']);
 		}
+        
+        if($rows == null){
+            $rows[0] = "@";
+        }
 		
 		return $rows;
 	}

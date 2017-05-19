@@ -74,39 +74,48 @@ class ProfesorcoordinadorpracticacpController extends Controller
 		$table = "profesorcoordinadorpracticacp";
 		$codTable = "RutProfCoordGuiaCp";
 		
-		if(isset($_POST['Profesorcoordinadorpracticacp']))
-		{
-			$model->attributes=$_POST['Profesorcoordinadorpracticacp'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
-			
-			$exist = contains($table,$codTable,$model->RutProfCoordGuiaCp);
-			
-			if($exist == 0){
-				if($model->save()){
-					if($file != null){
-						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$model->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$file->getName());
-						}else{
-							deleteData($table,$codTable,$model->RutProfCoordGuiaCp);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}
-					}
-					$this->redirect(array('view','id'=>$model->RutProfCoordGuiaCp));
-				}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutProfCoordGuiaCp." ya está registrado.</li></ul></div>");
-				$this->refresh();
-			}
-			
-			
-		}
+        $empty = isEmpty("centropractica");
 		
-		$this->render('create',array(
-			'model'=>$model,
-		));
+        if($empty == false){
+            
+            if(isset($_POST['Profesorcoordinadorpracticacp'])){
+                
+                $model->attributes=$_POST['Profesorcoordinadorpracticacp'];
+                $file=$model->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
+                
+                $exist = contains($table,$codTable,$model->RutProfCoordGuiaCp);
+                
+                if($exist == 0){
+                    
+                    if($model->save()){
+        
+                        if($file != null){
+                            if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                                
+                                $model->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$file->getName());
+                            
+                            }else{
+                                deleteData($table,$codTable,$model->RutProfCoordGuiaCp);
+                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                                $this->refresh();
+                            }
+                        }
+                        $this->redirect(array('view','id'=>$model->RutProfCoordGuiaCp));
+                    }
+                }else{
+                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutProfCoordGuiaCp." ya está registrado.</li></ul></div>");
+                    $this->refresh();
+                }
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));
+        
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir Profesor Coordinador Práctica CP en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Centros de Práctica</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

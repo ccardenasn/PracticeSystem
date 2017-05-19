@@ -74,38 +74,47 @@ class DirectorcpController extends Controller
 		$table = "directorcp";
 		$codTable = "RutDirectorCP";
 		
-		if(isset($_POST['Directorcp']))
-		{
-			$model->attributes=$_POST['Directorcp'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenDirectorCP=CUploadedFile::getInstance($model,'ImagenDirectorCP');
-			
-			$exist = contains($table,$codTable,$model->RutDirectorCP);
-			
-			if($exist == 0){
-				if($model->save()){
-					if($file != null){
-						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$model->ImagenDirectorCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirectoresCP/".$file->getName());
-						}else{
-							deleteData($table,$codTable,$model->RutDirectorCP);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}
-					}
-					$this->redirect(array('view','id'=>$model->RutDirectorCP));
-				}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutDirectorCP." ya está registrado.</li></ul></div>");
-				$this->refresh();
-			}
-			
-			
-		}
-		$this->render('create',array(
-			'model'=>$model,
-		));
+        $empty = isEmpty("centropractica");
+		
+        if($empty == false){
+            
+            if(isset($_POST['Directorcp'])){
+                
+                $model->attributes=$_POST['Directorcp'];
+                $file=$model->ImagenDirectorCP=CUploadedFile::getInstance($model,'ImagenDirectorCP');
+                
+                $exist = contains($table,$codTable,$model->RutDirectorCP);
+                
+                if($exist == 0){
+                    
+                    if($model->save()){
+                        
+                        if($file != null){
+                            if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                                
+                                $model->ImagenDirectorCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirectoresCP/".$file->getName());
+                            }else{
+                                deleteData($table,$codTable,$model->RutDirectorCP);
+                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                                $this->refresh();
+                            }
+                        }
+                        $this->redirect(array('view','id'=>$model->RutDirectorCP));
+                    }
+                }else{
+                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutDirectorCP." ya está registrado.</li></ul></div>");
+                    $this->refresh();
+                }
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));
+        
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir Director CP en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Centros de Práctica</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

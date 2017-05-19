@@ -74,24 +74,35 @@ class ConfiguracionpracticaController extends Controller
 		$table = "configuracionpractica";
 		$codTable = "NombrePractica";
 		
-		if(isset($_POST['Configuracionpractica']))
-		{
-			$model->attributes=$_POST['Configuracionpractica'];
-			
-			$exist = contains($table,$codTable,$model->NombrePractica);
-			
-			if($exist == 0){
-				if($model->save())
-				$this->redirect(array('view','id'=>$model->NombrePractica));
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>La práctica: ".$model->NombrePractica." ya está registrada.</li></ul></div>");
-				$this->refresh();
-			}
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+        $enabledPractica = isPracticaEnabled();
+        
+        if($enabledPractica == true){
+            
+            if(isset($_POST['Configuracionpractica'])){
+                
+                $model->attributes=$_POST['Configuracionpractica'];
+                $exist = contains($table,$codTable,$model->NombrePractica);
+                
+                if($exist == 0){
+                    
+                    if($model->save())
+                        $this->redirect(array('view','id'=>$model->NombrePractica));
+                }else{
+                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>La práctica: ".$model->NombrePractica." ya está registrada.</li></ul></div>");
+                    $this->refresh();
+                }
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));
+        
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir Prácticas en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Semestres</strong>, <strong>Coordinador de Práctica</strong> y <strong>Docentes Responsables de Prácticas</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
+        
+		
 	}
 
 	/**

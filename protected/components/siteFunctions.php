@@ -28,5 +28,44 @@ function containsResponsable($id){
 	return $result;
 }
 
+function containsData($table,$codTable,$id){
+	$query = "select count(*) from ".$table." where ".$codTable." = '".$id."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}
+
+function checkMainUser($username){
+    
+    $exist = false;
+    
+    $tableEstudiante = "estudiante";
+    $codTableEstudiante = "RutEstudiante";
+    
+    $existEstudiante = containsData($tableEstudiante,$codTableEstudiante,$username);
+    
+    $tableCoordinador = "docentecoordinadorpracticas";
+    $codTableCoordinador = "RutCoordinador";
+    
+    $existCoordinador = containsData($tableCoordinador,$codTableCoordinador,$username);
+    
+    $tableResponsable = "docenteresponsablepractica";
+    $codTableResponsable = "RutResponsable";
+    
+    $existResponsable = containsData($tableResponsable,$codTableResponsable,$username);
+    
+    $tableDirector = "directorcarrera";
+    $codTableDirector = "RutDirector";
+    
+    $existDirector = containsData($tableDirector,$codTableDirector,$username);
+    
+    if($existEstudiante != 0 || $existCoordinador != 0 || $existResponsable != 0 || $existDirector != 0){
+        $exist = true;
+    }
+    
+    return $exist;
+    
+}
+
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 include_once('centroPracticaFunctions.php');
+include_once('mainFunctions.php');
 
 class CentropracticamainController extends Controller
 {
@@ -77,7 +78,10 @@ class CentropracticamainController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel));
 
-		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
+        $enabledCentro = isCentroEnabled();
+	
+        if($enabledCentro == true){
+            if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
 		{
 			$centroModel->attributes=$_POST['Centropractica'];
 			$secretariaModel->attributes=$_POST['Secretariacp'];
@@ -205,6 +209,11 @@ class CentropracticamainController extends Controller
 			'coordinadorModel'=>$coordinadorModel,
 			//'profesorModel'=>$profesorModel,
 		));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir centros de práctica en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Dependencias</strong>, y <strong>Nivel Educacional</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
+        
 	}
 
 	/**

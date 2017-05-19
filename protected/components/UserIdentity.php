@@ -69,9 +69,15 @@ class UserIdentity extends CUserIdentity
     
     public function authenticate()
 	{
-		$arreglo=$this->findUser();
-        $user=$arreglo[0];
-        $id=$arreglo[1];
+        $existUser = checkMainUser($this->username);
+        
+        if($existUser == true){
+            $arreglo=$this->findUser();
+            $user=$arreglo[0];
+            $id=$arreglo[1];
+        }else{
+            $user = null;
+        }
         
 		if($user===null)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;

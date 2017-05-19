@@ -157,6 +157,10 @@ class Bitacorasesion extends CActiveRecord
 		while(($row=$dataReaderStudent->read())!==false){
 			array_push($rows, $row['RutEstudiante']);
 		}
+        
+        if($rows == null){
+            $rows[0] = "@";
+        }
 		
 		return $rows;
 	}

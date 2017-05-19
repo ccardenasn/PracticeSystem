@@ -186,6 +186,10 @@ class Docenteresponsablepractica extends CActiveRecord
 			array_push($rows, $row['RutResponsable']);
 		}
 		
+        if($rows == null){
+            $rows[0] = "@";
+        }
+        
 		return $rows;
 	}
 }
