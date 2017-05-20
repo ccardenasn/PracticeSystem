@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	$model->RutEstudiante=>array('view','id'=>$model->RutEstudiante),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(
@@ -12,7 +12,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Estudiante: <?php echo $model->NombreEstudiante; ?></h1><br>
+<h1>Modificar Perfil: <?php echo $model->NombreEstudiante; ?></h1><br>
 
 <div class="collapse">
 	<h3>Ayuda</h3>
@@ -20,7 +20,7 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Haga click en "Detalles" para visualizar información de estudiante.</li>
+			<li>Haga click en <strong>"Detalles"</strong> para visualizar información de perfil.</li>
 		</ul>
 	</ul>
 </div><br>

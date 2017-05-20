@@ -1,5 +1,10 @@
 <?php
-
+include_once 'FunRut.php';
+include_once 'FunNombre.php';
+include_once 'FunCorreo.php';
+include_once 'FunTelefono.php';
+include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "docentecoordinadorpracticas".
  *
@@ -38,6 +43,11 @@ class Perfildocentecoordinadorpracticas extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutCoordinador, NombreCoordinador, ClaveCoordinador, MailCoordinador, TelefonoCoordinador, CelularCoordinador, ImagenCoordinador', 'safe', 'on'=>'search'),
+            array('RutCoordinador','valrut'),
+            array('NombreCoordinador','valnombre'),
+            array('MailCoordinador','valcorreo'),
+            array('TelefonoCoordinador','valtelefono'),
+            array('CelularCoordinador','valcelular'),
 		);
 	}
 
@@ -109,5 +119,55 @@ class Perfildocentecoordinadorpracticas extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+    
+    public function valrut($attribute,$params)
+	{
+		if(rutvalido($this->RutCoordinador)==false)
+		$this->addError('RutCoordinador','Rut no válido');
+	}
+    
+    public function valnombre($attribute,$params)
+	{
+		if(nombrevalido($this->NombreCoordinador)==false)
+		$this->addError('NombreCoordinador','Nombre no válido');
+	}
+    
+    public function valcorreo($attribute,$params)
+	{
+		if(correovalido($this->MailCoordinador)==false)
+		$this->addError('MailCoordinador','Correo no válido');
+	}
+    
+    public function valtelefono($attribute,$params)
+	{
+		if(numerovalido($this->TelefonoCoordinador)==false)
+		$this->addError('TelefonoCoordinador','Telefono no válido');
+	}
+    
+    public function valcelular($attribute,$params)
+	{
+		if(numerovalido($this->CelularCoordinador)==false)
+		$this->addError('CelularCoordinador','Celular no válido');
+	}
+    
+    public function getAdmins(){
+		
+		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas";
+		
+		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);
+		
+		$rows = array();
+		$dataReaderCoordinador=$commandCoordinador->query();
+		
+		while(($row=$dataReaderCoordinador->read())!==false){
+			array_push($rows, $row['RutCoordinador']);
+		}
+        
+        if($rows == null){
+            $rows[0] = "@";
+        }
+		
+		return $rows;
 	}
 }

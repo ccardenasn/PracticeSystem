@@ -3,19 +3,27 @@
 /* @var $model Perfildirectorcarrera */
 
 $this->breadcrumbs=array(
-	'Perfildirectorcarreras'=>array('index'),
 	$model->RutDirector=>array('view','id'=>$model->RutDirector),
-	'Update',
+	'Editar',
 );
 
 $this->menu=array(
-	array('label'=>'List Perfildirectorcarrera', 'url'=>array('index')),
-	array('label'=>'Create Perfildirectorcarrera', 'url'=>array('create')),
-	array('label'=>'View Perfildirectorcarrera', 'url'=>array('view', 'id'=>$model->RutDirector)),
-	array('label'=>'Manage Perfildirectorcarrera', 'url'=>array('admin')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->RutDirector)),
 );
 ?>
 
-<h1>Update Perfildirectorcarrera <?php echo $model->RutDirector; ?></h1>
+<h1>Modificar Perfil: <?php echo $model->NombreDirector; ?></h1><br>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Haga click en <b>"Detalles"</b> para visualizar información de perfil.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

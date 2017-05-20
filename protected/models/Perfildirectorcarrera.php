@@ -1,4 +1,10 @@
 <?php
+include_once 'FunRut.php';
+include_once 'FunNombre.php';
+include_once 'FunCorreo.php';
+include_once 'FunTelefono.php';
+include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 
 /**
  * This is the model class for table "directorcarrera".
@@ -35,6 +41,13 @@ class Perfildirectorcarrera extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutDirector, NombreDirector, ClaveDirector, MailDirector, TelefonoDirector, CelularDirector, ImagenDirector', 'safe', 'on'=>'search'),
+            array('ImagenDirector','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
+			array('ImagenDirector','safe','on'=>'update'),
+            array('RutDirector','valrut'),
+            array('NombreDirector','valnombre'),
+            array('MailDirector','valcorreo'),
+            array('TelefonoDirector','valtelefono'),
+            array('CelularDirector','valcelular'),
 		);
 	}
 
@@ -105,5 +118,56 @@ class Perfildirectorcarrera extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+    
+    public function valrut($attribute,$params)
+	{
+		if(rutvalido($this->RutDirector)==false)
+		$this->addError('RutDirector','Rut no válido');
+	}
+    
+    public function valnombre($attribute,$params)
+	{
+		if(nombrevalido($this->NombreDirector)==false)
+		$this->addError('NombreDirector','Nombre no válido');
+	}
+    
+    public function valcorreo($attribute,$params)
+	{
+		if(correovalido($this->MailDirector)==false)
+		$this->addError('MailDirector','Correo no válido');
+	}
+    
+    public function valtelefono($attribute,$params)
+	{
+		if(numerovalido($this->TelefonoDirector)==false)
+		$this->addError('TelefonoDirector','Teléfono no válido');
+	}
+    
+    public function valcelular($attribute,$params)
+	{
+		if(numerovalido($this->CelularDirector)==false)
+		$this->addError('CelularDirector','Celular no válido');
+	}
+    
+    public function getAdmins(){
+        
+		$queryDirector = "select RutDirector from directorcarrera";
+        
+		$commandDirector= Yii::app()->db->createCommand($queryDirector);
+		
+		$rows = array();
+		
+		$dataReaderDirector=$commandDirector->query();
+		
+		while(($row=$dataReaderDirector->read())!==false){
+			array_push($rows, $row['RutDirector']);
+		}
+        
+        if($rows == null){
+            $rows[0] = "@";
+        }
+		
+		return $rows;
 	}
 }

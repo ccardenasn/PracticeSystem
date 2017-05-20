@@ -3,12 +3,11 @@
 /* @var $model Perfilestudiante */
 
 $this->breadcrumbs=array(
-	'Perfilestudiantes'=>array('index'),
 	$model->RutEstudiante,
 );
 
 $this->menu=array(
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutEstudiante)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RutEstudiante)),
 	array('label'=>'Planificaciones/Bitácoras','url'=>array('/planificacionclase')),
 );
 ?>
@@ -21,8 +20,8 @@ $this->menu=array(
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-			<li>Haga click en "Actualizar" para modificar información de estudiante.</li>
-			<li>Haga click en "Planificaciones/Bitácoras" para acceder a información correspondiente a las planificaciones de clases de estudiante.</li>
+			<li>Haga click en <strong>"Editar"</strong> para modificar información de estudiante.</li>
+			<li>Haga click en <strong>"Planificaciones/Bitácoras"</strong> para acceder a información correspondiente a las planificaciones de clases de estudiante.</li>
 		</ul>
 	</ul>
 </div><br>

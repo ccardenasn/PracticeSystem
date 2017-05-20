@@ -28,19 +28,19 @@ class PerfilestudianteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('view','selectProfesor'),
 				//'users'=>array('*'),
-				'users'=>Planificacionclase::model()->getStudents(),
+				'users'=>Perfilestudiante::model()->getStudents(),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('update'),
 				//'users'=>array('@'),
-				'users'=>Planificacionclase::model()->getStudents(),
+				'users'=>Perfilestudiante::model()->getStudents(),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				//'actions'=>array('admin','delete'),
 				//'users'=>array('admin'),
-				'users'=>Planificacionclase::model()->getStudents(),
+				//'users'=>Planificacionclase::model()->getStudents(),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -52,10 +52,19 @@ class PerfilestudianteController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	/*public function actionView($id)
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		));
+	}*/
+    
+    public function actionView($id)
+	{
+		$userRut=Yii::app()->user->name;
+		
+		$this->render('view',array(
+			'model'=>$this->loadModel($userRut),
 		));
 	}
 
@@ -185,6 +194,19 @@ class PerfilestudianteController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+    
+    public function actionSelectProfesor()
+	{
+		$id_uno = $_POST['Perfilestudiante']['CentroPractica_RBD'];
+		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
+		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
 	}
 }

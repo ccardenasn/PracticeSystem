@@ -8,14 +8,14 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'perfildirectorcarrera-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'method'=>'post',
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -54,15 +54,15 @@
 		<?php echo $form->textField($model,'CelularDirector',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'CelularDirector'); ?>
 	</div>
-
-	<div class="row">
+    
+    <div class="row">
 		<?php echo $form->labelEx($model,'ImagenDirector'); ?>
-		<?php echo $form->textField($model,'ImagenDirector',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo CHtml::activeFileField($model,'ImagenDirector');?>
 		<?php echo $form->error($model,'ImagenDirector'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

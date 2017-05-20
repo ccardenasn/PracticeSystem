@@ -1,5 +1,10 @@
 <?php
-
+include_once 'FunRut.php';
+include_once 'FunNombre.php';
+include_once 'FunCorreo.php';
+include_once 'FunTelefono.php';
+include_once 'FunCelular.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "docenteresponsablepractica".
  *
@@ -38,6 +43,12 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutResponsable, NombreResponsable, ClaveResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'safe', 'on'=>'search'),
+            array('ImagenResponsable','safe','on'=>'update'),
+            array('RutResponsable','valrut'),
+            array('NombreResponsable','valnombre'),
+            array('MailResponsable','valcorreo'),
+            array('TelefonoResponsable','valtelefono'),
+            array('CelularResponsable','valcelular'),
 		);
 	}
 
@@ -109,5 +120,56 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+    
+    public function valrut($attribute,$params)
+	{
+		if(rutvalido($this->RutResponsable)==false)
+		$this->addError('RutResponsable','Rut no válido');
+	}
+    
+    public function valnombre($attribute,$params)
+	{
+		if(nombrevalido($this->NombreResponsable)==false)
+		$this->addError('NombreResponsable','Nombre no válido');
+	}
+    
+    public function valcorreo($attribute,$params)
+	{
+		if(correovalido($this->MailResponsable)==false)
+		$this->addError('MailResponsable','Correo no válido');
+	}
+    
+    public function valtelefono($attribute,$params)
+	{
+		if(numerovalido($this->TelefonoResponsable)==false)
+		$this->addError('TelefonoResponsable','Telefono no válido');
+	}
+    
+    public function valcelular($attribute,$params)
+	{
+		if(numerovalido($this->CelularResponsable)==false)
+		$this->addError('CelularResponsable','Celular no válido');
+	}
+    
+    public function getAdmins(){
+		
+		$queryResponsable = "select RutResponsable from docenteresponsablepractica";
+		
+		$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
+		
+		$rows = array();
+		
+		$dataReaderResponsable=$commandResponsable->query();
+		
+		while(($row=$dataReaderResponsable->read())!==false){
+			array_push($rows, $row['RutResponsable']);
+		}
+        
+        if($rows == null){
+            $rows[0] = "@";
+        }
+		
+		return $rows;
 	}
 }

@@ -8,13 +8,22 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Perfildocenteresponsablepractica', 'url'=>array('index')),
-	array('label'=>'Create Perfildocenteresponsablepractica', 'url'=>array('create')),
-	array('label'=>'View Perfildocenteresponsablepractica', 'url'=>array('view', 'id'=>$model->RutResponsable)),
-	array('label'=>'Manage Perfildocenteresponsablepractica', 'url'=>array('admin')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->RutResponsable)),
 );
 ?>
 
-<h1>Modificar Docente Responsable de Práctica: <?php echo $model->NombreResponsable; ?></h1>
+<h1>Perfil: <?php echo $model->NombreResponsable; ?></h1><br>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Haga click en <b>"Detalles"</b> para visualizar información de perfil.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

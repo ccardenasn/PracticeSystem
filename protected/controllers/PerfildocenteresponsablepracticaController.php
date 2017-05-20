@@ -1,4 +1,6 @@
 <?php
+include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class PerfildocenteresponsablepracticaController extends Controller
 {
@@ -28,17 +30,20 @@ class PerfildocenteresponsablepracticaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'actions'=>array('view'),
+				//'users'=>array('*'),
+                'users'=>Perfildocenteresponsablepractica::model()->getAdmins(),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions'=>array('update'),
+				//'users'=>array('@'),
+                'users'=>Perfildocenteresponsablepractica::model()->getAdmins(),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
+			//array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			//	'actions'=>array('admin','delete'),
+				//'users'=>array('admin'),
+            //    'users'=>Perfildocenteresponsablepractica::model()->getAdmins(),
+			//),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -86,7 +91,7 @@ class PerfildocenteresponsablepracticaController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	/*public function actionUpdate($id)
 	{
 		$userRut=Yii::app()->user->name;
 		
@@ -115,6 +120,50 @@ class PerfildocenteresponsablepracticaController extends Controller
 			}
 		}
 
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	}*/
+    
+    public function actionUpdate($id)
+	{
+        $userRut=Yii::app()->user->name;
+		
+		$model=$this->loadModel($userRut);
+		//$model=$this->loadModel($id);
+        
+		$imageAttrib = "ImagenResponsable";
+		$table = "docenteresponsablepractica";
+		$codTable = "RutResponsable";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
+		
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildocenteresponsablepractica']))
+		{
+			$model->attributes=$_POST['Perfildocenteresponsablepractica'];
+			
+			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
+			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
+			
+			if($model->save()){
+				if($file != null){
+					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+						//se guarda la ruta de la imagen
+						$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
+					}else{
+						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+						$this->refresh();
+					}
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
+				}
+				$this->redirect(array('view','id'=>$model->RutResponsable));
+			}
+		}
+		
 		$this->render('update',array(
 			'model'=>$model,
 		));
