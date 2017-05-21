@@ -1,4 +1,5 @@
 <?php
+include_once 'FunNumeros.php';
 
 /**
  * This is the model class for table "carrera".
@@ -31,11 +32,12 @@ class Carrera extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('codCarrera, Universidad_NombreInstitucion', 'required'),
+			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'safe', 'on'=>'search'),
+            array('SemestresCarrera','valnumeros'),
 		);
 	}
 
@@ -60,8 +62,8 @@ class Carrera extends CActiveRecord
 		return array(
 			'codCarrera' => 'Cod Carrera',
 			'NombreCarrera' => 'Nombre Carrera',
-			'SemestresCarrera' => 'Semestres Carrera',
-			'Universidad_NombreInstitucion' => 'Universidad Nombre Institucion',
+			'SemestresCarrera' => 'Número de Semestres',
+			'Universidad_NombreInstitucion' => 'Universidad',
 		);
 	}
 
@@ -104,6 +106,12 @@ class Carrera extends CActiveRecord
 		return parent::model($className);
 	}
 	
+    public function valnumeros($attribute,$params)
+	{
+		if(numerovalido($this->SemestresCarrera)==false)
+		$this->addError('SemestresCarrera','solo se admiten números');
+	}
+    
 	public function getAdmins(){
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas";

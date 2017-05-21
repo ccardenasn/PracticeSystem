@@ -14,11 +14,18 @@ $this->menu=array(
 ?>
 
 <h1>Añadir Carrera</h1><br>
+	
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+            <h4>Instrucciones</h4>
+            <li>Para regresar al índice de carrera haga click en la opción <strong>"Lista"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+            <li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de carrera, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+        </ul>
+	</ul>
+</div><br>
 
-<ul>
-	<h4>Instrucciones</h4>
-	<li>Para regresar al índice de carrera haga click en la opción "Lista" situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de estudiantes existentes, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-</ul>
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

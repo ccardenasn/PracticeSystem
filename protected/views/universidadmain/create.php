@@ -3,17 +3,28 @@
 /* @var $model Universidad */
 
 $this->breadcrumbs=array(
-	'Universidads'=>array('index'),
-	'Create',
+	'Universidad'=>array('index'),
+	'Añadir',
 );
 
 $this->menu=array(
-	array('label'=>'List Universidad', 'url'=>array('index')),
-	array('label'=>'Manage Universidad', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Universidad</h1>
+<h1>Añadir Universidad</h1><br>
+	
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+            <h4>Instrucciones</h4>
+            <li>Para regresar al índice de universidad haga click en la opción <strong>"Lista"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
+            <li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de universidad, además permite realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+        </ul>
+	</ul>
+</div><br>
 
 <?php $this->renderPartial('_form',
 						   array(

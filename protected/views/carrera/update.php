@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Carrera'=>array('index'),
 	$model->codCarrera=>array('view','id'=>$model->codCarrera),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(
@@ -16,15 +16,21 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Carrera <?php echo $model->codCarrera; ?></h1><br>
+<h1>Modificar Carrera: <?php echo $model->NombreCarrera; ?></h1><br>
 
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de carreras haga click en "Lista".</li>
-	<li>Haga click en "Añadir" para agregar una nueva carrera a la lista.</li>
-	<li>Haga click en "Detalles" para visualizar información de carrera.</li>
-	<li>Desde la sección "Administración" se puede observar una lista de crreras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en "Administración" en el panel "Opciones" para acceder.</li>
-</ul>
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+            <h4>Instrucciones de Opciones</h4>
+            <li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li><li>Para regresar al índice de carrera haga click en <strong>"Lista"</strong>.</li>
+            <li>Haga click en <strong>"Añadir"</strong> para agregar una carrera a la lista.</li>
+            <li>Haga click en <strong>"Detalles"</strong> para visualizar información de carrera.</li>
+            <li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de carrera, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+        </ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

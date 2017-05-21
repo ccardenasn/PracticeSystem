@@ -22,15 +22,15 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Region_codRegion')); ?>:</b>
-	<?php echo CHtml::encode($data->Region_codRegion); ?>
+	<?php echo CHtml::encode($data->regionCodRegion->NombreRegion); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Provincia_codProvincia')); ?>:</b>
-	<?php echo CHtml::encode($data->Provincia_codProvincia); ?>
+	<?php echo CHtml::encode($data->provinciaCodProvincia->NombreProvincia); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Ciudad_codCiudad')); ?>:</b>
-	<?php echo CHtml::encode($data->Ciudad_codCiudad); ?>
+	<?php echo CHtml::encode($data->ciudadCodCiudad->NombreCiudad); ?>
 	<br />
 
 

@@ -81,139 +81,155 @@ class CentropracticamainController extends Controller
         $enabledCentro = isCentroEnabled();
 	
         if($enabledCentro == true){
-            if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
-		{
-			$centroModel->attributes=$_POST['Centropractica'];
-			$secretariaModel->attributes=$_POST['Secretariacp'];
-			$directorModel->attributes=$_POST['Directorcp'];
-			$jefeutpModel->attributes=$_POST['Jefeutpcp'];
-			$coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
-			//$profesorModel->attributes=$_POST['Profesorguiacp'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
-			$image=$centroModel->ImagenCentroPractica=CUploadedFile::getInstance($centroModel,'ImagenCentroPractica');
-			
-			if($centroModel->save()){
-				if($file != null){
-					if($file->getExtensionName()=="pdf"){
-						$centroModel->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-						$this->refresh();
-					}	
-				}
-				
-				if($image != null){
-					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$centroModel->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
-						$this->refresh();
-					}	
-				}
-			}
-			
-			$secretariaModel->CentroPractica_RBD = $centroModel->RBD;
-			$directorModel->CentroPractica_RBD = $centroModel->RBD;
-			$jefeutpModel->CentroPractica_RBD = $centroModel->RBD;
-			$coordinadorModel->CentroPractica_RBD = $centroModel->RBD;
-			//$profesorModel->CentroPractica_RBD = $centroModel->RBD;
-			
-			$secretariaFile=$secretariaModel->ImagenSecretariaCP=CUploadedFile::getInstance($secretariaModel,'ImagenSecretariaCP');
-			
-			if($secretariaModel->save()){
-				if($secretariaFile != null){
-					if($secretariaFile->getExtensionName()=="jpg" or $secretariaFile->getExtensionName()=="jpeg" or $secretariaFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$secretariaModel->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$secretariaFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-						$this->refresh();
-					}
-				}
-			}
-			
-			$directorFile=$directorModel->ImagenDirectorCP=CUploadedFile::getInstance($directorModel,'ImagenDirectorCP');
-			
-			if($directorModel->save()){
-				if($directorFile != null){
-					if($directorFile->getExtensionName()=="jpg" or $directorFile->getExtensionName()=="jpeg" or $directorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$directorModel->ImagenDirectorCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirectoresCP/".$directorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}
-				}
-			}
-			
-			$jefeutpFile=$jefeutpModel->ImagenJefeUTPCP=CUploadedFile::getInstance($jefeutpModel,'ImagenJefeUTPCP');
-			
-			if($jefeutpModel->save()){
-				if($jefeutpFile != null){
-					if($jefeutpFile->getExtensionName()=="jpg" or $jefeutpFile->getExtensionName()=="jpeg" or $jefeutpFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$jefeutpModel->ImagenJefeUTPCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$jefeutpFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}	
-				}
-			}
-			
-			$coordinadorFile=$coordinadorModel->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($coordinadorModel,'ImagenProfCoordGuiaCP');
-			
-			if($coordinadorModel->save()){
-				if($coordinadorFile != null){
-					if($coordinadorFile->getExtensionName()=="jpg" or $coordinadorFile->getExtensionName()=="jpeg" or $coordinadorFile->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$coordinadorModel->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$coordinadorFile->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-						$this->refresh();
-					}
-				}
-			}
-			
-			$rut=$_POST['RutProfGuiaCP'];
-			$nombre=$_POST['NombreProfGuiaCP'];
-			$curso=$_POST['CursoProfGuiaCP'];
-			$profesorjefe=$_POST['ProfesorJefeProfGuiaCP'];
-			$correo=$_POST['MailProfGuiaCP'];
-			$telefono=$_POST['TelefonoProfGuiaCP'];
-			$celular=$_POST['CelularProfGuiaCP'];
-			$centro=$centroModel->RBD;
-			
-			$directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
-			
-			for($i=0;$i<count($rut);$i++){
-				if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
-					$imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
-					move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
-					
-					$query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro','$imagen')";
-					
-					Yii::app()->db->createCommand($query)->execute();
-				}
-			}
-			$this->redirect(array('view','id'=>$centroModel->RBD));
-		}
-		
-		$this->render('create',array(
-			'centroModel'=>$centroModel,
-			'secretariaModel'=>$secretariaModel,
-			'directorModel'=>$directorModel,
-			'jefeutpModel'=>$jefeutpModel,
-			'coordinadorModel'=>$coordinadorModel,
-			//'profesorModel'=>$profesorModel,
-		));
+           
+            if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp'])){
+                
+                $centroModel->attributes=$_POST['Centropractica'];
+                $secretariaModel->attributes=$_POST['Secretariacp'];
+                $directorModel->attributes=$_POST['Directorcp'];
+                $jefeutpModel->attributes=$_POST['Jefeutpcp'];
+                $coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
+                //$profesorModel->attributes=$_POST['Profesorguiacp'];
+                
+                //se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
+                $file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
+                $image=$centroModel->ImagenCentroPractica=CUploadedFile::getInstance($centroModel,'ImagenCentroPractica');
+                
+                if($centroModel->save()){
+                    if($file != null){
+                        if($file->getExtensionName()=="pdf"){
+                            $centroModel->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+                            $this->refresh();
+                        }	
+                    }
+                    
+                    if($image != null){
+                        if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
+                            //se guarda la ruta de la imagen
+                            $centroModel->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
+                            $this->refresh();
+                        }	
+                    }
+                }
+                
+                $secretariaModel->CentroPractica_RBD = $centroModel->RBD;
+                $directorModel->CentroPractica_RBD = $centroModel->RBD;
+                $jefeutpModel->CentroPractica_RBD = $centroModel->RBD;
+                $coordinadorModel->CentroPractica_RBD = $centroModel->RBD;
+                //$profesorModel->CentroPractica_RBD = $centroModel->RBD;
+                
+                $secretariaFile=$secretariaModel->ImagenSecretariaCP=CUploadedFile::getInstance($secretariaModel,'ImagenSecretariaCP');
+                
+                if($secretariaModel->save()){
+                    
+                    if($secretariaFile != null){
+                        if($secretariaFile->getExtensionName()=="jpg" or $secretariaFile->getExtensionName()=="jpeg" or $secretariaFile->getExtensionName()=="png"){
+                            
+                            //se guarda la ruta de la imagen
+                            $secretariaModel->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$secretariaFile->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+                            $this->refresh();
+                        }
+                    }
+                }
+                
+                $directorFile=$directorModel->ImagenDirectorCP=CUploadedFile::getInstance($directorModel,'ImagenDirectorCP');
+                
+                if($directorModel->save()){
+                    
+                    if($directorFile != null){
+                        if($directorFile->getExtensionName()=="jpg" or $directorFile->getExtensionName()=="jpeg" or $directorFile->getExtensionName()=="png"){
+                            //se guarda la ruta de la imagen
+                            $directorModel->ImagenDirectorCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirectoresCP/".$directorFile->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+                            $this->refresh();
+                        }
+                    }
+                }
+                
+                $jefeutpFile=$jefeutpModel->ImagenJefeUTPCP=CUploadedFile::getInstance($jefeutpModel,'ImagenJefeUTPCP');
+                
+                if($jefeutpModel->save()){
+                    
+                    if($jefeutpFile != null){
+                        if($jefeutpFile->getExtensionName()=="jpg" or $jefeutpFile->getExtensionName()=="jpeg" or $jefeutpFile->getExtensionName()=="png"){
+                            //se guarda la ruta de la imagen
+                            $jefeutpModel->ImagenJefeUTPCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$jefeutpFile->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+                            $this->refresh();
+                        }	
+                    }
+                }
+                
+                $coordinadorFile=$coordinadorModel->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($coordinadorModel,'ImagenProfCoordGuiaCP');
+                
+                if($coordinadorModel->save()){
+                    
+                    if($coordinadorFile != null){
+                        if($coordinadorFile->getExtensionName()=="jpg" or $coordinadorFile->getExtensionName()=="jpeg" or $coordinadorFile->getExtensionName()=="png"){
+                            //se guarda la ruta de la imagen
+                            $coordinadorModel->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$coordinadorFile->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+                            $this->refresh();
+                        }
+                    }
+                }
+                
+                $rut=$_POST['RutProfGuiaCP'];
+                $nombre=$_POST['NombreProfGuiaCP'];
+                $curso=$_POST['CursoProfGuiaCP'];
+                $profesorjefe=$_POST['ProfesorJefeProfGuiaCP'];
+                $correo=$_POST['MailProfGuiaCP'];
+                $telefono=$_POST['TelefonoProfGuiaCP'];
+                $celular=$_POST['CelularProfGuiaCP'];
+                $centro=$centroModel->RBD;
+                
+                $directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
+                
+                if($rut[0] != "" && $nombre[0] != "" && $curso[0] != "" && $profesorjefe[0] != "" && $correo[0] != "" && $telefono[0] != "" && $celular[0] != ""){
+                    for($i=0;$i<count($rut);$i++){
+                    if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
+                        
+                        $imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
+                        move_uploaded_file ($_FILES['ImagenProfGuiaCP']['tmp_name'][$i],$directorio."/".$imagen);
+                        
+                        $query="insert into profesorguiacp values('$rut[$i]','$nombre[$i]','$curso[$i]','$profesorjefe[$i]','$correo[$i]','$telefono[$i]','$celular[$i]','$centro','$imagen')";
+                        
+                        Yii::app()->db->createCommand($query)->execute();
+                    }
+                }
+                }else{
+                    Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
+                            $this->refresh();
+                }
+                
+                
+                
+                $this->redirect(array('view','id'=>$centroModel->RBD));
+            }
+            
+            $this->render('create',array(
+                'centroModel'=>$centroModel,
+                'secretariaModel'=>$secretariaModel,
+                'directorModel'=>$directorModel,
+                'jefeutpModel'=>$jefeutpModel,
+                'coordinadorModel'=>$coordinadorModel,
+                //'profesorModel'=>$profesorModel,
+            ));
+        
         }else{
+            
             Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir centros de práctica en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Dependencias</strong>, y <strong>Nivel Educacional</strong>.</li></ul></div>");
 			$this->redirect(array('index'));
         }
-        
 	}
 
 	/**

@@ -3,20 +3,37 @@
 /* @var $model Universidad */
 
 $this->breadcrumbs=array(
-	'Universidads'=>array('index'),
+	'Universidad'=>array('index'),
 	$model->NombreInstitucion,
 );
 
 $this->menu=array(
-	array('label'=>'List Universidad', 'url'=>array('index')),
-	array('label'=>'Create Universidad', 'url'=>array('create')),
-	array('label'=>'Update Universidad', 'url'=>array('update', 'id'=>$model->NombreInstitucion)),
-	array('label'=>'Delete Universidad', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombreInstitucion),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Universidad', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Añadir', 'url'=>array('create')),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->NombreInstitucion)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombreInstitucion),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Universidad #<?php echo $model->NombreInstitucion; ?></h1>
+<h1>Universidad: <?php echo $model->NombreInstitucion; ?></h1><br>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar universidad a la lista.</li>
+			<li>Haga click en <strong>"Editar"</strong> para modificar información de universidad.</li>
+			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de universidad.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista con la universidad agregada, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+			<li>Para regresar al índice de universidad haga click en <strong>"Lista"</strong>.</li>
+		</ul>
+	</ul>
+</div><br>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

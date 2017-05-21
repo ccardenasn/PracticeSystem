@@ -15,7 +15,7 @@
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary(array($universidadModel,$carreraModel,$secretariaModel)); ?>
 	
@@ -41,7 +41,7 @@
 	
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($universidadModel->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($universidadModel->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

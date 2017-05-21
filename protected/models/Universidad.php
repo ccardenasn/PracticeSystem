@@ -36,7 +36,7 @@ class Universidad extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombreInstitucion, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required'),
+			array('NombreInstitucion, Sede, Campus, Facultad, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true),
 			array('NombreInstitucion, Sede, Campus, Facultad', 'length', 'max'=>45),
 			// The following rule is used by search().

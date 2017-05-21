@@ -41,7 +41,13 @@ $ask = new UserIdentity('','');
                
                 array('label'=>'Administracion',
                       'items'=>array(
-                          array('label'=>'Universidad','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+                          //array('label'=>'Universidad','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Universidad',
+                                'items'=>
+                                array(
+                                    array('label'=>'Universidad Form 1','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Universidad Form 2','url'=>array('/universidad'),'visible'=>$ask->isAdmins()),
+                          )),
                           array('label'=>'Carrera','url'=>array('/carrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Menciones','url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
@@ -59,7 +65,12 @@ $ask = new UserIdentity('','');
                 ),
                 array('label'=>'Gestion Organizativa',
                         'items'=>array(
-                          array('label'=>'Centro de Prácticas','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
+                          //array('label'=>'Centro de Prácticas','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Centro de Prácticas',
+                                'items'=>array(
+                                    array('label'=>'Centro de Prácticas Form 1','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Centro de Prácticas Form 2','url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
+                                )),
                           array('label'=>'Secretaria CP','url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Director CP','url'=>array('/directorcp'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Jefe UTP CP','url'=>array('/jefeutpcp'),'visible'=>$ask->isAdmins()),
