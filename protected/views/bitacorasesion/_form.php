@@ -58,6 +58,7 @@ $plandata=getPlanData($req);
 		
 		<h3>Clases</h3>
 		<ul>
+            <div id='errorClases' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Deber corregir los errores presentados en <strong>Clases</strong>.</li></ul></div>
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
@@ -130,7 +131,7 @@ $plandata=getPlanData($req);
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios',array('onclick' => "js:validateNumero('HoraClase1'")); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios',array('onclick'=>"return checkForm(); return false")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -40,6 +40,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
+    'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -87,6 +88,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 		
 		<h3>Clases</h3>
 		<ul>
+            <div id='errorClases' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Deber corregir los errores presentados en <strong>Clases</strong>.</li></ul></div>
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>

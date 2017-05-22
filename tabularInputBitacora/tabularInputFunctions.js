@@ -41,3 +41,80 @@ function setRowsData(rowsData){
 		l++;
 	}
 }
+
+function formSubmit(i){
+        
+        var validForm = true;
+        var checkHours = true;
+        var checkStudents = true;
+        
+        var horas=$("#HoraClase"+i+"").val();
+        var validHours = checkNumero(horas);
+        
+        var alumnos=$("#NumeroAlumnosClase"+i+"").val();
+        var validStudents = checkNumero(alumnos);
+       
+        if(validHours == false){
+            checkHours = false;
+        }
+        
+        if(validStudents == false){
+            checkStudents = false;
+        }
+        
+        if(checkHours == false || checkStudents == false){
+            validForm = false;
+        }
+        
+        return validForm;
+    }
+    
+    function formAlert(i){
+        
+        var horas=$("#HoraClase"+i+"").val();
+        var validHours = checkNumero(horas);
+        
+        var alumnos=$("#NumeroAlumnosClase"+i+"").val();
+        var validStudents = checkNumero(alumnos);
+       
+        if(validHours == false){
+            $("#HoraClase"+i+"").css({"border":"1px solid red"});
+            $("#HoraClase"+i+"_error").text("ingrese solo números");
+            $("#HoraClase"+i+"_error").css({"margin-top":"5px"});
+            
+        }
+        
+        if(validStudents == false){
+            $("#NumeroAlumnosClase"+i+"").css({"border":"1px solid red"});
+            $("#NumeroAlumnosClase"+i+"_error").text("ingrese solo números");
+            $("#NumeroAlumnosClase1"+i+"_error").css({"margin-top":"5px"});
+            
+        }
+    }
+    
+    function checkForm(){
+        var validForm = false;
+        var run = true; 
+        for(i=1;i<$rowno;i++){
+            formAlert(i);
+        }
+        
+        var j = 1;
+        
+        while(run == true){
+            validForm = formSubmit(j);
+            
+            if(validForm == false){
+                validForm = false;
+                run = false;
+            }
+            j++;
+        }
+        
+        if(validForm == false){
+            div = document.getElementById('errorClases');
+            div.style.display = '';
+        }
+        
+        return validForm;
+    }

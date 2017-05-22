@@ -128,7 +128,7 @@ class BitacorasesionController extends Controller
 						}
 					}
 					
-					$this->redirect(array('view','id'=>$model->CodBitacora));
+					$this->redirect(array('viewPlanificacionBitacora','id'=>$model->PlanificacionClase_CodPlanificacion));
 				}
 			}
 			
