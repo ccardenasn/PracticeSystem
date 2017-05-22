@@ -35,7 +35,7 @@ class Bitacorasesion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('PlanificacionClase_CodPlanificacion', 'required'),
+			array('PlanificacionClase_CodPlanificacion,ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'required','message'=>'Por favor, ingrese información para {attribute}.'),
 			array('PlanificacionClase_CodPlanificacion', 'numerical', 'integerOnly'=>true),
 			array('FechaBitacora, DocumentoBitacora', 'length', 'max'=>45),
 			array('ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'safe'),

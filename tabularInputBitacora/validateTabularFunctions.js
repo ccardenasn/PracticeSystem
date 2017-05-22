@@ -50,8 +50,26 @@ function validateName(inputValue){
 		$("#"+inputValue+"_error").css({"margin-top":"0px"});
 		ok++;
 	}
-	
 }
+
+function validateNumero(inputValue){
+	var numero_val=$('#'+inputValue).val();
+	
+	var isNumero = checkNumero(numero_val);
+	
+	if(isNumero == false){
+		$('#'+inputValue).css({"border":"1px solid red"});
+		$("#"+inputValue+"_error").text("ingrese solo números");
+		$("#"+inputValue+"_error").css({"margin-top":"5px"});
+	}else{
+		$('#'+inputValue).css({"border":"1px solid grey"});
+		$("#"+inputValue+"_error").text("");
+		$("#"+inputValue+"_error").css({"margin-top":"0px"});
+		ok++;
+	}
+}
+
+
 
 function validateRut(inputValue){
 	var rut_val=$('#'+inputValue).val();

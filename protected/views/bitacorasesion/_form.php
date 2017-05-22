@@ -22,12 +22,13 @@ $plandata=getPlanData($req);
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
+    'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 	
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 	
 	<div class="collapse">
 		<h3>Planificación</h3>
@@ -60,23 +61,28 @@ $plandata=getPlanData($req);
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
-						<input type="text" id="CursoClase1" name="CursoClase[]" size="14" placeholder="Curso">
+                        <label>Curso</label>
+						<input type="text" id="CursoClase1" name="CursoClase[]" size="14" required>
 						<br><span class='error_text' id='CursoClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="HoraClase1" name="HoraClase[]" size="14" placeholder="Hora">
+                        <label>Horas</label>
+						<input type="text" id="HoraClase1" name="HoraClase[]" size="14" onblur="validateNumero('HoraClase1');" required>
 						<br><span class='error_text' id='HoraClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="AsignaturaClase1" name="AsignaturaClase[]" size="14" placeholder="Asignatura">
+                        <label>Asignatura</label>
+						<input type="text" id="AsignaturaClase1" name="AsignaturaClase[]" size="14" required>
 						<br><span class='error_text' id='AsignaturaClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" placeholder="Profesor Guia">
+                        <label>Profesor Guía</label>
+						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" required>
 						<br><span class='error_text' id='ProfesorGuiaClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="NumeroAlumnosClase1" name="NumeroAlumnosClase[]" size="14" placeholder="Numero de Alumnos">
+                        <label>Número de Alumnos</label>
+						<input type="text" id="NumeroAlumnosClase1" name="NumeroAlumnosClase[]" size="14" onblur="validateNumero('NumeroAlumnosClase1');" required>
 						<br><span class='error_text' id='NumeroAlumnosClase1_error'></span>
 					</td>
 				</tr>
@@ -124,7 +130,7 @@ $plandata=getPlanData($req);
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios',array('onclick' => "js:validateNumero('HoraClase1'")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
