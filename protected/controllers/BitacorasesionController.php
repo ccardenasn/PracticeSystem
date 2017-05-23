@@ -274,6 +274,7 @@ class BitacorasesionController extends Controller
 	 */
 	public function actionAdmin()
 	{
+        //$userRut=Yii::app()->user->name;
 		$model=new Bitacorasesion('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Bitacorasesion']))

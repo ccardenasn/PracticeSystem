@@ -194,8 +194,8 @@ class CentropracticamainController extends Controller
                 
                 $directorio=Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP";
                 
-                if($rut[0] != "" && $nombre[0] != "" && $curso[0] != "" && $profesorjefe[0] != "" && $correo[0] != "" && $telefono[0] != "" && $celular[0] != ""){
-                    for($i=0;$i<count($rut);$i++){
+                for($i=0;$i<count($rut);$i++){
+                    
                     if($rut[$i]!="" && $nombre[$i]!="" && $curso[$i]!="" && $curso[$i]!="" && $profesorjefe[$i]!="" && $correo[$i]!="" && $telefono[$i]!="" && $celular[$i]!=""){
                         
                         $imagen=$_FILES['ImagenProfGuiaCP']['name'][$i];
@@ -206,12 +206,6 @@ class CentropracticamainController extends Controller
                         Yii::app()->db->createCommand($query)->execute();
                     }
                 }
-                }else{
-                    Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
-                            $this->refresh();
-                }
-                
-                
                 
                 $this->redirect(array('view','id'=>$centroModel->RBD));
             }

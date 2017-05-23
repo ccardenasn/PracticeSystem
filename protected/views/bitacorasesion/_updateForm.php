@@ -96,23 +96,28 @@ for($i=0;$i<$totalClaseModel;$i++){
 						<br><span class='error_text' id='CodClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="CursoClase1" name="CursoClase[]" size="14" placeholder="Curso">
+                        <label>Curso</label>
+						<input type="text" id="CursoClase1" name="CursoClase[]" size="14" required>
 						<br><span class='error_text' id='CursoClase_error'></span>
 					</td>
 					<td>
-						<input type="text" id="HoraClase1" name="HoraClase[]" size="14" placeholder="Hora">
+                        <label>Horas</label>
+						<input type="text" id="HoraClase1" name="HoraClase[]" size="14" onblur="validateNumero('HoraClase1');" required>
 						<br><span class='error_text' id='HoraClase_error'></span>
 					</td>
 					<td>
-						<input type="text" id="AsignaturaClase1" name="AsignaturaClase[]" size="14" placeholder="Asignatura">
+                        <label>Asignatura</label>
+						<input type="text" id="AsignaturaClase1" name="AsignaturaClase[]" size="14" required>
 						<br><span class='error_text' id='AsignaturaClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" placeholder="Profesor Guia">
+                        <label>Profesor Guía</label>
+						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" onblur="validateName('ProfesorGuiaClase1');" required>
 						<br><span class='error_text' id='ProfesorGuiaClase1_error'></span>
 					</td>
 					<td>
-						<input type="text" id="NumeroAlumnosClase1" name="NumeroAlumnosClase[]" size="14" placeholder="Numero de Alumnos">
+                        <label>Número de Alumnos</label>
+						<input type="text" id="NumeroAlumnosClase1" name="NumeroAlumnosClase[]" size="14" onblur="validateNumero('NumeroAlumnosClase1');" required>
 						<br><span class='error_text' id='NumeroAlumnosClase1_error'></span>
 					</td>
 					<td>

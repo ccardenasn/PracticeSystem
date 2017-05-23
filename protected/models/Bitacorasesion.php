@@ -107,10 +107,12 @@ class Bitacorasesion extends CActiveRecord
 		));
 	}
 	
-	public function searchByRut($rut)
+	public function searchByRut()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
+        $userRut=Yii::app()->user->name;
+        
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('CodBitacora',$this->CodBitacora);
@@ -124,7 +126,7 @@ class Bitacorasesion extends CActiveRecord
 		//$criteria->compare('planificacionClaseCodPlanificacion.CodPlanificacion',$this->PlanificacionClase_CodPlanificacion);
 		
 		$criteria->with=array('planificacionClaseCodPlanificacion');
-		$criteria->addSearchCondition('planificacionClaseCodPlanificacion.Estudiante_RutEstudiante',$rut);
+		$criteria->addSearchCondition('planificacionClaseCodPlanificacion.Estudiante_RutEstudiante',$userRut);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

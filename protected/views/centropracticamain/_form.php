@@ -51,30 +51,31 @@ $js->registerScriptFile($base.'/tabularInputCentro/validateTabularFunctions.js')
 		
 		<h3>Profesor Guía CP</h3>
 		<ul>
+            <div id='errorProfesores' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Debe corregir los errores presentados en <strong>Profesor Guía CP</strong>.</li></ul></div>
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
 						<label>Rut</label>
-						<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" onblur="validateRut('Rut1');">
+						<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" onblur="validateRut('Rut1');" required>
 						<br><span class='error_text' id='Rut1_error'></span>
 						<label>Correo Electrónico</label>
-						<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" onblur="check_email('Mail1');">
+						<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" onblur="check_email('Mail1');" required>
 						<br><span class='error_text' id='Mail1_error'></span>
 					</td>
 					<td>
 						<label>Profesor Guia CP</label>
-						<input type="text" id="Nombre1" name="NombreProfGuiaCP[]" size="14" onblur="validateName('Nombre1');" >
+						<input type="text" id="Nombre1" name="NombreProfGuiaCP[]" size="14" onblur="validateName('Nombre1');" required>
 						<br><span class='error_text' id='Nombre1_error'></span>
 						<label>Teléfono</label>
-						<input type="text" id="Telefono1" name="TelefonoProfGuiaCP[]" size="14" onblur="validateTelefono('Telefono1');">
+						<input type="text" id="Telefono1" name="TelefonoProfGuiaCP[]" size="14" onblur="validateNumero('Telefono1');" required>
 						<br><span class='error_text' id='Telefono1_error'></span>
 					</td>
 					<td>
 						<label>Curso</label>
-						<input type="text" id="Curso1" name="CursoProfGuiaCP[]" size="14">
+						<input type="text" id="Curso1" name="CursoProfGuiaCP[]" size="14" required>
 						<br><span class='error_text' id='Curso1_error'></span>
 						<label>Celular</label>
-						<input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" onblur="validateCelular('Celular1');">
+						<input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" onblur="validateNumero('Celular1');" required>
 						<br><span class='error_text' id='Celular1_error'></span>
 					</td>
 					<td>
@@ -99,7 +100,7 @@ $js->registerScriptFile($base.'/tabularInputCentro/validateTabularFunctions.js')
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
+		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Crear' : 'Guardar Cambios',array('onclick'=>"return checkForm(); return false")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

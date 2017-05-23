@@ -184,7 +184,7 @@ function checkRut($rut){
 
 function checkNombre($nombre) {
 	$isNombre = true;
-	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+	$permitidos = "abcdefghijklmnñopqrstuvwxyzáéíóúABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ ";
 	for($i=0; $i<$nombre.length; $i++){
 		//if(strpos($permitidos, $nombre.substr($i,1))===false){
 		if(($permitidos.indexOf($nombre.substr($i,1))) < 0){

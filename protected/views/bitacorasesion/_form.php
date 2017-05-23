@@ -58,7 +58,7 @@ $plandata=getPlanData($req);
 		
 		<h3>Clases</h3>
 		<ul>
-            <div id='errorClases' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Deber corregir los errores presentados en <strong>Clases</strong>.</li></ul></div>
+            <div id='errorClases' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Debe corregir los errores presentados en <strong>Clases</strong>.</li></ul></div>
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
@@ -78,7 +78,7 @@ $plandata=getPlanData($req);
 					</td>
 					<td>
                         <label>Profesor Guía</label>
-						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" required>
+						<input type="text" id="ProfesorGuiaClase1" name="ProfesorGuiaClase[]" size="14" onblur="validateName('ProfesorGuiaClase1');" required>
 						<br><span class='error_text' id='ProfesorGuiaClase1_error'></span>
 					</td>
 					<td>

@@ -1,7 +1,7 @@
 function add_row(){
 	$rowno=$("#employee_table tr").length;
 	$rowno=$rowno+1;
-	$("#employee_table tr:last").after("<tr id='row"+$rowno+"'><td><input type='text' id='CursoClase"+$rowno+"' name='CursoClase[]' size='14' required><br><span class='error_text' id='CursoClase"+$rowno+"_error'></span></td><td><input type='text' id='HoraClase"+$rowno+"' name='HoraClase[]' size='14' onblur=validateNumero('HoraClase"+$rowno+"') required><br><span class='error_text' id='HoraClase"+$rowno+"_error'></span></td><td><input type='text' id='AsignaturaClase"+$rowno+"' name='AsignaturaClase[]' size='14' required><br><span class='error_text' id='AsignaturaClase"+$rowno+"_error'></span></td><td><input type='text' id='ProfesorGuiaClase"+$rowno+"' name='ProfesorGuiaClase[]' size='14' required><br><span class='error_text' id='ProfesorGuiaClase"+$rowno+"_error'></span></td><td><input type='text' id='NumeroAlumnosClase"+$rowno+"' name='NumeroAlumnosClase[]' size='14' onblur=validateNumero('NumeroAlumnosClase"+$rowno+"') required><br><span class='error_text' id='NumeroAlumnosClase"+$rowno+"_error'></span></td><td><input type='button' value='x' onclick=delete_row('row"+$rowno+"')></td></tr>");	
+	$("#employee_table tr:last").after("<tr id='row"+$rowno+"'><td><input type='text' id='CursoClase"+$rowno+"' name='CursoClase[]' size='14' required><br><span class='error_text' id='CursoClase"+$rowno+"_error'></span></td><td><input type='text' id='HoraClase"+$rowno+"' name='HoraClase[]' size='14' onblur=validateNumero('HoraClase"+$rowno+"') required><br><span class='error_text' id='HoraClase"+$rowno+"_error'></span></td><td><input type='text' id='AsignaturaClase"+$rowno+"' name='AsignaturaClase[]' size='14' required><br><span class='error_text' id='AsignaturaClase"+$rowno+"_error'></span></td><td><input type='text' id='ProfesorGuiaClase"+$rowno+"' name='ProfesorGuiaClase[]' size='14' onblur=validateName('ProfesorGuiaClase"+$rowno+"') required><br><span class='error_text' id='ProfesorGuiaClase"+$rowno+"_error'></span></td><td><input type='text' id='NumeroAlumnosClase"+$rowno+"' name='NumeroAlumnosClase[]' size='14' onblur=validateNumero('NumeroAlumnosClase"+$rowno+"') required><br><span class='error_text' id='NumeroAlumnosClase"+$rowno+"_error'></span></td><td><input type='button' value='x' onclick=delete_row('row"+$rowno+"')></td></tr>");	
 	
     
     
@@ -46,23 +46,31 @@ function formSubmit(i){
         
         var validForm = true;
         var checkHours = true;
+        var checkName = true;
         var checkStudents = true;
         
         var horas=$("#HoraClase"+i+"").val();
         var validHours = checkNumero(horas);
         
+        var nombre=$("#ProfesorGuiaClase"+i+"").val();
+        var validNames = checkNombre(nombre);
+    
         var alumnos=$("#NumeroAlumnosClase"+i+"").val();
         var validStudents = checkNumero(alumnos);
        
         if(validHours == false){
             checkHours = false;
         }
+    
+        if(validNames == false){
+            checkName = false;
+        }
         
         if(validStudents == false){
             checkStudents = false;
         }
         
-        if(checkHours == false || checkStudents == false){
+        if(checkHours == false || checkName == false ||checkStudents == false){
             validForm = false;
         }
         
@@ -87,15 +95,18 @@ function formSubmit(i){
         if(validStudents == false){
             $("#NumeroAlumnosClase"+i+"").css({"border":"1px solid red"});
             $("#NumeroAlumnosClase"+i+"_error").text("ingrese solo números");
-            $("#NumeroAlumnosClase1"+i+"_error").css({"margin-top":"5px"});
+            $("#NumeroAlumnosClase"+i+"_error").css({"margin-top":"5px"});
             
         }
     }
     
     function checkForm(){
         var validForm = false;
-        var run = true; 
-        for(i=1;i<$rowno;i++){
+        var run = true;
+        
+        totalTabla = $("#employee_table tr").length;
+        
+        for(i=1;i<totalTabla;i++){
             formAlert(i);
         }
         

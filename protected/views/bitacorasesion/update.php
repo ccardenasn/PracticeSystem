@@ -1,21 +1,17 @@
 <?php
-include_once('planificacion.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
-$student=Yii::app()->user->name;
-$arrdata=datosplanificacion($student);
-
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
-	$model->CodBitacora=>array('view','id'=>$model->CodBitacora),
+    'Bitácora: Sesión Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada=>array('viewPlanificacionBitacora','id'=>$model->PlanificacionClase_CodPlanificacion),
 	'Editar',
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->CodBitacora)),
+	array('label'=>'Detalles', 'url'=>array('viewPlanificacionBitacora', 'id'=>$model->PlanificacionClase_CodPlanificacion)),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclase/index')),
 );
@@ -24,16 +20,20 @@ $this->menu=array(
 <h1>Modificar Bitácora</h1><br>
 <h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2><br>
 
-<ul>
-	<h4>Instrucciones de Opciones</h4>
-	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
-	<li>Para regresar al índice de bitácoras haga click en <strong>"Lista"</strong>.</li>
-	<li>Haga click en <strong>"Añadir"</strong> para agregar una bitácora.</li>
-	<li>Haga click en <strong>"Detalles"</strong> para visualizar información de bitácora.</li>
-	<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
-	<li>Haga click en <strong>"Planificaciones de Estudiante"</strong> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
-
-</ul>
+<div class="collapse">
+    <h3>Ayuda</h3>
+    <ul>
+        <ul>
+            <h4>Instrucciones de Opciones</h4>
+            <li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+            <li>Para regresar al índice de bitácoras haga click en <strong>"Lista"</strong>.</li>
+            <li>Haga click en <strong>"Añadir"</strong> para agregar una bitácora.</li>
+            <li>Haga click en <strong>"Detalles"</strong> para visualizar información de bitácora.</li>
+            <li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de bitácoras existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+            <li>Haga click en <strong>"Planificaciones de Estudiante"</strong> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
+        </ul>        
+    </ul>
+</div><br>
 
 <?php $this->renderPartial('_updateForm',
 						   array(

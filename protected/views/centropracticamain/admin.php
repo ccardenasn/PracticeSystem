@@ -79,23 +79,15 @@ $('.search-form form').submit(function(){
 		array('name'=>'Dependencia_CodDependencia','value'=>'$data->dependenciaCodDependencia->NombreDependencia'),
 		array('name'=>'NivelEducacional_CodNivel','value'=>'$data->nivelEducacionalCodNivel->NombreNivel'),
 		'Area',
-		//'Region_codRegion',
-        array(
-			'name'        => 'Region_codRegion',
-            'value'=>'$data->regionCodRegion->NombreRegion',
+		array(
+			'name'        => 'Ciudad_codCiudad',
+            'value'=>'$data->ciudadCodCiudad->NombreCiudad',
             'htmlOptions' => array( 'class' => 'group_title' ),
-			'filter'      => CHtml::dropDownList('Centropractica[Region_codRegion]', $model->Region_codRegion,
-					CHtml::listData(Region::model()->findAll(), 'codRegion', 'NombreRegion' ),
-                                                 array( 'empty' => '-' )
+			'filter'      => CHtml::dropDownList('Centropractica[Ciudad_codCiudad]', $model->Ciudad_codCiudad,
+					CHtml::listData(Ciudad::model()->findAll(), 'codCiudad', 'NombreCiudad' ),
+                                                 array( 'empty' => 'Todos' )
 				),
 		),
-		'Provincia_codProvincia',
-		//'Ciudad_codCiudad',
-		
-		
-		//'Calle',
-		//'ImagenCentroPractica',
-	
 		array(
 			'class'=>'CButtonColumn',
 		),

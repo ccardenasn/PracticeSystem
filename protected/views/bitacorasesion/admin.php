@@ -2,9 +2,8 @@
 include_once('planificacion.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
-
-$id=Yii::app()->request->getQuery('id');
-$nombre = datosplanificacion($id);
+$userRut=Yii::app()->user->name;
+$studentModel=Estudiante::model()->find('RutEstudiante=?',array($userRut));
 
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
@@ -32,7 +31,7 @@ $('.search-form form').submit(function(){
 
 <h1>Administración de Bitácoras</h1><br>
 
-<h2>Estudiante: <?php echo $nombre[0] ?></h2><br>
+<h2>Estudiante: <?php echo $studentModel->NombreEstudiante ?></h2><br>
 
 <div class="collapse">
 	<h3>Ayuda</h3>
@@ -46,9 +45,9 @@ $('.search-form form').submit(function(){
 		<ul>
 			<h4>Opciones de Búsqueda</h4>
 			<li>Para efectuar búsquedas de datos escriba en los campos de texto situados debajo de los títulos de cada columna correspondiente para filtrar información.</li>
-			<li>Haga click en <b>"Búsqueda Avanzada"</b> para mostrar u ocultar opciones para encontrar un estudiante específico.</li>
+			<li>Haga click en <strong>"Búsqueda Avanzada"</strong> para mostrar u ocultar opciones para encontrar un estudiante específico.</li>
 			<li>Escriba sobre los campos de texto de acuerdo a los criterios de búsqueda del usuario.</li>
-			<li>Presione el botón <b>"Buscar"</b> para iniciar la búsqueda.</li>
+			<li>Presione el botón <strong>"Buscar"</strong> para iniciar la búsqueda.</li>
 			<li>Los resultados se mostrarán en la tabla inferior.</li>
 		</ul>
 	</ul>
@@ -73,11 +72,10 @@ $('.search-form form').submit(function(){
 		'nextPageLabel'=>'Siguiente >',
 		'prevPageLabel'=>'< Anterior',
         ),
-	'dataProvider'=>$model->searchByRut($id),
+	'dataProvider'=>$model->searchByRut(),
 	'filter'=>$model,
 	'columns'=>array(
 		'planificacionClaseCodPlanificacion.SesionInformada',
-		//'CodBitacora',
 		'FechaBitacora',
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
