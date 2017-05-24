@@ -28,7 +28,7 @@ var actionPDF = '<?php echo Yii::app()->createUrl('GraphData/pdf'); ?>';
 	<?php 
 	include('connect.php');
 	include('ForceUTF/Encoding.php');
-	$sqlb = "select NombrePractica from configuracionpractica;";
+	$sqlb = "select NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.NombrePractica = planificacionclase.ConfiguracionPractica_NombrePractica group by NombrePractica;";
 		
 	$st = mysql_query($sqlb,$con);
 	

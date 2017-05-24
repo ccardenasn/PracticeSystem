@@ -88,7 +88,8 @@ for($i=0;$i<$totalClaseModel;$i++){
 		
 		<h3>Clases</h3>
 		<ul>
-            <div id='errorClases' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Deber corregir los errores presentados en <strong>Clases</strong>.</li></ul></div>
+            <div id='errorClases' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Debe corregir los errores presentados en <strong>Clases</strong>.</li></ul></div>
+            <div id='errorBorrar' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Debe mantener una clase al menos.</li></ul></div>
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
@@ -98,12 +99,12 @@ for($i=0;$i<$totalClaseModel;$i++){
 					<td>
                         <label>Curso</label>
 						<input type="text" id="CursoClase1" name="CursoClase[]" size="14" required>
-						<br><span class='error_text' id='CursoClase_error'></span>
+						<br><span class='error_text' id='CursoClase1_error'></span>
 					</td>
 					<td>
                         <label>Horas</label>
 						<input type="text" id="HoraClase1" name="HoraClase[]" size="14" onblur="validateNumero('HoraClase1');" required>
-						<br><span class='error_text' id='HoraClase_error'></span>
+						<br><span class='error_text' id='HoraClase1_error'></span>
 					</td>
 					<td>
                         <label>Asignatura</label>
@@ -121,6 +122,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 						<br><span class='error_text' id='NumeroAlumnosClase1_error'></span>
 					</td>
 					<td>
+                        <label>-</label>
 						<input type='button' value='x' onclick="javascript:delete_row('row1');">
 					</td>
 				</tr>
@@ -169,7 +171,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios',array('onclick'=>"return checkForm(); return false")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

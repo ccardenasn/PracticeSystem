@@ -18,7 +18,7 @@ function getCentros()
 function getPracticas()
 {
 	include('connect.php');
-	$sql = "select NombrePractica from configuracionpractica;";
+	$sql = "select NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.NombrePractica = planificacionclase.ConfiguracionPractica_NombrePractica group by NombrePractica;";
 	$stmt = mysql_query($sql,$con);
 	$practicas = array();
 	

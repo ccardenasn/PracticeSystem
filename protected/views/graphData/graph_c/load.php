@@ -19,16 +19,25 @@ var actionText = '<?php echo Yii::app()->createUrl('GraphData/exportText'); ?>';
 var actionPDF = '<?php echo Yii::app()->createUrl('GraphData/pdf'); ?>';
 </script>
 
-<?php
-$data=CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD');
-?>
-
 <div class="row">
 <?php echo CHtml::label('<b>Seleccionar</b>','centerLabel');?>
 </div>
 
 <div class="row">
-	<?php echo CHtml::dropDownList('dynamic_data','RBD',$data,array('id'=>'dynamic_data'));?>
+	<select id="dynamic_data">
+	<?php 
+	include('connect.php');
+	include('ForceUTF/Encoding.php');
+	$sqlb = "select RBD,NombreCentroPractica from ((((centropractica inner join estudiante on centropractica.RBD = estudiante.CentroPractica_RBD) inner join planificacionclase on estudiante.RutEstudiante = planificacionclase.Estudiante_RutEstudiante) inner join bitacorasesion on planificacionclase.CodPlanificacion = bitacorasesion.PlanificacionClase_CodPlanificacion) inner join clasebitacorasesion on bitacorasesion.CodBitacora = clasebitacorasesion.BitacoraSesion_CodBitacora) group by RBD;";
+		
+	$st = mysql_query($sqlb,$con);
+	
+	while($rows = mysql_fetch_array($st))
+	{
+		echo'<option value="'.$rows['RBD'].'">'.Encoding::toUTF8($rows['NombreCentroPractica']).'</option>';
+	}
+	?>
+    </select>
 	<input type="button" name="btnSaveChart" id="btnSaveChart" value="Crear PDF" onclick="javascript:saveChartHTML();" >
 </div>
 

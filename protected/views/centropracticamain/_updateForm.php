@@ -74,34 +74,43 @@ for($i=0;$i<$totalProfesorModel;$i++){
 		
 		<h3>Profesor Guía CP</h3>
 		<ul>
+            <div id='errorProfesores' class='flash-error' style="display:none"><p><strong>¡Advertencia!</strong></p><ul><li>Debe corregir los errores presentados en <strong>Profesor Guía CP</strong>.</li></ul></div>
 			<table id="employee_table" align=center>
 				<tr id="row1">
 					<td>
-						<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" placeholder="Rut" onblur="validateRut('Rut1');">
+                        <label>Rut</label>
+						<input type="text" id="Rut1" name="RutProfGuiaCP[]" size="14" onblur="validateRut('Rut1');">
 						<br><span class='error_text' id='Rut1_error'></span>
-						<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" placeholder="Mail" onblur="check_email('Mail1');">
+                        <label>Correo Electrónico</label>
+						<input type="text" id="Mail1" name="MailProfGuiaCP[]" size="14" onblur="check_email('Mail1');">
 						<br><span class='error_text' id='Mail1_error'></span>
 					</td>
 					<td>
+                        <label>Profesor Guia CP</label>
 						<input type="text" id="Nombre1" name="NombreProfGuiaCP[]" size="14" placeholder="Nombre" onblur="validateName('Nombre1');">
 						<br><span class='error_text' id='Nombre1_error'></span>
+                        <label>Teléfono</label>
 						<input type="text" id="Telefono1" name="TelefonoProfGuiaCP[]" size="14" placeholder="Telefono" onblur="validateTelefono('Telefono1');">
 						<br><span class='error_text' id='Telefono1_error'></span>
 					</td>
 					<td>
+                        <label>Curso</label>
 						<input type="text" id="Curso1" name="CursoProfGuiaCP[]" size="14" placeholder="Curso">
 						<br><span class='error_text' id='Curso1_error'></span>
-						<input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" placeholder="Celular" onblur="validateCelular('Celular1');">
+						<label>Celular</label>
+                        <input type="text" id="Celular1" name="CelularProfGuiaCP[]" size="14" placeholder="Celular" onblur="validateCelular('Celular1');">
 						<br><span class='error_text' id='Celular1_error'></span>
 					</td>
 					<td>
+                        <label>Profesor Jefe</label>
 						<select id="ProfesorJefe1" name="ProfesorJefeProfGuiaCP[]" style="width:130px">
 							<option value="Si" selected>Si</option>
 							<option value="No" selected>No</option>
 							<option value="No Aplica" selected>No Aplica</option>
 						</select>
 						<br><span class='error_text' id='ProfesorJefe1_error'></span>
-						<input type="file" id="Imagen1" name="ImagenProfGuiaCP[]"  size="14"><br><span class='error_text' id='Imagen1_error'></span>
+						<label>Imagen</label>
+                        <input type="file" id="Imagen1" name="ImagenProfGuiaCP[]"  size="14"><br><span class='error_text' id='Imagen1_error'></span>
 					</td>
 					<td>
 						<input type='button' value='x' onclick="javascript:delete_row('row1');">
@@ -115,7 +124,7 @@ for($i=0;$i<$totalProfesorModel;$i++){
 	<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>
+		<?php echo CHtml::submitButton($centroModel->isNewRecord ? 'Crear' : 'Guardar Cambios',array('onclick'=>"return checkForm(); return false")); ?>
 	</div>
 	
 	<?php $this->endWidget(); ?>

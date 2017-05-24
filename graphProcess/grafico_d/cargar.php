@@ -40,7 +40,9 @@ for($i=0;$i<$datalength;$i++)
 	
 //$querydataB = "select count(*),Dependencia_CodDependencia from centropractica group by Dependencia_CodDependencia;";
 
-$querydataB = "select count(*),Dependencia_CodDependencia,NombreDependencia from centropractica inner join Dependencia on centropractica.Dependencia_CodDependencia = dependencia.CodDependencia group by NombreDependencia;";
+//$querydataB = "select count(*),Dependencia_CodDependencia,NombreDependencia from centropractica inner join Dependencia on centropractica.Dependencia_CodDependencia = dependencia.CodDependencia group by NombreDependencia;";
+    
+$querydataB = "select count(*),Dependencia_CodDependencia,NombreDependencia from ((estudiante inner join centropractica on estudiante.CentroPractica_RBD = centropractica.RBD) inner join dependencia on centropractica.Dependencia_CodDependencia = dependencia.CodDependencia) group by NombreDependencia;";    
 		
 $execqueryB = mysql_query($querydataB,$con);
 		
