@@ -86,8 +86,8 @@ $ask = new UserIdentity('','');
                 ),
 				array('label'=>'Horario', 'url'=>array('/horario'),'visible'=>$ask->isStudent()),
 				array('label'=>'Planificación de Clases/Bitacoras','url'=>array('/planificacionclase'),'visible'=>$ask->isStudent()),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
+				//array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
+				//array('label'=>'Contacto', 'url'=>array('/site/contact')),
                 array('label'=>'Iniciar Sesion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
                 

@@ -46,10 +46,10 @@ $this->menu=array(
 		'TelefonoProfGuiaCP',
 		'CelularProfGuiaCP',
 		'CentroPractica_RBD',
-		array(
+        array(
             'name'=>'ImagenProfGuiaCP',
 			'type' => 'raw',
-            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenProfesoresGuiaCP/'.$model->ImagenProfGuiaCP)
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenProfesoresGuiaCP/'.$model->ImagenProfGuiaCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'200px','height'=>'200px')),
             ),
 	),
 )); ?>

@@ -26,10 +26,10 @@ $this->menu=array(
 		'MailSecretaria',
 		'TelefonoSecretaria',
 		'CelularSecretaria',
-		array(
+        array(
             'name'=>'ImagenSecretaria',
 			'type' => 'raw',
-            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretaria/'.$model->ImagenSecretaria)
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretaria/'.$model->ImagenSecretaria,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'200px','height'=>'200px')),
             ),
 		array('name'=>'Carrera_codCarrera','value'=>$model->carreraCodCarrera->NombreCarrera),
 	),

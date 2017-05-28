@@ -54,9 +54,9 @@ $this->menu=array(
 			'ciudadCodCiudad.NombreCiudad',
 			'Calle',
 			array(
-				'name'=>'ImagenCentroPractica',
-				'type' => 'raw',
-				'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCentroPracticas/'.$model->ImagenCentroPractica)
+            'name'=>'ImagenCentroPractica',
+			'type' => 'raw',
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCentroPracticas/'.$model->ImagenCentroPractica,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/centerplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/centerplaceholder.jpg"."';",'width'=>'400px','height'=>'200px')),
             ),
 		),
 )); ?>
@@ -83,7 +83,7 @@ $this->menu=array(
 					<td><?php echo $secretaria->MailSecretariaCP ?></td>
 					<td><?php echo $secretaria->TelefonoSecretariaCP ?></td>
 					<td><?php echo $secretaria->CelularSecretariaCP ?></td>
-					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretariasCP/'.$secretaria->ImagenSecretariaCP,'Image',array('width'=>50,'height'=>50))?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretariasCP/'.$secretaria->ImagenSecretariaCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>
@@ -111,7 +111,7 @@ $this->menu=array(
 					<td><?php echo $director->MailDirectorCP ?></td>
 					<td><?php echo $director->TelefonoDirectorCP ?></td>
 					<td><?php echo $director->CelularDirectorCP ?></td>
-					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenDirectoresCP/'.$director->ImagenDirectorCP,'Image',array('width'=>50,'height'=>50))?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenDirectoresCP/'.$director->ImagenDirectorCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>
@@ -139,7 +139,7 @@ $this->menu=array(
 					<td><?php echo $jefe->MailJefeUTPCP ?></td>
 					<td><?php echo $jefe->TelefonoJefeUTPCP ?></td>
 					<td><?php echo $jefe->CelularJefeUTPCP ?></td>
-					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenJefesUTPCP/'.$jefe->ImagenJefeUTPCP,'Image',array('width'=>50,'height'=>50))?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenJefesUTPCP/'.$jefe->ImagenJefeUTPCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>
@@ -167,7 +167,7 @@ $this->menu=array(
 					<td><?php echo $profesor->MailProfCoordGuiaCP ?></td>
 					<td><?php echo $profesor->TelefonoProfCoordGuiaCP ?></td>
 					<td><?php echo $profesor->CelularProfCoordGuiaCP ?></td>
-					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCoordinadoresPracticasCP/'.$profesor->ImagenProfCoordGuiaCP,'Image',array('width'=>50,'height'=>50))?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCoordinadoresPracticasCP/'.$profesor->ImagenProfCoordGuiaCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>
@@ -197,7 +197,7 @@ $this->menu=array(
 					<td><?php echo $profesor->MailProfGuiaCP ?></td>
 					<td><?php echo $profesor->TelefonoProfGuiaCP ?></td>
 					<td><?php echo $profesor->CelularProfGuiaCP ?></td>
-					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenProfesoresGuiaCP/'.$profesor->ImagenProfGuiaCP,'Image',array('width'=>50,'height'=>50))?></td>
+					<td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenProfesoresGuiaCP/'.$profesor->ImagenProfGuiaCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>

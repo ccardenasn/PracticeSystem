@@ -35,10 +35,10 @@ $this->menu=array(
 		'MailCoordinador',
 		'TelefonoCoordinador',
 		'CelularCoordinador',
-		array(
+        array(
             'name'=>'ImagenCoordinador',
 			'type' => 'raw',
-            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCoordinador/'.$model->ImagenCoordinador)
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenCoordinador/'.$model->ImagenCoordinador,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'200px','height'=>'200px')),
             ),
 	),
 )); ?>

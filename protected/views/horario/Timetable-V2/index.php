@@ -13,13 +13,18 @@ echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
 </script>';
 
-$nextPage = Yii::app()->createUrl('horario/successTimeTable');
+//$nextPage = Yii::app()->createUrl('horario/index');
 
-echo '<script type="text/javascript">
-	var redirectPage = "'.$nextPage.'"; 
-</script>';
+//echo '<script type="text/javascript">
+//	var redirectPage = "'.$nextPage.'"; 
+//</script>';
 
 ?>
+
+<script>
+var redirectPage = '<?php echo Yii::app()->createUrl('horario/index'); ?>';
+
+</script>
 
 <body onload="javascript:loadCreate();">
 	<div id="table_div">
@@ -35,7 +40,7 @@ echo '<script type="text/javascript">
 	</div>
 	
 	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();loadTimeTableIndex();">
+		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();">
 	</div>
 </body>
 

@@ -47,7 +47,7 @@ $this->menu=array(
         array(
             'name'=>'ImagenJefeUTPCP',
 			'type' => 'raw',
-            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenJefesUTPCP/'.$model->ImagenJefeUTPCP)
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenJefesUTPCP/'.$model->ImagenJefeUTPCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'200px','height'=>'200px')),
             ),
 	),
 )); ?>

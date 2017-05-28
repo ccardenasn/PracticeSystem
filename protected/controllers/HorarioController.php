@@ -173,7 +173,7 @@ class HorarioController extends Controller
 	
 	public function actionSuccessTimeTable()
 	{
-		Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Para editar un horario debe hacer clic en <strong>'Administración de Horarios'</strong>.</li></ul></div>");
+		Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Para editar un horario debe hacer clic en <strong>'Editar Horario'</strong>.</li></ul></div>");
 		$this->render('index');
 	}
 	

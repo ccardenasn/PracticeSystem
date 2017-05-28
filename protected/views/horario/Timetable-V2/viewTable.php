@@ -17,13 +17,6 @@ echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
 </script>';
 
-$successUpdatePage = Yii::app()->createUrl('horario/successTimeTable');
-
-echo '<script type="text/javascript">
-	var successPage = "'.$successUpdatePage.'"; 
-</script>';
-
-
 $viewSubjects = orderTimeTableData($rutStudent);
 //print_r($viewSubjects);
 
@@ -35,7 +28,8 @@ $hour = hourColumns();
 ?>
 
 <script type="text/javascript">
-	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>; 
+	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>;
+    var redirectPage = '<?php echo Yii::app()->createUrl('horario/successTimeTable'); ?>';
 </script>
 
 
@@ -231,7 +225,7 @@ $hour = hourColumns();
 	</div>
 	
 	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();loadSuccessUpdatePage();"  action="saveTable.php">
+		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
 	</div>
 </body>
 

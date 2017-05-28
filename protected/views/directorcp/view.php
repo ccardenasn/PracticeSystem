@@ -44,10 +44,10 @@ $this->menu=array(
 		'TelefonoDirectorCP',
 		'CelularDirectorCP',
 		'centroPracticaRBD.NombreCentroPractica',
-		array(
+        array(
             'name'=>'ImagenDirectorCP',
 			'type' => 'raw',
-            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenDirectoresCP/'.$model->ImagenDirectorCP)
+            'value'=>CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenDirectoresCP/'.$model->ImagenDirectorCP,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'200px','height'=>'200px')),
             ),
 	),
 )); ?>

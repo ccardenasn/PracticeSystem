@@ -29,6 +29,7 @@ function obtener(){
 		type: 'POST',
 		url: 'Timetable-V2/saveTable.php',
 		data: {horario:tableArr,action:mainAction,rut:rut},
+        //success: location.href=redirectPage,
 	});
 }
 

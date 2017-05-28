@@ -2,6 +2,7 @@
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
 include_once 'FunCorreo.php';
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "estudiante".
  *
@@ -155,13 +156,13 @@ class Perfilestudiante extends CActiveRecord
 	
 	 public function valtelefono($attribute,$params)
 	{
-		if(telefonovalido($this->TelefonoEstudiante)==false)
+		if(numerovalido($this->TelefonoEstudiante)==false)
 		$this->addError('TelefonoEstudiante','Telefono invalido');	
 	}
     
     public function valcelular($attribute,$params)
 	{
-		if(celularvalido($this->CelularEstudiante)==false)
+		if(numerovalido($this->CelularEstudiante)==false)
 		$this->addError('CelularEstudiante','Celular invalido');	
 	}
     
