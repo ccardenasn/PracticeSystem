@@ -12,22 +12,22 @@ $js->registerCssFile($base.'/Timetable-V2/cssTimetableStyles/styleForm.css');
 echo '<script type="text/javascript">
 	var rut = "'.$rutStudent.'"; 
 </script>';
-
-$nextPage = Yii::app()->createUrl('horarioadmin/successTimeTable',array('id'=>$rutStudent));
-
-echo '<script type="text/javascript">
-	var redirectPage = "'.$nextPage.'"; 
-</script>';
-
 ?>
 
 <?php if(Yii::app()->user->hasFlash('message')):?>
-    <div class="row buttons">
-        <?php echo Yii::app()->user->getFlash('message'); ?>
-    </div>
-    <?php endif; ?>
+<div class="row buttons">
+    <?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <body onload="javascript:loadCreate();">
+    <div id='successTimeTable' class='flash-success' style="display:none">
+        <p><strong>¡Operación realizada!</strong></p>
+        <ul>
+            <li>Haga click <?php echo CHtml::link("<strong>aquí</strong>",array('horarioadmin/index')); ?> para ir a la pagina principal de horario.</li>
+            <li>Haga click <?php echo CHtml::link("<strong>aquí</strong>",array('horarioadmin/admin')); ?> para ir directamente a la sección de administración de horarios.</li>
+        </ul>
+    </div>
 	<div id="table_div">
 		<?php
 		include('tableForm.php');

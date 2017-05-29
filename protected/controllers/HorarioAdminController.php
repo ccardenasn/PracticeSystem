@@ -30,7 +30,7 @@ class HorarioadminController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','successUpdateTimeTable','createHorario','successTimeTable'),
+				'actions'=>array('index','view','createHorario'),
 				//'users'=>array('*'),
 				'users'=>Horarioadmin::model()->getAdmins(),
 			),

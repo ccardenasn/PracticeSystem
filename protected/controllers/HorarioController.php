@@ -34,7 +34,7 @@ class HorarioController extends Controller
 				'users'=>Horario::model()->getStudents(),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createHorario','updateHorario','successTimeTable','successUpdateTimeTable'),
+				'actions'=>array('create','update','createHorario','updateHorario'),
 				//'users'=>array('@'),
 				'users'=>Horario::model()->getStudents(),
 			),
@@ -124,14 +124,6 @@ class HorarioController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	/*public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Horario');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}*/
-	
 	public function actionIndex()
     {
         $this->render('index');
@@ -171,17 +163,6 @@ class HorarioController extends Controller
 		
 	}
 	
-	public function actionSuccessTimeTable()
-	{
-		Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-success'><p><strong>¡Operación realizada!</strong></p><ul><li>Para editar un horario debe hacer clic en <strong>'Editar Horario'</strong>.</li></ul></div>");
-		$this->render('index');
-	}
-	
-	public function actionSuccessUpdateTimeTable()
-	{
-		$this->render('successUpdateTimeTable');
-	}
-
 	/**
 	 * Manages all models.
 	 */

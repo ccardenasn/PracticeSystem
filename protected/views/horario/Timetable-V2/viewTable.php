@@ -29,11 +29,18 @@ $hour = hourColumns();
 
 <script type="text/javascript">
 	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>;
-    var redirectPage = '<?php echo Yii::app()->createUrl('horario/successTimeTable'); ?>';
 </script>
 
 
 <body onload="javascript:loadUpdate();loadState();">
+    <div id='successTimeTable' class='flash-success' style="display:none">
+        <p><strong>¡Operación realizada!</strong></p>
+        <ul>
+            <li>Haga click <?php echo CHtml::link("<strong>aquí</strong>",array('horario/index')); ?> para ir a la pagina principal de horario.</li>
+            <li>Haga click <?php echo CHtml::link("<strong>aquí</strong>",array('horario/updateHorario')); ?> para continuar editando.</li>
+        </ul>
+    </div>
+    
 	<div id="table_div">
 		<table border="2px">
 			<tr>

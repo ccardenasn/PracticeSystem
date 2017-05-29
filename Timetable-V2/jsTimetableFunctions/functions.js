@@ -24,12 +24,18 @@ function cerrar(){
 	div.style.display = 'none';
 }
 
+function showMessageTimetable(){
+    showControl("successTimeTable");
+    hideControl("table_div");
+    hideControl("btnSave");
+}
+
 function obtener(){
 	$.ajax({
 		type: 'POST',
 		url: 'Timetable-V2/saveTable.php',
 		data: {horario:tableArr,action:mainAction,rut:rut},
-        //success: location.href=redirectPage,
+        success: showMessageTimetable(),
 	});
 }
 

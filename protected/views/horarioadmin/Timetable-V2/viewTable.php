@@ -23,13 +23,6 @@ $copyArr = $viewSubjects;
 $copyArr = copyPHPtoJavaScriptArr($copyArr);
 
 $hour = hourColumns();
-
-$successUpdatePage = Yii::app()->createUrl('horarioAdmin/successTimeTable');
-
-echo '<script type="text/javascript">
-	var successPage = "'.$successUpdatePage.'"; 
-</script>';
-
 ?>
 
 <script type="text/javascript">
@@ -38,6 +31,13 @@ echo '<script type="text/javascript">
 
 
 <body onload="javascript:loadUpdate();loadState();">
+    <div id='successTimeTable' class='flash-success' style="display:none">
+        <p><strong>¡Operación realizada!</strong></p>
+        <ul>
+            <li>Haga click <?php echo CHtml::link("<strong>aquí</strong>",array('horarioadmin/index')); ?> para ir a la pagina principal de horario.</li>
+            <li>Haga click <?php echo CHtml::link("<strong>aquí</strong>",array('horarioadmin/admin')); ?> para ir directamente a la sección de administración de horarios.</li>
+        </ul>
+    </div>
 	<div id="table_div">
 		<table border="2px">
 			<tr>
@@ -229,7 +229,7 @@ echo '<script type="text/javascript">
 	</div>
 	
 	<div id=btnSave_div>
-		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();loadSuccessUpdatePage();"  action="saveTable.php">
+		<input type="button" name="btnSave" id="btnSave" value="Guardar" onclick="javascript:obtener();"  action="saveTable.php">
 	</div>
 </body>
 
