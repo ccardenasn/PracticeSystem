@@ -9,7 +9,7 @@
  * @property string $nombrepractica
  * @property integer $idcentro
  */
-class GraphData extends CActiveRecord
+class Graphdata extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
