@@ -24,21 +24,23 @@ var actionPDF = '<?php echo Yii::app()->createUrl('graphdata/pdf'); ?>';
 </div>
 
 <div class="row">
-	<select id="dynamic_data">
-	<?php 
-	include('connect.php');
-	include('ForceUTF/Encoding.php');
-	$sqlb = "select RBD,NombreCentroPractica from ((((centropractica inner join estudiante on centropractica.RBD = estudiante.CentroPractica_RBD) inner join planificacionclase on estudiante.RutEstudiante = planificacionclase.Estudiante_RutEstudiante) inner join bitacorasesion on planificacionclase.CodPlanificacion = bitacorasesion.PlanificacionClase_CodPlanificacion) inner join clasebitacorasesion on bitacorasesion.CodBitacora = clasebitacorasesion.BitacoraSesion_CodBitacora) group by RBD;";
-		
-	$st = mysql_query($sqlb,$con);
-	
-	while($rows = mysql_fetch_array($st))
-	{
-		echo'<option value="'.$rows['RBD'].'">'.Encoding::toUTF8($rows['NombreCentroPractica']).'</option>';
-	}
-	?>
+    <select id="dynamic_data">
+        <?php
+        $con = mysql_connect("localhost", "sigep", "s1g3p") or die("ERROR EN LA CONEXION");
+        $db = mysql_select_db("sigep", $con) or die("ERROR AL CONECTAR A LA BD"); 
+        
+        include('ForceUTF/Encoding.php');
+        
+        $sqlb = "select RBD,NombreCentroPractica from ((((centropractica inner join estudiante on centropractica.RBD = estudiante.CentroPractica_RBD) inner join planificacionclase on estudiante.RutEstudiante = planificacionclase.Estudiante_RutEstudiante) inner join bitacorasesion on planificacionclase.CodPlanificacion = bitacorasesion.PlanificacionClase_CodPlanificacion) inner join clasebitacorasesion on bitacorasesion.CodBitacora = clasebitacorasesion.BitacoraSesion_CodBitacora) group by RBD;";
+        
+        $st = mysql_query($sqlb,$con);
+        
+        while($rows = mysql_fetch_array($st)){
+            echo'<option value="'.$rows['RBD'].'">'.Encoding::toUTF8($rows['NombreCentroPractica']).'</option>';
+        }
+        ?>
     </select>
-	<input type="button" name="btnSaveChart" id="btnSaveChart" value="Crear PDF" onclick="javascript:saveChartHTML();" >
+    <input type="button" name="btnSaveChart" id="btnSaveChart" value="Crear PDF" onclick="javascript:saveChartHTML();" >
 </div>
 
 <div id="graphcontainer" style="width: 90%; float:left;"></div>

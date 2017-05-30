@@ -24,23 +24,25 @@ var actionPDF = '<?php echo Yii::app()->createUrl('graphdata/pdf'); ?>';
 </div>
 
 <div class="row">
-	<select id="dynamic_data">
-	<?php 
-	include('connect.php');
-	include('ForceUTF/Encoding.php');
-	$sqlb = "select NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.NombrePractica = planificacionclase.ConfiguracionPractica_NombrePractica group by NombrePractica;";
-		
-	$st = mysql_query($sqlb,$con);
-	
-	$i=0;
-	while($rows = mysql_fetch_array($st))
-	{
-		echo'<option value="'.$i.'">'.Encoding::toUTF8($rows['NombrePractica']).'</option>';
-		$i++;
-	}
-	?>
-</select>
-	<input type="button" name="btnSaveChart" id="btnSaveChart" value="Crear PDF" onclick="javascript:saveChartHTML();" >
+    <select id="dynamic_data">
+        <?php
+        $con = mysql_connect("localhost", "sigep", "s1g3p") or die("ERROR EN LA CONEXION");
+        $db = mysql_select_db("sigep", $con) or die("ERROR AL CONECTAR A LA BD"); 
+        
+        include('ForceUTF/Encoding.php');
+        
+        $sqlb = "select NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.NombrePractica = planificacionclase.ConfiguracionPractica_NombrePractica group by NombrePractica;";
+        
+        $st = mysql_query($sqlb,$con);
+        $i=0;
+        
+        while($rows = mysql_fetch_array($st)){
+            echo'<option value="'.$i.'">'.Encoding::toUTF8($rows['NombrePractica']).'</option>';
+            $i++;
+        }
+        ?>
+    </select>
+    <input type="button" name="btnSaveChart" id="btnSaveChart" value="Crear PDF" onclick="javascript:saveChartHTML();" >
 </div>
 
 <div id="graphcontainer" style="width: 90%; float:left;"></div>

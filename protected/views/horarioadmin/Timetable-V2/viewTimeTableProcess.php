@@ -1,7 +1,7 @@
 <?php
 
 function getTimeTableData($rutStudent){
-	include_once("connect.php");
+	include("connect.php");
 	$arr = array();
 	$qr = "select * from horario where Estudiante_RutEstudiante = '".$rutStudent."';";
 	$q = mysql_query($qr,$con);
