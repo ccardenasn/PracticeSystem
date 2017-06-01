@@ -3,7 +3,7 @@ include_once('planificacion.php');
 include_once('forceutf/Encoding.php');
 
 //se referencia a la extensión de mPDF
-$pdf = Yii::createComponent('application.extensions.MPDF60.mpdf');
+$pdf = Yii::createComponent('application.extensions.mpdf60.mpdf');
 
 date_default_timezone_set('America/Santiago');
 
@@ -125,7 +125,6 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
 
 $html = Encoding::toUTF8($html);
 $mpdf=new mPDF("");
-$mpdf->SetHTMLHeader($header);
 $mpdf->SetHeader("".$date."|Sistema de Gestión de Prácticas - Universidad Austral de Chile");
 $mpdf->SetFooter("Sistema de Gestión de Prácticas - Universidad Austral de Chile");
 $mpdf->WriteHTML($html);

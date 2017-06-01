@@ -18,6 +18,12 @@ $this->menu=array(
 
 <h1>Centro de Práctica: <?php echo $model->NombreCentroPractica; ?></h1><br>
 	
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+    <?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
+
 <div class="collapse">
 	<h3>Ayuda</h3>
 	<ul>

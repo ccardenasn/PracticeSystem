@@ -19,10 +19,10 @@ $this->menu=array(
 <h1>Mención: <?php echo $model->NombreMencion; ?></h1><br>
 
 <?php if(Yii::app()->user->hasFlash('message')):?>
-    <div class="row buttons">
-        <?php echo Yii::app()->user->getFlash('message'); ?>
-    </div>
-    <?php endif; ?>
+<div class="row buttons">
+    <?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <ul>
 	<li>En esta sección se pueden visualizar todos los detalles de la mención seleccionada.</li>

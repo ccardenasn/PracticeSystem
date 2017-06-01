@@ -1,4 +1,4 @@
-Distribución alumnos por centro o dependencia
-Centro
+Estudiantes según tipo de práctica
+Nombre de Práctica
 Número de Estudiantes
-Visualiza la cantidad total de estudiantes que recibe cada centro de práctica.
+Indica la distribución de estudiantes según la práctica que realiza en cada centro.

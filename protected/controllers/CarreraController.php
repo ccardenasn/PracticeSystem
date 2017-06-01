@@ -1,5 +1,6 @@
 <?php
 include_once('semestres.php');
+include_once('mainFunctions.php');
 
 class CarreraController extends Controller
 {
@@ -67,23 +68,30 @@ class CarreraController extends Controller
 	public function actionCreate()
 	{
 		$model=new Carrera;
-
-		// Uncomment the following line if AJAX validation is needed
+        
+        // Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
+        
+        $table = "carrera";
+		$empty = isEmpty($table);
 
-		if(isset($_POST['Carrera']))
-		{
-			$model->attributes=$_POST['Carrera'];
-			
-			createSemesters($model->SemestresCarrera);
-			
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->codCarrera));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+        if($empty == true){
+            if(isset($_POST['Carrera'])){
+                
+                $model->attributes=$_POST['Carrera'];
+                createSemesters($model->SemestresCarrera);
+                
+                if($model->save())
+                    $this->redirect(array('view','id'=>$model->codCarrera));
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de una carrera.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

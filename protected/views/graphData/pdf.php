@@ -20,7 +20,7 @@ $thirdLine = $filas[3];
 
 $centroRBD = Yii::app()->request->getQuery('id');
 
-$mainData=GraphData::model()->findAll('idcentro=?',array($centroRBD));
+$mainData=Graphdata::model()->findAll('idcentro=?',array($centroRBD));
 
 $centerName=Centropractica::model()->find('RBD=?',array($centroRBD));
 
@@ -35,7 +35,7 @@ if($centerName != null){
 
 
 //se referencia a la extensión de mPDF
-$pdf = Yii::createComponent('application.extensions.MPDF60.mpdf');
+$pdf = Yii::createComponent('application.extensions.mpdf60.mpdf');
 
 $html.="<bookmark content='start'/><div>Pedagogía en Educación Básica</div><br>";
 

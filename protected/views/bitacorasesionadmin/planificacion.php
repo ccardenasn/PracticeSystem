@@ -82,3 +82,10 @@ function searchNomProf($rut)
 	
 	return $arrnom;
 }
+
+function containsBitacora($planificacion){
+	$query="select count(*) from bitacorasesion where PlanificacionClase_CodPlanificacion = '".$planificacion."';";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+	
+	return $result;
+}

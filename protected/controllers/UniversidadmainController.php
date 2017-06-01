@@ -1,5 +1,6 @@
 <?php
 include_once('semestres.php');
+include_once('mainFunctions.php');
 
 class UniversidadmainController extends Controller
 {
@@ -73,51 +74,49 @@ class UniversidadmainController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($universidadModel,$carreraModel,$secretariaModel));
 
-		if(isset($_POST['Universidad'],$_POST['Carrera'],$_POST['Secretariacarrera']))
-		{
-			$universidadModel->attributes=$_POST['Universidad'];
-			$carreraModel->attributes=$_POST['Carrera'];
-			$secretariaModel->attributes=$_POST['Secretariacarrera'];
-			
-			//if($model->save())
-			//	$this->redirect(array('view','id'=>$universidadModel->NombreInstitucion));
-			
-			$universidadModel->save();
-			
-			$carreraModel->Universidad_NombreInstitucion = $universidadModel->NombreInstitucion;
-				
-			createSemesters($carreraModel->SemestresCarrera);
-			
-			$carreraModel->save();
-			
-			
-			$secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
-			
-			//$secretariaModel->save();
-			
-			$file=$secretariaModel->ImagenSecretaria=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
-			
-			if($secretariaModel->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$secretariaModel->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}	
-				}
-			}
-			
-			
-			$this->redirect(array('view','id'=>$universidadModel->NombreInstitucion));
-		}
+        $table = "universidad";
+		$empty = isEmpty($table);
 
-		$this->render('create',array(
-			'universidadModel'=>$universidadModel,
-			'carreraModel'=>$carreraModel,
-			'secretariaModel'=>$secretariaModel,
-		));
+        if($empty == true){
+            
+            if(isset($_POST['Universidad'],$_POST['Carrera'],$_POST['Secretariacarrera'])){
+                
+                $universidadModel->attributes=$_POST['Universidad'];
+                $carreraModel->attributes=$_POST['Carrera'];
+                $secretariaModel->attributes=$_POST['Secretariacarrera'];
+                
+                $universidadModel->save();
+                $carreraModel->Universidad_NombreInstitucion = $universidadModel->NombreInstitucion;
+                
+                createSemesters($carreraModel->SemestresCarrera);
+                
+                $carreraModel->save();
+                $secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
+                
+                $file=$secretariaModel->ImagenSecretaria=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
+                
+                if($secretariaModel->save()){
+                    if($file != null){
+                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                            $secretariaModel->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+                            $this->refresh();
+                        }	
+                    }
+                }
+                $this->redirect(array('view','id'=>$universidadModel->NombreInstitucion));
+            }
+            
+            $this->render('create',array(
+                'universidadModel'=>$universidadModel,
+                'carreraModel'=>$carreraModel,
+                'secretariaModel'=>$secretariaModel,
+            ));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de una universidad.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

@@ -1,5 +1,6 @@
 <?php
 include_once('bitacoraFunctions.php');
+include_once('mainFunctions.php');
 
 class SecretariacarreraController extends Controller
 {
@@ -69,30 +70,38 @@ class SecretariacarreraController extends Controller
 		$model=new Secretariacarrera;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-		if(isset($_POST['Secretariacarrera']))
-		{
-			$model->attributes=$_POST['Secretariacarrera'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenSecretaria=CUploadedFile::getInstance($model,'ImagenSecretaria');
-			
-			if($model->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$model->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
-						$this->refresh();
-					}	
-				}
-				$this->redirect(array('view','id'=>$model->RutSecretaria));
-			}
-		}
-		
-		$this->render('create',array(
-			'model'=>$model,
-		));
+        $table = "secretariacarrera";
+		$empty = isEmpty($table);
+        
+        if($empty == true){
+            if(isset($_POST['Secretariacarrera'])){
+                
+                $model->attributes=$_POST['Secretariacarrera'];
+                
+                //se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
+                $file=$model->ImagenSecretaria=CUploadedFile::getInstance($model,'ImagenSecretaria');
+                
+                if($model->save()){
+                    if($file != null){
+                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                            //se guarda la ruta de la imagen
+                            $model->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
+                        }else{
+                            Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+                            $this->refresh();
+                        }
+                    }
+                    $this->redirect(array('view','id'=>$model->RutSecretaria));
+                }
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de una secretaria de carrera.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

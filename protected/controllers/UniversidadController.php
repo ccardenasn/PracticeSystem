@@ -1,4 +1,5 @@
 <?php
+include_once('mainFunctions.php');
 
 class UniversidadController extends Controller
 {
@@ -29,15 +30,18 @@ class UniversidadController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','selectProvincia','selectCiudad'),
-				'users'=>array('*'),
+				//'users'=>array('*'),
+                'users'=>Universidad::model()->getAdmins(),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				//'users'=>array('@'),
+                  'users'=>Universidad::model()->getAdmins(),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('@'),
+				//'users'=>array('@'),
+                'users'=>Universidad::model()->getAdmins(),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -66,17 +70,27 @@ class UniversidadController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+        
+        $table = "universidad";
+		$empty = isEmpty($table);
 
-		if(isset($_POST['Universidad']))
-		{
-			$model->attributes=$_POST['Universidad'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->NombreInstitucion));
-		}
+        if($empty == true){
+            if(isset($_POST['Universidad'])){
+                $model->attributes=$_POST['Universidad'];
+                
+                if($model->save())
+                    $this->redirect(array('view','id'=>$model->NombreInstitucion));
+            }
+            
+            $this->render('create',array(
+                'model'=>$model,
+            ));    
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de una universidad.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		
 	}
 
 	/**

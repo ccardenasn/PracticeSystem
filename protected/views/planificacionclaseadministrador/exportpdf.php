@@ -1,7 +1,7 @@
 <?php
 include_once('forceutf/Encoding.php');
 
-$pdf = Yii::createComponent('application.extensions.MPDF60.mpdf');
+$pdf = Yii::createComponent('application.extensions.mpdf60.mpdf');
 $dataProvider = $_SESSION['datos_filtrados']->getData();
 $contador=count($dataProvider);
 //creamos las cabeceras

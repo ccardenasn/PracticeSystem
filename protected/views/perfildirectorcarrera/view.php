@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->RutDirector)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RutDirector)),
 );
 ?>
 

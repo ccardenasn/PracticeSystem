@@ -11,7 +11,7 @@ $sql = "select * from clasebitacorasesion where bitacorasesion_id = '".$model->i
 $stmt = mysql_query($sql,$con);
 
 //se referencia a la extensión de mPDF
-$pdf = Yii::createComponent('application.extensions.MPDF60.mpdf');
+$pdf = Yii::createComponent('application.extensions.mpdf60.mpdf');
 $html.='<h1>Datos de Bitácora </h1>
 <h2>Estudiante: '.$plandata[3].'</h2>
 <table id="yw0" class="detail-view2" width="100%" border="1" bordercolor="#0000FF" cellspacing="6" cellpadding="6">

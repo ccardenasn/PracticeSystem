@@ -21,13 +21,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'RutCoordinador'); ?>
-		<?php echo $form->textField($model,'RutCoordinador',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'RutCoordinador',array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'RutCoordinador'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'NombreCoordinador'); ?>
-		<?php echo $form->textField($model,'NombreCoordinador',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'NombreCoordinador',array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreCoordinador'); ?>
 	</div>
 

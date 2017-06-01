@@ -69,10 +69,6 @@ $('.search-form form').submit(function(){
 		'MailSecretaria',
 		'TelefonoSecretaria',
 		'CelularSecretaria',
-		'ImagenSecretaria',
-		/*
-		'Carrera_codCarrera',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),
