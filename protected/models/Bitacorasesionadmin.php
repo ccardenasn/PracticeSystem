@@ -72,6 +72,7 @@ class Bitacorasesionadmin extends CActiveRecord
 			'OtroBitacora' => 'Otros Comentarios',
 			'DocumentoBitacora' => 'Documento',
 			'PlanificacionClase_CodPlanificacion' => 'Planificacion Clase Cod Planificacion',
+            'planificacionClaseCodPlanificacion.centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 		);
 	}
 

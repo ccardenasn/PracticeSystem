@@ -1,5 +1,4 @@
 <?php
-include_once('planificacion.php');
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
@@ -54,16 +53,16 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'Estudiante_RutEstudiante',
-		array('name'=>'Nombre Estudiante','value'=>$model->estudianteRutEstudiante->NombreEstudiante),
-		array('name'=>'Centro de Practica','value'=>$model->centroPracticaRBD->NombreCentroPractica),
+        'estudianteRutEstudiante.NombreEstudiante',
+        'centroPracticaRBD.NombreCentroPractica',
 		'ProfesorGuiaCP_RutProfGuiaCP',
-		array('name'=>'Profesor Guia','value'=>$model->profesorGuiaCPRutProfGuiaCP->NombreProfGuiaCP),
+        'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP',
 		'Curso',
 		'ConfiguracionPractica_NombrePractica',
 		'Fecha',
 		'SesionInformada',
-		array('name'=>'Total de Sesiones','value'=>$model->configuracionPracticaNombrePractica->NumeroSesionesPractica),
-		array('name'=>'Numero de Horas','value'=>$model->configuracionPracticaNombrePractica->NumeroHorasPractica),
+        'configuracionPracticaNombrePractica.NumeroSesionesPractica',
+        'configuracionPracticaNombrePractica.NumeroHorasPractica',
 		'Ejecutado',
 		'Supervisado',
 		'ComentarioPlanificacion',

@@ -18,7 +18,7 @@ include_once('planificacion.php');
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 	
 	<?php
     $studentLogged=Yii::app()->user->name;
@@ -28,9 +28,15 @@ include_once('planificacion.php');
     ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
-		<?php echo $form->textField($model,'Estudiante_RutEstudiante',array('value'=>$studentLogged,'readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
+		<?php echo $form->hiddenField($model,'Estudiante_RutEstudiante',array('value'=>$studentLogged,'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Estudiante_RutEstudiante'); ?>
+	</div>
+    
+    <div class="row">
+        <?php echo CHtml::label('Rut Estudiante','Estudiante_RutEstudiante'); ?>
+        <?php echo CHtml::textField('Estudiante_RutEstudiante',$studentLogged,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 	
 	<div class="row">
@@ -98,10 +104,10 @@ include_once('planificacion.php');
             ));?>
 		<?php echo $form->error($model,'Fecha'); ?>
 	</div>
-
-	<div class="row">
+    
+    <div class="row">
         <?php echo $form->labelEx($model,'SesionInformada');?>
-        <?php echo $form->dropDownList($model,'SesionInformada',listsesion($studentData->configuracionPracticaNombrePractica->NumeroSesionesPractica,$model->Estudiante_RutEstudiante));?>
+        <?php echo $form->dropDownList($model,'SesionInformada',listsesion($studentData->configuracionPracticaNombrePractica->NumeroSesionesPractica,$studentLogged));?>
         <?php echo $form->error($model,'SesionInformada'); ?>
     </div>
 	

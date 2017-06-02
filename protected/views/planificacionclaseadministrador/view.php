@@ -1,5 +1,4 @@
 <?php
-include_once('planificacion.php');
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
@@ -50,13 +49,6 @@ $this->menu=array(
 
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
-<?php 
-
-$arrdata=datosplanificacion($model->Estudiante_RutEstudiante);
-
-?>
-
-
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -69,8 +61,8 @@ $arrdata=datosplanificacion($model->Estudiante_RutEstudiante);
 		'ConfiguracionPractica_NombrePractica',
 		'Fecha',
 		'SesionInformada',
-		array('name'=>'Total de Sesiones','value'=>$arrdata[5]),
-        array('name'=>'Numero de Horas','value'=>$arrdata[6]),
+        'configuracionPracticaNombrePractica.NumeroSesionesPractica',
+        'configuracionPracticaNombrePractica.NumeroHorasPractica',
 		'Ejecutado',
 		'Supervisado',
 		'ComentarioPlanificacion',

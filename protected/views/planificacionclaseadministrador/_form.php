@@ -11,14 +11,14 @@ include_once('planificacion.php');
 	'id'=>'planificacionclaseadministrador-form',
 	'method'=>'post',
 	'enableAjaxValidation'=>true,
-	'enableClientValidation'=>true,
+	'enableClientValidation'=>true, 
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
    
     <?php 
     $req=Yii::app()->request->getQuery('id');

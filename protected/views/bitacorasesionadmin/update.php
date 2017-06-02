@@ -3,12 +3,10 @@ include_once('planificacion.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
-$student=Yii::app()->user->name;
-$arrdata=datosplanificacion($student);
-
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
-	$model->CodBitacora=>array('view','id'=>$model->CodBitacora),
+	'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada=>array('view','id'=>$model->CodBitacora),
+    //$model->CodBitacora=>array('view','id'=>$model->CodBitacora),
 	'Editar',
 );
 

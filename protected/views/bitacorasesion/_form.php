@@ -11,6 +11,9 @@ $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js
 $req=Yii::app()->request->getQuery('id');
 $plandata=getPlanData($req);
 
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($req));
+$planningData=Planificacionclaseadministrador::model()->find('CodPlanificacion=?',array($req));
+
 ?>
 
 <div class="form">
@@ -34,14 +37,19 @@ $plandata=getPlanData($req);
 		<h3>Planificación</h3>
 		<ul>
 			<div class="row">
-				<?php echo $form->labelEx($model,'FechaBitacora'); ?>
-				<?php echo $form->textField($model,'FechaBitacora',array('value'=>$plandata[2],'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+				<?php //echo $form->labelEx($model,'FechaBitacora'); ?>
+				<?php echo $form->hiddenField($model,'FechaBitacora',array('value'=>$planningData->Fecha,'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 				<?php echo $form->error($model,'FechaBitacora'); ?>
+			</div>
+            
+            <div class="row">
+				<?php echo CHtml::label('Fecha de Sesión','FechaBitacora'); ?>
+				<?php echo CHtml::textField('FechaBitacora',$planningData->Fecha,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo CHtml::label('Numero de Sesion','NumeroSesion'); ?>
-				<?php echo CHtml::textField('NumeroSesion',$plandata[0],array('readOnly' => true)); ?>
+				<?php echo CHtml::label('Numero de Sesión','NumeroSesion'); ?>
+				<?php echo CHtml::textField('NumeroSesion',$planningData->SesionInformada,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 			</div>
 			
 			<div class="row">
@@ -50,8 +58,8 @@ $plandata=getPlanData($req);
 			</div>
 			
 			<div class="row">
-				<?php echo CHtml::label('Nombre Centro de Practica','NombreCentroPractica'); ?>
-				<?php echo CHtml::textField('NombreCentroPractica',$plandata[1],array('readOnly' => true)); ?>
+				<?php echo CHtml::label('Centro de Práctica','NombreCentroPractica'); ?>
+				<?php echo CHtml::textField('NombreCentroPractica',$planningData->centroPracticaRBD->NombreCentroPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 				<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 			</div>
 		</ul>

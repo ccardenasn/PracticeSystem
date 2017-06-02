@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
-    'Bitácora: Sesión Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada=>array('viewPlanificacionBitacora','id'=>$model->PlanificacionClase_CodPlanificacion),
+    'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada=>array('view','id'=>$model->CodBitacora),
 	'Editar',
 );
 

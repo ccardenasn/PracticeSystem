@@ -1,11 +1,9 @@
 <?php
-include_once('planificacion.php');
-
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
-$student=Yii::app()->user->name;
-$arrdata=datosplanificacion($student);
+$req=Yii::app()->request->getQuery('id');
+$planningData=Planificacionclaseadministrador::model()->find('CodPlanificacion=?',array($req));
 
 $this->breadcrumbs=array(
 	'Bitacoras'=>array('index'),
@@ -19,7 +17,7 @@ $this->menu=array(
 ?>
 
 <h1>Añadir Bitácora</h1><br>
-<h2>Estudiante: <?php echo $arrdata[0] ?> </h2><br>
+<h2>Estudiante: <?php echo $planningData->estudianteRutEstudiante->NombreEstudiante ?> </h2><br>
 	
 <div class="collapse">
     <h3>Ayuda</h3>

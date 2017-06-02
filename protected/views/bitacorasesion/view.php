@@ -1,5 +1,4 @@
 <?php
-include_once('centro.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
@@ -37,14 +36,12 @@ $this->menu=array(
 
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
-
-
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'FechaBitacora',
-		array('name'=>'Numero de Sesión','value'=>$model->planificacionClaseCodPlanificacion->SesionInformada),
-		array('name'=>'Centro de Práctica','value'=>$model->planificacionClaseCodPlanificacion->centroPracticaRBD->NombreCentroPractica),
+		'planificacionClaseCodPlanificacion.SesionInformada',
+        'planificacionClaseCodPlanificacion.centroPracticaRBD.NombreCentroPractica',
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',

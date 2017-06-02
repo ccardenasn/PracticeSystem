@@ -1,5 +1,4 @@
 <?php
-include_once('centro.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
@@ -10,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
-	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodBitacora),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclaseadministrador/index')),
@@ -18,14 +17,8 @@ $this->menu=array(
 );
 ?>
 
-<?php
-
-$plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
-
-?>
-
-<h1>Datos Bitácora </h1>
-<h2>Estudiante: <?php echo $plandata[3]; ?> </h2>
+<h1>Datos Bitácora: <?php echo 'Sesión Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada ?></h1>
+<h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante; ?> </h2>
 
 <div class="collapse">
 	<h3>Ayuda</h3>
@@ -50,9 +43,8 @@ $plandata=getPlanData($model->PlanificacionClase_CodPlanificacion);
 	'data'=>$model,
 	'attributes'=>array(
 		'FechaBitacora',
-		array('name'=>'Numero de Sesión','value'=>$plandata[0]),
-		//array('name'=>'Codigo de Planificación','value'=>$model->PlanificacionClase_CodPlanificacion),
-        array('name'=>'Centro de Práctica','value'=>$plandata[1]),
+        'planificacionClaseCodPlanificacion.SesionInformada',
+        'planificacionClaseCodPlanificacion.centroPracticaRBD.NombreCentroPractica',
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',

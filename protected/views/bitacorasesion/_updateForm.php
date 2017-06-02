@@ -1,5 +1,4 @@
 <?php
-include_once('centro.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 /* @var $form CActiveForm */
@@ -22,6 +21,10 @@ for($i=0;$i<$totalClaseModel;$i++){
 	$claseBitacoraArray['ProfesorGuiaClase'][$i] = $claseBitacoraModel[$i]['ProfesorGuiaClase'];
 	$claseBitacoraArray['NumeroAlumnosClase'][$i] = $claseBitacoraModel[$i]['NumeroAlumnosClase'];
 }
+$req=Yii::app()->request->getQuery('id');
+
+$logBookData=Bitacorasesionadmin::model()->find('CodBitacora=?',array($req));
+$planningData=Planificacionclaseadministrador::model()->find('CodPlanificacion=?',array($logBookData->PlanificacionClase_CodPlanificacion));
 
 ?>
 
@@ -45,9 +48,7 @@ for($i=0;$i<$totalClaseModel;$i++){
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
-	<?php $req=Yii::app()->request->getQuery('id'); ?>
-	<?php $plandata=getPlanDataById($req); ?>
-	
+    
 	<?php if(Yii::app()->user->hasFlash('success')):?>
     <div class="row buttons">
         <?php echo Yii::app()->user->getFlash('success'); ?>
@@ -63,14 +64,13 @@ for($i=0;$i<$totalClaseModel;$i++){
 		<ul>
 			<div class="row">
 				<?php echo $form->labelEx($model,'FechaBitacora'); ?>
-				<?php echo $form->textField($model,'FechaBitacora',array('readOnly' => false,'size'=>45,'maxlength'=>45)); ?>
+				<?php echo $form->textField($model,'FechaBitacora',array('readOnly' => false,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 				<?php echo $form->error($model,'FechaBitacora'); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo CHtml::label('Numero de Sesion','NumeroSesion'); ?>
-				<?php echo CHtml::textField('NumeroSesion',$plandata[0],array('readOnly' => true)); ?>
-				<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
+				<?php echo CHtml::label('Numero de Sesión','NumeroSesion'); ?>
+				<?php echo CHtml::textField('NumeroSesion',$planningData->SesionInformada,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 			</div>
 			
 			<div class="row">
@@ -80,8 +80,8 @@ for($i=0;$i<$totalClaseModel;$i++){
 			</div>
 			
 			<div class="row">
-				<?php echo CHtml::label('Nombre Centro de Practica','NombreCentroPractica'); ?>
-				<?php echo CHtml::textField('NombreCentroPractica',$plandata[1],array('readOnly' => true)); ?>
+				<?php echo CHtml::label('Centro de Práctica','NombreCentroPractica'); ?>
+				<?php echo CHtml::textField('NombreCentroPractica',$planningData->centroPracticaRBD->NombreCentroPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 				<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 			</div>
 		</ul>

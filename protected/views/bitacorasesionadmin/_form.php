@@ -1,5 +1,4 @@
 <?php
-include_once('centro.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 /* @var $form CActiveForm */
@@ -9,8 +8,9 @@ $js->registerScriptFile($base.'/tabularInputBitacora/tabularInputFunctions.js');
 $js->registerScriptFile($base.'/tabularInputBitacora/validateTabularFunctions.js');
 
 $req=Yii::app()->request->getQuery('id');
-$plandata=getPlanData($req);
 
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($req));
+$planningData=Planificacionclaseadministrador::model()->find('CodPlanificacion=?',array($req));
 ?>
 
 <div class="form">
@@ -29,29 +29,34 @@ $plandata=getPlanData($req);
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 	
 	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
-	
+    
 	<div class="collapse">
 		<h3>Planificación</h3>
 		<ul>
 			<div class="row">
-				<?php echo $form->labelEx($model,'FechaBitacora'); ?>
-				<?php echo $form->textField($model,'FechaBitacora',array('value'=>$plandata[2],'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+				<?php //echo $form->labelEx($model,'FechaBitacora'); ?>
+				<?php echo $form->hiddenField($model,'FechaBitacora',array('value'=>$planningData->Fecha,'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 				<?php echo $form->error($model,'FechaBitacora'); ?>
 			</div>
-			
-			<div class="row">
-				<?php echo CHtml::label('Numero de Sesion','NumeroSesion'); ?>
-				<?php echo CHtml::textField('NumeroSesion',$plandata[0],array('readOnly' => true)); ?>
+            
+            <div class="row">
+				<?php echo CHtml::label('Fecha de Sesión','FechaBitacora'); ?>
+				<?php echo CHtml::textField('FechaBitacora',$planningData->Fecha,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo $form->hiddenField($model,'PlanificacionClase_CodPlanificacion',array('type'=>"hidden",'value'=>$req,'readOnly' => true)); ?>
+				<?php echo CHtml::label('Numero de Sesión','NumeroSesion'); ?>
+				<?php echo CHtml::textField('NumeroSesion',$planningData->SesionInformada,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+			</div>
+			
+			<div class="row">
+				<?php echo $form->hiddenField($model,'PlanificacionClase_CodPlanificacion',array('type'=>"hidden",'value'=>$req,'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 				<?php echo $form->error($model,'PlanificacionClase_CodPlanificacion'); ?>
 			</div>
 			
 			<div class="row">
-				<?php echo CHtml::label('Nombre Centro de Practica','NombreCentroPractica'); ?>
-				<?php echo CHtml::textField('NombreCentroPractica',$plandata[1],array('readOnly' => true)); ?>
+				<?php echo CHtml::label('Centro de Práctica','NombreCentroPractica'); ?>
+				<?php echo CHtml::textField('NombreCentroPractica',$planningData->centroPracticaRBD->NombreCentroPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 				<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 			</div>
 		</ul>

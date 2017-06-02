@@ -41,7 +41,7 @@ class Planificacionclaseadministrador extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica', 'required'),
+			array('Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, Fecha', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('Estudiante_RutEstudiante, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_NombrePractica, Fecha, SesionInformada, Ejecutado, Supervisado', 'length', 'max'=>45),
 			array('ComentarioPlanificacion', 'safe'),
@@ -75,15 +75,19 @@ class Planificacionclaseadministrador extends CActiveRecord
 		return array(
 			'CodPlanificacion' => 'Cod Planificacion',
 			'Estudiante_RutEstudiante' => 'Rut Estudiante',
-			'CentroPractica_RBD' => 'Centro de Practica',
-			'ProfesorGuiaCP_RutProfGuiaCP' => 'Rut Profesor Guia',
+			'CentroPractica_RBD' => 'Centro de Práctica',
+			'ProfesorGuiaCP_RutProfGuiaCP' => 'Rut Profesor Guía',
 			'Curso' => 'Curso',
-			'ConfiguracionPractica_NombrePractica' => 'Nombre de Practica',
+			'ConfiguracionPractica_NombrePractica' => 'Nombre de Práctica',
 			'Fecha' => 'Fecha',
 			'SesionInformada' => 'Sesion Informada',
 			'Ejecutado' => 'Ejecutado',
 			'Supervisado' => 'Supervisado',
 			'ComentarioPlanificacion' => 'Comentario',
+            'configuracionPracticaNombrePractica.NumeroSesionesPractica' => 'Total de Sesiones',
+            'configuracionPracticaNombrePractica.NumeroHorasPractica' => 'Número de Horas',
+            'estudianteRutEstudiante.NombreEstudiante' => 'Nombre Estudiante',
+            'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP' => 'Nombre Profesor Guía CP',
 		);
 	}
 

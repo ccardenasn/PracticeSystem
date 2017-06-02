@@ -1,5 +1,4 @@
 <?php
-include_once('centro.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
@@ -17,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Datos Bitácora</h1>
+<h1>Datos Bitácora: <?php echo 'Sesión Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada ?></h1>
 <h2>Estudiante: <?php echo $model->planificacionClaseCodPlanificacion->estudianteRutEstudiante->NombreEstudiante ?> </h2>
 
 <div class="collapse">
@@ -43,8 +42,8 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'FechaBitacora',
-		array('name'=>'Numero de Sesión','value'=>$model->planificacionClaseCodPlanificacion->SesionInformada),
-		array('name'=>'Centro de Práctica','value'=>$model->planificacionClaseCodPlanificacion->centroPracticaRBD->NombreCentroPractica),
+		'planificacionClaseCodPlanificacion.SesionInformada',
+        'planificacionClaseCodPlanificacion.centroPracticaRBD.NombreCentroPractica',
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',
