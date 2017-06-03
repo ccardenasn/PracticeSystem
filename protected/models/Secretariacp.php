@@ -5,6 +5,7 @@ include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
 include_once 'FunNumeros.php';
+include_once 'FunCentro.php';
 /**
  * This is the model class for table "secretariacp".
  *
@@ -51,6 +52,7 @@ class Secretariacp extends CActiveRecord
             array('MailSecretariaCP','valcorreo'),
             array('TelefonoSecretariaCP','valtelefono'),
             array('CelularSecretariaCP','valcelular'),
+            array('CentroPractica_RBD','valcentro'),
 		);
 	}
 
@@ -153,6 +155,12 @@ class Secretariacp extends CActiveRecord
 	{
 		if(numerovalido($this->CelularSecretariaCP)==false)
 		$this->addError('CelularSecretariaCP','Celular no válido');
+	}
+    
+    public function valcentro($attribute,$params)
+	{
+		if(secretariavalido($this->CentroPractica_RBD)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene una secretaria asignada');
 	}
 	
 	public function getAdmins(){

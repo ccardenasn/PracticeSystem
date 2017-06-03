@@ -5,6 +5,7 @@ include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
 include_once 'FunNumeros.php';
+include_once 'FunCentro.php';
 /**
  * This is the model class for table "directorcp".
  *
@@ -51,6 +52,7 @@ class Directorcp extends CActiveRecord
             array('MailDirectorCP','valcorreo'),
             array('TelefonoDirectorCP','valtelefono'),
             array('CelularDirectorCP','valcelular'),
+            array('CentroPractica_RBD','valcentro'),
 		);
 	}
 
@@ -153,6 +155,12 @@ class Directorcp extends CActiveRecord
 	{
 		if(numerovalido($this->CelularDirectorCP)==false)
 		$this->addError('CelularDirectorCP','Celular no válido');
+	}
+    
+    public function valcentro($attribute,$params)
+	{
+		if(directorvalido($this->CentroPractica_RBD)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene un director asignado');
 	}
 	
 	public function getAdmins(){

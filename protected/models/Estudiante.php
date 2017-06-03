@@ -5,6 +5,7 @@ include_once 'FunCelular.php';
 include_once 'FunCorreo.php';
 include_once 'FunNumeros.php';
 include_once 'FunRut.php';
+include_once 'FunCentro.php';
 /**
  * This is the model class for table "estudiante".
  *
@@ -66,6 +67,7 @@ class Estudiante extends CActiveRecord
             array('MailEstudiante','valcorreo'),
             array('FechaIncorporacion','valnumeros'),
             array('RutEstudiante','valrut'),
+            array('CentroPractica_RBD','valcentro'),
 		);
 	}
 
@@ -195,6 +197,12 @@ class Estudiante extends CActiveRecord
 	{
 		if(rutvalido($this->RutEstudiante)==false)
 		$this->addError('RutEstudiante','Rut no válido');
+	}
+    
+    public function valcentro($attribute,$params)
+	{
+		if(centrovalido($this->CentroPractica_RBD)==false)
+		$this->addError('CentroPractica_RBD','este centro no contiene profesores asignados');
 	}
     
     public function validatePassword($password){

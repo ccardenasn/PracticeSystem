@@ -5,6 +5,7 @@ include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
 include_once 'FunNumeros.php';
+include_once 'FunCentro.php';
 /**
  * This is the model class for table "jefeutpcp".
  *
@@ -51,6 +52,7 @@ class Jefeutpcp extends CActiveRecord
             array('MailJefeUTPCP','valcorreo'),
             array('TelefonoJefeUTPCP','valtelefono'),
             array('CelularJefeUTPCP','valcelular'),
+            array('CentroPractica_RBD','valcentro'),
 		);
 	}
 
@@ -153,6 +155,12 @@ class Jefeutpcp extends CActiveRecord
 	{
 		if(numerovalido($this->CelularJefeUTPCP)==false)
 		$this->addError('CelularJefeUTPCP','Celular no válido');
+	}
+    
+    public function valcentro($attribute,$params)
+	{
+		if(jefevalido($this->CentroPractica_RBD)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene un jefe utp asignado');
 	}
 	
 	public function getAdmins(){

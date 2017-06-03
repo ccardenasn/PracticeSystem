@@ -1,5 +1,5 @@
 <?php
-
+include_once 'FunFecha.php';
 /**
  * This is the model class for table "planificacionclase".
  *
@@ -48,6 +48,7 @@ class Planificacionclase extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodPlanificacion, Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_NombrePractica, Fecha, SesionInformada, Ejecutado, Supervisado, ComentarioPlanificacion', 'safe', 'on'=>'search'),
+            array('Fecha','valfecha'),
 		);
 	}
 
@@ -161,6 +162,12 @@ class Planificacionclase extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+    
+    public function valfecha($attribute,$params)
+	{
+		if(fechavalida($this->Fecha)==false)
+		$this->addError('Fecha','fecha no válida');
 	}
 	
 	public function getStudents(){

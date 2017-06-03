@@ -198,6 +198,34 @@ class CentropracticaController extends Controller
 		$exist = contains($table,$codTable,$id);
 		
 		if($exist == 0){
+            $directorModel = Directorcp::model()->find('CentroPractica_RBD=?',array($id));
+            $jefeUTPModel = Jefeutpcp::model()->find('CentroPractica_RBD=?',array($id));
+            $profesorCoordinadorCPModel = Profesorcoordinadorpracticacp::model()->find('CentroPractica_RBD=?',array($id));
+            $secretariaModel = Secretariacp::model()->find('CentroPractica_RBD=?',array($id));
+            $profesorModel = Profesorguiacp::model()->findAll('CentroPractica_RBD=?',array($id));
+            
+            if($directorModel != null){
+                $directorModel->delete();
+            }
+            
+            if($jefeUTPModel != null){
+                $jefeUTPModel->delete();
+            }
+            
+            if($profesorCoordinadorCPModel != null){
+                $profesorCoordinadorCPModel->delete();
+            }
+            
+            if($secretariaModel != null){
+                $secretariaModel->delete();
+            }
+            
+            if($profesorModel != null){
+                foreach($profesorModel as $profesor){
+                    $profesor->delete();
+                }
+            }
+            
             $this->loadModel($id)->delete();
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if(!isset($_GET['ajax']))

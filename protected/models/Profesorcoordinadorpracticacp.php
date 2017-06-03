@@ -5,6 +5,7 @@ include_once 'FunCorreo.php';
 include_once 'FunTelefono.php';
 include_once 'FunCelular.php';
 include_once 'FunNumeros.php';
+include_once 'FunCentro.php';
 /**
  * This is the model class for table "profesorcoordinadorpracticacp".
  *
@@ -51,6 +52,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
             array('MailProfCoordGuiaCP','valcorreo'),
             array('TelefonoProfCoordGuiaCP','valtelefono'),
             array('CelularProfCoordGuiaCP','valcelular'),
+            array('CentroPractica_RBD','valcentro'),
 		);
 	}
 
@@ -153,6 +155,12 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 	{
 		if(numerovalido($this->CelularProfCoordGuiaCP)==false)
 		$this->addError('CelularProfCoordGuiaCP','Celular no válido');
+	}
+    
+    public function valcentro($attribute,$params)
+	{
+		if(profesorcoordinadorvalido($this->CentroPractica_RBD)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene un profesor coordinador asignado');
 	}
 	
 	public function getAdmins(){
