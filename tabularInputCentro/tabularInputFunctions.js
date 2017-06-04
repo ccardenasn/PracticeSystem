@@ -145,7 +145,7 @@ function checkForm(){
     
     while(run == true){
         
-        validForm = formSubmit(j);
+        validForm = formSubmit(parseInt(j));
         
         if(validForm == false){
             validForm = false;

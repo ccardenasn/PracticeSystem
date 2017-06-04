@@ -68,10 +68,10 @@ class CentropracticamainController extends Controller
 	public function actionCreate()
 	{
 		$centroModel=new Centropractica;
-		$secretariaModel=new Secretariacp;
-		$directorModel=new Directorcp;
-		$jefeutpModel=new Jefeutpcp;
-		$coordinadorModel=new Profesorcoordinadorpracticacp;
+		$secretariaModel=new Secretariacpmain;
+		$directorModel=new Directorcpmain;
+		$jefeutpModel=new Jefeutpcpmain;
+		$coordinadorModel=new Profesorcoordinadorpracticacpmain;
 		//$profesorModel=new Profesorguiacp;
 		
 		//$secretariaModel=new Secretariacp;
@@ -82,13 +82,13 @@ class CentropracticamainController extends Controller
 	
         if($enabledCentro == true){
            
-            if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp'])){
+            if(isset($_POST['Centropractica'],$_POST['Secretariacpmain'],$_POST['Directorcpmain'],$_POST['Jefeutpcpmain'],$_POST['Profesorcoordinadorpracticacpmain'])){
                 
                 $centroModel->attributes=$_POST['Centropractica'];
-                $secretariaModel->attributes=$_POST['Secretariacp'];
-                $directorModel->attributes=$_POST['Directorcp'];
-                $jefeutpModel->attributes=$_POST['Jefeutpcp'];
-                $coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
+                $secretariaModel->attributes=$_POST['Secretariacpmain'];
+                $directorModel->attributes=$_POST['Directorcpmain'];
+                $jefeutpModel->attributes=$_POST['Jefeutpcpmain'];
+                $coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacpmain'];
                 //$profesorModel->attributes=$_POST['Profesorguiacp'];
                 
                 //se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
@@ -233,17 +233,17 @@ class CentropracticamainController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$secretariaModel = new Secretariacp;
-		$directorModel=new Directorcp;
-		$jefeutpModel=new Jefeutpcp;
-		$coordinadorModel=new Profesorcoordinadorpracticacp;
+		$secretariaModel = new Secretariacpmain;
+		$directorModel=new Directorcpmain;
+		$jefeutpModel=new Jefeutpcpmain;
+		$coordinadorModel=new Profesorcoordinadorpracticacpmain;
 		$profesorModel=new Profesorguiacp;
 		
 		$centroModel=$this->loadModel($id);
-		$secretariaModel=Secretariacp::model()->find('CentroPractica_RBD=?',array($id));
-		$directorModel=Directorcp::model()->find('CentroPractica_RBD=?',array($id));
-		$jefeutpModel=Jefeutpcp::model()->find('CentroPractica_RBD=?',array($id));
-		$coordinadorModel=Profesorcoordinadorpracticacp::model()->find('CentroPractica_RBD=?',array($id));
+		$secretariaModel=Secretariacpmain::model()->find('CentroPractica_RBD=?',array($id));
+		$directorModel=Directorcpmain::model()->find('CentroPractica_RBD=?',array($id));
+		$jefeutpModel=Jefeutpcpmain::model()->find('CentroPractica_RBD=?',array($id));
+		$coordinadorModel=Profesorcoordinadorpracticacpmain::model()->find('CentroPractica_RBD=?',array($id));
 		$profesorModel=Profesorguiacp::model()->findAll('CentroPractica_RBD=?',array($id));
 		
 		$fileAttribCentro = "AnexoProtocolo";
@@ -286,13 +286,13 @@ class CentropracticamainController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($centroModel,$secretariaModel,$directorModel,$jefeutpModel,$coordinadorModel));
 
-		if(isset($_POST['Centropractica'],$_POST['Secretariacp'],$_POST['Directorcp'],$_POST['Jefeutpcp'],$_POST['Profesorcoordinadorpracticacp']))
+		if(isset($_POST['Centropractica'],$_POST['Secretariacpmain'],$_POST['Directorcpmain'],$_POST['Jefeutpcpmain'],$_POST['Profesorcoordinadorpracticacpmain']))
 		{
-			$centroModel->attributes=$_POST['Centropractica'];
-			$secretariaModel->attributes=$_POST['Secretariacp'];
-			$directorModel->attributes=$_POST['Directorcp'];
-			$jefeutpModel->attributes=$_POST['Jefeutpcp'];
-			$coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacp'];
+			$centroModel->attributes=$_POST['Centropracticamain'];
+			$secretariaModel->attributes=$_POST['Secretariacpmain'];
+			$directorModel->attributes=$_POST['Directorcpmain'];
+			$jefeutpModel->attributes=$_POST['Jefeutpcpmain'];
+			$coordinadorModel->attributes=$_POST['Profesorcoordinadorpracticacpmain'];
 			//$profesorModel->attributes=$_POST['Profesorguiacp'];
 			
 			$file=$centroModel->AnexoProtocolo=CUploadedFile::getInstance($centroModel,'AnexoProtocolo');
