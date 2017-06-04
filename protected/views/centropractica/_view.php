@@ -21,16 +21,12 @@
 	<?php echo CHtml::encode($data->FechaProtocolo); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('AnexoProtocolo')); ?>:</b>
-	<?php echo CHtml::encode($data->AnexoProtocolo); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Dependencia_CodDependencia')); ?>:</b>
-	<?php echo CHtml::encode($data->Dependencia_CodDependencia); ?>
+	<?php echo CHtml::encode($data->dependenciaCodDependencia->NombreDependencia); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('NivelEducacional_CodNivel')); ?>:</b>
-	<?php echo CHtml::encode($data->NivelEducacional_CodNivel); ?>
+	<?php echo CHtml::encode($data->nivelEducacionalCodNivel->NombreNivel); ?>
 	<br />
 
 	<?php /*

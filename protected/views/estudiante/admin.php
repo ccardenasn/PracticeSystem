@@ -79,9 +79,20 @@ $('.search-form form').submit(function(){
 		array('name'=>'ConfiguracionPractica_NombrePractica','value'=>'$data->configuracionPracticaNombrePractica->NombrePractica','filter'=>CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica')),
 		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica')),
 		array('name'=>'SituacionFinalEstudiante','value'=>'$data->SituacionFinalEstudiante','filter'=>array('Pendiente'=>'Pendiente','Aprobado'=>'Aprobado','Reprobado'=>'Reprobado')),
-
-		array(
-			'class'=>'CButtonColumn',
+        array(
+            'class'=>'CButtonColumn',
+            'deleteConfirmation'=>'¡Advertencia! Se eliminarán todas las bitácoras, planificaciones y documentos asociados al estudiante ¿Desea Continuar?',
+            'buttons'=>array(
+                'view' => array(
+                    'label'=>'Detalles',
+                ),
+                'update' => array(
+                    'label'=>'Editar',
+                ),
+                'delete' => array(
+                    'label'=>'Eliminar',
+                ),
+            ),
 		),
 	),
 )); ?>

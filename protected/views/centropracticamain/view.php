@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Centro de Prácticas'=>array('index'),
-	$model->RBD,
+    $model->NombreCentroPractica,
 );
 
 $this->menu=array(

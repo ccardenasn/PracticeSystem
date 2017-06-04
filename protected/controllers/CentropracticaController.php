@@ -81,38 +81,43 @@ class CentropracticaController extends Controller
 			$file=$model->AnexoProtocolo=CUploadedFile::getInstance($model,'AnexoProtocolo');
 			$image=$model->ImagenCentroPractica=CUploadedFile::getInstance($model,'ImagenCentroPractica');
 			
-			$exist = contains($table,$codTable,$model->RBD);
-			
-			if($exist == 0){
-				if($model->save()){
-					if($file != null){
-						if($file->getExtensionName()=="pdf"){
-							$model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
-						}else{
-							deleteData($table,$codTable,$model->RBD);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo.</li><li>Solo se permiten archivos en formato .pdf.</li></ul></div>");
-							$this->refresh();
-						}
-					}
-					
-					if($image != null){
-						if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
-							$model->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
-						}else{
-							deleteData($table,$codTable,$model->RBD);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}
-					}
-					
-					$this->redirect(array('view','id'=>$model->RBD));
-				}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El centro de práctica con RBD: ".$model->RBD." ya está registrado.</li></ul></div>");
-				$this->refresh();
-			}
-			
-			
+            $enabledCentro = isCentroEnabled();
+            
+            if($enabledCentro == true){
+                $exist = contains($table,$codTable,$model->RBD);
+                
+                if($exist == 0){
+                    
+                    if($model->save()){
+                        if($file != null){
+                            if($file->getExtensionName()=="pdf"){
+                                $model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
+                            }else{
+                                deleteData($table,$codTable,$model->RBD);
+                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo.</li><li>Solo se permiten archivos en formato .pdf.</li></ul></div>");
+                                $this->refresh();
+                            }
+                        }
+                        
+                        if($image != null){
+                            if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
+                                $model->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+                            }else{
+                                deleteData($table,$codTable,$model->RBD);
+                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                                $this->refresh();
+                            }
+                        }
+                        $this->redirect(array('view','id'=>$model->RBD));
+                    }
+                }else{
+                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El centro de práctica con RBD: ".$model->RBD." ya está registrado.</li></ul></div>");
+                    $this->refresh();
+                }
+            }else{
+                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir centros de práctica en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Dependencias</strong>, y <strong>Nivel Educacional</strong>.</li></ul></div>");
+                $this->redirect(array('index'));
+            }
 		}
 		
 		$this->render('create',array(

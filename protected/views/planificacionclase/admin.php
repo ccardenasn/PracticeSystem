@@ -97,6 +97,18 @@ $('.search-form form').submit(function(){
 		*/
 		array(
 			'class'=>'CButtonColumn',
+            'deleteConfirmation'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.',
+            'buttons'=>array(
+                'view' => array(
+                    'label'=>'Detalles',
+                ),
+                'update' => array(
+                    'label'=>'Editar',
+                ),
+                'delete' => array(
+                    'label'=>'Eliminar',
+                ),
+            ),
 		),
 	),
 )); ?>

@@ -32,7 +32,7 @@
 								'changeYear'=>'true',
 								'dateFormat' => 'dd-mm-yy',
 							),
-							'htmlOptions'=>array('value'=>'Haga Click Aquí'),
+							'htmlOptions'=>array('placeholder'=>'Haga click aquí','size'=>45,'maxlength'=>45),
 						));?>
 		<?php echo $form->error($centroModel,'FechaProtocolo'); ?>
 	</div>

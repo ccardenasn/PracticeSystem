@@ -1,5 +1,5 @@
 <?php
-
+include_once 'FunFecha.php';
 /**
  * This is the model class for table "centropractica".
  *
@@ -51,12 +51,13 @@ class Centropractica extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true),
+			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} debe ser un número.'),
 			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
 			array('AnexoProtocolo', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia_CodDependencia, NivelEducacional_CodNivel, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle, ImagenCentroPractica', 'safe', 'on'=>'search'),
+            array('FechaProtocolo','valfecha'),
 		);
 	}
 
@@ -151,6 +152,12 @@ class Centropractica extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+    
+    public function valfecha($attribute,$params)
+	{
+		if(fechavalida($this->FechaProtocolo)==false)
+		$this->addError('FechaProtocolo','fecha no válida');
 	}
 	
 	public function getAdmins(){

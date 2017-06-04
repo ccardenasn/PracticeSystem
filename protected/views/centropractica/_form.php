@@ -48,8 +48,8 @@
     </div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'FechaProtocolo'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        <?php echo $form->labelEx($model,'FechaProtocolo'); ?>
+        <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'model' => $model,
                     'language' => 'es',
                     'attribute' => 'FechaProtocolo',
@@ -58,7 +58,7 @@
                         'changeYear'=>'true',
                         'dateFormat' => 'dd-mm-yy',
                     ),
-	'htmlOptions'=>array('value'=>'Haga Click Aquí'),
+                    'htmlOptions'=>array('placeholder'=>'Haga click aquí','size'=>45,'maxlength'=>45),
             ));?>
 		<?php echo $form->error($model,'FechaProtocolo'); ?>
 	</div>

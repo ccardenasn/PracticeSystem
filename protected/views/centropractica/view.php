@@ -4,14 +4,14 @@
 
 $this->breadcrumbs=array(
 	'Centros de Práctica'=>array('index'),
-	$model->RBD,
+	$model->NombreCentroPractica,
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RBD)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RBD),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RBD),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
 	array('label'=>'Adminsitración', 'url'=>array('admin')),
 );
 ?>

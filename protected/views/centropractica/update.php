@@ -36,4 +36,4 @@ $this->menu=array(
 
 
 
-<?php $this->renderPartial('_updateForm', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -77,6 +77,18 @@ $('.search-form form').submit(function(){
 		'NombreSemestre',
 		array(
 			'class'=>'CButtonColumn',
+            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'buttons'=>array(
+                'view' => array(
+                    'label'=>'Detalles',
+                ),
+                'update' => array(
+                    'label'=>'Editar',
+                ),
+                'delete' => array(
+                    'label'=>'Eliminar',
+                ),
+            ),
 		),
 	),
 )); ?>

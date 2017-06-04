@@ -78,7 +78,16 @@ $('.search-form form').submit(function(){
 		//array('name'=>'Estudiante_RutEstudiante','value'=>'$data->estudianteRutEstudiante->NombreEstudiante'),
 		array(
 			'class'=>'CButtonColumn',
+            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
 			'template'=>'{view}{delete}',
+            'buttons'=>array(
+                'view' => array(
+                    'label'=>'Detalles',
+                ),
+                'delete' => array(
+                    'label'=>'Eliminar',
+                ),
+            ),
 		),
 	),
 )); ?>
