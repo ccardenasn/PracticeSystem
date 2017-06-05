@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'bitacorasesion':
  * @property integer $CodBitacora
- * @property string $FechaBitacora
  * @property string $ActividadesBitacora
  * @property string $AprendizajeBitacora
  * @property string $SentirBitacora
@@ -37,11 +36,11 @@ class Bitacorasesion extends CActiveRecord
 		return array(
 			array('PlanificacionClase_CodPlanificacion,ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'required','message'=>'Por favor, ingrese información para {attribute}.'),
 			array('PlanificacionClase_CodPlanificacion', 'numerical', 'integerOnly'=>true),
-			array('FechaBitacora, DocumentoBitacora', 'length', 'max'=>45),
+			array('DocumentoBitacora', 'length', 'max'=>45),
 			array('ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodBitacora, FechaBitacora, ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora, DocumentoBitacora, PlanificacionClase_CodPlanificacion', 'safe', 'on'=>'search'),
+			array('CodBitacora, ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora, DocumentoBitacora, PlanificacionClase_CodPlanificacion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +64,6 @@ class Bitacorasesion extends CActiveRecord
 	{
 		return array(
 			'CodBitacora' => 'Cod Bitacora',
-			'FechaBitacora' => 'Fecha',
 			'ActividadesBitacora' => '¿Que Realicé?',
 			'AprendizajeBitacora' => '¿Que Aprendí?',
 			'SentirBitacora' => '¿Que Sentí?',
@@ -95,7 +93,6 @@ class Bitacorasesion extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('CodBitacora',$this->CodBitacora);
-		$criteria->compare('FechaBitacora',$this->FechaBitacora,true);
 		$criteria->compare('ActividadesBitacora',$this->ActividadesBitacora,true);
 		$criteria->compare('AprendizajeBitacora',$this->AprendizajeBitacora,true);
 		$criteria->compare('SentirBitacora',$this->SentirBitacora,true);
@@ -117,7 +114,6 @@ class Bitacorasesion extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('CodBitacora',$this->CodBitacora);
-		$criteria->compare('FechaBitacora',$this->FechaBitacora,true);
 		$criteria->compare('ActividadesBitacora',$this->ActividadesBitacora,true);
 		$criteria->compare('AprendizajeBitacora',$this->AprendizajeBitacora,true);
 		$criteria->compare('SentirBitacora',$this->SentirBitacora,true);

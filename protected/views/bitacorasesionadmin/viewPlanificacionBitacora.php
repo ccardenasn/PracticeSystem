@@ -42,7 +42,7 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'FechaBitacora',
+        'planificacionClaseCodPlanificacion.Fecha',
         'planificacionClaseCodPlanificacion.SesionInformada',
         'planificacionClaseCodPlanificacion.centroPracticaRBD.NombreCentroPractica',
 		'ActividadesBitacora',

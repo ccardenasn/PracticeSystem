@@ -9,10 +9,6 @@
 	<?php echo CHtml::link(CHtml::encode($data->CodBitacora), array('view', 'id'=>$data->CodBitacora)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaBitacora')); ?>:</b>
-	<?php echo CHtml::encode($data->FechaBitacora); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ActividadesBitacora')); ?>:</b>
 	<?php echo CHtml::encode($data->ActividadesBitacora); ?>
 	<br />

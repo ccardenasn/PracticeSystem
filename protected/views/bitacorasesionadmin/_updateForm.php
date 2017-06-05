@@ -63,9 +63,8 @@ $planningData=Planificacionclaseadministrador::model()->find('CodPlanificacion=?
 		<h3>Planificación</h3>
 		<ul>
 			<div class="row">
-				<?php echo $form->labelEx($model,'FechaBitacora'); ?>
-				<?php echo $form->textField($model,'FechaBitacora',array('readOnly' => false,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
-				<?php echo $form->error($model,'FechaBitacora'); ?>
+				<?php echo CHtml::label('Fecha de Sesión','FechaBitacora'); ?>
+				<?php echo CHtml::textField('FechaBitacora',$planningData->Fecha,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 			</div>
 			
 			<div class="row">

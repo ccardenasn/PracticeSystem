@@ -258,7 +258,7 @@ class BitacorasesionController extends Controller
 		
 		$criteria = new CDbCriteria();
         $criteria->alias = 'Bitacorasesion';
-        $criteria->select ='Bitcorasesion.CodBitacora,Bitacorasesion.FechaBitacora,Bitacorasesion.ActividadesBitacora,Bitcorasesion.AprendizajeBitacora,Bitcorasesion.SentirBitacora,Bitcorasesion.OtroBitacora,Bitcorasesion.DocumentoBitacora';
+        $criteria->select ='Bitcorasesion.CodBitacora,Bitacorasesion.ActividadesBitacora,Bitcorasesion.AprendizajeBitacora,Bitcorasesion.SentirBitacora,Bitcorasesion.OtroBitacora,Bitcorasesion.DocumentoBitacora';
 		
 		$criteria->with=array('planificacionClaseCodPlanificacion');
 		$criteria->addSearchCondition('planificacionClaseCodPlanificacion.Estudiante_RutEstudiante',$rut);

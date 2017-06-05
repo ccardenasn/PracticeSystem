@@ -72,7 +72,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'planificacionClaseCodPlanificacion.SesionInformada',
 		//'CodBitacora',
-		'FechaBitacora',
+        'planificacionClaseCodPlanificacion.Fecha',
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',

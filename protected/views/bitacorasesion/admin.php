@@ -76,7 +76,7 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'columns'=>array(
 		'planificacionClaseCodPlanificacion.SesionInformada',
-		'FechaBitacora',
+		'planificacionClaseCodPlanificacion.Fecha',
 		'ActividadesBitacora',
 		'AprendizajeBitacora',
 		'SentirBitacora',

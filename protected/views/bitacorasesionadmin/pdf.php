@@ -66,7 +66,7 @@ $html.="<h2 align='left'>Estudiante: ".$model->planificacionClaseCodPlanificacio
 $html.="<table style='width:100%' border=1 class='table-responsive'>
   <tr>
     <td><strong>Fecha</strong></td>
-    <td>".$model->FechaBitacora."</td>
+    <td>".$model->planificacionClaseCodPlanificacion->Fecha."</td>
   </tr>
   <tr>
     <td><strong>Sesión Informada</strong></td>
