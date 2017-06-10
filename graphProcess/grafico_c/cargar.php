@@ -2,14 +2,14 @@
 
 function loadgraph()
 {
-include('centrosrbd.php');
-include('conrbd.php');
-include('connect.php');
-
-$deletequery = "truncate graph_data";
-mysql_query($deletequery);
-
-$rbdlist = getCentros();
+    include('centrosrbd.php');
+    include('conrbd.php');
+    include('connect.php');
+    
+    $deletequery = "truncate graph_data";
+    mysql_query($deletequery);
+    
+    $rbdlist = getCentros();
 
 $rbdlistlength = count($rbdlist);
 

@@ -1,5 +1,4 @@
 <?php
-include_once('consultaNombre.php');
 
 $this->breadcrumbs=array(
 	'Horarios'=>array('index'),
@@ -11,7 +10,7 @@ $this->menu=array(
 );
 
 $rutStudent = Yii::app()->user->name;
-$nameStudent = nameQuery($rutStudent);
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($rutStudent));
 ?>
 
 <h1>Modificar Horario</h1><br>
@@ -31,7 +30,7 @@ $nameStudent = nameQuery($rutStudent);
 
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
-<h2>Estudiante: <?php echo $nameStudent; ?></h2>
+<h2>Estudiante: <?php echo $studentData->NombreEstudiante; ?></h2>
 <h2>Rut: <?php echo $rutStudent; ?></h2>
 
 <div id="data">

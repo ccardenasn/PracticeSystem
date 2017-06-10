@@ -1,15 +1,14 @@
 <?php
-include_once('planificacion.php');
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
 $id=Yii::app()->request->getQuery('id');
-$nombre = datosplanificacion($id);
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($id));
 
 
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),
-	'Estudiante: '.$nombre[0],
+	'Estudiante: '.$studentData->NombreEstudiante,
 );
 
 $this->menu=array(
@@ -33,7 +32,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Estudiante: <?php echo $nombre[0] ?></h1><br>
+<h1>Estudiante: <?php echo $studentData->NombreEstudiante ?></h1><br>
 
 <div class="collapse">
 	<h3>Ayuda</h3>

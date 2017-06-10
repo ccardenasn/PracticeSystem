@@ -3,8 +3,8 @@
 $con = mysql_connect("localhost", "sigep", "s1g3p") or die("ERROR EN LA CONEXION");
 $db = mysql_select_db("sigep", $con) or die("ERROR AL CONECTAR A LA BD");
 
-$sql = "select RBD,NombreCentroPractica from centropractica;";
+//$sql = "select RBD,NombreCentroPractica from centropractica;";
 
-$stmt = mysql_query($sql,$con);
+//$stmt = mysql_query($sql,$con);
 
 ?>

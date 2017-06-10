@@ -92,10 +92,6 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
     <td>".$model->SesionInformada."</td>
   </tr>
   <tr>
-    <td><strong>Fecha</strong></td>
-    <td>".$model->Fecha."</td>
-  </tr>
-  <tr>
     <td><strong>Total de Sesiones</strong></td>
     <td>".$model->configuracionPracticaNombrePractica->NumeroSesionesPractica."</td>
   </tr>

@@ -127,7 +127,7 @@ $hour = hourColumns();
 					<input type="button" id="btn_xd_row_c" value="x" onclick="javascript:del_d_row_c();"/>
 				</td>
 				<td>
-					<label id="lbl_e_row_c"><?php echo getSubjectCellData($viewSubjects,14); ?>r</label>
+					<label id="lbl_e_row_c"><?php echo getSubjectCellData($viewSubjects,14); ?></label>
 					<input type="button" id="btn_e_row_c" value="+"  onclick="javascript:mostrar(); change_e_row_c();"/>
 					<input type="button" id="btn_xe_row_c" value="x" onclick="javascript:del_e_row_c();"/>
 				</td>

@@ -1,5 +1,4 @@
 <?php
-include_once('consultaNombre.php');
 
 $this->breadcrumbs=array(
 	'Horarios'=>array('index'),
@@ -13,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Asignatura', 'url'=>array('asignatura/index')),
 );
 
-$nameStudent = nameQuery($model->Estudiante_RutEstudiante);
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($model->Estudiante_RutEstudiante));
 ?>
 
 <h1>Ver Horario</h1><br>
@@ -33,7 +32,7 @@ $nameStudent = nameQuery($model->Estudiante_RutEstudiante);
 
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
-<h2>Estudiante: <?php echo $nameStudent; ?></h2>
+<h2>Estudiante: <?php echo $studentData->NombreEstudiante; ?></h2>
 <h2>Rut: <?php echo $model->Estudiante_RutEstudiante; ?></h2>
 
 <div id="data">

@@ -72,7 +72,7 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'CodHorario',
+		//'CodHorario',
 		'Estudiante_RutEstudiante',
 		'estudianteRutEstudiante.NombreEstudiante',
 		//array('name'=>'Estudiante_RutEstudiante','value'=>'$data->estudianteRutEstudiante->NombreEstudiante'),
