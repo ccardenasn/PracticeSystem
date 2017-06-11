@@ -61,6 +61,18 @@ $this->menu=array(
 		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica')),
 		array(
 			'class'=>'CButtonColumn',
+            'deleteConfirmation'=>'¡Advertencia! Se eliminarán todas las bitácoras, planificaciones y documentos asociados al estudiante ¿Desea Continuar?',
+            'buttons'=>array(
+                'view' => array(
+                    'label'=>'Detalles',
+                ),
+                'update' => array(
+                    'label'=>'Editar',
+                ),
+                'delete' => array(
+                    'label'=>'Eliminar',
+                ),
+            ),
 		),
 	),
 )); ?>

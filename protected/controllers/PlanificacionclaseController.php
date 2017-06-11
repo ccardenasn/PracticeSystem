@@ -117,7 +117,7 @@ class PlanificacionclaseController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Planificacionclase']))
 		{
@@ -244,7 +244,7 @@ class PlanificacionclaseController extends Controller
     
     public function actionSelectProfesor()
 	{
-		$id_uno = $_POST['Estudiante']['CentroPractica_RBD'];
+		$id_uno = $_POST['Planificacionclase']['CentroPractica_RBD'];
 		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
 		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
 		

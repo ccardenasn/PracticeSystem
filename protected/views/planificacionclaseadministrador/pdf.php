@@ -1,5 +1,4 @@
 <?php
-include_once('planificacion.php');
 include_once('forceutf/Encoding.php');
 
 //se referencia a la extensión de mPDF

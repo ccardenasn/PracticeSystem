@@ -9,41 +9,65 @@ include_once('planningFunctions.php');
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'planificacionclaseadministrador-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'method'=>'post',
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true, 
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'clientOptions'=>array('validateOnSubmit'=>true,),
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
-
-	<?php echo $form->errorSummary($model); ?>
 	
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
-		<?php echo $form->textField($model,'Estudiante_RutEstudiante',array('readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
+    
+    <div class="row">
+		<?php //echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
+		<?php echo $form->hiddenField($model,'Estudiante_RutEstudiante',array('readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Estudiante_RutEstudiante'); ?>
+	</div>
+    
+    <div class="row">
+        <?php echo CHtml::label('Rut Estudiante','Estudiante_RutEstudiante'); ?>
+        <?php echo CHtml::textField('Estudiante_RutEstudiante',$model->estudianteRutEstudiante->RutEstudiante,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 	
 	<div class="row">
         <?php echo CHtml::label('Nombre Estudiante','NombreEstudiante'); ?>
-        <?php echo CHtml::textField('NombreEstudiante',$model->estudianteRutEstudiante->NombreEstudiante,array('readOnly' => true)); ?>
+        <?php echo CHtml::textField('NombreEstudiante',$model->estudianteRutEstudiante->NombreEstudiante,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
-        <?php echo $form->error($model,'CentroPractica_RBD'); ?>
+		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
+				array(
+					'ajax'=>array(
+						'type'=>'POST',
+						'url'=>CController::createUrl('Planificacionclaseadministrador/selectProfesor'),
+						'update'=>'#'.CHtml::activeId($model,'ProfesorGuiaCP_RutProfGuiaCP'),
+						'beforeSend'=>'function(){
+						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
+						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
+						}',
+					),'prompt'=>'Seleccione'
+				)
+		);?>
+		<?php echo $form->error($model,'CentroPractica_RBD'); ?>
 	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
-		<?php echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP'));?>
-        <?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
+		<?php 
+		$lista_dos=array();
+		if(isset($model->ProfesorGuiaCP_RutProfGuiaCP)){
+			$id_uno=intval($model->CentroPractica_RBD);
+			$lista_dos = CHtml::listData(Profesorguiacp::model()->findAll("CentroPractica_RBD = '$id_uno'"),'RutProfGuiaCP','NombreProfGuiaCP');
+		}
+		echo $form->dropDownList($model,'ProfesorGuiaCP_RutProfGuiaCP',$lista_dos,
+				array('prompt'=>'Seleccione')
+		);?>
+		<?php echo $form->error($model,'ProfesorGuiaCP_RutProfGuiaCP'); ?>
 	</div>
 
 	<div class="row">
@@ -58,7 +82,7 @@ include_once('planningFunctions.php');
         <?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
 	</div>
 
-	<div class="row">
+    <div class="row">
 		<?php echo $form->labelEx($model,'Fecha'); 
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'model' => $model,
@@ -69,25 +93,32 @@ include_once('planningFunctions.php');
                         'changeYear'=>'true',
                         'dateFormat' => 'dd-mm-yy',
                     ),
+					'htmlOptions'=>array('placeholder'=>'Haga click aquí','size'=>45,'maxlength'=>45),
             ));?>
 		<?php echo $form->error($model,'Fecha'); ?>
 	</div>
 
 	<div class="row">
-        <?php echo $form->labelEx($model,'SesionInformada');?>
-		<?php echo $form->textField($model,'SesionInformada',array('readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
+        <?php //echo $form->labelEx($model,'SesionInformada');?>
+		<?php echo $form->hiddenField($model,'SesionInformada',array('readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
         <?php echo $form->error($model,'SesionInformada'); ?>
     </div>
 	
-	<div class="row">
+    <div class="row">
+        <?php echo CHtml::label('Sesión Informada','SesionInformada'); ?>
+        <?php echo CHtml::textField('SesionInformada',$model->SesionInformada,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
+	</div>
+    
+    <div class="row">
         <?php echo CHtml::label('Numero de Sesiones','NumeroSesionesPractica'); ?>
-        <?php echo CHtml::textField('NumeroSesionesPractica',$model->configuracionPracticaNombrePractica->NumeroSesionesPractica,array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+        <?php echo CHtml::textField('NumeroSesionesPractica',$model->configuracionPracticaNombrePractica->NumeroSesionesPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 	
 	<div class="row">
         <?php echo CHtml::label('Numero de Horas','NumeroHorasPractica'); ?>
-        <?php echo CHtml::textField('NumeroHorasPractica',$model->configuracionPracticaNombrePractica->NumeroHorasPractica,array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+        <?php echo CHtml::textField('NumeroHorasPractica',$model->configuracionPracticaNombrePractica->NumeroHorasPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 

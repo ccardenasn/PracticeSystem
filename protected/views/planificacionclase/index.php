@@ -1,5 +1,5 @@
 <?php
-include_once('planificacion.php');
+include_once('planningFunctions.php');
 /* @var $this PlanificacionclaseController */
 /* @var $dataProvider CActiveDataProvider */
 

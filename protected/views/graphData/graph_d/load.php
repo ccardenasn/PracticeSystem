@@ -1,15 +1,9 @@
 <?php
-
 $base = Yii::app()->baseUrl; 
 $js = Yii::app()->getClientScript();
 $js->registerScriptFile($base.'/graphProcess/Highcharts/code/highcharts.js');
-$js->registerScriptFile($base.'/graphProcess/Highcharts/code/modules/exporting.js');
 $js->registerScriptFile($base.'/graphProcess/html2canvas.js');
 $js->registerScriptFile($base.'/graphProcess/saveChartFunctions.js');
-$js->registerScriptFile($base.'/graphProcess/Highcharts/code/lib/jsPDF-1.3.2/dist/jspdf.debug.js');
-$js->registerScriptFile($base.'/graphProcess/Highcharts/code/lib/jsPDF-1.3.2/jspdf.min.js');
-$js->registerScriptFile($base.'/graphProcess/Highcharts/code/lib/jsPDF-1.3.2/jspdf.plugin.autotable.js');
-$js->registerScriptFile($base.'/graphProcess/Highcharts/code/highcharts-export-clientside-master/highcharts-export-clientside.js');
 $js->registerScriptFile($base.'/graphProcess/grafico_d/loadGraph_d.js');
 ?>
 

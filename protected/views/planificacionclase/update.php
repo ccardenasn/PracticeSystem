@@ -4,8 +4,8 @@
 
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),
-	$model->CodPlanificacion=>array('view','id'=>$model->CodPlanificacion),
-	'Actualizar',
+    'Sesion Informada: '.$model->SesionInformada=>array('view','id'=>$model->CodPlanificacion), 
+	'Editar',
 );
 
 $this->menu=array(

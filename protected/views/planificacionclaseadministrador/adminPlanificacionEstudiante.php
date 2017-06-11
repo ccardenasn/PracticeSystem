@@ -12,7 +12,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	//array('label'=>'Planificación de Clases', 'url'=>array('index')),
 	array('label'=>'Añadir Planificación', 'url'=>array('create','id'=>$id)),
 	array('label'=>'Perfil Estudiante', 'url'=>array('estudiante/view','id'=>$id)),
 	
@@ -42,6 +41,7 @@ $('.search-form form').submit(function(){
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de un estudiante seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/update.png"> para modificar información de un estudiante seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de un estudiante seleccionado en la lista.</li>
+            <li>Haga click sobre el símbolo <img src="images/AdminTemplates/pdficon.png"> para generar un documento en formato .pdf del elemento seleccionado.</li>
 		</ul>
 		
 		<ul>
@@ -98,7 +98,14 @@ $('.search-form form').submit(function(){
 		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.',
+            'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
+                'pdf'=>array(
+                    'label'=>'Generar Pdf',
+                    'imageUrl'=>Yii::app()->request->baseUrl.'/images/AdminTemplates/pdficon.png',
+                    'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->CodPlanificacion))",
+                    'options'=>array('class'=>'pdf'),
+                ),
                 'view' => array(
                     'label'=>'Detalles',
                 ),

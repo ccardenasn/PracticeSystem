@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),
-	$model->CodPlanificacion=>array('view','id'=>$model->CodPlanificacion),
+    'Sesion Informada: '.$model->SesionInformada=>array('view','id'=>$model->CodPlanificacion), 
 	'Editar',
 );
 
