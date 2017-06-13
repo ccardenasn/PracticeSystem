@@ -87,14 +87,10 @@ $('.search-form form').submit(function(){
 		'Curso',
 		//'ConfiguracionPractica_NombrePractica',
 		array('name'=>'ConfiguracionPractica_NombrePractica','value'=>'$data->configuracionPracticaNombrePractica->NombrePractica','filter'=>CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica')),
-		
-		/*
-		'Fecha',
-		
-		'Ejecutado',
-		'Supervisado',
-		'ComentarioPlanificacion',
-		*/
+		//'Fecha',
+        array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
+		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
+		//'ComentarioPlanificacion',
 		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.',

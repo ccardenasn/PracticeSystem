@@ -26,7 +26,8 @@ $hour = hourColumns();
 ?>
 
 <script type="text/javascript">
-	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>; 
+	var mainTimeTableArr = <?php echo json_encode($copyArr); ?>;
+    var actionURL = '<?php echo Yii::app()->createUrl('horarioadmin/saveTimetable'); ?>';
 </script>
 
 

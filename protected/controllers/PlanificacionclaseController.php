@@ -31,7 +31,7 @@ class PlanificacionclaseController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','selectProfesor'),
+				'actions'=>array('index','view','selectProfesorCreate','selectProfesorUpdate'),
 				//'users'=>array('*'),
 				'users'=>Planificacionclase::model()->getStudents(),
 			),
@@ -188,6 +188,7 @@ class PlanificacionclaseController extends Controller
 	 */
 	public function actionAdmin()
 	{
+        
 		$model=new Planificacionclase('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Planificacionclase']))
@@ -242,9 +243,22 @@ class PlanificacionclaseController extends Controller
 		}
 	}
     
-    public function actionSelectProfesor()
+    public function actionSelectProfesorCreate()
 	{
-		$id_uno = $_POST['Planificacionclase']['CentroPractica_RBD'];
+		$id_uno = $_POST['Estudiante']['CentroPractica_RBD'];
+		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
+		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
+		
+		echo CHtml::tag('option',array('value'=>''),'Seleccione',true);
+		
+		foreach($lista as $valor => $descripcion){
+			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
+		}
+	}
+    
+    public function actionSelectProfesorUpdate()
+	{
+		$id_uno = $_POST['Planificacionclaseadministrador']['CentroPractica_RBD'];
 		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
 		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
 		

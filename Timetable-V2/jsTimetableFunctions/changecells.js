@@ -216,3 +216,8 @@ function addArrItem(index,subject){
 	var valueArr = Array(rut,subject,condicion,day,block);
 	tableArr[index] = valueArr;
 }
+
+function addArrEmpty(index,a,b,c,d,e){
+	var valueArr = Array(a,b,c,d,e);
+	tableArr[index] = valueArr;
+}

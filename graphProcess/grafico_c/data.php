@@ -1,5 +1,5 @@
 <?php
-include('cargar.php');
+include_once('cargar.php');
 include_once('forceutf/Encoding.php');
 
 $con = mysql_connect("localhost","sigep","s1g3p");

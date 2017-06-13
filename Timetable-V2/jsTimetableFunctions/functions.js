@@ -31,12 +31,21 @@ function showMessageTimetable(){
 }
 
 function obtener(){
+    fillPost();
 	$.ajax({
 		type: 'POST',
-		url: 'Timetable-V2/saveTable.php',
+		url: actionURL,
 		data: {horario:tableArr,action:mainAction,rut:rut},
         success: showMessageTimetable(),
 	});
+}
+
+function fillPost(){
+    for(i=0;i<30;i++){
+        if(tableArr[i] == null){
+            addArrEmpty(i,"Vacio","Vacio","Vacio","Vacio","Vacio");
+        }
+    }
 }
 
 function loadUpdate(){

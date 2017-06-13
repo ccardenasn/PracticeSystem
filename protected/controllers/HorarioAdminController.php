@@ -30,7 +30,7 @@ class HorarioadminController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','createHorario'),
+				'actions'=>array('index','view','createHorario','saveTimetable'),
 				//'users'=>array('*'),
 				'users'=>Horarioadmin::model()->getAdmins(),
 			),
@@ -208,4 +208,72 @@ class HorarioadminController extends Controller
 			Yii::app()->end();
 		}
 	}
+    
+    public function actionSaveTimetable()
+	{
+        $horario = $_REQUEST['horario'];
+        $accion = $_REQUEST['action'];
+        $rutData = $_REQUEST['rut'];
+        
+        $queryExistStudent = "select count(*) from horarioadmin where Estudiante_RutEstudiante = '".$rutData."';";
+        $execQueryStCount = Yii::app()->db->createCommand($queryExistStudent)->queryScalar();
+        $existStResult = $execQueryStCount;
+        
+        if($existStResult == 0){
+            $querySt = "insert into horarioadmin(Estudiante_RutEstudiante) values('".$rutData."');";
+            Yii::app()->db->createCommand($querySt)->execute();
+        }
+        
+        //$queryGtCod = "select CodHorario from horarioadmin where Estudiante_RutEstudiante = '".$rutData."';";
+        
+        $horarioAdminData=Horarioadmin::model()->find('Estudiante_RutEstudiante=?',array($rutData));
+        $existGtResult = $horarioAdminData->CodHorario;
+        //$execQueryGt = Yii::app()->db->createCommand($queryGtCod)->queryScalar();
+        //$existGtResult = $execQueryGt;
+        
+        for($i=0;$i<count($horario);$i++){
+            $rut = $horario[$i][0];
+            $asignatura = $horario[$i][1];
+            $dia = $horario[$i][3];
+            $bloque = $horario[$i][4];
+            
+            if($bloque != "Vacio"){
+                $initTimeData=Bloque::model()->find('NombreBloque=?',array($bloque));
+                $initTime = $initTimeData->HoraInicio;
+                $horaInicio = $initTime;
+            
+                $endTimeData=Bloque::model()->find('NombreBloque=?',array($bloque));
+                $endTime = $endTimeData->HoraFin;
+                $horaFin = $endTime;
+            }
+            
+            if($asignatura != "Vacio"){
+                
+                if($accion == "Create"){
+                    
+                    if($asignatura != "Vacio"){
+                        $query = "insert into horario(Estudiante_RutEstudiante,Asignatura_NombreAsignatura,HoraInicio,HoraFin,Dia,Bloque,HorarioAdmin_CodHorario) values('".$rut."','".$asignatura."','".$horaInicio."','".$horaFin."','".$dia."','".$bloque."','".$existGtResult."');";
+                        Yii::app()->db->createCommand($query)->execute();
+                    }
+                }else{
+                    $queryCount = "select count(*) from horario where Estudiante_RutEstudiante = '".$rut."' and Dia = '".$dia."' and Bloque = '".$bloque."';";
+                    $execQueryCount = Yii::app()->db->createCommand($queryCount)->queryScalar();
+                    $existResult = $execQueryCount;
+                    
+                    if($existResult == 1){
+                        if($asignatura != "Vacio"){
+                            $queryUpdate = "update horario set Asignatura_NombreAsignatura='".$asignatura."' where Estudiante_RutEstudiante = '".$rut."' and Dia = '".$dia."' and Bloque = '".$bloque."';";
+                            Yii::app()->db->createCommand($queryUpdate)->execute();
+                        }else{
+                            $queryDelete = "delete from horario where Estudiante_RutEstudiante = '".$rut."' and Dia = '".$dia."' and Bloque = '".$bloque."';";
+                            Yii::app()->db->createCommand($queryDelete)->execute();
+                        }
+                    }else{
+                        $queryCreate = "insert into horario(Estudiante_RutEstudiante,Asignatura_NombreAsignatura,HoraInicio,HoraFin,Dia,Bloque,HorarioAdmin_CodHorario) values('".$rut."','".$asignatura."','".$horaInicio."','".$horaFin."','".$dia."','".$bloque."','".$existGtResult."');";
+                        Yii::app()->db->createCommand($queryCreate)->execute();
+                    }
+                }
+            }
+        }
+    }
 }

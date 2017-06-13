@@ -14,6 +14,11 @@ echo '<script type="text/javascript">
 </script>';
 ?>
 
+<script>
+var actionURL = '<?php echo Yii::app()->createUrl('horarioadmin/saveTimetable'); ?>';
+</script>
+
+
 <?php if(Yii::app()->user->hasFlash('message')):?>
 <div class="row buttons">
     <?php echo Yii::app()->user->getFlash('message'); ?>

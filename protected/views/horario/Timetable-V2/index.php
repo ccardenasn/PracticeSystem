@@ -14,6 +14,10 @@ echo '<script type="text/javascript">
 </script>';
 ?>
 
+<script>
+var actionURL = '<?php echo Yii::app()->createUrl('horario/saveTimetable'); ?>';
+</script>
+
 <body onload="javascript:loadCreate();">
     <div id='successTimeTable' class='flash-success' style="display:none">
         <p><strong>¡Operación realizada!</strong></p>

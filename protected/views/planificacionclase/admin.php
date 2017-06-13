@@ -1,11 +1,9 @@
 <?php
-include_once('planningFunctions.php');
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
-$id=Yii::app()->request->getQuery('id');
-$nombre = datosplanificacion($id);
-
+$loggedStudent=Yii::app()->user->name;
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($loggedStudent));
 
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),
@@ -33,7 +31,7 @@ $('.search-form form').submit(function(){
 
 <h1>Administración de Planificaciones</h1><br>
 
-<h2>Estudiante: <?php echo $nombre[0] ?></h2><br>
+<h2>Estudiante: <?php echo $studentData->NombreEstudiante ?></h2><br>
 
 <div class="collapse">
 	<h3>Ayuda</h3>
@@ -74,7 +72,7 @@ $('.search-form form').submit(function(){
 		'nextPageLabel'=>'Siguiente >',
 		'prevPageLabel'=>'< Anterior',
         ),
-	'dataProvider'=>$model->searchByRut($id),
+	'dataProvider'=>$model->searchByRut($loggedStudent),
 	'filter'=>$model,
 	'columns'=>array(
 		//'CodPlanificacion',
@@ -87,14 +85,10 @@ $('.search-form form').submit(function(){
 		'Curso',
 		//'ConfiguracionPractica_NombrePractica',
 		array('name'=>'ConfiguracionPractica_NombrePractica','value'=>'$data->configuracionPracticaNombrePractica->NombrePractica','filter'=>CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica')),
-		
-		/*
-		'Fecha',
-		
-		'Ejecutado',
-		'Supervisado',
-		'ComentarioPlanificacion',
-		*/
+		//'Fecha',
+		array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
+		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
+		//'ComentarioPlanificacion',
 		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.',

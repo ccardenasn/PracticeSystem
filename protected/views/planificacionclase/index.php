@@ -1,10 +1,9 @@
 <?php
-include_once('planningFunctions.php');
 /* @var $this PlanificacionclaseController */
 /* @var $dataProvider CActiveDataProvider */
 
-$student=Yii::app()->user->name;
-$arrdata=datosplanificacion($student);
+$loggedStudent=Yii::app()->user->name;
+$studentData=Estudiante::model()->find('RutEstudiante=?',array($loggedStudent));
 
 $this->breadcrumbs=array(
 	'Planificacion de Clases',
@@ -12,13 +11,13 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Administración', 'url'=>array('admin','id'=>$student)),
+	array('label'=>'Administración', 'url'=>array('admin')),
     array('label'=>'Bitácoras', 'url'=>array('bitacorasesion/index')),
 );
 ?>
 
 <h1>Planificación de Clases</h1>
-<h2>Estudiante: <?php echo $arrdata[0] ?> </h2><br>
+<h2>Estudiante: <?php echo $studentData->NombreEstudiante ?> </h2><br>
 
 <?php if(Yii::app()->user->hasFlash('message')):?>
 <div class="row buttons">

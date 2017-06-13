@@ -43,7 +43,7 @@
 				array(
 					'ajax'=>array(
 						'type'=>'POST',
-						'url'=>CController::createUrl('Planificacionclase/selectProfesor'),
+						'url'=>CController::createUrl('Planificacionclase/selectProfesorUpdate'),
 						'update'=>'#'.CHtml::activeId($model,'ProfesorGuiaCP_RutProfGuiaCP'),
 						'beforeSend'=>'function(){
 						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();

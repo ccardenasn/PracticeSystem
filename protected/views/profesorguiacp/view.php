@@ -45,7 +45,7 @@ $this->menu=array(
 		'MailProfGuiaCP',
 		'TelefonoProfGuiaCP',
 		'CelularProfGuiaCP',
-		'CentroPractica_RBD',
+		'centroPracticaRBD.NombreCentroPractica',
         array(
             'name'=>'ImagenProfGuiaCP',
 			'type' => 'raw',

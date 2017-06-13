@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Centros de Práctica'=>array('index'),
-	$centroModel->RBD=>array('view','id'=>$centroModel->RBD),
+    $centroModel->NombreCentroPractica=>array('view','id'=>$centroModel->RBD),
 	'Editar',
 );
 
@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Centro de Práctica: <?php echo $centroModel->RBD; ?></h1><br>
+<h1>Modificar Centro de Práctica: <?php echo $centroModel->NombreCentroPractica; ?></h1><br>
 	
 <div class="collapse">
 	<h3>Ayuda</h3>

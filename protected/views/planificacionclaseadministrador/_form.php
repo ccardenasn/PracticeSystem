@@ -50,7 +50,7 @@ include_once('planningFunctions.php');
 				array(
 					'ajax'=>array(
 						'type'=>'POST',
-						'url'=>CController::createUrl('Planificacionclaseadministrador/selectProfesor'),
+						'url'=>CController::createUrl('Planificacionclaseadministrador/selectProfesorCreate'),
 						'update'=>'#'.CHtml::activeId($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'),
 						'beforeSend'=>'function(){
 						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();

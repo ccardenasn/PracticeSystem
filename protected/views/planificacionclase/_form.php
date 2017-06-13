@@ -1,5 +1,5 @@
 <?php
-include_once('planificacion.php');
+include_once('planningFunctions.php');
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 /* @var $form CActiveForm */
@@ -21,21 +21,20 @@ include_once('planificacion.php');
 	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 	
 	<?php
-    $studentLogged=Yii::app()->user->name;
-    $arrdata=datosplanificacion($studentLogged);
-    $studentData=Estudiante::model()->find('RutEstudiante=?',array($studentLogged));
+    $loggedStudent=Yii::app()->user->name;
+    $studentData=Estudiante::model()->find('RutEstudiante=?',array($loggedStudent));
     $profesorData=Profesorguiacp::model()->find('RutProfGuiaCP=?',array($studentData->ProfesorGuiaCP_RutProfGuiaCP));
     ?>
 
 	<div class="row">
 		<?php //echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
-		<?php echo $form->hiddenField($model,'Estudiante_RutEstudiante',array('value'=>$studentLogged,'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->hiddenField($model,'Estudiante_RutEstudiante',array('value'=>$loggedStudent,'readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Estudiante_RutEstudiante'); ?>
 	</div>
     
     <div class="row">
         <?php echo CHtml::label('Rut Estudiante','Estudiante_RutEstudiante'); ?>
-        <?php echo CHtml::textField('Estudiante_RutEstudiante',$studentLogged,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+        <?php echo CHtml::textField('Estudiante_RutEstudiante',$loggedStudent,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 	
@@ -51,7 +50,7 @@ include_once('planificacion.php');
 				array(
 					'ajax'=>array(
 						'type'=>'POST',
-						'url'=>CController::createUrl('Planificacionclase/selectProfesor'),
+						'url'=>CController::createUrl('Planificacionclase/selectProfesorCreate'),
 						'update'=>'#'.CHtml::activeId($studentModel,'ProfesorGuiaCP_RutProfGuiaCP'),
 						'beforeSend'=>'function(){
 						$("#Centropractica_ProfesorGuiaCP_RutProfGuiaCP").find("option").remove();
@@ -107,7 +106,7 @@ include_once('planificacion.php');
     
     <div class="row">
         <?php echo $form->labelEx($model,'SesionInformada');?>
-        <?php echo $form->dropDownList($model,'SesionInformada',listsesion($studentData->configuracionPracticaNombrePractica->NumeroSesionesPractica,$studentLogged));?>
+        <?php echo $form->dropDownList($model,'SesionInformada',listsesion($studentData->configuracionPracticaNombrePractica->NumeroSesionesPractica,$loggedStudent));?>
         <?php echo $form->error($model,'SesionInformada'); ?>
     </div>
 	

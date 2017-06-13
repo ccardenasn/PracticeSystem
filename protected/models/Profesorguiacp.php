@@ -85,6 +85,7 @@ class Profesorguiacp extends CActiveRecord
 			'CelularProfGuiaCP' => 'Celular',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ImagenProfGuiaCP' => 'Imagen',
+            'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 		);
 	}
 
