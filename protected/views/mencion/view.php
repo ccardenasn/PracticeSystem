@@ -28,7 +28,7 @@ $this->menu=array(
 	<li>En esta sección se pueden visualizar todos los detalles de la mención seleccionada.</li>
 </ul>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones de Opciones</h4>
 	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
 	<li>Haga click en <strong>"Añadir"</strong> para agregar una nueva mención a la lista.</li>

@@ -19,7 +19,7 @@ $studentData=Estudiante::model()->find('RutEstudiante=?',array($model->Estudiant
 
 <div class="collapse">
 	<h3>Ayuda</h3>
-	<ul>
+	<ul align=justify>
 		<ul>
 			<h4>Instrucciones</h4>
 			<li>Haga click sobre el botón <img src="images/timeTableImages/addButton.png" height="15" width="15"> para añadir una asignatura al bloque y día seleccionados.</li>

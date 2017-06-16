@@ -16,7 +16,7 @@ $this->menu=array(
 
 <div class="collapse">
 	<h3>Ayuda</h3>
-	<ul>
+	<ul align=justify>
 		<ul>
 			<h4>Opciones de Lista</h4>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de un estudiante seleccionado en la lista.</li>

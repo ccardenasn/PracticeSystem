@@ -15,10 +15,10 @@ $this->breadcrumbs=array(
 
 <h3>Bienvenido a la sección de Horario.</h3><br>
  
-<ul>
+<ul align=justify>
 	<h4>Opciones Disponibles</h4>
-	<li style="text-align: justify;"><strong>Crear Horario:</strong> Esta opción permite generar una tabla compuesta por los días de la semana, además de cada bloque correspondiente a las asignaturas que se cursarán. Una vez allí El usuario podrá añadir las asignaturas que esté cursando durante el semestre.</li><br>
-	<li style="text-align: justify;"><strong>Editar Horario:</strong> Permite realizar modificaciones al horario, como añadir o reemplazar asignaturas en los bloques correspondientes.</li>
+	<li><strong>Crear Horario:</strong> Esta opción permite generar una tabla compuesta por los días de la semana, además de cada bloque correspondiente a las asignaturas que se cursarán. Una vez allí El usuario podrá añadir las asignaturas que esté cursando durante el semestre.</li><br>
+	<li><strong>Editar Horario:</strong> Permite realizar modificaciones al horario, como añadir o reemplazar asignaturas en los bloques correspondientes.</li>
 	
 </ul>
 <p><br/>

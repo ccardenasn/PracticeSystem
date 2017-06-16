@@ -16,7 +16,7 @@ $this->menu=array(
 
 <h1>Asignar Horas</h1><br>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones</h4>
 	<li>Para cambiar la informacion de hora haga click sobre los campos de texto de las columnas "Hora Inicio" u "Hora Fin" correspondientes al bloque que desee modificar.</li>
 	<li>Al hacer click en cada campo se desplegará un control que permitirá cambiar la información correspondiente a minutos y segundos.</li>

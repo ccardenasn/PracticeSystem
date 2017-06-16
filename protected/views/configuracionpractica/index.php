@@ -20,7 +20,7 @@ $this->menu=array(
 </div>
 <?php endif; ?>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones</h4>
 	<li>Para agregar una nueva práctica haga click en la opción <b>"Añadir"</b> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
 	<li>Desde la sección <b>"Administración"</b> se puede observar una lista de prácticas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración"</b> en el panel <b>"Opciones"</b> para acceder.</li>

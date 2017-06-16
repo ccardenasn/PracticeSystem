@@ -34,7 +34,7 @@ $('.search-form form').submit(function(){
 
 <h2>Estudiante: <?php echo $nombre[0] ?></h2><br>
 
-<ul>
+<ul align=justify>
 	<h4>Opciones de Lista</h4>
 	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de un estudiante seleccionado en la lista.</li>
 	<li>Haga click sobre el símbolo <img src="images/AdminTemplates/update.png"> para modificar información de un estudiante seleccionado en la lista.</li>

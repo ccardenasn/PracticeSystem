@@ -15,7 +15,7 @@ $this->menu=array(
 
 <h1>Asignaturas</h1><br>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones</h4>
 	<li>Para agregar una nueva asignatura haga click en la opción <strong>"Añadir"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
 	<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de asignaturas existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>

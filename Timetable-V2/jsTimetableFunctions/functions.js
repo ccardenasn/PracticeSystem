@@ -43,7 +43,7 @@ function obtener(){
 function fillPost(){
     for(i=0;i<30;i++){
         if(tableArr[i] == null){
-            addArrEmpty(i,"Vacio","Vacio","Vacio","Vacio","Vacio");
+            addArrEmpty(i,"Asignar","Asignar","Asignar","Asignar","Asignar");
         }
     }
 }

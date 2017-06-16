@@ -224,12 +224,8 @@ class HorarioadminController extends Controller
             Yii::app()->db->createCommand($querySt)->execute();
         }
         
-        //$queryGtCod = "select CodHorario from horarioadmin where Estudiante_RutEstudiante = '".$rutData."';";
-        
         $horarioAdminData=Horarioadmin::model()->find('Estudiante_RutEstudiante=?',array($rutData));
         $existGtResult = $horarioAdminData->CodHorario;
-        //$execQueryGt = Yii::app()->db->createCommand($queryGtCod)->queryScalar();
-        //$existGtResult = $execQueryGt;
         
         for($i=0;$i<count($horario);$i++){
             $rut = $horario[$i][0];
@@ -237,7 +233,7 @@ class HorarioadminController extends Controller
             $dia = $horario[$i][3];
             $bloque = $horario[$i][4];
             
-            if($bloque != "Vacio"){
+            if($bloque != "Asignar"){
                 $initTimeData=Bloque::model()->find('NombreBloque=?',array($bloque));
                 $initTime = $initTimeData->HoraInicio;
                 $horaInicio = $initTime;
@@ -247,11 +243,11 @@ class HorarioadminController extends Controller
                 $horaFin = $endTime;
             }
             
-            if($asignatura != "Vacio"){
+            if($asignatura != "Asignar"){
                 
                 if($accion == "Create"){
                     
-                    if($asignatura != "Vacio"){
+                    if($asignatura != "Asignar"){
                         $query = "insert into horario(Estudiante_RutEstudiante,Asignatura_NombreAsignatura,HoraInicio,HoraFin,Dia,Bloque,HorarioAdmin_CodHorario) values('".$rut."','".$asignatura."','".$horaInicio."','".$horaFin."','".$dia."','".$bloque."','".$existGtResult."');";
                         Yii::app()->db->createCommand($query)->execute();
                     }
@@ -261,7 +257,7 @@ class HorarioadminController extends Controller
                     $existResult = $execQueryCount;
                     
                     if($existResult == 1){
-                        if($asignatura != "Vacio"){
+                        if($asignatura != "Asignar"){
                             $queryUpdate = "update horario set Asignatura_NombreAsignatura='".$asignatura."' where Estudiante_RutEstudiante = '".$rut."' and Dia = '".$dia."' and Bloque = '".$bloque."';";
                             Yii::app()->db->createCommand($queryUpdate)->execute();
                         }else{

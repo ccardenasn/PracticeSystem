@@ -37,7 +37,7 @@ $this->menu=array(
 
 <br>
 <br>
-<ul>
+<ul align=justify>
 	<h4>Instrucciones de Opciones</h4>
 	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
 	<li>Haga click en "Añadir" para agregar un nuevo funcionario a la lista.</li>

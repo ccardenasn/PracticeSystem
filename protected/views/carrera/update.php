@@ -20,7 +20,7 @@ $this->menu=array(
 
 <div class="collapse">
 	<h3>Ayuda</h3>
-	<ul>
+	<ul align=justify>
 		<ul>
             <h4>Instrucciones de Opciones</h4>
             <li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li><li>Para regresar al índice de carrera haga click en <strong>"Lista"</strong>.</li>

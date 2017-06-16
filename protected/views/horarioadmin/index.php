@@ -24,7 +24,7 @@ $this->menu=array(
 	<h4>Bienvenido a la sección de Administración de Horarios.</h4>
 </ul>
 
-<ul>
+<ul align=justify>
 	<h4>Opciones Disponibles</h4>
 	<li><b>Administración de Horarios:</b> Permite visualizar una lista de todos los estudiantes que hallan creado su horario de clases previamente, desde allí se puede observar, editar y/o eliminar la información correspondiente.</li><br>
 	<li><b>Asignar Horas:</b> Ofrece la posibilidad de cambiar las horas en las cuales se llevan a cabo cada uno de los bloques de clases disponibles para el horario.</li><br>

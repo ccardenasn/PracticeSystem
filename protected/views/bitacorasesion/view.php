@@ -21,7 +21,7 @@ $this->menu=array(
 
 <div class="collapse">
 	<h3>Ayuda</h3>
-	<ul>
+	<ul align=justify>
 		<ul>
 			<h4>Instrucciones de Opciones</h4>
 			<li>Para regresar al índice de bitácoras haga click en <strong>"Lista"</strong>.</li>

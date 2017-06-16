@@ -82,32 +82,28 @@ class EstudianteController extends Controller
                 
                 $model->attributes=$_POST['Estudiante'];
                 
-                $file=$model->ImagenEstudiante=CUploadedFile::getInstance($model,'ImagenEstudiante');
+                //$file=$model->ImagenEstudiante=CUploadedFile::getInstance($model,'ImagenEstudiante');
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($model,'ImagenEstudiante');
+                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
                 
-                $exist = contains($table,$codTable,$model->RutEstudiante);
+                if($file != null){
+                    $model->ImagenEstudiante = $fileName;
+                }
                 
-                if($exist == 0){
-                    
-                    if($model->save()){
-                        
-                        if($file != null){
-                            if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                                
-                                $model->ImagenEstudiante->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$file->getName());
-                            }else{
-                                deleteData($table,$codTable,$model->RutEstudiante);
-                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                                $this->refresh();
-                            }
+                if($model->save()){
+                    if($file != null){
+                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
+                        }else{
+                            deleteData($table,$codTable,$model->RutEstudiante);
+                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                            $this->refresh();
                         }
-                        $this->redirect(array('view','id'=>$model->RutEstudiante));
                     }
-                }else{
-                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutEstudiante." ya está registrado.</li></ul></div>");
-                    $this->refresh();
+                    $this->redirect(array('view','id'=>$model->RutEstudiante));
                 }
             }
-            
             $this->render('create',array(
                 'model'=>$model,
             ));
@@ -278,15 +274,16 @@ class EstudianteController extends Controller
 					
 					if (file_exists($destino)){
 						/** Clases necesarias */
-						Yii::import('application.extensions.classes.PHPExcel');
-						Yii::import('application.extensions.classes.PHPExcel.Reader.Excel2007');
+						Yii::import('application.extensions.Classes.PHPExcel');
+						Yii::import('application.extensions.Classes.PHPExcel.Reader.Excel2007');
 						spl_autoload_unregister(array('YiiBase', 'autoload'));
-						$phpExcelPath = Yii::getPathOfAlias('application.extensions.classes'); 
+						$phpExcelPath = Yii::getPathOfAlias('application.extensions.Classes'); 
 						include($phpExcelPath.DIRECTORY_SEPARATOR.'PHPExcel.php');
 						spl_autoload_register(array('YiiBase','autoload'));
 						
 						// Cargando la hoja de cálculo
 						$objReader = new PHPExcel_Reader_Excel2007();
+                        date_default_timezone_set('America/Santiago');
 						$objPHPExcel = $objReader->load($destino);
 						$objFecha = new PHPExcel_Shared_Date();
 						

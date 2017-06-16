@@ -20,7 +20,7 @@ $this->menu=array(
 </div>
 <?php endif; ?>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones</h4>
 	<li>Para agregar un nuevo director cp haga click en la opción <strong>"Añadir"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
 	<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de directores cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>

@@ -17,7 +17,7 @@ $this->menu=array(
 
 <div class="collapse">
 	<h3>Ayuda</h3>
-	<ul>
+	<ul align=justify>
 		<ul>
 			<h4>Instrucciones</h4>
 			<li>Para regresar al índice de directores haga click en la opción <b>"Lista"</b> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>

@@ -234,7 +234,7 @@ class HorarioController extends Controller
             $dia = $horario[$i][3];
             $bloque = $horario[$i][4];
             
-            if($bloque != "Vacio"){
+            if($bloque != "Asignar"){
                 $initTimeData=Bloque::model()->find('NombreBloque=?',array($bloque));
                 $initTime = $initTimeData->HoraInicio;
                 $horaInicio = $initTime;
@@ -246,11 +246,11 @@ class HorarioController extends Controller
             
             
             
-            if($asignatura != "Vacio"){
+            if($rut != "Asignar"){
                 
                 if($accion == "Create"){
                     
-                    if($asignatura != "Vacio"){
+                    if($asignatura != "Asignar"){
                         $query = "insert into horario(Estudiante_RutEstudiante,Asignatura_NombreAsignatura,HoraInicio,HoraFin,Dia,Bloque,HorarioAdmin_CodHorario) values('".$rut."','".$asignatura."','".$horaInicio."','".$horaFin."','".$dia."','".$bloque."','".$existGtResult."');";
                         Yii::app()->db->createCommand($query)->execute();
                     }
@@ -260,7 +260,7 @@ class HorarioController extends Controller
                     $existResult = $execQueryCount;
                     
                     if($existResult == 1){
-                        if($asignatura != "Vacio"){
+                        if($asignatura != "Asignar"){
                             $queryUpdate = "update horario set Asignatura_NombreAsignatura='".$asignatura."' where Estudiante_RutEstudiante = '".$rut."' and Dia = '".$dia."' and Bloque = '".$bloque."';";
                             Yii::app()->db->createCommand($queryUpdate)->execute();
                         }else{

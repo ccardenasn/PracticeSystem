@@ -18,7 +18,7 @@ $this->menu=array(
 
 <h1>Modificar Secretaria de Carrera <?php echo $model->RutSecretaria; ?></h1><br>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones de Opciones</h4>
 	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
 	<li>Para regresar al índice de funcionarios haga click en "Lista".</li>

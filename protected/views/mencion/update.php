@@ -18,7 +18,7 @@ $this->menu=array(
 
 <h1>Modificar Mención: <?php echo $model->NombreMencion; ?></h1><br>
 
-<ul>
+<ul align=justify>
 	<h4>Instrucciones de Opciones</h4>
 	<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
 	<li>Para regresar al índice de menciones haga click en <strong>"Lista"</strong>.</li>
