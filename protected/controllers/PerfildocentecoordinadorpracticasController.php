@@ -141,15 +141,20 @@ class PerfildocentecoordinadorpracticasController extends Controller
 		if(isset($_POST['Perfildocentecoordinadorpracticas']))
 		{
 			$model->attributes=$_POST['Perfildocentecoordinadorpracticas'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenCoordinador=CUploadedFile::getInstance($model,'ImagenCoordinador');
-			
+            
+            $rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenCoordinador');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->ImagenCoordinador = $fileName;
+            }
+            
 			if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenCoordinador->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();

@@ -78,8 +78,14 @@ class ProfesorguiacpController extends Controller
 		{
 			$model->attributes=$_POST['Profesorguiacp'];
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenProfGuiaCP=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
+            $rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->ImagenProfGuiaCP = $fileName;
+            }
+            
 			
 			$exist = contains($table,$codTable,$model->RutProfGuiaCP);
 			
@@ -87,7 +93,7 @@ class ProfesorguiacpController extends Controller
 				if($model->save()){
 					if($file != null){
 						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$model->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$file->getName());
+							$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$fileName);
 						}else{
 							deleteData($table,$codTable,$model->RutProfGuiaCP);
 							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
@@ -148,14 +154,19 @@ class ProfesorguiacpController extends Controller
 		{
 			$model->attributes=$_POST['Profesorguiacp'];
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenProfGuiaCP=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
+			$rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->ImagenProfGuiaCP = $fileName;
+            }
 			
 			if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenProfGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();

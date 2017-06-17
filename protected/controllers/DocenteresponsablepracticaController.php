@@ -77,29 +77,27 @@ class DocenteresponsablepracticaController extends Controller
 		if(isset($_POST['Docenteresponsablepractica']))
 		{
 			$model->attributes=$_POST['Docenteresponsablepractica'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
-			
-			$exist = contains($table,$codTable,$model->RutResponsable);
-			
-			if($exist == 0){
-				if($model->save()){
-					if($file != null){
-						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
-						}else{
-							deleteData($table,$codTable,$model->RutResponsable);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}	
-					}
-					$this->redirect(array('view','id'=>$model->RutResponsable));
-				}
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutResponsable." ya está registrado.</li></ul></div>");
-				$this->refresh();
-			}
+            
+            $rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenResponsable');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->ImagenResponsable = $fileName;
+            }
+            
+            if($model->save()){
+                if($file != null){
+                    if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                        $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$fileName);
+                    }else{
+                        deleteData($table,$codTable,$model->RutResponsable);
+                        Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                        $this->refresh();
+                    }	
+                }
+                $this->redirect(array('view','id'=>$model->RutResponsable));
+            }
 		}
 		
 		$this->render('create',array(
@@ -129,14 +127,19 @@ class DocenteresponsablepracticaController extends Controller
 		{
 			$model->attributes=$_POST['Docenteresponsablepractica'];
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenResponsable=CUploadedFile::getInstance($model,'ImagenResponsable');
+			$rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenResponsable');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->ImagenResponsable = $fileName;
+            }
 			
 			if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenResponsable->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();

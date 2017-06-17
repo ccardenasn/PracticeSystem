@@ -39,6 +39,7 @@ class Docenteresponsablepractica extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutResponsable, NombreResponsable, ClaveResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutResponsable','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('RutResponsable, NombreResponsable, ClaveResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

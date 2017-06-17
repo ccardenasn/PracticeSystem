@@ -81,7 +81,14 @@ class ProfesorcoordinadorpracticacpController extends Controller
             if(isset($_POST['Profesorcoordinadorpracticacp'])){
                 
                 $model->attributes=$_POST['Profesorcoordinadorpracticacp'];
-                $file=$model->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
+                
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
+                $fileName = "{$rnd}-{$file}";
+                
+                if($file != null){
+                    $model->ImagenProfCoordGuiaCP = $fileName;
+                }
                 
                 $exist = contains($table,$codTable,$model->RutProfCoordGuiaCp);
                 
@@ -92,7 +99,7 @@ class ProfesorcoordinadorpracticacpController extends Controller
                         if($file != null){
                             if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
                                 
-                                $model->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$file->getName());
+                                $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$fileName);
                             
                             }else{
                                 deleteData($table,$codTable,$model->RutProfCoordGuiaCp);
@@ -140,13 +147,19 @@ class ProfesorcoordinadorpracticacpController extends Controller
 			$model->attributes=$_POST['Profesorcoordinadorpracticacp'];
 			
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenProfCoordGuiaCP=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
-			
-			if($model->save()){
+			$rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
+            $fileName = "{$rnd}-{$file}";
+            
+            if($file != null){
+                $model->ImagenProfCoordGuiaCP = $fileName;
+            }
+            
+            if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenProfCoordGuiaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinadoresPracticasCP/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();

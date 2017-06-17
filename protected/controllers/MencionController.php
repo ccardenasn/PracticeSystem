@@ -69,7 +69,7 @@ class MencionController extends Controller
 		$model=new Mencion;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		$table = "mencion";
 		$codTable = "NombreMencion";

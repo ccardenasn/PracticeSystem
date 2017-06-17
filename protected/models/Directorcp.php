@@ -40,6 +40,7 @@ class Directorcp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutDirectorCP, NombreDirectorCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutDirectorCP','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutDirectorCP, NombreDirectorCP, MailDirectorCP, TelefonoDirectorCP, CelularDirectorCP, ImagenDirectorCP', 'length', 'max'=>45),
 			// The following rule is used by search().

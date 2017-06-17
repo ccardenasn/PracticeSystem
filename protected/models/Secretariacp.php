@@ -40,6 +40,7 @@ class Secretariacp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutSecretariaCP, NombreSecretariaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutSecretariaCP','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutSecretariaCP, NombreSecretariaCP, MailSecretariaCP, TelefonoSecretariaCP, CelularSecretariaCP, ImagenSecretariaCP', 'length', 'max'=>45),
 			// The following rule is used by search().

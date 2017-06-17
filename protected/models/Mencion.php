@@ -28,6 +28,7 @@ class Mencion extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NombreMencion', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('NombreMencion','unique','message'=>'la mención {value} ya está registrada.'),
 			array('NombreMencion', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

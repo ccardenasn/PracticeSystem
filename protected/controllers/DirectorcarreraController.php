@@ -74,18 +74,26 @@ class DirectorcarreraController extends Controller
 		$empty = isEmpty($table);
 		
 		if($empty == true){
-			if(isset($_POST['Directorcarrera'])){
+			
+            if(isset($_POST['Directorcarrera'])){
 				$model->attributes=$_POST['Directorcarrera'];
-				$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
+				
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($model,'ImagenDirector');
+                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+                
+                if($file != null){
+                    $model->ImagenDirector = $fileName;
+                }
 				
 				if($model->save()){
 					if($file != null){
 						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
+							$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$fileName);
 						}else{
 							deleteData($table,$codTable,$model->RutDirector);
 							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
+                            $this->refresh();
 						}
 					}
 					$this->redirect(array('view','id'=>$model->RutDirector));
@@ -121,15 +129,20 @@ class DirectorcarreraController extends Controller
 		if(isset($_POST['Directorcarrera']))
 		{
 			$model->attributes=$_POST['Directorcarrera'];
-			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenDirector=CUploadedFile::getInstance($model,'ImagenDirector');
+            
+            $rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenDirector');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->ImagenDirector = $fileName;
+            }
 			
 			if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenDirector->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDirector/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();

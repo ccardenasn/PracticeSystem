@@ -68,42 +68,38 @@ class SecretariacpController extends Controller
 	public function actionCreate()
 	{
 		$model=new Secretariacp;
-		
-		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
-		$table = "secretariacp";
-		$codTable = "RutSecretariaCP";
         
-		$empty = isEmpty("centropractica");
-		
+        $table = "secretariacp";
+		$codTable = "RutSecretariaCP";
+        $empty = isEmpty("centropractica");
+        
         if($empty == false){
             
             if(isset($_POST['Secretariacp'])){
                 
                 $model->attributes=$_POST['Secretariacp'];
-                $file=$model->ImagenSecretariaCP=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
                 
-                $exist = contains($table,$codTable,$model->RutSecretariaCP);
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
+                $fileName = "{$rnd}-{$file}";
                 
-                if($exist == 0){
-                    
-                    if($model->save()){
-                        if($file != null){
-                            if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                                $model->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$file->getName());
-                            }else{
-                                deleteData($table,$codTable,$model->RutSecretariaCP);
-                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                                $this->refresh();
-                            }
-                        }
-                        $this->redirect(array('view','id'=>$model->RutSecretariaCP));
-                    }	
-                }else{
-                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutSecretariaCP." ya está registrado.</li></ul></div>");
-                    $this->refresh();
+                if($file != null){
+                    $model->ImagenSecretariaCP = $fileName;
                 }
+                
+                if($model->save()){
+                    if($file != null){
+                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$fileName);
+                        }else{
+                            deleteData($table,$codTable,$model->RutSecretariaCP);
+                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                            $this->refresh();
+                        }
+                    }
+                    $this->redirect(array('view','id'=>$model->RutSecretariaCP));
+                }	
             }
             
             $this->render('create',array(
@@ -136,14 +132,19 @@ class SecretariacpController extends Controller
 		{
 			$model->attributes=$_POST['Secretariacp'];
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenSecretariaCP=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
+			$rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
+            $fileName = "{$rnd}-{$file}";
+            
+            if($file != null){
+                $model->ImagenSecretariaCP = $fileName;
+            }
 			
 			if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenSecretariaCP->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();

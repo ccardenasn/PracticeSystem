@@ -29,6 +29,8 @@ class Dependencia extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NombreDependencia', 'length', 'max'=>45),
+            array('NombreDependencia', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('NombreDependencia','unique','message'=>'{value} ya existe.'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodDependencia, NombreDependencia', 'safe', 'on'=>'search'),

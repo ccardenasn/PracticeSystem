@@ -80,9 +80,16 @@ class CentropracticaController extends Controller
                 
                 $model->attributes=$_POST['Centropractica'];
                 
+                $rnd = rand(0,9999);
+                $image=CUploadedFile::getInstance($model,'ImagenCentroPractica');
+                $imageName = "{$rnd}-{$image}";
+                
+                if($image != null){
+                    $model->ImagenCentroPractica = $imageName;
+                }
+                
                 //se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
                 $file=$model->AnexoProtocolo=CUploadedFile::getInstance($model,'AnexoProtocolo');
-                $image=$model->ImagenCentroPractica=CUploadedFile::getInstance($model,'ImagenCentroPractica');
                 $exist = contains($table,$codTable,$model->RBD);
                 
                 if($exist == 0){
@@ -102,7 +109,7 @@ class CentropracticaController extends Controller
                         
                         if($image != null){
                             if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
-                                $model->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+                                $image->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$imageName);
                             }else{
                                 deleteData($table,$codTable,$model->RBD);
                                 Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
@@ -151,10 +158,18 @@ class CentropracticaController extends Controller
 		if(isset($_POST['Centropractica']))
 		{
 			$model->attributes=$_POST['Centropractica'];
+            
+            
+            $rnd = rand(0,9999);
+                $image=CUploadedFile::getInstance($model,'ImagenCentroPractica');
+                $imageName = "{$rnd}-{$image}";
+                
+                if($image != null){
+                    $model->ImagenCentroPractica = $imageName;
+                }
 			
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
 			$file=$model->AnexoProtocolo=CUploadedFile::getInstance($model,'AnexoProtocolo');
-			$image=$model->ImagenCentroPractica=CUploadedFile::getInstance($model,'ImagenCentroPractica');
 			
 			if($model->save()){
 				if($file != null){
@@ -172,7 +187,7 @@ class CentropracticaController extends Controller
 				if($image != null){
 					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenCentroPractica->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$image->getName());
+						$image->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$imageName);
 					}else{
 						Yii::app()->user->setFlash('mensaje','Solo archivos jpg por favor');
 						$this->refresh();

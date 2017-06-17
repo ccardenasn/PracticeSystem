@@ -78,14 +78,19 @@ class SecretariacarreraController extends Controller
                 
                 $model->attributes=$_POST['Secretariacarrera'];
                 
-                //se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-                $file=$model->ImagenSecretaria=CUploadedFile::getInstance($model,'ImagenSecretaria');
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($model,'ImagenSecretaria');
+                $fileName = "{$rnd}-{$file}";
+                
+                if($file != null){
+                    $model->ImagenSecretaria = $fileName;
+                }
                 
                 if($model->save()){
                     if($file != null){
                         if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
                             //se guarda la ruta de la imagen
-                            $model->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
+                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$fileName);
                         }else{
                             Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
                             $this->refresh();
@@ -124,14 +129,19 @@ class SecretariacarreraController extends Controller
 		{
 			$model->attributes=$_POST['Secretariacarrera'];
 			
-			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$file=$model->ImagenSecretaria=CUploadedFile::getInstance($model,'ImagenSecretaria');
+			$rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($model,'ImagenSecretaria');
+            $fileName = "{$rnd}-{$file}";
+            
+            if($file != null){
+                $model->ImagenSecretaria = $fileName;
+            }
 			
-			if($model->save()){
+            if($model->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$model->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$fileName);
 					}else{
 						Yii::app()->user->setFlash('mensaje','Solo archivos pdf por favor');
 						$this->refresh();

@@ -40,6 +40,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutProfCoordGuiaCp, NombreProfCoordGuiaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutProfCoordGuiaCp','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutProfCoordGuiaCp, NombreProfCoordGuiaCP, MailProfCoordGuiaCP, TelefonoProfCoordGuiaCP, CelularProfCoordGuiaCP, ImagenProfCoordGuiaCP', 'length', 'max'=>45),
 			// The following rule is used by search().
