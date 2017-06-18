@@ -40,7 +40,6 @@ class Jefeutpcp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutJefeUTPCP, NombreJefeUTPCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutJefeUTPCP','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutJefeUTPCP, NombreJefeUTPCP, MailJefeUTPCP, TelefonoJefeUTPCP, CelularJefeUTPCP, ImagenJefeUTPCP', 'length', 'max'=>45),
 			// The following rule is used by search().
@@ -49,11 +48,13 @@ class Jefeutpcp extends CActiveRecord
             array('ImagenJefeUTPCP','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenJefeUTPCP','safe','on'=>'update'),
             array('RutJefeUTPCP','valrut'),
+            array('RutJefeUTPCP','valuniquerut','on'=>'insert'),
             array('NombreJefeUTPCP','valnombre'),
             array('MailJefeUTPCP','valcorreo'),
             array('TelefonoJefeUTPCP','valtelefono'),
             array('CelularJefeUTPCP','valcelular'),
-            array('CentroPractica_RBD','valcentro'),
+            array('CentroPractica_RBD','valcentro','on'=>'insert'),
+            array('CentroPractica_RBD','valcentroupdate','on'=>'update')
 		);
 	}
 
@@ -162,6 +163,18 @@ class Jefeutpcp extends CActiveRecord
 	{
 		if(jefevalido($this->CentroPractica_RBD)==false)
 		$this->addError('CentroPractica_RBD','este centro ya contiene un jefe utp asignado');
+	}
+    
+    public function valcentroupdate($attribute,$params)
+	{
+		if(jefeupdatevalido($this->CentroPractica_RBD,$this->RutJefeUTPCP)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene una secretaria asignada');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutJefeUTPCP)==true)
+		$this->addError('RutJefeUTPCP','Este número de RUT ya existe.');
 	}
 	
 	public function getAdmins(){

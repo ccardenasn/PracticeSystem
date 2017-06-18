@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Jefe UTP CP <?php echo $model->NombreJefeUTPCP; ?></h1><br>
+<h1>Modificar Jefe UTP CP: <?php echo $model->NombreJefeUTPCP; ?></h1><br>
 	
 <div class="collapse">
 	<h3>Ayuda</h3>

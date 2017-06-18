@@ -39,7 +39,6 @@ class Docenteresponsablepractica extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutResponsable, NombreResponsable, ClaveResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutResponsable','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('RutResponsable, NombreResponsable, ClaveResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -47,6 +46,7 @@ class Docenteresponsablepractica extends CActiveRecord
             array('ImagenResponsable','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenResponsable','safe','on'=>'update'),
             array('RutResponsable','valrut'),
+            array('RutResponsable','valuniquerut','on'=>'insert'),
             array('NombreResponsable','valnombre'),
             array('MailResponsable','valcorreo'),
             array('TelefonoResponsable','valtelefono'),
@@ -158,6 +158,12 @@ class Docenteresponsablepractica extends CActiveRecord
 		return $password===$this->ClaveResponsable;	
 	}
 	
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutResponsable)==true)
+		$this->addError('RutResponsable','Este número de RUT ya existe.');
+	}
+    
 	public function getAdmins(){
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas";

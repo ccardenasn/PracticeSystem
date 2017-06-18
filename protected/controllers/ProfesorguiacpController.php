@@ -74,44 +74,43 @@ class ProfesorguiacpController extends Controller
 		$table = "profesorguiacp";
 		$codTable = "RutProfGuiaCp";
 		
-		if(isset($_POST['Profesorguiacp']))
-		{
-			$model->attributes=$_POST['Profesorguiacp'];
-			
-            $rnd = rand(0,9999);
-            $file=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
-            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+        $empty = isEmpty("centropractica");
+        
+        if($empty == false){
             
-            if($file != null){
-                $model->ImagenProfGuiaCP = $fileName;
+            if(isset($_POST['Profesorguiacp'])){
+                
+                $model->attributes=$_POST['Profesorguiacp'];
+                
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
+                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+                
+                if($file != null){
+                    $model->ImagenProfGuiaCP = $fileName;
+                }
+                
+                if($model->save()){
+                    if($file != null){
+                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
+                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$fileName);
+                        }else{
+                            deleteData($table,$codTable,$model->RutProfGuiaCP);
+                        Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+                        $this->refresh();
+                    }
+                }
+                $this->redirect(array('view','id'=>$model->RutProfGuiaCP));
             }
-            
-			
-			$exist = contains($table,$codTable,$model->RutProfGuiaCP);
-			
-			if($exist == 0){
-				if($model->save()){
-					if($file != null){
-						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenProfesoresGuiaCP/".$fileName);
-						}else{
-							deleteData($table,$codTable,$model->RutProfGuiaCP);
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}
-					}
-					$this->redirect(array('view','id'=>$model->RutProfGuiaCP));
-				}	
-			}else{
-				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutProfGuiaCP." ya está registrado.</li></ul></div>");
-				$this->refresh();
-			}
-			
-			
-		}
+        }
 		$this->render('create',array(
 			'model'=>$model,
 		));
+        
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir Profesor Guía CP en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Centros de Práctica</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
 	}
 
 	/**

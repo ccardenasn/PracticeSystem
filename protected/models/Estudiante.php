@@ -53,7 +53,7 @@ class Estudiante extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutEstudiante','unique','message'=>'El número de {attribute} {value} ya existe.'),
+            array('RutEstudiante','unique','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
 			array('ObservacionEstudiante', 'safe'),
@@ -68,6 +68,7 @@ class Estudiante extends CActiveRecord
             array('MailEstudiante','valcorreo'),
             array('FechaIncorporacion','valnumeros'),
             array('RutEstudiante','valrut'),
+            array('RutEstudiante','valuniquerut','on'=>'insert'),
             array('CentroPractica_RBD','valcentro'),
 		);
 	}
@@ -204,6 +205,18 @@ class Estudiante extends CActiveRecord
 	{
 		if(centrovalido($this->CentroPractica_RBD)==false)
 		$this->addError('CentroPractica_RBD','este centro no contiene profesores asignados');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutEstudiante)==true)
+		$this->addError('RutEstudiante','Este número de RUT ya existe.');
+	}
+    
+    public function valuniquerutupdate($attribute,$params)
+	{
+		if(uniquerutupdate($this->RutEstudiante)==true)
+		$this->addError('RutEstudiante','Este número de RUT ya existe.');
 	}
     
     public function validatePassword($password){

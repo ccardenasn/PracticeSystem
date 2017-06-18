@@ -46,6 +46,7 @@ class Secretariacarrera extends CActiveRecord
 			 array('ImagenSecretaria','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenSecretaria','safe','on'=>'update'),
             array('RutSecretaria','valrut'),
+            array('RutSecretaria','valuniquerut','on'=>'insert'),
             array('NombreSecretaria','valnombre'),
             array('MailSecretaria','valcorreo'),
             array('TelefonoSecretaria','valtelefono'),
@@ -151,6 +152,12 @@ class Secretariacarrera extends CActiveRecord
 	{
 		if(numerovalido($this->CelularSecretaria)==false)
 		$this->addError('CelularSecretaria','Celular no válido');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutSecretaria)==true)
+		$this->addError('RutSecretaria','Este número de RUT ya existe.');
 	}
 	
 	public function getAdmins(){

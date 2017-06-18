@@ -36,7 +36,6 @@ class Directorcarrera extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutDirector, NombreDirector, ClaveDirector', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutDirector','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('RutDirector, NombreDirector, ClaveDirector, MailDirector, TelefonoDirector, CelularDirector, ImagenDirector', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -44,10 +43,12 @@ class Directorcarrera extends CActiveRecord
             array('ImagenDirector','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenDirector','safe','on'=>'update'),
             array('RutDirector','valrut'),
+            array('RutDirector','valuniquerut','on'=>'insert'),
             array('NombreDirector','valnombre'),
             array('MailDirector','valcorreo'),
             array('TelefonoDirector','valtelefono'),
             array('CelularDirector','valcelular'),
+            
 		);
 	}
 
@@ -148,6 +149,12 @@ class Directorcarrera extends CActiveRecord
 	{
 		if(numerovalido($this->CelularDirector)==false)
 		$this->addError('CelularDirector','Celular no válido');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutDirector)==true)
+		$this->addError('RutDirector','Este número de RUT ya existe.');
 	}
     
     public function validatePassword($password){

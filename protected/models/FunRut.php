@@ -59,6 +59,56 @@ function rutvalido($rut){
     return $esRut;
 }
 
+function uniquerut($rut){
+    $exist = false;
+    
+    $studentModel = Estudiante::model()->find('RutEstudiante=?',array($rut));
+    $directorModel = Directorcarrera::model()->find('RutDirector=?',array($rut));
+    $coordinadorModel = Docentecoordinadorpracticas::model()->find('RutCoordinador=?',array($rut));
+    $responsableModel = Docenteresponsablepractica::model()->find('RutResponsable=?',array($rut));
+    $secretariaModel = Secretariacarrera::model()->find('RutSecretaria=?',array($rut));
+    $secretariacpModel = Secretariacp::model()->find('RutSecretariaCP=?',array($rut));
+    $directorcpModel = Directorcp::model()->find('RutDirectorCP=?',array($rut));
+    $jefetutpcpModel = Jefeutpcp::model()->find('RutJefeUTPCP=?',array($rut));
+    $profesorcoordinadorcpModel = Profesorcoordinadorpracticacp::model()->find('RutProfCoordGuiaCp=?',array($rut));
+    $profesorguiacpModel = Profesorguiacp::model()->find('RutProfGuiaCP=?',array($rut));
+    
+    if($studentModel != null || $directorModel != null || $coordinadorModel != null || $responsableModel != null || $secretariaModel != null || $secretariacpModel != null || $directorcpModel != null || $jefetutpcpModel != null || $profesorcoordinadorcpModel != null || $profesorguiacpModel != null){
+        $exist = true;
+    }else{
+        $exist = false;
+    }
+    
+    return $exist;
+}
+
+function uniquerutupdate($rut){
+    $exist = false;
+    
+    $studentModel = Estudiante::model()->find('RutEstudiante=?',array($rut));
+    $directorModel = Directorcarrera::model()->find('RutDirector=?',array($rut));
+    $coordinadorModel = Docentecoordinadorpracticas::model()->find('RutCoordinador=?',array($rut));
+    $responsableModel = Docenteresponsablepractica::model()->find('RutResponsable=?',array($rut));
+    $secretariaModel = Secretariacarrera::model()->find('RutSecretaria=?',array($rut));
+    $secretariacpModel = Secretariacp::model()->find('RutSecretariaCP=?',array($rut));
+    $directorcpModel = Directorcp::model()->find('RutDirectorCP=?',array($rut));
+    $jefetutpcpModel = Jefeutpcp::model()->find('RutJefeUTPCP=?',array($rut));
+    $profesorcoordinadorcpModel = Profesorcoordinadorpracticacp::model()->find('RutProfCoordGuiaCp=?',array($rut));
+    $profesorguiacpModel = Profesorguiacp::model()->find('RutProfGuiaCP=?',array($rut));
+    
+    
+    
+    
+    if($studentModel != null || $directorModel != null || $coordinadorModel != null || $responsableModel != null || $secretariaModel != null || $secretariacpModel != null || $directorcpModel != null || $jefetutpcpModel != null || $profesorcoordinadorcpModel != null || $profesorguiacpModel != null){
+           $exist = true; 
+        
+    }else{
+        $exist = false;
+    }
+    
+    return $exist;
+}
+
 
 
 

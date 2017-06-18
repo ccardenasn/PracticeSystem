@@ -40,7 +40,6 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutProfCoordGuiaCp, NombreProfCoordGuiaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutProfCoordGuiaCp','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutProfCoordGuiaCp, NombreProfCoordGuiaCP, MailProfCoordGuiaCP, TelefonoProfCoordGuiaCP, CelularProfCoordGuiaCP, ImagenProfCoordGuiaCP', 'length', 'max'=>45),
 			// The following rule is used by search().
@@ -49,11 +48,13 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
             array('ImagenProfCoordGuiaCP','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenProfCoordGuiaCP','safe','on'=>'update'),
             array('RutProfCoordGuiaCp','valrut'),
+            array('RutProfCoordGuiaCp','valuniquerut','on'=>'insert'),
             array('NombreProfCoordGuiaCP','valnombre'),
             array('MailProfCoordGuiaCP','valcorreo'),
             array('TelefonoProfCoordGuiaCP','valtelefono'),
             array('CelularProfCoordGuiaCP','valcelular'),
-            array('CentroPractica_RBD','valcentro'),
+            array('CentroPractica_RBD','valcentro','on'=>'insert'),
+            array('CentroPractica_RBD','valcentroupdate','on'=>'update')
 		);
 	}
 
@@ -162,6 +163,18 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 	{
 		if(profesorcoordinadorvalido($this->CentroPractica_RBD)==false)
 		$this->addError('CentroPractica_RBD','este centro ya contiene un profesor coordinador asignado');
+	}
+    
+    public function valcentroupdate($attribute,$params)
+	{
+		if(profesorcoordinadorupdatevalido($this->CentroPractica_RBD,$this->RutProfCoordGuiaCp)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene una secretaria asignada');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutProfCoordGuiaCp)==true)
+		$this->addError('RutProfCoordGuiaCp','Este número de RUT ya existe.');
 	}
 	
 	public function getAdmins(){

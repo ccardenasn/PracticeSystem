@@ -40,7 +40,6 @@ class Directorcp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutDirectorCP, NombreDirectorCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutDirectorCP','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutDirectorCP, NombreDirectorCP, MailDirectorCP, TelefonoDirectorCP, CelularDirectorCP, ImagenDirectorCP', 'length', 'max'=>45),
 			// The following rule is used by search().
@@ -49,11 +48,13 @@ class Directorcp extends CActiveRecord
             array('ImagenDirectorCP','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenDirectorCP','safe','on'=>'update'),
             array('RutDirectorCP','valrut'),
+            array('RutDirectorCP','valuniquerut','on'=>'insert'),
             array('NombreDirectorCP','valnombre'),
             array('MailDirectorCP','valcorreo'),
             array('TelefonoDirectorCP','valtelefono'),
             array('CelularDirectorCP','valcelular'),
-            array('CentroPractica_RBD','valcentro'),
+            array('CentroPractica_RBD','valcentro','on'=>'insert'),
+            array('CentroPractica_RBD','valcentroupdate','on'=>'update'),
 		);
 	}
 
@@ -162,6 +163,18 @@ class Directorcp extends CActiveRecord
 	{
 		if(directorvalido($this->CentroPractica_RBD)==false)
 		$this->addError('CentroPractica_RBD','este centro ya contiene un director asignado');
+	}
+    
+    public function valcentroupdate($attribute,$params)
+	{
+		if(directorupdatevalido($this->CentroPractica_RBD,$this->RutDirectorCP)==false)
+		$this->addError('CentroPractica_RBD','este centro ya contiene una secretaria asignada');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutDirectorCP)==true)
+		$this->addError('RutDirectorCP','Este número de RUT ya existe.');
 	}
 	
 	public function getAdmins(){

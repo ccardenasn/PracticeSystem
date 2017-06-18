@@ -43,13 +43,13 @@ class Profesorguiacp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('RutProfGuiaCP','unique','message'=>'El número de {attribute} {value} ya existe.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, ImagenProfGuiaCP', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, CentroPractica_RBD, ImagenProfGuiaCP', 'safe', 'on'=>'search'),
 			array('RutProfGuiaCP','valrut'),
+            array('RutProfGuiaCP','valuniquerut','on'=>'insert'),
             array('NombreProfGuiaCP','valnombre'),
             array('MailProfGuiaCP','valcorreo'),
             array('TelefonoProfGuiaCP','valtelefono'),
@@ -162,6 +162,12 @@ class Profesorguiacp extends CActiveRecord
 	{
 		if(numerovalido($this->CelularProfGuiaCP)==false)
 		$this->addError('CelularProfGuiaCP','Celular no válido');
+	}
+    
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutProfGuiaCP)==true)
+		$this->addError('RutProfGuiaCP','Este número de RUT ya existe.');
 	}
 	
 	public function getAdmins(){

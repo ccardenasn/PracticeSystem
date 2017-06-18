@@ -46,6 +46,7 @@ class Docentecoordinadorpracticas extends CActiveRecord
             array('ImagenCoordinador','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenCoordinador','safe','on'=>'update'),
             array('RutCoordinador','valrut'),
+            array('RutCoordinador','valuniquerut','on'=>'insert'),
             array('NombreCoordinador','valnombre'),
             array('MailCoordinador','valcorreo'),
             array('TelefonoCoordinador','valtelefono'),
@@ -157,6 +158,12 @@ class Docentecoordinadorpracticas extends CActiveRecord
 		return $password===$this->ClaveCoordinador;	
 	}
 	
+    public function valuniquerut($attribute,$params)
+	{
+		if(uniquerut($this->RutCoordinador)==true)
+		$this->addError('RutCoordinador','Este número de RUT ya existe.');
+	}
+    
 	public function getAdmins(){
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas";

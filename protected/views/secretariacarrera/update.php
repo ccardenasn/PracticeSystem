@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modificar Secretaria de Carrera <?php echo $model->NombreSecretaria; ?></h1><br>
+<h1>Modificar Secretaria de Carrera: <?php echo $model->NombreSecretaria; ?></h1><br>
 
 <div class="collapse">
     <h3>Ayuda</h3>
