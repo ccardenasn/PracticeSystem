@@ -43,6 +43,18 @@ class Profesorguiacp extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutProfGuiaCP','unique','className'=>'Profesorguiacp','attributeName'=>'RutProfGuiaCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+             array('RutProfGuiaCP','unique','className'=>'DirectorCarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Secretariacarrera','attributeName'=>'RutSecretaria','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Docenteresponsablepractica','attributeName'=>'RutResponsable','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            
+            array('RutProfGuiaCP','unique','className'=>'Directorcp','attributeName'=>'RutDirectorCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Secretariacp','attributeName'=>'RutSecretariaCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Jefeutpcp','attributeName'=>'RutJefeUTPCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutProfGuiaCP','unique','className'=>'Profesorcoordinadorpracticacp','attributeName'=>'RutProfCoordGuiaCp','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, ImagenProfGuiaCP', 'length', 'max'=>45),
 			// The following rule is used by search().
@@ -54,6 +66,7 @@ class Profesorguiacp extends CActiveRecord
             array('MailProfGuiaCP','valcorreo'),
             array('TelefonoProfGuiaCP','valtelefono'),
             array('CelularProfGuiaCP','valcelular'),
+            array('CentroPractica_RBD','unique','className'=>'Profesorguiacp','attributeName'=>'CentroPractica_RBD','message'=>'este centro ya tiene una secretaria asignada','on'=>'update'),
 		);
 	}
 

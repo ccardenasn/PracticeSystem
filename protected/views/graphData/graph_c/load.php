@@ -26,7 +26,7 @@ var actionPDF = '<?php echo Yii::app()->createUrl('graphdata/pdf'); ?>';
         
         include('ForceUTF/Encoding.php');
         
-        $sqlb = "select RBD,NombreCentroPractica from ((((centropractica inner join estudiante on centropractica.RBD = estudiante.CentroPractica_RBD) inner join planificacionclase on estudiante.RutEstudiante = planificacionclase.Estudiante_RutEstudiante) inner join bitacorasesion on planificacionclase.CodPlanificacion = bitacorasesion.PlanificacionClase_CodPlanificacion) inner join clasebitacorasesion on bitacorasesion.CodBitacora = clasebitacorasesion.BitacoraSesion_CodBitacora) group by RBD;";
+        $sqlb = "select RBD,NombreCentroPractica from centropractica inner join planificacionclase on centropractica.RBD = planificacionclase.CentroPractica_RBD inner join bitacorasesion on planificacionclase.CodPlanificacion = bitacorasesion.PlanificacionClase_CodPlanificacion inner join clasebitacorasesion on bitacorasesion.CodBitacora = clasebitacorasesion.BitacoraSesion_CodBitacora group by RBD";
         
         $st = mysql_query($sqlb,$con);
         

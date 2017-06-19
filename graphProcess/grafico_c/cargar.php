@@ -30,7 +30,7 @@ group by planificacionclase.ConfiguracionPractica_NombrePractica;";*/
 		$querydata = "select sum(clasebitacorasesion.NumeroAlumnosClase),
 planificacionclase.ConfiguracionPractica_NombrePractica,
 planificacionclase.CentroPractica_RBD
-from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.BitacoraSesion_CodBitacora = BitacoraSesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
+from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.BitacoraSesion_CodBitacora = bitacorasesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
 group by planificacionclase.ConfiguracionPractica_NombrePractica;";
 		$execquery = mysql_query($querydata,$con);
 		
