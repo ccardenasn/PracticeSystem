@@ -6,6 +6,7 @@ include_once 'FunCorreo.php';
 include_once 'FunNumeros.php';
 include_once 'FunRut.php';
 include_once 'FunCentro.php';
+include_once 'FunClave.php';
 /**
  * This is the model class for table "estudiante".
  *
@@ -39,6 +40,8 @@ class Estudiante extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+    public $ConfirmClaveEstudiante;
+    
 	public function tableName()
 	{
 		return 'estudiante';
@@ -52,7 +55,10 @@ class Estudiante extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutEstudiante, NombreEstudiante, ClaveEstudiante,ConfirmClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+                        // compare password to repeated password
+            array('ConfirmClaveEstudiante', 'compare','operator'=>'==','compareAttribute'=>'ClaveEstudiante','allowEmpty'=>false),
+            array('ConfirmClaveEstudiante', 'safe'),
             array('RutEstudiante','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'DirectorCarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -79,6 +85,7 @@ class Estudiante extends CActiveRecord
             array('RutEstudiante','valrut'),
             array('RutEstudiante','valuniquerut','on'=>'insert'),
             array('CentroPractica_RBD','valcentro'),
+            //array('ClaveEstudiante','valclave'),
 		);
 	}
 
@@ -99,6 +106,8 @@ class Estudiante extends CActiveRecord
 			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'Estudiante_RutEstudiante'),
 		);
 	}
+    
+    
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -108,7 +117,7 @@ class Estudiante extends CActiveRecord
 		return array(
 			'RutEstudiante' => 'Rut',
 			'NombreEstudiante' => 'Nombre',
-			'ClaveEstudiante' => 'Clave',
+			'ClaveEstudiante' => 'Contraseña',
 			'FechaIncorporacion' => 'Año de Incorporación',
 			'Mencion_NombreMencion' => 'Mención',
 			'MailEstudiante' => 'Correo',
@@ -122,9 +131,17 @@ class Estudiante extends CActiveRecord
 			'ImagenEstudiante' => 'Imagen',
 			'SituacionFinalEstudiante' => 'Situación Final',
 			'ObservacionEstudiante' => 'Observación',
+            'ConfirmClaveEstudiante' => 'Confirmar Contraseña'
 		);
 	}
 
+    public function safeAttributes()
+        {
+                return array(
+                        'ClaveEstudiante,ConfirmClaveEstudiante',
+                );
+        }
+    
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -226,6 +243,12 @@ class Estudiante extends CActiveRecord
 	{
 		if(uniquerutupdate($this->RutEstudiante)==true)
 		$this->addError('RutEstudiante','Este número de RUT ya existe.');
+	}
+    
+    public function valclave($attribute,$params)
+	{
+		if(clavevalida($this->ClaveEstudiante,$this->ConfirmClaveEstudiante)==false)
+		$this->addError('ClaveEstudiante','Debe repetir la contraseña correctamente.');
 	}
     
     public function validatePassword($password){

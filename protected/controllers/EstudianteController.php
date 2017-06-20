@@ -1,6 +1,7 @@
 <?php
 include_once('bitacoraFunctions.php');
 include_once('mainFunctions.php');
+include_once('FunSendMail.php');
 
 class EstudianteController extends Controller
 {
@@ -97,6 +98,7 @@ class EstudianteController extends Controller
                             $this->refresh();
                         }
                     }
+                    sendPassword($model->MailEstudiante,"Nuevo Usuario",$model->RutEstudiante,$model->NombreEstudiante,$model->ClaveEstudiante);
                     $this->redirect(array('view','id'=>$model->RutEstudiante));
                 }
             }
