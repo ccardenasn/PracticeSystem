@@ -55,7 +55,7 @@ $ask = new UserIdentity('','');
                           array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Secretaria','url'=>array('/secretariacarrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Docente Responsable de Practica','url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica'),'visible'=>$ask->isAdmins()),
+                          //array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Horario','url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Estadísticas', 'url'=>array('/graphdata'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Dependencias', 'url'=>array('/dependencia'),'visible'=>$ask->isAdmins()),
@@ -68,7 +68,7 @@ $ask = new UserIdentity('','');
                           //array('label'=>'Centro de Prácticas','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Centro de Prácticas',
                                 'items'=>array(
-                                    array('label'=>'Centro de Prácticas Form 1','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
+                                    //array('label'=>'Centro de Prácticas Form 1','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
                                     array('label'=>'Centro de Prácticas Form 2','url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
                                 )),
                           array('label'=>'Secretaria CP','url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),

@@ -66,7 +66,6 @@ class Profesorguiacp extends CActiveRecord
             array('MailProfGuiaCP','valcorreo'),
             array('TelefonoProfGuiaCP','valtelefono'),
             array('CelularProfGuiaCP','valcelular'),
-            array('CentroPractica_RBD','unique','className'=>'Profesorguiacp','attributeName'=>'CentroPractica_RBD','message'=>'este centro ya tiene una secretaria asignada','on'=>'update'),
 		);
 	}
 

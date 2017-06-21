@@ -1,50 +1,42 @@
 <?php
 
 function sendPassword($destino,$asunto,$rut,$nombre,$clave){
-    include("phpmailer/class.phpmailer.php");
-    include("phpmailer/class.smtp.php");
+    //date_default_timezone_set('America/Santiago');
     
-    $html="<html><meta http-equiv='Content-type' content='text/html;charset=UTF-8'></meta><body><p>Esto es un email enviado de forma automatica. Por favor no responder. Gracias</p>
-        <p><b>Se ha creado su usuario</b></p>
-        <p><b></b></p>
-        <table width='100%' border='1' cellpadding='0' cellspacing='0'>
-		<tr>
-			<th>Rut</th>
-			<th>Nombre</th>
-			<th>Clave</th>
-		</tr>
-			<tr>
-				<td align='center'>".$rut."</td>
-				<td align='center'>".$nombre."</td>
-				<td align='center'>".$clave."</td>
-			</tr>
-		</table>
-</body>
-</html>";
+    //metodo para enviar mail desde servidor
+    /*$html="<html><body><p>Esto es un email enviado de forma automatica. Por favor no responder. Gracias</p><p><b>Se ha creado su usuario</b></p><p><b></b></p><table width='100%' border='1' cellpadding='0' cellspacing='0'><tr><th>Rut</th><th>Nombre</th><th>Clave</th></tr><tr><td align='center'>".$rut."</td><td align='center'>".$nombre."</td><td align='center'>".$clave."</td></tr></table></body></html>";
+    
+    $para = $destino;
+    $titulo = $asunto;
+    $mensaje = wordwrap($html, 70, "\r\n");
+    
+    // Para enviar un correo HTML, debe establecerse la cabecera Content-type
+    $cabeceras = "MIME-Version: 1.0" . "\r\n";
+    $cabeceras .= "Content-type: text/html; charset=UTF-8"."\r\n";
+    
+    //Cabeceras adicionales
+    $cabeceras .= "To: ".$nombre." <".$destino.">"."\r\n";
+    $cabeceras .= "From: Pedagogía en Educación Básica"."\r\n";
+    
+    mail($para, $titulo, $mensaje, $cabeceras);*/
+    
 
-$query = $html;
-	
-	$mail = new PHPMailer();
-	$mail->IsSMTP();
-	$mail->SMTPAuth = true;
-	$mail->SMTPSecure = "ssl";
-	$mail->Host = "smtp.gmail.com";
-	$mail->Port = 465;
-	$mail->Username = "cardenasn.desarrollo@gmail.com";
-	$mail->Password = "Prueba201";
-	
-	$mail->From = "cardenasn.desarrollo@gmail.com";
-	$mail->FromName = "Escuela de Pedagogía en Educación Básica";
-	$mail->Subject = $asunto;
-	$mail->MsgHTML($query);
-	$mail->AddAddress($destino,$nombre);
-	$mail->IsHTML(true);
-    $mail->CharSet = "UTF-8";
-	if(!$mail->Send()){
-		echo "Error:".$mail->ErrorInfo;
-	}else{
-		echo "Mensaje Enviado Correctamente</br>";	
-	}
+    //metodo para enviar mail desde localhost
+    Yii::import('application.extensions.phpmailer.JPhpMailer');
+    $mail = new JPhpMailer;
+    $mail->IsSMTP();
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPSecure = "ssl";
+    $mail->SMTPAuth = true;
+    $mail->Username = "cardenasn.desarrollo@gmail.com";
+    $mail->Password = "Prueba201";
+    $mail->Port = 465;
+    $mail->SetFrom("cardenasn.desarrollo@gmail.com", 'Christian');
+    $mail->Subject = 'PHPMailer Test Subject via smtp, basic with authentication';
+    $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+    $mail->MsgHTML('<h1>JUST A TEST!</h1>');
+    $mail->AddAddress($destino,$nombre);
+    $mail->Send();
 }
 
 
