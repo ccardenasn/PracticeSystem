@@ -2,6 +2,8 @@
 /* @var $this JefeutpcpController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Jefe UTP CP";
+
 $this->breadcrumbs=array(
 	'Jefe UTP CP',
 );

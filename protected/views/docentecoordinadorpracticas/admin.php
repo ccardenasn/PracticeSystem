@@ -2,6 +2,8 @@
 /* @var $this DocentecoordinadorpracticasController */
 /* @var $model Docentecoordinadorpracticas */
 
+$this->pageTitle= Yii::app()->name." - "."Administración";
+
 $this->breadcrumbs=array(
 	'Docente Coordinador de Practicas'=>array('index'),
 	'Administrar',

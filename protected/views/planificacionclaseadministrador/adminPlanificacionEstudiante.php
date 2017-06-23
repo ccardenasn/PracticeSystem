@@ -2,6 +2,8 @@
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
+$this->pageTitle= Yii::app()->name." - "."Administración";
+
 $id=Yii::app()->request->getQuery('id');
 $studentData=Estudiante::model()->find('RutEstudiante=?',array($id));
 

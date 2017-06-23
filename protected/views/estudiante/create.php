@@ -3,6 +3,8 @@
 /* @var $this EstudianteController */
 /* @var $model Estudiante */
 
+$this->pageTitle= Yii::app()->name." - "."Añadir";
+
 $this->breadcrumbs=array(
 	'Estudiantes'=>array('index'),
 	'Añadir',

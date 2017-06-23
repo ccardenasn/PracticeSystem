@@ -112,7 +112,7 @@ class MencionController extends Controller
 		{
 			$model->attributes=$_POST['Mencion'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->attributes=$_POST['Mencion']['NombreMencion']));
+				$this->redirect(array('view','id'=>$model->NombreMencion));
 		}
 
 		$this->render('update',array(

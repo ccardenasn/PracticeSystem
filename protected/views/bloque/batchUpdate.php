@@ -2,6 +2,8 @@
 /* @var $this BloqueController */
 /* @var $model Bloque */
 
+$this->pageTitle= Yii::app()->name." - "."Asignar Horas";
+
 $this->breadcrumbs=array(
 	'Horarios'=>array('horarioadmin/index'),
 	'Asignar Horas',

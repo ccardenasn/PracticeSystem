@@ -1,4 +1,4 @@
-Profesores Guías por centro
-Centro de Práctica
-Número de Profesores
-Permite visualizar la cantidad de profesores guias existentes en cada centro de práctica.
+Estudiantes según tipo de práctica
+Nombre de Práctica
+Número de Estudiantes
+Indica la distribución de estudiantes según la práctica que realiza en cada centro.

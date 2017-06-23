@@ -2,6 +2,8 @@
 /* @var $this PerfildocentecoordinadorpracticasController */
 /* @var $model Perfildocentecoordinadorpracticas */
 
+ $this->pageTitle= Yii::app()->name." - "."Pefil";
+
 $this->breadcrumbs=array(
 	$model->RutCoordinador,
 );

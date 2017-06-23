@@ -2,6 +2,8 @@
 /* @var $this SemestreController */
 /* @var $model Semestre */
 
+$this->pageTitle= Yii::app()->name." - "."Detalles";
+
 $this->breadcrumbs=array(
 	'Semestres'=>array('index'),
 	$model->NombreSemestre,

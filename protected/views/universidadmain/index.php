@@ -2,6 +2,8 @@
 /* @var $this UniversidadmainController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Universidad";
+
 $this->breadcrumbs=array(
 	'Universidad',
 );

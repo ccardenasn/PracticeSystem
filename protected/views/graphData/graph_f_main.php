@@ -1,3 +1,5 @@
+<?php $this->pageTitle= Yii::app()->name." - "."Gráficos"; ?>
+
 <body onload="javascript:setSelectOption();">
 <h1><label id="graphTitleLabel">Profesores Guías por centro</label><label id="titleLabel" style="display:none">placeholder</label></h1><br>
 

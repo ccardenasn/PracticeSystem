@@ -2,6 +2,8 @@
 /* @var $this AsignaturaController */
 /* @var $model Asignatura */
 
+$this->pageTitle= Yii::app()->name." - "."Añadir";
+
 $this->breadcrumbs=array(
 	'Asignaturas'=>array('index'),
 	'Añadir',

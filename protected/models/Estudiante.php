@@ -60,7 +60,7 @@ class Estudiante extends CActiveRecord
             array('ConfirmClaveEstudiante', 'compare','operator'=>'==','compareAttribute'=>'ClaveEstudiante','allowEmpty'=>false),
             array('ConfirmClaveEstudiante', 'safe'),
             array('RutEstudiante','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
-            array('RutEstudiante','unique','className'=>'DirectorCarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+            array('RutEstudiante','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Secretariacarrera','attributeName'=>'RutSecretaria','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Docenteresponsablepractica','attributeName'=>'RutResponsable','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -78,14 +78,15 @@ class Estudiante extends CActiveRecord
 			array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
             array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar
 			array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
-            array('TelefonoEstudiante','valtelefono'),//permite el uso de metodo valtelefono
-            array('CelularEstudiante','valcelular'),
             array('MailEstudiante','valcorreo'),
             array('FechaIncorporacion','valnumeros'),
             array('RutEstudiante','valrut'),
             array('RutEstudiante','valuniquerut','on'=>'insert'),
             array('CentroPractica_RBD','valcentro'),
-            //array('ClaveEstudiante','valclave'),
+            //array('TelefonoEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
+            array('CelularEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
+            array('TelefonoEstudiante','valtelefono'),
+            array('CelularEstudiante','valclave'),
 		);
 	}
 

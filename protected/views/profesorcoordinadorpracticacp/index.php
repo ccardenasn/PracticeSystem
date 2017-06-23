@@ -2,6 +2,8 @@
 /* @var $this ProfesorcoordinadorpracticacpController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Profesor Coordinador de Prácticas CP";
+
 $this->breadcrumbs=array(
 	'Profesor Coordinador de Practicas CP',
 );

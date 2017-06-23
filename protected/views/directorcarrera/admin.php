@@ -2,6 +2,8 @@
 /* @var $this DirectorcarreraController */
 /* @var $model Directorcarrera */
 
+$this->pageTitle= Yii::app()->name." - "."Administración";
+
 $this->breadcrumbs=array(
 	'Director de Carrera'=>array('index'),
 	'Administración',

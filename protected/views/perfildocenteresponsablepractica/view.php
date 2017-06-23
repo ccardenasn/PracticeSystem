@@ -2,6 +2,8 @@
 /* @var $this PerfildocenteresponsablepracticaController */
 /* @var $model Perfildocenteresponsablepractica */
 
+$this->pageTitle= Yii::app()->name." - "."Perfil";
+
 $this->breadcrumbs=array(
 	$model->RutResponsable,
 );

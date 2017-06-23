@@ -2,6 +2,8 @@
 /* @var $this MencionController */
 /* @var $model Mencion */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Menciones'=>array('index'),
 	$model->NombreMencion=>array('view','id'=>$model->NombreMencion),

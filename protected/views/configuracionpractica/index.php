@@ -2,6 +2,8 @@
 /* @var $this ConfiguracionpracticaController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Configuración de Práctica";
+
 $this->breadcrumbs=array(
 	'Configuración de Prácticas',
 );

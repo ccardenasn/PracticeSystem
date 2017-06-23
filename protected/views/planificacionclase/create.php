@@ -2,7 +2,9 @@
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
- $id=Yii::app()->user->name;
+$this->pageTitle= Yii::app()->name." - "."Añadir";
+
+$id=Yii::app()->user->name;
 
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),

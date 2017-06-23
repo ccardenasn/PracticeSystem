@@ -2,6 +2,8 @@
 /* @var $this EstudianteController */
 /* @var $model Estudiante */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Estudiantes'=>array('index'),
 	$model->RutEstudiante=>array('view','id'=>$model->RutEstudiante),

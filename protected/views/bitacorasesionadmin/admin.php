@@ -3,6 +3,8 @@ include_once('planificacion.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
+$this->pageTitle= Yii::app()->name." - "."Administración";
+
 $id=Yii::app()->request->getQuery('id');
 $nombre = datosplanificacion($id);
 

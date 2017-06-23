@@ -2,6 +2,8 @@
 /* @var $this BitacorasesionController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Bitácoras";
+
 $this->breadcrumbs=array(
 	'Bitácoras',
 );

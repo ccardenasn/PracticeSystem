@@ -2,6 +2,8 @@
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
+$this->pageTitle= Yii::app()->name." - "."Detalles";
+
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
 	'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada,

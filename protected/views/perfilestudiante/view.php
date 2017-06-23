@@ -2,6 +2,8 @@
 /* @var $this PerfilestudianteController */
 /* @var $model Perfilestudiante */
 
+$this->pageTitle= Yii::app()->name." - "."Perfil";
+
 $this->breadcrumbs=array(
 	$model->RutEstudiante,
 );

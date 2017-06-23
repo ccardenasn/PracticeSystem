@@ -2,6 +2,8 @@
 /* @var $this MencionController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Menciones";
+
 $this->breadcrumbs=array(
 	'Menciones',
 );

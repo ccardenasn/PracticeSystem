@@ -2,6 +2,8 @@
 /* @var $this CentropracticaController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Centros de Práctica";
+
 $this->breadcrumbs=array(
 	'Centros de Práctica',
 );

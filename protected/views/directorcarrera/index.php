@@ -2,6 +2,8 @@
 /* @var $this DirectorcarreraController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Director de Carrera";
+
 $this->breadcrumbs=array(
 	'Director de Carrera',
 );

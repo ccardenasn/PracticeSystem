@@ -3,6 +3,8 @@
 /* @var $this ListaestudianteController */
 /* @var $model Listaestudiante */
 
+$this->pageTitle= Yii::app()->name." - "."Importar Lista";
+
 $this->breadcrumbs=array('Importar Lista',);
 
 $this->menu=array(

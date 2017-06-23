@@ -2,6 +2,8 @@
 /* @var $this HorarioadminController */
 /* @var $model Horarioadmin */
 
+$this->pageTitle= Yii::app()->name." - "."Administración";
+
 $this->breadcrumbs=array(
 	'Horarios'=>array('index'),
 	'Administración de Horarios',

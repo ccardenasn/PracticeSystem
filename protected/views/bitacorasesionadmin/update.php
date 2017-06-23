@@ -3,6 +3,8 @@ include_once('planificacion.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Bitácoras'=>array('index'),
 	'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada=>array('view','id'=>$model->CodBitacora),

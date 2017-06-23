@@ -2,6 +2,8 @@
 /* @var $this SecretariacpController */
 /* @var $model Secretariacp */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Secretaria CP'=>array('index'),
 	$model->RutSecretariaCP=>array('view','id'=>$model->RutSecretariaCP),

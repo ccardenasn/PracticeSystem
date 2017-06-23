@@ -2,6 +2,8 @@
 /* @var $this PlanificacionclaseController */
 /* @var $model Planificacionclase */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Planificaciones'=>array('index'),
     'Sesion Informada: '.$model->SesionInformada=>array('view','id'=>$model->CodPlanificacion), 

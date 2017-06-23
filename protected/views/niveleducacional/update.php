@@ -2,6 +2,8 @@
 /* @var $this NiveleducacionalController */
 /* @var $model Niveleducacional */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Nivel Educacional'=>array('index'),
 	$model->NombreNivel=>array('view','id'=>$model->CodNivel),

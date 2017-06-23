@@ -2,6 +2,8 @@
 /* @var $this PlanificacionclaseadministradorController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Planificaciones";
+
 $this->breadcrumbs=array(
 	'Planificaciones',
 );

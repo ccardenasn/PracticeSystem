@@ -1,4 +1,7 @@
 <?php
+
+$this->pageTitle= Yii::app()->name." - "."Estadísticas";
+
 $this->breadcrumbs=array(
 	'Estadisticas',
 );

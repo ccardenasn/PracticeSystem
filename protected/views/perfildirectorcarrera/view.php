@@ -2,6 +2,8 @@
 /* @var $this PerfildirectorcarreraController */
 /* @var $model Perfildirectorcarrera */
 
+$this->pageTitle= Yii::app()->name." - "."Perfil";
+
 $this->breadcrumbs=array(
 	$model->RutDirector,
 );

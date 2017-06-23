@@ -2,6 +2,8 @@
 /* @var $this DependenciaController */
 /* @var $model Dependencia */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Dependencias'=>array('index'),
 	$model->NombreDependencia=>array('view','id'=>$model->CodDependencia),

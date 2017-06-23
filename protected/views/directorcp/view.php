@@ -2,6 +2,8 @@
 /* @var $this DirectorcpController */
 /* @var $model Directorcp */
 
+$this->pageTitle= Yii::app()->name." - "."Detalles";
+
 $this->breadcrumbs=array(
 	'Director CP'=>array('index'),
 	$model->RutDirectorCP,

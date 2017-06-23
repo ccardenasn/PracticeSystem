@@ -2,6 +2,8 @@
 /* @var $this SecretariacpController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Secretaria CP";
+
 $this->breadcrumbs=array(
 	'Secretaria CP',
 );

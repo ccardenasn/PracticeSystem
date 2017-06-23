@@ -2,6 +2,8 @@
 /* @var $this DirectorcpController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Director CP";
+
 $this->breadcrumbs=array(
 	'Director CP',
 );

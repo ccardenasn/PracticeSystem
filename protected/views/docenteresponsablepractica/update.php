@@ -2,6 +2,8 @@
 /* @var $this DocenteresponsablepracticaController */
 /* @var $model Docenteresponsablepractica */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Docentes Responsables de Prácticas'=>array('index'),
 	$model->RutResponsable=>array('view','id'=>$model->RutResponsable),

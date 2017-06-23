@@ -1,7 +1,8 @@
 <?php
-
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
+
+$this->pageTitle= Yii::app()->name." - "."Añadir";
 
 $student=Yii::app()->user->name;
 $studentData=Estudiante::model()->find('RutEstudiante=?',array($student));

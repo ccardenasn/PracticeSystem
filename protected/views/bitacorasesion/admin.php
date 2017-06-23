@@ -2,6 +2,8 @@
 include_once('planificacion.php');
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
+
+$this->pageTitle= Yii::app()->name." - "."Administración";
 $userRut=Yii::app()->user->name;
 $studentModel=Estudiante::model()->find('RutEstudiante=?',array($userRut));
 

@@ -2,6 +2,8 @@
 /* @var $this JefeutpcpController */
 /* @var $model Jefeutpcp */
 
+$this->pageTitle= Yii::app()->name." - "."Detalles";
+
 $this->breadcrumbs=array(
 	'Jefe UTP CP'=>array('index'),
 	$model->RutJefeUTPCP,

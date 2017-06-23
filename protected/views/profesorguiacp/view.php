@@ -2,6 +2,8 @@
 /* @var $this ProfesorguiacpController */
 /* @var $model Profesorguiacp */
 
+$this->pageTitle= Yii::app()->name." - "."Detalles";
+
 $this->breadcrumbs=array(
 	'Profesor Guia CP'=>array('index'),
 	$model->RutProfGuiaCP,

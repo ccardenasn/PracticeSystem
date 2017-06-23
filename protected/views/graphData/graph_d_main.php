@@ -1,3 +1,5 @@
+<?php $this->pageTitle= Yii::app()->name." - "."Gráficos"; ?>
+
 <body onload="javascript:setSelectOption();">
 <h1><label id="graphTitleLabel">Distribución alumnos por centro o dependencia</label>: <label id="titleLabel">placeholder</label></h1><br>
 	

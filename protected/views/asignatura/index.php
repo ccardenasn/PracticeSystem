@@ -2,6 +2,8 @@
 /* @var $this AsignaturaController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Asignaturas";
+
 $this->breadcrumbs=array(
 	'Horarios'=>array('horarioadmin/index'),
 	'Asignaturas',

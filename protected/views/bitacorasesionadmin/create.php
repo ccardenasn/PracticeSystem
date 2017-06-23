@@ -2,6 +2,8 @@
 /* @var $this BitacorasesionController */
 /* @var $model Bitacorasesion */
 
+$this->pageTitle= Yii::app()->name." - "."Añadir";
+
 $req=Yii::app()->request->getQuery('id');
 $planningData=Planificacionclaseadministrador::model()->find('CodPlanificacion=?',array($req));
 

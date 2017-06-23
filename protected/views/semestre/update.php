@@ -2,6 +2,8 @@
 /* @var $this SemestreController */
 /* @var $model Semestre */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
 	'Semestres'=>array('index'),
 	$model->NombreSemestre=>array('view','id'=>$model->CodSemestre),

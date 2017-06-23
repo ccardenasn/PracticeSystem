@@ -2,6 +2,8 @@
 /* @var $this DependenciaController */
 /* @var $dataProvider CActiveDataProvider */
 
+$this->pageTitle= Yii::app()->name." - "."Dependencias";
+
 $this->breadcrumbs=array(
 	'Dependencias',
 );

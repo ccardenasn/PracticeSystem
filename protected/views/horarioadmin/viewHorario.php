@@ -1,5 +1,7 @@
 <?php
 
+$this->pageTitle= Yii::app()->name." - "."Ver Horario";
+
 $this->breadcrumbs=array(
 	'Horarios'=>array('index'),
 	'Ver Horario',
