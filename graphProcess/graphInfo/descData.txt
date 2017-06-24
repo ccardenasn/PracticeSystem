@@ -1,4 +1,4 @@
-Estudiantes según tipo de práctica
+Estudiantes atendidos
 Nombre de Práctica
-Número de Estudiantes
-Indica la distribución de estudiantes según la práctica que realiza en cada centro.
+Número de Estudiantes Atendidos
+Corresponde a los alumnos de educación básica (niños y/o jovenes) que pertenecen a los centros de práctica con los cuales los estudiantes de pedagogía han trabajado.

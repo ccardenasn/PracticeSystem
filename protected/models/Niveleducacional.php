@@ -72,7 +72,7 @@ class Niveleducacional extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -81,6 +81,28 @@ class Niveleducacional extends CActiveRecord
 		$criteria->compare('CodNivel',$this->CodNivel);
 		$criteria->compare('NombreNivel',$this->NombreNivel,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        
+        $criteria=new CDbCriteria;
+
+		$criteria->compare('CodNivel',$this->CodNivel);
+		$criteria->compare('NombreNivel',$this->NombreNivel,true);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

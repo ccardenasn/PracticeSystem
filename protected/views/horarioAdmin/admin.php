@@ -14,6 +14,7 @@ $this->menu=array(
 	array('label'=>'Bloques', 'url'=>array('bloque/batchUpdate')),
 	array('label'=>'Semestres', 'url'=>array('semestre/index')),
 	array('label'=>'Asignaturas', 'url'=>array('asignatura/index')),
+    array('label'=>'Exportar a PDF', 'url'=>array('exportpdf')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

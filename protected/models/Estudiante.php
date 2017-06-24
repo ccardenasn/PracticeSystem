@@ -155,7 +155,7 @@ class Estudiante extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -176,6 +176,40 @@ class Estudiante extends CActiveRecord
 		$criteria->compare('SituacionFinalEstudiante',$this->SituacionFinalEstudiante,true);
 		$criteria->compare('ObservacionEstudiante',$this->ObservacionEstudiante,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('RutEstudiante',$this->RutEstudiante,true);
+		$criteria->compare('NombreEstudiante',$this->NombreEstudiante,true);
+		$criteria->compare('ClaveEstudiante',$this->ClaveEstudiante,true);
+		$criteria->compare('FechaIncorporacion',$this->FechaIncorporacion,true);
+		$criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion,true);
+		$criteria->compare('MailEstudiante',$this->MailEstudiante,true);
+		$criteria->compare('TelefonoEstudiante',$this->TelefonoEstudiante,true);
+		$criteria->compare('CelularEstudiante',$this->CelularEstudiante,true);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
+		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ImagenEstudiante',$this->ImagenEstudiante,true);
+		$criteria->compare('SituacionFinalEstudiante',$this->SituacionFinalEstudiante,true);
+		$criteria->compare('ObservacionEstudiante',$this->ObservacionEstudiante,true);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

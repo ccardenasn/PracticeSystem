@@ -12,6 +12,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
+    array('label'=>'Exportar a PDF', 'url'=>array('exportpdf')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -38,6 +39,7 @@ $('.search-form form').submit(function(){
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de un jefe seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/update.png"> para modificar información de un jefe seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de un jefe seleccionado en la lista.</li>
+            <li>Haga click sobre el símbolo <img src="images/AdminTemplates/pdficon.png"> para generar un documento en formato .pdf del elemento seleccionado.</li>
 		</ul>
 		
 		<ul>
@@ -85,7 +87,14 @@ $('.search-form form').submit(function(){
 		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
+                'pdf'=>array(
+                    'label'=>'Generar Pdf',
+                    'imageUrl'=>Yii::app()->request->baseUrl.'/images/AdminTemplates/pdficon.png',
+                    'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->RutJefeUTPCP))",
+                    'options'=>array('class'=>'pdf'),
+                ),
                 'view' => array(
                     'label'=>'Detalles',
                 ),
@@ -95,7 +104,7 @@ $('.search-form form').submit(function(){
                 'delete' => array(
                     'label'=>'Eliminar',
                 ),
-            ),
+			),
 		),
 	),
 )); ?>

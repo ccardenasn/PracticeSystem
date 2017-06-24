@@ -31,7 +31,7 @@ class EstudianteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','selectProfesor'),
+				'actions'=>array('index','view','selectProfesor','pdf','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Estudiante::model()->getAdmins(),
 			),
@@ -389,5 +389,15 @@ class EstudianteController extends Controller
 		foreach($lista as $valor => $descripcion){
 			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
+	}
+    
+    public function actionPdf($id)
+	{
+		$this->render('pdf',array('model'=>$this->loadModel($id),));	
+	}
+    
+    public function actionExportPdf()
+	{
+		$this->render('exportpdf');
 	}
 }

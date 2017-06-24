@@ -119,7 +119,7 @@ class Centropractica extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -139,6 +139,39 @@ class Centropractica extends CActiveRecord
 		$criteria->compare('Calle',$this->Calle,true);
 		$criteria->compare('ImagenCentroPractica',$this->ImagenCentroPractica,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        
+        $criteria=new CDbCriteria;
+
+		$criteria->compare('RBD',$this->RBD);
+		$criteria->compare('NombreCentroPractica',$this->NombreCentroPractica,true);
+		$criteria->compare('VigenciaProtocolo',$this->VigenciaProtocolo,true);
+		$criteria->compare('FechaProtocolo',$this->FechaProtocolo,true);
+		$criteria->compare('AnexoProtocolo',$this->AnexoProtocolo,true);
+		$criteria->compare('Dependencia_CodDependencia',$this->Dependencia_CodDependencia);
+		$criteria->compare('NivelEducacional_CodNivel',$this->NivelEducacional_CodNivel);
+		$criteria->compare('Area',$this->Area,true);
+		$criteria->compare('Region_codRegion',$this->Region_codRegion);
+		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);
+		$criteria->compare('Ciudad_codCiudad',$this->Ciudad_codCiudad);
+		$criteria->compare('Calle',$this->Calle,true);
+		$criteria->compare('ImagenCentroPractica',$this->ImagenCentroPractica,true);	
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

@@ -30,7 +30,7 @@ class SecretariacarreraController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','pdf','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Secretariacarrera::model()->getAdmins(),
 			),
@@ -224,5 +224,15 @@ class SecretariacarreraController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+    
+    public function actionPdf($id)
+	{
+		$this->render('pdf',array('model'=>$this->loadModel($id),));	
+	}
+    
+    public function actionExportPdf()
+	{
+		$this->render('exportpdf');
 	}
 }

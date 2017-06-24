@@ -113,7 +113,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -127,6 +127,33 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ImagenProfCoordGuiaCP',$this->ImagenProfCoordGuiaCP,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        
+        $criteria=new CDbCriteria;
+
+		$criteria->compare('RutProfCoordGuiaCp',$this->RutProfCoordGuiaCp,true);
+		$criteria->compare('NombreProfCoordGuiaCP',$this->NombreProfCoordGuiaCP,true);
+		$criteria->compare('MailProfCoordGuiaCP',$this->MailProfCoordGuiaCP,true);
+		$criteria->compare('TelefonoProfCoordGuiaCP',$this->TelefonoProfCoordGuiaCP,true);
+		$criteria->compare('CelularProfCoordGuiaCP',$this->CelularProfCoordGuiaCP,true);
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ImagenProfCoordGuiaCP',$this->ImagenProfCoordGuiaCP,true);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

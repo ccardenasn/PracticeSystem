@@ -29,7 +29,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
 	array('label'=>'Estudiantes según tipo de práctica', 'url'=>array('graphdata/graph_a')),
-	array('label'=>'Niños', 'url'=>array('graphdata/graph_c')),
+	array('label'=>'Estudiantes atendidos', 'url'=>array('graphdata/graph_c')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
 	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),
 );

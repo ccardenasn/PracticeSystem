@@ -15,6 +15,7 @@ $this->menu=array(
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutSecretariaCP),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Lista', 'url'=>array('index')),
+    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->RutSecretariaCP)),
 );
 ?>
 

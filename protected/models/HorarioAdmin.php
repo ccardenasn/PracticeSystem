@@ -74,7 +74,7 @@ class Horarioadmin extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -83,6 +83,28 @@ class Horarioadmin extends CActiveRecord
 		$criteria->compare('CodHorario',$this->CodHorario);
 		$criteria->compare('Estudiante_RutEstudiante',$this->Estudiante_RutEstudiante,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        
+        $criteria=new CDbCriteria;
+
+		$criteria->compare('CodHorario',$this->CodHorario);
+		$criteria->compare('Estudiante_RutEstudiante',$this->Estudiante_RutEstudiante,true);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

@@ -30,7 +30,7 @@ class HorarioadminController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','createHorario','saveTimetable'),
+				'actions'=>array('index','view','createHorario','saveTimetable','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Horarioadmin::model()->getAdmins(),
 			),
@@ -207,6 +207,11 @@ class HorarioadminController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+    
+    public function actionExportPdf()
+	{
+		$this->render('exportpdf');
 	}
     
     public function actionSaveTimetable()

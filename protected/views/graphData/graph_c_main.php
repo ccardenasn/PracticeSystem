@@ -1,7 +1,7 @@
 <?php $this->pageTitle= Yii::app()->name." - "."Gráficos"; ?>
 
 <body onload="javascript:setSelectOption();">
-<h1><label id="graphTitleLabel">Niños</label>: <label id="titleLabel">placeholder</label></h1><br>
+<h1><label id="graphTitleLabel">Estudiantes atendidos</label>: <label id="titleLabel">placeholder</label></h1><br>
 	
 	
 <div class="collapse">

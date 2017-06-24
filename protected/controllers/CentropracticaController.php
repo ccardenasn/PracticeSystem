@@ -29,7 +29,7 @@ class CentropracticaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','selectProvincia','selectCiudad'),
+				'actions'=>array('index','view','selectProvincia','selectCiudad','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Centropractica::model()->getAdmins(),
 			),
@@ -298,5 +298,10 @@ class CentropracticaController extends Controller
 		foreach($lista as $valor => $descripcion){
 			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
+	}
+    
+    public function actionExportPdf()
+	{
+		$this->render('exportpdf');
 	}
 }

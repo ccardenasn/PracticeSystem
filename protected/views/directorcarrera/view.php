@@ -15,6 +15,7 @@ $this->menu=array(
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RutDirector)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RutDirector),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
+    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->RutDirector)),
 );
 ?>
 

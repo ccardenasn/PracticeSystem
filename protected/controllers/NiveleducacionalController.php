@@ -28,7 +28,7 @@ class NiveleducacionalController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Niveleducacional::model()->getAdmins(),
 			),
@@ -172,5 +172,10 @@ class NiveleducacionalController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+    
+    public function actionExportPdf()
+	{
+		$this->render('exportpdf');
 	}
 }

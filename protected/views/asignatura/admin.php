@@ -12,6 +12,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
+    array('label'=>'Exportar a PDF', 'url'=>array('exportpdf')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

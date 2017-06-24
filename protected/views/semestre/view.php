@@ -15,6 +15,7 @@ $this->menu=array(
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodSemestre)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodSemestre),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
+    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodSemestre)),
 );
 ?>
 

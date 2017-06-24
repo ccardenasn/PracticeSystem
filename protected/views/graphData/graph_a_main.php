@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Estadisticas', 'url'=>array('index')),
-	array('label'=>'Niños', 'url'=>array('graphdata/graph_c')),
+	array('label'=>'Estudiantes atendidos', 'url'=>array('graphdata/graph_c')),
 	array('label'=>'Distribución alumnos por centro o dependencia', 'url'=>array('graphdata/graph_d')),
 	array('label'=>'Sesiones Ejecutadas', 'url'=>array('graphdata/graph_e')),
 	array('label'=>'Profesores Guías por centro', 'url'=>array('graphdata/graph_f')),

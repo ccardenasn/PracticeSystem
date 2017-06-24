@@ -79,7 +79,7 @@ class Carrera extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -90,6 +90,30 @@ class Carrera extends CActiveRecord
 		$criteria->compare('SemestresCarrera',$this->SemestresCarrera,true);
 		$criteria->compare('Universidad_NombreInstitucion',$this->Universidad_NombreInstitucion,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        
+        $criteria=new CDbCriteria;
+
+		$criteria->compare('codCarrera',$this->codCarrera,true);
+		$criteria->compare('NombreCarrera',$this->NombreCarrera,true);
+		$criteria->compare('SemestresCarrera',$this->SemestresCarrera,true);
+		$criteria->compare('Universidad_NombreInstitucion',$this->Universidad_NombreInstitucion,true);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
