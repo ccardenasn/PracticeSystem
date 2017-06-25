@@ -191,12 +191,14 @@ class Estudiante extends CActiveRecord
 		$criteria->compare('NombreEstudiante',$this->NombreEstudiante,true);
 		$criteria->compare('ClaveEstudiante',$this->ClaveEstudiante,true);
 		$criteria->compare('FechaIncorporacion',$this->FechaIncorporacion,true);
-		$criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion,true);
+		//$criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion,true);
+        $criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion);
 		$criteria->compare('MailEstudiante',$this->MailEstudiante,true);
 		$criteria->compare('TelefonoEstudiante',$this->TelefonoEstudiante,true);
 		$criteria->compare('CelularEstudiante',$this->CelularEstudiante,true);
 		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
-		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+		//$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+        $criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica);
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ImagenEstudiante',$this->ImagenEstudiante,true);
 		$criteria->compare('SituacionFinalEstudiante',$this->SituacionFinalEstudiante,true);

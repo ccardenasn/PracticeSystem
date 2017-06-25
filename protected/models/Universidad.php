@@ -88,7 +88,7 @@ class Universidad extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	/*public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -102,6 +102,33 @@ class Universidad extends CActiveRecord
 		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);
 		$criteria->compare('Ciudad_codCiudad',$this->Ciudad_codCiudad);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}*/
+    
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('NombreInstitucion',$this->NombreInstitucion,true);
+		$criteria->compare('Sede',$this->Sede,true);
+		$criteria->compare('Campus',$this->Campus,true);
+		$criteria->compare('Facultad',$this->Facultad,true);
+		$criteria->compare('Region_codRegion',$this->Region_codRegion);
+		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);
+		$criteria->compare('Ciudad_codCiudad',$this->Ciudad_codCiudad);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

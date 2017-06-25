@@ -93,7 +93,7 @@ class Dependencia extends CActiveRecord
         $criteria=new CDbCriteria;
 
 		$criteria->compare('CodDependencia',$this->CodDependencia);
-		$criteria->compare('NombreDependencia',$this->NombreDependencia,true);
+		$criteria->compare('NombreDependencia',$this->NombreDependencia);
 
 		$sort= new CSort();
 		

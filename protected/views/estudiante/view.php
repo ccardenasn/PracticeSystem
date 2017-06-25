@@ -45,6 +45,7 @@ $this->menu=array(
 			<li>Haga click en <strong>"Planificaciones de Estudiante"</strong> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
 			<li>Haga click en <strong>"Planificaciones"</strong> para acceder a información correspondiente a las planificaciones de clases de todos los estudiantes.</li>
 			<li>Para regresar al índice de estudiantes haga click en <strong>"Lista"</strong>.</li>
+            <li>Haga click en <strong>"Crear PDF"</strong> para generar un documento en formato <strong>.pdf</strong> con información de estudiante.</li>
 		</ul>
 	</ul>
 </div><br>

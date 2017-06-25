@@ -30,7 +30,7 @@ class UniversidadmainController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','selectProvincia','selectCiudad'),
+				'actions'=>array('index','view','selectProvincia','selectCiudad','pdf','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Universidad::model()->getAdmins(),
 			),
@@ -273,5 +273,15 @@ class UniversidadmainController extends Controller
 		foreach($lista as $valor => $descripcion){
 			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
+	}
+    
+    public function actionPdf($id)
+	{
+		$this->render('pdf',array('model'=>$this->loadModel($id),));	
+	}
+    
+    public function actionExportPdf()
+	{
+		$this->render('exportpdf');
 	}
 }

@@ -1,5 +1,7 @@
 <?php
 include_once 'FunFecha.php';
+include_once 'FunNumeros.php';
+
 /**
  * This is the model class for table "centropractica".
  *
@@ -52,13 +54,14 @@ class Centropractica extends CActiveRecord
 		return array(
 			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('RBD','unique','message'=>'El {attribute} {value} ya está registrado.'),
-			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} debe ser un número.'),
+			array('Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} debe ser un número.'),
 			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
 			array('AnexoProtocolo', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia_CodDependencia, NivelEducacional_CodNivel, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle, ImagenCentroPractica', 'safe', 'on'=>'search'),
             array('FechaProtocolo','valfecha'),
+            array('RBD','valrbd'),
 		);
 	}
 
@@ -152,12 +155,12 @@ class Centropractica extends CActiveRecord
 
 		$criteria->compare('RBD',$this->RBD);
 		$criteria->compare('NombreCentroPractica',$this->NombreCentroPractica,true);
-		$criteria->compare('VigenciaProtocolo',$this->VigenciaProtocolo,true);
+		$criteria->compare('VigenciaProtocolo',$this->VigenciaProtocolo);
 		$criteria->compare('FechaProtocolo',$this->FechaProtocolo,true);
 		$criteria->compare('AnexoProtocolo',$this->AnexoProtocolo,true);
 		$criteria->compare('Dependencia_CodDependencia',$this->Dependencia_CodDependencia);
 		$criteria->compare('NivelEducacional_CodNivel',$this->NivelEducacional_CodNivel);
-		$criteria->compare('Area',$this->Area,true);
+		$criteria->compare('Area',$this->Area);
 		$criteria->compare('Region_codRegion',$this->Region_codRegion);
 		$criteria->compare('Provincia_codProvincia',$this->Provincia_codProvincia);
 		$criteria->compare('Ciudad_codCiudad',$this->Ciudad_codCiudad);
@@ -192,6 +195,12 @@ class Centropractica extends CActiveRecord
 	{
 		if(fechavalida($this->FechaProtocolo)==false)
 		$this->addError('FechaProtocolo','fecha no válida');
+	}
+    
+    public function valrbd($attribute,$params)
+	{
+		if(numerovalido($this->RBD)==false)
+		$this->addError('RBD','número no válido');
 	}
 	
 	public function getAdmins(){

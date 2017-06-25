@@ -144,7 +144,7 @@ class Profesorguiacp extends CActiveRecord
 		$criteria->compare('RutProfGuiaCP',$this->RutProfGuiaCP,true);
 		$criteria->compare('NombreProfGuiaCP',$this->NombreProfGuiaCP,true);
 		$criteria->compare('CursoProfGuiaCP',$this->CursoProfGuiaCP,true);
-		$criteria->compare('ProfesorJefeProfGuiaCP',$this->ProfesorJefeProfGuiaCP,true);
+		$criteria->compare('ProfesorJefeProfGuiaCP',$this->ProfesorJefeProfGuiaCP);
 		$criteria->compare('MailProfGuiaCP',$this->MailProfGuiaCP,true);
 		$criteria->compare('TelefonoProfGuiaCP',$this->TelefonoProfGuiaCP,true);
 		$criteria->compare('CelularProfGuiaCP',$this->CelularProfGuiaCP,true);

@@ -42,7 +42,7 @@ $this->menu=array(
 			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de planificación.</li>
 			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de planificaciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
 			<li>Haga click en <strong>"Planificaciones de Estudiante"</strong> para acceder a un listado de planificaciones del estudiante seleccionado.</li>
-			<li>Haga click en <strong>"Crear PDF"</strong> para generar un documento en formato .pdf con información de la sesión y/o planificación.</li>
+			<li>Haga click en <strong>"Crear PDF"</strong> para generar un documento en formato <strong>.pdf</strong> con información de la sesión y/o planificación.</li>
 			<li>Haga click en <strong>"Ver Bitácora"</strong> para visualizar informacion de bitácora asociada a la planificación.</li>
 		</ul>
 	</ul>

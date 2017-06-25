@@ -15,6 +15,7 @@ $this->menu=array(
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RBD)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->RBD),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
 	array('label'=>'Adminsitración', 'url'=>array('admin')),
+    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->RBD)),
 );
 ?>
 
@@ -37,6 +38,7 @@ $this->menu=array(
 			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de centro.</li>
 			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de centros existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
 			<li>Para regresar al índice de menciones haga click en <strong>"Lista"</strong>.</li>
+            <li>Haga click en <strong>"Crear PDF"</strong> para generar un documento en formato <strong>.pdf</strong> con información de centro de práctica.</li>
 		</ul>
 	</ul>
 	

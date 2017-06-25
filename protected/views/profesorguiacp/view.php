@@ -32,6 +32,7 @@ $this->menu=array(
 			<li>Haga click en <strong>"Eliminar"</strong> para borrar toda la información de profesor guía cp.</li>
 			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de profesor guía cp existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
 			<li>Para regresar al índice de profesores guías cp haga click en <strong>"Lista"</strong>.</li>
+            <li>Haga click en <strong>"Crear PDF"</strong> para generar un documento en formato <strong>.pdf</strong> con información de profesor guía cp.</li>
 		</ul>
 	</ul>
 </div><br>

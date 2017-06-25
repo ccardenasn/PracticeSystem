@@ -122,14 +122,14 @@ class Configuracionpractica extends CActiveRecord
         
         $criteria=new CDbCriteria;
 
-		$criteria->compare('NombrePractica',$this->NombrePractica,true);
+		$criteria->compare('NombrePractica',$this->NombrePractica);
 		$criteria->compare('DescripcionPractica',$this->DescripcionPractica,true);
 		$criteria->compare('FechaPractica',$this->FechaPractica,true);
 		$criteria->compare('Semestre_CodSemestre',$this->Semestre_CodSemestre);
 		$criteria->compare('NumeroSesionesPractica',$this->NumeroSesionesPractica,true);
 		$criteria->compare('NumeroHorasPractica',$this->NumeroHorasPractica,true);
 		$criteria->compare('DocenteCoordinadorPracticas_RutCoordinador',$this->DocenteCoordinadorPracticas_RutCoordinador,true);
-		$criteria->compare('DocenteResponsablePractica_RutResponsable',$this->DocenteResponsablePractica_RutResponsable,true);
+		$criteria->compare('DocenteResponsablePractica_RutResponsable',$this->DocenteResponsablePractica_RutResponsable);
 
 		$sort= new CSort();
 		

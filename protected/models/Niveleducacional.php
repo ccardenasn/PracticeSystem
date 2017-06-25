@@ -93,7 +93,7 @@ class Niveleducacional extends CActiveRecord
         $criteria=new CDbCriteria;
 
 		$criteria->compare('CodNivel',$this->CodNivel);
-		$criteria->compare('NombreNivel',$this->NombreNivel,true);
+		$criteria->compare('NombreNivel',$this->NombreNivel);
 
 		$sort= new CSort();
 		

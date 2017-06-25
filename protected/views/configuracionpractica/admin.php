@@ -78,11 +78,10 @@ $('.search-form form').submit(function(){
 		'NombrePractica',
 		//'DescripcionPractica',
 		'FechaPractica',
-		'semestreCodSemestre.NombreSemestre',
+        array('name'=>'Semestre_CodSemestre','value'=>'$data->semestreCodSemestre->NombreSemestre','filter'=>CHtml::listData(Semestre::model()->findAll(),'CodSemestre','NombreSemestre')),
 		'NumeroSesionesPractica',
 		'NumeroHorasPractica',
-		'DocenteCoordinadorPracticas_RutCoordinador',
-		'DocenteResponsablePractica_RutResponsable',
+        array('name'=>'DocenteResponsablePractica_RutResponsable','value'=>'$data->docenteResponsablePracticaRutResponsable->NombreResponsable','filter'=>CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable','RutResponsable')),
 		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',

@@ -142,15 +142,15 @@ class Planificacionclaseadministrador extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('CodPlanificacion',$this->CodPlanificacion);
-		$criteria->compare('Estudiante_RutEstudiante',$rut,true);
+		$criteria->compare('Estudiante_RutEstudiante',$rut);
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
-		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP);
 		$criteria->compare('Curso',$this->Curso,true);
-		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica);
 		$criteria->compare('Fecha',$this->Fecha,true);
 		$criteria->compare('SesionInformada',$this->SesionInformada,true);
-		$criteria->compare('Ejecutado',$this->Ejecutado,true);
-		$criteria->compare('Supervisado',$this->Supervisado,true);
+		$criteria->compare('Ejecutado',$this->Ejecutado);
+		$criteria->compare('Supervisado',$this->Supervisado);
 		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
 
 		return new CActiveDataProvider($this, array(

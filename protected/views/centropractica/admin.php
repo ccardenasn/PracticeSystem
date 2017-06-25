@@ -39,6 +39,7 @@ $('.search-form form').submit(function(){
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de un centro seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/update.png"> para modificar información de un centro seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de un centro seleccionado en la lista.</li>
+            <li>Haga click sobre el símbolo <img src="images/AdminTemplates/pdficon.png"> para generar un documento en formato .pdf del elemento seleccionado.</li>
 		</ul>
 		
 		<ul>
@@ -76,12 +77,12 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'RBD',
 		'NombreCentroPractica',
-		'VigenciaProtocolo',
+        array('name'=>'VigenciaProtocolo','value'=>'$data->VigenciaProtocolo','filter'=>array('Si'=>'Si','No'=>'No')),
 		'FechaProtocolo',
-		'AnexoProtocolo',
-		array('name'=>'Dependencia_CodDependencia','value'=>'$data->dependenciaCodDependencia->NombreDependencia'),
-		array('name'=>'NivelEducacional_CodNivel','value'=>'$data->nivelEducacionalCodNivel->NombreNivel'),
-		'Area',
+		//'AnexoProtocolo',
+        array('name'=>'Dependencia_CodDependencia','value'=>'$data->dependenciaCodDependencia->NombreDependencia','filter'=>CHtml::listData(Dependencia::model()->findAll(),'CodDependencia','NombreDependencia')),
+        array('name'=>'NivelEducacional_CodNivel','value'=>'$data->nivelEducacionalCodNivel->NombreNivel','filter'=>CHtml::listData(Niveleducacional::model()->findAll(),'CodNivel','NombreNivel')),
+        array('name'=>'Area','value'=>'$data->Area','filter'=>array('Urbano'=>'Urbano','Rural'=>'Rural')),
 		//'Region_codRegion',
 		//'Provincia_codProvincia',
 		//'Ciudad_codCiudad',
@@ -90,7 +91,14 @@ $('.search-form form').submit(function(){
 		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
+                'pdf'=>array(
+                    'label'=>'Generar Pdf',
+                    'imageUrl'=>Yii::app()->request->baseUrl.'/images/AdminTemplates/pdficon.png',
+                    'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->RBD))",
+                    'options'=>array('class'=>'pdf'),
+                ),
                 'view' => array(
                     'label'=>'Detalles',
                 ),
@@ -100,7 +108,7 @@ $('.search-form form').submit(function(){
                 'delete' => array(
                     'label'=>'Eliminar',
                 ),
-            ),
+			),
 		),
 	),
 )); ?>

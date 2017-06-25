@@ -7,7 +7,7 @@ $this->pageTitle= Yii::app()->name." - "."Editar";
 $this->breadcrumbs=array(
 	'Universidad'=>array('index'),
 	$model->NombreInstitucion=>array('view','id'=>$model->NombreInstitucion),
-	'Actualizar',
+	'Editar',
 );
 
 $this->menu=array(
