@@ -165,7 +165,7 @@ class ProfesorcoordinadorpracticacpController extends Controller
 						$this->refresh();
 					}
 				}else{
-					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutProfCoordGuiaCp);
 				}
 				$this->redirect(array('view','id'=>$model->RutProfCoordGuiaCp));
 			}

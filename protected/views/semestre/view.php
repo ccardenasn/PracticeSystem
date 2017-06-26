@@ -13,7 +13,7 @@ $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodSemestre)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodSemestre),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodSemestre),'confirm'=>'¡Advertencia! Se eliminarán todas las asignaturas asociadas al semestre ¿Desea Continuar?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
     array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodSemestre)),
 );

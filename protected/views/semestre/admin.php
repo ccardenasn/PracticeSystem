@@ -82,7 +82,7 @@ $('.search-form form').submit(function(){
 		'NombreSemestre',
 		array(
 			'class'=>'CButtonColumn',
-            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'deleteConfirmation'=>'¡Advertencia! Se eliminarán todas las asignaturas asociadas al semestre ¿Desea Continuar?',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
                 'pdf'=>array(

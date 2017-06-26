@@ -164,7 +164,7 @@ class DirectorcpController extends Controller
 						$this->refresh();
 					}
 				}else{
-					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutDirectorCP);
 				}
 				$this->redirect(array('view','id'=>$model->RutDirectorCP));
 			}

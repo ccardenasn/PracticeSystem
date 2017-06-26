@@ -68,14 +68,25 @@ class SemestreController extends Controller
 	{
 		$model=new Semestre;
 
+        $query = "select codCarrera from Carrera;";
+        $idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
+        $carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
+        $semestersNumber = $carreraData->SemestresCarrera;
+        
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Semestre']))
 		{
 			$model->attributes=$_POST['Semestre'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->CodSemestre));
+			
+            if($model->save()){
+                $semestersNumber = $semestersNumber + 1;
+                $carreraData->SemestresCarrera = $semestersNumber;
+                $carreraData->save();                
+                $this->redirect(array('view','id'=>$model->CodSemestre));
+            }
+				
 		}
 
 		$this->render('create',array(
@@ -116,6 +127,11 @@ class SemestreController extends Controller
 	{
 		$existSubjects = containsSubjects($id);
 		
+        $query = "select codCarrera from Carrera;";
+        $idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
+        $carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
+        $semestersNumber = $carreraData->SemestresCarrera;
+        
 		if($existSubjects != 0){
 			$semesterSubjects = getSemesterSubjects($id);
 			
@@ -129,11 +145,15 @@ class SemestreController extends Controller
 				}
 			}
 			deleteSubjects($id);
-		}
+		} 
 		
 		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		
+        $semestersNumber = $semestersNumber - 1;
+        $carreraData->SemestresCarrera = $semestersNumber;
+        $carreraData->save(); 
+        
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}

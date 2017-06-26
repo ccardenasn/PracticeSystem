@@ -147,11 +147,11 @@ class EstudianteController extends Controller
 						//se guarda la ruta de la imagen
 						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
 					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
+						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.li></ul></div>");
 						$this->refresh();
 					}
 				}else{
-					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutEstudiante);
 				}
 				$this->redirect(array('view','id'=>$model->RutEstudiante));
 			}
