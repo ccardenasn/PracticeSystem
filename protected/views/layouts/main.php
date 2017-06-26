@@ -41,13 +41,13 @@ $ask = new UserIdentity('','');
                
                 array('label'=>'Administracion',
                       'items'=>array(
-                          //array('label'=>'Universidad','url'=>array('/universidad'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Universidad',
+                          array('label'=>'Universidad','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+                          /*array('label'=>'Universidad',
                                 'items'=>
                                 array(
                                     array('label'=>'Universidad Form 1','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
                                     array('label'=>'Universidad Form 2','url'=>array('/universidad'),'visible'=>$ask->isAdmins()),
-                          )),
+                          )),*/
                           array('label'=>'Carrera','url'=>array('/carrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Menciones','url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),

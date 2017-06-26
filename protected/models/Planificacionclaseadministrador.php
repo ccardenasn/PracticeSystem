@@ -135,7 +135,7 @@ class Planificacionclaseadministrador extends CActiveRecord
 		));
 	}
 	
-	public function searchByRut($rut)
+	/*public function searchByRut($rut)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -159,8 +159,38 @@ class Planificacionclaseadministrador extends CActiveRecord
 				'defaultOrder'=>'SesionInformada ASC',
 			),
 		));
-	}
+	}*/
 
+    public function searchByRut($rut)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        $criteria=new CDbCriteria;
+
+		$criteria->compare('CodPlanificacion',$this->CodPlanificacion);
+		$criteria->compare('Estudiante_RutEstudiante',$rut);
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP);
+		$criteria->compare('Curso',$this->Curso,true);
+		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica);
+		$criteria->compare('Fecha',$this->Fecha,true);
+		$criteria->compare('SesionInformada',$this->SesionInformada,true);
+		$criteria->compare('Ejecutado',$this->Ejecutado);
+		$criteria->compare('Supervisado',$this->Supervisado);
+		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
+
+		$sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+		
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+    
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

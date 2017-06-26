@@ -32,7 +32,7 @@ $this->menu=array(
 	</ul>
 </div><br>
 
-<?php $this->renderPartial('_form',
+<?php $this->renderPartial('_updateForm',
 						   array(
 							   'universidadModel'=>$universidadModel,
 							   'carreraModel'=>$carreraModel,

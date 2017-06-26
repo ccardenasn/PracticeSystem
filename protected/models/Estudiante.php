@@ -7,6 +7,7 @@ include_once 'FunNumeros.php';
 include_once 'FunRut.php';
 include_once 'FunCentro.php';
 include_once 'FunClave.php';
+include_once 'FunImagen.php';
 /**
  * This is the model class for table "estudiante".
  *
@@ -87,6 +88,7 @@ class Estudiante extends CActiveRecord
             array('CelularEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
             array('TelefonoEstudiante','valtelefono'),
             array('CelularEstudiante','valclave'),
+            //array('ImagenEstudiante','valimagen'),
 		);
 	}
 
@@ -262,6 +264,12 @@ class Estudiante extends CActiveRecord
 	{
 		if(rutvalido($this->RutEstudiante)==false)
 		$this->addError('RutEstudiante','Rut no válido');
+	}
+    
+    public function valimagen($attribute,$params)
+	{
+		if(imagenvalida($this->ImagenEstudiante)==false)
+		$this->addError('ImagenEstudiante','imagen no valida');
 	}
     
     public function valcentro($attribute,$params)

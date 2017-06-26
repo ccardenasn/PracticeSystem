@@ -120,7 +120,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ImagenEstudiante'); ?>
-		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
+        <?php echo $form->fileField($model,'ImagenEstudiante');?>
+		<?php //echo CHtml::activeFileField($model,'ImagenEstudiante');?>
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>
 	</div>
 	

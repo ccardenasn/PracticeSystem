@@ -39,6 +39,7 @@ $('.search-form form').submit(function(){
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar información de una mención seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/update.png"> para modificar información de una mención seleccionada en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de una mención seleccionada en la lista.</li>
+            <li>Haga click en la opción <strong>"Exportar PDF"</strong> del panel de opciones ubicado a la derecha de la pantalla para generar un documento en formato <strong>.pdf</strong> con los datos obtenidos en la lista situada en la parte inferior.</li>
 		</ul>
 		
 		<ul>

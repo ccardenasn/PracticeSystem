@@ -51,9 +51,9 @@ $this->menu=array(
 		'Sede',
 		'Campus',
 		'Facultad',
-		'Region_codRegion',
-		'Provincia_codProvincia',
-		'Ciudad_codCiudad',
+		'regionCodRegion.NombreRegion',
+		'provinciaCodProvincia.NombreProvincia',
+		'ciudadCodCiudad.NombreCiudad',
 	),
 )); ?>
 

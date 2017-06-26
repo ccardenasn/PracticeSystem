@@ -1,6 +1,8 @@
 <?php
 include_once('semestres.php');
 include_once('mainFunctions.php');
+include_once('bitacoraFunctions.php');
+
 
 class UniversidadmainController extends Controller
 {
@@ -93,16 +95,23 @@ class UniversidadmainController extends Controller
                 $carreraModel->save();
                 $secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
                 
-                $file=$secretariaModel->ImagenSecretaria=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
+                $rnd = rand(0,9999);
+                $file=CUploadedFile::getInstance($secretariaModel,'ImagenEstudiante');
+                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+                
+                if($file != null){
+                    $secretariaModel->ImagenEstudiante = $fileName;
+                }
                 
                 if($secretariaModel->save()){
                     if($file != null){
                         if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                            $secretariaModel->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
+                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
                         }else{
-                            Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+                            deleteData($table,$codTable,$model->RutSecretaria);
+                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
                             $this->refresh();
-                        }	
+                        }
                     }
                 }
                 $this->redirect(array('view','id'=>$universidadModel->NombreInstitucion));
@@ -132,6 +141,12 @@ class UniversidadmainController extends Controller
 		$universidadModel=$this->loadModel($id);
 		$carreraModel=Carrera::model()->find('Universidad_NombreInstitucion=?',array($id));
 		$secretariaModel=Secretariacarrera::model()->find('Carrera_codCarrera=?',array($carreraModel->codCarrera));
+        
+        $imageAttrib = "ImagenSecretaria";
+		$table = "secretariacarrera";
+		$codTable = "RutSecretaria";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$secretariaModel->RutSecretaria);
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($universidadModel,$carreraModel,$secretariaModel));
@@ -144,29 +159,30 @@ class UniversidadmainController extends Controller
 			
 			$universidadModel->save();
 			
-			$carreraModel->Universidad_NombreInstitucion = $universidadModel->NombreInstitucion;
-			
-			$totalSemesters = countSemesters();
-			$mainSemesters = $carreraModel->SemestresCarrera;
-			
-			if($totalSemesters != $mainSemesters){
-				deleteSemesters();
-				createSemesters($carreraModel->SemestresCarrera);
-			}		
+			$carreraModel->Universidad_NombreInstitucion = $universidadModel->NombreInstitucion;		
 			
 			$carreraModel->save();
-			
-			$file=$secretariaModel->ImagenSecretaria=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
+			$secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
+            
+            $rnd = rand(0,9999);
+            $file=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
+            $fileName = "{$rnd}-{$file}";
+            
+            if($file != null){
+                $secretariaModel->ImagenSecretaria = $fileName;
+            }
 			
 			if($secretariaModel->save()){
 				if($file != null){
 					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
 						//se guarda la ruta de la imagen
-						$secretariaModel->ImagenSecretaria->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$file->getName());
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$fileName);
 					}else{
-						Yii::app()->user->setFlash('mensaje','Solo fotos JPG o PNG por favor');
+						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
 						$this->refresh();
-					}	
+					}
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$secretariaModel->RutSecretaria);
 				}
 			}
 			

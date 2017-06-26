@@ -40,6 +40,7 @@ $('.search-form form').submit(function(){
 			<h4>Opciones de Lista</h4>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/view.png"> para visualizar y/o modificar información de un horario seleccionado en la lista.</li>
 			<li>Haga click sobre el símbolo <img src="images/AdminTemplates/delete.png"> para eliminar toda la información de un horario seleccionado en la lista.</li>
+            <li>Haga click en la opción <strong>"Exportar PDF"</strong> del panel de opciones ubicado a la derecha de la pantalla para generar un documento en formato <strong>.pdf</strong> con los datos obtenidos en la lista situada en la parte inferior.</li>
 		</ul>
 		
 		<ul>
