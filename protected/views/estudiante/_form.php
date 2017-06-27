@@ -57,9 +57,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Mencion_NombreMencion'); ?>
-		<?php echo $form->dropDownList($model,'Mencion_NombreMencion',CHtml::listData(Mencion::model()->findAll(),'NombreMencion','NombreMencion'));?>
-        <?php echo $form->error($model,'Mencion_NombreMencion'); ?>
+		<?php echo $form->labelEx($model,'Mencion_CodMencion'); ?>
+		<?php echo $form->dropDownList($model,'Mencion_CodMencion',CHtml::listData(Mencion::model()->findAll(),'CodMencion','NombreMencion'));?>
+        <?php echo $form->error($model,'Mencion_CodMencion'); ?>
 	</div>
 
 	<div class="row">

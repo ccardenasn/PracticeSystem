@@ -37,7 +37,7 @@ $this->menu=array(
 		'NombreEstudiante',
 		'ClaveEstudiante',
 		'FechaIncorporacion',
-		'Mencion_NombreMencion',
+		'mencionCodMencion.NombreMencion',
 		'MailEstudiante',
 		'TelefonoEstudiante',
 		'CelularEstudiante',

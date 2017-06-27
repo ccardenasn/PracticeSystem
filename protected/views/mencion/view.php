@@ -12,8 +12,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->NombreMencion)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombreMencion),'confirm'=>'¿Esta seguro de querer borrar este elemento?')),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodMencion)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodMencion),'confirm'=>'¿Esta seguro de querer borrar este elemento?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>

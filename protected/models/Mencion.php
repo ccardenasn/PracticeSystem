@@ -29,10 +29,12 @@ class Mencion extends CActiveRecord
 		return array(
 			array('NombreMencion', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('NombreMencion','unique','message'=>'la mención {value} ya está registrada.'),
-			array('NombreMencion', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('NombreMencion', 'safe', 'on'=>'search'),
+            array('NombreMencion', 'length', 'max'=>45),
+			// The following rule is used by search().
+			// @todo Please remove those attributes that should not be searched.
+			array('CodMencion, NombreMencion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,7 +46,7 @@ class Mencion extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'Mencion_NombreMencion'),
+			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'Mencion_CodMencion'),
 		);
 	}
 
@@ -54,6 +56,7 @@ class Mencion extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'CodMencion' => 'Cod Mencion',
 			'NombreMencion' => 'Nombre Mención',
 		);
 	}
@@ -89,6 +92,7 @@ class Mencion extends CActiveRecord
         
         $criteria=new CDbCriteria;
 
+		$criteria->compare('CodMencion',$this->CodMencion);
 		$criteria->compare('NombreMencion',$this->NombreMencion,true);
 
 		$sort= new CSort();

@@ -56,8 +56,8 @@ class Estudiante extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('RutEstudiante, NombreEstudiante, ClaveEstudiante,ConfirmClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-                        // compare password to repeated password
+            array('RutEstudiante, NombreEstudiante, ClaveEstudiante,ConfirmClaveEstudiante, FechaIncorporacion, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('Mencion_CodMencion, CentroPractica_RBD, Estado', 'numerical', 'integerOnly'=>true),
             array('ConfirmClaveEstudiante', 'compare','operator'=>'==','compareAttribute'=>'ClaveEstudiante','allowEmpty'=>false),
             array('ConfirmClaveEstudiante', 'safe'),
             array('RutEstudiante','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -71,11 +71,11 @@ class Estudiante extends CActiveRecord
             array('RutEstudiante','unique','className'=>'Profesorcoordinadorpracticacp','attributeName'=>'RutProfCoordGuiaCp','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Profesorguiacp','attributeName'=>'RutProfGuiaCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
 			array('ObservacionEstudiante', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, Mencion_NombreMencion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante, SituacionFinalEstudiante, ObservacionEstudiante', 'safe', 'on'=>'search'),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante, SituacionFinalEstudiante, ObservacionEstudiante', 'safe', 'on'=>'search'),
 			array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
             array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar
 			array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
@@ -102,7 +102,7 @@ class Estudiante extends CActiveRecord
 		return array(
 			'centroPracticaRBD' => array(self::BELONGS_TO, 'Centropractica', 'CentroPractica_RBD'),
 			'configuracionPracticaNombrePractica' => array(self::BELONGS_TO, 'Configuracionpractica', 'ConfiguracionPractica_NombrePractica'),
-			'mencionNombreMencion' => array(self::BELONGS_TO, 'Mencion', 'Mencion_NombreMencion'),
+            'mencionCodMencion' => array(self::BELONGS_TO, 'Mencion', 'Mencion_CodMencion'),
 			'profesorGuiaCPRutProfGuiaCP' => array(self::BELONGS_TO, 'Profesorguiacp', 'ProfesorGuiaCP_RutProfGuiaCP'),
 			'horarios' => array(self::HAS_MANY, 'Horario', 'Estudiante_RutEstudiante'),
 			'horarioadmins' => array(self::HAS_MANY, 'Horarioadmin', 'Estudiante_RutEstudiante'),
@@ -122,7 +122,7 @@ class Estudiante extends CActiveRecord
 			'NombreEstudiante' => 'Nombre',
 			'ClaveEstudiante' => 'Contraseña',
 			'FechaIncorporacion' => 'Año de Incorporación',
-			'Mencion_NombreMencion' => 'Mención',
+			'Mencion_CodMencion' => 'Mención',
 			'MailEstudiante' => 'Correo',
 			'TelefonoEstudiante' => 'Teléfono',
 			'CelularEstudiante' => 'Celular',
@@ -193,8 +193,7 @@ class Estudiante extends CActiveRecord
 		$criteria->compare('NombreEstudiante',$this->NombreEstudiante,true);
 		$criteria->compare('ClaveEstudiante',$this->ClaveEstudiante,true);
 		$criteria->compare('FechaIncorporacion',$this->FechaIncorporacion,true);
-		//$criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion,true);
-        $criteria->compare('Mencion_NombreMencion',$this->Mencion_NombreMencion);
+        $criteria->compare('Mencion_CodMencion',$this->Mencion_CodMencion);
 		$criteria->compare('MailEstudiante',$this->MailEstudiante,true);
 		$criteria->compare('TelefonoEstudiante',$this->TelefonoEstudiante,true);
 		$criteria->compare('CelularEstudiante',$this->CelularEstudiante,true);

@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->FechaIncorporacion); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Mencion_NombreMencion')); ?>:</b>
-	<?php echo CHtml::encode($data->Mencion_NombreMencion); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Mencion_CodMencion')); ?>:</b>
+	<?php echo CHtml::encode($data->mencionCodMencion->NombreMencion); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('MailEstudiante')); ?>:</b>

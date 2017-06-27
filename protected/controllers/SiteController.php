@@ -103,7 +103,18 @@ class SiteController extends Controller
                 $rut=Yii::app()->user->name;
                 
                 $profilelogged = $this->findProfileURL($rut);
-                $this->redirect(array($profilelogged));   
+                
+                $studentData=Estudiante::model()->find('RutEstudiante=?',array($rut));
+                
+                if($studentData != null){
+                    if($studentData->Estado == 0){
+                        $this->redirect(array('estudiantelogin/update','id'=>$rut));
+                    }else{
+                        $this->redirect(array($profilelogged));
+                    }
+                }else{
+                    $this->redirect(array($profilelogged));
+                }   
             }
 		}
 		// display the login form

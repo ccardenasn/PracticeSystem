@@ -6,14 +6,14 @@ $this->pageTitle= Yii::app()->name." - "."Editar";
 
 $this->breadcrumbs=array(
 	'Menciones'=>array('index'),
-	$model->NombreMencion=>array('view','id'=>$model->NombreMencion),
+	$model->NombreMencion=>array('view','id'=>$model->CodMencion),
 	'Editar',
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->NombreMencion)),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->CodMencion)),
 	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>

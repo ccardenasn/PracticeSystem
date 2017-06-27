@@ -32,8 +32,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Mencion_NombreMencion'); ?>
-		<?php echo $form->textField($model,'Mencion_NombreMencion',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'Mencion_CodMencion'); ?>
+		<?php echo $form->textField($model,'Mencion_CodMencion'); ?>
 	</div>
 
 	<div class="row">
