@@ -23,6 +23,9 @@ function sendPassword($destino,$asunto,$rut,$nombre,$clave){
 
     //metodo para enviar mail desde localhost
     Yii::import('application.extensions.phpmailer.JPhpMailer');
+    
+    $html="<html><body><p>Esto es un email enviado de forma automatica. Por favor no responder. Gracias</p><p><b>Se ha creado su usuario</b></p><p><b></b></p><table width='100%' border='1' cellpadding='0' cellspacing='0'><tr><th>Rut</th><th>Nombre</th><th>Clave</th></tr><tr><td align='center'>".$rut."</td><td align='center'>".$nombre."</td><td align='center'>".$clave."</td></tr></table></body></html>";
+    
     $mail = new JPhpMailer;
     $mail->IsSMTP();
     $mail->Host = "smtp.gmail.com";
@@ -32,9 +35,8 @@ function sendPassword($destino,$asunto,$rut,$nombre,$clave){
     $mail->Password = "Prueba201";
     $mail->Port = 465;
     $mail->SetFrom("cardenasn.desarrollo@gmail.com", 'Christian');
-    $mail->Subject = 'PHPMailer Test Subject via smtp, basic with authentication';
-    $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-    $mail->MsgHTML('<h1>JUST A TEST!</h1>');
+    $mail->Subject = $asunto;
+    $mail->MsgHTML($html);
     $mail->AddAddress($destino,$nombre);
     $mail->Send();
 }

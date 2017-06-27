@@ -36,19 +36,6 @@
 		<?php echo $form->textField($model,'NombreEstudiante',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreEstudiante'); ?>
 	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'ClaveEstudiante'); ?>
-		<?php echo $form->passwordField($model,'ClaveEstudiante',array('onfocus'=>"this.removeAttribute('readonly');",'readOnly'=>true,'size'=>45,'maxlength'=>45,'checked'=>'checked')); ?>
-		<?php echo $form->error($model,'ClaveEstudiante'); ?>
-	</div>
-    
-    <div>
-        <?php echo $form->labelEx($model,'ConfirmClaveEstudiante'); ?>
-        <?php echo $form->passwordField($model,'ConfirmClaveEstudiante',array('onfocus'=>"this.removeAttribute('readonly');",'readOnly'=>true,'size'=>45,'maxlength'=>45,'checked'=>'checked')); ?>
-        <?php echo $form->error($model,'ConfirmClaveEstudiante'); ?>
-    </div>
-        
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'FechaIncorporacion'); ?>

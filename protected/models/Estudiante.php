@@ -41,8 +41,6 @@ class Estudiante extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-    public $ConfirmClaveEstudiante;
-    
 	public function tableName()
 	{
 		return 'estudiante';
@@ -56,10 +54,8 @@ class Estudiante extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('RutEstudiante, NombreEstudiante, ClaveEstudiante,ConfirmClaveEstudiante, FechaIncorporacion, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('RutEstudiante, NombreEstudiante, FechaIncorporacion, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('Mencion_CodMencion, CentroPractica_RBD, Estado', 'numerical', 'integerOnly'=>true),
-            array('ConfirmClaveEstudiante', 'compare','operator'=>'==','compareAttribute'=>'ClaveEstudiante','allowEmpty'=>false),
-            array('ConfirmClaveEstudiante', 'safe'),
             array('RutEstudiante','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -85,9 +81,9 @@ class Estudiante extends CActiveRecord
             array('RutEstudiante','valuniquerut','on'=>'insert'),
             array('CentroPractica_RBD','valcentro'),
             //array('TelefonoEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
-            array('CelularEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
+            //array('CelularEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
             array('TelefonoEstudiante','valtelefono'),
-            array('CelularEstudiante','valclave'),
+            array('CelularEstudiante','valcelular'),
             //array('ImagenEstudiante','valimagen'),
 		);
 	}

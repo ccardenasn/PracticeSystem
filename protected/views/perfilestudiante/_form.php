@@ -32,21 +32,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ClaveEstudiante'); ?>
-		<?php echo $form->textField($model,'ClaveEstudiante',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ClaveEstudiante'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'FechaIncorporacion'); ?>
 		<?php echo $form->textField($model,'FechaIncorporacion',array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'FechaIncorporacion'); ?>
 	</div>
     
     <div class="row">
-		<?php echo $form->labelEx($model,'Mencion_NombreMencion'); ?>
-		<?php echo $form->textField($model,'Mencion_NombreMencion',array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'Mencion_NombreMencion'); ?>
+		<?php echo $form->labelEx($model,'Mencion_CodMencion'); ?>
+		<?php echo $form->textField($model,'Mencion_CodMencion',array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'Mencion_CodMencion'); ?>
 	</div>
 
 	<div class="row">

@@ -58,7 +58,7 @@ $this->menu=array(
 		'RutEstudiante',
 		'NombreEstudiante',
 		'FechaIncorporacion',
-		'Mencion_NombreMencion',
+		'mencionCodMencion.NombreMencion',
 		'MailEstudiante',
 		'TelefonoEstudiante',
 		'CelularEstudiante',

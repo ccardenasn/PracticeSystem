@@ -9,8 +9,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RutEstudiante)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>Yii::app()->user->name)),
 	array('label'=>'Planificaciones/Bitácoras','url'=>array('/planificacionclase')),
+    array('label'=>'Cambiar Contraseña','url'=>array('/estudiantelogin/update','id'=>Yii::app()->user->name)),
 );
 ?>
 

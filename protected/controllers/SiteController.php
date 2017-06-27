@@ -108,7 +108,7 @@ class SiteController extends Controller
                 
                 if($studentData != null){
                     if($studentData->Estado == 0){
-                        $this->redirect(array('estudiantelogin/update','id'=>$rut));
+                        $this->redirect(array('estudiantelogin/update','id'=>Yii::app()->user->name));
                     }else{
                         $this->redirect(array($profilelogged));
                     }

@@ -133,7 +133,7 @@ class PerfilestudianteController extends Controller
     
     public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel(Yii::app()->user->name);
 		
 		$imageAttrib = "ImagenEstudiante";
 		$table = "estudiante";

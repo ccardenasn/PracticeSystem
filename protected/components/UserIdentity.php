@@ -123,6 +123,20 @@ class UserIdentity extends CUserIdentity
 		
 		return $result;
 	}
+    
+    public function isDirector(){
+        $result = false;
+		
+		$user = Yii::app()->user->name;
+		
+		$existDirector = containsDirector($user);
+		
+		if($existDirector != 0){
+			$result = true;
+		}
+		
+		return $result;
+    }
 	
 	
 }

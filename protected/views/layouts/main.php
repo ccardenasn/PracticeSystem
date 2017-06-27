@@ -36,8 +36,9 @@ $ask = new UserIdentity('','');
 		 <?php include_once('FunProfile.php');
             $this->widget('application.extensions.mbmenu.MbMenu',array(
             'items'=>array(
-                array('label'=>'Inicio', 'url'=>array('/site/index')),	
-                array('label'=>'Perfil', 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Inicio', 'url'=>array('/site/index')),
+                //array('label'=>'Cambiar Contraseña', 'url'=>array('/estudiantelogin/update')),
+                array('label'=>'Perfil', 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>$ask->isStudent() || $ask->isAdmins()),
                
                 array('label'=>'Administracion',
                       'items'=>array(
@@ -52,7 +53,7 @@ $ask = new UserIdentity('','');
                           array('label'=>'Menciones','url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Director de Carrera','url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isDirector()),
                           //array('label'=>'Secretaria','url'=>array('/secretariacarrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Docente Responsable de Practica','url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
                           //array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica'),'visible'=>$ask->isAdmins()),

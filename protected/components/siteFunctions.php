@@ -1,7 +1,7 @@
 <?php
 
 function containsStd($id){
-	$query = "select count(*) from estudiante where RutEstudiante = '".$id."'";
+	$query = "select count(*) from estudiante where RutEstudiante = '".$id."' and Estado = 1";
 	$result=Yii::app()->db->createCommand($query)->queryScalar();
 	
 	return $result;
