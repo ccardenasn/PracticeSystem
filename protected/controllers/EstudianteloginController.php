@@ -88,7 +88,7 @@ class EstudianteloginController extends Controller
 			$model->attributes=$_POST['Estudiantelogin'];
             
             if($model->ClaveEstudiante == $_POST['Estudiantelogin']['ConfirmClaveEstudiante']){
-                $model->Estado = 1;
+                $model->Estado = '1';
                 if($model->save()){
                     $this->redirect(array('perfilestudiante/view','id'=>$model->RutEstudiante));
                 }

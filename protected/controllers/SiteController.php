@@ -107,7 +107,7 @@ class SiteController extends Controller
                 $studentData=Estudiante::model()->find('RutEstudiante=?',array($rut));
                 
                 if($studentData != null){
-                    if($studentData->Estado == 0){
+                    if($studentData->Estado == '0'){
                         $this->redirect(array('estudiantelogin/update','id'=>Yii::app()->user->name));
                     }else{
                         $this->redirect(array($profilelogged));

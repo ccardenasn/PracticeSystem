@@ -82,7 +82,7 @@ class EstudianteController extends Controller
                 
                 $randomPassword = rand(0,9999);
                 $model->ClaveEstudiante = $randomPassword;
-                $model->Estado = 0;
+                $model->Estado = '0';
                 
                 $rnd = rand(0,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenEstudiante');
