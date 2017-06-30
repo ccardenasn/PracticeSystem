@@ -68,7 +68,7 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
   </tr>
   <tr>
     <td><strong>Mención</strong></td>
-    <td>".$model->Mencion_NombreMencion."</td>
+    <td>".$model->mencionCodMencion->NombreMencion."</td>
   </tr>
   <tr>
     <td><strong>Correo</strong></td>

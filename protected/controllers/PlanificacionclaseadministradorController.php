@@ -77,7 +77,7 @@ class PlanificacionclaseadministradorController extends Controller
 		$totalSesiones = $practicaModel->NumeroSesionesPractica;
 		$sesionesPlanificacion = contains($table,$codTable,$id);
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		$this->performAjaxValidation(array($model,$studentModel));
 
 		if($sesionesPlanificacion < $totalSesiones){
 			

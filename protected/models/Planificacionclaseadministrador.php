@@ -49,6 +49,7 @@ class Planificacionclaseadministrador extends CActiveRecord
 			// @todo Please remove those attributes that should not be searched.
 			array('CodPlanificacion, Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_NombrePractica, Fecha, SesionInformada, Ejecutado, Supervisado, ComentarioPlanificacion', 'safe', 'on'=>'search'),
             array('Fecha','valfecha'),
+            //array('CentroPractica_RBD','valcentro'),
 		);
 	}
 
@@ -206,6 +207,12 @@ class Planificacionclaseadministrador extends CActiveRecord
 	{
 		if(fechavalida($this->Fecha)==false)
 		$this->addError('Fecha','fecha no válida');
+	}
+    
+    public function valcentro($attribute,$params)
+	{
+		if(centrovalido($this->CentroPractica_RBD)==false)
+		$this->addError('CentroPractica_RBD','este centro no contiene profesores asignados');
 	}
 	
 	public function getAdmins(){

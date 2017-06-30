@@ -113,11 +113,20 @@ class NiveleducacionalController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        $centroData=Centropractica::model()->find('NivelEducacional_CodNivel=?',array($id));
+		
+		if($centroData == null){
+            $this->loadModel($id)->delete();
+            
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if(!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible eliminar!</strong></p><ul><li>Hay centros de práctica asociados a este nivel.</li></ul></div>");
+			//$this->refresh();
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array("view&id=".$id.""));
+		}
 	}
 
 	/**

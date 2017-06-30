@@ -189,11 +189,20 @@ class ProfesorguiacpController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        $studentData=Estudiante::model()->find('ProfesorGuiaCP_RutProfGuiaCP=?',array($id));
+		
+		if($studentData == null){
+            $this->loadModel($id)->delete();
+            
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if(!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible eliminar!</strong></p><ul><li>Hay estudiantes asociados a profesor cp.</li></ul></div>");
+			//$this->refresh();
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array("view&id=".$id.""));
+		}
 	}
 
 	/**

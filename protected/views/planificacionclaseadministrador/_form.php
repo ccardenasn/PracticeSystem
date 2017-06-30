@@ -18,7 +18,7 @@ include_once('planningFunctions.php');
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
+	<?php echo $form->errorSummary(array($model,$studentModel),'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
    
     <?php 
     $req=Yii::app()->request->getQuery('id');

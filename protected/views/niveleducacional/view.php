@@ -12,13 +12,19 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodNivel)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodNivel),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodNivel),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Lista', 'url'=>array('index')),
 );
 ?>
 
 <h1>Nivel Educacional: <?php echo $model->NombreNivel; ?></h1><br>
+
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+    <?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <div class="collapse">
 	<h3>Ayuda</h3>

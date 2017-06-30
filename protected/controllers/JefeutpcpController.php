@@ -100,7 +100,7 @@ class JefeutpcpController extends Controller
                             
                             if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
                                 
-                                $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$fileNombre);
+                                $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$fileName);
                             }else{
                                 deleteData($table,$codTable,$model->RutJefeUTPCP);
                                 Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");

@@ -12,13 +12,19 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodDependencia)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodDependencia),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodDependencia),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
 	array('label'=>'Lista', 'url'=>array('index')),
 );
 ?>
 
 <h1>Dependencia: <?php echo $model->NombreDependencia; ?></h1><br>
+
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+    <?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <div class="collapse">
 	<h3>Ayuda</h3>

@@ -17,7 +17,7 @@
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary(array($model,$studentModel),'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 
 	<div class="row">
 		<?php //echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>

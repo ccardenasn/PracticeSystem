@@ -1,5 +1,5 @@
 <?php
-
+include_once 'FunNumeros.php';
 /**
  * This is the model class for table "configuracionpractica".
  *
@@ -38,7 +38,7 @@ class Configuracionpractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombrePractica, Semestre_CodSemestre, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('NombrePractica','unique','message'=>'{value} ya existe.'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
 			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
@@ -46,6 +46,9 @@ class Configuracionpractica extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
+            array('FechaPractica','valfecha'),
+            array('NumeroSesionesPractica','valsesiones'),
+            array('NumeroHorasPractica','valhoras'),
 		);
 	}
 
@@ -153,6 +156,24 @@ class Configuracionpractica extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+    
+    public function valfecha($attribute,$params)
+	{
+		if(numerovalido($this->FechaPractica)==false)
+		$this->addError('FechaPractica','solo se permiten números');
+	}
+    
+    public function valsesiones($attribute,$params)
+	{
+		if(numerovalido($this->NumeroSesionesPractica)==false)
+		$this->addError('NumeroSesionesPractica','solo se permiten números');
+	}
+    
+    public function valhoras($attribute,$params)
+	{
+		if(numerovalido($this->NumeroHorasPractica)==false)
+		$this->addError('NumeroHorasPractica','solo se permiten números');
 	}
 	
 	public function getAdmins(){
