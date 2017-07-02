@@ -5,8 +5,8 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NombrePractica')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->NombrePractica), array('view', 'id'=>$data->NombrePractica)); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('NombrePractica')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->NombrePractica), array('view', 'id'=>$data->CodPractica)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('DescripcionPractica')); ?>:</b>

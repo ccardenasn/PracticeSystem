@@ -32,11 +32,11 @@ class Carrera extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'length', 'max'=>45),
+			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_CodInstitucion', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_CodInstitucion', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_NombreInstitucion', 'safe', 'on'=>'search'),
+			array('codCarrera, NombreCarrera, SemestresCarrera, Universidad_CodInstitucion', 'safe', 'on'=>'search'),
             array('SemestresCarrera','valnumeros'),
 		);
 	}
@@ -49,7 +49,7 @@ class Carrera extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'universidadNombreInstitucion' => array(self::BELONGS_TO, 'Universidad', 'Universidad_NombreInstitucion'),
+			'universidadCodInstitucion' => array(self::BELONGS_TO, 'Universidad', 'Universidad_CodInstitucion'),
 			'secretariacarreras' => array(self::HAS_MANY, 'Secretariacarrera', 'Carrera_codCarrera'),
 		);
 	}
@@ -63,7 +63,7 @@ class Carrera extends CActiveRecord
 			'codCarrera' => 'Cod Carrera',
 			'NombreCarrera' => 'Nombre Carrera',
 			'SemestresCarrera' => 'Número de Semestres',
-			'Universidad_NombreInstitucion' => 'Universidad',
+			'Universidad_CodInstitucion' => 'Universidad',
 		);
 	}
 
@@ -104,7 +104,7 @@ class Carrera extends CActiveRecord
 		$criteria->compare('codCarrera',$this->codCarrera,true);
 		$criteria->compare('NombreCarrera',$this->NombreCarrera,true);
 		$criteria->compare('SemestresCarrera',$this->SemestresCarrera,true);
-		$criteria->compare('Universidad_NombreInstitucion',$this->Universidad_NombreInstitucion,true);
+		$criteria->compare('Universidad_CodInstitucion',$this->Universidad_CodInstitucion);
 
 		$sort= new CSort();
 		

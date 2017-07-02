@@ -1,6 +1,7 @@
 <?php
 include_once('bitacoraFunctions.php');
 include_once('mainFunctions.php');
+include_once('FunSendMail.php');
 
 class DocenteresponsablepracticaController extends Controller
 {
@@ -78,6 +79,9 @@ class DocenteresponsablepracticaController extends Controller
 		{
 			$model->attributes=$_POST['Docenteresponsablepractica'];
             
+            $randomPassword = rand(0,9999);
+            $model->ClaveResponsable = $randomPassword;
+            
             $rnd = rand(0,9999);
             $file=CUploadedFile::getInstance($model,'ImagenResponsable');
             $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
@@ -96,6 +100,8 @@ class DocenteresponsablepracticaController extends Controller
                         $this->refresh();
                     }	
                 }
+                
+                sendPassword($model->MailResponsable,"Nuevo Usuario",$model->RutResponsable,$model->NombreResponsable,$model->ClaveResponsable);
                 $this->redirect(array('view','id'=>$model->RutResponsable));
             }
 		}

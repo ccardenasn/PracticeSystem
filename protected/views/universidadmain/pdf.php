@@ -13,7 +13,7 @@ $year = $fecha['year'];
 
 $date = $day."/".$month."/".$year;
 
-$carreraData=Carrera::model()->find('Universidad_NombreInstitucion=?',array($model->NombreInstitucion));
+$carreraData=Carrera::model()->find('Universidad_CodInstitucion=?',array($model->CodInstitucion));
 
 $query = "select RutDirector from directorcarrera;";
 $rutDirector=Yii::app()->db->createCommand($query)->queryScalar();

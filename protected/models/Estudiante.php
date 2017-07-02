@@ -54,8 +54,8 @@ class Estudiante extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('RutEstudiante, NombreEstudiante, FechaIncorporacion, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-            array('Mencion_CodMencion, CentroPractica_RBD, Estado', 'numerical', 'integerOnly'=>true),
+            array('RutEstudiante, NombreEstudiante, FechaIncorporacion, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+            array('Mencion_CodMencion,ConfiguracionPractica_CodPractica ,CentroPractica_RBD, Estado', 'numerical', 'integerOnly'=>true),
             array('RutEstudiante','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -66,12 +66,12 @@ class Estudiante extends CActiveRecord
             array('RutEstudiante','unique','className'=>'Jefeutpcp','attributeName'=>'RutJefeUTPCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Profesorcoordinadorpracticacp','attributeName'=>'RutProfCoordGuiaCp','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Profesorguiacp','attributeName'=>'RutProfGuiaCP','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
-            array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
+            array('Mencion_CodMencion,CentroPractica_RBD, ConfiguracionPractica_CodPractica', 'numerical', 'integerOnly'=>true),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
 			array('ObservacionEstudiante', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ImagenEstudiante, SituacionFinalEstudiante, ObservacionEstudiante', 'safe', 'on'=>'search'),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, CentroPractica_RBD, ImagenEstudiante, SituacionFinalEstudiante, ObservacionEstudiante', 'safe', 'on'=>'search'),
 			array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
             array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar
 			array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
@@ -97,7 +97,7 @@ class Estudiante extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'centroPracticaRBD' => array(self::BELONGS_TO, 'Centropractica', 'CentroPractica_RBD'),
-			'configuracionPracticaNombrePractica' => array(self::BELONGS_TO, 'Configuracionpractica', 'ConfiguracionPractica_NombrePractica'),
+			'configuracionPracticaCodPractica' => array(self::BELONGS_TO, 'Configuracionpractica', 'ConfiguracionPractica_CodPractica'),
             'mencionCodMencion' => array(self::BELONGS_TO, 'Mencion', 'Mencion_CodMencion'),
 			'profesorGuiaCPRutProfGuiaCP' => array(self::BELONGS_TO, 'Profesorguiacp', 'ProfesorGuiaCP_RutProfGuiaCP'),
 			'horarios' => array(self::HAS_MANY, 'Horario', 'Estudiante_RutEstudiante'),
@@ -124,7 +124,7 @@ class Estudiante extends CActiveRecord
 			'CelularEstudiante' => 'Celular',
 			'ProfesorGuiaCP_RutProfGuiaCP' => 'Rut Profesor Guía CP',
 			'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP' => 'Nombre Profesor Guía CP',
-			'ConfiguracionPractica_NombrePractica' => 'Nombre Práctica',
+            'ConfiguracionPractica_CodPractica' => 'Nombre de Práctica',
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
 			'ImagenEstudiante' => 'Imagen',
@@ -195,7 +195,7 @@ class Estudiante extends CActiveRecord
 		$criteria->compare('CelularEstudiante',$this->CelularEstudiante,true);
 		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
 		//$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
-        $criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica);
+        $criteria->compare('ConfiguracionPractica_CodPractica',$this->ConfiguracionPractica_CodPractica);
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ImagenEstudiante',$this->ImagenEstudiante,true);
 		$criteria->compare('SituacionFinalEstudiante',$this->SituacionFinalEstudiante,true);

@@ -41,7 +41,7 @@ class Universidad extends CActiveRecord
 			array('NombreInstitucion, Sede, Campus, Facultad', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('NombreInstitucion, Sede, Campus, Facultad, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'safe', 'on'=>'search'),
+            array('CodInstitucion, NombreInstitucion, Sede, Campus, Facultad, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,7 +53,7 @@ class Universidad extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'carreras' => array(self::HAS_MANY, 'Carrera', 'Universidad_NombreInstitucion'),
+			'carreras' => array(self::HAS_MANY, 'Carrera', 'Universidad_CodInstitucion'),
 			'ciudadCodCiudad' => array(self::BELONGS_TO, 'Ciudad', 'Ciudad_codCiudad'),
 			'provinciaCodProvincia' => array(self::BELONGS_TO, 'Provincia', 'Provincia_codProvincia'),
 			'regionCodRegion' => array(self::BELONGS_TO, 'Region', 'Region_codRegion'),
@@ -66,6 +66,7 @@ class Universidad extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+            'CodInstitucion' => 'Cod Institucion',
 			'NombreInstitucion' => 'Nombre Institución',
 			'Sede' => 'Sede',
 			'Campus' => 'Campus',
@@ -113,6 +114,7 @@ class Universidad extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+        $criteria->compare('CodInstitucion',$this->CodInstitucion);
 		$criteria->compare('NombreInstitucion',$this->NombreInstitucion,true);
 		$criteria->compare('Sede',$this->Sede,true);
 		$criteria->compare('Campus',$this->Campus,true);

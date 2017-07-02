@@ -76,7 +76,7 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'NombrePractica',
+		array('name'=>'CodPractica','value'=>'$data->NombrePractica','filter'=>CHtml::listData(Configuracionpractica::model()->findAll(),'CodPractica','NombrePractica')),
 		//'DescripcionPractica',
 		'FechaPractica',
         array('name'=>'Semestre_CodSemestre','value'=>'$data->semestreCodSemestre->NombreSemestre','filter'=>CHtml::listData(Semestre::model()->findAll(),'CodSemestre','NombreSemestre')),

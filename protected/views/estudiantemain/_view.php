@@ -42,8 +42,8 @@
 	<?php echo CHtml::encode($data->ProfesorGuiaCP_RutProfGuiaCP); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ConfiguracionPractica_NombrePractica')); ?>:</b>
-	<?php echo CHtml::encode($data->ConfiguracionPractica_NombrePractica); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ConfiguracionPractica_CodPractica')); ?>:</b>
+	<?php echo CHtml::encode($data->ConfiguracionPractica_CodPractica); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('CentroPractica_RBD')); ?>:</b>

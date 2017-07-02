@@ -28,7 +28,7 @@
     
 	<div class="row" align="center">
 		<?php //echo $form->labelEx($model,'RutEstudiante'); ?>
-		<?php echo $form->hiddenField($model,'RutEstudiante',array('size'=>30,'maxlength'=>30,'readOnly' => true,)); ?>
+		<?php echo $form->hiddenField($model,'RutEstudiante',array('size'=>30,'maxlength'=>30,'readOnly' => true)); ?>
 		<?php echo $form->error($model,'RutEstudiante'); ?>
 	</div>
 

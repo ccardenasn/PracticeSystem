@@ -80,7 +80,7 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
   </tr>
   <tr>
     <td><strong>Práctica</strong></td>
-    <td>".$model->configuracionPracticaNombrePractica->NombrePractica."</td>
+    <td>".$model->configuracionPracticaCodPractica->NombrePractica."</td>
   </tr>
   <tr>
     <td><strong>Fecha</strong></td>
@@ -92,15 +92,15 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
   </tr>
   <tr>
     <td><strong>Total de Sesiones</strong></td>
-    <td>".$model->configuracionPracticaNombrePractica->NumeroSesionesPractica."</td>
+    <td>".$model->configuracionPracticaCodPractica->NumeroSesionesPractica."</td>
   </tr>
   <tr>
     <td><strong>Número de Horas</strong></td>
-    <td>".$model->configuracionPracticaNombrePractica->NumeroHorasPractica."</td>
+    <td>".$model->configuracionPracticaCodPractica->NumeroHorasPractica."</td>
   </tr>
   <tr>
     <td><strong>Total de Sesiones</strong></td>
-    <td>".$model->configuracionPracticaNombrePractica->NumeroSesionesPractica."</td>
+    <td>".$model->configuracionPracticaCodPractica->NumeroSesionesPractica."</td>
   </tr>
   <tr>
     <td><strong>Ejecutado</strong></td>

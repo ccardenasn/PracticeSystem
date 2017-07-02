@@ -41,13 +41,13 @@ class Planificacionclase extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, Fecha', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
-			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
-			array('Estudiante_RutEstudiante, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_NombrePractica, Fecha, SesionInformada, Ejecutado, Supervisado', 'length', 'max'=>45),
+			array('Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, Fecha', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('CentroPractica_RBD,ConfiguracionPractica_CodPractica', 'numerical', 'integerOnly'=>true),
+			array('Estudiante_RutEstudiante, ProfesorGuiaCP_RutProfGuiaCP, Curso, Fecha, SesionInformada, Ejecutado, Supervisado', 'length', 'max'=>45),
 			array('ComentarioPlanificacion', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodPlanificacion, Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_NombrePractica, Fecha, SesionInformada, Ejecutado, Supervisado, ComentarioPlanificacion', 'safe', 'on'=>'search'),
+			array('CodPlanificacion, Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_CodPractica, Fecha, SesionInformada, Ejecutado, Supervisado, ComentarioPlanificacion', 'safe', 'on'=>'search'),
             array('Fecha','valfecha'),
 		);
 	}
@@ -62,7 +62,7 @@ class Planificacionclase extends CActiveRecord
 		return array(
 			'bitacorasesions' => array(self::HAS_MANY, 'Bitacorasesion', 'PlanificacionClase_CodPlanificacion'),
 			'centroPracticaRBD' => array(self::BELONGS_TO, 'Centropractica', 'CentroPractica_RBD'),
-			'configuracionPracticaNombrePractica' => array(self::BELONGS_TO, 'Configuracionpractica', 'ConfiguracionPractica_NombrePractica'),
+			'configuracionPracticaCodPractica' => array(self::BELONGS_TO, 'Configuracionpractica', 'ConfiguracionPractica_CodPractica'),
 			'estudianteRutEstudiante' => array(self::BELONGS_TO, 'Estudiante', 'Estudiante_RutEstudiante'),
 			'profesorGuiaCPRutProfGuiaCP' => array(self::BELONGS_TO, 'Profesorguiacp', 'ProfesorGuiaCP_RutProfGuiaCP'),
 		);
@@ -79,7 +79,7 @@ class Planificacionclase extends CActiveRecord
 			'CentroPractica_RBD' => 'Centro de Práctica',
 			'ProfesorGuiaCP_RutProfGuiaCP' => 'Rut Profesor Guía CP',
 			'Curso' => 'Curso',
-			'ConfiguracionPractica_NombrePractica' => 'Nombre de Práctica',
+			'ConfiguracionPractica_CodPractica' => 'Nombre de Práctica',
 			'Fecha' => 'Fecha',
 			'SesionInformada' => 'Sesión Informada',
 			'Ejecutado' => 'Ejecutado',
@@ -115,7 +115,7 @@ class Planificacionclase extends CActiveRecord
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
 		$criteria->compare('Curso',$this->Curso,true);
-		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+		$criteria->compare('ConfiguracionPractica_CodPractica',$this->ConfiguracionPractica_CodPractica);
 		$criteria->compare('Fecha',$this->Fecha,true);
 		$criteria->compare('SesionInformada',$this->SesionInformada,true);
 		$criteria->compare('Ejecutado',$this->Ejecutado,true);
@@ -138,7 +138,7 @@ class Planificacionclase extends CActiveRecord
 		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
 		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
 		$criteria->compare('Curso',$this->Curso,true);
-		$criteria->compare('ConfiguracionPractica_NombrePractica',$this->ConfiguracionPractica_NombrePractica,true);
+        $criteria->compare('ConfiguracionPractica_CodPractica',$this->ConfiguracionPractica_CodPractica);
 		$criteria->compare('Fecha',$this->Fecha,true);
 		$criteria->compare('SesionInformada',$this->SesionInformada,true);
 		$criteria->compare('Ejecutado',$this->Ejecutado,true);

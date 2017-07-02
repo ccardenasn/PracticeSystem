@@ -69,7 +69,7 @@ class PlanificacionclaseadministradorController extends Controller
 	{
 		$model=new Planificacionclaseadministrador;
 		$studentModel=$this->loadStudentModel($id);
-		$practicaModel=$this->loadPracticaModel($studentModel->ConfiguracionPractica_NombrePractica);
+		$practicaModel=$this->loadPracticaModel($studentModel->ConfiguracionPractica_CodPractica);
 
 		$table = "planificacionclase";
 		$codTable = "Estudiante_RutEstudiante";

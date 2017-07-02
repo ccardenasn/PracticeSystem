@@ -4,6 +4,7 @@
  * This is the model class for table "configuracionpractica".
  *
  * The followings are the available columns in table 'configuracionpractica':
+ * @property integer $CodPractica
  * @property string $NombrePractica
  * @property string $DescripcionPractica
  * @property string $FechaPractica
@@ -38,13 +39,13 @@ class Configuracionpracticamain extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombrePractica, Semestre_CodSemestre, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required'),
+			array('Semestre_CodSemestre, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
 			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
 			array('DescripcionPractica', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
+			array('CodPractica, NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +60,8 @@ class Configuracionpracticamain extends CActiveRecord
 			'docenteCoordinadorPracticasRutCoordinador' => array(self::BELONGS_TO, 'Docentecoordinadorpracticas', 'DocenteCoordinadorPracticas_RutCoordinador'),
 			'docenteResponsablePracticaRutResponsable' => array(self::BELONGS_TO, 'Docenteresponsablepractica', 'DocenteResponsablePractica_RutResponsable'),
 			'semestreCodSemestre' => array(self::BELONGS_TO, 'Semestre', 'Semestre_CodSemestre'),
-			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'ConfiguracionPractica_NombrePractica'),
-			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'ConfiguracionPractica_NombrePractica'),
+			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'ConfiguracionPractica_CodPractica'),
+			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'ConfiguracionPractica_CodPractica'),
 		);
 	}
 
@@ -70,6 +71,7 @@ class Configuracionpracticamain extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'CodPractica' => 'Cod Practica',
 			'NombrePractica' => 'Nombre Practica',
 			'DescripcionPractica' => 'Descripcion Practica',
 			'FechaPractica' => 'Fecha Practica',
@@ -99,6 +101,7 @@ class Configuracionpracticamain extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('CodPractica',$this->CodPractica);
 		$criteria->compare('NombrePractica',$this->NombrePractica,true);
 		$criteria->compare('DescripcionPractica',$this->DescripcionPractica,true);
 		$criteria->compare('FechaPractica',$this->FechaPractica,true);

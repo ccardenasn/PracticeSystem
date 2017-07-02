@@ -30,7 +30,7 @@ $this->menu=array(
 		'TelefonoEstudiante',
 		'CelularEstudiante',
 		'ProfesorGuiaCP_RutProfGuiaCP',
-		'ConfiguracionPractica_NombrePractica',
+		'ConfiguracionPractica_CodPractica',
 		'CentroPractica_RBD',
 		'ImagenEstudiante',
 		'SituacionFinalEstudiante',

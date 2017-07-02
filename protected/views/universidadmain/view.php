@@ -17,10 +17,10 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->NombreInstitucion)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->NombreInstitucion),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodInstitucion)),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodInstitucion),'confirm'=>'¿Esta seguro de querer borrar este elemento?')),
 	array('label'=>'Administración', 'url'=>array('admin')),
-    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->NombreInstitucion)),
+    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodInstitucion)),
 );
 ?>
 
@@ -120,7 +120,7 @@ $this->menu=array(
 		<?php
 	
 	
-	$car=Carrera::model()->find('Universidad_NombreInstitucion=?',array($model->NombreInstitucion));
+	$car=Carrera::model()->find('Universidad_CodInstitucion=?',array($model->CodInstitucion));
 	?>
 		<?php foreach($car->secretariacarreras as $secretaria) : ?>
 		<tr>

@@ -36,12 +36,6 @@
 		<?php echo $form->textField($model,'NombreResponsable',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreResponsable'); ?>
 	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'ClaveResponsable'); ?>
-		<?php echo $form->passwordField($model,'ClaveResponsable',array('onfocus'=>"this.removeAttribute('readonly');",'readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ClaveResponsable'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'MailResponsable'); ?>

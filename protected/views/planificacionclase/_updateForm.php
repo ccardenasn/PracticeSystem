@@ -17,7 +17,7 @@
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary(array($model,$studentModel),'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
+	<?php echo $form->errorSummary($model,'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 
 	<div class="row">
 		<?php //echo $form->labelEx($model,'Estudiante_RutEstudiante'); ?>
@@ -76,9 +76,9 @@
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'ConfiguracionPractica_NombrePractica'); ?>
-		<?php echo $form->dropDownList($model,'ConfiguracionPractica_NombrePractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
-        <?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
+		<?php echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php echo $form->dropDownList($model,'ConfiguracionPractica_CodPractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
+        <?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
 	</div>
 
 	<div class="row">
@@ -111,13 +111,13 @@
 	
 	 <div class="row">
         <?php echo CHtml::label('Numero de Sesiones','NumeroSesionesPractica'); ?>
-        <?php echo CHtml::textField('NumeroSesionesPractica',$model->configuracionPracticaNombrePractica->NumeroSesionesPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+        <?php echo CHtml::textField('NumeroSesionesPractica',$model->configuracionPracticaCodPractica->NumeroSesionesPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 	
 	<div class="row">
         <?php echo CHtml::label('Numero de Horas','NumeroHorasPractica'); ?>
-        <?php echo CHtml::textField('NumeroHorasPractica',$model->configuracionPracticaNombrePractica->NumeroHorasPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+        <?php echo CHtml::textField('NumeroHorasPractica',$model->configuracionPracticaCodPractica->NumeroHorasPractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 

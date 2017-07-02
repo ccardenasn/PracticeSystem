@@ -12,7 +12,7 @@
 	'enableAjaxValidation'=>true,
 	'enableClientValidation'=>true,
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-	'clientOptions'=>array('validateOnSubmit'=>true,),
+	'clientOptions'=>array('validateOnSubmit'=>true),
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>

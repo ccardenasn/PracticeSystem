@@ -11,8 +11,8 @@ $directorData=Directorcarrera::model()->find('RutDirector=?',array($rutDirector)
 <div class="view">
     <h3><?php echo CHtml::label('Detalles','Detalles'); ?>:</h3>
     
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NombreInstitucion')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->NombreInstitucion), array('view', 'id'=>$data->NombreInstitucion)); ?>
+    <b><?php echo CHtml::encode($data->getAttributeLabel('NombreInstitucion')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->NombreInstitucion), array('view', 'id'=>$data->CodInstitucion)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Sede')); ?>:</b>

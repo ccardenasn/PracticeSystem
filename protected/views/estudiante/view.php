@@ -64,7 +64,7 @@ $this->menu=array(
 		'CelularEstudiante',
 		'ProfesorGuiaCP_RutProfGuiaCP',
 		'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP',
-		'ConfiguracionPractica_NombrePractica',
+		'configuracionPracticaCodPractica.NombrePractica',
 		'centroPracticaRBD.NombreCentroPractica',
 		array(
             'name'=>'ImagenEstudiante',

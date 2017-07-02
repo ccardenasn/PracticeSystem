@@ -88,9 +88,13 @@ class UniversidadmainController extends Controller
                 $secretariaModel->attributes=$_POST['Secretariacarrera'];
                 
                 $universidadModel->save();
-                $carreraModel->Universidad_NombreInstitucion = $universidadModel->NombreInstitucion;
+                $carreraModel->Universidad_CodInstitucion = $universidadModel->CodInstitucion;
                 
-                createSemesters($carreraModel->SemestresCarrera);
+                $semesterEmpty = countSemesters(); 
+                
+                if($semesterEmpty == 0){
+                    createSemesters($carreraModel->SemestresCarrera);
+                }
                 
                 $carreraModel->save();
                 $secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
@@ -114,7 +118,7 @@ class UniversidadmainController extends Controller
                         }
                     }
                 }
-                $this->redirect(array('view','id'=>$universidadModel->NombreInstitucion));
+                $this->redirect(array('view','id'=>$universidadModel->CodInstitucion));
             }
             
             $this->render('create',array(
@@ -139,7 +143,7 @@ class UniversidadmainController extends Controller
 		$secretariaModel=new Secretariacarrera;
 		
 		$universidadModel=$this->loadModel($id);
-		$carreraModel=Carrera::model()->find('Universidad_NombreInstitucion=?',array($id));
+		$carreraModel=Carrera::model()->find('Universidad_CodInstitucion=?',array($id));
 		$secretariaModel=Secretariacarrera::model()->find('Carrera_codCarrera=?',array($carreraModel->codCarrera));
         
         $imageAttrib = "ImagenSecretaria";
@@ -159,7 +163,7 @@ class UniversidadmainController extends Controller
 			
 			$universidadModel->save();
 			
-			$carreraModel->Universidad_NombreInstitucion = $universidadModel->NombreInstitucion;		
+			$carreraModel->Universidad_CodInstitucion = $universidadModel->CodInstitucion;		
 			
 			$carreraModel->save();
 			$secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
@@ -186,7 +190,7 @@ class UniversidadmainController extends Controller
 				}
 			}
 			
-			$this->redirect(array('view','id'=>$universidadModel->NombreInstitucion));
+			$this->redirect(array('view','id'=>$universidadModel->CodInstitucion));
 		}
 
 		$this->render('update',array(

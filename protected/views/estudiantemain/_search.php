@@ -57,8 +57,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'ConfiguracionPractica_NombrePractica'); ?>
-		<?php echo $form->textField($model,'ConfiguracionPractica_NombrePractica',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php echo $form->textField($model,'ConfiguracionPractica_CodPractica'); ?>
 	</div>
 
 	<div class="row">
@@ -83,7 +83,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'Estado'); ?>
-		<?php echo $form->textField($model,'Estado'); ?>
+		<?php echo $form->textField($model,'Estado',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row buttons">

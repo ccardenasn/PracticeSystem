@@ -55,10 +55,18 @@ class PlanificacionclaseController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	/*public function actionView($id)
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		));
+	}*/
+    
+    public function actionView($id)
+	{   
+        $rut=Yii::app()->user->name;
+		$this->render('view',array(
+			'model'=>$this->loadPlanningStudentModel($id,$rut),
 		));
 	}
 
@@ -73,7 +81,7 @@ class PlanificacionclaseController extends Controller
         $model=new Planificacionclase;
         
         $studentModel=$this->loadStudentModel($estudiantelogged);
-		$practicaModel=$this->loadPracticaModel($studentModel->ConfiguracionPractica_NombrePractica);
+		$practicaModel=$this->loadPracticaModel($studentModel->ConfiguracionPractica_CodPractica);
 
 		$table = "planificacionclase";
 		$codTable = "Estudiante_RutEstudiante";
@@ -209,6 +217,15 @@ class PlanificacionclaseController extends Controller
 	public function loadModel($id)
 	{
 		$model=Planificacionclase::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+    
+    public function loadPlanningStudentModel($id,$rut)
+	{
+		//$model=Planificacionclase::model()->findByPk($id);
+        $model=Planificacionclase::model()->findByAttributes(array('CodPlanificacion'=>$id,'Estudiante_RutEstudiante'=>$rut));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

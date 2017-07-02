@@ -70,9 +70,6 @@ class ConfiguracionpracticaController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
-		$table = "configuracionpractica";
-		$codTable = "NombrePractica";
 		
         $enabledPractica = isPracticaEnabled();
         
@@ -81,16 +78,9 @@ class ConfiguracionpracticaController extends Controller
             if(isset($_POST['Configuracionpractica'])){
                 
                 $model->attributes=$_POST['Configuracionpractica'];
-                $exist = contains($table,$codTable,$model->NombrePractica);
                 
-                if($exist == 0){
-                    
-                    if($model->save())
-                        $this->redirect(array('view','id'=>$model->NombrePractica));
-                }else{
-                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>La práctica: ".$model->NombrePractica." ya está registrada.</li></ul></div>");
-                    $this->refresh();
-                }
+                if($model->save())
+                    $this->redirect(array('view','id'=>$model->CodPractica));
             }
             
             $this->render('create',array(
@@ -121,7 +111,7 @@ class ConfiguracionpracticaController extends Controller
 		{
 			$model->attributes=$_POST['Configuracionpractica'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->NombrePractica));
+				$this->redirect(array('view','id'=>$model->CodPractica));
 		}
 
 		$this->render('update',array(
@@ -137,7 +127,7 @@ class ConfiguracionpracticaController extends Controller
 	public function actionDelete($id)
 	{
         $table = "estudiante";
-		$codTable = "ConfiguracionPractica_NombrePractica";
+		$codTable = "ConfiguracionPractica_CodPractica";
 		
 		$exist = contains($table,$codTable,$id);
 		

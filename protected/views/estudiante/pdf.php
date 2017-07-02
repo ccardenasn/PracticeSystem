@@ -92,7 +92,7 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
   </tr>
   <tr>
     <td><strong>Práctica</strong></td>
-    <td>".$model->ConfiguracionPractica_NombrePractica."</td>
+    <td>".$model->configuracionPracticaCodPractica->NombrePractica."</td>
   </tr>
   <tr>
     <td><strong>Nombre Profesor Guía CP</strong></td>

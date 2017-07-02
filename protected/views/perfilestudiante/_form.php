@@ -76,9 +76,9 @@
 	</div>
     
     <div class="row">
-		<?php echo $form->labelEx($model,'ConfiguracionPractica_NombrePractica'); ?>
-		<?php echo $form->textField($model,'ConfiguracionPractica_NombrePractica',array('readOnly' => true,'disabled'=>"disabled",'size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
+		<?php echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php echo $form->textField($model,'ConfiguracionPractica_CodPractica',array('readOnly' => true,'disabled'=>"disabled",'size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
 	</div>
         
 	<div class="row">

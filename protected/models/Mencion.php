@@ -57,7 +57,7 @@ class Mencion extends CActiveRecord
 	{
 		return array(
 			'CodMencion' => 'Cod Mencion',
-			'NombreMencion' => 'Nombre Mención',
+			'NombreMencion' => 'Mención',
 		);
 	}
 

@@ -100,9 +100,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ConfiguracionPractica_NombrePractica'); ?>
-		<?php echo $form->dropDownList($model,'ConfiguracionPractica_NombrePractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
-        <?php echo $form->error($model,'ConfiguracionPractica_NombrePractica'); ?>
+		<?php echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php echo $form->dropDownList($model,'ConfiguracionPractica_CodPractica',CHtml::listData(Configuracionpractica::model()->findAll(),'CodPractica','NombrePractica'));?>
+        <?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
 	</div>
 
 	<div class="row">

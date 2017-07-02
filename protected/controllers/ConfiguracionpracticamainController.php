@@ -71,7 +71,7 @@ class ConfiguracionpracticamainController extends Controller
 		{
 			$model->attributes=$_POST['Configuracionpracticamain'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->NombrePractica));
+				$this->redirect(array('view','id'=>$model->CodPractica));
 		}
 
 		$this->render('create',array(
@@ -95,7 +95,7 @@ class ConfiguracionpracticamainController extends Controller
 		{
 			$model->attributes=$_POST['Configuracionpracticamain'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->NombrePractica));
+				$this->redirect(array('view','id'=>$model->CodPractica));
 		}
 
 		$this->render('update',array(

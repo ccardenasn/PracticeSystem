@@ -73,7 +73,7 @@ $val=count($dataProvider);
 while($i<$val){
 	$html.="<tr>
 			<td>".$dataProvider[$i]["Estudiante_RutEstudiante"]."</td>
-			<td>".$dataProvider[$i]["ConfiguracionPractica_NombrePractica"]."</td>
+			<td>".$dataProvider[$i]["configuracionPracticaCodPractica"]["NombrePractica"]."</td>
 			<td>".$dataProvider[$i]["centroPracticaRBD"]["NombreCentroPractica"]."</td>
 			<td>".$dataProvider[$i]["profesorGuiaCPRutProfGuiaCP"]["NombreProfGuiaCP"]."</td>
 			<td>".$dataProvider[$i]["Curso"]."</td>

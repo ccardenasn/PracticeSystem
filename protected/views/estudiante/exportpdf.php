@@ -76,9 +76,9 @@ while($i<$val){
 			<td>".$dataProvider[$i]["RutEstudiante"]."</td>
 			<td>".$dataProvider[$i]["NombreEstudiante"]."</td>
             <td>".$dataProvider[$i]["FechaIncorporacion"]."</td>
-            <td>".$dataProvider[$i]["Mencion_NombreMencion"]."</td>
-            <td>".$dataProvider[$i]["profesorGuiaCPRutProfGuiaCP"]['NombreProfGuiaCP']."</td>
-            <td>".$dataProvider[$i]["ConfiguracionPractica_NombrePractica"]."</td>
+            <td>".$dataProvider[$i]["mencionCodMencion"]["NombreMencion"]."</td>
+            <td>".$dataProvider[$i]["profesorGuiaCPRutProfGuiaCP"]["NombreProfGuiaCP"]."</td>
+            <td>".$dataProvider[$i]["configuracionPracticaCodPractica"]["NombrePractica"]."</td>
 			<td>".$dataProvider[$i]["centroPracticaRBD"]["NombreCentroPractica"]."</td>
             <td>".$dataProvider[$i]["SituacionFinalEstudiante"]."</td>
   		</tr>";

@@ -76,7 +76,7 @@ while($i<$val){
 			<td>".$dataProvider[$i]["centroPracticaRBD"]["NombreCentroPractica"]."</td>
 			<td>".$dataProvider[$i]["ProfesorGuiaCP_RutProfGuiaCP"]."</td>
 			<td>".$dataProvider[$i]["Curso"]."</td>
-            <td>".$dataProvider[$i]["ConfiguracionPractica_NombrePractica"]."</td>
+            <td>".$dataProvider[$i]["configuracionPracticaCodPractica"]["NombrePractica"]."</td>
 			<td>".$dataProvider[$i]["Ejecutado"]."</td>
 			<td>".$dataProvider[$i]["Supervisado"]."</td>
   		</tr>";

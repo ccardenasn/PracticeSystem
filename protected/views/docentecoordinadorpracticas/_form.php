@@ -36,12 +36,6 @@
 		<?php echo $form->textField($model,'NombreCoordinador',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreCoordinador'); ?>
 	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'ClaveCoordinador'); ?>
-		<?php echo $form->passwordField($model,'ClaveCoordinador',array('onfocus'=>"this.removeAttribute('readonly');",'readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ClaveCoordinador'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'MailCoordinador'); ?>
