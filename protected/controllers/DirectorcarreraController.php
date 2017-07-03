@@ -39,9 +39,13 @@ class DirectorcarreraController extends Controller
 				//'users'=>array('@'),
 				'users'=>Directorcarrera::model()->getAdmins(),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				//'users'=>array('@'),
+				'users'=>array('@'),
+				'users'=>Directorcarrera::model()->getAdmins(),
+			),*/
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin'),
 				'users'=>Directorcarrera::model()->getAdmins(),
 			),
 			array('deny',  // deny all users

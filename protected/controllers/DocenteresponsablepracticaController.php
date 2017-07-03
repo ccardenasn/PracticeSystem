@@ -81,6 +81,7 @@ class DocenteresponsablepracticaController extends Controller
             
             $randomPassword = rand(0,9999);
             $model->ClaveResponsable = $randomPassword;
+            $model->EstadoResponsable = '0';
             
             $rnd = rand(0,9999);
             $file=CUploadedFile::getInstance($model,'ImagenResponsable');

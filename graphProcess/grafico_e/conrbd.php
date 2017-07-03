@@ -15,7 +15,7 @@ function containsprac($nom,$index)
 {
 	include('connect.php');
 	
-	$queryb="select count(*) from estudiante where ConfiguracionPractica_NombrePractica = '".$nom[$index]['NombrePractica']."';";
+	$queryb="select count(*) from estudiante where ConfiguracionPractica_CodPractica = '".$nom[$index]['CodPractica']."';";
 	$execb=mysql_query($queryb,$con);
 	$resultb=mysql_result($execb,0);
 	

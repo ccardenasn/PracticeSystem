@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->RutResponsable)),
+    array('label'=>'Cambiar Contraseña','url'=>array('/docenteresponsablepracticalogin/update','id'=>Yii::app()->user->name)),
 );
 ?>
 

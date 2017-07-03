@@ -8,7 +8,7 @@ function containsStd($id){
 }
 
 function containsCoordinador($id){
-	$query = "select count(*) from docentecoordinadorpracticas where RutCoordinador = '".$id."'";
+	$query = "select count(*) from docentecoordinadorpracticas where RutCoordinador = '".$id."' and EstadoCoordinador = '1'";
 	$result=Yii::app()->db->createCommand($query)->queryScalar();
 	
 	return $result;
@@ -22,7 +22,7 @@ function containsDirector($id){
 }
 
 function containsResponsable($id){
-	$query = "select count(*) from docenteresponsablepractica where RutResponsable = '".$id."'";
+	$query = "select count(*) from docenteresponsablepractica where RutResponsable = '".$id."' and EstadoResponsable = '1'";
 	$result=Yii::app()->db->createCommand($query)->queryScalar();
 	
 	return $result;

@@ -38,6 +38,20 @@ function deleteData($table,$codTable,$id){
 	Yii::app()->db->createCommand($query)->execute();
 }
 
+function getCodPractica($practica){
+    $query = "select CodPractica from configuracionpractica where NombrePractica = '".$practica."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+    
+    return $result;
+}
+
+function getCodMencion($mencion){
+    $query = "select CodMencion from mencion where NombreMencion = '".$mencion."'";
+	$result=Yii::app()->db->createCommand($query)->queryScalar();
+    
+    return $result;
+}
+
 function checkData($mencion,$profesor,$practica,$centro)
 {
     $existData = false;

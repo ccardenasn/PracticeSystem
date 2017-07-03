@@ -328,10 +328,12 @@ class EstudianteController extends Controller
 								if($existStudent == 0){
                                     
                                     $existData = checkData($mencion,$profesor,$practica,$centro);
-                                    
+                                    //$existData = true;
+                                    $idMencion = getCodMencion($mencion);
+                                    $idPractica = getCodPractica($practica);
                                     
                                     if($existData == true){
-                                        $query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_NombreMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_NombrePractica,CentroPractica_RBD,ImagenEstudiante,SituacionFinalEstudiante,ObservacionEstudiante) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".$mencion."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$practica."','".$centro."','".$imagen."','".$situacion."','".$observacion."');";
+                                        $query = "INSERT INTO estudiante(RutEstudiante,NombreEstudiante,ClaveEstudiante,FechaIncorporacion,Mencion_CodMencion,MailEstudiante,TelefonoEstudiante,CelularEstudiante,ProfesorGuiaCP_RutProfGuiaCP,ConfiguracionPractica_CodPractica,CentroPractica_RBD,ImagenEstudiante,SituacionFinalEstudiante,ObservacionEstudiante,Estado) VALUES('".$rut."','".$nombre."','".$clave."','".$fecha."','".$idMencion."','".$mail."','".$telefono."','".$celular."','".$profesor."','".$idPractica."','".$centro."','".$imagen."','".$situacion."','".$observacion."','0');";
                                         
                                         Yii::app()->db->createCommand($query)->execute();
                                     }else{

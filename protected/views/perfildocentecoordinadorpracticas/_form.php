@@ -32,12 +32,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ClaveCoordinador'); ?>
-		<?php echo $form->textField($model,'ClaveCoordinador',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ClaveCoordinador'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'MailCoordinador'); ?>
 		<?php echo $form->textField($model,'MailCoordinador',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'MailCoordinador'); ?>

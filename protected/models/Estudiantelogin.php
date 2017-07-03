@@ -49,9 +49,9 @@ class Estudiantelogin extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutEstudiante, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, CentroPractica_RBD, ClaveEstudiante, ConfirmClaveEstudiante', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RutEstudiante, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, CentroPractica_RBD, ClaveEstudiante, ConfirmClaveEstudiante', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('Mencion_CodMencion, CentroPractica_RBD, Estado', 'numerical', 'integerOnly'=>true),
-			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_NombrePractica, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
+			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ImagenEstudiante, SituacionFinalEstudiante', 'length', 'max'=>45),
 			array('ObservacionEstudiante', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

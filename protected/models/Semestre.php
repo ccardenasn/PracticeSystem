@@ -121,9 +121,9 @@ class Semestre extends CActiveRecord
 	
 	public function getAdmins(){
 		
-		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas";
+		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas where EstadoCoordinador = '1'";
 		$queryDirector = "select RutDirector from directorcarrera";
-		$queryResponsable = "select RutResponsable from docenteresponsablepractica";
+		$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
 		
 		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);
 		$commandDirector= Yii::app()->db->createCommand($queryDirector);

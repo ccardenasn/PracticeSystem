@@ -49,7 +49,7 @@ $ask = new UserIdentity('','');
                                     array('label'=>'Universidad Form 1','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
                                     array('label'=>'Universidad Form 2','url'=>array('/universidad'),'visible'=>$ask->isAdmins()),
                           )),*/
-                          array('label'=>'Carrera','url'=>array('/carrera'),'visible'=>$ask->isAdmins()),
+                          //array('label'=>'Carrera','url'=>array('/carrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Menciones','url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Director de Carrera','url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),

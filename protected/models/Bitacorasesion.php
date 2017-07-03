@@ -146,7 +146,7 @@ class Bitacorasesion extends CActiveRecord
 	
 	public function getStudents(){
 		
-		$queryStudent = "select RutEstudiante from estudiante";
+		$queryStudent = "select RutEstudiante from estudiante where Estado = '1'";
 		
 		$commandStudent= Yii::app()->db->createCommand($queryStudent);
 

@@ -98,7 +98,7 @@ $this->menu=array(
 			<td><?php echo $directorData->MailDirector ?></td>
 			<td><?php echo $directorData->TelefonoDirector ?></td>
 			<td><?php echo $directorData->CelularDirector ?></td>
-			<td><?php echo $directorData->ImagenDirector ?></td>
+            <td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenDirector/'.$directorData->ImagenDirector,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 		</tr>
 	</tbody>
 </table>
@@ -129,7 +129,7 @@ $this->menu=array(
 			<td><?php echo $secretaria->MailSecretaria ?></td>
 			<td><?php echo $secretaria->TelefonoSecretaria ?></td>
 			<td><?php echo $secretaria->CelularSecretaria ?></td>
-			<td><?php echo $secretaria->ImagenSecretaria ?></td>
+            <td><?php echo CHtml::Image(Yii::app()->request->baseUrl.'/images/ImagenSecretaria/'.$secretaria->ImagenSecretaria,"Sin Imagen Disponible",array('onerror'=>"if (this.src != '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."') this.src = '".Yii::app()->request->baseUrl."/images/FormImages/userplaceholder.jpg"."';",'width'=>'50px','height'=>'50px'))?></td>
 		</tr>
 		<?php endforeach ?>
 	</tbody>

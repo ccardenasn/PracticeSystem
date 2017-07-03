@@ -13,24 +13,14 @@ $praclist = getPracticas();
 
 $praclistlength = count($praclist);
 
-$arrprac = array();
-$k=1;
-for($i=0;$i<$praclistlength;$i++)
-{
-	$arrprac[$i] = array($k,$praclist[$i]['NombrePractica']);
-	$k++;
-}
-
-//print_r($arrprac);
-
 for($index=0;$index<$praclistlength;$index++)
 {
 	$result = containsprac($praclist,$index);
 	
 	if($result > 0)
 	{
-		$querydata = "select count(*),Ejecutado from planificacionclase
-where ConfiguracionPractica_NombrePractica = '".$praclist[$index]['NombrePractica']."'
+		$querydata = "select count(*),Ejecutado,ConfiguracionPractica_CodPractica from planificacionclase
+where ConfiguracionPractica_CodPractica = '".$praclist[$index]['CodPractica']."'
 group by Ejecutado;";
 		
 		$execquery = mysql_query($querydata,$con);
@@ -50,7 +40,7 @@ group by Ejecutado;";
 		{
 			$numeroalumnos=$data[$i]['count(*)'];
 			$nombrepractica=$data[$i]['Ejecutado'];
-			$idcentro=$index;
+			$idcentro=$data[$i]['ConfiguracionPractica_CodPractica'];
 			
 			$insertquery = "insert into graph_data(numero,nombrepractica,idcentro) values('".$numeroalumnos."','".$nombrepractica."','".$idcentro."');";
 			

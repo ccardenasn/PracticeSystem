@@ -39,7 +39,7 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutResponsable', 'required'),
-			array('RutResponsable, NombreResponsable, ClaveResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'length', 'max'=>45),
+			array('RutResponsable, NombreResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutResponsable, NombreResponsable, ClaveResponsable, MailResponsable, TelefonoResponsable, CelularResponsable, ImagenResponsable', 'safe', 'on'=>'search'),

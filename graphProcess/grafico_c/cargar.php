@@ -27,11 +27,14 @@ planificacionclase.CentroPractica_RBD
 from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.bitacorasesion_CodBitacora = bitacorasesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
 group by planificacionclase.ConfiguracionPractica_NombrePractica;";*/
 		
-		$querydata = "select sum(clasebitacorasesion.NumeroAlumnosClase),
+		/*$querydata = "select sum(clasebitacorasesion.NumeroAlumnosClase),
 planificacionclase.ConfiguracionPractica_NombrePractica,
 planificacionclase.CentroPractica_RBD
 from planificacionclase inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.BitacoraSesion_CodBitacora = bitacorasesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' 
-group by planificacionclase.ConfiguracionPractica_NombrePractica;";
+group by planificacionclase.ConfiguracionPractica_NombrePractica;";*/
+        
+        $querydata = "select sum(clasebitacorasesion.NumeroAlumnosClase),NombrePractica, planificacionclase.CentroPractica_RBD from planificacionclase inner join configuracionpractica on planificacionclase.ConfiguracionPractica_CodPractica = configuracionpractica.CodPractica inner join bitacorasesion on bitacorasesion.PlanificacionClase_CodPlanificacion = planificacionclase.CodPlanificacion inner join clasebitacorasesion on clasebitacorasesion.BitacoraSesion_CodBitacora = bitacorasesion.CodBitacora where planificacionclase.CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' group by planificacionclase.ConfiguracionPractica_CodPractica;";
+        
 		$execquery = mysql_query($querydata,$con);
 		
 		$data= array();
@@ -46,7 +49,7 @@ group by planificacionclase.ConfiguracionPractica_NombrePractica;";
 		for($i=0;$i<$datalength;$i++)
 		{
 			$numeroalumnos=$data[$i]['sum(clasebitacorasesion.NumeroAlumnosClase)'];
-			$nombrepractica=$data[$i]['ConfiguracionPractica_NombrePractica'];
+			$nombrepractica=$data[$i]['NombrePractica'];
 			$idcentro=$data[$i]['CentroPractica_RBD'];
 			
 			$insertquery = "insert into graph_data(numero,nombrepractica,idcentro) values('".intval($numeroalumnos)."','".$nombrepractica."','".$idcentro."');";

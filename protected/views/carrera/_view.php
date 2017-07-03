@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->SemestresCarrera); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Universidad_NombreInstitucion')); ?>:</b>
-	<?php echo CHtml::encode($data->Universidad_NombreInstitucion); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Universidad_CodInstitucion')); ?>:</b>
+	<?php echo CHtml::encode($data->Universidad_CodInstitucion); ?>
 	<br />
 
 

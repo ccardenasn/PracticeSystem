@@ -25,14 +25,16 @@ var actionPDF = '<?php echo Yii::app()->createUrl('graphdata/pdf'); ?>';
         
         include('ForceUTF/Encoding.php');
         
-        $sqlb = "select NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.NombrePractica = planificacionclase.ConfiguracionPractica_NombrePractica group by NombrePractica;";
+        /*$sqlb = "select NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.NombrePractica = planificacionclase.ConfiguracionPractica_NombrePractica group by NombrePractica;";*/
+        
+        $sqlb = "select CodPractica,NombrePractica from configuracionpractica inner join planificacionclase on configuracionpractica.CodPractica = planificacionclase.ConfiguracionPractica_CodPractica group by NombrePractica;";
         
         $st = mysql_query($sqlb,$con);
-        $i=0;
+        //$i=0;
         
         while($rows = mysql_fetch_array($st)){
-            echo'<option value="'.$i.'">'.Encoding::toUTF8($rows['NombrePractica']).'</option>';
-            $i++;
+            echo'<option value="'.$rows['CodPractica'].'">'.Encoding::toUTF8($rows['NombrePractica']).'</option>';
+            //$i++;
         }
         ?>
     </select>

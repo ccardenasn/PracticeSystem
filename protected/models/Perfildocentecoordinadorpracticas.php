@@ -39,7 +39,7 @@ class Perfildocentecoordinadorpracticas extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('RutCoordinador', 'required'),
-			array('RutCoordinador, NombreCoordinador, ClaveCoordinador, MailCoordinador, TelefonoCoordinador, CelularCoordinador, ImagenCoordinador', 'length', 'max'=>45),
+			array('RutCoordinador, NombreCoordinador, MailCoordinador, TelefonoCoordinador, CelularCoordinador, ImagenCoordinador', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutCoordinador, NombreCoordinador, ClaveCoordinador, MailCoordinador, TelefonoCoordinador, CelularCoordinador, ImagenCoordinador', 'safe', 'on'=>'search'),

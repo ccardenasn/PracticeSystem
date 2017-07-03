@@ -56,8 +56,10 @@ class BitacorasesionController extends Controller
 	 */
 	public function actionView($id)
 	{
+        $rut=Yii::app()->user->name;
+        
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($id,$rut),
 		));
 	}
 	
@@ -67,11 +69,16 @@ class BitacorasesionController extends Controller
 		$codTable = "PlanificacionClase_CodPlanificacion";
 		$exist = contains($table,$codTable,$id);
 		
+        $rut=Yii::app()->user->name;
+        
 		if($exist != 0){
+            //$planningModel=Planificacionclase::model()->findByAttributes(array('CodPlanificacion'=>$id,'Estudiante_RutEstudiante'=>$rut));
 			$bitacoraUser=Bitacorasesion::model()->find('PlanificacionClase_CodPlanificacion=?',array($id));
 			
 			$this->render('viewPlanificacionBitacora',array(
-				'model'=>$this->loadModel($bitacoraUser->CodBitacora),
+               'model'=>$this->loadLogbookStudentModel($id,$bitacoraUser->CodBitacora,$rut),
+				//'model'=>$this->loadModel($bitacoraUser->CodBitacora),
+                
 			));
 		}else{
 			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Aun no se ha creado una bitácora para esta planificación.</li><li>Para añadir una bitácora haga click en <strong>'Crear Bitácora'</strong>.</li></ul></div>");
@@ -292,9 +299,31 @@ class BitacorasesionController extends Controller
 	 * @return Bitacorasesion the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel($id)
+	public function loadModel($id,$rut)
 	{
 		$model=Bitacorasesion::model()->findByPk($id);
+        
+        $planningModel=Planificacionclase::model()->findByAttributes(array('CodPlanificacion'=>$model->PlanificacionClase_CodPlanificacion,'Estudiante_RutEstudiante'=>$rut));
+        
+        if($planningModel == null){
+            $model = null;
+        }
+        
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+    
+    public function loadLogbookStudentModel($plan,$id,$rut)
+	{
+		$planningModel=Planificacionclase::model()->findByAttributes(array('CodPlanificacion'=>$plan,'Estudiante_RutEstudiante'=>$rut));
+        
+        if($planningModel != null){
+            $model=Bitacorasesion::model()->findByAttributes(array('CodBitacora'=>$id,'PlanificacionClase_CodPlanificacion'=>$planningModel->CodPlanificacion));
+        }else{
+            $model = null;
+        }
+        
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

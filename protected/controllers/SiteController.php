@@ -105,6 +105,8 @@ class SiteController extends Controller
                 $profilelogged = $this->findProfileURL($rut);
                 
                 $studentData=Estudiante::model()->find('RutEstudiante=?',array($rut));
+                $responsableData=Docenteresponsablepractica::model()->find('RutResponsable=?',array($rut));
+                $coordinadorData=Docentecoordinadorpracticas::model()->find('RutCoordinador=?',array($rut));
                 
                 if($studentData != null){
                     if($studentData->Estado == '0'){
@@ -113,7 +115,23 @@ class SiteController extends Controller
                         $this->redirect(array($profilelogged));
                     }
                 }else{
-                    $this->redirect(array($profilelogged));
+                    if($coordinadorData != null){
+                        if($coordinadorData->EstadoCoordinador == '0'){
+                            $this->redirect(array('docentecoordinadorpracticaslogin/update','id'=>Yii::app()->user->name));
+                        }else{
+                            $this->redirect(array($profilelogged));
+                        }
+                    }else{
+                        if($responsableData != null){
+                            if($responsableData->EstadoResponsable == '0'){
+                                $this->redirect(array('docenteresponsablepracticalogin/update','id'=>Yii::app()->user->name));
+                            }else{
+                                $this->redirect(array($profilelogged));
+                            }
+                        }else{
+                            $this->redirect(array($profilelogged));
+                        }
+                    }
                 }   
             }
 		}

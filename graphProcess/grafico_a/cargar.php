@@ -18,7 +18,9 @@ function loadgraph()
 		
 		if($result > 0)
 		{
-			$querydata = "select count(*),ConfiguracionPractica_NombrePractica,CentroPractica_RBD from estudiante where CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' group by ConfiguracionPractica_NombrePractica;";
+			/*$querydata = "select count(*),ConfiguracionPractica_CodPractica,CentroPractica_RBD from estudiante where CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' group by ConfiguracionPractica_CodPractica;";*/
+            
+            $querydata = "select count(*),NombrePractica,CentroPractica_RBD from estudiante inner join configuracionpractica on estudiante.ConfiguracionPractica_CodPractica = configuracionpractica.CodPractica where CentroPractica_RBD = '".$rbdlist[$index]['RBD']."' group by ConfiguracionPractica_CodPractica;";
 			
 			$execquery = mysql_query($querydata,$con);
 			
@@ -34,7 +36,7 @@ function loadgraph()
 			for($i=0;$i<$datalength;$i++)
 			{
 				$numeroalumnos=$data[$i]['count(*)'];
-				$nombrepractica=$data[$i]['ConfiguracionPractica_NombrePractica'];
+				$nombrepractica=$data[$i]['NombrePractica'];
 				$idcentro=$data[$i]['CentroPractica_RBD'];
 				
 				$insertquery = "insert into graph_data(numero,nombrepractica,idcentro) values('".$numeroalumnos."','".$nombrepractica."','".$idcentro."');";
