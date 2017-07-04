@@ -1,4 +1,5 @@
 <?php
+include_once('FunSendMail.php');
 
 class EstudianteloginController extends Controller
 {
@@ -90,6 +91,7 @@ class EstudianteloginController extends Controller
             if($model->ClaveEstudiante == $_POST['Estudiantelogin']['ConfirmClaveEstudiante']){
                 $model->Estado = '1';
                 if($model->save()){
+                    sendPassword($model->MailEstudiante,"Nuevo Usuario",$model->RutEstudiante,$model->NombreEstudiante,$model->ClaveEstudiante);
                     $this->redirect(array('perfilestudiante/view','id'=>$model->RutEstudiante));
                 }
             }else{

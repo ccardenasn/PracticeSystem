@@ -122,9 +122,30 @@ class UniversidadController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	/*public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}*/
+    
+    public function actionDelete($id)
+	{
+        //$universidadModel = Universidad::model()->find('CodInstitucion=?',array($id));
+        $carreraModel = Carrera::model()->find('Universidad_CodInstitucion=?',array($id));
+        $secretariaModel = Secretariacarrera::model()->find('CentroPractica_RBD=?',array($carreraModel->codCarrera));
+        
+        if($secretariaModel != null){
+            $secretariaModel->delete();
+        }
+        
+        if($carreraModel != null){
+            $carreraModel->delete();
+        }
+        
+        $this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

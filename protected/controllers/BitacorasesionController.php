@@ -158,7 +158,8 @@ class BitacorasesionController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+        $rut=Yii::app()->user->name;
+		$model=$this->loadModel($id,$rut);
 		$claseBitacoraModel=new Clasebitacorasesion;
 
 		$claseBitacoraModel=Clasebitacorasesion::model()->findAll('BitacoraSesion_CodBitacora=?',array($id));

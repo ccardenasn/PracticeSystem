@@ -68,7 +68,7 @@ class SemestreController extends Controller
 	{
 		$model=new Semestre;
 
-        $query = "select codCarrera from Carrera;";
+        $query = "select codCarrera from carrera;";
         $idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
         $carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
         $semestersNumber = $carreraData->SemestresCarrera;

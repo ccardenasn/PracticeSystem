@@ -75,10 +75,22 @@
 		<?php echo $form->error($model,'Curso'); ?>
 	</div>
 	
-	<div class="row">
+	<!--<div class="row">
 		<?php echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
 		<?php echo $form->dropDownList($model,'ConfiguracionPractica_CodPractica',CHtml::listData(Configuracionpractica::model()->findAll(),'NombrePractica','NombrePractica'));?>
         <?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
+	</div>-->
+    
+    <div class="row">
+		<?php //echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php echo $form->hiddenField($model,'ConfiguracionPractica_CodPractica',array('size'=>45,'maxlength'=>45,'readOnly'=>true)); ?>
+		<?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
+	</div>
+    
+    <div class="row">
+        <?php echo CHtml::label('Práctica','ConfiguracionPractica_CodPractica'); ?>
+        <?php echo CHtml::textField('ConfiguracionPractica_CodPractica',$model->configuracionPracticaCodPractica->NombrePractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 
 	<div class="row">

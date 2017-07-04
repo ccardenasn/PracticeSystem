@@ -18,7 +18,7 @@ $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodInstitucion)),
-	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodInstitucion),'confirm'=>'¿Esta seguro de querer borrar este elemento?')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodInstitucion),'confirm'=>'¿Esta seguro de querer borrar este elemento? recuerde que al eliminar este elemento se borrará toda la información de los formularios de  carrera y secretaria asociados')),
 	array('label'=>'Administración', 'url'=>array('admin')),
     array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodInstitucion)),
 );

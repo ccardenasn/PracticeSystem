@@ -1,4 +1,5 @@
 <?php
+include_once('FunSendMail.php');
 
 class DocentecoordinadorpracticasloginController extends Controller
 {
@@ -90,6 +91,7 @@ class DocentecoordinadorpracticasloginController extends Controller
             if($model->ClaveCoordinador == $_POST['Docentecoordinadorpracticaslogin']['ConfirmClaveCoordinador']){
                 $model->EstadoCoordinador = '1';
                 if($model->save()){
+                    sendPassword($model->MailCoordinador,"Nuevo Usuario",$model->RutCoordinador,$model->NombreCoordinador,$model->ClaveCoordinador);
                     $this->redirect(array('perfildocentecoordinadorpracticas/view','id'=>$model->RutCoordinador));
                 }
             }else{

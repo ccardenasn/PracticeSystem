@@ -1,4 +1,5 @@
 <?php
+include_once('FunSendMail.php');
 
 class DocenteresponsablepracticaloginController extends Controller
 {
@@ -90,6 +91,7 @@ class DocenteresponsablepracticaloginController extends Controller
             if($model->ClaveResponsable == $_POST['Docenteresponsablepracticalogin']['ConfirmClaveResponsable']){
                 $model->EstadoResponsable = '1';
                 if($model->save()){
+                    sendPassword($model->MailResponsable,"Nuevo Usuario",$model->RutResponsable,$model->NombreResponsable,$model->ClaveResponsable);
                     $this->redirect(array('perfildocenteresponsablepractica/view','id'=>$model->RutResponsable));
                 }
             }else{

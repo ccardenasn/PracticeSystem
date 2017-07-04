@@ -82,10 +82,22 @@ include_once('planningFunctions.php');
 		<?php echo $form->error($model,'Curso'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
-		<?php echo $form->dropDownList($model,'ConfiguracionPractica_CodPractica',CHtml::listData(configuracionpractica::model()->findAll(),'CodPractica','NombrePractica'),array('options' => array($studentData->ConfiguracionPractica_CodPractica=>array('selected'=>true))));?>
+	<!--<div class="row">
+		<?php //echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php //echo $form->dropDownList($model,'ConfiguracionPractica_CodPractica',CHtml::listData(configuracionpractica::model()->findAll(),'CodPractica','NombrePractica'),array('options' => array($studentData->ConfiguracionPractica_CodPractica=>array('selected'=>true))));?>
+        <?php //echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
+	</div>-->
+    
+    <div class="row">
+		<?php //echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+        <?php echo $form->hiddenField($model,'ConfiguracionPractica_CodPractica',array('value'=>$studentData->ConfiguracionPractica_CodPractica,'readOnly'=>true,'size'=>45,'maxlength'=>45)); ?>
         <?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
+	</div>
+    
+    <div class="row">
+        <?php echo CHtml::label('Práctica','ConfiguracionPractica_CodPractica'); ?>
+        <?php echo CHtml::textField('ConfiguracionPractica_CodPractica',$studentData->configuracionPracticaCodPractica->NombrePractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 
 	<div class="row">
