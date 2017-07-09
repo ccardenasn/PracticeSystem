@@ -226,8 +226,12 @@ class PlanificacionclaseController extends Controller
 	{
 		//$model=Planificacionclase::model()->findByPk($id);
         $model=Planificacionclase::model()->findByAttributes(array('CodPlanificacion'=>$id,'Estudiante_RutEstudiante'=>$rut));
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+		if($model===null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('admin'));
+            //throw new CHttpException(404,'The requested page does not exist.');
+        }
+			
 		return $model;
 	}
     

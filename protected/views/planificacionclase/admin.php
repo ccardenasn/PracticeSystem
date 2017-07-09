@@ -35,6 +35,12 @@ $('.search-form form').submit(function(){
 
 <h2>Estudiante: <?php echo $studentData->NombreEstudiante ?></h2><br>
 
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
+
 <div class="collapse">
 	<h3>Ayuda</h3>
 	<ul align=justify>

@@ -241,6 +241,8 @@ class BitacorasesionController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+        $rut=Yii::app()->user->name;
+        
 		$logBookPlanning = findLogBookPlanning($id);
 		$planningRut = findPlanningRut($logBookPlanning);
 		
@@ -250,7 +252,7 @@ class BitacorasesionController extends Controller
 			deleteLogBookSesion($id);
 		}
 		
-		$this->loadModel($id)->delete();
+		$this->loadModel($id,$rut)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -310,8 +312,12 @@ class BitacorasesionController extends Controller
             $model = null;
         }
         
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+		if($model===null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('planificacionclase/admin'));
+            //throw new CHttpException(404,'The requested page does not exist.');
+        }
+			
 		return $model;
 	}
     
@@ -325,8 +331,12 @@ class BitacorasesionController extends Controller
             $model = null;
         }
         
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+		if($model===null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('planificacionclase/admin'));
+            //throw new CHttpException(404,'The requested page does not exist.');
+        }
+			
 		return $model;
 	}
 

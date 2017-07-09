@@ -23,11 +23,14 @@ $ask = new UserIdentity('','');
 
 <body>
 
-<div class="container" id="page">
+<div class="container" id="page" style="position: relative;">
 
-	<div id="header">
-		
-        <div id="logo">
+    <div id="logo" style="background-color: #CCC; height: 125px; width: 130px; position: absolute; left: 18px;">
+        <center><img src="images/Logo/uachlogo.png" alt style="margin-top: 18px;"></center>
+    </div>
+    
+	<div id="header" style='height:105px;' align='right'>
+        <div id="logosis" alt style="margin-top: 40px; margin-right: 530px;">
 			<img src="images/Logo/sistemapracticas.png">
 		</div>
 	</div><!-- header -->
@@ -35,71 +38,69 @@ $ask = new UserIdentity('','');
 	<div id="mainMbMenu">
 		 <?php include_once('FunProfile.php');
             $this->widget('application.extensions.mbmenu.MbMenu',array(
+            'htmlOptions'=>array('style'=>'height:28px; background-color:#E8E8E8;'),
             'items'=>array(
-                array('label'=>'Inicio', 'url'=>array('/site/index')),
+                
                 //array('label'=>'Cambiar Contraseña', 'url'=>array('/estudiantelogin/update')),
-                array('label'=>'Perfil', 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>$ask->isStudent() || $ask->isAdmins()),
-               
-                array('label'=>'Administracion',
-                      'items'=>array(
-                          array('label'=>'Universidad','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
-                          /*array('label'=>'Universidad',
-                                'items'=>
-                                array(
-                                    array('label'=>'Universidad Form 1','url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
-                                    array('label'=>'Universidad Form 2','url'=>array('/universidad'),'visible'=>$ask->isAdmins()),
-                          )),*/
-                          //array('label'=>'Carrera','url'=>array('/carrera'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Menciones','url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Estudiantes','url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Director de Carrera','url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Coordinador de Practicas','url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isDirector()),
-                          //array('label'=>'Secretaria','url'=>array('/secretariacarrera'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Docente Responsable de Practica','url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
-                          //array('label'=>'Docente Supervisor de Practica','url'=>array('/docentesupervisorpractica'),'visible'=>$ask->isAdmins()),
-						  array('label'=>'Dependencias', 'url'=>array('/dependencia'),'visible'=>$ask->isAdmins()),
-						  array('label'=>'Nivel Educacional', 'url'=>array('/niveleducacional'),'visible'=>$ask->isAdmins()),
-						  //array('label'=>'Documentos', 'url'=>array('/documentoscarrera'),'visible'=>$ask->isAdmins()),
-                    ),
-                ),
-                array('label'=>'Gestion Organizativa',
-                        'items'=>array(
-                          array('label'=>'Centros de Práctica','url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
-                          /*array('label'=>'Centro de Prácticas',
-                                'items'=>array(
-                                    //array('label'=>'Centro de Prácticas Form 1','url'=>array('/centropracticamain'),'visible'=>$ask->isAdmins()),
-                                    array('label'=>'Centro de Prácticas Form 2','url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
-                                )),*/
-                          array('label'=>'Secretaria CP','url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Director CP','url'=>array('/directorcp'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Jefe UTP CP','url'=>array('/jefeutpcp'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Profesor Coordinador de Practicas CP','url'=>array('/profesorcoordinadorpracticacp'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Profesor Guia CP','url'=>array('/profesorguiacp'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Configuracion de Practicas','url'=>array('/configuracionpractica'),'visible'=>$ask->isAdmins()),
-                    ),
-                ),
-                array('label'=>'Gestion Pedagógica',
-                        'items'=>array(
-                          array('label'=>'Planificación de Clases','url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
-                    ),
-                ),
-                array('label'=>'Gestion de Información',
-                        'items'=>array(
-                          array('label'=>'Horario','url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
-						  array('label'=>'Estadísticas', 'url'=>array('/graphdata'),'visible'=>$ask->isAdmins()),
-                    ),
-                ),
-				array('label'=>'Horario', 'url'=>array('/horario'),'visible'=>$ask->isStudent()),
-				array('label'=>'Planificación de Clases/Bitacoras','url'=>array('/planificacionclase'),'visible'=>$ask->isStudent()),
+                
+                
+                
 				//array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
 				//array('label'=>'Contacto', 'url'=>array('/site/contact')),
-                array('label'=>'Iniciar Sesion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                array('label'=>'Iniciar Sesion','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Gestión','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),
+                      'items'=>array(
+                          array('label'=>'Gestion Organizativa','linkOptions'=>array('style' => 'color: #666;'),
+                                'items'=>array(
+                                    array('label'=>'Centros de Práctica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Secretaria CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Director CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/directorcp'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Jefe UTP CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/jefeutpcp'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Profesor Coordinador de Practicas CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/profesorcoordinadorpracticacp'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Profesor Guia CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/profesorguiacp'),'visible'=>$ask->isAdmins()),
+                                    array('label'=>'Configuracion de Practicas','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/configuracionpractica'),'visible'=>$ask->isAdmins()),
+                                ),
+                           ),
+                        array('label'=>'Gestion Pedagógica','linkOptions'=>array('style' => 'color: #666;'),
+                        'items'=>array(
+                          array('label'=>'Planificación de Clases','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
+                    ),
+                ),  
+                          array('label'=>'Gestion de Información','linkOptions'=>array('style' => 'color: #666;'),
+                        'items'=>array(
+                          array('label'=>'Horario','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Estadísticas','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/graphdata'),'visible'=>$ask->isAdmins()),
+                    ),
+                ),
+                          
+                      ),
+                ),
+				array('label'=>'Horario','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/horario'),'visible'=>$ask->isStudent()),
+				array('label'=>'Planificación de Clases/Bitacoras','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclase'),'visible'=>$ask->isStudent()),
+                array('label'=>'Administración','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),
+                      'items'=>array(
+                          array('label'=>'Universidad','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Menciones','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Director de Carrera','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Coordinador de Practicas','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isDirector()),
+                          array('label'=>'Docente Responsable de Practica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Dependencias','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/dependencia'),'visible'=>$ask->isAdmins()),
+						  array('label'=>'Nivel Educacional','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/niveleducacional'),'visible'=>$ask->isAdmins()),
+                    ),
+                ),
+                array('label'=>'Perfil','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>$ask->isStudent() || $ask->isAdmins()),
+                array('label'=>'Inicio','itemOptions'=>array('style' => 'background-color: #E8E8E8; float:right;'),'linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/site/index')),
                 
             ),
     )); ?>
-	
+        
 	</div><!-- mainmenu -->
+    
+    <div id='pix' style='height:10px;'></div>
+    
+    
 	<?php if(isset($this->breadcrumbs)):?>
 	<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 	'links'=>$this->breadcrumbs,
