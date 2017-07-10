@@ -78,7 +78,7 @@ $('.search-form form').submit(function(){
 		'NombreDependencia',
 		array(
 			'class'=>'CButtonColumn',
-            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento? Recuerde que si la dependencia está asociada a algún centro de práctica esta no se borrará',
             'buttons'=>array(
                 'view' => array(
                     'label'=>'Detalles',

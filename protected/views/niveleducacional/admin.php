@@ -78,7 +78,7 @@ $('.search-form form').submit(function(){
 		'NombreNivel',
 		array(
 			'class'=>'CButtonColumn',
-            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento? Recuerde que si el nivel eduacional está asociado a algún centro de práctica este no se borrará',
             'buttons'=>array(
                 'view' => array(
                     'label'=>'Detalles',

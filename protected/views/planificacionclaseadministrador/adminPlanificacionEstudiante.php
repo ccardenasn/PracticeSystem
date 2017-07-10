@@ -97,6 +97,7 @@ $('.search-form form').submit(function(){
 		//'ComentarioPlanificacion',
 		array(
 			'class'=>'CButtonColumn',
+            'htmlOptions' => array('style'=>'width:65px'),
             'deleteConfirmation'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(

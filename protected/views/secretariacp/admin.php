@@ -84,6 +84,7 @@ $('.search-form form').submit(function(){
         array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD')),
 		array(
 			'class'=>'CButtonColumn',
+            'htmlOptions' => array('style'=>'width:65px'),
             'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(

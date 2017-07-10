@@ -85,7 +85,8 @@ $('.search-form form').submit(function(){
         array('name'=>'DocenteResponsablePractica_RutResponsable','value'=>'$data->docenteResponsablePracticaRutResponsable->NombreResponsable','filter'=>CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable','RutResponsable')),
 		array(
 			'class'=>'CButtonColumn',
-            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'htmlOptions' => array('style'=>'width:65px'),
+            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento? Recuerde que si la práctica está asociado a algún estudiante esta no se borrará',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
                 'pdf'=>array(

@@ -1,4 +1,4 @@
-#nav-bar { border-top:1px solid #2d444f; border-bottom:1px solid #2d444f; background:url(nav1_bg.gif) repeat-x 0 100% #E8E8E8; padding:0 30px;  }
+#nav-bar { border-top:1px solid #E8E8E8; border-bottom:1px solid #E8E8E8; background:url(nav1_bg.png) repeat-x 0 100% #E8E8E8; padding:0 30px;  }
 #nav { float:left; margin:0;list-style-image:none;list-style-position:outside;list-style-type:none;margin:0;padding:0;width:100%}
 
 /************** ALL LEVELS  *************/
@@ -13,8 +13,8 @@
 
 /************ 1ST LEVEL  ***************/
 #nav li { float:left; background:url(pix_menu3.jpg) no-repeat 100% 0;  }
-#nav li.active { margin-left:-1px; margin-top: 18px; background:url(pix_menu3.jpg) no-repeat; color:#fff; font-weight:bold;  }
-#nav li.active em { display:block; position:absolute; top:0; right:-1px; width:3px; height:27px; background:url(pix_menu3.jpg) no-repeat 100% 0; }
+#nav li.active { margin-left:-1px; background:url(pix_menu3.jpg) no-repeat; color:#fff; font-weight:bold;  }
+#nav li.active em { display:block; margin-top: 18px; position:absolute; top:0; right:-1px; width:3px; height:27px; background:url(pix_menu3.jpg) no-repeat 100% 0; }
 #nav a { float:right; padding:0 14px; color:#fff; line-height:27px; }
 #nav li.over a { color:#d6e2e5; }
 
@@ -40,8 +40,8 @@
 #nav li.over ul li.over ul { left:100px; }
 
 #nav ul li { background:url(nav2_li_bg.png) repeat-y; padding:0 2px; }
-#nav ul li a { background:#e3ecee; }
-#nav ul li a:hover { background:#d0dfe2; }
+#nav ul li a { background:#E8E8E8; }
+#nav ul li a:hover { background:#d0d0d0; }
 #nav li.over ul a,
 #nav ul li.active a,
 #nav ul li a,

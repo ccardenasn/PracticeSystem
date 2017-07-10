@@ -86,6 +86,7 @@ $('.search-form form').submit(function(){
 		*/
 		array(
 			'class'=>'CButtonColumn',
+            'htmlOptions' => array('style'=>'width:65px'),
             'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(

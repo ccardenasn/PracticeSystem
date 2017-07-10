@@ -86,6 +86,7 @@ $('.search-form form').submit(function(){
 		array('name'=>'SituacionFinalEstudiante','value'=>'$data->SituacionFinalEstudiante','filter'=>array('Pendiente'=>'Pendiente','Aprobado'=>'Aprobado','Reprobado'=>'Reprobado')),
         array(
             'class'=>'CButtonColumn',
+            'htmlOptions' => array('style'=>'width:65px'),
             'deleteConfirmation'=>'¡Advertencia! Se eliminarán todas las bitácoras, planificaciones y documentos asociados al estudiante ¿Desea Continuar?',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(

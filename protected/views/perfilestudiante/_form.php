@@ -38,9 +38,15 @@
 	</div>
     
     <div class="row">
-		<?php echo $form->labelEx($model,'Mencion_CodMencion'); ?>
-		<?php echo $form->textField($model,'Mencion_CodMencion',array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->labelEx($model,'Mencion_CodMencion'); ?>
+		<?php echo $form->hiddenField($model,'Mencion_CodMencion',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'Mencion_CodMencion'); ?>
+	</div>
+    
+    <div class="row">
+        <?php echo CHtml::label('Mención','Mencion_CodMencion'); ?>
+        <?php echo CHtml::textField('Mencion_CodMencion',$model->mencionCodMencion->NombreMencion,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 
 	<div class="row">
@@ -76,14 +82,20 @@
 	</div>
     
     <div class="row">
-		<?php echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
-		<?php echo $form->textField($model,'ConfiguracionPractica_CodPractica',array('readOnly' => true,'disabled'=>"disabled",'size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->labelEx($model,'ConfiguracionPractica_CodPractica'); ?>
+		<?php echo $form->hiddenField($model,'ConfiguracionPractica_CodPractica',array('readOnly' => true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ConfiguracionPractica_CodPractica'); ?>
 	</div>
-        
-	<div class="row">
-		<?php echo $form->labelEx($model,'ImagenEstudiante'); ?>
-		<?php echo CHtml::activeFileField($model,'ImagenEstudiante');?>
+    
+    <div class="row">
+        <?php echo CHtml::label('Práctica','ConfiguracionPractica_CodPractica'); ?>
+        <?php echo CHtml::textField('ConfiguracionPractica_CodPractica',$model->configuracionPracticaCodPractica->NombrePractica,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
+	</div>
+    
+    <div class="row">
+		<?php //echo $form->labelEx($model,'ImagenEstudiante'); ?>
+		<?php echo $form->hiddenField($model,'ImagenEstudiante',array('readOnly'=> true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ImagenEstudiante'); ?>
 	</div>
 

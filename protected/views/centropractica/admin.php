@@ -91,7 +91,8 @@ $('.search-form form').submit(function(){
 		//'ImagenCentroPractica',
 		array(
 			'class'=>'CButtonColumn',
-            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
+            'htmlOptions' => array('style'=>'width:65px'),
+            'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento? Recuerde que si el centro de práctica está asociado a algún estudiante este no se borrará',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
                 'pdf'=>array(

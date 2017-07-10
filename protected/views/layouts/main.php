@@ -40,18 +40,14 @@ $ask = new UserIdentity('','');
             $this->widget('application.extensions.mbmenu.MbMenu',array(
             'htmlOptions'=>array('style'=>'height:28px; background-color:#E8E8E8;'),
             'items'=>array(
-                
                 //array('label'=>'Cambiar Contraseña', 'url'=>array('/estudiantelogin/update')),
-                
-                
-                
 				//array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
 				//array('label'=>'Contacto', 'url'=>array('/site/contact')),
                 array('label'=>'Iniciar Sesion','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Gestión','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),
                       'items'=>array(
-                          array('label'=>'Gestion Organizativa','linkOptions'=>array('style' => 'color: #666;'),
+                          array('label'=>'Gestión Organizativa','linkOptions'=>array('style' => 'color: #666;'),
                                 'items'=>array(
                                     array('label'=>'Centros de Práctica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
                                     array('label'=>'Secretaria CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
@@ -62,12 +58,12 @@ $ask = new UserIdentity('','');
                                     array('label'=>'Configuracion de Practicas','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/configuracionpractica'),'visible'=>$ask->isAdmins()),
                                 ),
                            ),
-                        array('label'=>'Gestion Pedagógica','linkOptions'=>array('style' => 'color: #666;'),
+                        array('label'=>'Gestión Pedagógica','linkOptions'=>array('style' => 'color: #666;'),
                         'items'=>array(
                           array('label'=>'Planificación de Clases','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
                     ),
                 ),  
-                          array('label'=>'Gestion de Información','linkOptions'=>array('style' => 'color: #666;'),
+                          array('label'=>'Gestión de Información','linkOptions'=>array('style' => 'color: #666;'),
                         'items'=>array(
                           array('label'=>'Horario','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
 						  array('label'=>'Estadísticas','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/graphdata'),'visible'=>$ask->isAdmins()),
@@ -76,8 +72,8 @@ $ask = new UserIdentity('','');
                           
                       ),
                 ),
-				array('label'=>'Horario','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/horario'),'visible'=>$ask->isStudent()),
-				array('label'=>'Planificación de Clases/Bitacoras','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclase'),'visible'=>$ask->isStudent()),
+                array('label'=>'Planificación de Clases/Bitacoras','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclase'),'visible'=>$ask->isStudent()),
+				array('label'=>'Horario','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/horario'),'visible'=>$ask->isStudent()),
                 array('label'=>'Administración','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),
                       'items'=>array(
                           array('label'=>'Universidad','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),

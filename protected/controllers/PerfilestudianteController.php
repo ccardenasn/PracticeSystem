@@ -134,40 +134,16 @@ class PerfilestudianteController extends Controller
     public function actionUpdate($id)
 	{
 		$model=$this->loadModel(Yii::app()->user->name);
-		
-		$imageAttrib = "ImagenEstudiante";
-		$table = "estudiante";
-		$codTable = "RutEstudiante";
-		
-		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
+        
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Perfilestudiante']))
 		{
 			$model->attributes=$_POST['Perfilestudiante'];
-			
-            $rnd = rand(0,9999);
-            $file=CUploadedFile::getInstance($model,'ImagenEstudiante');
-            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
-            
-            if($file != null){
-                $model->ImagenEstudiante = $fileName;
-            }
             
 			if($model->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
-					}
-				}else{
-					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$id);
-				}
-				$this->redirect(array('view','id'=>$model->RutEstudiante));
+                $this->redirect(array('view','id'=>$model->RutEstudiante));
 			}
 		}
 		$this->render('update',array(
