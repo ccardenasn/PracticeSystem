@@ -99,7 +99,7 @@ class UniversidadmainController extends Controller
                 $carreraModel->save();
                 $secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($secretariaModel,'ImagenEstudiante');
                 $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
                 
@@ -168,7 +168,7 @@ class UniversidadmainController extends Controller
 			$carreraModel->save();
 			$secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
             
-            $rnd = rand(0,9999);
+            $rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
             $fileName = "{$rnd}-{$file}";
             

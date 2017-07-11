@@ -2,6 +2,8 @@
 /* @var $this EstudianteloginController */
 /* @var $model Estudiantelogin */
 
+$this->pageTitle= Yii::app()->name." - "."Cambiar Contraseña";
+
 $this->breadcrumbs=array(
 	'Cambiar Contraseña',
 );

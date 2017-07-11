@@ -79,11 +79,11 @@ class DocenteresponsablepracticaController extends Controller
 		{
 			$model->attributes=$_POST['Docenteresponsablepractica'];
             
-            $randomPassword = rand(0,9999);
+            $randomPassword = rand(1000,9999);
             $model->ClaveResponsable = $randomPassword;
             $model->EstadoResponsable = '0';
             
-            $rnd = rand(0,9999);
+            $rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenResponsable');
             $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
             
@@ -134,7 +134,7 @@ class DocenteresponsablepracticaController extends Controller
 		{
 			$model->attributes=$_POST['Docenteresponsablepractica'];
 			
-			$rnd = rand(0,9999);
+			$rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenResponsable');
             $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
             

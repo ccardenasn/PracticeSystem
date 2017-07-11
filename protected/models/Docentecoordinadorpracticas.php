@@ -201,20 +201,18 @@ class Docentecoordinadorpracticas extends CActiveRecord
 	}
     
 	public function getAdmins(){
-		$queryDirector = "select RutDirector from directorcarrera";
-		
-		$commandDirector= Yii::app()->db->createCommand($queryDirector);
-		
-		$rows = array();
-		
-		$dataReaderDirector=$commandDirector->query();
-		
-		while(($row=$dataReaderDirector->read())!==false){
+        $queryDirector = "select RutDirector from directorcarrera where EstadoDirector = '1'";
+        $commandDirector= Yii::app()->db->createCommand($queryDirector);
+        $rows = array();
+        
+        $dataReaderDirector=$commandDirector->query();
+        
+        while(($row=$dataReaderDirector->read())!==false){
 			array_push($rows, $row['RutDirector']);
 		}
         
         if($rows == null){
-            $rows[0] = "@";
+            $rows[0] = "restringido";
         }
 		
 		return $rows;

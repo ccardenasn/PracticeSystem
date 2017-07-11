@@ -219,7 +219,7 @@ class Jefeutpcp extends CActiveRecord
 	public function getAdmins(){
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas where EstadoCoordinador = '1'";
-		$queryDirector = "select RutDirector from directorcarrera";
+		$queryDirector = "select RutDirector from directorcarrera where EstadoDirector = '1'";
 		$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
 		
 		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);

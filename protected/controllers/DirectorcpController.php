@@ -82,7 +82,7 @@ class DirectorcpController extends Controller
                 
                 $model->attributes=$_POST['Directorcp'];
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenDirectorCP');
                 $fileName = "{$rnd}-{$file}";
                 
@@ -146,7 +146,7 @@ class DirectorcpController extends Controller
 		{
 			$model->attributes=$_POST['Directorcp'];
 			
-			$rnd = rand(0,9999);
+			$rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenDirectorCP');
             $fileName = "{$rnd}-{$file}";
             

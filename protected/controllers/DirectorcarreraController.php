@@ -82,7 +82,7 @@ class DirectorcarreraController extends Controller
             if(isset($_POST['Directorcarrera'])){
 				$model->attributes=$_POST['Directorcarrera'];
 				
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenDirector');
                 $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
                 
@@ -134,7 +134,7 @@ class DirectorcarreraController extends Controller
 		{
 			$model->attributes=$_POST['Directorcarrera'];
             
-            $rnd = rand(0,9999);
+            $rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenDirector');
             $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
             

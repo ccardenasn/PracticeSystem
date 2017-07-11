@@ -98,9 +98,6 @@ class EstudianteloginController extends Controller
                 Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Las contraseñas no coinciden.</li><li>Por favor ingrese la contraseña correctamente.</li></ul></div>");
                 $this->refresh();
             }
-            
-			
-				
 		}
 
 		$this->render('update',array(

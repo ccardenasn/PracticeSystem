@@ -82,7 +82,7 @@ class ProfesorguiacpController extends Controller
                 
                 $model->attributes=$_POST['Profesorguiacp'];
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
                 $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
                 
@@ -153,7 +153,7 @@ class ProfesorguiacpController extends Controller
 		{
 			$model->attributes=$_POST['Profesorguiacp'];
 			
-			$rnd = rand(0,9999);
+			$rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenProfGuiaCP');
             $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
             

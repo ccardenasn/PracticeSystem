@@ -80,7 +80,7 @@ class CentropracticaController extends Controller
                 
                 $model->attributes=$_POST['Centropractica'];
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $image=CUploadedFile::getInstance($model,'ImagenCentroPractica');
                 $imageName = "{$rnd}-{$image}";
                 
@@ -160,7 +160,7 @@ class CentropracticaController extends Controller
 			$model->attributes=$_POST['Centropractica'];
             
             
-            $rnd = rand(0,9999);
+            $rnd = rand(1000,9999);
                 $image=CUploadedFile::getInstance($model,'ImagenCentroPractica');
                 $imageName = "{$rnd}-{$image}";
                 

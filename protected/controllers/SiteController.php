@@ -107,6 +107,7 @@ class SiteController extends Controller
                 $studentData=Estudiante::model()->find('RutEstudiante=?',array($rut));
                 $responsableData=Docenteresponsablepractica::model()->find('RutResponsable=?',array($rut));
                 $coordinadorData=Docentecoordinadorpracticas::model()->find('RutCoordinador=?',array($rut));
+                $directorData=Directorcarrera::model()->find('RutDirector=?',array($rut));
                 
                 if($studentData != null){
                     if($studentData->Estado == '0'){
@@ -129,14 +130,22 @@ class SiteController extends Controller
                                 $this->redirect(array($profilelogged));
                             }
                         }else{
-                            $this->redirect(array($profilelogged));
+                            if($directorData != null){
+                                if($directorData->EstadoDirector == '0'){
+                                    $this->redirect(array('directorcarreralogin/update','id'=>Yii::app()->user->name));
+                                }else{
+                                    $this->redirect(array($profilelogged));
+                                }
+                            }else{
+                                $this->redirect(array($profilelogged));
+                            }
                         }
                     }
-                }   
+                }
             }
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+        }
+        // display the login form
+        $this->render('login',array('model'=>$model));
 	}
     
     public function findProfileURL($rut)

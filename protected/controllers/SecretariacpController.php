@@ -80,7 +80,7 @@ class SecretariacpController extends Controller
                 
                 $model->attributes=$_POST['Secretariacp'];
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
                 $fileName = "{$rnd}-{$file}";
                 
@@ -132,7 +132,7 @@ class SecretariacpController extends Controller
 		{
 			$model->attributes=$_POST['Secretariacp'];
 			
-			$rnd = rand(0,9999);
+			$rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenSecretariaCP');
             $fileName = "{$rnd}-{$file}";
             

@@ -82,7 +82,7 @@ class JefeutpcpController extends Controller
                 
                 $model->attributes=$_POST['Jefeutpcp'];
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenJefeUTPCP');
                 $fileName = "{$rnd}-{$file}";
                 
@@ -146,7 +146,7 @@ class JefeutpcpController extends Controller
 		{
 			$model->attributes=$_POST['Jefeutpcp'];
 			
-			$rnd = rand(0,9999);
+			$rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenJefeUTPCP');
             $fileName = "{$rnd}-{$file}";
             

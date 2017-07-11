@@ -82,7 +82,7 @@ class ProfesorcoordinadorpracticacpController extends Controller
                 
                 $model->attributes=$_POST['Profesorcoordinadorpracticacp'];
                 
-                $rnd = rand(0,9999);
+                $rnd = rand(1000,9999);
                 $file=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
                 $fileName = "{$rnd}-{$file}";
                 
@@ -147,7 +147,7 @@ class ProfesorcoordinadorpracticacpController extends Controller
 			$model->attributes=$_POST['Profesorcoordinadorpracticacp'];
 			
 			//se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
-			$rnd = rand(0,9999);
+			$rnd = rand(1000,9999);
             $file=CUploadedFile::getInstance($model,'ImagenProfCoordGuiaCP');
             $fileName = "{$rnd}-{$file}";
             

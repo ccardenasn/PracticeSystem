@@ -15,7 +15,7 @@ function containsCoordinador($id){
 }
 
 function containsDirector($id){
-	$query = "select count(*) from directorcarrera where RutDirector = '".$id."'";
+	$query = "select count(*) from directorcarrera where RutDirector = '".$id."' and EstadoDirector = '1'";
 	$result=Yii::app()->db->createCommand($query)->queryScalar();
 	
 	return $result;
