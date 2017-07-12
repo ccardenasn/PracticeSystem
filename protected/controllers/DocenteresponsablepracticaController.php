@@ -72,9 +72,6 @@ class DocenteresponsablepracticaController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 		
-		$table = "docenteresponsablepractica";
-		$codTable = "RutResponsable";
-
 		if(isset($_POST['Docenteresponsablepractica']))
 		{
 			$model->attributes=$_POST['Docenteresponsablepractica'];
@@ -93,15 +90,8 @@ class DocenteresponsablepracticaController extends Controller
             
             if($model->save()){
                 if($file != null){
-                    if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                        $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$fileName);
-                    }else{
-                        deleteData($table,$codTable,$model->RutResponsable);
-                        Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                        $this->refresh();
-                    }	
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$fileName);
                 }
-                
                 sendPassword($model->MailResponsable,"Nuevo Usuario",$model->RutResponsable,$model->NombreResponsable,$model->ClaveResponsable);
                 $this->redirect(array('view','id'=>$model->RutResponsable));
             }
@@ -144,13 +134,7 @@ class DocenteresponsablepracticaController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$fileName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
-					}
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenDocentesResponsablesPracticas/".$fileName);
 				}else{
 					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutResponsable);
 				}

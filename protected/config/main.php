@@ -40,6 +40,8 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+            'authTimeout'=>1200, //20 minnutos en segundos
+            'absoluteAuthTimeout'=>3600, //una hora en segundos
 		),
 
 		// uncomment the following to enable URLs in path-format

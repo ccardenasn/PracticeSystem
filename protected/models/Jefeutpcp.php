@@ -56,7 +56,7 @@ class Jefeutpcp extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutJefeUTPCP, NombreJefeUTPCP, MailJefeUTPCP, TelefonoJefeUTPCP, CelularJefeUTPCP, CentroPractica_RBD, ImagenJefeUTPCP', 'safe', 'on'=>'search'),
-            array('ImagenJefeUTPCP','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
+            array('ImagenJefeUTPCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenJefeUTPCP','safe','on'=>'update'),
             array('RutJefeUTPCP','valrut'),
             array('RutJefeUTPCP','valuniquerut','on'=>'insert'),

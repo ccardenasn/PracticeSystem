@@ -70,8 +70,6 @@ class EstudianteController extends Controller
 	{
         $model=new Estudiante; 
         $this->performAjaxValidation($model);
-        $table = "estudiante";
-		$codTable = "RutEstudiante";
         $enabledEstudiante = isEnabled();
         
         if($enabledEstudiante == true){
@@ -94,13 +92,7 @@ class EstudianteController extends Controller
                 
                 if($model->save()){
                     if($file != null){
-                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
-                        }else{
-                            deleteData($table,$codTable,$model->RutEstudiante);
-                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                            $this->refresh();
-                        }
+                        $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
                     }
                     sendPassword($model->MailEstudiante,"Nuevo Usuario",$model->RutEstudiante,$model->NombreEstudiante,$model->ClaveEstudiante);
                     $this->redirect(array('view','id'=>$model->RutEstudiante));
@@ -147,13 +139,7 @@ class EstudianteController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.li></ul></div>");
-						$this->refresh();
-					}
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
 				}else{
 					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutEstudiante);
 				}

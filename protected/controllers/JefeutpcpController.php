@@ -70,9 +70,6 @@ class JefeutpcpController extends Controller
 		$model=new Jefeutpcp;
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
-		$table = "jefeutpcp";
-		$codTable = "RutJefeUTPCP";
 		
         $empty = isEmpty("centropractica");
 		
@@ -90,28 +87,11 @@ class JefeutpcpController extends Controller
                     $model->ImagenJefeUTPCP = $fileName;
                 }
                 
-                $exist = contains($table,$codTable,$model->RutJefeUTPCP);
-                
-                if($exist == 0){
-                    
-                    if($model->save()){
-                        
-                        if($file != null){
-                            
-                            if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                                
-                                $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$fileName);
-                            }else{
-                                deleteData($table,$codTable,$model->RutJefeUTPCP);
-                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                                $this->refresh();
-                            }
-                        }
-                        $this->redirect(array('view','id'=>$model->RutJefeUTPCP));
+                if($model->save()){
+                    if($file != null){
+                        $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$fileName);
                     }
-                }else{
-                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El usuario con rut: ".$model->RutJefeUTPCP." ya está registrado.</li></ul></div>");
-                    $this->refresh();
+                    $this->redirect(array('view','id'=>$model->RutJefeUTPCP));
                 }
             }
             
@@ -156,14 +136,8 @@ class JefeutpcpController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$fileName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
-					}
-				}else{
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenJefesUTPCP/".$fileName);
+                }else{
 					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutJefeUTPCP);
 				}
 				$this->redirect(array('view','id'=>$model->RutJefeUTPCP));

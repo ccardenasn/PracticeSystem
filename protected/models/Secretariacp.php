@@ -55,8 +55,7 @@ class Secretariacp extends CActiveRecord
 			array('RutSecretariaCP, NombreSecretariaCP, MailSecretariaCP, TelefonoSecretariaCP, CelularSecretariaCP, ImagenSecretariaCP', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RutSecretariaCP, NombreSecretariaCP, MailSecretariaCP, TelefonoSecretariaCP, CelularSecretariaCP, CentroPractica_RBD, ImagenSecretariaCP', 'safe', 'on'=>'search'),
-            array('ImagenSecretariaCP','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar 
+			array('RutSecretariaCP, NombreSecretariaCP, MailSecretariaCP, TelefonoSecretariaCP, CelularSecretariaCP, CentroPractica_RBD, ImagenSecretariaCP', 'safe', 'on'=>'search'), array('ImagenSecretariaCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenSecretariaCP','safe','on'=>'update'),
             array('RutSecretariaCP','valrut'),
             array('RutSecretariaCP','valuniquerut','on'=>'insert'),

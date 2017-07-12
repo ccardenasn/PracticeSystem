@@ -90,37 +90,16 @@ class CentropracticaController extends Controller
                 
                 //se añade esta linea para agregar imagenes, se obtiene la ruta del campo rutaImagenAlojamiento
                 $file=$model->AnexoProtocolo=CUploadedFile::getInstance($model,'AnexoProtocolo');
-                $exist = contains($table,$codTable,$model->RBD);
                 
-                if($exist == 0){
-                    
-                    if($model->save()){
-                
-                        if($file != null){    
-                            if($file->getExtensionName()=="pdf"){
-                                
-                                $model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
-                            }else{
-                                deleteData($table,$codTable,$model->RBD);
-                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo.</li><li>Solo se permiten archivos en formato .pdf.</li></ul></div>");
-                                $this->refresh();
-                            }
-                        }
-                        
-                        if($image != null){
-                            if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
-                                $image->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$imageName);
-                            }else{
-                                deleteData($table,$codTable,$model->RBD);
-                                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                                $this->refresh();
-                            }
-                        }    
-                        $this->redirect(array('view','id'=>$model->RBD));
+                if($model->save()){
+                    if($file != null){
+                        $model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
                     }
-                }else{
-                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible ingresar los datos!</strong></p><ul><li>El centro de práctica con RBD: ".$model->RBD." ya está registrado.</li></ul></div>");
-                    $this->refresh();
+                    
+                    if($image != null){
+                        $image->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$imageName);
+                    }
+                    $this->redirect(array('view','id'=>$model->RBD));
                 }
             }
             $this->render('create',array(
@@ -173,25 +152,13 @@ class CentropracticaController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-					if($file->getExtensionName()=="pdf"){
-						//se guarda la ruta de la imagen
-						$model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo.</li><li>Solo se permiten archivos en formato .pdf.li></ul></div>");
-						$this->refresh();
-					}
+                    $model->AnexoProtocolo->saveAs(Yii::getPathOfAlias("webroot")."/PDFFiles/".$file->getName());
 				}else{
 					saveFilePath($tableCentro,$fileAttribCentro,$oldFileCentro,$codTableCentro,$model->RBD);
 				}
 				
 				if($image != null){
-					if($image->getExtensionName()=="jpg" or $image->getExtensionName()=="jpeg" or $image->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$image->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$imageName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.li></ul></div>");
-						$this->refresh();
-					}	
+                    $image->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCentroPracticas/".$imageName);
 				}else{
 					saveFilePath($tableCentro,$imageAttribCentro,$oldImageCentro,$codTableCentro,$model->RBD);
 				}

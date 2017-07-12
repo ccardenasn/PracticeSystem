@@ -72,9 +72,9 @@ class Estudiante extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutEstudiante, NombreEstudiante, ClaveEstudiante, FechaIncorporacion, MailEstudiante, TelefonoEstudiante, CelularEstudiante, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, CentroPractica_RBD, ImagenEstudiante, SituacionFinalEstudiante, ObservacionEstudiante', 'safe', 'on'=>'search'),
-			array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'update'),//permite campo vacio si no se carga imagen al actualizar
-            array('ImagenEstudiante','file','allowEmpty'=>true,'on'=>'create'),//permite campo vacio si no se carga imagen al actualizar
-			array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
+			array('ImagenEstudiante','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
+            array('ImagenEstudiante','safe','on'=>'update'),
+            array('NombreEstudiante','valnombre'),//permite el uso de metodo valnombre
             array('MailEstudiante','valcorreo'),
             array('FechaIncorporacion','valnumeros'),
             array('RutEstudiante','valrut'),

@@ -57,6 +57,8 @@ class Profesorguiacp extends CActiveRecord
             
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, ImagenProfGuiaCP', 'length', 'max'=>45),
+            array('ImagenProfGuiaCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
+            array('ImagenProfGuiaCP','safe','on'=>'update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, CentroPractica_RBD, ImagenProfGuiaCP', 'safe', 'on'=>'search'),

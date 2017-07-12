@@ -57,6 +57,10 @@ class Centropractica extends CActiveRecord
 			array('Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} debe ser un número.'),
 			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
 			array('AnexoProtocolo', 'length', 'max'=>255),
+            array('AnexoProtocolo','file','types'=>'pdf','wrongType'=>'Solo se permiten archivos con extensión .pdf','maxSize'=>1048576,'tooLarge'=>'El archivo es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
+            array('AnexoProtocolo','safe','on'=>'update'),
+            array('ImagenCentroPractica','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
+            array('ImagenCentroPractica','safe','on'=>'update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RBD, NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, AnexoProtocolo, Dependencia_CodDependencia, NivelEducacional_CodNivel, Area, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad, Calle, ImagenCentroPractica', 'safe', 'on'=>'search'),

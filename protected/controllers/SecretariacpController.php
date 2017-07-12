@@ -70,8 +70,6 @@ class SecretariacpController extends Controller
 		$model=new Secretariacp;
 		$this->performAjaxValidation($model);
         
-        $table = "secretariacp";
-		$codTable = "RutSecretariaCP";
         $empty = isEmpty("centropractica");
         
         if($empty == false){
@@ -90,13 +88,7 @@ class SecretariacpController extends Controller
                 
                 if($model->save()){
                     if($file != null){
-                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$fileName);
-                        }else{
-                            deleteData($table,$codTable,$secretariaModel->CodSecretaria);
-                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                            $this->refresh();
-                        }
+                        $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$fileName);
                     }
                     $this->redirect(array('view','id'=>$model->RutSecretariaCP));
                 }	
@@ -142,13 +134,7 @@ class SecretariacpController extends Controller
 			
 			if($model->save()){
 				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$fileName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
-					}
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretariasCP/".$fileName);
 				}else{
 					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->RutSecretariaCP);
 				}
