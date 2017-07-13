@@ -46,10 +46,10 @@
 		<?php echo $form->textField($model,'DocenteCoordinadorPracticas_RutCoordinador',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'DocenteResponsablePractica_RutResponsable'); ?>
-		<?php echo $form->textField($model,'DocenteResponsablePractica_RutResponsable',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
+	<!--<div class="row">
+		<?php //echo $form->label($model,'DocenteResponsablePractica_RutResponsable'); ?>
+		<?php //echo $form->textField($model,'DocenteResponsablePractica_RutResponsable',array('size'=>45,'maxlength'=>45)); ?>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

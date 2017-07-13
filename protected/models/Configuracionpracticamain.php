@@ -12,12 +12,11 @@
  * @property string $NumeroSesionesPractica
  * @property string $NumeroHorasPractica
  * @property string $DocenteCoordinadorPracticas_RutCoordinador
- * @property string $DocenteResponsablePractica_RutResponsable
  *
  * The followings are the available model relations:
  * @property Docentecoordinadorpracticas $docenteCoordinadorPracticasRutCoordinador
- * @property Docenteresponsablepractica $docenteResponsablePracticaRutResponsable
  * @property Semestre $semestreCodSemestre
+ * @property Docenteresponsablepractica[] $docenteresponsablepracticas
  * @property Estudiante[] $estudiantes
  * @property Planificacionclase[] $planificacionclases
  */
@@ -39,13 +38,13 @@ class Configuracionpracticamain extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Semestre_CodSemestre, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required'),
+			array('Semestre_CodSemestre, DocenteCoordinadorPracticas_RutCoordinador', 'required'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
-			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
+			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador', 'length', 'max'=>45),
 			array('DescripcionPractica', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodPractica, NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
+			array('CodPractica, NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,8 +57,8 @@ class Configuracionpracticamain extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'docenteCoordinadorPracticasRutCoordinador' => array(self::BELONGS_TO, 'Docentecoordinadorpracticas', 'DocenteCoordinadorPracticas_RutCoordinador'),
-			'docenteResponsablePracticaRutResponsable' => array(self::BELONGS_TO, 'Docenteresponsablepractica', 'DocenteResponsablePractica_RutResponsable'),
 			'semestreCodSemestre' => array(self::BELONGS_TO, 'Semestre', 'Semestre_CodSemestre'),
+			'docenteresponsablepracticas' => array(self::MANY_MANY, 'Docenteresponsablepractica', 'docenteresponsablepractica_has_configuracionpractica(ConfiguracionPractica_CodPractica, DocenteResponsablePractica_RutResponsable)'),
 			'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'ConfiguracionPractica_CodPractica'),
 			'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'ConfiguracionPractica_CodPractica'),
 		);
@@ -79,7 +78,6 @@ class Configuracionpracticamain extends CActiveRecord
 			'NumeroSesionesPractica' => 'Numero Sesiones Practica',
 			'NumeroHorasPractica' => 'Numero Horas Practica',
 			'DocenteCoordinadorPracticas_RutCoordinador' => 'Docente Coordinador Practicas Rut Coordinador',
-			'DocenteResponsablePractica_RutResponsable' => 'Docente Responsable Practica Rut Responsable',
 		);
 	}
 
@@ -109,7 +107,6 @@ class Configuracionpracticamain extends CActiveRecord
 		$criteria->compare('NumeroSesionesPractica',$this->NumeroSesionesPractica,true);
 		$criteria->compare('NumeroHorasPractica',$this->NumeroHorasPractica,true);
 		$criteria->compare('DocenteCoordinadorPracticas_RutCoordinador',$this->DocenteCoordinadorPracticas_RutCoordinador,true);
-		$criteria->compare('DocenteResponsablePractica_RutResponsable',$this->DocenteResponsablePractica_RutResponsable,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

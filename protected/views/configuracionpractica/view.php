@@ -56,7 +56,33 @@ $this->menu=array(
 		'NumeroHorasPractica',
 		'DocenteCoordinadorPracticas_RutCoordinador',
 		'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador',
-		'DocenteResponsablePractica_RutResponsable',
-		'docenteResponsablePracticaRutResponsable.NombreResponsable',
+		//'DocenteResponsablePractica_RutResponsable',
+		//'docenteResponsablePracticaRutResponsable.NombreResponsable',
 	),
 )); ?>
+
+<br/>
+<h2>Clases </h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Rut</th>
+			<th>Nombre</th>
+			<th>Correo</th>
+			<th>Teléfono</th>
+			<th>Celular</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($model->docenteresponsablepracticas as $responsable) : ?>
+		<tr>
+			<td><?php echo $responsable->RutResponsable ?></td>
+            <td><?php echo $responsable->NombreResponsable ?></td>
+            <td><?php echo $responsable->MailResponsable ?></td>
+            <td><?php echo $responsable->TelefonoResponsable ?></td>
+            <td><?php echo $responsable->CelularResponsable ?></td>
+		</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

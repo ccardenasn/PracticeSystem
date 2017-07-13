@@ -82,7 +82,6 @@ $('.search-form form').submit(function(){
         array('name'=>'Semestre_CodSemestre','value'=>'$data->semestreCodSemestre->NombreSemestre','filter'=>CHtml::listData(Semestre::model()->findAll(),'CodSemestre','NombreSemestre')),
 		'NumeroSesionesPractica',
 		'NumeroHorasPractica',
-        array('name'=>'DocenteResponsablePractica_RutResponsable','value'=>'$data->docenteResponsablePracticaRutResponsable->NombreResponsable','filter'=>CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable','RutResponsable')),
 		array(
 			'class'=>'CButtonColumn',
             'htmlOptions' => array('style'=>'width:65px'),

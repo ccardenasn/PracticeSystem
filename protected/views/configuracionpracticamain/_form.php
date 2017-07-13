@@ -61,12 +61,6 @@
 		<?php echo $form->error($model,'DocenteCoordinadorPracticas_RutCoordinador'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'DocenteResponsablePractica_RutResponsable'); ?>
-		<?php echo $form->textField($model,'DocenteResponsablePractica_RutResponsable',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'DocenteResponsablePractica_RutResponsable'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

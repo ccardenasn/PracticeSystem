@@ -70,7 +70,8 @@ class Docenteresponsablepractica extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'configuracionpracticas' => array(self::HAS_MANY, 'Configuracionpractica', 'DocenteResponsablePractica_RutResponsable'),
+			//'configuracionpracticas' => array(self::HAS_MANY, 'Configuracionpractica', 'DocenteResponsablePractica_RutResponsable'),
+            'configuracionpracticas' => array(self::MANY_MANY, 'Configuracionpractica', 'docenteresponsablepractica_has_configuracionpractica(DocenteResponsablePractica_RutResponsable, ConfiguracionPractica_CodPractica)'),
 		);
 	}
 
@@ -198,6 +199,11 @@ class Docenteresponsablepractica extends CActiveRecord
 		if(uniquerut($this->RutResponsable)==true)
 		$this->addError('RutResponsable','Este número de RUT ya existe.');
 	}
+    
+    public static function getListResponsables()
+    {
+        return CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable');
+    }
     
 	public function getAdmins(){
 		

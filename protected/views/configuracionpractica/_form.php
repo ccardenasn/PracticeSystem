@@ -67,12 +67,18 @@
 		<?php echo $form->dropDownList($model,'DocenteCoordinadorPracticas_RutCoordinador',CHtml::listData(Docentecoordinadorpracticas::model()->findAll(),'RutCoordinador','NombreCoordinador','RutCoordinador'));?>
         <?php echo $form->error($model,'DocenteCoordinadorPracticas_RutCoordinador'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Docente Responsable de Práctica'); ?>
-		<?php echo $form->dropDownList($model,'DocenteResponsablePractica_RutResponsable',CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable','RutResponsable'));?>
-        <?php echo $form->error($model,'DocenteResponsablePractica_RutResponsable'); ?>
+    
+    <div class="row">
+		<?php echo $form->labelEx($model,'docenteresponsablepracticas'); ?>
+		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple')); ?>
+		<?php echo $form->error($model,'docenteresponsablepracticas'); ?>
 	</div>
+
+	<!--<div class="row">
+		<?php //echo $form->labelEx($model,'Docente Responsable de Práctica'); ?>
+		<?php //echo $form->dropDownList($model,'DocenteResponsablePractica_RutResponsable',CHtml::listData(Docenteresponsablepractica::model()->findAll(),'RutResponsable','NombreResponsable','RutResponsable'));?>
+        <?php //echo $form->error($model,'DocenteResponsablePractica_RutResponsable'); ?>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>

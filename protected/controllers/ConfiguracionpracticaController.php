@@ -79,8 +79,15 @@ class ConfiguracionpracticaController extends Controller
                 
                 $model->attributes=$_POST['Configuracionpractica'];
                 
-                if($model->save())
+                if($model->save()){
+                    foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
+                        $manyModel =new DocenteresponsablepracticaHasConfiguracionpractica;
+                        $manyModel->DocenteResponsablePractica_RutResponsable = $idResponsable;
+                        $manyModel->ConfiguracionPractica_CodPractica = $model->CodPractica;
+                        $manyModel->save();
+                    }
                     $this->redirect(array('view','id'=>$model->CodPractica));
+                }
             }
             
             $this->render('create',array(

@@ -29,6 +29,5 @@ $this->menu=array(
 		'NumeroSesionesPractica',
 		'NumeroHorasPractica',
 		'DocenteCoordinadorPracticas_RutCoordinador',
-		'DocenteResponsablePractica_RutResponsable',
 	),
 )); ?>

@@ -38,10 +38,6 @@
 	<?php echo CHtml::encode($data->DocenteCoordinadorPracticas_RutCoordinador); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('DocenteResponsablePractica_RutResponsable')); ?>:</b>
-	<?php echo CHtml::encode($data->DocenteResponsablePractica_RutResponsable); ?>
-	<br />
-
 	*/ ?>
 
 </div>

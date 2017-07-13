@@ -38,14 +38,14 @@ class Configuracionpractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('NombrePractica','unique','message'=>'{value} ya existe.'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
-			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'length', 'max'=>45),
+			array('NombrePractica, FechaPractica, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador', 'length', 'max'=>45),
 			array('DescripcionPractica', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodPractica, NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador, DocenteResponsablePractica_RutResponsable', 'safe', 'on'=>'search'),
+			array('CodPractica, NombrePractica, DescripcionPractica, FechaPractica, Semestre_CodSemestre, NumeroSesionesPractica, NumeroHorasPractica, DocenteCoordinadorPracticas_RutCoordinador', 'safe', 'on'=>'search'),
             array('FechaPractica','valfecha'),
             array('NumeroSesionesPractica','valsesiones'),
             array('NumeroHorasPractica','valhoras'),
@@ -61,8 +61,9 @@ class Configuracionpractica extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'docenteCoordinadorPracticasRutCoordinador' => array(self::BELONGS_TO, 'Docentecoordinadorpracticas', 'DocenteCoordinadorPracticas_RutCoordinador'),
-			'docenteResponsablePracticaRutResponsable' => array(self::BELONGS_TO, 'Docenteresponsablepractica', 'DocenteResponsablePractica_RutResponsable'),
+			//'docenteResponsablePracticaRutResponsable' => array(self::BELONGS_TO, 'Docenteresponsablepractica', 'DocenteResponsablePractica_RutResponsable'),
 			'semestreCodSemestre' => array(self::BELONGS_TO, 'Semestre', 'Semestre_CodSemestre'),
+            'docenteresponsablepracticas' => array(self::MANY_MANY, 'Docenteresponsablepractica', 'docenteresponsablepractica_has_configuracionpractica(ConfiguracionPractica_CodPractica, DocenteResponsablePractica_RutResponsable)'),
             'estudiantes' => array(self::HAS_MANY, 'Estudiante', 'ConfiguracionPractica_CodPractica'),
             'planificacionclases' => array(self::HAS_MANY, 'Planificacionclase', 'ConfiguracionPractica_CodPractica'),
 		);
@@ -83,8 +84,8 @@ class Configuracionpractica extends CActiveRecord
 			'NumeroHorasPractica' => 'Número de Horas',
 			'DocenteCoordinadorPracticas_RutCoordinador' => 'Rut Docente Coordinador Prácticas',
 			'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador' => 'Nombre Docente Coordinador Prácticas',
-			'DocenteResponsablePractica_RutResponsable' => 'Rut Docente Responsable Práctica',
-			'docenteResponsablePracticaRutResponsable.NombreResponsable' => 'Nombre Docente Responsable Práctica',
+			//'DocenteResponsablePractica_RutResponsable' => 'Rut Docente Responsable Práctica',
+			//'docenteResponsablePracticaRutResponsable.NombreResponsable' => 'Nombre Docente Responsable Práctica',
 		);
 	}
 
@@ -134,7 +135,7 @@ class Configuracionpractica extends CActiveRecord
 		$criteria->compare('NumeroSesionesPractica',$this->NumeroSesionesPractica,true);
 		$criteria->compare('NumeroHorasPractica',$this->NumeroHorasPractica,true);
 		$criteria->compare('DocenteCoordinadorPracticas_RutCoordinador',$this->DocenteCoordinadorPracticas_RutCoordinador,true);
-		$criteria->compare('DocenteResponsablePractica_RutResponsable',$this->DocenteResponsablePractica_RutResponsable);
+		//$criteria->compare('DocenteResponsablePractica_RutResponsable',$this->DocenteResponsablePractica_RutResponsable);
 
 		$sort= new CSort();
 		
