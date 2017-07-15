@@ -4,6 +4,22 @@
 /* @var $form CActiveForm */
 ?>
 
+<script>
+    var i = 0;
+    var dataListBox = Array();
+    
+    function myFunction(val){
+        
+        var irr = document.getElementById('Configuracionpractica_docenteresponsablepracticas').value = val;
+        irr.selected = true;
+        
+        dataListBox[i] = val;
+        i++;
+        
+        $('select#Configuracionpractica_docenteresponsablepracticas').val(dataListBox);
+    } 
+</script>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -70,9 +86,17 @@
     
     <div class="row">
 		<?php echo $form->labelEx($model,'docenteresponsablepracticas'); ?>
-		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple')); ?>
+		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple','onchange'=>"myFunction(this.value)")); ?>
 		<?php echo $form->error($model,'docenteresponsablepracticas'); ?>
 	</div>
+    
+    <!--<div class="row">
+		<?php //echo $form->labelEx($model,'docenteresponsablepracticas'); ?>
+		<?php //echo $form->checkBoxList($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables()); ?>
+		<?php //echo $form->error($model,'docenteresponsablepracticas'); ?>
+	</div>-->
+    
+    
 
 	<!--<div class="row">
 		<?php //echo $form->labelEx($model,'Docente Responsable de Práctica'); ?>

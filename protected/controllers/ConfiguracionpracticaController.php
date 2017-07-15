@@ -110,15 +110,31 @@ class ConfiguracionpracticaController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+        $manyModelUpdate = DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('ConfiguracionPractica_CodPractica=?',array($id));
+        
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Configuracionpractica']))
 		{
 			$model->attributes=$_POST['Configuracionpractica'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->CodPractica));
+            
+			if($model->save()){
+                foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
+                    $checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->find('DocenteResponsablePractica_RutResponsable=?',array($idResponsable));
+                    
+                    if($checkManyModel == null){
+                        $manyModel = new DocenteresponsablepracticaHasConfiguracionpractica;
+                        $manyModel->DocenteResponsablePractica_RutResponsable = $idResponsable;
+                        $manyModel->ConfiguracionPractica_CodPractica = $model->CodPractica;
+                        $manyModel->save();
+                    }else{
+                        //$checkManyModel->
+                    }
+                }
+                $this->redirect(array('view','id'=>$model->CodPractica));
+            }
+				
 		}
 
 		$this->render('update',array(
