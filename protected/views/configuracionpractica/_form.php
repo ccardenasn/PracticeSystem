@@ -5,16 +5,39 @@
 ?>
 
 <script>
-    var i = 0;
     var dataListBox = Array();
+    
+    function deleteData(arr,value){
+        var newArr = Array();
+        for(i=0;i<arr.length;i++){
+            if(arr[i] != value){
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+    
+    function containsData(arr,value){
+        var exist = false;
+        for(i=0;i<arr.length;i++){
+            var dataArr = arr[i];
+            if(dataArr == value){
+                exist = true;
+            }
+        }
+        
+        return exist;
+    }
     
     function myFunction(val){
         
-        var irr = document.getElementById('Configuracionpractica_docenteresponsablepracticas').value = val;
-        irr.selected = true;
+        var exist = containsData(dataListBox,val);
         
-        dataListBox[i] = val;
-        i++;
+        if(exist == false){
+            dataListBox.push(val);
+        }else{
+            dataListBox=deleteData(dataListBox,val);
+        }
         
         $('select#Configuracionpractica_docenteresponsablepracticas').val(dataListBox);
     } 
@@ -86,7 +109,7 @@
     
     <div class="row">
 		<?php echo $form->labelEx($model,'docenteresponsablepracticas'); ?>
-		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple','onchange'=>"myFunction(this.value)")); ?>
+		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple','onclick'=>"myFunction(this.value)")); ?>
 		<?php echo $form->error($model,'docenteresponsablepracticas'); ?>
 	</div>
     

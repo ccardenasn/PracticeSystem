@@ -121,7 +121,9 @@ class ConfiguracionpracticaController extends Controller
             
 			if($model->save()){
                 foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
-                    $checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->find('DocenteResponsablePractica_RutResponsable=?',array($idResponsable));
+                    //$checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->find('DocenteResponsablePractica_RutResponsable=?',array($idResponsable));
+                    
+                    $checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->findByAttributes(array('DocenteResponsablePractica_RutResponsable'=>$idResponsable,'ConfiguracionPractica_CodPractica'=>$id));
                     
                     if($checkManyModel == null){
                         $manyModel = new DocenteresponsablepracticaHasConfiguracionpractica;
@@ -132,6 +134,25 @@ class ConfiguracionpracticaController extends Controller
                         //$checkManyModel->
                     }
                 }
+                
+                $manyModelDelete = DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('ConfiguracionPractica_CodPractica=?',array($id));
+                
+                //$mainModel=$model->docenteresponsablepracticas;
+                
+                foreach($manyModelDelete as $idRespDel){
+                    
+                    //=$mainModel->find('RutResponsable=?',array($idRespDel));
+                    
+                    $checkMainModel = searchPostArray($_POST['Configuracionpractica']['docenteresponsablepracticas'],$idRespDel->DocenteResponsablePractica_RutResponsable);
+                    
+                    if($checkMainModel == false){
+                        deleteRespPractica($idRespDel->DocenteResponsablePractica_RutResponsable,$id);
+                    }
+                    
+                    
+                }
+
+                
                 $this->redirect(array('view','id'=>$model->CodPractica));
             }
 				
@@ -153,8 +174,16 @@ class ConfiguracionpracticaController extends Controller
 		$codTable = "ConfiguracionPractica_CodPractica";
 		
 		$exist = contains($table,$codTable,$id);
-		
+        
 		if($exist == 0){
+            $docentePracticaModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('ConfiguracionPractica_CodPractica=?',array($id));
+            
+            if($docentePracticaModel != null){
+                foreach($docentePracticaModel as $docente){
+                    $docente->delete();
+                }
+            }
+            
             $this->loadModel($id)->delete();
             
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

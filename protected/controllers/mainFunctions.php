@@ -163,4 +163,23 @@ function isCentroEnabled(){
     return $enabled;
 }
 
+function searchPostArray($model,$respData){
+    $exist = false;
+    
+    for($i=0;$i<count($model);$i++){
+        $modelData = $model[$i];
+        
+        if($modelData == $respData){
+            $exist = true;
+        }
+    }
+    
+    return $exist;
+}
+
+function deleteRespPractica($responsable,$practica){
+	$query="delete from docenteresponsablepractica_has_configuracionpractica where DocenteResponsablePractica_RutResponsable ='".$responsable."' and ConfiguracionPractica_CodPractica = '".$practica."'";
+	Yii::app()->db->createCommand($query)->execute();
+}
+
 ?>

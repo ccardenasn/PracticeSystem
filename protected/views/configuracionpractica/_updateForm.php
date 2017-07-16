@@ -2,20 +2,69 @@
 /* @var $this ConfiguracionpracticaController */
 /* @var $model Configuracionpractica */
 /* @var $form CActiveForm */
+
+//print_r($model->docenteresponsablepracticas[0]['RutResponsable']);
+$manyModelDelete = DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('ConfiguracionPractica_CodPractica=?',array('18'));
+                
+                //$mainModel=$model->docenteresponsablepracticas;
+                
+                foreach($manyModelDelete as $idRespDel){
+                    
+                    //=$mainModel->find('RutResponsable=?',array($idRespDel));
+                    
+                    echo $idRespDel->DocenteResponsablePractica_RutResponsable;
+                }
+
+
+
+$totalModel = count($model->docenteresponsablepracticas);
+
+for($i=0;$i<$totalModel;$i++){
+	$modelArray[$i] = $model->docenteresponsablepracticas[$i]['RutResponsable'];	
+}
+
 ?>
 
 <script>
-    var i = 0;
-    var dataListBox = Array();
+    var modelData = <?php echo json_encode($modelArray); ?>; 
+    
+    
+    var dataListBox = modelData;
+    
+    function deleteData(arr,value){
+        var newArr = Array();
+        for(i=0;i<arr.length;i++){
+            if(arr[i] != value){
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+    
+    function containsData(arr,value){
+        var exist = false;
+        for(i=0;i<arr.length;i++){
+            var dataArr = arr[i];
+            if(dataArr == value){
+                exist = true;
+            }
+        }
+        
+        return exist;
+    }
     
     function myFunction(val){
-        var irr = document.getElementById('Configuracionpractica_docenteresponsablepracticas').value = val;
-        irr.selected = "true";
         
-        dataListBox[i] = val;
-        i++;
+        var exist = containsData(dataListBox,val);
+        
+        if(exist == false){
+            dataListBox.push(val);
+        }else{
+            dataListBox=deleteData(dataListBox,val);
+        }
+        
         $('select#Configuracionpractica_docenteresponsablepracticas').val(dataListBox);
-    } 
+    }
 </script>
 
 <div class="form">
@@ -84,7 +133,7 @@
     
     <div class="row">
 		<?php echo $form->labelEx($model,'docenteresponsablepracticas'); ?>
-		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple','onchange'=>"myFunction(this.value)")); ?>
+		<?php echo $form->listBox($model,'docenteresponsablepracticas',Docenteresponsablepractica::getListResponsables(), array('multiple' => 'multiple','onclick'=>"myFunction(this.value)")); ?>
 		<?php echo $form->error($model,'docenteresponsablepracticas'); ?>
 	</div>
     
