@@ -79,14 +79,21 @@ class ConfiguracionpracticaController extends Controller
                 
                 $model->attributes=$_POST['Configuracionpractica'];
                 
-                if($model->save()){
-                    foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
-                        $manyModel =new DocenteresponsablepracticaHasConfiguracionpractica;
-                        $manyModel->DocenteResponsablePractica_RutResponsable = $idResponsable;
-                        $manyModel->ConfiguracionPractica_CodPractica = $model->CodPractica;
-                        $manyModel->save();
+                if(isset($_POST['Configuracionpractica']['docenteresponsablepracticas'])){
+                    
+                    if($model->save()){
+                        
+                        foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
+                            $manyModel =new DocenteresponsablepracticaHasConfiguracionpractica;
+                            $manyModel->DocenteResponsablePractica_RutResponsable = $idResponsable;
+                            $manyModel->ConfiguracionPractica_CodPractica = $model->CodPractica;
+                            $manyModel->save();
+                        }
+                        $this->redirect(array('view','id'=>$model->CodPractica));
                     }
-                    $this->redirect(array('view','id'=>$model->CodPractica));
+                }else{
+                    Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Debe añadir un docente responsable de práctica al menos.</li></ul></div>");
+                    $this->refresh();
                 }
             }
             
@@ -98,8 +105,6 @@ class ConfiguracionpracticaController extends Controller
             Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir Prácticas en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Semestres</strong>, <strong>Coordinador de Práctica</strong> y <strong>Docentes Responsables de Prácticas</strong>.</li></ul></div>");
 			$this->redirect(array('index'));
         }
-        
-		
 	}
 
 	/**
@@ -115,47 +120,42 @@ class ConfiguracionpracticaController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Configuracionpractica']))
-		{
-			$model->attributes=$_POST['Configuracionpractica'];
+		if(isset($_POST['Configuracionpractica'])){
             
-			if($model->save()){
-                foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
-                    //$checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->find('DocenteResponsablePractica_RutResponsable=?',array($idResponsable));
-                    
-                    $checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->findByAttributes(array('DocenteResponsablePractica_RutResponsable'=>$idResponsable,'ConfiguracionPractica_CodPractica'=>$id));
-                    
-                    if($checkManyModel == null){
-                        $manyModel = new DocenteresponsablepracticaHasConfiguracionpractica;
-                        $manyModel->DocenteResponsablePractica_RutResponsable = $idResponsable;
-                        $manyModel->ConfiguracionPractica_CodPractica = $model->CodPractica;
-                        $manyModel->save();
-                    }else{
-                        //$checkManyModel->
-                    }
-                }
+            $model->attributes=$_POST['Configuracionpractica'];
+            
+            if(isset($_POST['Configuracionpractica']['docenteresponsablepracticas'])){
                 
-                $manyModelDelete = DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('ConfiguracionPractica_CodPractica=?',array($id));
-                
-                //$mainModel=$model->docenteresponsablepracticas;
-                
-                foreach($manyModelDelete as $idRespDel){
+                if($model->save()){
                     
-                    //=$mainModel->find('RutResponsable=?',array($idRespDel));
-                    
-                    $checkMainModel = searchPostArray($_POST['Configuracionpractica']['docenteresponsablepracticas'],$idRespDel->DocenteResponsablePractica_RutResponsable);
-                    
-                    if($checkMainModel == false){
-                        deleteRespPractica($idRespDel->DocenteResponsablePractica_RutResponsable,$id);
+                    foreach ($_POST['Configuracionpractica']['docenteresponsablepracticas'] as $idResponsable){
+                        
+                        $checkManyModel = DocenteresponsablepracticaHasConfiguracionpractica::model()->findByAttributes(array('DocenteResponsablePractica_RutResponsable'=>$idResponsable,'ConfiguracionPractica_CodPractica'=>$id));
+                        
+                        if($checkManyModel == null){
+                            $manyModel = new DocenteresponsablepracticaHasConfiguracionpractica;
+                            $manyModel->DocenteResponsablePractica_RutResponsable = $idResponsable;
+                            $manyModel->ConfiguracionPractica_CodPractica = $model->CodPractica;
+                            $manyModel->save();
+                        }
                     }
                     
+                    $manyModelDelete = DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('ConfiguracionPractica_CodPractica=?',array($id));
                     
+                    foreach($manyModelDelete as $idRespDel){
+                        $checkMainModel = searchPostArray($_POST['Configuracionpractica']['docenteresponsablepracticas'],$idRespDel->DocenteResponsablePractica_RutResponsable);
+                        
+                        if($checkMainModel == false){
+                            deleteRespPractica($idRespDel->DocenteResponsablePractica_RutResponsable,$id);
+                        }
+                    }
+                    
+                    $this->redirect(array('view','id'=>$model->CodPractica));
                 }
-
-                
-                $this->redirect(array('view','id'=>$model->CodPractica));
+            }else{
+                Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Debe añadir un docente responsable de práctica al menos.</li></ul></div>");
+                $this->refresh();
             }
-				
 		}
 
 		$this->render('update',array(

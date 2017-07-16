@@ -84,6 +84,7 @@ class Configuracionpractica extends CActiveRecord
 			'NumeroHorasPractica' => 'Número de Horas',
 			'DocenteCoordinadorPracticas_RutCoordinador' => 'Rut Docente Coordinador Prácticas',
 			'docenteCoordinadorPracticasRutCoordinador.NombreCoordinador' => 'Nombre Docente Coordinador Prácticas',
+            'docenteresponsablepracticas' => 'Docentes Responsables de Prácticas'
 			//'DocenteResponsablePractica_RutResponsable' => 'Rut Docente Responsable Práctica',
 			//'docenteResponsablePracticaRutResponsable.NombreResponsable' => 'Nombre Docente Responsable Práctica',
 		);

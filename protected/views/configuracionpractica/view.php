@@ -62,7 +62,7 @@ $this->menu=array(
 )); ?>
 
 <br/>
-<h2>Clases </h2>
+<h2>Docentes Repsonsables de Prácticas</h2>
 
 <table>
 	<thead>
