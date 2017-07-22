@@ -45,6 +45,8 @@ class Planificacionclase extends CActiveRecord
 			array('CentroPractica_RBD,ConfiguracionPractica_CodPractica', 'numerical', 'integerOnly'=>true),
 			array('Estudiante_RutEstudiante, ProfesorGuiaCP_RutProfGuiaCP, Curso, Fecha, SesionInformada, Ejecutado, Supervisado', 'length', 'max'=>45),
 			array('ComentarioPlanificacion', 'safe'),
+            array('DocumentoPlanificacion','file','types'=>'doc,docx,pdf','wrongType'=>'Solo se permiten archivos con las extensiones .doc, .docx y .pdf','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
+            array('DocumentoPlanificacion','safe','on'=>'update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodPlanificacion, Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_CodPractica, Fecha, SesionInformada, Ejecutado, Supervisado, ComentarioPlanificacion', 'safe', 'on'=>'search'),
@@ -85,6 +87,7 @@ class Planificacionclase extends CActiveRecord
 			'Ejecutado' => 'Ejecutado',
 			'Supervisado' => 'Supervisado',
 			'ComentarioPlanificacion' => 'Comentario',
+            'DocumentoPlanificacion' => 'Documento Planificacion',
             'estudianteRutEstudiante.NombreEstudiante' => 'Nombre Estudiante',
             'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP' => 'Nombre Profesor Guía CP',
             'configuracionPracticaNombrePractica.NumeroSesionesPractica' => 'Total de Sesiones',
@@ -121,6 +124,7 @@ class Planificacionclase extends CActiveRecord
 		$criteria->compare('Ejecutado',$this->Ejecutado,true);
 		$criteria->compare('Supervisado',$this->Supervisado,true);
 		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
+        $criteria->compare('DocumentoPlanificacion',$this->DocumentoPlanificacion,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -144,6 +148,7 @@ class Planificacionclase extends CActiveRecord
 		$criteria->compare('Ejecutado',$this->Ejecutado,true);
 		$criteria->compare('Supervisado',$this->Supervisado,true);
 		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
+        $criteria->compare('DocumentoPlanificacion',$this->DocumentoPlanificacion,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

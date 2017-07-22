@@ -158,6 +158,13 @@
 		<?php echo $form->textArea($model,'ComentarioPlanificacion',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'ComentarioPlanificacion'); ?>
 	</div>
+    
+    <div class="row">
+		<?php echo $form->labelEx($model,'DocumentoPlanificacion'); ?>
+        <?php //echo $form->fileField($model,'DocumentoPlanificacion');?>
+		<?php echo CHtml::activeFileField($model,'DocumentoPlanificacion');?>
+		<?php echo $form->error($model,'DocumentoPlanificacion'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>

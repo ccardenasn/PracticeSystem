@@ -68,5 +68,10 @@ $this->menu=array(
 		'Ejecutado',
 		'Supervisado',
 		'ComentarioPlanificacion',
+        array(
+            'name'=>'DocumentoPlanificacion (click en el enlace)',
+			'type' => 'raw',
+            'value'=>CHtml::link(CHtml::encode($model->DocumentoPlanificacion), Yii::app()->baseUrl .'/documentsFiles/planificacionDocuments/'.$model->DocumentoPlanificacion,array('target'=>'_blank'))
+            ),
 	),
 )); ?>

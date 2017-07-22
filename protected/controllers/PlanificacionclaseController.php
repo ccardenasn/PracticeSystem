@@ -101,8 +101,21 @@ class PlanificacionclaseController extends Controller
 				$model->CentroPractica_RBD = $studentModel->CentroPractica_RBD;
 				$model->ProfesorGuiaCP_RutProfGuiaCP = $studentModel->ProfesorGuiaCP_RutProfGuiaCP;
                 
-                if($model->save())
+                $rnd = rand(1000,9999);
+                $file=CUploadedFile::getInstance($model,'DocumentoPlanificacion');
+                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+                
+                if($file != null){
+                    $model->DocumentoPlanificacion = $fileName;
+                }
+                
+                if($model->save()){
+                    if($file != null){
+                        $file->saveAs(Yii::getPathOfAlias("webroot")."/documentsFiles/planificacionDocuments/".$fileName);
+                    }
                     $this->redirect(array('view','id'=>$model->CodPlanificacion));
+                }
+                    
             }
             
             $this->render('create',array(
@@ -123,6 +136,12 @@ class PlanificacionclaseController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+        
+        $imageAttrib = "DocumentoPlanificacion";
+		$table = "planificacionclase";
+		$codTable = "CodPlanificacion";
+        
+        $oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
@@ -130,8 +149,24 @@ class PlanificacionclaseController extends Controller
 		if(isset($_POST['Planificacionclase']))
 		{
 			$model->attributes=$_POST['Planificacionclase'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->CodPlanificacion));
+            
+            $rnd = rand(1000,9999);
+            $file=CUploadedFile::getInstance($model,'DocumentoPlanificacion');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->DocumentoPlanificacion = $fileName;
+            }
+			
+            if($model->save()){
+                if($file != null){
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/documentsFiles/planificacionDocuments/".$fileName);
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->CodPlanificacion);
+				}
+                $this->redirect(array('view','id'=>$model->CodPlanificacion));
+            }
+				
 		}
 
 		$this->render('update',array(
