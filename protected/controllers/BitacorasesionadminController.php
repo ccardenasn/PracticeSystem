@@ -96,18 +96,19 @@ class BitacorasesionadminController extends Controller
 			if(isset($_POST['Bitacorasesionadmin'])){
 				
 				$model->attributes=$_POST['Bitacorasesionadmin'];
-				$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
+                
+                $rnd = rand(1000,9999);
+                $file=CUploadedFile::getInstance($model,'DocumentoBitacora');
+                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+                
+                if($file != null){
+                    $model->DocumentoBitacora = $fileName;
+                }
 				
 				if($model->save()){
-					
 					if($file != null){
-						if($file->getExtensionName()=="doc" or $file->getExtensionName()=="docx"){
-							$model->DocumentoBitacora->saveAs(Yii::getPathOfAlias("webroot")."/WordFiles/".$file->getName());
-						}else{
-							Yii::app()->user->setFlash('mensaje','Solo documentos en formato .doc o .docx');
-							$this->refresh();
-						}
-					}
+                        $file->saveAs(Yii::getPathOfAlias("webroot")."/documentsFiles/bitacoraDocuments/".$fileName);
+                    }
 					
 					$curso=$_POST['CursoClase'];
 					$hora=$_POST['HoraClase'];
@@ -150,8 +151,16 @@ class BitacorasesionadminController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$claseBitacoraModel=new Clasebitacorasesion;
-
+		
+        $imageAttrib = "DocumentoBitacora";
+		$table = "bitacorasesion";
+		$codTable = "CodBitacora";
+		
+		$oldImage = getImageModel($imageAttrib,$table,$codTable,$id);
+        
+        
+        $claseBitacoraModel=new Clasebitacorasesion;
+        
 		$claseBitacoraModel=Clasebitacorasesion::model()->findAll('BitacoraSesion_CodBitacora=?',array($id));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -159,18 +168,22 @@ class BitacorasesionadminController extends Controller
 		if(isset($_POST['Bitacorasesion']))
 		{
 			$model->attributes=$_POST['Bitacorasesion'];
+            
+            $rnd = rand(1000,9999);
+            $file=CUploadedFile::getInstance($model,'DocumentoBitacora');
+            $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
+            
+            if($file != null){
+                $model->DocumentoBitacora = $fileName;
+            }
 			
-			$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
+			//$file=$model->DocumentoBitacora=CUploadedFile::getInstance($model,'DocumentoBitacora');
 			
 			if($model->save()){
 				if($file != null){
-					if($file->getExtensionName()=="doc" or $file->getExtensionName()=="docx"){
-						//se guarda la ruta de la imagen
-						$model->DocumentoBitacora->saveAs(Yii::getPathOfAlias("webroot")."/WordFiles/".$file->getName());
-					}else{
-						Yii::app()->user->setFlash('mensaje','Solo documentos en formato .doc o .docx');
-						$this->refresh();
-					}
+                    $file->saveAs(Yii::getPathOfAlias("webroot")."/documentsFiles/bitacoraDocuments/".$fileName);
+				}else{
+					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$model->CodBitacora);
 				}
 				
 				if(isset($_POST['CodClase'])){

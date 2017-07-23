@@ -50,6 +50,11 @@ $this->menu=array(
 		'AprendizajeBitacora',
 		'SentirBitacora',
 		'OtroBitacora',
+        array(
+            'name'=>'DocumentoBitacora (click en el enlace)',
+			'type' => 'raw',
+            'value'=>CHtml::link(CHtml::encode($model->DocumentoBitacora), Yii::app()->baseUrl .'/documentsFiles/bitacoraDocuments/'.$model->DocumentoBitacora,array('target'=>'_blank'))
+            ),
 	),
 )); ?>
 

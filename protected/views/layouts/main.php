@@ -30,9 +30,9 @@ $ask = new UserIdentity('','');
     </div>
     
 	<div id="header" style='height:105px;' align='right'>
-        <div id="logosis" alt style="margin-top: 40px; margin-right: 530px;">
+        <!--<div id="logosis" alt style="margin-top: 40px; margin-right: 530px;">
 			<img src="images/Logo/sistemapracticas.png">
-		</div>
+		</div>-->
 	</div><!-- header -->
 
 	<div id="mainMbMenu">

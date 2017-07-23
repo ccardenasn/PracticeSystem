@@ -12,14 +12,14 @@ body
 	margin-top: 5px;
 	margin-bottom: 5px;
 	background: white;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #a7cd43;
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	border-top: 3px solid #a7cd43;
     background:url(fondobanner.png)
 }
 
@@ -135,7 +135,7 @@ div.view
 {
 	padding: 10px;
 	margin: 10px 0;
-	border: 1px solid #C9E0ED;
+	border: 1px solid #c0db79;
 }
 
 div.breadcrumbs
@@ -164,8 +164,8 @@ div.search-form
 .portlet-decoration
 {
 	padding: 3px 8px;
-	background: #B7D6E7;
-	border-left: 5px solid #6FACCF;
+	background: #c0db79;
+	border-left: 5px solid #a7cd43;
 }
 
 .portlet-title
@@ -174,7 +174,7 @@ div.search-form
 	font-weight: bold;
 	padding: 0;
 	margin: 0;
-	color: #298dcd;
+	color: #759227;
 }
 
 .portlet-content
@@ -182,7 +182,7 @@ div.search-form
 	font-size:0.9em;
 	margin: 0 0 15px 0;
 	padding: 5px 8px;
-	background:#EFFDFF;
+	background:#E1EEC1;
 }
 
 .portlet-content ul
@@ -214,7 +214,7 @@ div.search-form
 .operations li a
 {
 	font: bold 12px Arial;
-	color: #0066A4;
+	color: #759227;
 	display: block;
 	padding: 2px 0 2px 8px;
 	line-height: 15px;
@@ -223,10 +223,10 @@ div.search-form
 
 .operations li a:visited
 {
-	color: #0066A4;
+	color: #759227;
 }
 
 .operations li a:hover
 {
-	background: #80CFFF;
+	background: #c0db79;
 }

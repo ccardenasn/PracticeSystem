@@ -36,8 +36,10 @@ class Bitacorasesion extends CActiveRecord
 		return array(
 			array('PlanificacionClase_CodPlanificacion,ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'required','message'=>'Por favor, ingrese información para {attribute}.'),
 			array('PlanificacionClase_CodPlanificacion', 'numerical', 'integerOnly'=>true),
-			array('DocumentoBitacora', 'length', 'max'=>45),
+			//array('DocumentoBitacora', 'length', 'max'=>45),
 			array('ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora', 'safe'),
+            array('DocumentoBitacora','file','types'=>'doc,docx,pdf','wrongType'=>'Solo se permiten archivos con las extensiones .doc, .docx y .pdf','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
+            array('DocumentoBitacora','safe','on'=>'update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodBitacora, ActividadesBitacora, AprendizajeBitacora, SentirBitacora, OtroBitacora, DocumentoBitacora, PlanificacionClase_CodPlanificacion', 'safe', 'on'=>'search'),
