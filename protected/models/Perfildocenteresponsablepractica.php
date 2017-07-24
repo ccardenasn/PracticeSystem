@@ -60,7 +60,7 @@ class Perfildocenteresponsablepractica extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'configuracionpracticas' => array(self::HAS_MANY, 'Configuracionpractica', 'DocenteResponsablePractica_RutResponsable'),
+			'configuracionpracticas' => array(self::MANY_MANY, 'Configuracionpractica', 'docenteresponsablepractica_has_configuracionpractica(DocenteResponsablePractica_RutResponsable, ConfiguracionPractica_CodPractica)'),
 		);
 	}
 

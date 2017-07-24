@@ -45,3 +45,29 @@ $this->menu=array(
             ),
 	),
 )); ?>
+
+<br/>
+<h2>Prácticas</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Práctica</th>
+			<th>Fecha</th>
+			<th>Semestre</th>
+			<th>Sesiones</th>
+			<th>Horas</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($model->configuracionpracticas as $practica) : ?>
+		<tr>
+			<td><?php echo $practica->NombrePractica ?></td>
+            <td><?php echo $practica->FechaPractica ?></td>
+            <td><?php echo $practica->Semestre_CodSemestre ?></td>
+            <td><?php echo $practica->NumeroSesionesPractica ?></td>
+            <td><?php echo $practica->NumeroHorasPractica ?></td>
+		</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

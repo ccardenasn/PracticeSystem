@@ -125,7 +125,7 @@ class PerfildocenteresponsablepracticaController extends Controller
 		));
 	}*/
     
-    public function actionUpdate($id)
+    /*public function actionUpdate($id)
 	{
         $userRut=Yii::app()->user->name;
 		
@@ -169,6 +169,26 @@ class PerfildocenteresponsablepracticaController extends Controller
 			}
 		}
 		
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	}*/
+    
+    public function actionUpdate($id)
+	{
+		$model=$this->loadModel(Yii::app()->user->name);
+        
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Perfildocenteresponsablepractica']))
+		{
+			$model->attributes=$_POST['Perfildocenteresponsablepractica'];
+            
+			if($model->save()){
+                $this->redirect(array('view','id'=>$model->RutResponsable));
+			}
+		}
 		$this->render('update',array(
 			'model'=>$model,
 		));

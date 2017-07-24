@@ -47,7 +47,7 @@ $ask = new UserIdentity('','');
                 array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Gestión','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),
                       'items'=>array(
-                          array('label'=>'Gestión Organizativa','linkOptions'=>array('style' => 'color: #666;'),
+                          array('label'=>'Gestión Organizativa','linkOptions'=>array('style' => 'color: #666;','hover'=>'color:#000000'),
                                 'items'=>array(
                                     array('label'=>'Centros de Práctica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
                                     array('label'=>'Secretaria CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),

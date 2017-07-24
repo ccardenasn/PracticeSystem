@@ -48,10 +48,10 @@
 		<?php echo $form->textField($model,'CelularCoordinador',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'CelularCoordinador'); ?>
 	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'ImagenCoordinador'); ?>
-		<?php echo CHtml::activeFileField($model,'ImagenCoordinador');?>
+    
+    <div class="row">
+		<?php //echo $form->labelEx($model,'ImagenCoordinador'); ?>
+		<?php echo $form->hiddenField($model,'ImagenCoordinador',array('readOnly'=> true,'size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'ImagenCoordinador'); ?>
 	</div>
 
