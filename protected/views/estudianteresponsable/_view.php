@@ -13,16 +13,12 @@
 	<?php echo CHtml::encode($data->NombreEstudiante); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ClaveEstudiante')); ?>:</b>
-	<?php echo CHtml::encode($data->ClaveEstudiante); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('FechaIncorporacion')); ?>:</b>
 	<?php echo CHtml::encode($data->FechaIncorporacion); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Mencion_CodMencion')); ?>:</b>
-	<?php echo CHtml::encode($data->Mencion_CodMencion); ?>
+	<?php echo CHtml::encode($data->mencionCodMencion->NombreMencion); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('MailEstudiante')); ?>:</b>

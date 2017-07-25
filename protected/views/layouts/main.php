@@ -44,10 +44,10 @@ $ask = new UserIdentity('','');
 				//array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
 				//array('label'=>'Contacto', 'url'=>array('/site/contact')),
                 array('label'=>'Iniciar Sesion','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;','hover'=>'color:#000000'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Gestión','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'),
                       'items'=>array(
-                          array('label'=>'Gestión Organizativa','linkOptions'=>array('style' => 'color: #666;','hover'=>'color:#000000'),
+                          array('label'=>'Gestión Organizativa','linkOptions'=>array('style' => 'color: #666;'),
                                 'items'=>array(
                                     array('label'=>'Centros de Práctica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/centropractica'),'visible'=>$ask->isAdmins()),
                                     array('label'=>'Secretaria CP','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/secretariacp'),'visible'=>$ask->isAdmins()),
@@ -79,6 +79,7 @@ $ask = new UserIdentity('','');
                           array('label'=>'Universidad','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Menciones','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Estudiantes Resp','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudianteresponsable')),
                           array('label'=>'Director de Carrera','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Coordinador de Practicas','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isDirector()),
                           array('label'=>'Docente Responsable de Practica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),

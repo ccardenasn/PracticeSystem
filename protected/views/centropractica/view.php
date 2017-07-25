@@ -46,6 +46,7 @@ $this->menu=array(
 	<ul>
 		<?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
+    'cssFile' => Yii::app()->baseUrl .'/css/detailview/styles.css',
 	'attributes'=>array(
 		'RBD',
 		'NombreCentroPractica',

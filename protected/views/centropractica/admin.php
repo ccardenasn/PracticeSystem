@@ -65,10 +65,12 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'centropractica-grid',
+    'cssFile' => Yii::app()->baseUrl .'/css/gridview/styles.css',
 	'summaryText'=>'Viendo {start}-{end} de {count} resultados',
 	'emptyText'=>'No hay resultados',
 	'pager'=>array(
 		'class'=>'CLinkPager',
+        'cssFile' => Yii::app()->baseUrl .'/css/pager.css',
 		'header'=>'Ir a página:',
 		'nextPageLabel'=>'Siguiente >',
 		'prevPageLabel'=>'< Anterior',

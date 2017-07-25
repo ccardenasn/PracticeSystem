@@ -81,20 +81,22 @@ class Estudianteresponsable extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'RutEstudiante' => 'Rut Estudiante',
-			'NombreEstudiante' => 'Nombre Estudiante',
-			'ClaveEstudiante' => 'Clave Estudiante',
-			'FechaIncorporacion' => 'Fecha Incorporacion',
-			'Mencion_CodMencion' => 'Mencion Cod Mencion',
-			'MailEstudiante' => 'Mail Estudiante',
-			'TelefonoEstudiante' => 'Telefono Estudiante',
-			'CelularEstudiante' => 'Celular Estudiante',
-			'ProfesorGuiaCP_RutProfGuiaCP' => 'Profesor Guia Cp Rut Prof Guia Cp',
-			'ConfiguracionPractica_CodPractica' => 'Configuracion Practica Cod Practica',
-			'CentroPractica_RBD' => 'Centro Practica Rbd',
-			'ImagenEstudiante' => 'Imagen Estudiante',
-			'SituacionFinalEstudiante' => 'Situacion Final Estudiante',
-			'ObservacionEstudiante' => 'Observacion Estudiante',
+			'RutEstudiante' => 'Rut',
+			'NombreEstudiante' => 'Nombre',
+			'ClaveEstudiante' => 'Contraseña',
+			'FechaIncorporacion' => 'Año Incorporación',
+			'Mencion_CodMencion' => 'Mención',
+			'MailEstudiante' => 'Correo',
+			'TelefonoEstudiante' => 'Teléfono',
+			'CelularEstudiante' => 'Celular',
+			'ProfesorGuiaCP_RutProfGuiaCP' => 'Rut Profesor Guía CP',
+            'profesorGuiaCPRutProfGuiaCP.NombreProfGuiaCP' => 'Nombre Profesor Guía CP',
+			'ConfiguracionPractica_CodPractica' => 'Nombre de Práctica',
+			'CentroPractica_RBD' => 'Centro de Práctica',
+            'centroPracticaRBD.NombreCentroPractica' => 'Centro de Práctica',
+			'ImagenEstudiante' => 'Imagen',
+			'SituacionFinalEstudiante' => 'Situación Final',
+			'ObservacionEstudiante' => 'Observación',
 			'Estado' => 'Estado',
 		);
 	}
@@ -144,6 +146,14 @@ class Estudianteresponsable extends CActiveRecord
 		$criteria->compare('Estado',$this->Estado,true);
         
         $criteria->mergeWith($c2); // Merge $c2 into $c1
+        
+        $sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
