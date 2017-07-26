@@ -80,6 +80,7 @@ $ask = new UserIdentity('','');
                           array('label'=>'Menciones','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes Resp','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudianteresponsable')),
+                          array('label'=>'Planificaciones Resp','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclaseresponsable')),
                           array('label'=>'Director de Carrera','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Coordinador de Practicas','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isDirector()),
                           array('label'=>'Docente Responsable de Practica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
