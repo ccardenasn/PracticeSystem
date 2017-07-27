@@ -147,6 +147,51 @@ class Planificacionclaseresponsable extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    
+    public function searchByRut($rut)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+        $loggedResponsable=Yii::app()->user->name;
+        
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        $c2 = new CDbCriteria;
+        $c2->alias = 'Planificacionclaseresponsable';
+        foreach ($practicaRespModel as $txt) { 
+            $c2->compare('Planificacionclaseresponsable.ConfiguracionPractica_CodPractica', $txt->ConfiguracionPractica_CodPractica, true, 'OR');
+        }
+        
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('CodPlanificacion',$this->CodPlanificacion);
+		$criteria->compare('Estudiante_RutEstudiante',$rut);
+		$criteria->compare('CentroPractica_RBD',$this->CentroPractica_RBD);
+		$criteria->compare('ProfesorGuiaCP_RutProfGuiaCP',$this->ProfesorGuiaCP_RutProfGuiaCP,true);
+		$criteria->compare('Curso',$this->Curso,true);
+		$criteria->compare('ConfiguracionPractica_CodPractica',$this->ConfiguracionPractica_CodPractica);
+		$criteria->compare('Fecha',$this->Fecha,true);
+		$criteria->compare('SesionInformada',$this->SesionInformada,true);
+		$criteria->compare('Ejecutado',$this->Ejecutado,true);
+		$criteria->compare('Supervisado',$this->Supervisado,true);
+		$criteria->compare('ComentarioPlanificacion',$this->ComentarioPlanificacion,true);
+		$criteria->compare('DocumentoPlanificacion',$this->DocumentoPlanificacion,true);
+        
+        $criteria->mergeWith($c2); // Merge $c2 into $c1
+        
+        $sort= new CSort();
+		
+		$_SESSION['datos_filtrados']=new CActiveDataProvider($this,array(
+		'criteria'=>$criteria,
+		'sort'=>$sort,
+		'pagination'=>false
+		));
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

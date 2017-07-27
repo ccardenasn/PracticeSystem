@@ -76,8 +76,6 @@ class BitacorasesionadminController extends Controller
 			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Aun no se ha creado una bitácora para esta planificación.</li><li>Para añadir una bitácora haga click en <strong>'Crear Bitácora'</strong>.</li></ul></div>");
 			$this->redirect(array('planificacionclaseadministrador/view','id'=>$id));
 		}
-		
-		
 	}
 
 	/**

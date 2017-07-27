@@ -28,7 +28,7 @@ class PlanificacionclaseresponsableController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','pdf','exportpdf','exportplanningpdf'),
 				'users'=>array('*'),
 			),
 			/*array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -44,7 +44,7 @@ class PlanificacionclaseresponsableController extends Controller
 				'users'=>array('@'),
 			),*/
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin'),
+				'actions'=>array('admin','adminPlanificacionEstudianteResponsable'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -168,6 +168,18 @@ class PlanificacionclaseresponsableController extends Controller
 			'model'=>$model,
 		));
 	}
+    
+    public function actionAdminPlanificacionEstudianteResponsable()
+	{
+		$model=new Planificacionclaseresponsable('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Planificacionclaseresponsable']))
+			$model->attributes=$_GET['Planificacionclaseresponsable'];
+
+		$this->render('adminPlanificacionEstudianteResponsable',array(
+			'model'=>$model,
+		));
+	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
@@ -195,5 +207,20 @@ class PlanificacionclaseresponsableController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+    
+    public function actionPdf($id)
+	{
+		$this->render('pdf',array('model'=>$this->loadModel($id),));	
+	}
+	
+	public function actionExportPdf()
+	{
+		$this->render('exportpdf');
+	}
+    
+    public function actionExportPlanningPdf()
+	{
+		$this->render('exportplanningpdf');
 	}
 }

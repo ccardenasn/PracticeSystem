@@ -33,12 +33,13 @@ foreach($estudianteRespModel as $estudiante){
     $rutDrop[$estudiante->RutEstudiante]=$estudiante->RutEstudiante;
 }
 
-print_r(count($estudianteDrop));
+//print_r(count($estudianteDrop));
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
     array('label'=>'Lista de Estudiantes', 'url'=>array('estudianteresponsable/index')),
 	array('label'=>'Administrar Estudiantes', 'url'=>array('estudianteresponsable/admin')),
+    array('label'=>'Exportar a PDF', 'url'=>array('exportpdf')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -113,6 +114,21 @@ $('.search-form form').submit(function(){
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array(
 			'class'=>'CButtonColumn',
+            'template'=>'{view}{update}{pdf}',
+            'buttons'=>array(
+                'pdf'=>array(
+                    'label'=>'Generar Pdf',
+                    'imageUrl'=>Yii::app()->request->baseUrl.'/images/AdminTemplates/pdficon.png',
+                    'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->CodPlanificacion))",
+                    'options'=>array('class'=>'pdf'),
+                ),
+                'view' => array(
+                    'label'=>'Detalles',
+                ),
+                'update' => array(
+                    'label'=>'Editar',
+                ),
+			),
 		),
 	),
 )); ?>

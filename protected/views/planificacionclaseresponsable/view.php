@@ -13,6 +13,8 @@ $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodPlanificacion)),
 	array('label'=>'Administración', 'url'=>array('admin')),
+    array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodPlanificacion)),
+    array('label'=>'Ver Bitácora', 'url'=>array('bitacorasesionresponsable/view', 'id'=>$model->CodPlanificacion)),
 );
 ?>
 

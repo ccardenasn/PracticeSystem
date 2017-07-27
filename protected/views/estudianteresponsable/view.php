@@ -12,6 +12,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Administración', 'url'=>array('admin')),
+    array('label'=>'Planificaciones de Estudiante','url'=>array('planificacionclaseresponsable/adminPlanificacionEstudianteResponsable','id'=>$model->RutEstudiante)),
+    array('label'=>'Planificaciones', 'url'=>array('planificacionclaseresponsable/admin')),
     array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->RutEstudiante)),
 );
 ?>
