@@ -2,20 +2,39 @@
 /* @var $this PlanificacionclaseresponsableController */
 /* @var $model Planificacionclaseresponsable */
 
+$this->pageTitle= Yii::app()->name." - "."Editar";
+
 $this->breadcrumbs=array(
-	'Planificacionclaseresponsables'=>array('index'),
-	$model->CodPlanificacion=>array('view','id'=>$model->CodPlanificacion),
-	'Update',
+	'Planificaciones'=>array('index'),
+    'Sesion Informada: '.$model->SesionInformada=>array('view','id'=>$model->CodPlanificacion), 
+	'Editar',
 );
 
 $this->menu=array(
-	array('label'=>'List Planificacionclaseresponsable', 'url'=>array('index')),
-	array('label'=>'Create Planificacionclaseresponsable', 'url'=>array('create')),
-	array('label'=>'View Planificacionclaseresponsable', 'url'=>array('view', 'id'=>$model->CodPlanificacion)),
-	array('label'=>'Manage Planificacionclaseresponsable', 'url'=>array('admin')),
+	array('label'=>'Lista', 'url'=>array('index')),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$model->CodPlanificacion)),
+	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Planificacionclaseresponsable <?php echo $model->CodPlanificacion; ?></h1>
+<h1>Modificar Planificación </h1>
+<h2>Estudiante: <?php echo $model->estudianteRutEstudiante->NombreEstudiante; ?></h2>
+<h2>Sesion Informada: <?php echo $model->SesionInformada; ?></h2>
+
+<div class="collapse">
+	<h3>Ayuda</h3>
+	<ul align=justify>
+		<ul>
+			<h4>Instrucciones de Opciones</h4>
+			<li>Las opciones están situadas en un panel, el cual se encuentra ubicado al lado derecho de la ventana.</li>
+			<li>Para regresar a la sección de planificaciones haga click en <strong>"Planificaciones"</strong>.</li>
+			<li>Haga click en <strong>"Añadir"</strong> para agregar una nueva  planificación y/o sesión de estudiante.</li>
+			<li>Haga click en <strong>"Detalles"</strong> para visualizar información de planificación.</li>
+			<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista de planificaciones existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
+		</ul>
+	</ul>
+</div>
+
+<?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

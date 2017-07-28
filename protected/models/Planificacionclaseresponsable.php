@@ -84,7 +84,7 @@ class Planificacionclaseresponsable extends CActiveRecord
 			'Curso' => 'Curso',
 			'ConfiguracionPractica_CodPractica' => 'Práctica',
 			'Fecha' => 'Fecha',
-			'SesionInformada' => 'Sesion Informada',
+			'SesionInformada' => 'Sesión Informada',
 			'Ejecutado' => 'Ejecutado',
 			'Supervisado' => 'Supervisado',
 			'ComentarioPlanificacion' => 'Comentario',

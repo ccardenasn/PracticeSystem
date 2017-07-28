@@ -171,14 +171,39 @@ class PlanificacionclaseresponsableController extends Controller
     
     public function actionAdminPlanificacionEstudianteResponsable()
 	{
-		$model=new Planificacionclaseresponsable('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Planificacionclaseresponsable']))
-			$model->attributes=$_GET['Planificacionclaseresponsable'];
-
-		$this->render('adminPlanificacionEstudianteResponsable',array(
-			'model'=>$model,
-		));
+        $id=Yii::app()->request->getQuery('id');
+        $existData = false;
+        $loggedResponsable=Yii::app()->user->name;
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        $practicasDrop = array();
+        
+        foreach($practicaRespModel as $practica){
+            $practicasDrop[$practica->configuracionpracticas->CodPractica]=$practica->configuracionpracticas->CodPractica;
+        }
+        
+        $estudianteRespModel = Estudianteresponsable::model()->findAllByAttributes(array('ConfiguracionPractica_CodPractica'=>$practicasDrop));
+        
+        foreach($estudianteRespModel as $estudiante){
+            if(strcmp($estudiante->RutEstudiante,$id) == 0){
+                $existData = true;
+            }
+        }
+        
+        if($existData == true){
+            $model=new Planificacionclaseresponsable('search');
+            $model->unsetAttributes();  // clear any default values
+            
+            if(isset($_GET['Planificacionclaseresponsable']))
+                $model->attributes=$_GET['Planificacionclaseresponsable'];
+            
+            $this->render('adminPlanificacionEstudianteResponsable',array(
+                'model'=>$model,
+            ));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('estudianteresponsable/index'));
+        }
 	}
 
 	/**
@@ -188,11 +213,45 @@ class PlanificacionclaseresponsableController extends Controller
 	 * @return Planificacionclaseresponsable the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel($id)
+	/*public function loadModel($id)
 	{
 		$model=Planificacionclaseresponsable::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}*/
+    
+    public function loadModel($id)
+	{
+        //$existData = false;
+        $model = null; 
+        $loggedResponsable=Yii::app()->user->name;
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        $practicasDrop = array();
+        
+        foreach($practicaRespModel as $practica){
+            $practicasDrop[$practica->configuracionpracticas->CodPractica]=$practica->configuracionpracticas->CodPractica;
+        }
+        
+        $estudianteRespModel = Estudianteresponsable::model()->findAllByAttributes(array('ConfiguracionPractica_CodPractica'=>$practicasDrop));
+        
+        $planningRespModel = Planificacionclaseresponsable::model()->findByAttributes(array('CodPlanificacion'=>$id));
+        
+        foreach($estudianteRespModel as $estudiante){
+            if(strcmp($estudiante->RutEstudiante,$planningRespModel->Estudiante_RutEstudiante) == 0){
+                //$existData = true;
+                $model=Planificacionclaseresponsable::model()->findByPk($id);
+            }
+        }
+        
+		//$model=Planificacionclaseresponsable::model()->findByPk($id);
+		if($model===null){
+            //throw new CHttpException(404,'The requested page does not exist.');
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
+			
 		return $model;
 	}
 

@@ -25,6 +25,13 @@ foreach($practicaRespModel as $practica){
 
 $estudianteRespModel = Estudianteresponsable::model()->findAllByAttributes(array('ConfiguracionPractica_CodPractica'=>$practicasEstudiante));
 
+/*foreach($estudianteRespModel as $estudiante){
+    echo $estudiante->RutEstudiante." ".$estudiante->NombreEstudiante;
+}*/
+
+
+//print_r($estudianteRespModel);
+
 $estudianteDrop = array();
 $rutDrop = array();
 

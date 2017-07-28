@@ -62,9 +62,16 @@ class BitacorasesionresponsableController extends Controller
     
     public function actionView($id)
 	{
-		$this->render('view',array(
+        $model=Bitacorasesionresponsable::model()->findByAttributes(array('PlanificacionClase_CodPlanificacion'=>$id));
+        
+        if($model != null){
+            $this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+        }else{
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Aun no se ha creado una bitácora para esta planificación.</li></ul></div>");
+			$this->redirect(array('planificacionclaseresponsable/view','id'=>$id));
+        }
 	}
 
 	/**
@@ -169,11 +176,45 @@ class BitacorasesionresponsableController extends Controller
 		return $model;
 	}*/
     
-    public function loadModel($id)
+    /*public function loadModel($id)
 	{
 		$model=Bitacorasesionresponsable::model()->findByAttributes(array('PlanificacionClase_CodPlanificacion'=>$id));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}*/
+    
+    public function loadModel($id)
+	{
+        $model = null; 
+        $loggedResponsable=Yii::app()->user->name;
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        $practicasDrop = array();
+        
+        foreach($practicaRespModel as $practica){
+            $practicasDrop[$practica->configuracionpracticas->CodPractica]=$practica->configuracionpracticas->CodPractica;
+        }
+        
+        $estudianteRespModel = Estudianteresponsable::model()->findAllByAttributes(array('ConfiguracionPractica_CodPractica'=>$practicasDrop));
+        
+        $planningRespModel = Planificacionclaseresponsable::model()->findByAttributes(array('CodPlanificacion'=>$id));
+        
+        foreach($estudianteRespModel as $estudiante){
+            if(strcmp($estudiante->RutEstudiante,$planningRespModel->Estudiante_RutEstudiante) == 0){
+                //$existData = true;
+                //$model=Planificacionclaseresponsable::model()->findByPk($id);
+                $model=Bitacorasesionresponsable::model()->findByAttributes(array('PlanificacionClase_CodPlanificacion'=>$id));
+            }
+        }
+        
+		
+		if($model===null){
+            //throw new CHttpException(404,'The requested page does not exist.');
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('planificacionclaseresponsable/index'));
+        }
+			
 		return $model;
 	}
 

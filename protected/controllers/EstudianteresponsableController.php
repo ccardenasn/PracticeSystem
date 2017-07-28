@@ -174,12 +174,44 @@ class EstudianteresponsableController extends Controller
 	 * @return Estudianteresponsable the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel($id)
+	/*public function loadModel($id)
 	{
 		$model=Estudianteresponsable::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
+	}*/
+    
+    public function loadModel($id)
+	{
+        $existData = false;
+        $model = null;
+        $loggedResponsable=Yii::app()->user->name;
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        $practicasDrop = array();
+        
+        foreach($practicaRespModel as $practica){
+            $practicasDrop[$practica->configuracionpracticas->CodPractica]=$practica->configuracionpracticas->CodPractica;
+        }
+        
+        $estudianteRespModel = Estudianteresponsable::model()->findAllByAttributes(array('ConfiguracionPractica_CodPractica'=>$practicasDrop));
+        
+        foreach($estudianteRespModel as $estudiante){
+            if(strcmp($estudiante->RutEstudiante,$id) == 0){
+                $existData = true;
+                $model=Estudianteresponsable::model()->findByPk($id);
+            }
+        }
+        
+        if($existData === false){
+            //throw new CHttpException(404,'The requested page does not exist.');
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('index'));
+        }
+            
+        
+        return $model;
 	}
 
 	/**

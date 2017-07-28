@@ -35,6 +35,7 @@ $this->menu=array(
 	'emptyText'=>'No hay resultados',
 	'pager'=>array(
 		'class'=>'CLinkPager',
+        'cssFile' => Yii::app()->baseUrl .'/css/pager.css',
 		'header'=>'Ir a página:',
 		'nextPageLabel'=>'Siguiente >',
 		'prevPageLabel'=>'< Anterior',
