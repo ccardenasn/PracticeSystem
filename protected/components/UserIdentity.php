@@ -115,9 +115,9 @@ class UserIdentity extends CUserIdentity
 		
 		$existCoordinador = containsCoordinador($user);
 		$existDirector = containsDirector($user);
-		$existResponsable = containsResponsable($user);
+		//$existResponsable = containsResponsable($user);
 		
-		if($existCoordinador != 0 || $existDirector != 0 || $existResponsable != 0){
+		if($existCoordinador != 0 || $existDirector != 0){
 			$result = true;
 		}
 		
@@ -132,6 +132,20 @@ class UserIdentity extends CUserIdentity
 		$existDirector = containsDirector($user);
 		
 		if($existDirector != 0){
+			$result = true;
+		}
+		
+		return $result;
+    }
+    
+    public function isResponsable(){
+        $result = false;
+		
+		$user = Yii::app()->user->name;
+		
+		$existResponsable = containsResponsable($user);
+		
+		if($existResponsable != 0){
 			$result = true;
 		}
 		

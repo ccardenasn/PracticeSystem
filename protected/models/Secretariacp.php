@@ -219,11 +219,11 @@ class Secretariacp extends CActiveRecord
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas where EstadoCoordinador = '1'";
 		$queryDirector = "select RutDirector from directorcarrera where EstadoDirector = '1'";
-		$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
+		//$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
 		
 		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);
 		$commandDirector= Yii::app()->db->createCommand($queryDirector);
-		$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
+		//$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
 		
 		$rows = array();
 		$dataReaderCoordinador=$commandCoordinador->query();
@@ -238,11 +238,11 @@ class Secretariacp extends CActiveRecord
 			array_push($rows, $row['RutDirector']);
 		}
 		
-		$dataReaderResponsable=$commandResponsable->query();
+		/*$dataReaderResponsable=$commandResponsable->query();
 		
 		while(($row=$dataReaderResponsable->read())!==false){
 			array_push($rows, $row['RutResponsable']);
-		}
+		}*/
         
         if($rows == null){
             $rows[0] = "@";

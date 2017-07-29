@@ -61,12 +61,13 @@ $ask = new UserIdentity('','');
                         array('label'=>'Gestión Pedagógica','linkOptions'=>array('style' => 'color: #666;'),
                         'items'=>array(
                           array('label'=>'Planificación de Clases','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclaseadministrador'),'visible'=>$ask->isAdmins()),
+                            array('label'=>'Planificación de Clases','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclaseresponsable'),'visible'=>$ask->isResponsable()),
                     ),
                 ),  
                           array('label'=>'Gestión de Información','linkOptions'=>array('style' => 'color: #666;'),
                         'items'=>array(
-                          array('label'=>'Horario','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/horarioadmin'),'visible'=>$ask->isAdmins()),
-						  array('label'=>'Estadísticas','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/graphdata'),'visible'=>$ask->isAdmins()),
+                          array('label'=>'Horario','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/horarioadmin'),'visible'=>$ask->isResponsable() || $ask->isAdmins()),
+						  array('label'=>'Estadísticas','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/graphdata'),'visible'=>$ask->isResponsable() || $ask->isAdmins()),
                     ),
                 ),
                           
@@ -79,8 +80,8 @@ $ask = new UserIdentity('','');
                           array('label'=>'Universidad','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Menciones','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
-                          array('label'=>'Estudiantes Resp','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudianteresponsable')),
-                          array('label'=>'Planificaciones Resp','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/planificacionclaseresponsable')),
+                          array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudianteresponsable'),'visible'=>$ask->isResponsable()),
+                          
                           array('label'=>'Director de Carrera','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/directorcarrera'),'visible'=>$ask->isAdmins()),
                           array('label'=>'Coordinador de Practicas','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docentecoordinadorpracticas'),'visible'=>$ask->isDirector()),
                           array('label'=>'Docente Responsable de Practica','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/docenteresponsablepractica'),'visible'=>$ask->isAdmins()),
@@ -88,7 +89,7 @@ $ask = new UserIdentity('','');
 						  array('label'=>'Nivel Educacional','linkOptions'=>array('style' => 'color: #666;'), 'url'=>array('/niveleducacional'),'visible'=>$ask->isAdmins()),
                     ),
                 ),
-                array('label'=>'Perfil','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>$ask->isStudent() || $ask->isAdmins()),
+                array('label'=>'Perfil','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #666;'), 'url'=>array(findProfileURL(Yii::app()->user->name)),'visible'=>$ask->isStudent() || $ask->isAdmins() || $ask->isResponsable()),
                 array('label'=>'Inicio','itemOptions'=>array('style' => 'background-color: #E8E8E8; float:right;'),'linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/site/index')),
                 
             ),

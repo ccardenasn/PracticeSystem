@@ -147,9 +147,18 @@ class EstudianteresponsableController extends Controller
         //$criteria->addCondition('Estudianteresponsable.ConfiguracionPractica_CodPractica',3,'or');
         
 		$dataProvider=new CActiveDataProvider('Estudianteresponsable',array('criteria'=>$criteria));
-		$this->render('index',array(
+		
+        if($practicaRespModel == null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Acceso restringido.</li><li>No se han encontrado prácticas asociadas.</li></ul></div>");
+            $this->redirect(array('perfildocenteresponsablepractica/view','id'=>$loggedResponsable));
+        }else{
+            $this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+        }
+        
+        
+        
 	}
 
 	/**
@@ -159,12 +168,22 @@ class EstudianteresponsableController extends Controller
 	{
 		$model=new Estudianteresponsable('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Estudianteresponsable']))
+		
+        if(isset($_GET['Estudianteresponsable']))
 			$model->attributes=$_GET['Estudianteresponsable'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+        
+        $loggedResponsable=Yii::app()->user->name;
+        
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        if($practicaRespModel == null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Acceso restringido.</li><li>No se han encontrado prácticas asociadas.</li></ul></div>");
+            $this->redirect(array('perfildocenteresponsablepractica/view','id'=>$loggedResponsable));
+        }else{
+            $this->render('admin',array(
+                'model'=>$model,
+            ));
+        }
 	}
 
 	/**

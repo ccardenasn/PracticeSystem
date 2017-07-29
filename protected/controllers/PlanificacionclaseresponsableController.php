@@ -149,9 +149,16 @@ class PlanificacionclaseresponsableController extends Controller
         $criteria->mergeWith($c2); // Merge $c2 into $c1
         
 		$dataProvider=new CActiveDataProvider('Planificacionclaseresponsable',array('criteria'=>$criteria));
-		$this->render('index',array(
+		
+        
+        if($practicaRespModel == null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Acceso restringido.</li><li>No se han encontrado prácticas asociadas.</li></ul></div>");
+            $this->redirect(array('perfildocenteresponsablepractica/view','id'=>$loggedResponsable));
+        }else{
+            $this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+        }
 	}
 
 	/**
@@ -164,9 +171,18 @@ class PlanificacionclaseresponsableController extends Controller
 		if(isset($_GET['Planificacionclaseresponsable']))
 			$model->attributes=$_GET['Planificacionclaseresponsable'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+        $loggedResponsable=Yii::app()->user->name;
+        
+        $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
+        
+        if($practicaRespModel == null){
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Acceso restringido.</li><li>No se han encontrado prácticas asociadas.</li></ul></div>");
+            $this->redirect(array('perfildocenteresponsablepractica/view','id'=>$loggedResponsable));
+        }else{
+            $this->render('admin',array(
+                'model'=>$model,
+            ));
+        }
 	}
     
     public function actionAdminPlanificacionEstudianteResponsable()

@@ -11,6 +11,8 @@ $loggedResponsable=Yii::app()->user->name;
         
 $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->findAll('DocenteResponsablePractica_RutResponsable=?',array($loggedResponsable));
 
+print_r($practicaRespModel);
+
 $practicasDrop = array();
 
 foreach($practicaRespModel as $practica){
