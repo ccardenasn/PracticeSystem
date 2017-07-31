@@ -16,23 +16,23 @@
 	font-size: 13px;     
 	font-weight: normal;     
 	padding: 8px;     
-	background: #b9c9fe;
-    border-top: 4px solid #aabcfe;    
+	background: #c0db79;
+    border-top: 4px solid #a7cd43;    
 	border-bottom: 1px solid #fff; 
-	color: #039; 
+	color: #304230; 
 }
 
 #table_div td {    
 	padding: 8px;     
-	background: #e8edff;     
+	background: #E1EEC1;     
 	border-bottom: 1px solid #fff;
-    color: #669;    
+    color: #759227;    
 	border-top: 1px solid transparent; 
 }
 
 #table_div tr:hover td { 
-	background: #d0dafd; 
-	color: #339; 
+	background: #c0db79; 
+	color: #304230; 
 }
 
 #block_div table {     

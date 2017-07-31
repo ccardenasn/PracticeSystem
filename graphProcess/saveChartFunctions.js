@@ -2,7 +2,7 @@ function saveChartHTML(){
     html2canvas($('#graphcontainer'), {
         onrendered: function(canvas) {
             
-            var img = canvas.toDataURL();
+            var img = canvas.toDataURL("image/png");
 			var centerRBD = $("#dynamic_data").val();
 			var centerDesc = $("#descGraph").text();
 			var columnA = $("#column1").text();

@@ -255,4 +255,17 @@ class EstudianteresponsableController extends Controller
 	{
 		$this->render('exportpdf');
 	}
+    
+    public function actionError()
+    {
+        $error = Yii::app()->errorHandler->error;
+        
+        if ($error){
+           // $this->render('error', array('error'=>$error));
+            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Operación no permitida.</li></ul></div>");
+			$this->redirect(array('index'));
+        }else{
+            throw new CHttpException(404, 'Page not found.');
+        }
+    }
 }

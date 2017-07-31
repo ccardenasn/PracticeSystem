@@ -2,7 +2,10 @@
 $base = Yii::app()->baseUrl; 
 $js = Yii::app()->getClientScript();
 $js->registerScriptFile($base.'/graphProcess/Highcharts/code/highcharts.js');
+//$js->registerScriptFile($base.'/graphProcess/promise-7.0.4.min.js');
+//$js->registerScriptFile($base.'/graphProcess/promise-done-7.0.4.min.js');
 $js->registerScriptFile($base.'/graphProcess/html2canvas.js');
+//$js->registerScriptFile($base.'/graphProcess/html2canvas.svg.js');
 $js->registerScriptFile($base.'/graphProcess/saveChartFunctions.js');
 $js->registerScriptFile($base.'/graphProcess/grafico_a/loadGraph_a.js');
 ?>

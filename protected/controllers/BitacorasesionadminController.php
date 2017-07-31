@@ -29,8 +29,13 @@ class BitacorasesionadminController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
+			/*array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','viewPlanificacionBitacora','pdf','exportpdf'),
+				//'users'=>array('*'),
+				'users'=>Bitacorasesionadmin::model()->getAdmins(),
+			),*/
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('view','viewPlanificacionBitacora','pdf','exportpdf'),
 				//'users'=>array('*'),
 				'users'=>Bitacorasesionadmin::model()->getAdmins(),
 			),
@@ -39,8 +44,13 @@ class BitacorasesionadminController extends Controller
 				//'users'=>array('@'),
 				'users'=>Bitacorasesionadmin::model()->getAdmins(),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
+				//'users'=>array('@'),
+				'users'=>Bitacorasesionadmin::model()->getAdmins(),
+			),*/
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('delete'),
 				//'users'=>array('@'),
 				'users'=>Bitacorasesionadmin::model()->getAdmins(),
 			),

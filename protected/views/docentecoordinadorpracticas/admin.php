@@ -45,18 +45,15 @@ $('.search-form form').submit(function(){
 		
 		<ul>
 			<h4>Opciones de Búsqueda</h4>
-			<li>Para efectuar búsquedas de datos escriba en los campos de texto situados debajo de los títulos de cada columna correspondiente para filtrar información.</li>
-			<li>Haga click en <b>"Búsqueda Avanzada"</b> para mostrar u ocultar opciones para encontrar un docente específico.</li>
-			<li>Escriba sobre los campos de texto de acuerdo a los criterios de búsqueda del usuario.</li>
-			<li>Presione el botón <b>"Buscar"</b> para iniciar la búsqueda.</li>
+			<li>Para efectuar búsquedas de datos escriba en los campos de texto situados debajo de los títulos de cada columna correspondiente para filtrar información, luego presione <strong>"Enter"</strong>.</li>
 			<li>Los resultados se mostrarán en la tabla inferior.</li>
 		</ul>
 	</ul>
-</div><br>
+</div>
 
 <?php $this->widget('ext.ECollapse.ECollapse'); ?>
 
-<?php echo CHtml::link('Búsqueda Avanzada','#',array('class'=>'search-button')); ?>
+<?php //echo CHtml::link('Búsqueda Avanzada','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -88,6 +85,7 @@ $('.search-form form').submit(function(){
 		*/
 		array(
 			'class'=>'CButtonColumn',
+            'htmlOptions' => array('style'=>'width:65px'),
             'deleteConfirmation'=>'¿Esta seguro de querer borrar este elemento?',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
