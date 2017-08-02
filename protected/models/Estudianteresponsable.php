@@ -170,4 +170,25 @@ class Estudianteresponsable extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function getResponsable(){
+		
+		$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
+		
+		$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
+		
+		$rows = array();
+		
+		$dataReaderResponsable=$commandResponsable->query();
+		
+		while(($row=$dataReaderResponsable->read())!==false){
+			array_push($rows, $row['RutResponsable']);
+		}
+        
+        if($rows == null){
+            $rows[0] = "denied";
+        }
+		
+		return $rows;
+	}
 }

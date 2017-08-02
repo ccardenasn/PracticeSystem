@@ -160,7 +160,7 @@ class Bitacorasesion extends CActiveRecord
 		}
         
         if($rows == null){
-            $rows[0] = "@";
+            $rows[0] = "denied";
         }
 		
 		return $rows;

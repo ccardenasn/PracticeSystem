@@ -44,7 +44,7 @@ class HorarioController extends Controller
 				'users'=>Horario::model()->getStudents(),
 			),
 			array('deny',  // deny all users
-				'users'=>array('*'),
+				'users'=>array('*','denied'),
 			),
 		);
 	}

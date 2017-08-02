@@ -33,7 +33,8 @@ class BitacorasesionresponsableController extends Controller
 			),*/
             array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('view','pdf'),
-				'users'=>array('*'),
+				//'users'=>array('*'),
+				'users'=>Bitacorasesionresponsable::model()->getResponsable(),
 			),
 			/*array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -44,7 +45,7 @@ class BitacorasesionresponsableController extends Controller
 				'users'=>array('admin'),
 			),*/
 			array('deny',  // deny all users
-				'users'=>array('*'),
+				'users'=>array('*','denied'),
 			),
 		);
 	}
