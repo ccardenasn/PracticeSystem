@@ -212,7 +212,7 @@ class Docentecoordinadorpracticas extends CActiveRecord
 		}
         
         if($rows == null){
-            $rows[0] = "restringido";
+            $rows[0] = "denied";
         }
 		
 		return $rows;

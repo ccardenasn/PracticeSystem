@@ -48,7 +48,7 @@ class BloqueController extends Controller
 				'users'=>Bloque::model()->getAdmins(),
 			),*/
 			array('deny',  // deny all users
-				'users'=>array('*','denied'),
+				'users'=>array('*'),
 			),
 		);
 	}

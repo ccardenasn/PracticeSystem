@@ -30,7 +30,7 @@ class PlanificacionclaseadministradorController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','pdf','exportpdf','exportplanningpdf','selectProfesorCreate','selectProfesorUpdate'),
+				  'actions'=>array('index','view','pdf','exportpdf','exportplanningpdf','selectProfesorCreate','selectProfesorUpdate'),
 				//'users'=>array('*'),
 				'users'=>Planificacionclaseadministrador::model()->getAdmins(),
 			),

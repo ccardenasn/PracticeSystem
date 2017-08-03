@@ -45,7 +45,7 @@ class BitacorasesionresponsableController extends Controller
 				'users'=>array('admin'),
 			),*/
 			array('deny',  // deny all users
-				'users'=>array('*','denied'),
+				'users'=>array('*'),
 			),
 		);
 	}

@@ -189,6 +189,10 @@ class Perfilestudiante extends CActiveRecord
 			array_push($rows, $row['RutEstudiante']);
 		}
 		
+		if($rows == null){
+            $rows[0] = "denied";
+        }
+		
 		return $rows;
 	}
 }
