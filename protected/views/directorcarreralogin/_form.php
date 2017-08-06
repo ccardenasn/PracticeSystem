@@ -26,10 +26,10 @@
     </div>
     <?php endif; ?>
     
-	<div class="row">
+	<div class="row" align="center">
 		<?php //echo $form->labelEx($model,'ClaveDirector'); ?>
-		<?php echo $form->hiddenField($model,'ClaveDirector',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'ClaveDirector'); ?>
+		<?php echo $form->hiddenField($model,'RutDirector',array('size'=>45,'maxlength'=>45,'readOnly' => true)); ?>
+		<?php echo $form->error($model,'RutDirector'); ?>
 	</div>
     
     <div class="row" align="center">

@@ -3,6 +3,8 @@ function saveChartHTML(){
         onrendered: function(canvas) {
             
             var img = canvas.toDataURL("image/png");
+			
+			//var img = Canvas2Image.convertToImage(canvas,'639','400','png');
 			var centerRBD = $("#dynamic_data").val();
 			var centerDesc = $("#descGraph").text();
 			var columnA = $("#column1").text();
