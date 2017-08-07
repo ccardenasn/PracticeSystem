@@ -28,7 +28,7 @@
                                    array(
                                        'ajax'=>array(
                                            'type'=>'POST',
-                                           'url'=>CController::createUrl('Universidad/selectProvincia'),
+                                           'url'=>CController::createUrl('Universidadmain/selectProvincia'),
                                            'update'=>'#'.CHtml::activeId($universidadModel,'Provincia_codProvincia'),
                                            'beforeSend'=>'function(){$("#Universidad_Provincia_codProvincia").find("option").remove();$("#Universidad_Ciudad_codCiudad").find("option").remove();}',),
                                        'prompt'=>'Seleccione'));?>
@@ -49,7 +49,7 @@
                              array(
                                  'ajax'=>array(
                                      'type'=>'POST',
-                                     'url'=>CController::createUrl('Universidad/selectCiudad'),
+                                     'url'=>CController::createUrl('Universidadmain/selectCiudad'),
                                      'update'=>'#'.CHtml::activeId($universidadModel,'Ciudad_codCiudad'),
                                      'beforeSend'=>'function(){
                                      $("#Universidad_Ciudad_codCiudad").find("option").remove();}',
