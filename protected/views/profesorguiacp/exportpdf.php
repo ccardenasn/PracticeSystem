@@ -80,7 +80,7 @@ while($i<$val){
             <td>".$dataProvider[$i]["MailProfGuiaCP"]."</td>
             <td>".$dataProvider[$i]["TelefonoProfGuiaCP"]."</td>
             <td>".$dataProvider[$i]["CelularProfGuiaCP"]."</td>
-            <td>".$dataProvider[$i]["CentroPractica_RBD"]."</td>
+            <td>".$dataProvider[$i]["centroPracticaRBD"]["NombreCentroPractica"]."</td>
   		</tr>";
 	
 	$i++;

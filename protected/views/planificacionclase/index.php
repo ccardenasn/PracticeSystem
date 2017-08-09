@@ -14,7 +14,6 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Añadir', 'url'=>array('create')),
 	array('label'=>'Administración', 'url'=>array('admin')),
-    array('label'=>'Bitácoras', 'url'=>array('bitacorasesion/index')),
 );
 ?>
 

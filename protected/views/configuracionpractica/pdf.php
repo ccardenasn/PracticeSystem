@@ -88,15 +88,31 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
     <td><strong>Nombre Docente Coordinador de Prácticas</strong></td>
     <td>".$model->docenteCoordinadorPracticasRutCoordinador->NombreCoordinador."</td>
   </tr>
-  <tr>
-    <td><strong>Rut Docente Responsable de Práctica</strong></td>
-    <td>".$model->DocenteResponsablePractica_RutResponsable."</td>
-  </tr>
-  <tr>
-    <td><strong>Nombre Docente Responsable de Práctica</strong></td>
-    <td>".$model->docenteResponsablePracticaRutResponsable->NombreResponsable."</td>
-  </tr>
   </table><br>";
+
+$html.="<h2 align='left'>Docentes Responsables de Prácticas</h2><br>";
+
+$html.="<table style='width:100%' border=1 class='table-responsive'>
+  <tr>
+    <th align='left'>Rut</th>
+    <th align='left'>Nombre</th>
+    <th align='left'>Correo</th>
+    <th align='left'>Teléfono</th>
+    <th align='left'>Celular</th>
+  </tr>";
+
+foreach($model->docenteresponsablepracticas as $item):
+
+$html.="<tr>
+			<td>".$item->RutResponsable."</td>
+			<td>".$item->NombreResponsable."</td>
+            <td>".$item->MailResponsable."</td>
+            <td>".$item->TelefonoResponsable."</td>
+            <td>".$item->CelularResponsable."</td>
+  		</tr>";
+endforeach;
+
+$html.="</table>";
 
 $html = Encoding::toUTF8($html);
 $mpdf=new mPDF("");

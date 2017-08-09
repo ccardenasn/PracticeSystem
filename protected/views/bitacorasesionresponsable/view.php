@@ -5,7 +5,8 @@
 $this->pageTitle= Yii::app()->name." - "."Detalles";
 
 $this->breadcrumbs=array(
-	'Bitácoras'=>array('index'),
+	//'Bitácoras'=>array('index'),
+	'Sesión Informada: '.$model->planificacionClaseCodPlanificacion->SesionInformada => array('planificacionclaseresponsable/view','id'=>$model->PlanificacionClase_CodPlanificacion),
 	'Bitácora: Sesion Informada '.$model->planificacionClaseCodPlanificacion->SesionInformada,
 );
 

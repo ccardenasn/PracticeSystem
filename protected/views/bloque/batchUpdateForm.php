@@ -18,7 +18,7 @@
 		<?php foreach($items as $i=>$item): ?>
 		<tr>
 			<td><?php echo CHtml::activeHiddenField($item,"[$i]CodBloque",array('size'=>15)); ?></td>
-			<td><?php echo CHtml::activeTextField($item,"[$i]NombreBloque",array('size'=>15)); ?></td>
+			<td><?php echo CHtml::activeTextField($item,"[$i]NombreBloque",array('size'=>15,'readOnly'=>true,'disabled'=>'disabled')); ?></td>
 			<td><?php $this->widget('ext.timepicker.timepicker',
 									array(
 										'model' => $item,

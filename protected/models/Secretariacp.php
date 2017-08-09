@@ -60,7 +60,7 @@ class Secretariacp extends CActiveRecord
             array('RutSecretariaCP','valrut'),
             array('RutSecretariaCP','valuniquerut','on'=>'insert'),
             array('NombreSecretariaCP','valnombre'),
-            array('MailSecretariaCP','valcorreo'),
+            array('MailSecretariaCP','valcorreo','allowEmpty'=>true,'on'=>'insert','safe'),
             array('TelefonoSecretariaCP','valtelefono'),
             array('CelularSecretariaCP','valcelular'),
             array('CentroPractica_RBD','valcentro','on'=>'insert'),

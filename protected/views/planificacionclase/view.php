@@ -15,7 +15,6 @@ $this->menu=array(
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodPlanificacion)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodPlanificacion),'confirm'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.')),
 	array('label'=>'Administración de Planificaciones', 'url'=>array('admin','id'=>$model->Estudiante_RutEstudiante)),
-	array('label'=>'Administración de Bitacoras', 'url'=>array('bitacorasesion/admin','id'=>$model->Estudiante_RutEstudiante)),
 	array('label'=>'Crear Bitácora', 'url'=>array('bitacorasesion/create', 'id'=>$model->CodPlanificacion)),
 	array('label'=>'Ver Bitácora', 'url'=>array('bitacorasesion/viewPlanificacionBitacora', 'id'=>$model->CodPlanificacion)),
 );
@@ -43,7 +42,6 @@ $this->menu=array(
 			<li>Haga click en <b>"Eliminar"</b> para borrar toda la información de planificación.</li>
 			<li>Desde la sección <b>"Administración de Planificaciones"</b> se puede observar una lista de planificaciones de estudiante existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración de Planifciaciones"</b> en el panel <b>"Opciones"</b> para acceder.</li>
 			<li>Haga click en <b>"Crear Bitácora"</b> para generar una bitácora asociada a la planificación.</li>
-			<li>Desde la sección <b>"Administración de Bitácoras"</b> se puede observar una lista de bitácoras de estudiante existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <b>"Administración de Bitácoras"</b> en el panel <b>"Opciones"</b> para acceder.</li>
 			<li>Haga click en <b>"Ver Bitácora"</b> para visualizar informacion de bitácora asociada a la planificación.</li>
 		</ul>
 	</ul>

@@ -64,7 +64,6 @@ $html.="<table style='width:100%' border=1 class='table-responsive'>
     <th align='left'>Número de Sesiones</th>
 	<th align='left'>Número de Horas</th>
 	<th align='left'>Docente Coordinador de Prácticas</th>
-    <th align='left'>Docente Responsable de Prácticas</th>
   </tr>";
 
 $i=0;
@@ -78,7 +77,6 @@ while($i<$val){
             <td>".$dataProvider[$i]["NumeroSesionesPractica"]."</td>
             <td>".$dataProvider[$i]["NumeroHorasPractica"]."</td>
             <td>".$dataProvider[$i]["DocenteCoordinadorPracticas_RutCoordinador"]."</td>
-            <td>".$dataProvider[$i]["DocenteResponsablePractica_RutResponsable"]."</td>
   		</tr>";
 	
 	$i++;

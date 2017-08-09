@@ -26,7 +26,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('CentroPractica_RBD')); ?>:</b>
-	<?php echo CHtml::encode($data->CentroPractica_RBD); ?>
+	<?php echo CHtml::encode($data->centroPracticaRBD->NombreCentroPractica); ?>
 	<br />
 	
 </div>

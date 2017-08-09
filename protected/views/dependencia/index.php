@@ -20,7 +20,7 @@ $this->menu=array(
 	<h4>Instrucciones</h4>
 	<li>Para agregar una nueva dependencia haga click en la opción <strong>"Añadir"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
 	<li>Desde la sección <strong>"Administración"</strong> se puede observar una lista con dependencias existentes, además puede realizar acciones tales como ver, modificar y eliminar datos. Haga click en <strong>"Administración"</strong> en el panel <strong>"Opciones"</strong> para acceder.</li>
-	<li>A continuación se puede observar una lista con dependencias existentes además de algunos detalles, haga click en el Nombre de Dependencia de color azul para más información</li>
+	<li>A continuación se puede observar una lista con dependencias existentes además de algunos detalles, haga click en el Nombre de Dependencia de color verde para más información</li>
 </ul>
 
 <?php $this->widget('zii.widgets.CListView', array(

@@ -66,7 +66,7 @@ class Directorcp extends CActiveRecord
             array('CelularDirectorCP','valcelular'),
             array('CentroPractica_RBD','valcentro','on'=>'insert'),
             //array('CentroPractica_RBD','valcentroupdate','on'=>'update'),
-            array('CentroPractica_RBD','unique','className'=>'Directorcp','attributeName'=>'CentroPractica_RBD','message'=>'este centro ya tiene una secretaria asignada','on'=>'update'),
+            array('CentroPractica_RBD','unique','className'=>'Directorcp','attributeName'=>'CentroPractica_RBD','message'=>'este centro ya contiene un director asignado','on'=>'update'),
 		);
 	}
 

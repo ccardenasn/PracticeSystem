@@ -90,7 +90,7 @@ $('.search-form form').submit(function(){
                 'pdf'=>array(
                     'label'=>'Generar Pdf',
                     'imageUrl'=>Yii::app()->request->baseUrl.'/images/AdminTemplates/pdficon.png',
-                    'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->NombrePractica))",
+                    'url'=>"CHtml::normalizeUrl(array('pdf', 'id'=>\$data->CodPractica))",
                     'options'=>array('class'=>'pdf'),
                 ),
                 'view' => array(
