@@ -154,7 +154,7 @@ class DocenteresponsablepracticaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-        $practicaData=Configuracionpractica::model()->find('DocenteResponsablePractica_RutResponsable=?',array($id));
+        $practicaData=DocenteresponsablepracticaHasConfiguracionpractica::model()->find('DocenteResponsablePractica_RutResponsable=?',array($id));
 		
 		if($practicaData == null){
             $this->loadModel($id)->delete();

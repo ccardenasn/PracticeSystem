@@ -60,7 +60,7 @@ class Secretariacp extends CActiveRecord
             array('RutSecretariaCP','valrut'),
             array('RutSecretariaCP','valuniquerut','on'=>'insert'),
             array('NombreSecretariaCP','valnombre'),
-            array('MailSecretariaCP','valcorreo','allowEmpty'=>true,'on'=>'insert','safe'),
+            array('MailSecretariaCP','valcorreo'),
             array('TelefonoSecretariaCP','valtelefono'),
             array('CelularSecretariaCP','valcelular'),
             array('CentroPractica_RBD','valcentro','on'=>'insert'),
@@ -184,6 +184,12 @@ class Secretariacp extends CActiveRecord
 		if(correovalido($this->MailSecretariaCP)==false)
 		$this->addError('MailSecretariaCP','Correo no válido');
 	}
+	
+	/*public function valcorreo($attribute,$params)
+	{
+		if(correocorrecto($this->MailSecretariaCP)==false)
+		$this->addError('MailSecretariaCP','Correo no válido');
+	}*/
     
     public function valtelefono($attribute,$params)
 	{

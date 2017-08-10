@@ -12,8 +12,10 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),//para que no arroje error al cambiar el nombre
+	'clientOptions'=>array('validateOnSubmit'=>true,),
 	'enableClientValidation'=>true,
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>

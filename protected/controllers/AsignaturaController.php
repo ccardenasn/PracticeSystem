@@ -69,7 +69,7 @@ class AsignaturaController extends Controller
 		$model=new Asignatura;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Asignatura']))
 		{
@@ -93,7 +93,7 @@ class AsignaturaController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Asignatura']))
 		{

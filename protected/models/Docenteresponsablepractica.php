@@ -38,7 +38,7 @@ class Docenteresponsablepractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutResponsable, NombreResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'), array('RutResponsable','unique','className'=>'Docenteresponsablepractica','attributeName'=>'RutResponsable','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+			array('RutResponsable, NombreResponsable, MailResponsable', 'required','message'=>'Por favor ingrese un valor para {attribute}.'), array('RutResponsable','unique','className'=>'Docenteresponsablepractica','attributeName'=>'RutResponsable','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutResponsable','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutResponsable','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutResponsable','unique','className'=>'Secretariacarrera','attributeName'=>'RutSecretaria','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -196,7 +196,7 @@ class Docenteresponsablepractica extends CActiveRecord
 	
     public function valuniquerut($attribute,$params)
 	{
-		if(uniquerut($this->RutResponsable)==true)
+		if(uniquerutresp($this->RutResponsable)==true)
 		$this->addError('RutResponsable','Este número de RUT ya existe.');
 	}
     

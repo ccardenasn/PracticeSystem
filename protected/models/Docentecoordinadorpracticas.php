@@ -38,7 +38,7 @@ class Docentecoordinadorpracticas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RutCoordinador, NombreCoordinador', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RutCoordinador, NombreCoordinador, MailCoordinador', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('RutCoordinador','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutCoordinador','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutCoordinador','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),

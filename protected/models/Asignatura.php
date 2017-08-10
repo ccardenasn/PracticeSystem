@@ -30,6 +30,7 @@ class Asignatura extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NombreAsignatura, Semestre_CodSemestre', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('NombreAsignatura','unique','className'=>'Asignatura','attributeName'=>'NombreAsignatura','message'=>'El {attribute} {value} ya existe.'),
 			array('Semestre_CodSemestre', 'numerical', 'integerOnly'=>true),
 			array('NombreAsignatura', 'length', 'max'=>255),
 			// The following rule is used by search().

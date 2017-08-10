@@ -22,8 +22,22 @@ function correovalido($email){
          	 } 
       	 } 
    	} 
-   	if ($mail_correcto) 
+   	if ($mail_correcto || $email == "") 
       	 return 1; 
    	else 
       	 return 0; 
-} 
+}
+
+function correocorrecto($email){
+	$isMail = false;
+	
+	$filter = filter_var($email, FILTER_VALIDATE_EMAIL);
+	
+	if($filter == true || $email == ""){
+		$isMail = true;
+	}else{
+		$isMail = false;
+	}
+	
+	return $isMail;
+}

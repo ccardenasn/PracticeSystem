@@ -27,7 +27,13 @@
 										'options' => array(
 											'showOn'=>'focus',
 											'timeOnly' => true,
-											'timeFormat'=>'hh:mm',
+											'timeFormat' =>'hh:mm',
+											'hourText' => 'Horas',
+											'minuteText' => 'Minutos',
+											'timeOnlyTitle' => 'Seleccionar Horario',
+											'timeText' => 'Tiempo',
+											'currentText' => 'Hora Actual',
+											'closeText' => 'Aceptar',
 										),
 									));?>
 			</td>
