@@ -152,18 +152,26 @@ class HorarioadminController extends Controller
 	
 	public function actionCreateHorario($id)
 	{	
-		$table = "horarioadmin";
-		$codTable = "Estudiante_RutEstudiante";
+		$tablemain = "asignatura";
 		
-		$exist = contains($table,$codTable,$id);
+		$empty = isEmpty($tablemain);
 		
-		if($exist == 0){
-			$this->render('createHorario');
+		if($empty == false){
+			$table = "horarioadmin";
+			$codTable = "Estudiante_RutEstudiante";
+			
+			$exist = contains($table,$codTable,$id);
+			
+			if($exist == 0){
+				$this->render('createHorario');
+			}else{
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>El horario ha sido creado previamente.</li><li>Para modificar el horario haga click en la opción <strong>'Editar Horario'</strong> de la sección <strong>'Administración de Horarios'</strong>.</li><li>Haga click <strong>".CHtml::link('aquí',array('horarioadmin/index'))."</strong> para acceder a la sección de horarios</li></ul></div>");
+				$this->redirect(array('estudiante/view','id'=>$id));
+			}
 		}else{
-			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>El horario ha sido creado previamente.</li><li>Para modificar el horario haga click en la opción <strong>'Editar Horario'</strong> de la sección <strong>'Administración de Horarios'</strong>.</li><li>Haga click <strong>".CHtml::link('aquí',array('horarioadmin/index'))."</strong> para acceder a la sección de horarios</li></ul></div>");
-			$this->redirect(array('estudiante/view','id'=>$id));
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir horarios en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Asignaturas</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
 		}
-		
 	}
 
 	/**

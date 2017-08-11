@@ -316,4 +316,25 @@ class PlanificacionclaseadministradorController extends Controller
 			echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion),true);
 		}
 	}
+	
+	protected function gridBitacora($data,$row)
+    { 
+		$logbookData=Bitacorasesion::model()->findByAttributes(array('PlanificacionClase_CodPlanificacion'=>$data->CodPlanificacion));
+		
+        if($logbookData != null)
+        {
+            return 'Si';
+        }
+        else
+             return 'No';
+    }
+	
+	public static function getStatusImage($status) 
+	{
+		if ($strtolower($status) == 'Si') {
+			return Yii::app()->request->baseUrl . '/images/AdminTemplates/okicon.png';
+		} else {
+			return Yii::app()->request->baseUrl . '/images/AdminTemplates/notokicon.png';
+		}
+	}
 }

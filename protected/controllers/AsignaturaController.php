@@ -1,5 +1,6 @@
 <?php
 include_once('asignaturaFunctions.php');
+include_once('mainFunctions.php');
 
 class AsignaturaController extends Controller
 {
@@ -71,16 +72,25 @@ class AsignaturaController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Asignatura']))
-		{
-			$model->attributes=$_POST['Asignatura'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->NombreAsignatura));
+		$table = "semestre";
+		
+		$empty = isEmpty($table);
+		
+		if($empty == false){
+			if(isset($_POST['Asignatura'])){
+				$model->attributes=$_POST['Asignatura'];
+				
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->NombreAsignatura));
+			}
+			
+			$this->render('create',array(
+				'model'=>$model,
+			));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir asignaturas en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Semestres</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

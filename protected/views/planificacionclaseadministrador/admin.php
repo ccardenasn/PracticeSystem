@@ -9,6 +9,8 @@ $this->breadcrumbs=array(
 	'Administración',
 );
 
+$agg = "gridBitacora";
+
 $this->menu=array(
 	array('label'=>'Planificaciones', 'url'=>array('index')),
 	array('label'=>'Lista de Estudiantes', 'url'=>array('estudiante/index')),
@@ -83,6 +85,18 @@ $('.search-form form').submit(function(){
 		'Curso',
 		array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
+		array(
+			'header'=>'Bitácora',
+            'name'=>'CodPlanificacion',
+			'type'=>'raw',
+            'value'=>array($this,'gridBitacora'),
+			//'value'=>'CHtml::tag("div",  array("style"=>"float: left; margin:5px; cursor:pointer" ,"onclick"=>"gridBitacora({$data["CodPlanificacion"]})","id" => "{$data["CodPlanificacion"]}","href"=>"javascript:void(0);") ,
+ //CHtml::tag("img", array( "src" => "'.Yii::app()->request->baseUrl . '/images/AdminTemplates/{gridBitacora({$data["CodPlanificacion"]})}"")))',
+			//'value'=>'CHtml::image("images/AdminTemplates/okicon.png")',
+			'filter'=>false,
+        ),
+		
+		
 		array(
 			'class'=>'CButtonColumn',
             'htmlOptions' => array('style'=>'width:65px'),

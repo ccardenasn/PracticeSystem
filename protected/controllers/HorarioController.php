@@ -131,16 +131,25 @@ class HorarioController extends Controller
 	
 	public function actionCreateHorario()
 	{
-		$table = "horarioadmin";
-		$codTable = "Estudiante_RutEstudiante";
-		$cod = Yii::app()->user->name;
+		$tablemain = "asignatura";
 		
-		$exist = contains($table,$codTable,$cod);
+		$empty = isEmpty($tablemain);
 		
-		if($exist == 0){
-			$this->render('createHorario');
+		if($empty == false){
+			$table = "horarioadmin";
+			$codTable = "Estudiante_RutEstudiante";
+			$cod = Yii::app()->user->name;
+			
+			$exist = contains($table,$codTable,$cod);
+			
+			if($exist == 0){
+				$this->render('createHorario');
+			}else{
+				Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>El horario ha sido creado previamente.</li><li>Para modificar el horario haga click en la opción <strong>'Editar Horario'</strong>.</li></ul></div>");
+				$this->redirect(array('index'));
+			}
 		}else{
-			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>El horario ha sido creado previamente.</li><li>Para modificar el horario haga click en la opción <strong>'Editar Horario'</strong>.</li></ul></div>");
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir horarios en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Asignaturas</strong>.</li></ul></div>");
 			$this->redirect(array('index'));
 		}
 	}

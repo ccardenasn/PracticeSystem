@@ -81,7 +81,7 @@ class DocentecoordinadorpracticasController extends Controller
 				$model->attributes=$_POST['Docentecoordinadorpracticas'];
                 
                 $randomPassword = rand(1000,9999);
-                $model->ClaveResponsable = $randomPassword;
+                $model->ClaveCoordinador = $randomPassword;
                 $model->EstadoCoordinador = '0';
                 
                 $rnd = rand(1000,9999);

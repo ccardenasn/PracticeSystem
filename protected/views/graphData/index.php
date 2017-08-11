@@ -7,9 +7,13 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Estadísticas</h1>
+<h1>Estadísticas</h1><br>
 
-<br/>
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
 
 <p style="line-height: 2em;">
 

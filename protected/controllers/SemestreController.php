@@ -71,27 +71,32 @@ class SemestreController extends Controller
         $query = "select codCarrera from carrera;";
         $idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
         $carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
-        $semestersNumber = $carreraData->SemestresCarrera;
-        
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Semestre']))
-		{
-			$model->attributes=$_POST['Semestre'];
+		
+		if($carreraData != null){
+			$semestersNumber = $carreraData->SemestresCarrera;
 			
-            if($model->save()){
-                $semestersNumber = $semestersNumber + 1;
-                $carreraData->SemestresCarrera = $semestersNumber;
-                $carreraData->save();                
-                $this->redirect(array('view','id'=>$model->CodSemestre));
-            }
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+			
+			if(isset($_POST['Semestre'])){
+				$model->attributes=$_POST['Semestre'];
 				
+				if($model->save()){
+					$semestersNumber = $semestersNumber + 1;
+					$carreraData->SemestresCarrera = $semestersNumber;
+					$carreraData->save();
+					$this->redirect(array('view','id'=>$model->CodSemestre));
+				}
+			}
+			
+			$this->render('create',array(
+				'model'=>$model,
+			));
+		
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se pueden añadir semestres en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Universidad</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

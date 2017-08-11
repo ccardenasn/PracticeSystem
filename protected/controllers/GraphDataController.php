@@ -1,4 +1,5 @@
 <?php
+include_once('mainFunctions.php');
 
 class GraphdataController extends Controller
 {
@@ -64,7 +65,16 @@ class GraphdataController extends Controller
 	
 	public function actionGraph_a()
     {
-        $this->render('graph_a_main');
+		$table = "estudiante";
+		
+		$empty = isEmpty($table);
+		
+		if($empty == false){
+			$this->render('graph_a_main');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se puede visualizar el gráfico en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Estudiantes</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
     }
 	
 	public function actionGraph_b()
@@ -74,22 +84,60 @@ class GraphdataController extends Controller
 	
 	public function actionGraph_c()
     {
-        $this->render('graph_c_main');
+		$table = "bitacorasesionclase";
+		
+		$empty = isEmpty($table);
+		
+		if($empty == false){
+			$this->render('graph_c_main');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se puede visualizar el gráfico en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Bitácoras</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
+		
+        
     }
 	
 	public function actionGraph_d()
     {
-        $this->render('graph_d_main');
+		$table = "estudiante";
+		
+		$empty = isEmpty($table);
+		
+		if($empty == false){
+			$this->render('graph_d_main');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se puede visualizar el gráfico en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Estudiantes</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
     }
 	
 	public function actionGraph_e()
     {
-        $this->render('graph_e_main');
+		$table = "planificacionclase";
+		
+		$empty = isEmpty($table);
+		
+		if($empty == false){
+			$this->render('graph_e_main');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se puede visualizar el gráfico en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Planificaciones</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
     }
 	
 	public function actionGraph_f()
-    {
-        $this->render('graph_f_main');
+    {	
+		$table = "profesorguiacp";
+		
+		$empty = isEmpty($table);
+		
+		if($empty == false){
+			$this->render('graph_f_main');
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se puede visualizar el gráfico en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Profesores Guía CP</strong>.</li></ul></div>");
+			$this->redirect(array('index'));
+		}
     }
 
 	/**

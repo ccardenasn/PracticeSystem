@@ -17,6 +17,12 @@ $this->menu=array(
 
 <h1>Semestres</h1><br>
 
+<?php if(Yii::app()->user->hasFlash('message')):?>
+<div class="row buttons">
+	<?php echo Yii::app()->user->getFlash('message'); ?>
+</div>
+<?php endif; ?>
+
 <ul align=justify>
 	<h4>Instrucciones</h4>
 	<li>Para agregar un nuevo semestre haga click en la opción <strong>"Añadir"</strong> situada en el panel de opciones ubicado al lado derecho de la ventana.</li>
