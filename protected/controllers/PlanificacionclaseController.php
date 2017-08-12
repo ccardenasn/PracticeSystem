@@ -314,7 +314,7 @@ class PlanificacionclaseController extends Controller
     
     public function actionSelectProfesorUpdate()
 	{
-		$id_uno = $_POST['Planificacionclaseadministrador']['CentroPractica_RBD'];
+		$id_uno = $_POST['Planificacionclase']['CentroPractica_RBD'];
 		$lista = Profesorguiacp::model()->findAll('CentroPractica_RBD = :id_uno',array(':id_uno'=>$id_uno));
 		$lista = CHtml::listData($lista,'RutProfGuiaCP','NombreProfGuiaCP');
 		

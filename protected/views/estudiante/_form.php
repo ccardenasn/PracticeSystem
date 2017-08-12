@@ -67,9 +67,22 @@
 		<?php echo $form->error($model,'CelularEstudiante'); ?>
 	</div>
 	
+	<?php
+	
+	$centrosData = Centropractica::model()->findAll();
+	$arrCentros = array();
+	
+	foreach ($centrosData as $centro){
+		$arrCentros[$centro->RBD] = $centro->RBD.' '.$centro->NombreCentroPractica; 
+	}
+		 
+	
+	?>
+	
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
+		<?php echo $form->dropDownList($model,'CentroPractica_RBD',$arrCentros,
 				array(
 					'ajax'=>array(
 						'type'=>'POST',

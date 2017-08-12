@@ -41,7 +41,7 @@ class Planificacionclaseadministrador extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Estudiante_RutEstudiante, CentroPractica_RBD, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, Fecha', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('Estudiante_RutEstudiante, CentroPractica_RBD, Curso, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, Fecha', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
 			array('CentroPractica_RBD', 'numerical', 'integerOnly'=>true),
 			array('Estudiante_RutEstudiante, ProfesorGuiaCP_RutProfGuiaCP, Curso, ConfiguracionPractica_CodPractica, Fecha, SesionInformada, Ejecutado, Supervisado', 'length', 'max'=>45),
 			array('ComentarioPlanificacion', 'safe'),

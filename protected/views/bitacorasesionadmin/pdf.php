@@ -3,10 +3,6 @@ include_once('centro.php');
 include_once('connect.php');
 include_once('forceutf/Encoding.php');
 
-$sql = "select * from clasebitacorasesion where BitacoraSesion_CodBitacora = '".$model->CodBitacora."';";
-
-$stmt = mysql_query($sql,$con);
-
 //se referencia a la extensión de mPDF
 $pdf = Yii::createComponent('application.extensions.mpdf60.mpdf');
 

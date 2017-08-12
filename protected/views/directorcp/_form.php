@@ -54,10 +54,21 @@
 		<?php echo $form->textField($model,'CelularDirectorCP',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'CelularDirectorCP'); ?>
 	</div>
+	
+	<?php
+	
+	$centrosData = Centropractica::model()->findAll();
+	$arrCentros = array();
+	
+	foreach ($centrosData as $centro){
+		$arrCentros[$centro->RBD] = $centro->RBD.' '.$centro->NombreCentroPractica; 
+	}
+	
+	?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($model,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'));?>
+		<?php echo $form->dropDownList($model,'CentroPractica_RBD',$arrCentros);?>
         <?php echo $form->error($model,'CentroPractica_RBD'); ?>
 	</div>
 

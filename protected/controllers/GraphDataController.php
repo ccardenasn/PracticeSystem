@@ -29,7 +29,7 @@ class GraphdataController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','graph_a','graph_b','graph_c','graph_d','graph_e','graph_f','pdf','exportImage','exportText'),
+				'actions'=>array('index','view','graph_a','graph_c','graph_d','graph_e','graph_f','pdf','exportImage','exportText'),
 				//'users'=>array('*'),
 				'users'=>Graphdata::model()->getAdmins(),
 			),
@@ -75,11 +75,6 @@ class GraphdataController extends Controller
 			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No se puede visualizar el gráfico en este momento.</li><li>Por favor verifique que se ha agregado información de <strong>Estudiantes</strong>.</li></ul></div>");
 			$this->redirect(array('index'));
 		}
-    }
-	
-	public function actionGraph_b()
-    {
-        $this->render('graph_b_main');
     }
 	
 	public function actionGraph_c()

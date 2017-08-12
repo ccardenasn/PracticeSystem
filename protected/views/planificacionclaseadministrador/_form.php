@@ -44,9 +44,20 @@ include_once('planningFunctions.php');
 		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
 	</div>
 	
+	<?php
+	
+	$centrosData = Centropractica::model()->findAll();
+	$arrCentros = array();
+	
+	foreach ($centrosData as $centro){
+		$arrCentros[$centro->RBD] = $centro->RBD.' '.$centro->NombreCentroPractica; 
+	}
+	
+	?>
+	
 	<div class="row">
 		<?php echo $form->labelEx($studentModel,'CentroPractica_RBD'); ?>
-		<?php echo $form->dropDownList($studentModel,'CentroPractica_RBD',CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD'),
+		<?php echo $form->dropDownList($studentModel,'CentroPractica_RBD',$arrCentros,
 				array(
 					'ajax'=>array(
 						'type'=>'POST',
