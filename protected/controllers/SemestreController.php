@@ -72,11 +72,13 @@ class SemestreController extends Controller
         $idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
         $carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
 		
+		$this->performAjaxValidation($model);
+		
 		if($carreraData != null){
 			$semestersNumber = $carreraData->SemestresCarrera;
 			
 			// Uncomment the following line if AJAX validation is needed
-			// $this->performAjaxValidation($model);
+			
 			
 			if(isset($_POST['Semestre'])){
 				$model->attributes=$_POST['Semestre'];
@@ -130,37 +132,45 @@ class SemestreController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$existSubjects = containsSubjects($id);
+		$practicaData=Configuracionpractica::model()->find('Semestre_CodSemestre=?',array($id));
 		
-        $query = "select codCarrera from Carrera;";
-        $idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
-        $carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
-        $semestersNumber = $carreraData->SemestresCarrera;
-        
-		if($existSubjects != 0){
-			$semesterSubjects = getSemesterSubjects($id);
+		if($practicaData == null){
+			$existSubjects = containsSubjects($id);
 			
-			for($i=0;$i<count($semesterSubjects);$i++){
-				$remainSubject = $semesterSubjects[$i]['NombreAsignatura'];
+			$query = "select codCarrera from Carrera;";
+			$idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
+			$carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
+			$semestersNumber = $carreraData->SemestresCarrera;
+			
+			if($existSubjects != 0){
+				$semesterSubjects = getSemesterSubjects($id);
 				
-				$existTimeTableSubject = containsTimeTableSubject($remainSubject);
-				
-				if($existTimeTableSubject != 0){
-					deleteTimetableSubjects($remainSubject);
+				for($i=0;$i<count($semesterSubjects);$i++){
+					$remainSubject = $semesterSubjects[$i]['NombreAsignatura'];
+					
+					$existTimeTableSubject = containsTimeTableSubject($remainSubject);
+					
+					if($existTimeTableSubject != 0){
+						deleteTimetableSubjects($remainSubject);
+					}
 				}
+				deleteSubjects($id);
 			}
-			deleteSubjects($id);
-		} 
-		
-		$this->loadModel($id)->delete();
-		
-        $semestersNumber = $semestersNumber - 1;
-        $carreraData->SemestresCarrera = $semestersNumber;
-        $carreraData->save(); 
-        
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			
+			$this->loadModel($id)->delete();
+			
+			$semestersNumber = $semestersNumber - 1;
+			$carreraData->SemestresCarrera = $semestersNumber;
+			$carreraData->save(); 
+			
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible eliminar!</strong></p><ul><li>Hay prácticas asociadas a este semestre.</li></ul></div>");
+			//$this->refresh();
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array("view&id=".$id.""));
+		}
 	}
 
 	/**

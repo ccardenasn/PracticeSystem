@@ -15,32 +15,36 @@ $practicaRespModel=DocenteresponsablepracticaHasConfiguracionpractica::model()->
 
 $practicasDrop = array();
 $practicasEstudiante = array();
-//$i=0;
+
 foreach($practicaRespModel as $practica){
     $practicasDrop[$practica->configuracionpracticas->CodPractica]=$practica->configuracionpracticas->NombrePractica;
     $practicasEstudiante[$practica->configuracionpracticas->CodPractica]=$practica->configuracionpracticas->CodPractica;
 }
 
-//$estudianteRespModel=Estudianteresponsable::model()->findAll('ConfiguracionPractica_CodPractica=?',array('2','3'));
-
 $estudianteRespModel = Estudianteresponsable::model()->findAllByAttributes(array('ConfiguracionPractica_CodPractica'=>$practicasEstudiante));
-
-/*foreach($estudianteRespModel as $estudiante){
-    echo $estudiante->RutEstudiante." ".$estudiante->NombreEstudiante;
-}*/
-
-
-//print_r($estudianteRespModel);
 
 $estudianteDrop = array();
 $rutDrop = array();
 
 foreach($estudianteRespModel as $estudiante){
-    $estudianteDrop[$estudiante->RutEstudiante]=$estudiante->NombreEstudiante;
+    $estudianteDrop[$estudiante->RutEstudiante]=$estudiante->RutEstudiante." ".$estudiante->NombreEstudiante;
     $rutDrop[$estudiante->RutEstudiante]=$estudiante->RutEstudiante;
 }
 
-//print_r(count($estudianteDrop));
+	
+$centrosData = Centropractica::model()->findAll();
+$arrCentros = array();
+
+foreach ($centrosData as $centro){
+	$arrCentros[$centro->RBD] = $centro->RBD.' '.$centro->NombreCentroPractica;
+}
+
+$profesorData = Profesorguiacp::model()->findAll();
+$arrProfesor = array();
+
+foreach ($profesorData as $profesor){
+	$arrProfesor[$profesor->RutProfGuiaCP] = $profesor->RutProfGuiaCP.' '.$profesor->NombreProfGuiaCP;
+}
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
@@ -114,8 +118,8 @@ $('.search-form form').submit(function(){
         //array('name'=>'Estudiante_RutEstudiante','value'=>'$data->Estudiante_RutEstudiante','filter'=>$rutDrop),
 		array('name'=>'Estudiante_RutEstudiante','value'=>'$data->estudianteRutEstudiante->NombreEstudiante','filter'=>$estudianteDrop),
         array('name'=>'ConfiguracionPractica_CodPractica','value'=>'$data->configuracionPracticaCodPractica->NombrePractica','filter'=>$practicasDrop),
-		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD')),
-		array('name'=>'ProfesorGuiaCP_RutProfGuiaCP','value'=>'$data->profesorGuiaCPRutProfGuiaCP->RutProfGuiaCP','filter'=>CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP','RutProfGuiaCP')),
+		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>$arrCentros),
+		array('name'=>'ProfesorGuiaCP_RutProfGuiaCP','value'=>'$data->profesorGuiaCPRutProfGuiaCP->RutProfGuiaCP','filter'=>$arrProfesor),
 		'Curso',
 		array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),

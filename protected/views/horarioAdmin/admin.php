@@ -1,6 +1,7 @@
 <?php
 /* @var $this HorarioadminController */
 /* @var $model Horarioadmin */
+$ask = new UserIdentity('','');
 
 $this->pageTitle= Yii::app()->name." - "."Administración";
 
@@ -11,9 +12,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Horarios', 'url'=>array('index')),
-	array('label'=>'Bloques', 'url'=>array('bloque/batchUpdate')),
-	array('label'=>'Semestres', 'url'=>array('semestre/index')),
-	array('label'=>'Asignaturas', 'url'=>array('asignatura/index')),
+	array('label'=>'Bloques', 'url'=>array('bloque/batchUpdate'),'visible'=>$ask->isAdmins()),
+	array('label'=>'Semestres', 'url'=>array('semestre/index'),'visible'=>$ask->isAdmins()),
+	array('label'=>'Asignaturas', 'url'=>array('asignatura/index'),'visible'=>$ask->isAdmins()),
     array('label'=>'Exportar a PDF', 'url'=>array('exportpdf')),
 );
 

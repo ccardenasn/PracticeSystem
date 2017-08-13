@@ -1,4 +1,5 @@
 <?php
+$ask = new UserIdentity('','');
 
 $this->pageTitle= Yii::app()->name." - "."Horarios";
 
@@ -8,9 +9,9 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Administración de Horarios', 'url'=>array('admin')),
-	array('label'=>'Asignar Horas', 'url'=>array('bloque/batchUpdate')),
-	array('label'=>'Semestres', 'url'=>array('semestre/index')),
-	array('label'=>'Asignatura', 'url'=>array('asignatura/index')),
+	array('label'=>'Asignar Horas', 'url'=>array('bloque/batchUpdate'),'visible'=>$ask->isAdmins()),
+	array('label'=>'Semestres', 'url'=>array('semestre/index'),'visible'=>$ask->isAdmins()),
+	array('label'=>'Asignatura', 'url'=>array('asignatura/index'),'visible'=>$ask->isAdmins()),
 );
 
 ?>

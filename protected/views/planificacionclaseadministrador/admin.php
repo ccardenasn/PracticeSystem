@@ -9,7 +9,26 @@ $this->breadcrumbs=array(
 	'Administración',
 );
 
-$agg = "gridBitacora";
+$estudiantesData = Estudiante::model()->findAll();
+$arrEstudiantes = array();
+
+foreach ($estudiantesData as $est){
+	$arrEstudiantes[$est->RutEstudiante] = $est->RutEstudiante.' '.$est->NombreEstudiante;
+}
+
+$centrosData = Centropractica::model()->findAll();
+$arrCentros = array();
+
+foreach ($centrosData as $centro){
+	$arrCentros[$centro->RBD] = $centro->RBD.' '.$centro->NombreCentroPractica;
+}
+
+$profesorData = Profesorguiacp::model()->findAll();
+$arrProfesor = array();
+
+foreach ($profesorData as $profesor){
+	$arrProfesor[$profesor->RutProfGuiaCP] = $profesor->RutProfGuiaCP.' '.$profesor->NombreProfGuiaCP;
+}
 
 $this->menu=array(
 	array('label'=>'Planificaciones', 'url'=>array('index')),
@@ -78,10 +97,10 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		array('name'=>'Estudiante_RutEstudiante','value'=>'$data->estudianteRutEstudiante->NombreEstudiante','filter'=>CHtml::listData(Estudiante::model()->findAll(),'RutEstudiante','NombreEstudiante','RutEstudiante')),
+		array('name'=>'Estudiante_RutEstudiante','value'=>'$data->estudianteRutEstudiante->NombreEstudiante','filter'=>$arrEstudiantes),
 		array('name'=>'ConfiguracionPractica_CodPractica','value'=>'$data->configuracionPracticaCodPractica->NombrePractica','filter'=>CHtml::listData(Configuracionpractica::model()->findAll(),'CodPractica','NombrePractica')),
-		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD')),
-		array('name'=>'ProfesorGuiaCP_RutProfGuiaCP','value'=>'$data->profesorGuiaCPRutProfGuiaCP->RutProfGuiaCP','filter'=>CHtml::listData(Profesorguiacp::model()->findAll(),'RutProfGuiaCP','NombreProfGuiaCP','RutProfGuiaCP')),
+		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>$arrCentros),
+		array('name'=>'ProfesorGuiaCP_RutProfGuiaCP','value'=>'$data->profesorGuiaCPRutProfGuiaCP->RutProfGuiaCP','filter'=>$arrProfesor),
 		'Curso',
 		array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),

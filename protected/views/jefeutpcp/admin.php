@@ -9,6 +9,13 @@ $this->breadcrumbs=array(
 	'Administración',
 );
 
+$centrosData = Centropractica::model()->findAll();
+$arrCentros = array();
+
+foreach ($centrosData as $centro){
+	$arrCentros[$centro->RBD] = $centro->RBD.' '.$centro->NombreCentroPractica;
+}
+
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
@@ -80,7 +87,7 @@ $('.search-form form').submit(function(){
 		'MailJefeUTPCP',
 		'TelefonoJefeUTPCP',
 		'CelularJefeUTPCP',
-		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>CHtml::listData(Centropractica::model()->findAll(),'RBD','NombreCentroPractica','RBD')),
+		array('name'=>'CentroPractica_RBD','value'=>'$data->centroPracticaRBD->NombreCentroPractica','filter'=>$arrCentros),
 		array(
 			'class'=>'CButtonColumn',
             'htmlOptions' => array('style'=>'width:65px'),

@@ -29,6 +29,7 @@ class Semestre extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('NombreSemestre', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			 array('NombreSemestre','unique','className'=>'Semestre','attributeName'=>'NombreSemestre','message'=>'El {attribute} {value} ya existe.'),
 			array('NombreSemestre', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -123,11 +124,9 @@ class Semestre extends CActiveRecord
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas where EstadoCoordinador = '1'";
 		$queryDirector = "select RutDirector from directorcarrera where EstadoDirector = '1'";
-		$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
 		
 		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);
 		$commandDirector= Yii::app()->db->createCommand($queryDirector);
-		$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
 		
 		$rows = array();
 		$dataReaderCoordinador=$commandCoordinador->query();
@@ -140,12 +139,6 @@ class Semestre extends CActiveRecord
 		
 		while(($row=$dataReaderDirector->read())!==false){
 			array_push($rows, $row['RutDirector']);
-		}
-		
-		$dataReaderResponsable=$commandResponsable->query();
-		
-		while(($row=$dataReaderResponsable->read())!==false){
-			array_push($rows, $row['RutResponsable']);
 		}
         
         if($rows == null){

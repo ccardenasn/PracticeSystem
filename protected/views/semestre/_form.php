@@ -2,6 +2,13 @@
 /* @var $this SemestreController */
 /* @var $model Semestre */
 /* @var $form CActiveForm */
+/*$semestreData = Semestre::model()->findAll();
+$totalSemester = count($semestreData);
+
+$nextSemester = $totalSemester+1;
+
+$semesterName = $nextSemester."° Semestre";*/
+
 ?>
 
 <div class="form">
@@ -13,7 +20,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableClientValidation'=>true,
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
@@ -25,6 +32,12 @@
 		<?php echo $form->textField($model,'NombreSemestre',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'NombreSemestre'); ?>
 	</div>
+	
+	<!--<div class="row">
+        <?php //echo CHtml::label('NombreSemestre','NombreSemestre'); ?>
+        <?php //echo CHtml::textField('NombreSemestre',$semesterName,array('readOnly' => true,'disabled'=>'disabled','size'=>45,'maxlength'=>45)); ?>
+		<?php //echo $form->error($model,'NombrePracticaEstudiante'); ?>
+	</div>-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar Cambios'); ?>

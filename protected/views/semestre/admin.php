@@ -80,7 +80,7 @@ $('.search-form form').submit(function(){
 		array(
 			'class'=>'CButtonColumn',
             'htmlOptions' => array('style'=>'width:65px'),
-            'deleteConfirmation'=>'¡Advertencia! Se eliminarán todas las asignaturas asociadas al semestre ¿Desea Continuar?',
+            'deleteConfirmation'=>'¡Advertencia! Se eliminarán todas las asignaturas asociadas al semestre ¿Desea Continuar? Recuerde que si el semestre está asociado a alguna práctica esta no se borrará',
             'template'=>'{view}{update}{delete}{pdf}',
             'buttons'=>array(
                 'pdf'=>array(
