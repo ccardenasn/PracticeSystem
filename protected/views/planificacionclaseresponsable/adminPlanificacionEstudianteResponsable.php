@@ -127,6 +127,13 @@ $('.search-form form').submit(function(){
 		array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array(
+			'header'=>'Bitácora',
+            'name'=>'CodPlanificacion',
+			'type'=>'raw',
+            'value'=>array($this,'gridBitacora'),
+			'filter'=>false,
+        ),
+		array(
 			'class'=>'CButtonColumn',
 		),
 	),

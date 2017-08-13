@@ -301,4 +301,16 @@ class PlanificacionclaseresponsableController extends Controller
 	{
 		$this->render('exportplanningpdf');
 	}
+	
+	protected function gridBitacora($data,$row)
+    { 
+		$logbookData=Bitacorasesion::model()->findByAttributes(array('PlanificacionClase_CodPlanificacion'=>$data->CodPlanificacion));
+		
+        if($logbookData != null)
+        {
+            return 'Si';
+        }
+        else
+             return 'No';
+    }
 }

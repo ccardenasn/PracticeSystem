@@ -100,6 +100,16 @@ $('.search-form form').submit(function(){
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
 		//'ComentarioPlanificacion',
 		array(
+			'header'=>'Bitácora',
+            'name'=>'CodPlanificacion',
+			'type'=>'raw',
+            'value'=>array($this,'gridBitacora'),
+			//'value'=>'CHtml::tag("div",  array("style"=>"float: left; margin:5px; cursor:pointer" ,"onclick"=>"gridBitacora({$data["CodPlanificacion"]})","id" => "{$data["CodPlanificacion"]}","href"=>"javascript:void(0);") ,
+ //CHtml::tag("img", array( "src" => "'.Yii::app()->request->baseUrl . '/images/AdminTemplates/{gridBitacora({$data["CodPlanificacion"]})}"")))',
+			//'value'=>'CHtml::image("images/AdminTemplates/okicon.png")',
+			'filter'=>false,
+        ),
+		array(
 			'class'=>'CButtonColumn',
             'deleteConfirmation'=>'¿Está seguro de querer eliminar este elemento? Si realiza esta acción se eliminarán todos los datos de bitácora asociados a esta planificación.',
             'buttons'=>array(

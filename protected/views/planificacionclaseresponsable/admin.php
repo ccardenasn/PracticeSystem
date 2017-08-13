@@ -124,6 +124,16 @@ $('.search-form form').submit(function(){
 		array('name'=>'Ejecutado','value'=>'$data->Ejecutado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array('name'=>'Supervisado','value'=>'$data->Supervisado','filter'=>array('Si'=>'Si','No'=>'No')),
 		array(
+			'header'=>'Bitácora',
+            'name'=>'CodPlanificacion',
+			'type'=>'raw',
+            'value'=>array($this,'gridBitacora'),
+			//'value'=>'CHtml::tag("div",  array("style"=>"float: left; margin:5px; cursor:pointer" ,"onclick"=>"gridBitacora({$data["CodPlanificacion"]})","id" => "{$data["CodPlanificacion"]}","href"=>"javascript:void(0);") ,
+ //CHtml::tag("img", array( "src" => "'.Yii::app()->request->baseUrl . '/images/AdminTemplates/{gridBitacora({$data["CodPlanificacion"]})}"")))',
+			//'value'=>'CHtml::image("images/AdminTemplates/okicon.png")',
+			'filter'=>false,
+        ),
+		array(
 			'class'=>'CButtonColumn',
             'template'=>'{view}{update}{pdf}',
             'buttons'=>array(
