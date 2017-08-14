@@ -94,7 +94,9 @@ class UniversidadmainController extends Controller
                 
                 if($semesterEmpty == 0){
                     createSemesters($carreraModel->SemestresCarrera);
-                }
+                }else{
+					$carreraModel->SemestresCarrera = $semesterEmpty
+				}
                 
                 $carreraModel->save();
                 $secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
@@ -109,13 +111,7 @@ class UniversidadmainController extends Controller
                 
                 if($secretariaModel->save()){
                     if($file != null){
-                        if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-                            $file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenEstudiantes/".$fileName);
-                        }else{
-                            deleteData($table,$codTable,$model->RutSecretaria);
-                            Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-                            $this->refresh();
-                        }
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$fileName);
                     }
                 }
                 $this->redirect(array('view','id'=>$universidadModel->CodInstitucion));

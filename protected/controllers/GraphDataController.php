@@ -79,7 +79,7 @@ class GraphdataController extends Controller
 	
 	public function actionGraph_c()
     {
-		$table = "bitacorasesionclase";
+		$table = "clasebitacorasesion";
 		
 		$empty = isEmpty($table);
 		

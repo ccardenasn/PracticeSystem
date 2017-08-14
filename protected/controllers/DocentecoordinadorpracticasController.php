@@ -91,19 +91,11 @@ class DocentecoordinadorpracticasController extends Controller
                 if($file != null){
                     $model->ImagenCoordinador = $fileName;
                 }
-                
-				$empty = isEmpty($table);
 				
 				if($model->save()){
 					
 					if($file != null){
-						if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-							
-							$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$fileName);
-						}else{
-							Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-							$this->refresh();
-						}
+						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenCoordinador/".$fileName);
 					}
                     sendPassword($model->MailCoordinador,"Nuevo Usuario",$model->RutCoordinador,$model->NombreCoordinador,$model->ClaveCoordinador);
 					$this->redirect(array('view','id'=>$model->RutCoordinador));
@@ -178,11 +170,19 @@ class DocentecoordinadorpracticasController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$practicaData=Configuracionpractica::model()->find('DocenteCoordinadorPracticas_RutCoordinador=?',array($id));
+		
+		if($practicaData == null){
+			$this->loadModel($id)->delete();
+			
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}else{
+			Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡No es posible eliminar!</strong></p><ul><li>Hay prácticas asociadas a este coordinador.</li></ul></div>");
+			//$this->refresh();
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array("view&id=".$id.""));
+		}
 	}
 
 	/**

@@ -137,11 +137,6 @@ class SemestreController extends Controller
 		if($practicaData == null){
 			$existSubjects = containsSubjects($id);
 			
-			$query = "select codCarrera from Carrera;";
-			$idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
-			$carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
-			$semestersNumber = $carreraData->SemestresCarrera;
-			
 			if($existSubjects != 0){
 				$semesterSubjects = getSemesterSubjects($id);
 				
@@ -159,9 +154,16 @@ class SemestreController extends Controller
 			
 			$this->loadModel($id)->delete();
 			
-			$semestersNumber = $semestersNumber - 1;
-			$carreraData->SemestresCarrera = $semestersNumber;
-			$carreraData->save(); 
+			$query = "select codCarrera from carrera;";
+			$idCarrera=Yii::app()->db->createCommand($query)->queryScalar();
+			$carreraData=Carrera::model()->find('codCarrera=?',array($idCarrera));
+			
+			if($carreraData != null){
+				$semestersNumber = $carreraData->SemestresCarrera;
+				$semestersNumber = $semestersNumber - 1;
+				$carreraData->SemestresCarrera = $semestersNumber;
+				$carreraData->save(); 
+			}
 			
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
