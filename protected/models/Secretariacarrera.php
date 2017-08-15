@@ -40,6 +40,7 @@ class Secretariacarrera extends CActiveRecord
 		return array(
 			array('RutSecretaria, NombreSecretaria, Carrera_codCarrera', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('RutSecretaria','unique','className'=>'Secretariacarrera','attributeName'=>'RutSecretaria','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+			array('RutSecretaria', 'filter', 'filter'=>'trim'),
             array('RutSecretaria','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutSecretaria','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutSecretaria','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -202,11 +203,9 @@ class Secretariacarrera extends CActiveRecord
 		
 		$queryCoordinador = "select RutCoordinador from docentecoordinadorpracticas where EstadoCoordinador = '1'";
 		$queryDirector = "select RutDirector from directorcarrera where EstadoDirector = '1'";
-		$queryResponsable = "select RutResponsable from docenteresponsablepractica where EstadoResponsable = '1'";
 		
 		$commandCoordinador= Yii::app()->db->createCommand($queryCoordinador);
 		$commandDirector= Yii::app()->db->createCommand($queryDirector);
-		$commandResponsable= Yii::app()->db->createCommand($queryResponsable);
 		
 		$rows = array();
 		$dataReaderCoordinador=$commandCoordinador->query();
@@ -219,12 +218,6 @@ class Secretariacarrera extends CActiveRecord
 		
 		while(($row=$dataReaderDirector->read())!==false){
 			array_push($rows, $row['RutDirector']);
-		}
-		
-		$dataReaderResponsable=$commandResponsable->query();
-		
-		while(($row=$dataReaderResponsable->read())!==false){
-			array_push($rows, $row['RutResponsable']);
 		}
         
         if($rows == null){

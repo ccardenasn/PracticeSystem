@@ -17,7 +17,7 @@
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary(array($universidadModel,$carreraModel,$secretariaModel)); ?>
+	<?php echo $form->errorSummary(array($universidadModel,$carreraModel),'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
 	
 	<div class="collapse">
 		<h3>Universidad</h3>
@@ -28,11 +28,6 @@
 		<h3>Carrera</h3>
 		<ul>
 			<?php $this->renderPartial('carreraUpdateForm', array('form'=>$form,'carreraModel'=>$carreraModel)); ?>
-		</ul>
-		
-		<h3>Secretaria</h3>
-		<ul>
-			<?php $this->renderPartial('secretariaUpdateForm', array('form'=>$form,'secretariaModel'=>$secretariaModel)); ?>
 		</ul>
 	</div>
 	

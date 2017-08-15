@@ -17,7 +17,13 @@
 
 	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary(array($universidadModel,$carreraModel,$secretariaModel)); ?>
+	<?php echo $form->errorSummary(array($universidadModel,$carreraModel),'<strong>El formulario contiene los siguientes errores:</strong>'); ?>
+	
+	<?php if(Yii::app()->user->hasFlash('message')):?>
+    <div class="row buttons">
+        <?php echo Yii::app()->user->getFlash('message'); ?>
+    </div>
+    <?php endif; ?>
 	
 	<div class="collapse">
 		<h3>Universidad</h3>
@@ -28,11 +34,6 @@
 		<h3>Carrera</h3>
 		<ul>
 			<?php $this->renderPartial('carreraForm', array('form'=>$form,'carreraModel'=>$carreraModel)); ?>
-		</ul>
-		
-		<h3>Secretaria</h3>
-		<ul>
-			<?php $this->renderPartial('secretariaForm', array('form'=>$form,'secretariaModel'=>$secretariaModel)); ?>
 		</ul>
 	</div>
 	

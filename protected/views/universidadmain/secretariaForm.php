@@ -30,6 +30,7 @@
 
 <div class="row">
     <?php echo $form->labelEx($secretariaModel,'ImagenSecretaria'); ?>
-    <?php echo CHtml::activeFileField($secretariaModel,'ImagenSecretaria');?>
+	<?php echo $form->fileField($secretariaModel,'ImagenSecretaria');?>
+    <?php //echo CHtml::fileField($secretariaModel,'ImagenSecretaria');?>
     <?php echo $form->error($secretariaModel,'ImagenSecretaria'); ?>
 </div>

@@ -78,11 +78,9 @@ $('.search-form form').submit(function(){
 		'Sede',
 		'Campus',
 		'Facultad',
-		'Region_codRegion',
-		'Provincia_codProvincia',
-		/*
-		'Ciudad_codCiudad',
-		*/
+		'regionCodRegion.NombreRegion',
+		'provinciaCodProvincia.NombreProvincia',
+		'ciudadCodCiudad.NombreCiudad',
 		array(
 			'class'=>'CButtonColumn',
             'htmlOptions' => array('style'=>'width:65px'),

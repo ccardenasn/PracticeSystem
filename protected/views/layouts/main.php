@@ -76,6 +76,7 @@ $ask = new UserIdentity('','');
 					array('label'=>'Administración','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #999;','onmouseover'=>"this.style.color='#666'",'onmouseout'=>"this.style.color='#999'"),
 						  'items'=>array(
 							  array('label'=>'Universidad','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/universidadmain'),'visible'=>$ask->isAdmins()),
+							  array('label'=>'Secretaria Carrera','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/secretariacarrera'),'visible'=>$ask->isAdmins()),
 							  array('label'=>'Menciones','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/mencion'),'visible'=>$ask->isAdmins()),
 							  array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudiante'),'visible'=>$ask->isAdmins()),
 							  array('label'=>'Estudiantes','linkOptions'=>array('style' => 'color: #666;'),'url'=>array('/estudianteresponsable'),'visible'=>$ask->isResponsable()),

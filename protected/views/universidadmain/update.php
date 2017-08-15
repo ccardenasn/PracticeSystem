@@ -4,14 +4,14 @@
 
 $this->breadcrumbs=array(
 	'Universidad'=>array('index'),
-	$universidadModel->NombreInstitucion=>array('view','id'=>$universidadModel->NombreInstitucion),
+	$universidadModel->NombreInstitucion=>array('view','id'=>$universidadModel->CodInstitucion),
 	'Editar',
 );
 
 $this->menu=array(
 	array('label'=>'Lista', 'url'=>array('index')),
 	array('label'=>'Añadir', 'url'=>array('create')),
-	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$universidadModel->NombreInstitucion)),
+	array('label'=>'Detalles', 'url'=>array('view', 'id'=>$universidadModel->CodInstitucion)),
 	array('label'=>'Administración', 'url'=>array('admin')),
 );
 ?>
@@ -36,5 +36,4 @@ $this->menu=array(
 						   array(
 							   'universidadModel'=>$universidadModel,
 							   'carreraModel'=>$carreraModel,
-							   'secretariaModel'=>$secretariaModel,
 						   )); ?>

@@ -30,5 +30,4 @@ $this->menu=array(
 						   array(
 							   'universidadModel'=>$universidadModel,
 							   'carreraModel'=>$carreraModel,
-							   'secretariaModel'=>$secretariaModel,
 						   )); ?>

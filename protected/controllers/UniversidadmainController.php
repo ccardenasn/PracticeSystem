@@ -71,21 +71,19 @@ class UniversidadmainController extends Controller
 	{
 		$universidadModel=new Universidad;
 		$carreraModel=new Carrera;
-		$secretariaModel=new Secretariacarrera;
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation(array($universidadModel,$carreraModel,$secretariaModel));
+		$this->performAjaxValidation(array($universidadModel,$carreraModel));
 
         $table = "universidad";
 		$empty = isEmpty($table);
 
         if($empty == true){
             
-            if(isset($_POST['Universidad'],$_POST['Carrera'],$_POST['Secretariacarrera'])){
+            if(isset($_POST['Universidad'],$_POST['Carrera'])){
                 
                 $universidadModel->attributes=$_POST['Universidad'];
                 $carreraModel->attributes=$_POST['Carrera'];
-                $secretariaModel->attributes=$_POST['Secretariacarrera'];
                 
                 $universidadModel->save();
                 $carreraModel->Universidad_CodInstitucion = $universidadModel->CodInstitucion;
@@ -95,32 +93,17 @@ class UniversidadmainController extends Controller
                 if($semesterEmpty == 0){
                     createSemesters($carreraModel->SemestresCarrera);
                 }else{
-					$carreraModel->SemestresCarrera = $semesterEmpty
+					$carreraModel->SemestresCarrera = $semesterEmpty;
 				}
                 
                 $carreraModel->save();
-                $secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
-                
-                $rnd = rand(1000,9999);
-                $file=CUploadedFile::getInstance($secretariaModel,'ImagenEstudiante');
-                $fileName = "{$rnd}-{$file}";  // numero aleatorio  + nombre de archivo
-                
-                if($file != null){
-                    $secretariaModel->ImagenEstudiante = $fileName;
-                }
-                
-                if($secretariaModel->save()){
-                    if($file != null){
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$fileName);
-                    }
-                }
-                $this->redirect(array('view','id'=>$universidadModel->CodInstitucion));
+				
+				$this->redirect(array('view','id'=>$universidadModel->CodInstitucion));
             }
             
             $this->render('create',array(
                 'universidadModel'=>$universidadModel,
                 'carreraModel'=>$carreraModel,
-                'secretariaModel'=>$secretariaModel,
             ));
         }else{
             Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>Solo se permite el ingreso de una universidad.</li></ul></div>");
@@ -136,55 +119,23 @@ class UniversidadmainController extends Controller
 	public function actionUpdate($id)
 	{
 		$carreraModel=new Carrera;
-		$secretariaModel=new Secretariacarrera;
 		
 		$universidadModel=$this->loadModel($id);
 		$carreraModel=Carrera::model()->find('Universidad_CodInstitucion=?',array($id));
-		$secretariaModel=Secretariacarrera::model()->find('Carrera_codCarrera=?',array($carreraModel->codCarrera));
-        
-        $imageAttrib = "ImagenSecretaria";
-		$table = "secretariacarrera";
-		$codTable = "RutSecretaria";
-		
-		$oldImage = getImageModel($imageAttrib,$table,$codTable,$secretariaModel->RutSecretaria);
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation(array($universidadModel,$carreraModel,$secretariaModel));
+		$this->performAjaxValidation(array($universidadModel,$carreraModel));
 
-		if(isset($_POST['Universidad'],$_POST['Carrera'],$_POST['Secretariacarrera']))
+		if(isset($_POST['Universidad'],$_POST['Carrera']))
 		{
 			$universidadModel->attributes=$_POST['Universidad'];
 			$carreraModel->attributes=$_POST['Carrera'];
-			$secretariaModel->attributes=$_POST['Secretariacarrera'];
 			
 			$universidadModel->save();
 			
 			$carreraModel->Universidad_CodInstitucion = $universidadModel->CodInstitucion;		
 			
 			$carreraModel->save();
-			$secretariaModel->Carrera_codCarrera = $carreraModel->codCarrera;
-            
-            $rnd = rand(1000,9999);
-            $file=CUploadedFile::getInstance($secretariaModel,'ImagenSecretaria');
-            $fileName = "{$rnd}-{$file}";
-            
-            if($file != null){
-                $secretariaModel->ImagenSecretaria = $fileName;
-            }
-			
-			if($secretariaModel->save()){
-				if($file != null){
-					if($file->getExtensionName()=="jpg" or $file->getExtensionName()=="jpeg" or $file->getExtensionName()=="png"){
-						//se guarda la ruta de la imagen
-						$file->saveAs(Yii::getPathOfAlias("webroot")."/images/ImagenSecretaria/".$fileName);
-					}else{
-						Yii::app()->user->setFlash('message',"<div id='errorMessage' class='flash-error'><p><strong>¡Advertencia!</strong></p><ul><li>No es posible subir el archivo de imagen.</li><li>Solo se permiten archivos en formato .jpg, .jpeg o .png.</li></ul></div>");
-						$this->refresh();
-					}
-				}else{
-					saveImagePath($table,$imageAttrib,$oldImage,$codTable,$secretariaModel->RutSecretaria);
-				}
-			}
 			
 			$this->redirect(array('view','id'=>$universidadModel->CodInstitucion));
 		}
@@ -192,7 +143,6 @@ class UniversidadmainController extends Controller
 		$this->render('update',array(
 			'universidadModel'=>$universidadModel,
 			'carreraModel'=>$carreraModel,
-			'secretariaModel'=>$secretariaModel,
 		));
 	}
 
