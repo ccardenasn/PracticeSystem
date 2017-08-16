@@ -50,6 +50,7 @@ class Directorcarrera extends CActiveRecord
             array('ImagenDirector','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
 			array('ImagenDirector','safe','on'=>'update'),
             array('RutDirector','valrut'),
+			array('RutDirector','valtrim'),
             array('RutDirector','valuniquerut','on'=>'insert'),
             array('NombreDirector','valnombre'),
             array('MailDirector','valcorreo'),
@@ -189,6 +190,12 @@ class Directorcarrera extends CActiveRecord
 	{
 		if(uniquerut($this->RutDirector)==true)
 		$this->addError('RutDirector','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutDirector)==false)
+		$this->addError('RutDirector','No deje espacios al escribir rut.');
 	}
     
     public function validatePassword($password){

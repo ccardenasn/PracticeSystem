@@ -59,6 +59,7 @@ class Directorcp extends CActiveRecord
             array('ImagenDirectorCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenDirectorCP','safe','on'=>'update'),
             array('RutDirectorCP','valrut'),
+			array('RutDirectorCP','valtrim'),
             array('RutDirectorCP','valuniquerut','on'=>'insert'),
             array('NombreDirectorCP','valnombre'),
             array('MailDirectorCP','valcorreo'),
@@ -214,6 +215,12 @@ class Directorcp extends CActiveRecord
 	{
 		if(uniquerut($this->RutDirectorCP)==true)
 		$this->addError('RutDirectorCP','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutDirectorCP)==false)
+		$this->addError('RutDirectorCP','No deje espacios al escribir rut.');
 	}
 	
 	public function getAdmins(){

@@ -57,6 +57,7 @@ class Estudiante extends CActiveRecord
             array('RutEstudiante, NombreEstudiante, MailEstudiante, FechaIncorporacion, Mencion_CodMencion, ProfesorGuiaCP_RutProfGuiaCP, ConfiguracionPractica_CodPractica, CentroPractica_RBD', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('Mencion_CodMencion,ConfiguracionPractica_CodPractica ,CentroPractica_RBD, Estado', 'numerical', 'integerOnly'=>true),
             array('RutEstudiante','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
+			//array('RutEstudiante', 'filter', 'filter'=>'trim','on'=>'insert,update'),
             array('RutEstudiante','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutEstudiante','unique','className'=>'Secretariacarrera','attributeName'=>'RutSecretaria','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -78,6 +79,7 @@ class Estudiante extends CActiveRecord
             array('MailEstudiante','valcorreo'),
             array('FechaIncorporacion','valnumeros'),
             array('RutEstudiante','valrut'),
+			array('RutEstudiante','valtrim'),
             array('RutEstudiante','valuniquerut','on'=>'insert'),
             array('CentroPractica_RBD','valcentro'),
             //array('TelefonoEstudiante', 'numerical','integerOnly'=>true,'min'=>0,'tooSmall' =>'numero no válido','message'=>'Ingrese solo números.','allowEmpty'=>true),
@@ -277,6 +279,12 @@ class Estudiante extends CActiveRecord
 	{
 		if(uniquerut($this->RutEstudiante)==true)
 		$this->addError('RutEstudiante','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutEstudiante)==false)
+		$this->addError('RutEstudiante','No deje espacios al escribir rut.');
 	}
     
     public function valuniquerutupdate($attribute,$params)

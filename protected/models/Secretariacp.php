@@ -58,6 +58,7 @@ class Secretariacp extends CActiveRecord
 			array('RutSecretariaCP, NombreSecretariaCP, MailSecretariaCP, TelefonoSecretariaCP, CelularSecretariaCP, CentroPractica_RBD, ImagenSecretariaCP', 'safe', 'on'=>'search'), array('ImagenSecretariaCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenSecretariaCP','safe','on'=>'update'),
             array('RutSecretariaCP','valrut'),
+			array('RutSecretariaCP','valtrim'),
             array('RutSecretariaCP','valuniquerut','on'=>'insert'),
             array('NombreSecretariaCP','valnombre'),
             array('MailSecretariaCP','valcorreo'),
@@ -219,6 +220,12 @@ class Secretariacp extends CActiveRecord
 	{
 		if(uniquerut($this->RutSecretariaCP)==true)
 		$this->addError('RutSecretariaCP','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutSecretariaCP)==false)
+		$this->addError('RutSecretariaCP','No deje espacios al escribir rut.');
 	}
 	
 	public function getAdmins(){

@@ -63,6 +63,7 @@ class Profesorguiacp extends CActiveRecord
 			// @todo Please remove those attributes that should not be searched.
 			array('RutProfGuiaCP, NombreProfGuiaCP, CursoProfGuiaCP, ProfesorJefeProfGuiaCP, MailProfGuiaCP, TelefonoProfGuiaCP, CelularProfGuiaCP, CentroPractica_RBD, ImagenProfGuiaCP', 'safe', 'on'=>'search'),
 			array('RutProfGuiaCP','valrut'),
+			array('RutProfGuiaCP','valtrim'),
             array('RutProfGuiaCP','valuniquerut','on'=>'insert'),
             array('NombreProfGuiaCP','valnombre'),
             array('MailProfGuiaCP','valcorreo'),
@@ -211,6 +212,12 @@ class Profesorguiacp extends CActiveRecord
 	{
 		if(uniquerut($this->RutProfGuiaCP)==true)
 		$this->addError('RutProfGuiaCP','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutProfGuiaCP)==false)
+		$this->addError('RutProfGuiaCP','No deje espacios al escribir rut.');
 	}
 	
 	public function getAdmins(){

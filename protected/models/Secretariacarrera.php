@@ -40,7 +40,6 @@ class Secretariacarrera extends CActiveRecord
 		return array(
 			array('RutSecretaria, NombreSecretaria, Carrera_codCarrera', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('RutSecretaria','unique','className'=>'Secretariacarrera','attributeName'=>'RutSecretaria','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
-			array('RutSecretaria', 'filter', 'filter'=>'trim'),
             array('RutSecretaria','unique','className'=>'Estudiante','attributeName'=>'RutEstudiante','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutSecretaria','unique','className'=>'Directorcarrera','attributeName'=>'RutDirector','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
             array('RutSecretaria','unique','className'=>'Docentecoordinadorpracticas','attributeName'=>'RutCoordinador','message'=>'El número de {attribute} {value} ya existe.','on'=>'update'),
@@ -58,6 +57,7 @@ class Secretariacarrera extends CActiveRecord
 			array('ImagenSecretaria','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
 			array('ImagenSecretaria','safe','on'=>'update'),
             array('RutSecretaria','valrut'),
+			array('RutSecretaria','valtrim'),
             array('RutSecretaria','valuniquerut','on'=>'insert'),
             array('NombreSecretaria','valnombre'),
             array('MailSecretaria','valcorreo'),
@@ -197,6 +197,12 @@ class Secretariacarrera extends CActiveRecord
 	{
 		if(uniquerut($this->RutSecretaria)==true)
 		$this->addError('RutSecretaria','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutSecretaria)==false)
+		$this->addError('RutSecretaria','No deje espacios al escribir rut.');
 	}
 	
 	public function getAdmins(){

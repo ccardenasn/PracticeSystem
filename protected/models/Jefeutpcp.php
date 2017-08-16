@@ -59,6 +59,7 @@ class Jefeutpcp extends CActiveRecord
             array('ImagenJefeUTPCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenJefeUTPCP','safe','on'=>'update'),
             array('RutJefeUTPCP','valrut'),
+			array('RutJefeUTPCP','valtrim'),
             array('RutJefeUTPCP','valuniquerut','on'=>'insert'),
             array('NombreJefeUTPCP','valnombre'),
             array('MailJefeUTPCP','valcorreo'),
@@ -214,6 +215,12 @@ class Jefeutpcp extends CActiveRecord
 	{
 		if(uniquerut($this->RutJefeUTPCP)==true)
 		$this->addError('RutJefeUTPCP','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutJefeUTPCP)==false)
+		$this->addError('RutJefeUTPCP','No deje espacios al escribir rut.');
 	}
 	
 	public function getAdmins(){

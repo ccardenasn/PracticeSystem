@@ -55,6 +55,7 @@ class Docentecoordinadorpracticas extends CActiveRecord
             array('ImagenCoordinador','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar
 			array('ImagenCoordinador','safe','on'=>'update'),
             array('RutCoordinador','valrut'),
+			array('RutCoordinador','valtrim'),
             array('RutCoordinador','valuniquerut','on'=>'insert'),
             array('NombreCoordinador','valnombre'),
             array('MailCoordinador','valcorreo'),
@@ -200,6 +201,12 @@ class Docentecoordinadorpracticas extends CActiveRecord
 		$this->addError('RutCoordinador','Este número de RUT ya existe.');
 	}
     
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutCoordinador)==false)
+		$this->addError('RutCoordinador','No deje espacios al escribir rut.');
+	}
+	
 	public function getAdmins(){
         $queryDirector = "select RutDirector from directorcarrera where EstadoDirector = '1'";
         $commandDirector= Yii::app()->db->createCommand($queryDirector);

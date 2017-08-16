@@ -131,6 +131,17 @@ function uniquerutupdate($rut){
     return $exist;
 }
 
+function  checktrimvalue($rut){
+    $isTrim = false;
+	$trimValue = trim($rut);
+	
+	if($trimValue == $rut){
+		$isTrim = true;
+	}
+    
+    return $isTrim;
+}
+
 
 
 

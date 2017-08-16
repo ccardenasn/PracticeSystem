@@ -61,6 +61,7 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
             array('ImagenProfCoordGuiaCP','file','types'=>'png,jpg,jpeg','wrongType'=>'Solo se permiten archivos con las extensiones .jpg, .png y .jpeg','maxSize'=>1048576,'tooLarge'=>'La imagen es demasiado grande, el tamaño máximo permitido es de 1 MB','allowEmpty'=>true,'on'=>'insert,update'),//permite campo vacio si no se carga imagen al actualizar 
 			array('ImagenProfCoordGuiaCP','safe','on'=>'update'),
             array('RutProfCoordGuiaCp','valrut'),
+			array('RutProfCoordGuiaCp','valtrim'),
             array('RutProfCoordGuiaCp','valuniquerut','on'=>'insert'),
             array('NombreProfCoordGuiaCP','valnombre'),
             array('MailProfCoordGuiaCP','valcorreo'),
@@ -216,6 +217,12 @@ class Profesorcoordinadorpracticacp extends CActiveRecord
 	{
 		if(uniquerut($this->RutProfCoordGuiaCp)==true)
 		$this->addError('RutProfCoordGuiaCp','Este número de RUT ya existe.');
+	}
+	
+	public function valtrim($attribute,$params)
+	{
+		if(checktrimvalue($this->RutProfCoordGuiaCp)==false)
+		$this->addError('RutProfCoordGuiaCp','No deje espacios al escribir rut.');
 	}
 	
 	public function getAdmins(){
