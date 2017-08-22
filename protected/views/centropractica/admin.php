@@ -86,6 +86,7 @@ $('.search-form form').submit(function(){
 		//'Region_codRegion',
 		//'Provincia_codProvincia',
 		//'Ciudad_codCiudad',
+		array('name'=>'Ciudad_codCiudad','value'=>'$data->ciudadCodCiudad->NombreCiudad','filter'=>CHtml::listData(Ciudad::model()->findAll(),'codCiudad','NombreCiudad')),
 		'Calle',
 		//'ImagenCentroPractica',
 		array(

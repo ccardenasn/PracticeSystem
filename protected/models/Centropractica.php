@@ -52,7 +52,7 @@ class Centropractica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RBD, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
+			array('RBD, NombreCentroPractica, FechaProtocolo, Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'required','message'=>'Por favor ingrese un valor para {attribute}.'),
             array('RBD','unique','message'=>'El {attribute} {value} ya está registrado.'),
 			array('Dependencia_CodDependencia, NivelEducacional_CodNivel, Region_codRegion, Provincia_codProvincia, Ciudad_codCiudad', 'numerical', 'integerOnly'=>true,'message'=>'{attribute} debe ser un número.'),
 			array('NombreCentroPractica, VigenciaProtocolo, FechaProtocolo, Area, Calle, ImagenCentroPractica', 'length', 'max'=>45),
