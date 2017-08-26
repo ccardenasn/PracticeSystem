@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->CodBitacora)),
 	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->CodBitacora),'confirm'=>'¿Está seguro de querer eliminar este elemento?')),
-	array('label'=>'Planificaciones de Estudiante', 'url'=>array('planificacionclaseadministrador/index')),
+	array('label'=>'Planificaciones', 'url'=>array('planificacionclaseadministrador/index')),
 	array('label'=>'Crear PDF', 'url'=>array('pdf','id'=>$model->CodBitacora)),
 );
 ?>
