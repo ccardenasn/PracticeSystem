@@ -44,6 +44,8 @@ $ask = new UserIdentity('','');
 					//array('label'=>'Contacto', 'url'=>array('/site/contact')),
 					array('label'=>'Iniciar Sesion','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #999;','onmouseover'=>"this.style.color='#666'",'onmouseout'=>"this.style.color='#999'"), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 					array('label'=>'Cerrar Sesión ('.Yii::app()->user->name.')','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #999;','onmouseover'=>"this.style.color='#666'",'onmouseout'=>"this.style.color='#999'"), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+					array('label'=>'Ayuda','itemOptions'=>array('style' => 'background-color: #E8E8E8; float:right;'),'linkOptions'=>array('target' => '_blank','style' => 'color: #999;','onmouseover'=>"this.style.color='#666'",'onmouseout'=>"this.style.color='#999'"),'url'=>Yii::app()->baseUrl.'/PDFFiles/Ayuda/Manual de Instrucciones SiGEP Estudiantes.pdf','visible'=>$ask->isStudent()),
+					array('label'=>'Ayuda','itemOptions'=>array('style' => 'background-color: #E8E8E8; float:right;'),'linkOptions'=>array('target' => '_blank','style' => 'color: #999;','onmouseover'=>"this.style.color='#666'",'onmouseout'=>"this.style.color='#999'"),'url'=>Yii::app()->baseUrl.'/PDFFiles/Ayuda/Manual de Instrucciones SiGEP.pdf','visible'=>$ask->isAdmins()),
 					array('label'=>'Gestión','itemOptions'=>array('style'=>'float:right;'),'linkOptions'=>array('style' => 'color: #999;','onmouseover'=>"this.style.color='#666'",'onmouseout'=>"this.style.color='#999'"),
 						  'items'=>array(
 							  array('label'=>'Gestión Organizativa','linkOptions'=>array('style' => 'color: #666;'),

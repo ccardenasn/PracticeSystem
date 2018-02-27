@@ -82,7 +82,7 @@ class DocenteresponsablepracticaloginController extends Controller
 		$model=$this->loadModel(Yii::app()->user->name);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Docenteresponsablepracticalogin']))
 		{
